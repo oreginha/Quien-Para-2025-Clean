@@ -13,14 +13,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^2.10.0  # Updated to latest
-  location: ^6.0.2  # Updated to latest
+  google_maps_flutter: ^2.10.0
+  location: ^6.0.2
   geocoding: ^3.0.0
   http: ^1.2.2
   equatable: ^2.0.5
   cupertino_icons: ^1.0.8
   firebase_core: ^3.12.1
-  firebase_auth: ^5.6.0  # Updated to latest available
+  firebase_auth: ^5.5.2
   shared_preferences: ^2.5.2
   cloud_firestore: ^5.6.6
   google_sign_in: ^6.3.0
@@ -31,7 +31,6 @@ dependencies:
   flutter_bloc: ^9.1.0
   confetti: ^0.8.0
   image_picker: ^1.1.2
-  # image_cropper: ^5.0.0  # Commented temporarily to allow Chrome development
   image: ^4.2.0
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
