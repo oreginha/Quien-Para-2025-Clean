@@ -5,7 +5,7 @@ import 'package:quien_para/core/theme/provider/theme_provider.dart';
 /// MockThemeProvider para usar en pruebas
 class MockThemeProvider extends ThemeProvider {
   final bool _isDarkMode;
-  
+
   MockThemeProvider({bool isDarkMode = false}) : _isDarkMode = isDarkMode;
 
   @override
