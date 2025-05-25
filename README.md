@@ -1,5 +1,12 @@
 # Quien Para - App
 
+[![Flutter CI & Deploy](https://github.com/oreginha/Quien-Para---2025/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/oreginha/Quien-Para---2025/actions/workflows/flutter-ci.yml)
+[![Firebase Security Rules](https://github.com/oreginha/Quien-Para---2025/actions/workflows/firebase-security-rules.yml/badge.svg)](https://github.com/oreginha/Quien-Para---2025/actions/workflows/firebase-security-rules.yml)
+
+## 🚀 CI/CD Pipeline Activado
+
+**Estado**: Pipeline configurado y listo para deployment automático
+
 ### Versiones de inicio de la aplicación
 
 | Archivo | Descripción | Comando |
@@ -13,6 +20,29 @@
 | `app_launcher.dart` | Selector de Modos | `flutter run -t lib/app_launcher.dart` |
 
 **Recomendación**: Utilizar `main_minimal.dart` para el modo completo (versión estable sin NotificationService).
+
+## 🔧 Desarrollo
+
+### Comandos útiles
+```bash
+# Ejecutar la aplicación
+flutter run
+
+# Ejecutar tests
+flutter test
+
+# Generar código (Freezed, JSON)
+flutter packages pub run build_runner build
+
+# Analizar código
+flutter analyze
+```
+
+### 🌐 Deployment Automático
+
+- **Web**: Se despliega automáticamente en [Firebase Hosting](https://planing-931b8.web.app)
+- **Android**: APK se distribuye automáticamente via Firebase App Distribution
+- **CI/CD**: Pipeline completo con testing, building y deployment
 
 ## Guía de Migración de Getters del Tema
 
