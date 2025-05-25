@@ -1,0 +1,70 @@
+name: Firebase Security Rules
+
+on:
+  push:
+    paths:
+      - 'firestore.rules'
+      - 'storage.rules'
+      - '.github/workflows/firebase-security-rules.yml'
+  pull_request:
+    paths:
+      - 'firestore.rules'
+      - 'storage.rules'
+
+jobs:
+  test-rules:
+    name: Test Security Rules
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+      
+    - name: Install Firebase Emulator
+      run: |
+        firebase setup:emulators:firestore
+        firebase setup:emulators:storage
+        
+    - name: Test Firestore Rules
+      run: |
+        firebase emulators:exec --only firestore "npm test" --token ${{ secrets.FIREBASE_TOKEN }}
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        
+  deploy-rules:
+    name: Deploy Security Rules
+    runs-on: ubuntu-latest
+    needs: test-rules
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+      
+    - name: Deploy Firestore Rules
+      run: |
+        firebase deploy --only firestore:rules --token ${{ secrets.FIREBASE_TOKEN }} --project planing-931b8
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        
+    - name: Deploy Storage Rules
+      run: |
+        firebase deploy --only storage --token ${{ secrets.FIREBASE_TOKEN }} --project planing-931b8
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
