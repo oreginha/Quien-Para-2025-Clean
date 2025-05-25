@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  FLUTTER_VERSION: '3.24.0'  # Stable version with Dart 3.5.0 compatible with flutter_lints ^5.0.0
+  FLUTTER_VERSION: '3.29.0'  # Updated to support Dart 3.7 compatible with google_sign_in ^6.3.0
   JAVA_VERSION: '17'
 
 jobs:
