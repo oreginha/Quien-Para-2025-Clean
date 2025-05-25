@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  FLUTTER_VERSION: '3.22.0'  # Stable version with Dart >=3.4.0 compatible with build_runner
+  FLUTTER_VERSION: '3.24.0'  # Stable version with Dart 3.5.0 compatible with flutter_lints ^5.0.0
   JAVA_VERSION: '17'
 
 jobs:
