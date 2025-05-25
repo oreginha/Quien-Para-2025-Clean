@@ -31,7 +31,7 @@ dependencies:
   flutter_bloc: ^9.1.0
   confetti: ^0.8.0
   image_picker: ^1.1.2
-  # image_cropper: ^5.0.0  # Comentado temporalmente para permitir desarrollo en Chrome
+  # image_cropper: ^5.0.0  # Commented temporarily to allow Chrome development
   image: ^4.1.7
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
@@ -63,7 +63,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  build_runner: ^2.4.15  # Restored to original version - compatible with Flutter 3.32.0 (Dart >=3.6.0)
+  build_runner: ^2.4.7  # Compatible with Flutter 3.22.0 and Dart 3.4.x
   freezed: ^2.4.5
   json_serializable: ^6.7.1
   mockito: ^5.3.0
@@ -71,15 +71,6 @@ dev_dependencies:
   fake_cloud_firestore: 3.1.0
   integration_test:
     sdk: flutter
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  # Remove this duplicate line: flutter_lints: ^5.0.0
-
-  # For information on the generic Dart part of this file, see the
-  # following page: https://dart.dev/tools/pub/pubspec
 
   # The following section is specific to Flutter packages.
 flutter:
