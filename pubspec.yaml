@@ -13,16 +13,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^2.9.0  # Updated
-  location: ^5.0.3  # Updated
-  geocoding: ^3.0.0  # Updated
-  http: ^1.2.2  # Updated
+  google_maps_flutter: ^2.10.0  # Updated to latest
+  location: ^6.0.2  # Updated to latest
+  geocoding: ^3.0.0
+  http: ^1.2.2
   equatable: ^2.0.5
   cupertino_icons: ^1.0.8
-  firebase_core: ^3.12.1  # Latest stable
-  firebase_auth: ^5.5.2  # Fixed: downgraded to available version
+  firebase_core: ^3.12.1
+  firebase_auth: ^5.6.0  # Updated to latest available
   shared_preferences: ^2.5.2
-  cloud_firestore: ^5.6.6  # Updated
+  cloud_firestore: ^5.6.6
   google_sign_in: ^6.3.0
   get_it: ^8.0.3
   firebase_storage: ^12.4.4
@@ -32,8 +32,8 @@ dependencies:
   confetti: ^0.8.0
   image_picker: ^1.1.2
   # image_cropper: ^5.0.0  # Commented temporarily to allow Chrome development
-  image: ^4.2.0  # Updated
-  freezed_annotation: ^2.4.4  # Updated
+  image: ^4.2.0
+  freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
   dio: ^5.8.0+1
   intl: ^0.20.2
@@ -42,16 +42,16 @@ dependencies:
   flutter_image_compress: ^2.4.0
   bloc: ^9.0.0
   flutter_svg: ^2.0.17
-  flutter_cache_manager: ^3.4.1  # Updated
+  flutter_cache_manager: ^3.4.1
   firebase_messaging: ^15.2.5
   flutter_local_notifications: ^19.0.0
-  go_router: ^14.5.0  # Updated
+  go_router: ^14.5.0
   badges: ^3.1.1
   provider: ^6.1.4
   crypto: ^3.0.6
   nested: ^1.0.0
-  path: ^1.9.1  # Updated
-  cached_network_image: ^3.4.1  # Updated
+  path: ^1.9.1
+  cached_network_image: ^3.4.1
   firebase_core_platform_interface: ^5.4.0
   archive: ^4.0.7
   rxdart: ^0.28.0
@@ -63,12 +63,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0  # Compatible with Flutter 3.29.0 and Dart 3.7
-  build_runner: ^2.4.13  # Updated
+  build_runner: ^2.4.13
   freezed: ^2.4.5
-  json_serializable: ^6.8.0  # Updated
-  mockito: ^5.4.4  # Updated
+  json_serializable: ^6.8.0
+  mockito: ^5.4.4
   bloc_test: ^10.0.0
-  fake_cloud_firestore: ^3.1.0  # Updated
+  fake_cloud_firestore: ^3.1.0
   integration_test:
     sdk: flutter
 
