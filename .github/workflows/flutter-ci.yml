@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  FLUTTER_VERSION: '3.16.0'
+  FLUTTER_VERSION: '3.24.0'  # Updated to include Dart >=3.5.0
   JAVA_VERSION: '17'
 
 jobs:
@@ -30,7 +30,14 @@ jobs:
       with:
         flutter-version: ${{ env.FLUTTER_VERSION }}
         channel: 'stable'
-        cache: true
+        cache: false  # Disable cache to avoid old installations
+        
+    - name: Clear Flutter cache and verify Dart version
+      run: |
+        flutter clean
+        flutter pub cache repair
+        flutter --version
+        dart --version
         
     - name: Install dependencies
       run: flutter pub get
@@ -63,7 +70,14 @@ jobs:
       with:
         flutter-version: ${{ env.FLUTTER_VERSION }}
         channel: 'stable'
-        cache: true
+        cache: false  # Disable cache to avoid old installations
+        
+    - name: Clear Flutter cache and verify version
+      run: |
+        flutter clean
+        flutter pub cache repair
+        flutter --version
+        dart --version
         
     - name: Install dependencies
       run: flutter pub get
@@ -98,7 +112,14 @@ jobs:
       with:
         flutter-version: ${{ env.FLUTTER_VERSION }}
         channel: 'stable'
-        cache: true
+        cache: false  # Disable cache to avoid old installations
+        
+    - name: Clear Flutter cache and verify version
+      run: |
+        flutter clean
+        flutter pub cache repair
+        flutter --version
+        dart --version
         
     - name: Install dependencies
       run: flutter pub get
@@ -138,7 +159,14 @@ jobs:
       with:
         flutter-version: ${{ env.FLUTTER_VERSION }}
         channel: 'stable'
-        cache: true
+        cache: false  # Disable cache to avoid old installations
+        
+    - name: Clear Flutter cache and verify version
+      run: |
+        flutter clean
+        flutter pub cache repair
+        flutter --version
+        dart --version
         
     - name: Install dependencies
       run: flutter pub get
