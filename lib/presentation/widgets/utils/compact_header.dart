@@ -25,7 +25,7 @@ class CompactHeader extends StatelessWidget {
   });
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
       child: Column(
@@ -50,8 +50,8 @@ class CompactHeader extends StatelessWidget {
                   iconAssetPath!,
                   width: 30,
                   height: 30,
-                  errorBuilder: (final BuildContext context, final Object error,
-                          final StackTrace? stackTrace) =>
+                  errorBuilder: (BuildContext context, Object error,
+                          StackTrace? stackTrace) =>
                       Icon(icon ?? Icons.info_outline,
                           color: iconColor ?? AppColors.brandYellow, size: 30),
                 )
@@ -71,14 +71,17 @@ class CompactHeader extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       title,
-                      style: AppTypography.bodyMedium(Theme.of(context).brightness == Brightness.dark).copyWith(
+                      style: AppTypography.bodyMedium(
+                              Theme.of(context).brightness == Brightness.dark)
+                          .copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     if (subtitle != null)
                       Text(
                         subtitle!,
-                        style: AppTypography.bodySmall(Theme.of(context).brightness == Brightness.dark),
+                        style: AppTypography.bodySmall(
+                            Theme.of(context).brightness == Brightness.dark),
                         overflow: TextOverflow.ellipsis,
                       ),
                   ],
