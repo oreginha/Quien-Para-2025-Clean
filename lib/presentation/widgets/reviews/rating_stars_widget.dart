@@ -41,7 +41,8 @@ class RatingStarsWidget extends StatelessWidget {
             child: Icon(
               _getStarIcon(index + 1),
               size: size,
-              color: _getStarColor(index + 1, effectiveActiveColor, effectiveInactiveColor),
+              color: _getStarColor(
+                  index + 1, effectiveActiveColor, effectiveInactiveColor),
             ),
           );
         }),
@@ -137,16 +138,21 @@ class _InteractiveRatingStarsState extends State<InteractiveRatingStars> {
               },
               onPanUpdate: widget.allowHalfStars
                   ? (details) {
-                      final RenderBox box = context.findRenderObject() as RenderBox;
-                      final localPosition = box.globalToLocal(details.globalPosition);
+                      final RenderBox box =
+                          context.findRenderObject() as RenderBox;
+                      final localPosition =
+                          box.globalToLocal(details.globalPosition);
                       final starWidth = widget.size + 4; // Include padding
                       final starIndex = (localPosition.dx / starWidth).floor();
-                      final starPosition = (localPosition.dx % starWidth) / starWidth;
-                      
+                      final starPosition =
+                          (localPosition.dx % starWidth) / starWidth;
+
                       if (starIndex >= 0 && starIndex < widget.maxStars) {
-                        final newRating = starIndex + (starPosition > 0.5 ? 1.0 : 0.5);
+                        final newRating =
+                            starIndex + (starPosition > 0.5 ? 1.0 : 0.5);
                         setState(() {
-                          currentRating = newRating.clamp(0.5, widget.maxStars.toDouble());
+                          currentRating = newRating.clamp(
+                              0.5, widget.maxStars.toDouble());
                         });
                         widget.onRatingChanged?.call(currentRating);
                       }
@@ -157,7 +163,8 @@ class _InteractiveRatingStarsState extends State<InteractiveRatingStars> {
                 child: Icon(
                   _getStarIcon(index + 1),
                   size: widget.size,
-                  color: _getStarColor(index + 1, effectiveActiveColor, effectiveInactiveColor),
+                  color: _getStarColor(
+                      index + 1, effectiveActiveColor, effectiveInactiveColor),
                 ),
               ),
             );
@@ -196,7 +203,7 @@ class _InteractiveRatingStarsState extends State<InteractiveRatingStars> {
 
   String _getRatingText() {
     if (currentRating == 0) return 'Sin calificación';
-    
+
     switch (currentRating.round()) {
       case 1:
         return 'Malo (${currentRating.toStringAsFixed(1)}/5)';
