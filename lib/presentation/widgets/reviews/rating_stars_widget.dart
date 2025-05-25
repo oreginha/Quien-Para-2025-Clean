@@ -60,7 +60,8 @@ class RatingStarsWidget extends StatelessWidget {
     }
   }
 
-  Color _getStarColor(int starNumber, Color activeColor, Color? inactiveColor) {
+  Color _getStarColor(
+      int starNumber, Color activeColor, Color? inactiveColor) {
     if (rating >= starNumber) {
       return activeColor;
     } else if (showHalfStars && rating >= starNumber - 0.5) {
@@ -163,8 +164,8 @@ class _InteractiveRatingStarsState extends State<InteractiveRatingStars> {
                 child: Icon(
                   _getStarIcon(index + 1),
                   size: widget.size,
-                  color: _getStarColor(
-                      index + 1, effectiveActiveColor, effectiveInactiveColor),
+                  color: _getStarColor(index + 1, effectiveActiveColor,
+                      effectiveInactiveColor),
                 ),
               ),
             );
@@ -191,7 +192,8 @@ class _InteractiveRatingStarsState extends State<InteractiveRatingStars> {
     }
   }
 
-  Color _getStarColor(int starNumber, Color activeColor, Color? inactiveColor) {
+  Color _getStarColor(
+      int starNumber, Color activeColor, Color? inactiveColor) {
     if (currentRating >= starNumber) {
       return activeColor;
     } else if (widget.allowHalfStars && currentRating >= starNumber - 0.5) {
