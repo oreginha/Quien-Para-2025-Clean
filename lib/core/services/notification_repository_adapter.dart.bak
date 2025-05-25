@@ -1,0 +1,189 @@
+// lib/core/services/notification_repository_adapter.dart
+
+import 'package:dartz/dartz.dart';
+import 'package:logger/logger.dart';
+import 'package:quien_para/domain/entities/notification_entity.dart';
+import 'package:quien_para/domain/failures/app_failures.dart';
+import 'package:quien_para/domain/interfaces/notification_service_interface.dart';
+import 'package:quien_para/domain/interfaces/notification_repository_interface.dart';
+import 'package:quien_para/presentation/widgets/errors/failures.dart';
+
+/// Adaptador que convierte NotificationServiceInterface en INotificationRepository
+class NotificationRepositoryAdapter implements INotificationRepository {
+  final NotificationServiceInterface _service;
+  final Logger _logger = Logger();
+
+  NotificationRepositoryAdapter(this._service) {
+    _logger.d('NotificationRepositoryAdapter creado');
+  }
+
+  // Stream de notificaciones recibidas
+  @override
+  Stream<Map<String, dynamic>> get onNotificationReceived =>
+      _service.onNotificationReceived;
+
+  @override
+  void dispose() {
+    // No hay recursos que liberar en este adaptador
+  }
+
+  @override
+  Future<String?> getToken() {
+    return _service.getToken();
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> initialize() async {
+    try {
+      await _service.initialize();
+      return const Right(unit);
+    } catch (e) {
+      return Left(ServerFailure(
+          'Error inicializando servicio de notificaciones: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> showLocalNotification({
+    required String title,
+    required String body,
+    Map<String, dynamic>? payload,
+  }) async {
+    try {
+      await _service.showLocalNotification(
+        title: title,
+        body: body,
+        payload: payload ?? {},
+      );
+      return const Right(unit);
+    } catch (e) {
+      return Left(ServerFailure('Error mostrando notificación local: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> subscribeToTopic(String topic) async {
+    try {
+      await _service.subscribeToTopic(topic);
+      return const Right(unit);
+    } catch (e) {
+      return Left(ServerFailure('Error suscribiendo al topic $topic: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> unsubscribeFromTopic(String topic) async {
+    try {
+      await _service.unsubscribeFromTopic(topic);
+      return const Right(unit);
+    } catch (e) {
+      return Left(ServerFailure('Error desuscribiendo del topic $topic: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> createNotification(
+      NotificationEntity notification) async {
+    try {
+      // CORREGIDO: Ahora el método sendNotification devuelve Future<void>
+      await _service.sendNotification(notification);
+      
+      // Siempre devolver unit para indicar éxito
+      return const Right(unit);
+    } catch (e) {
+      return Left(
+          ServerFailure('Error creando notificación: $e', originalError: e)
+              as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForUser(
+    String userId, {
+    int? limit,
+    bool includeRead = false,
+  }) async {
+    try {
+      throw UnimplementedError(
+          'getNotificationsForUser no implementado en el servicio base');
+    } catch (e) {
+      return Left(
+          ServerFailure('Error obteniendo notificaciones: $e', originalError: e)
+              as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, int>> getUnreadNotificationCount(
+      String userId) async {
+    try {
+      throw UnimplementedError(
+          'getUnreadNotificationCount no implementado en el servicio base');
+    } catch (e) {
+      return Left(ServerFailure(
+          'Error obteniendo conteo de notificaciones sin leer: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForPlan(
+      String planId) async {
+    try {
+      throw UnimplementedError(
+          'getNotificationsForPlan no implementado en el servicio base');
+    } catch (e) {
+      return Left(ServerFailure('Error obteniendo notificaciones del plan: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> cleanupOldNotifications(
+      int olderThanDays) async {
+    try {
+      throw UnimplementedError(
+          'cleanupOldNotifications no implementado en el servicio base');
+    } catch (e) {
+      return Left(ServerFailure('Error limpiando notificaciones antiguas: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Stream<Either<AppFailure, List<NotificationEntity>>> getNotificationsStream(
+    String userId, {
+    bool includeRead = false,
+  }) {
+    throw UnimplementedError(
+        'getNotificationsStream no implementado en el servicio base');
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> markNotificationAsRead(
+      String notificationId) async {
+    try {
+      throw UnimplementedError(
+          'markNotificationAsRead no implementado en el servicio base');
+    } catch (e) {
+      return Left(ServerFailure('Error marcando notificación como leída: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+
+  @override
+  Future<Either<AppFailure, Unit>> markAllAsRead(String userId) async {
+    try {
+      throw UnimplementedError(
+          'markAllAsRead no implementado en el servicio base');
+    } catch (e) {
+      return Left(ServerFailure(
+          'Error marcando todas las notificaciones como leídas: $e',
+          originalError: e) as AppFailure);
+    }
+  }
+}

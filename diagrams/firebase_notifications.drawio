@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2024-04-07T10:00:00.000Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36" etag="3i8xtCoHiJ_Nh_V2rJkE" version="20.6.0">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Firebase Notifications">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+
+        <!-- NOTIFICATIONS COLLECTION -->
+        <mxCell id="notifications-title" value="&lt;h2&gt;Colección: notifications&lt;/h2&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#9673A6;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="40" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="notifications-document" value="Documento: notificationId" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="80" width="300" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-userId" value="userId: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="30" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-planId" value="planId: string | null" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="50" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-applicationId" value="applicationId: string | null" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="70" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-message" value="message: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="90" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-read" value="read: boolean (default: false)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="110" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-createdAt" value="createdAt: timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="130" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-type" value="type: string (plan_application, plan_update, message, etc)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="150" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-data" value="data: map&lt;string, any&gt; (datos adicionales específicos)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="170" width="300" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="notifications-actionType" value="actionType: string (redirect, dismiss, open_plan, etc)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="notifications-document">
+          <mxGeometry y="190" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- DESIGN NOTES -->
+        <mxCell id="design-notes" value="&lt;h3&gt;Notas de diseño - Colección Notifications&lt;/h3&gt;&lt;p&gt;1. Cada notificación pertenece a un usuario específico&lt;br&gt;2. Las notificaciones pueden estar relacionadas con planes, aplicaciones u otros eventos&lt;br&gt;3. El campo 'type' permite filtrar y mostrar notificaciones de manera diferente&lt;br&gt;4. El campo 'data' permite guardar información específica según el tipo&lt;br&gt;5. Se recomienda implementar un sistema de limpieza para notificaciones antiguas&lt;/p&gt;" style="shape=note;strokeWidth=2;fontSize=14;size=20;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#666600;align=left;spacing=8;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="380" y="80" width="400" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- NOTIFICATION TRIGGERS -->
+        <mxCell id="triggers-title" value="&lt;h2&gt;Eventos que generan notificaciones&lt;/h2&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#9673A6;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="380" y="250" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="triggers-list" value="&lt;ul&gt;&lt;li&gt;Nueva aplicación a un plan (para el creador)&lt;/li&gt;&lt;li&gt;Aplicación aceptada/rechazada (para el aplicante)&lt;/li&gt;&lt;li&gt;Cambios en un plan (para los participantes)&lt;/li&gt;&lt;li&gt;Nuevo mensaje en chat (para el destinatario)&lt;/li&gt;&lt;li&gt;Recordatorio de plan próximo (para los participantes)&lt;/li&gt;&lt;li&gt;Cancelación de plan (para los participantes)&lt;/li&gt;&lt;li&gt;Nuevo plan relevante según intereses (para usuarios)&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="380" y="290" width="400" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- INDEXES -->
+        <mxCell id="indexes-title" value="&lt;h2&gt;Índices recomendados&lt;/h2&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#9673A6;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="310" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="indexes-list" value="&lt;ul&gt;&lt;li&gt;userId, read, createdAt DESC&lt;/li&gt;&lt;li&gt;userId, type, createdAt DESC&lt;/li&gt;&lt;li&gt;userId, planId, createdAt DESC&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="350" width="300" height="70" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

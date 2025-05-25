@@ -1,0 +1,215 @@
+<mxfile host="app.diagrams.net" modified="20240406T000000Z" agent="Mozilla/5.0" etag="diagram_etag" version="21.7.5" type="device">
+  <diagram id="matching_algorithm_diagram" name="Algoritmo de Matching para Quien Para">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Título del diagrama -->
+        <mxCell id="title" value="Algoritmo de Matching para Quien Para" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="284.5" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Entidades -->
+        <mxCell id="user_entity" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Usuario&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- interests: List&amp;lt;String&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- location: String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="plan_entity" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Plan&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- title: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- description: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- category: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- location: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- date: DateTime&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- tags: List&amp;lt;String&amp;gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="840" y="120" width="200" height="150" as="geometry" />
+        </mxCell>
+        
+        <!-- Servicio de Matching -->
+        <mxCell id="matching_service" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;MatchingService&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ calculateMatchScore()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _calculateInterestsScore()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _calculateLocationScore()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _calculateAvailabilityScore()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ filterCompatiblePlans()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="480" y="320" width="200" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- Casos de Uso -->
+        <mxCell id="find_compatible_plans_usecase" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FindCompatiblePlansUseCase&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _planRepository: PlanRepository&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _matchingService: MatchingService&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ call()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="120" y="480" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="find_compatible_users_usecase" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;FindCompatibleUsersUseCase&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _firestore: FirebaseFirestore&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- _matchingService: MatchingService&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ call()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="800" y="480" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Repositorios -->
+        <mxCell id="plan_repository" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PlanRepository&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getPlans()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getById()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="120" y="640" width="200" height="90" as="geometry" />
+        </mxCell>
+        
+        <!-- Inyección de Dependencias -->
+        <mxCell id="dependency_injection" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Inyección de Dependencias&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;registerMatchingDependencies()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="480" y="640" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Conexiones -->
+        <!-- MatchingService a Casos de Uso -->
+        <mxCell id="matching_to_plans_usecase" value="" style="endArrow=diamondThin;endFill=1;endSize=12;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="matching_service" target="find_compatible_plans_usecase">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="460" />
+              <mxPoint x="240" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="matching_to_users_usecase" value="" style="endArrow=diamondThin;endFill=1;endSize=12;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="matching_service" target="find_compatible_users_usecase">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="460" />
+              <mxPoint x="920" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Repositorio a Caso de Uso -->
+        <mxCell id="repo_to_usecase" value="" style="endArrow=diamondThin;endFill=1;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="plan_repository" target="find_compatible_plans_usecase">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Inyección de Dependencias a Componentes -->
+        <mxCell id="di_to_matching" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="dependency_injection" target="matching_service">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="di_to_usecases" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dependency_injection" target="plan_repository">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Entidades a Componentes -->
+        <mxCell id="user_to_matching" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="user_entity" target="matching_service">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="plan_to_matching" value="" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="plan_entity" target="matching_service">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="940" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Algoritmo de Matching -->
+        <mxCell id="matching_algorithm" value="Algoritmo de Matching" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e1d5e7;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="120" width="280" height="156" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="interests_score" value="Puntuación de Intereses (40%)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="matching_algorithm">
+          <mxGeometry y="26" width="280" height="26" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="location_score" value="Puntuación de Ubicación (40%)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="matching_algorithm">
+          <mxGeometry y="52" width="280" height="26" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="availability_score" value="Puntuación de Disponibilidad (20%)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="matching_algorithm">
+          <mxGeometry y="78" width="280" height="26" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="final_score" value="Puntuación Final = (I*0.4) + (U*0.4) + (D*0.2)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="matching_algorithm">
+          <mxGeometry y="104" width="280" height="26" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="threshold" value="Umbral mínimo: 0.4 (configurable)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="matching_algorithm">
+          <mxGeometry y="130" width="280" height="26" as="geometry" />
+        </mxCell>
+        
+        <!-- Conexión del Algoritmo al Servicio -->
+        <mxCell id="algorithm_to_service" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="matching_algorithm" target="matching_service">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="390" as="sourcePoint" />
+            <mxPoint x="660" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Notas explicativas -->
+        <mxCell id="note_interests" value="&lt;div&gt;&lt;b&gt;Cálculo de Intereses:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;- Coincidencia directa con categoría: 0.8&lt;/div&gt;&lt;div&gt;- Coincidencia con descripción: 0.7&lt;/div&gt;&lt;div&gt;- Coincidencia con categoría relacionada: 0.4-0.7&lt;/div&gt;&lt;div&gt;- Sin coincidencias: 0.3&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="280" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note_location" value="&lt;div&gt;&lt;b&gt;Cálculo de Ubicación:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;- Coincidencia exacta: 1.0&lt;/div&gt;&lt;div&gt;- Ubicación contenida: 0.8&lt;/div&gt;&lt;div&gt;- Ubicaciones diferentes: 0.2&lt;/div&gt;&lt;div&gt;- Sin información: 0.5&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=15;" vertex="1" parent="1">
+          <mxGeometry x="840" y="320" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note_availability" value="&lt;div&gt;&lt;b&gt;Cálculo de Disponibilidad:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;- Próximos 3 días: 1.0&lt;/div&gt;&lt;div&gt;- Próxima semana: 0.8&lt;/div&gt;&lt;div&gt;- Próximas 2 semanas: 0.6&lt;/div&gt;&lt;div&gt;- Más lejano: 0.4&lt;/div&gt;&lt;div&gt;- Sin fecha: 0.5&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=15;" vertex="1" parent="1">
+          <mxGeometry x="840" y="640" width="240" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- Leyenda -->
+        <mxCell id="legend" value="&lt;b&gt;Leyenda&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_entity" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_entity_text" value="Entidades" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="795" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_service" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="830" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_service_text" value="Servicios" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="825" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_usecase" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="200" y="800" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_usecase_text" value="Casos de Uso" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="795" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_repository" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="200" y="830" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_repository_text" value="Repositorios" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" y="825" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_algorithm" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="360" y="800" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_algorithm_text" value="Algoritmo" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="795" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_di" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="360" y="830" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_di_text" value="Inyección de Dependencias" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="825" width="160" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+  
+  <!-- CRITICAL: Configuración de Seguridad para permitir ventanas emergentes y autenticación -->
+  <!-- Estas configuraciones son esenciales para el funcionamiento de la autenticación de Google -->
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="unsafe-none" />
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="unsafe-none" />
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="cross-origin" />
+  
+  <!-- Google Sign-in Client ID -->
+  <meta name="google-signin-client_id" content="308528139700-3eu684ijs5jaokegped7aennqqfulh3q.apps.googleusercontent.com">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="quien_para">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>quien_para</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- Fix mejorado para mantener sesión de Firebase Auth en Chrome Debug -->
+  <script>
+    // Verificar y forzar la persistencia de localStorage en Firebase Auth
+    window.addEventListener('load', function() {
+      console.log('✨ Activando intercepción mejorada para preservar sesión en debug');
+      
+      // Preservar la sesión de autenticación a nivel de localStorage
+      const preserveAuthSession = function() {
+        const storageManager = window.localStorage;
+        if (!storageManager) return;
+        
+        // Buscar clave de Firebase Auth
+        let authUserKey = null;
+        let authUser = null;
+        
+        for (let i = 0; i < storageManager.length; i++) {
+          const key = storageManager.key(i);
+          if (key && key.includes('firebase:authUser:')) {
+            authUserKey = key;
+            authUser = storageManager.getItem(key);
+            break;
+          }
+        }
+        
+        if (authUserKey && authUser) {
+          console.log('🔑 Preservando sesión de Firebase Auth');
+          
+          // Forzar que Firebase mantenga la sesión
+          storageManager.setItem('firebase:forceRefresh', 'false');
+          storageManager.setItem('firebase:auth:forceRefresh', 'false');
+          
+          // Guardar copia de seguridad
+          storageManager.setItem('backup_auth_token', authUser);
+          
+          // Verificar periódicamente si la sesión sigue activa
+          setInterval(function() {
+            const currentAuthUser = storageManager.getItem(authUserKey);
+            if (!currentAuthUser && storageManager.getItem('backup_auth_token')) {
+              console.log('🔄 Restaurando sesión perdida en localStorage');
+              storageManager.setItem(authUserKey, storageManager.getItem('backup_auth_token'));
+            }
+          }, 1000); // Verificar cada segundo
+        }
+      };
+      
+      // Ejecutar inmediatamente y después de cargar Firebase
+      preserveAuthSession();
+      setTimeout(preserveAuthSession, 1500);
+      
+      // Sobreescribir el método signOut para siempre preservar sesión en modo debug
+      const originalSignOut = function() {};
+      
+      // Interceptar la carga de Firebase Auth
+      const originalCreateElement = document.createElement.bind(document);
+      document.createElement = function(tag) {
+        const element = originalCreateElement(tag);
+        if (tag.toLowerCase() === 'script') {
+          element.addEventListener('load', function(e) {
+            const src = element.src || '';
+            if (src.includes('firebase-auth.js')) {
+              console.log('🔐 Firebase Auth detectado, aplicando fix de persistencia');
+              setTimeout(preserveAuthSession, 500);
+            }
+          });
+        }
+        return element;
+      };
+    });
+  </script>
+  
+  <!-- Firebase Core JS SDK -->  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getAuth, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+    import { getMessaging } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-messaging.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCA9CQ_w9JkSfkeKw-cyJir2Ck9wqRCbHg",
+      authDomain: "planing-931b8.firebaseapp.com",
+      projectId: "planing-931b8",
+      storageBucket: "planing-931b8.firebasestorage.app",
+      messagingSenderId: "308528139700",
+      appId: "1:308528139700:web:2231ff2600f285ae3076e1",
+      measurementId: "G-WTRN7PH6MR"
+    };
+
+    // Initialize Firebase - Only for JavaScript interop, Flutter initialization is separate
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const firestore = getFirestore(app);
+    const messaging = getMessaging(app);
+    
+    // Set authentication persistence to LOCAL
+    setPersistence(auth, browserLocalPersistence)
+      .then(() => {
+        console.log('Firebase Auth: Local persistence configured successfully');
+      })
+      .catch((error) => {
+        console.error('Firebase Auth: Error configuring persistence:', error);
+      });
+      
+    console.log('Firebase initialized correctly in web version');
+    
+    // Make Firebase instances available to window for interoperability
+    window.firebaseApp = app;
+    window.firebaseAuth = auth;
+    window.firebaseFirestore = firestore;
+    window.firebaseMessaging = messaging;
+  </script>
+  
+  <!-- CORS Policy Patch Script - Critical for Google Auth -->
+  <script>
+    // Parchar Cross-Origin-Opener-Policy para permitir autenticación de Google
+    // Esto ayuda a evitar errores relacionados con COOP
+    const originalCreateElement = document.createElement.bind(document);
+    document.createElement = function(tag) {
+      const element = originalCreateElement(tag);
+      if (tag.toLowerCase() === 'iframe') {
+        // Permitir acceso al iframe desde el contexto padre
+        element.setAttribute('allow', 'cross-origin-isolated');
+      }
+      return element;
+    };
+  </script>
+  
+  <!-- Google Authentication Specific for Web -->
+  <script src="authhelper.js"></script>
+  
+  <!-- Inicialización de Firebase Service Worker para FCM -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js', {
+          scope: '/firebase-cloud-messaging-push-scope'
+        }).then(function(registration) {
+          console.log('Firebase Service Worker registered with scope:', registration.scope);
+        }).catch(function(error) {
+          console.log('Firebase Service Worker registration failed:', error);
+        });
+      });
+    }
+  </script>
+  
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

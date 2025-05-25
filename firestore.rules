@@ -1,0 +1,114 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Función para verificar si el usuario está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Función para verificar si el usuario es participante de un chat
+    function isParticipant(chatData) {
+      return isAuthenticated() && 
+             request.auth.uid in chatData.participants;
+    }
+
+    // Regla para la colección de eventos
+    match /events/{eventId} {
+      allow read: if true;  // Permitir lectura a todos
+      allow write: if isAuthenticated();  // Solo escritura para autenticados
+      
+      function isVisible() {
+        return !("esVisible" in resource.data) || resource.data.esVisible == true;
+      }
+      
+      allow read: if isVisible();
+    }
+    
+    // Regla para la colección de planes
+    match /plans/{planId} {
+      // Permitir lectura a todos los usuarios autenticados
+      allow read: if true;
+      
+      // Permitir escritura si el usuario es el creador del plan
+      allow write: if isAuthenticated() && request.resource.data.creatorId == request.auth.uid;
+    }
+    
+    // Regla para la colección de usuarios
+    match /users/{userId} {
+      allow read, write: if true;  // Por ahora permitimos todo para desarrollo
+    }
+    
+    // Regla para la colección de notificaciones
+    match /notifications/{notificationId} {
+      // Permitir a usuarios autenticados crear notificaciones
+      allow create: if isAuthenticated();
+      
+      // Permitir lectura si el usuario es el destinatario de la notificación
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      
+      // Permitir actualización (marcar como leída) si el usuario es el destinatario
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      
+      // No permitir eliminación por ahora
+      allow delete: if false;
+    }
+    
+    // Regla para la colección de chats
+    match /chats/{chatId} {
+      // Durante desarrollo - permitir a cualquier usuario autenticado
+      allow read, write: if isAuthenticated();
+      
+      // Para producción - descomentar estas reglas cuando estés listo:
+      // allow read: if isAuthenticated() && request.auth.uid in resource.data.participants;
+      // allow create: if isAuthenticated() && request.auth.uid in request.resource.data.participants;
+      // allow update: if isAuthenticated() && request.auth.uid in resource.data.participants;
+      
+      // Reglas para los mensajes dentro de un chat
+      match /messages/{messageId} {
+        allow read: if isParticipant(get(/databases/$(database)/documents/chats/$(chatId)).data);
+        allow create: if isParticipant(get(/databases/$(database)/documents/chats/$(chatId)).data);
+        allow update: if isParticipant(get(/databases/$(database)/documents/chats/$(chatId)).data);
+        allow delete: if false; // Mantener la restricción para eliminar mensajes
+      }
+    }
+    
+    // Regla para la colección de aplicaciones
+    match /applications/{applicationId} {
+      // Función para verificar si el usuario es el creador del plan
+      function isPlanCreator(planId) {
+        return isAuthenticated() && 
+               exists(/databases/$(database)/documents/plans/$(planId)) && 
+               get(/databases/$(database)/documents/plans/$(planId)).data.creatorId == request.auth.uid;
+      }
+      
+      // Permitir lectura si el usuario está autenticado
+      allow read: if isAuthenticated();
+      
+      // Permitir creación si el usuario está autenticado y los datos son válidos
+      allow create: if isAuthenticated() && 
+                     request.resource.data.applicantId == request.auth.uid &&
+                     exists(/databases/$(database)/documents/plans/$(request.resource.data.planId));
+      
+      // Permitir actualización si:
+      // - El usuario es el creador del plan (para aceptar/rechazar)
+      // - El usuario es el aplicante (para cancelar)
+      allow update: if isAuthenticated() && (
+        // El aplicante solo puede actualizar su propia aplicación
+        (request.resource.data.applicantId == request.auth.uid && 
+         resource.data.applicantId == request.auth.uid) ||
+        // El creador del plan puede actualizar el estado
+        isPlanCreator(request.resource.data.planId)
+      );
+      
+      // Permitir eliminación si el usuario es el aplicante o el creador del plan
+      allow delete: if isAuthenticated() && (
+        resource.data.applicantId == request.auth.uid ||
+        isPlanCreator(resource.data.planId)
+      );
+      
+      // Permitir listar aplicaciones si el usuario está autenticado
+      // Esto permite consultas filtradas por planId o applicantId
+      allow list: if isAuthenticated();
+    }
+  }
+}

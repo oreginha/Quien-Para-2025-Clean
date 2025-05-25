@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bulbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffdc00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <g>
+    <!-- Bombilla exterior -->
+    <circle cx="32" cy="25" r="18" fill="url(#bulbGradient)" />
+    
+    <!-- Resplandor interior -->
+    <circle cx="32" cy="25" r="12" fill="#fff9c4" opacity="0.7" />
+    
+    <!-- Reflejos -->
+    <circle cx="26" cy="19" r="3" fill="#ffffff" opacity="0.9" />
+    <circle cx="38" cy="21" r="1.5" fill="#ffffff" opacity="0.7" />
+    
+    <!-- Base metálica -->
+    <path d="M26,43 L38,43 L38,46 L36,48 L28,48 L26,46 Z" fill="#b0bec5" />
+    
+    <!-- Rosca -->
+    <rect x="28" y="48" width="8" height="2" fill="#78909c" />
+    <rect x="28" y="50" width="8" height="2" fill="#546e7a" />
+    <rect x="28" y="52" width="8" height="2" fill="#78909c" />
+    
+    <!-- Cuello -->
+    <path d="M26,39 L38,39 L38,43 L26,43 Z" fill="#cfd8dc" />
+    
+    <!-- Conexión bombilla-cuello -->
+    <path d="M30,35 C26,36 26,39 26,39 L38,39 C38,39 38,36 34,35 Z" fill="#eceff1" />
+  </g>
+</svg>

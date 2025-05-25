@@ -1,0 +1,172 @@
+// lib/core/utils/auth_emergency_provider.dart
+import 'package:flutter/foundation.dart';
+import 'package:quien_para/domain/entities/notification_entity.dart';
+import 'package:quien_para/presentation/bloc/auth/auth_cubit.dart';
+import 'package:quien_para/domain/repositories/mock_auth_repository.dart';
+import 'package:quien_para/core/utils/mock_shared_preferences.dart';
+import 'package:quien_para/core/services/fcm_token_service.dart';
+import 'package:quien_para/domain/interfaces/notification_service_interface.dart';
+
+/// Proporciona un AuthCubit real pero con dependencias simuladas
+/// para el modo de emergencia
+class AuthEmergencyProvider {
+  static AuthCubit createAuthCubit() {
+    if (kDebugMode) {
+      print('🔴 [EMERGENCIA] Creando AuthCubit con dependencias simuladas');
+    }
+
+    // Crear el repositorio simulado
+    final mockAuthRepository = MockAuthRepository();
+
+    // Crear las preferencias simuladas
+    final mockPrefs = MockSharedPreferences();
+
+    // Crear el AuthCubit real con dependencias simuladas
+    final authCubit = AuthCubit(mockAuthRepository, mockPrefs);
+
+    // Crear y establecer un FCM Token Service simulado
+    authCubit.setFcmTokenService(_createMockFcmTokenService());
+
+    if (kDebugMode) {
+      print('✅ [EMERGENCIA] AuthCubit creado con dependencias simuladas');
+    }
+
+    return authCubit;
+  }
+
+  // Crea un FCM Token Service simulado
+  static FcmTokenService _createMockFcmTokenService() {
+    // Creamos un servicio de notificación simulado primero
+    final mockNotificationService = _MockNotificationService();
+
+    // Luego creamos el FcmTokenService con el servicio simulado
+    return FcmTokenService(mockNotificationService);
+  }
+}
+
+/// Implementación simulada del servicio de notificaciones
+class _MockNotificationService implements NotificationServiceInterface {
+  @override
+  Future<void> initialize() async {
+    if (kDebugMode) {
+      print(
+          '🔴 [EMERGENCIA] Simulando inicialización de servicio de notificaciones');
+    }
+  }
+
+  @override
+  Future<String?> getToken() async {
+    if (kDebugMode) {
+      print('🔴 [EMERGENCIA] Simulando obtención de token FCM');
+    }
+    return 'mock-fcm-token-for-emergency-mode';
+  }
+
+  @override
+  Future<void> subscribeToTopic(String topic) async {
+    if (kDebugMode) {
+      print('🔴 [EMERGENCIA] Simulando suscripción a tema: $topic');
+    }
+  }
+
+  @override
+  Future<void> unsubscribeFromTopic(String topic) async {
+    if (kDebugMode) {
+      print(
+          '🔴 [EMERGENCIA] Simulando cancelación de suscripción a tema: $topic');
+    }
+  }
+
+  @override
+  void dispose() {
+    if (kDebugMode) {
+      print(
+          '🔴 [EMERGENCIA] Simulando liberación de recursos de notificaciones');
+    }
+  }
+
+  @override
+  Stream<Map<String, dynamic>> get onNotificationReceived {
+    // Crear un stream vacío que nunca emite notificaciones
+    return Stream<Map<String, dynamic>>.empty();
+  }
+
+  @override
+  Future<void> showLocalNotification({
+    required String title,
+    required String body,
+    Map<String, dynamic>? payload,
+  }) async {
+    if (kDebugMode) {
+      print(
+          '🔴 [EMERGENCIA] Simulando mostrar notificación local: $title - $body');
+    }
+  }
+
+  @override
+  sendNotification(notification) async {
+    if (kDebugMode) {
+      print('🔴 [EMERGENCIA] Simulando envío de notificación');
+    }
+  }
+
+  @override
+  Future<bool> areNotificationsEnabled() {
+    // TODO: implement areNotificationsEnabled
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> cancelAllNotifications() {
+    // TODO: implement cancelAllNotifications
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> cancelNotification(String notificationId) {
+    // TODO: implement cancelNotification
+    throw UnimplementedError();
+  }
+
+  @override
+  void registerNotificationListener(Function(NotificationEntity p1) listener) {
+    // TODO: implement registerNotificationListener
+  }
+
+  @override
+  void removeNotificationListener(Function(NotificationEntity p1) listener) {
+    // TODO: implement removeNotificationListener
+  }
+
+  @override
+  Future<bool> requestNotificationPermissions() {
+    // TODO: implement requestNotificationPermissions
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> scheduleLocalNotification(
+      {required String id,
+      required String title,
+      required String body,
+      DateTime? scheduledTime}) {
+    // TODO: implement scheduleLocalNotification
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> sendApplicationNotification(
+      {required String userId,
+      required String title,
+      required String body,
+      Map<String, dynamic>? data}) {
+    // TODO: implement sendApplicationNotification
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setupNotificationHandlers() {
+    // TODO: implement setupNotificationHandlers
+    throw UnimplementedError();
+  }
+}

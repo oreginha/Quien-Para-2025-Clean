@@ -1,0 +1,7 @@
+// lib/presentation/bloc/auth/emergency_auth_facade.dart
+// Esta clase es un "facade" para usar MockAuthCubit como si fuera AuthCubit en el modo de emergencia
+
+import 'mock_auth_cubit.dart';
+
+// Falseamos la clase AuthCubit para que se pueda usar en modo de emergencia
+typedef AuthCubit = MockAuthCubit;
