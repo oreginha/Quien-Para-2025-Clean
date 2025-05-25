@@ -12,12 +12,12 @@ void main() {
       // Una vez que se complete la consolidación, regenerar los mocks y habilitar las pruebas
       expect(true, true); // Dummy assertion
     });
-    
+
     test('Validación de campos - deshabilitado temporalmente', () {
       // Pruebas de validación deshabilitadas temporalmente
       expect(true, true); // Dummy assertion
     });
-    
+
     test('Manejo de errores - deshabilitado temporalmente', () {
       // Pruebas de manejo de errores deshabilitadas temporalmente
       expect(true, true); // Dummy assertion
