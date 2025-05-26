@@ -2,57 +2,72 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quien_para/core/performance/performance_metrics.dart';
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-
   group('PerformanceMetrics', () {
-    late PerformanceMetrics metrics;
+    late PerformanceMetrics performanceMetrics;
 
     setUp(() {
-      metrics = PerformanceMetrics();
+      performanceMetrics = PerformanceMetrics();
     });
 
-    test('es un singleton', () {
-      final metrics1 = PerformanceMetrics();
-      final metrics2 = PerformanceMetrics();
-
-      // Verificar que ambas referencias apuntan a la misma instancia
-      expect(identical(metrics1, metrics2), isTrue);
+    test('should start and stop timer correctly', () {
+      const operationName = 'test_operation';
+      
+      performanceMetrics.startTimer(operationName);
+      expect(performanceMetrics.isTimerRunning(operationName), isTrue);
+      
+      // Simulate some work
+      Future.delayed(const Duration(milliseconds: 100));
+      
+      final duration = performanceMetrics.stopTimer(operationName);
+      expect(duration, isNotNull);
+      expect(duration!.inMilliseconds, greaterThanOrEqualTo(0));
+      expect(performanceMetrics.isTimerRunning(operationName), isFalse);
     });
 
-    // NOTE: No podemos probar toda la funcionalidad de PerformanceMetrics
-    // en un ambiente de pruebas sin mockear correctamente el sistema de archivos.
-    // En su lugar, vamos a probar un subconjunto de funcionalidades básicas
-    // que no dependen de la inicialización completa.
-
-    group('startTimer', () {
-      test('no debería fallar', () {
-        // Simplemente verificamos que se puede llamar sin errores
-        expect(() => metrics.startTimer('test_operation'), returnsNormally);
-      });
+    test('should handle multiple concurrent timers', () {
+      const operation1 = 'operation_1';
+      const operation2 = 'operation_2';
+      
+      performanceMetrics.startTimer(operation1);
+      performanceMetrics.startTimer(operation2);
+      
+      expect(performanceMetrics.isTimerRunning(operation1), isTrue);
+      expect(performanceMetrics.isTimerRunning(operation2), isTrue);
+      
+      final duration1 = performanceMetrics.stopTimer(operation1);
+      final duration2 = performanceMetrics.stopTimer(operation2);
+      
+      expect(duration1, isNotNull);
+      expect(duration2, isNotNull);
     });
 
-    group('stopTimer', () {
-      test('no debería fallar si el timer no existe', () {
-        // Intentar detener un timer que no existe no debe lanzar excepcion
-        expect(
-            () => metrics.stopTimer('nonexistent_timer'), returnsNormally);
-      });
+    test('should return null for non-existent timer', () {
+      const nonExistentOperation = 'non_existent';
+      
+      final duration = performanceMetrics.stopTimer(nonExistentOperation);
+      expect(duration, isNull);
+      expect(
+        performanceMetrics.isTimerRunning(nonExistentOperation),
+        isFalse,
+      );
     });
 
-    group('measured extension', () {
-      test('debería funcionar correctamente', () async {
-        // Función a rastrear
-        Future<int> slowFunction() async {
-          await Future.delayed(const Duration(milliseconds: 50));
-          return 42;
-        }
+    test('should track memory usage', () {
+      final memoryUsage = performanceMetrics.getCurrentMemoryUsage();
+      expect(memoryUsage, isNotNull);
+      expect(memoryUsage.runtimeType, equals(int));
+    });
 
-        // Ejecutar con rastreo usando la extensión measured
-        final result = await slowFunction().measured('slow_operation');
-
-        // Solo verificamos que la función devuelve el resultado correcto
-        expect(result, equals(42));
-      });
+    test('should generate performance report', () {
+      const operation = 'report_test';
+      
+      performanceMetrics.startTimer(operation);
+      Future.delayed(const Duration(milliseconds: 50));
+      performanceMetrics.stopTimer(operation);
+      
+      final report = performanceMetrics.generateReport();
+      expect(report, isNotNull);
+      expect(report, contains(operation));
     });
   });
 }
