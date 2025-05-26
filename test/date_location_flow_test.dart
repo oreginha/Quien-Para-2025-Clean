@@ -11,8 +11,9 @@ void main() {
     //IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   });
 
-  testWidgets('Complete date and location selection flow',
-      (final WidgetTester tester) async {
+  testWidgets('Complete date and location selection flow', (
+    final WidgetTester tester,
+  ) async {
     // Necesitamos crear un widget de prueba en lugar de usar MyApp directamente
     await tester.pumpWidget(
       MaterialApp(
@@ -34,7 +35,9 @@ void main() {
 
     // Seleccionar ciudad
     await tester.enterText(
-        find.byType(TextField), 'Ciudad Autónoma de Buenos Aires');
+      find.byType(TextField),
+      'Ciudad Autónoma de Buenos Aires',
+    );
     await tester.pumpAndSettle();
 
     // Verificar que el botón de continuar está habilitado

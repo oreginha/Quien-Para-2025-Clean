@@ -18,8 +18,9 @@ void main() {
 
   setUp(() {
     mockPlanRepository = MockPlanRepository();
-    getPlanByIdUseCase =
-        GetPlanByIdUseCase(mockPlanRepository as PlanRepositoryImpl);
+    getPlanByIdUseCase = GetPlanByIdUseCase(
+      mockPlanRepository as PlanRepositoryImpl,
+    );
   });
 
   final testPlanId = 'test-plan-id';
@@ -46,8 +47,9 @@ void main() {
   group('GetPlanByIdUseCase', () {
     test('should get plan by id from repository', () async {
       // Configurar el mock para devolver el plan de prueba envuelto en Either.Right
-      when(mockPlanRepository.getById(testPlanId))
-          .thenAnswer((_) async => Right(testPlan));
+      when(
+        mockPlanRepository.getById(testPlanId),
+      ).thenAnswer((_) async => Right(testPlan));
 
       // Ejecutar el caso de uso
       final result = await getPlanByIdUseCase.execute(testPlanId);
@@ -56,20 +58,18 @@ void main() {
       verify(mockPlanRepository.getById(testPlanId));
 
       // Verificar que el resultado es el plan esperado usando fold
-      result.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          expect(plan, equals(testPlan));
-          expect(plan?.id, equals(testPlanId));
-          expect(plan?.title, equals('Test Plan'));
-        },
-      );
+      result.fold((failure) => fail('Should not return failure'), (plan) {
+        expect(plan, equals(testPlan));
+        expect(plan?.id, equals(testPlanId));
+        expect(plan?.title, equals('Test Plan'));
+      });
     });
 
     test('should throw exception when repository returns null', () async {
       // Configurar el mock para devolver null envuelto en Either.Right
-      when(mockPlanRepository.getById(testPlanId))
-          .thenAnswer((_) async => Right(null));
+      when(
+        mockPlanRepository.getById(testPlanId),
+      ).thenAnswer((_) async => Right(null));
 
       // Ejecutar el caso de uso
       final result = await getPlanByIdUseCase.execute(testPlanId);
@@ -86,8 +86,10 @@ void main() {
 
     test('should throw exception when repository throws an error', () async {
       // Configurar el mock para devolver un error envuelto en Either.Left
-      when(mockPlanRepository.getById(testPlanId)).thenAnswer((_) async =>
-          Left(NetworkFailure(message: 'Server error occurred', code: '')));
+      when(mockPlanRepository.getById(testPlanId)).thenAnswer(
+        (_) async =>
+            Left(NetworkFailure(message: 'Server error occurred', code: '')),
+      );
 
       // Ejecutar el caso de uso
       final result = await getPlanByIdUseCase.execute(testPlanId);

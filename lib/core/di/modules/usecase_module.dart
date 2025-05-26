@@ -6,7 +6,7 @@ import '../di_logger.dart';
 import 'di_module.dart';
 
 /// Módulo minimalista para registro de casos de uso - VERSIÓN DE EMERGENCIA
-/// 
+///
 /// Esta versión simplificada no registra ninguno de los casos de uso problemáticos
 /// y está diseñada para permitir que la aplicación inicie sin errores.
 class UseCaseModule implements DIModule {
@@ -14,11 +14,13 @@ class UseCaseModule implements DIModule {
   Future<void> register(GetIt sl) async {
     try {
       DILogger.info('🔄 Iniciando registro de UseCaseModule (versión mínima)');
-      
+
       // No registramos ningún caso de uso para evitar problemas
       // Los casos de uso se deberán implementar manualmente donde sea necesario
-      
-      DILogger.success('✅ UseCaseModule (versión mínima) registrado correctamente');
+
+      DILogger.success(
+        '✅ UseCaseModule (versión mínima) registrado correctamente',
+      );
     } catch (e) {
       DILogger.error('❌ Error en registro de UseCaseModule mínimo: $e');
     }

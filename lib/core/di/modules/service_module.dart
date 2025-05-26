@@ -74,7 +74,8 @@ class ServiceModule implements DIModule {
           const Duration(seconds: 5),
           onTimeout: () {
             throw TimeoutException(
-                'Tiempo de espera agotado al inicializar NotificationService');
+              'Tiempo de espera agotado al inicializar NotificationService',
+            );
           },
         );
 
@@ -85,7 +86,8 @@ class ServiceModule implements DIModule {
 
         if (kDebugMode) {
           print(
-              '✅ Servicio de notificaciones registrado e inicializado correctamente');
+            '✅ Servicio de notificaciones registrado e inicializado correctamente',
+          );
         }
       } catch (e) {
         // Si falla la inicialización, registrar el servicio vacío como fallback
@@ -127,7 +129,8 @@ class ServiceModule implements DIModule {
       // Verificar que el servicio de notificaciones esté registrado
       if (!sl.isRegistered<NotificationServiceInterface>()) {
         throw StateError(
-            'NotificationServiceInterface debe estar registrado antes que FcmTokenService');
+          'NotificationServiceInterface debe estar registrado antes que FcmTokenService',
+        );
       }
 
       // Registrar el servicio
@@ -162,20 +165,19 @@ class ServiceModule implements DIModule {
       // Verificar dependencias necesarias
       if (!sl.isRegistered<ChatRepository>()) {
         throw StateError(
-            'ChatRepository debe estar registrado antes que UnreadMessagesService');
+          'ChatRepository debe estar registrado antes que UnreadMessagesService',
+        );
       }
 
       if (!sl.isRegistered<FirebaseAuth>()) {
         throw StateError(
-            'FirebaseAuth debe estar registrado antes que UnreadMessagesService');
+          'FirebaseAuth debe estar registrado antes que UnreadMessagesService',
+        );
       }
 
       // Registrar el servicio
       sl.registerLazySingleton<UnreadMessagesService>(
-        () => UnreadMessagesService(
-          sl<ChatRepository>(),
-          sl<FirebaseAuth>(),
-        ),
+        () => UnreadMessagesService(sl<ChatRepository>(), sl<FirebaseAuth>()),
       );
 
       if (kDebugMode) {
@@ -216,7 +218,9 @@ class ServiceModule implements DIModule {
         // Usamos una implementación interna que delega a FirebaseAuth
         // Esta es una solución temporal hasta completar la migración a Clean Architecture
         return _LegacyAuthRepositoryImpl(
-            FirebaseAuth.instance, FirebaseFirestore.instance);
+          FirebaseAuth.instance,
+          FirebaseFirestore.instance,
+        );
       });
     }
 
@@ -241,8 +245,8 @@ class ServiceModule implements DIModule {
     // Image Service
     if (!sl.isRegistered<ImageServiceInterface>()) {
       sl.registerLazySingleton<ImageServiceInterface>(
-        () => ImageServiceFactory
-            .create(), // Usa el factory para seleccionar la implementación adecuada según la plataforma
+        () =>
+            ImageServiceFactory.create(), // Usa el factory para seleccionar la implementación adecuada según la plataforma
       );
     }
 
@@ -309,7 +313,8 @@ class ServiceModule implements DIModule {
   Future<void> registerTestDependencies(GetIt container) async {
     if (kDebugMode) {
       print(
-          '🚨 Registrando dependencias de prueba para el módulo de servicios');
+        '🚨 Registrando dependencias de prueba para el módulo de servicios',
+      );
     }
 
     // Registrar servicios mock para pruebas
@@ -327,7 +332,9 @@ class ServiceModule implements DIModule {
       // o una implementación mock si existiera
       container.registerLazySingleton<AuthRepository>(() {
         return _LegacyAuthRepositoryImpl(
-            FirebaseAuth.instance, FirebaseFirestore.instance);
+          FirebaseAuth.instance,
+          FirebaseFirestore.instance,
+        );
       });
     }
 
@@ -376,7 +383,8 @@ class ServiceModule implements DIModule {
 
     if (kDebugMode) {
       print(
-          '✅ Dependencias de prueba para el módulo de servicios registradas correctamente');
+        '✅ Dependencias de prueba para el módulo de servicios registradas correctamente',
+      );
     }
   }
 }
@@ -439,8 +447,10 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
     }
 
     try {
-      final docSnapshot =
-          await _firestore.collection('users').doc(user.uid).get();
+      final docSnapshot = await _firestore
+          .collection('users')
+          .doc(user.uid)
+          .get();
       if (!docSnapshot.exists) {
         // Si el documento no existe, devolver datos básicos del usuario de Firebase
         return UserEntity(
@@ -470,8 +480,10 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserEntity?> getUserById(String userId) async {
     try {
-      final docSnapshot =
-          await _firestore.collection('users').doc(userId).get();
+      final docSnapshot = await _firestore
+          .collection('users')
+          .doc(userId)
+          .get();
       if (!docSnapshot.exists) {
         return null;
       }
@@ -536,8 +548,9 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
         );
 
         // Iniciar sesión en Firebase
-        final userCredential =
-            await _firebaseAuth.signInWithCredential(credential);
+        final userCredential = await _firebaseAuth.signInWithCredential(
+          credential,
+        );
         final user = userCredential.user;
 
         if (user != null) {
@@ -554,7 +567,7 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
             'id': user.uid,
             'name': user.displayName ?? 'Usuario de Google',
             'photoUrl': user.photoURL,
-            'success': true
+            'success': true,
           };
         } else {
           return {'success': false, 'error': 'No se pudo autenticar'};
@@ -562,8 +575,9 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
       } else {
         // Implementación para dispositivos móviles
         final GoogleAuthProvider googleProvider = GoogleAuthProvider();
-        final userCredential =
-            await _firebaseAuth.signInWithPopup(googleProvider);
+        final userCredential = await _firebaseAuth.signInWithPopup(
+          googleProvider,
+        );
         final user = userCredential.user;
 
         if (user != null) {
@@ -572,7 +586,7 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
             'id': user.uid,
             'name': user.displayName ?? 'Usuario de Google',
             'photoUrl': user.photoURL,
-            'success': true
+            'success': true,
           };
         } else {
           return {'success': false, 'error': 'No se pudo autenticar'};
@@ -618,19 +632,20 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
   // Los métodos de testing mantienen su implementación base con excepción
   @override
   Future<UserEntity> signInWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     try {
-      final UserCredential userCredential =
-          await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final UserCredential userCredential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
 
       final User? user = userCredential.user;
       if (user != null) {
         // Verificar si existe un documento en Firestore
-        final docSnapshot =
-            await _firestore.collection('users').doc(user.uid).get();
+        final docSnapshot = await _firestore
+            .collection('users')
+            .doc(user.uid)
+            .get();
 
         if (docSnapshot.exists) {
           final userData = docSnapshot.data()!;
@@ -657,13 +672,13 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name) async {
+    String email,
+    String password,
+    String name,
+  ) async {
     try {
-      final UserCredential userCredential =
-          await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final UserCredential userCredential = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
 
       final User? user = userCredential.user;
       if (user != null) {
@@ -681,11 +696,7 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
         });
 
         // Devolver la entidad de usuario
-        return UserEntity(
-          id: user.uid,
-          name: name,
-          photoUrl: user.photoURL,
-        );
+        return UserEntity(id: user.uid, name: name, photoUrl: user.photoURL);
       }
 
       throw Exception('No se pudo crear la cuenta');

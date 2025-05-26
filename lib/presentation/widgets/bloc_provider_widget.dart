@@ -13,11 +13,7 @@ class AppBlocProvider extends StatelessWidget {
   final Widget child;
   final String? feature;
 
-  const AppBlocProvider({
-    super.key,
-    required this.child,
-    this.feature,
-  });
+  const AppBlocProvider({super.key, required this.child, this.feature});
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +25,12 @@ class AppBlocProvider extends StatelessWidget {
     // Si no se especifica característica, proporcionar BLoCs globales
     return MultiBlocProvider(
       providers: [
-        BlocProvider<PlanBloc>(
-          create: (_) => sl<PlanBloc>(),
-          lazy: true,
-        ),
+        BlocProvider<PlanBloc>(create: (_) => sl<PlanBloc>(), lazy: true),
         BlocProvider<MatchingBloc>(
           create: (_) => sl<MatchingBloc>(),
           lazy: true,
         ),
-        BlocProvider<FeedBloc>(
-          create: (_) => sl<FeedBloc>(),
-          lazy: true,
-        ),
+        BlocProvider<FeedBloc>(create: (_) => sl<FeedBloc>(), lazy: true),
       ],
       child: child,
     );
@@ -78,10 +68,7 @@ class PlanBlocProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBlocProvider(
-      feature: 'plans',
-      child: child,
-    );
+    return AppBlocProvider(feature: 'plans', child: child);
   }
 }
 
@@ -93,10 +80,7 @@ class MatchingBlocProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBlocProvider(
-      feature: 'matching',
-      child: child,
-    );
+    return AppBlocProvider(feature: 'matching', child: child);
   }
 }
 
@@ -108,9 +92,6 @@ class FeedBlocProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBlocProvider(
-      feature: 'feed',
-      child: child,
-    );
+    return AppBlocProvider(feature: 'feed', child: child);
   }
 }

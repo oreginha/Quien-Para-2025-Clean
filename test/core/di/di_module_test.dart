@@ -24,28 +24,38 @@ void main() {
 
   group('Sistema de inyección de dependencias modular', () {
     test(
-        'initializeDependencies registra correctamente las dependencias esenciales',
-        () async {
-      // Inicializar con el nuevo método consolidado
-      await initializeDependencies();
+      'initializeDependencies registra correctamente las dependencias esenciales',
+      () async {
+        // Inicializar con el nuevo método consolidado
+        await initializeDependencies();
 
-      // Verificar que los servicios esenciales estén registrados
-      expect(sl.isRegistered<ImageServiceInterface>(), isTrue,
-          reason: 'ImageServiceInterface debería estar registrado');
+        // Verificar que los servicios esenciales estén registrados
+        expect(
+          sl.isRegistered<ImageServiceInterface>(),
+          isTrue,
+          reason: 'ImageServiceInterface debería estar registrado',
+        );
 
-      // Verificar que el ThemeProvider esté registrado
-      expect(sl.isRegistered<ThemeProvider>(), isTrue,
-          reason: 'ThemeProvider debería estar registrado');
-    });
+        // Verificar que el ThemeProvider esté registrado
+        expect(
+          sl.isRegistered<ThemeProvider>(),
+          isTrue,
+          reason: 'ThemeProvider debería estar registrado',
+        );
+      },
+    );
 
     test('El método global initializeApp inicializa correctamente', () async {
       // Inicializar con el método global
       await initializeApp();
 
       // Verificar que las dependencias estén registradas
-      expect(sl.isRegistered<ImageServiceInterface>(), isTrue,
-          reason:
-              'ImageServiceInterface debería estar registrado después de initializeApp');
+      expect(
+        sl.isRegistered<ImageServiceInterface>(),
+        isTrue,
+        reason:
+            'ImageServiceInterface debería estar registrado después de initializeApp',
+      );
     });
 
     test('Los casos de uso se registran correctamente', () async {
@@ -53,30 +63,41 @@ void main() {
       await initializeDependencies();
 
       // Verificar casos de uso
-      expect(sl.isRegistered<GetPlansUseCase>(), isTrue,
-          reason: 'GetPlansUseCase debería estar registrado');
+      expect(
+        sl.isRegistered<GetPlansUseCase>(),
+        isTrue,
+        reason: 'GetPlansUseCase debería estar registrado',
+      );
 
-      expect(sl.isRegistered<GetPlanByIdUseCase>(), isTrue,
-          reason: 'GetPlanByIdUseCase debería estar registrado');
+      expect(
+        sl.isRegistered<GetPlanByIdUseCase>(),
+        isTrue,
+        reason: 'GetPlanByIdUseCase debería estar registrado',
+      );
     });
 
-    test('El sistema respeta la sobrescritura de dependencias para pruebas',
-        () async {
-      // Inicializar
-      await initializeDependencies();
+    test(
+      'El sistema respeta la sobrescritura de dependencias para pruebas',
+      () async {
+        // Inicializar
+        await initializeDependencies();
 
-      // Crear un mock de ImageServiceInterface
-      final mockImageService = MockImageService();
+        // Crear un mock de ImageServiceInterface
+        final mockImageService = MockImageService();
 
-      // Registrar el mock
-      DITestHelper.registerMock<ImageServiceInterface>(mockImageService);
+        // Registrar el mock
+        DITestHelper.registerMock<ImageServiceInterface>(mockImageService);
 
-      // Verificar que se haya sobrescrito correctamente
-      final resolvedService = sl<ImageServiceInterface>();
-      expect(resolvedService, same(mockImageService),
+        // Verificar que se haya sobrescrito correctamente
+        final resolvedService = sl<ImageServiceInterface>();
+        expect(
+          resolvedService,
+          same(mockImageService),
           reason:
-              'El sistema debería permitir sobrescribir dependencias con mocks');
-    });
+              'El sistema debería permitir sobrescribir dependencias con mocks',
+        );
+      },
+    );
   });
 }
 

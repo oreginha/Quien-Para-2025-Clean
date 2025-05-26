@@ -76,8 +76,9 @@ void main() {
       when(mockFirestore.collection('chats')).thenReturn(mockCollectionRef);
       when(mockCollectionRef.doc()).thenReturn(mockDocRef);
       when(mockDocRef.id).thenReturn(conversationId);
-      when(mockDocRef.set(mockCollectionRef as Map<String, dynamic>))
-          .thenAnswer((invocation) async {
+      when(
+        mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+      ).thenAnswer((invocation) async {
         final Map<String, dynamic> data =
             invocation.positionalArguments[0] as Map<String, dynamic>;
         // Puedes agregar asserts aquí si quieres validar el contenido de data
@@ -100,9 +101,10 @@ void main() {
 
       // Verify the data structure matches expected format
       final verificationResult =
-          verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>))
-              .captured
-              .single as Map<String, dynamic>;
+          verify(
+                mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+              ).captured.single
+              as Map<String, dynamic>;
       expect(verificationResult, {
         'participants': participants,
         'lastMessage': 'Hello',
@@ -112,8 +114,9 @@ void main() {
       });
       verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>));
       verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>));
-      verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>))
-          .called(1);
+      verify(
+        mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+      ).called(1);
     });
 
     test('should return Left with AppFailure when an error occurs', () async {
@@ -126,7 +129,8 @@ void main() {
       when(mockFirestore.collection('chats')).thenReturn(mockCollectionRef);
       when(mockCollectionRef.doc()).thenReturn(mockDocRef);
       when(mockDocRef.set(mockCollectionRef as Map<String, dynamic>)).thenThrow(
-          FirebaseException(plugin: 'firestore', message: errorMessage));
+        FirebaseException(plugin: 'firestore', message: errorMessage),
+      );
       when(mockAuth.currentUser).thenReturn(null);
 
       // Act
@@ -141,15 +145,17 @@ void main() {
         (failure) => expect(failure.message, contains(errorMessage)),
         (_) => fail('Expected Left but got Right'),
       );
-      verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>))
-          .called(1);
+      verify(
+        mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+      ).called(1);
       verifyNever(mockDocRef.collection('messages'));
 
       // Verify the data structure matches expected format
       final verificationResult =
-          verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>))
-              .captured
-              .single as Map<String, dynamic>;
+          verify(
+                mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+              ).captured.single
+              as Map<String, dynamic>;
       expect(verificationResult, {
         'participants': participants,
         'lastMessage': 'Test message',
@@ -157,8 +163,9 @@ void main() {
         'lastMessageTime': any,
         'unreadCount': 0,
       });
-      verify(mockDocRef.set(mockCollectionRef as Map<String, dynamic>))
-          .called(1);
+      verify(
+        mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+      ).called(1);
     });
   });
 
@@ -186,21 +193,24 @@ void main() {
         'id': conversationId,
         'participants': [
           {'id': 'user1', 'name': 'User 1', 'photoUrl': 'url1'},
-          {'id': 'user2', 'name': 'User 2', 'photoUrl': 'url2'}
+          {'id': 'user2', 'name': 'User 2', 'photoUrl': 'url2'},
         ],
         'lastMessage': 'Test message',
         'timestamp': DateTime.now().millisecondsSinceEpoch,
-        'createdBy': 'user1'
+        'createdBy': 'user1',
       });
-      when(mockChatMapper.fromFirestore(mockDocSnapshot))
-          .thenReturn(expectedConversation);
+      when(
+        mockChatMapper.fromFirestore(mockDocSnapshot),
+      ).thenReturn(expectedConversation);
 
       // Act
       final result = await chatRepository.getConversation(conversationId);
 
       // Assert
-      expect(result,
-          equals(Right<AppFailure, ConversationEntity?>(expectedConversation)));
+      expect(
+        result,
+        equals(Right<AppFailure, ConversationEntity?>(expectedConversation)),
+      );
       verify(mockFirestore.collection('chats')).called(1);
       verify(mockDocRef.get()).called(1);
       verify(mockChatMapper.fromFirestore(mockDocSnapshot)).called(1);
@@ -224,7 +234,9 @@ void main() {
 
       // Assert
       expect(
-          result, equals(const Right<AppFailure, ConversationEntity?>(null)));
+        result,
+        equals(const Right<AppFailure, ConversationEntity?>(null)),
+      );
       verify(mockFirestore.collection('chats')).called(1);
       verify(mockDocRef.get()).called(1);
     });
@@ -239,7 +251,8 @@ void main() {
       when(mockFirestore.collection('chats')).thenReturn(mockCollectionRef);
       when(mockCollectionRef.doc(conversationId)).thenReturn(mockDocRef);
       when(mockDocRef.get()).thenThrow(
-          FirebaseException(plugin: 'firestore', message: errorMessage));
+        FirebaseException(plugin: 'firestore', message: errorMessage),
+      );
 
       // Act
       final result = await chatRepository.getConversation(conversationId);

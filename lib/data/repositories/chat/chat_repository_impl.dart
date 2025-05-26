@@ -30,11 +30,11 @@ class ChatRepositoryImpl implements ChatRepository {
     required ChatMapper chatMapper,
     required MessageMapper messageMapper,
     Logger? logger,
-  })  : _firestore = firestore,
-        _auth = auth,
-        _chatMapper = chatMapper,
-        _messageMapper = messageMapper,
-        _logger = logger ?? Logger();
+  }) : _firestore = firestore,
+       _auth = auth,
+       _chatMapper = chatMapper,
+       _messageMapper = messageMapper,
+       _logger = logger ?? Logger();
 
   @override
   Future<Either<AppFailure, String>> createConversation({
@@ -42,7 +42,8 @@ class ChatRepositoryImpl implements ChatRepository {
     String? initialMessage,
   }) async {
     _logger.d(
-        '📊 [ChatRepositoryImpl] Creando conversación con ${participants.length} participantes');
+      '📊 [ChatRepositoryImpl] Creando conversación con ${participants.length} participantes',
+    );
 
     try {
       // Ordenar participantes para consistencia
@@ -79,23 +80,30 @@ class ChatRepositoryImpl implements ChatRepository {
       return Right(chatRef.id);
     } catch (e) {
       _logger.e('Error creando conversación: $e');
-      return Left(AppFailure(
-        code: 'chat-create-error',
-        message: 'Error al crear la conversación: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'chat-create-error',
+          message: 'Error al crear la conversación: ${e.toString()}',
+        ),
+      );
     }
   }
 
   @override
   Future<Either<AppFailure, ConversationEntity?>> getConversation(
-      String conversationId) async {
-    _logger
-        .d('📊 [ChatRepositoryImpl] Obteniendo conversación: $conversationId');
+    String conversationId,
+  ) async {
+    _logger.d(
+      '📊 [ChatRepositoryImpl] Obteniendo conversación: $conversationId',
+    );
 
     try {
       // Usar nuestro helper para obtener el documento de forma segura
       final docSnapshot = await FirebaseCrudHelper.getDocumentSafely(
-          _firestore, 'chats', conversationId);
+        _firestore,
+        'chats',
+        conversationId,
+      );
 
       if (docSnapshot == null || !docSnapshot.exists) {
         return const Right(null);
@@ -105,18 +113,23 @@ class ChatRepositoryImpl implements ChatRepository {
       return Right(conversationEntity);
     } catch (e) {
       _logger.e('Error obteniendo conversación: $e');
-      return Left(AppFailure(
-        code: 'chat-fetch-error',
-        message: 'Error al obtener la conversación: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'chat-fetch-error',
+          message: 'Error al obtener la conversación: ${e.toString()}',
+        ),
+      );
     }
   }
 
   @override
   Future<Either<AppFailure, ConversationEntity?>> getExistingConversation(
-      String userId1, String userId2) async {
+    String userId1,
+    String userId2,
+  ) async {
     _logger.d(
-        '📊 [ChatRepositoryImpl] Buscando conversación existente entre $userId1 y $userId2');
+      '📊 [ChatRepositoryImpl] Buscando conversación existente entre $userId1 y $userId2',
+    );
 
     try {
       // Ordenar los participantes para garantizar consistencia en la consulta
@@ -126,8 +139,10 @@ class ChatRepositoryImpl implements ChatRepository {
       final docs = await FirebaseCrudHelper.getCollectionSafely(
         _firestore,
         'chats',
-        queryBuilder: (collectionRef) => collectionRef.where('participants',
-            arrayContainsAny: sortedParticipants),
+        queryBuilder: (collectionRef) => collectionRef.where(
+          'participants',
+          arrayContainsAny: sortedParticipants,
+        ),
         batchSize: 20,
       );
 
@@ -148,18 +163,22 @@ class ChatRepositoryImpl implements ChatRepository {
       return const Right(null);
     } catch (e) {
       _logger.e('Error buscando conversación existente: $e');
-      return Left(AppFailure(
-        code: 'chat-find-error',
-        message: 'Error al buscar conversación existente: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'chat-find-error',
+          message: 'Error al buscar conversación existente: ${e.toString()}',
+        ),
+      );
     }
   }
 
   @override
   Stream<Either<AppFailure, List<ConversationEntity>>> getConversations(
-      String userId) {
+    String userId,
+  ) {
     _logger.d(
-        '📊 [ChatRepositoryImpl] Obteniendo stream de conversaciones para usuario $userId');
+      '📊 [ChatRepositoryImpl] Obteniendo stream de conversaciones para usuario $userId',
+    );
 
     try {
       // Usar nuestro helper para crear un stream seguro para web
@@ -173,32 +192,43 @@ class ChatRepositoryImpl implements ChatRepository {
       // Transformar los resultados usando el mapper
       return safeStream
           .map<Either<AppFailure, List<ConversationEntity>>>((snapshot) {
-        try {
-          final conversations = snapshot.docs
-              .map((doc) => _chatMapper.fromFirestore(doc))
-              .toList();
-          return Right(conversations);
-        } catch (e) {
-          _logger.e('Error procesando conversaciones: $e');
-          return Left(AppFailure(
-            code: 'chat-stream-process-error',
-            message:
-                'Error al procesar stream de conversaciones: ${e.toString()}',
-          ));
-        }
-      }).handleError((error) {
-        _logger.e('Error en stream de conversaciones: $error');
-        return Left(AppFailure(
-          code: 'chat-stream-error',
-          message: 'Error en el stream de conversaciones: ${error.toString()}',
-        ));
-      });
+            try {
+              final conversations = snapshot.docs
+                  .map((doc) => _chatMapper.fromFirestore(doc))
+                  .toList();
+              return Right(conversations);
+            } catch (e) {
+              _logger.e('Error procesando conversaciones: $e');
+              return Left(
+                AppFailure(
+                  code: 'chat-stream-process-error',
+                  message:
+                      'Error al procesar stream de conversaciones: ${e.toString()}',
+                ),
+              );
+            }
+          })
+          .handleError((error) {
+            _logger.e('Error en stream de conversaciones: $error');
+            return Left(
+              AppFailure(
+                code: 'chat-stream-error',
+                message:
+                    'Error en el stream de conversaciones: ${error.toString()}',
+              ),
+            );
+          });
     } catch (e) {
       _logger.e('Error iniciando stream de conversaciones: $e');
-      return Stream.value(Left(AppFailure(
-        code: 'chat-stream-init-error',
-        message: 'Error al iniciar stream de conversaciones: ${e.toString()}',
-      )));
+      return Stream.value(
+        Left(
+          AppFailure(
+            code: 'chat-stream-init-error',
+            message:
+                'Error al iniciar stream de conversaciones: ${e.toString()}',
+          ),
+        ),
+      );
     }
   }
 
@@ -209,7 +239,8 @@ class ChatRepositoryImpl implements ChatRepository {
     Map<String, dynamic>? metadata,
   }) async {
     _logger.d(
-        '💬 [ChatRepositoryImpl] Enviando mensaje a conversación $conversationId');
+      '💬 [ChatRepositoryImpl] Enviando mensaje a conversación $conversationId',
+    );
 
     try {
       // Obtener el ID del usuario actual
@@ -246,18 +277,22 @@ class ChatRepositoryImpl implements ChatRepository {
       return const Right(unit);
     } catch (e) {
       _logger.e('Error enviando mensaje: $e');
-      return Left(AppFailure(
-        code: 'message-send-error',
-        message: 'Error al enviar mensaje: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'message-send-error',
+          message: 'Error al enviar mensaje: ${e.toString()}',
+        ),
+      );
     }
   }
 
   @override
   Stream<Either<AppFailure, List<MessageEntity>>> getMessages(
-      String conversationId) {
+    String conversationId,
+  ) {
     _logger.d(
-        '📊 [ChatRepositoryImpl] Obteniendo stream de mensajes para: $conversationId');
+      '📊 [ChatRepositoryImpl] Obteniendo stream de mensajes para: $conversationId',
+    );
 
     try {
       // Usar nuestro helper para crear un stream seguro para web
@@ -271,31 +306,41 @@ class ChatRepositoryImpl implements ChatRepository {
       // Transformar los resultados usando el mapper
       return safeStream
           .map<Either<AppFailure, List<MessageEntity>>>((snapshot) {
-        try {
-          final messages = snapshot.docs
-              .map((doc) => _messageMapper.fromFirestore(doc))
-              .toList();
-          return Right(messages);
-        } catch (e) {
-          _logger.e('Error procesando mensajes: $e');
-          return Left(AppFailure(
-            code: 'message-stream-process-error',
-            message: 'Error al procesar stream de mensajes: ${e.toString()}',
-          ));
-        }
-      }).handleError((error) {
-        _logger.e('Error en stream de mensajes: $error');
-        return Left(AppFailure(
-          code: 'message-stream-error',
-          message: 'Error en el stream de mensajes: ${error.toString()}',
-        ));
-      });
+            try {
+              final messages = snapshot.docs
+                  .map((doc) => _messageMapper.fromFirestore(doc))
+                  .toList();
+              return Right(messages);
+            } catch (e) {
+              _logger.e('Error procesando mensajes: $e');
+              return Left(
+                AppFailure(
+                  code: 'message-stream-process-error',
+                  message:
+                      'Error al procesar stream de mensajes: ${e.toString()}',
+                ),
+              );
+            }
+          })
+          .handleError((error) {
+            _logger.e('Error en stream de mensajes: $error');
+            return Left(
+              AppFailure(
+                code: 'message-stream-error',
+                message: 'Error en el stream de mensajes: ${error.toString()}',
+              ),
+            );
+          });
     } catch (e) {
       _logger.e('Error iniciando stream de mensajes: $e');
-      return Stream.value(Left(AppFailure(
-        code: 'message-stream-init-error',
-        message: 'Error al iniciar stream de mensajes: ${e.toString()}',
-      )));
+      return Stream.value(
+        Left(
+          AppFailure(
+            code: 'message-stream-init-error',
+            message: 'Error al iniciar stream de mensajes: ${e.toString()}',
+          ),
+        ),
+      );
     }
   }
 
@@ -305,20 +350,24 @@ class ChatRepositoryImpl implements ChatRepository {
     required String userId,
   }) async {
     _logger.d(
-        '📝 [ChatRepositoryImpl] Marcando conversación como leída: $conversationId para usuario: $userId');
+      '📝 [ChatRepositoryImpl] Marcando conversación como leída: $conversationId para usuario: $userId',
+    );
 
     try {
       // Obtener referencia a la conversación
-      final conversationRef =
-          _firestore.collection('chats').doc(conversationId);
+      final conversationRef = _firestore
+          .collection('chats')
+          .doc(conversationId);
       final conversationDoc = await conversationRef.get();
 
       if (!conversationDoc.exists) {
         _logger.w('La conversación no existe: $conversationId');
-        return Left(AppFailure(
-          code: 'chat-not-found',
-          message: 'La conversación no existe: $conversationId',
-        ));
+        return Left(
+          AppFailure(
+            code: 'chat-not-found',
+            message: 'La conversación no existe: $conversationId',
+          ),
+        );
       }
 
       // Actualizar los mensajes no leídos para el usuario
@@ -343,18 +392,22 @@ class ChatRepositoryImpl implements ChatRepository {
       return const Right(unit);
     } catch (e) {
       _logger.e('Error marcando conversación como leída: $e');
-      return Left(AppFailure(
-        code: 'mark-read-error',
-        message: 'Error al marcar conversación como leída: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'mark-read-error',
+          message: 'Error al marcar conversación como leída: ${e.toString()}',
+        ),
+      );
     }
   }
 
   @override
   Future<Either<AppFailure, Unit>> deleteConversation(
-      String conversationId) async {
-    _logger
-        .d('📊 [ChatRepositoryImpl] Eliminando conversación $conversationId');
+    String conversationId,
+  ) async {
+    _logger.d(
+      '📊 [ChatRepositoryImpl] Eliminando conversación $conversationId',
+    );
 
     try {
       // Eliminar todos los datos de la conversación
@@ -378,17 +431,20 @@ class ChatRepositoryImpl implements ChatRepository {
       return const Right(unit);
     } catch (e) {
       _logger.e('Error eliminando conversación: $e');
-      return Left(AppFailure(
-        code: 'chat-delete-error',
-        message: 'Error al eliminar la conversación: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'chat-delete-error',
+          message: 'Error al eliminar la conversación: ${e.toString()}',
+        ),
+      );
     }
   }
 
   @override
   Stream<Either<AppFailure, int>> getUnreadMessagesCount(String userId) {
     _logger.d(
-        '📊 [ChatRepositoryImpl] Obteniendo contador de mensajes no leídos para usuario: $userId');
+      '📊 [ChatRepositoryImpl] Obteniendo contador de mensajes no leídos para usuario: $userId',
+    );
 
     try {
       // Crear un StreamController para emitir el conteo de mensajes no leídos
@@ -403,91 +459,118 @@ class ChatRepositoryImpl implements ChatRepository {
       // Aplicar el wrapper de seguridad para web
       final safeStream = FirestoreWebFix.safeQueryStream(conversationStream);
 
-      safeStream.listen((conversationsSnapshot) {
-        int totalUnread = 0;
+      safeStream.listen(
+        (conversationsSnapshot) {
+          int totalUnread = 0;
 
-        // Si no hay conversaciones, emitir 0
-        if (conversationsSnapshot.docs.isEmpty) {
-          controller.add(const Right(0));
-          return;
-        }
+          // Si no hay conversaciones, emitir 0
+          if (conversationsSnapshot.docs.isEmpty) {
+            controller.add(const Right(0));
+            return;
+          }
 
-        // Contador para realizar un seguimiento de las conversaciones procesadas
-        int processedCount = 0;
+          // Contador para realizar un seguimiento de las conversaciones procesadas
+          int processedCount = 0;
 
-        // Para cada conversación, contar los mensajes no leídos
-        for (final conversationDoc in conversationsSnapshot.docs) {
-          final messagesStream = _firestore
-              .collection('chats')
-              .doc(conversationDoc.id)
-              .collection('messages')
-              .where('isRead', isEqualTo: false)
-              .where('senderId',
-                  isNotEqualTo: userId) // Solo mensajes de otros usuarios
-              .snapshots();
+          // Para cada conversación, contar los mensajes no leídos
+          for (final conversationDoc in conversationsSnapshot.docs) {
+            final messagesStream = _firestore
+                .collection('chats')
+                .doc(conversationDoc.id)
+                .collection('messages')
+                .where('isRead', isEqualTo: false)
+                .where(
+                  'senderId',
+                  isNotEqualTo: userId,
+                ) // Solo mensajes de otros usuarios
+                .snapshots();
 
-          // Aplicar el wrapper de seguridad para web
-          final safeMessagesStream =
-              FirestoreWebFix.safeQueryStream(messagesStream);
+            // Aplicar el wrapper de seguridad para web
+            final safeMessagesStream = FirestoreWebFix.safeQueryStream(
+              messagesStream,
+            );
 
-          safeMessagesStream.listen((messagesSnapshot) {
-            // Actualizar el contador total
-            totalUnread += messagesSnapshot.docs.length;
+            safeMessagesStream.listen(
+              (messagesSnapshot) {
+                // Actualizar el contador total
+                totalUnread += messagesSnapshot.docs.length;
 
-            // Incrementar el contador de conversaciones procesadas
-            processedCount++;
+                // Incrementar el contador de conversaciones procesadas
+                processedCount++;
 
-            // Si se han procesado todas las conversaciones, emitir el total
-            if (processedCount >= conversationsSnapshot.docs.length) {
-              controller.add(Right(totalUnread));
-            }
-          }, onError: (error) {
-            _logger.e('Error en stream de mensajes: $error');
-            controller.add(Left(AppFailure(
-              code: 'unread-count-message-error',
-              message:
-                  'Error al obtener mensajes no leídos: ${error.toString()}',
-            )));
-          });
-        }
-      }, onError: (error) {
-        _logger.e('Error en stream de conversaciones: $error');
-        controller.add(Left(AppFailure(
-          code: 'unread-count-conversation-error',
-          message:
-              'Error al obtener conversaciones para conteo no leídos: ${error.toString()}',
-        )));
-      });
+                // Si se han procesado todas las conversaciones, emitir el total
+                if (processedCount >= conversationsSnapshot.docs.length) {
+                  controller.add(Right(totalUnread));
+                }
+              },
+              onError: (error) {
+                _logger.e('Error en stream de mensajes: $error');
+                controller.add(
+                  Left(
+                    AppFailure(
+                      code: 'unread-count-message-error',
+                      message:
+                          'Error al obtener mensajes no leídos: ${error.toString()}',
+                    ),
+                  ),
+                );
+              },
+            );
+          }
+        },
+        onError: (error) {
+          _logger.e('Error en stream de conversaciones: $error');
+          controller.add(
+            Left(
+              AppFailure(
+                code: 'unread-count-conversation-error',
+                message:
+                    'Error al obtener conversaciones para conteo no leídos: ${error.toString()}',
+              ),
+            ),
+          );
+        },
+      );
 
       return controller.stream;
     } catch (e) {
       _logger.e('Error iniciando conteo de mensajes no leídos: $e');
-      return Stream.value(Left(AppFailure(
-        code: 'unread-count-init-error',
-        message:
-            'Error al iniciar conteo de mensajes no leídos: ${e.toString()}',
-      )));
+      return Stream.value(
+        Left(
+          AppFailure(
+            code: 'unread-count-init-error',
+            message:
+                'Error al iniciar conteo de mensajes no leídos: ${e.toString()}',
+          ),
+        ),
+      );
     }
   }
 
   @override
   Future<Either<AppFailure, Unit>> markMessagesAsRead(
-      String conversationId, String userId) async {
+    String conversationId,
+    String userId,
+  ) async {
     _logger.d(
-        '📝 [ChatRepositoryImpl] Marcando mensajes como leídos para usuario: $userId en conversación: $conversationId');
+      '📝 [ChatRepositoryImpl] Marcando mensajes como leídos para usuario: $userId en conversación: $conversationId',
+    );
 
     try {
       // Obtener referencia a la conversación
-      final conversationRef =
-          _firestore.collection('chats').doc(conversationId);
+      final conversationRef = _firestore
+          .collection('chats')
+          .doc(conversationId);
       final conversationDoc = await conversationRef.get();
 
       if (!conversationDoc.exists) {
         _logger.w('La conversación no existe: $conversationId');
-        return Left(AppFailure(
-          code: 'chat-not-found',
-          message: 'La conversación no existe: $conversationId',
-        ));
+        return Left(
+          AppFailure(
+            code: 'chat-not-found',
+            message: 'La conversación no existe: $conversationId',
+          ),
+        );
       }
 
       // Actualizar los mensajes no leídos para el usuario
@@ -513,10 +596,12 @@ class ChatRepositoryImpl implements ChatRepository {
       return const Right(unit);
     } catch (e) {
       _logger.e('Error marcando mensajes como leídos: $e');
-      return Left(AppFailure(
-        code: 'mark-messages-read-error',
-        message: 'Error al marcar mensajes como leídos: ${e.toString()}',
-      ));
+      return Left(
+        AppFailure(
+          code: 'mark-messages-read-error',
+          message: 'Error al marcar mensajes como leídos: ${e.toString()}',
+        ),
+      );
     }
   }
 }

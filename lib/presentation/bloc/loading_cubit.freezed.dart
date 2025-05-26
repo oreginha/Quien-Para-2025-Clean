@@ -12,7 +12,8 @@ part of 'loading_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$LoadingState<T> {
@@ -22,16 +23,14 @@ mixin _$LoadingState<T> {
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
     required TResult Function() empty,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? empty,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
@@ -39,24 +38,21 @@ mixin _$LoadingState<T> {
     TResult Function(String message)? error,
     TResult Function()? empty,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState<T> value) loading,
     required TResult Function(_LoadedState<T> value) loaded,
     required TResult Function(_ErrorState<T> value) error,
     required TResult Function(_EmptyState<T> value) empty,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState<T> value)? loading,
     TResult? Function(_LoadedState<T> value)? loaded,
     TResult? Function(_ErrorState<T> value)? error,
     TResult? Function(_EmptyState<T> value)? empty,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState<T> value)? loading,
@@ -64,15 +60,15 @@ mixin _$LoadingState<T> {
     TResult Function(_ErrorState<T> value)? error,
     TResult Function(_EmptyState<T> value)? empty,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LoadingStateCopyWith<T, $Res> {
   factory $LoadingStateCopyWith(
-          LoadingState<T> value, $Res Function(LoadingState<T>) then) =
-      _$LoadingStateCopyWithImpl<T, $Res, LoadingState<T>>;
+    LoadingState<T> value,
+    $Res Function(LoadingState<T>) then,
+  ) = _$LoadingStateCopyWithImpl<T, $Res, LoadingState<T>>;
 }
 
 /// @nodoc
@@ -91,9 +87,10 @@ class _$LoadingStateCopyWithImpl<T, $Res, $Val extends LoadingState<T>>
 
 /// @nodoc
 abstract class _$$LoadingStateImplCopyWith<T, $Res> {
-  factory _$$LoadingStateImplCopyWith(_$LoadingStateImpl<T> value,
-          $Res Function(_$LoadingStateImpl<T>) then) =
-      __$$LoadingStateImplCopyWithImpl<T, $Res>;
+  factory _$$LoadingStateImplCopyWith(
+    _$LoadingStateImpl<T> value,
+    $Res Function(_$LoadingStateImpl<T>) then,
+  ) = __$$LoadingStateImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
@@ -101,8 +98,9 @@ class __$$LoadingStateImplCopyWithImpl<T, $Res>
     extends _$LoadingStateCopyWithImpl<T, $Res, _$LoadingStateImpl<T>>
     implements _$$LoadingStateImplCopyWith<T, $Res> {
   __$$LoadingStateImplCopyWithImpl(
-      _$LoadingStateImpl<T> _value, $Res Function(_$LoadingStateImpl<T>) _then)
-      : super(_value, _then);
+    _$LoadingStateImpl<T> _value,
+    $Res Function(_$LoadingStateImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LoadingState
   /// with the given fields replaced by the non-null parameter values.
@@ -216,9 +214,10 @@ abstract class _LoadingState<T> extends LoadingState<T> {
 
 /// @nodoc
 abstract class _$$LoadedStateImplCopyWith<T, $Res> {
-  factory _$$LoadedStateImplCopyWith(_$LoadedStateImpl<T> value,
-          $Res Function(_$LoadedStateImpl<T>) then) =
-      __$$LoadedStateImplCopyWithImpl<T, $Res>;
+  factory _$$LoadedStateImplCopyWith(
+    _$LoadedStateImpl<T> value,
+    $Res Function(_$LoadedStateImpl<T>) then,
+  ) = __$$LoadedStateImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T data});
 }
@@ -228,22 +227,23 @@ class __$$LoadedStateImplCopyWithImpl<T, $Res>
     extends _$LoadingStateCopyWithImpl<T, $Res, _$LoadedStateImpl<T>>
     implements _$$LoadedStateImplCopyWith<T, $Res> {
   __$$LoadedStateImplCopyWithImpl(
-      _$LoadedStateImpl<T> _value, $Res Function(_$LoadedStateImpl<T>) _then)
-      : super(_value, _then);
+    _$LoadedStateImpl<T> _value,
+    $Res Function(_$LoadedStateImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LoadingState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(_$LoadedStateImpl<T>(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
+  $Res call({Object? data = freezed}) {
+    return _then(
+      _$LoadedStateImpl<T>(
+        freezed == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as T,
+      ),
+    );
   }
 }
 
@@ -288,7 +288,9 @@ class _$LoadedStateImpl<T> extends _LoadedState<T>
   @pragma('vm:prefer-inline')
   _$$LoadedStateImplCopyWith<T, _$LoadedStateImpl<T>> get copyWith =>
       __$$LoadedStateImplCopyWithImpl<T, _$LoadedStateImpl<T>>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -381,8 +383,9 @@ abstract class _LoadedState<T> extends LoadingState<T> {
 /// @nodoc
 abstract class _$$ErrorStateImplCopyWith<T, $Res> {
   factory _$$ErrorStateImplCopyWith(
-          _$ErrorStateImpl<T> value, $Res Function(_$ErrorStateImpl<T>) then) =
-      __$$ErrorStateImplCopyWithImpl<T, $Res>;
+    _$ErrorStateImpl<T> value,
+    $Res Function(_$ErrorStateImpl<T>) then,
+  ) = __$$ErrorStateImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({String message});
 }
@@ -392,22 +395,23 @@ class __$$ErrorStateImplCopyWithImpl<T, $Res>
     extends _$LoadingStateCopyWithImpl<T, $Res, _$ErrorStateImpl<T>>
     implements _$$ErrorStateImplCopyWith<T, $Res> {
   __$$ErrorStateImplCopyWithImpl(
-      _$ErrorStateImpl<T> _value, $Res Function(_$ErrorStateImpl<T>) _then)
-      : super(_value, _then);
+    _$ErrorStateImpl<T> _value,
+    $Res Function(_$ErrorStateImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LoadingState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$ErrorStateImpl<T>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ErrorStateImpl<T>(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -542,8 +546,9 @@ abstract class _ErrorState<T> extends LoadingState<T> {
 /// @nodoc
 abstract class _$$EmptyStateImplCopyWith<T, $Res> {
   factory _$$EmptyStateImplCopyWith(
-          _$EmptyStateImpl<T> value, $Res Function(_$EmptyStateImpl<T>) then) =
-      __$$EmptyStateImplCopyWithImpl<T, $Res>;
+    _$EmptyStateImpl<T> value,
+    $Res Function(_$EmptyStateImpl<T>) then,
+  ) = __$$EmptyStateImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
@@ -551,8 +556,9 @@ class __$$EmptyStateImplCopyWithImpl<T, $Res>
     extends _$LoadingStateCopyWithImpl<T, $Res, _$EmptyStateImpl<T>>
     implements _$$EmptyStateImplCopyWith<T, $Res> {
   __$$EmptyStateImplCopyWithImpl(
-      _$EmptyStateImpl<T> _value, $Res Function(_$EmptyStateImpl<T>) _then)
-      : super(_value, _then);
+    _$EmptyStateImpl<T> _value,
+    $Res Function(_$EmptyStateImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LoadingState
   /// with the given fields replaced by the non-null parameter values.

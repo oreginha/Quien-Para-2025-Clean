@@ -28,15 +28,10 @@ abstract class SearchRepository {
   ///
   /// [userId] - The user ID
   /// [query] - The search query to save
-  Future<void> saveSearchQuery({
-    required String userId,
-    required String query,
-  });
+  Future<void> saveSearchQuery({required String userId, required String query});
 
   /// Clears the user's recent searches
   ///
   /// [userId] - The user ID
-  Future<void> clearRecentSearches({
-    required String userId,
-  });
+  Future<void> clearRecentSearches({required String userId});
 }

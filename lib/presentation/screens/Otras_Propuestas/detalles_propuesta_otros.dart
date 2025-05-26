@@ -94,9 +94,9 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
                 _isLoading = false;
               });
 
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(errorMessage)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(errorMessage)));
             }
           },
         );
@@ -129,7 +129,8 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
     if (currentUser == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text('Necesitas iniciar sesión para postularte')),
+          content: Text('Necesitas iniciar sesión para postularte'),
+        ),
       );
       return;
     }
@@ -140,9 +141,9 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
 
     try {
       // Usar el MatchingBloc para aplicar al plan
-      context
-          .read<MatchingBloc>()
-          .add(MatchingEvent.applyToPlan(planId, message));
+      context.read<MatchingBloc>().add(
+        MatchingEvent.applyToPlan(planId, message),
+      );
 
       // El resto del flujo se manejará a través del BlocListener
     } catch (e) {
@@ -150,9 +151,9 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
         print('Error al postularse: $e');
       }
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error al postularse: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error al postularse: $e')));
         setState(() {
           _isLoading = false;
         });
@@ -173,174 +174,185 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
     return StreamBuilder<DocumentSnapshot>(
       stream: widget.planId.isNotEmpty
           ? FirebaseFirestore.instance
-              .collection('plans')
-              .doc(widget.planId)
-              .snapshots()
+                .collection('plans')
+                .doc(widget.planId)
+                .snapshots()
           : Stream<DocumentSnapshot>.empty(),
-      builder: (final BuildContext context,
-          final AsyncSnapshot<DocumentSnapshot<Object?>> snapshot) {
-        // Si hay un error al cargar los datos
-        if (snapshot.hasError) {
-          return _buildErrorScreen(
-              context, 'Error al cargar el plan', isDarkMode);
-        }
+      builder:
+          (
+            final BuildContext context,
+            final AsyncSnapshot<DocumentSnapshot<Object?>> snapshot,
+          ) {
+            // Si hay un error al cargar los datos
+            if (snapshot.hasError) {
+              return _buildErrorScreen(
+                context,
+                'Error al cargar el plan',
+                isDarkMode,
+              );
+            }
 
-        // Mostrar pantalla de carga mientras se obtienen los datos
-        if (!snapshot.hasData) {
-          return _buildLoadingScreen(context, isDarkMode);
-        }
+            // Mostrar pantalla de carga mientras se obtienen los datos
+            if (!snapshot.hasData) {
+              return _buildLoadingScreen(context, isDarkMode);
+            }
 
-        // Extraer los datos del plan
-        final Map<String, dynamic> planData =
-            snapshot.data!.data() as Map<String, dynamic>? ??
+            // Extraer los datos del plan
+            final Map<String, dynamic> planData =
+                snapshot.data!.data() as Map<String, dynamic>? ??
                 <String, dynamic>{};
 
-        // Convertir a entidad de Plan
-        final plan = PlanEntity(
-          id: widget.planId,
-          title: planData['title']?.toString() ?? 'Sin título',
-          description:
-              (planData['description'] as String?) ?? 'Sin descripción',
-          imageUrl: (planData['imageUrl'] as String?) ?? '',
-          creatorId: (planData['creatorId'] as String?) ?? '',
-          date: planData['date'] != null
-              ? (planData['date'] as Timestamp).toDate()
-              : DateTime.now(),
-          category: (planData['category'] as String?) ?? '',
-          location: (planData['location'] as String?) ?? '',
-          tags: [],
-          conditions: {},
-          selectedThemes: [],
-          likes: 0,
-          extraConditions: '',
-        );
+            // Convertir a entidad de Plan
+            final plan = PlanEntity(
+              id: widget.planId,
+              title: planData['title']?.toString() ?? 'Sin título',
+              description:
+                  (planData['description'] as String?) ?? 'Sin descripción',
+              imageUrl: (planData['imageUrl'] as String?) ?? '',
+              creatorId: (planData['creatorId'] as String?) ?? '',
+              date: planData['date'] != null
+                  ? (planData['date'] as Timestamp).toDate()
+                  : DateTime.now(),
+              category: (planData['category'] as String?) ?? '',
+              location: (planData['location'] as String?) ?? '',
+              tags: [],
+              conditions: {},
+              selectedThemes: [],
+              likes: 0,
+              extraConditions: '',
+            );
 
-        // Crear el AppBar personalizado para esta pantalla
-        final appBar = AppBar(
-          backgroundColor: AppColors.getBackground(isDarkMode),
-          elevation: 0,
-          title: Text(
-            plan.title,
-            style: AppTypography.heading2(isDarkMode),
-            overflow: TextOverflow.ellipsis,
-          ),
-          iconTheme: IconThemeData(
-            color: isDarkMode ? Colors.white : Colors.black,
-          ),
-          actions: [
-            // Botón de reportar plan
-            if (!widget.isCreator)
-              ReportButton(
-                reportedUserId: plan.creatorId,
-                reportedPlanId: plan.id,
-                type: ReportType.plan,
-                style: ReportButtonStyle.icon,
+            // Crear el AppBar personalizado para esta pantalla
+            final appBar = AppBar(
+              backgroundColor: AppColors.getBackground(isDarkMode),
+              elevation: 0,
+              title: Text(
+                plan.title,
+                style: AppTypography.heading2(isDarkMode),
+                overflow: TextOverflow.ellipsis,
               ),
-            // Botón de menú adicional
-            PopupMenuButton<String>(
-              icon: Icon(
-                Icons.more_vert,
+              iconTheme: IconThemeData(
                 color: isDarkMode ? Colors.white : Colors.black,
               ),
-              onSelected: (String value) {
-                switch (value) {
-                  case 'share':
-                    // TODO: Implementar compartir plan
-                    break;
-                  case 'security':
-                    showSecurityBottomSheet(
-                      context: context,
-                      targetUserId: plan.creatorId,
-                      targetPlanId: plan.id,
-                      type: ReportType.plan,
-                    );
-                    break;
-                }
-              },
-              itemBuilder: (BuildContext context) => [
-                PopupMenuItem<String>(
-                  value: 'share',
-                  child: Row(
-                    children: [
-                      Icon(Icons.share,
-                          color: AppColors.getTextPrimary(isDarkMode)),
-                      const SizedBox(width: 8),
-                      Text('Compartir',
-                          style: AppTypography.bodyMedium(isDarkMode)),
-                    ],
-                  ),
-                ),
+              actions: [
+                // Botón de reportar plan
                 if (!widget.isCreator)
-                  PopupMenuItem<String>(
-                    value: 'security',
-                    child: Row(
-                      children: [
-                        Icon(Icons.security, color: AppColors.accentRed),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Seguridad',
-                          style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                            color: AppColors.accentRed,
-                          ),
-                        ),
-                      ],
-                    ),
+                  ReportButton(
+                    reportedUserId: plan.creatorId,
+                    reportedPlanId: plan.id,
+                    type: ReportType.plan,
+                    style: ReportButtonStyle.icon,
                   ),
-              ],
-            ),
-          ],
-        );
-
-        // Contenido principal de la pantalla
-        final body = _isLoading
-            ? Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.brandYellow,
+                // Botón de menú adicional
+                PopupMenuButton<String>(
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
+                  onSelected: (String value) {
+                    switch (value) {
+                      case 'share':
+                        // TODO: Implementar compartir plan
+                        break;
+                      case 'security':
+                        showSecurityBottomSheet(
+                          context: context,
+                          targetUserId: plan.creatorId,
+                          targetPlanId: plan.id,
+                          type: ReportType.plan,
+                        );
+                        break;
+                    }
+                  },
+                  itemBuilder: (BuildContext context) => [
+                    PopupMenuItem<String>(
+                      value: 'share',
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.share,
+                            color: AppColors.getTextPrimary(isDarkMode),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Compartir',
+                            style: AppTypography.bodyMedium(isDarkMode),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (!widget.isCreator)
+                      PopupMenuItem<String>(
+                        value: 'security',
+                        child: Row(
+                          children: [
+                            Icon(Icons.security, color: AppColors.accentRed),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Seguridad',
+                              style: AppTypography.bodyMedium(
+                                isDarkMode,
+                              ).copyWith(color: AppColors.accentRed),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
                 ),
-              )
-            : _buildPlanDetailsContent(context, plan, isDarkMode);
+              ],
+            );
 
-        // Construir la pantalla utilizando NewResponsiveScaffold para soporte web
-        return NewResponsiveScaffold(
-          screenName: AppRouter.otherProposalDetail,
-          appBar: appBar,
-          body: body,
-          currentIndex: -1, // No es una pantalla en la barra de navegación
-          webTitle: plan.title, // Usar el título del plan para la versión web
-          darkPrimaryBackground:
-              isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
-        );
-      },
+            // Contenido principal de la pantalla
+            final body = _isLoading
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.brandYellow,
+                    ),
+                  )
+                : _buildPlanDetailsContent(context, plan, isDarkMode);
+
+            // Construir la pantalla utilizando NewResponsiveScaffold para soporte web
+            return NewResponsiveScaffold(
+              screenName: AppRouter.otherProposalDetail,
+              appBar: appBar,
+              body: body,
+              currentIndex: -1, // No es una pantalla en la barra de navegación
+              webTitle:
+                  plan.title, // Usar el título del plan para la versión web
+              darkPrimaryBackground: isDarkMode
+                  ? AppColors.darkBackground
+                  : AppColors.lightBackground,
+            );
+          },
     );
   }
 
   /// Construye la pantalla de error
   Widget _buildErrorScreen(
-      BuildContext context, String errorMessage, bool isDarkMode) {
+    BuildContext context,
+    String errorMessage,
+    bool isDarkMode,
+  ) {
     return NewResponsiveScaffold(
       screenName: 'Error',
       appBar: AppBar(
         backgroundColor: AppColors.getBackground(isDarkMode),
         title: Text(
           'Error',
-          style: TextStyle(
-            color: isDarkMode ? Colors.white : Colors.black,
-          ),
+          style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
         ),
         iconTheme: IconThemeData(
           color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
       body: Center(
-        child: Text(
-          errorMessage,
-          style: AppTypography.heading1(isDarkMode),
-        ),
+        child: Text(errorMessage, style: AppTypography.heading1(isDarkMode)),
       ),
       currentIndex: -1,
       webTitle: 'Error',
-      darkPrimaryBackground:
-          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
+      darkPrimaryBackground: isDarkMode
+          ? AppColors.darkBackground
+          : AppColors.lightBackground,
     );
   }
 
@@ -352,29 +364,29 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
         backgroundColor: AppColors.getBackground(isDarkMode),
         title: Text(
           'Cargando...',
-          style: TextStyle(
-            color: isDarkMode ? Colors.white : Colors.black,
-          ),
+          style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
         ),
         iconTheme: IconThemeData(
           color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
       body: Center(
-        child: CircularProgressIndicator(
-          color: AppColors.brandYellow,
-        ),
+        child: CircularProgressIndicator(color: AppColors.brandYellow),
       ),
       currentIndex: -1,
       webTitle: 'Cargando...',
-      darkPrimaryBackground:
-          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
+      darkPrimaryBackground: isDarkMode
+          ? AppColors.darkBackground
+          : AppColors.lightBackground,
     );
   }
 
   /// Construye el contenido principal de la pantalla
   Widget _buildPlanDetailsContent(
-      BuildContext context, PlanEntity plan, bool isDarkMode) {
+    BuildContext context,
+    PlanEntity plan,
+    bool isDarkMode,
+  ) {
     return Container(
       decoration: BoxDecoration(
         gradient: Theme.of(context).brightness == Brightness.dark
@@ -406,20 +418,24 @@ class _DetallesPropuestaOtrosState extends State<DetallesPropuestaOtros> {
 
                   // Sección de descripción
                   PlanDescriptionWidget(
-                      description: plan.description, isDarkMode: isDarkMode),
+                    description: plan.description,
+                    isDarkMode: isDarkMode,
+                  ),
 
                   const SizedBox(height: AppSpacing.xl),
 
                   // Sección del creador
                   Text(
                     'Creado por',
-                    style: AppTypography.heading2(isDarkMode).copyWith(
-                      color: AppColors.brandYellow,
-                    ),
+                    style: AppTypography.heading2(
+                      isDarkMode,
+                    ).copyWith(color: AppColors.brandYellow),
                   ),
                   SizedBox(height: AppSpacing.xl),
                   CreatorProfileWidget(
-                      creatorId: plan.creatorId, isDarkMode: isDarkMode),
+                    creatorId: plan.creatorId,
+                    isDarkMode: isDarkMode,
+                  ),
 
                   const SizedBox(height: AppSpacing.xxl),
 

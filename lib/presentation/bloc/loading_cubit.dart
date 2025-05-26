@@ -27,40 +27,23 @@ class LoadingState<T> with _$LoadingState<T> {
   const factory LoadingState.empty() = _EmptyState;
 
   /// Comprueba si el estado actual es de carga
-  bool get isLoading => maybeMap(
-        loading: (_) => true,
-        orElse: () => false,
-      );
+  bool get isLoading => maybeMap(loading: (_) => true, orElse: () => false);
 
   /// Comprueba si el estado actual es de error
-  bool get isError => maybeMap(
-        error: (_) => true,
-        orElse: () => false,
-      );
+  bool get isError => maybeMap(error: (_) => true, orElse: () => false);
 
   /// Comprueba si el estado actual es de datos cargados
-  bool get isLoaded => maybeMap(
-        loaded: (_) => true,
-        orElse: () => false,
-      );
+  bool get isLoaded => maybeMap(loaded: (_) => true, orElse: () => false);
 
   /// Comprueba si el estado actual es de datos vacíos
-  bool get isEmpty => maybeMap(
-        empty: (_) => true,
-        orElse: () => false,
-      );
+  bool get isEmpty => maybeMap(empty: (_) => true, orElse: () => false);
 
   /// Obtiene los datos si están disponibles, o null en caso contrario
-  T? get data => maybeMap(
-        loaded: (state) => state.data,
-        orElse: () => null,
-      );
+  T? get data => maybeMap(loaded: (state) => state.data, orElse: () => null);
 
   /// Obtiene el mensaje de error si existe, o null en caso contrario
-  String? get errorMessage => maybeMap(
-        error: (state) => state.message,
-        orElse: () => null,
-      );
+  String? get errorMessage =>
+      maybeMap(error: (state) => state.message, orElse: () => null);
 }
 
 /// Cubit base para manejar operaciones de carga en toda la aplicación
@@ -131,8 +114,11 @@ class LoadingCubit<T> extends Cubit<LoadingState<T>> {
   /// Método auxiliar para gestionar errores de manera consistente
   void handleError(String operation, dynamic error, StackTrace stackTrace) {
     if (kDebugMode) {
-      logger.e('Error en $runtimeType durante $operation',
-          error: error, stackTrace: stackTrace);
+      logger.e(
+        'Error en $runtimeType durante $operation',
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 

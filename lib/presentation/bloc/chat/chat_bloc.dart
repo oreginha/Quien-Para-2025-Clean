@@ -45,14 +45,14 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   /// Constructor tradicional con repositorio de chat
   ChatBloc(ChatRepository chatRepository)
-      : _chatRepository = chatRepository,
-        _getMessagesUseCase = null,
-        _sendMessageUseCase = null,
-        _createConversationUseCase = null,
-        _getUserConversationsUseCase = null,
-        _markMessagesAsReadUseCase = null,
-        _useCleanArchitecture = false,
-        super(const ChatState.initial()) {
+    : _chatRepository = chatRepository,
+      _getMessagesUseCase = null,
+      _sendMessageUseCase = null,
+      _createConversationUseCase = null,
+      _getUserConversationsUseCase = null,
+      _markMessagesAsReadUseCase = null,
+      _useCleanArchitecture = false,
+      super(const ChatState.initial()) {
     _registerEventHandlers();
   }
 
@@ -63,14 +63,14 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     required CreateConversationUseCase createConversationUseCase,
     required GetUserConversationsUseCase getUserConversationsUseCase,
     required MarkMessagesAsReadUseCase markMessagesAsReadUseCase,
-  })  : _chatRepository = null,
-        _getMessagesUseCase = getMessagesUseCase,
-        _sendMessageUseCase = sendMessageUseCase,
-        _createConversationUseCase = createConversationUseCase,
-        _getUserConversationsUseCase = getUserConversationsUseCase,
-        _markMessagesAsReadUseCase = markMessagesAsReadUseCase,
-        _useCleanArchitecture = true,
-        super(const ChatState.initial()) {
+  }) : _chatRepository = null,
+       _getMessagesUseCase = getMessagesUseCase,
+       _sendMessageUseCase = sendMessageUseCase,
+       _createConversationUseCase = createConversationUseCase,
+       _getUserConversationsUseCase = getUserConversationsUseCase,
+       _markMessagesAsReadUseCase = markMessagesAsReadUseCase,
+       _useCleanArchitecture = true,
+       super(const ChatState.initial()) {
     _registerEventHandlers();
   }
 
@@ -98,7 +98,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   Future<void> _onLoadMessages(
-      LoadMessages event, Emitter<ChatState> emit) async {
+    LoadMessages event,
+    Emitter<ChatState> emit,
+  ) async {
     emit(const ChatState.loading());
     try {
       // Cancelar suscripción anterior si existe
@@ -109,69 +111,82 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         final params = GetMessagesParams(conversationId: event.conversationId);
 
         // Suscribirse al stream de mensajes usando el caso de uso
-        _messagesSubscription = _getMessagesUseCase!.call(params).listen(
-          (result) {
-            if (result.isLeft()) {
-              emit(ChatState.error(result.fold((l) => l.message, (r) => '')));
-              return;
-            }
+        _messagesSubscription = _getMessagesUseCase!
+            .call(params)
+            .listen(
+              (result) {
+                if (result.isLeft()) {
+                  emit(
+                    ChatState.error(result.fold((l) => l.message, (r) => '')),
+                  );
+                  return;
+                }
 
-            final messages = result.fold((l) => [], (r) => r);
-            final messageModels = messages
-                .map((message) => ChatMessageModel(
-                      id: message.id,
-                      chatId: event.conversationId,
-                      senderId: message.senderId,
-                      content: message.content,
-                      timestamp: message.timestamp,
-                      isRead: message.read,
-                    ))
-                .toList();
-
-            add(MessagesUpdated(messageModels));
-          },
-          onError: (error) {
-            if (error is AppFailure) {
-              emit(ChatState.error(error.message));
-            } else {
-              emit(ChatState.error(error.toString()));
-            }
-          },
-        );
-
-        // Marcar mensajes como leídos si es necesario
-        if (event.markAsRead) {
-          final userId = await _getCurrentUserId();
-          await _markMessagesAsReadUseCase!.call(MarkMessagesAsReadParams(
-            conversationId: event.conversationId,
-            userId: userId,
-          ));
-        }
-      } else {
-        // Enfoque tradicional
-        _messagesSubscription = _chatRepository!
-            .getMessages(event.conversationId)
-            .listen((Either<AppFailure, List<MessageEntity>> result) {
-          result.fold(
-            (failure) => emit(ChatState.error(failure.message)),
-            (messages) {
-              final messageModels = messages
-                  .map((message) => ChatMessageModel(
+                final messages = result.fold((l) => [], (r) => r);
+                final messageModels = messages
+                    .map(
+                      (message) => ChatMessageModel(
                         id: message.id,
                         chatId: event.conversationId,
                         senderId: message.senderId,
                         content: message.content,
                         timestamp: message.timestamp,
                         isRead: message.read,
-                      ))
-                  .toList();
+                      ),
+                    )
+                    .toList();
 
-              add(MessagesUpdated(messageModels));
-            },
+                add(MessagesUpdated(messageModels));
+              },
+              onError: (error) {
+                if (error is AppFailure) {
+                  emit(ChatState.error(error.message));
+                } else {
+                  emit(ChatState.error(error.toString()));
+                }
+              },
+            );
+
+        // Marcar mensajes como leídos si es necesario
+        if (event.markAsRead) {
+          final userId = await _getCurrentUserId();
+          await _markMessagesAsReadUseCase!.call(
+            MarkMessagesAsReadParams(
+              conversationId: event.conversationId,
+              userId: userId,
+            ),
           );
-        }, onError: (error) {
-          emit(ChatState.error(error.toString()));
-        });
+        }
+      } else {
+        // Enfoque tradicional
+        _messagesSubscription = _chatRepository!
+            .getMessages(event.conversationId)
+            .listen(
+              (Either<AppFailure, List<MessageEntity>> result) {
+                result.fold(
+                  (failure) => emit(ChatState.error(failure.message)),
+                  (messages) {
+                    final messageModels = messages
+                        .map(
+                          (message) => ChatMessageModel(
+                            id: message.id,
+                            chatId: event.conversationId,
+                            senderId: message.senderId,
+                            content: message.content,
+                            timestamp: message.timestamp,
+                            isRead: message.read,
+                          ),
+                        )
+                        .toList();
+
+                    add(MessagesUpdated(messageModels));
+                  },
+                );
+              },
+              onError: (error) {
+                emit(ChatState.error(error.toString()));
+              },
+            );
 
         // Marcar mensajes como leídos
         if (event.markAsRead) {
@@ -189,7 +204,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   Future<void> _onSendMessage(
-      SendMessage event, Emitter<ChatState> emit) async {
+    SendMessage event,
+    Emitter<ChatState> emit,
+  ) async {
     try {
       if (_useCleanArchitecture) {
         // Enfoque Clean Architecture
@@ -205,9 +222,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         await _chatRepository!.sendMessage(
           conversationId: event.conversationId,
           content: event.content,
-          metadata: {
-            'senderId': event.senderId,
-          },
+          metadata: {'senderId': event.senderId},
         );
       }
     } catch (e) {
@@ -218,25 +233,32 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   void _onMessagesUpdated(MessagesUpdated event, Emitter<ChatState> emit) {
     // Convertir ChatMessageModel a MessageEntity para mantener compatibilidad
     final messages = event.messages
-        .map((msg) => MessageEntity(
-              id: msg.id,
-              content: msg.content,
-              timestamp: msg.timestamp,
-              senderId: msg.senderId,
-              read: msg.isRead,
-            ))
+        .map(
+          (msg) => MessageEntity(
+            id: msg.id,
+            content: msg.content,
+            timestamp: msg.timestamp,
+            senderId: msg.senderId,
+            read: msg.isRead,
+          ),
+        )
         .toList();
 
-    emit(ChatState.messagesLoaded(
-      loadedMessages: messages,
-      conversationId:
-          event.messages.isNotEmpty ? event.messages.first.chatId : '',
-      existingConversations: state.conversations,
-    ));
+    emit(
+      ChatState.messagesLoaded(
+        loadedMessages: messages,
+        conversationId: event.messages.isNotEmpty
+            ? event.messages.first.chatId
+            : '',
+        existingConversations: state.conversations,
+      ),
+    );
   }
 
   Future<void> _onLoadConversations(
-      LoadConversations event, Emitter<ChatState> emit) async {
+    LoadConversations event,
+    Emitter<ChatState> emit,
+  ) async {
     emit(const ChatState.loading());
     try {
       // Cancelar suscripción anterior si existe
@@ -247,39 +269,46 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         final params = GetUserConversationsParams(userId: event.userId);
 
         // Suscribirse al stream de conversaciones usando el caso de uso
-        _conversationsSubscription =
-            _getUserConversationsUseCase!.execute(params).listen(
-          (conversations) => emit(ChatState.conversationsLoaded(conversations)),
-          onError: (error) {
-            if (error is AppFailure) {
-              emit(ChatState.error(error.message));
-            } else {
-              emit(ChatState.error(error.toString()));
-            }
-          },
-        );
+        _conversationsSubscription = _getUserConversationsUseCase!
+            .execute(params)
+            .listen(
+              (conversations) =>
+                  emit(ChatState.conversationsLoaded(conversations)),
+              onError: (error) {
+                if (error is AppFailure) {
+                  emit(ChatState.error(error.message));
+                } else {
+                  emit(ChatState.error(error.toString()));
+                }
+              },
+            );
       } else {
         // Enfoque tradicional
-        _conversationsSubscription =
-            _chatRepository!.getConversations(event.userId).listen(
-          (result) {
-            if (result.isLeft()) {
-              emit(ChatState.error(result.fold((l) => l.message, (r) => '')));
-              return;
-            }
+        _conversationsSubscription = _chatRepository!
+            .getConversations(event.userId)
+            .listen(
+              (result) {
+                if (result.isLeft()) {
+                  emit(
+                    ChatState.error(result.fold((l) => l.message, (r) => '')),
+                  );
+                  return;
+                }
 
-            final conversations = result.fold((l) => <ConversationEntity>[],
-                (r) => r.map((conv) => conv).toList());
-            emit(ChatState.conversationsLoaded(conversations));
-          },
-          onError: (error) {
-            if (error is AppFailure) {
-              emit(ChatState.error(error.message));
-            } else {
-              emit(ChatState.error(error.toString()));
-            }
-          },
-        );
+                final conversations = result.fold(
+                  (l) => <ConversationEntity>[],
+                  (r) => r.map((conv) => conv).toList(),
+                );
+                emit(ChatState.conversationsLoaded(conversations));
+              },
+              onError: (error) {
+                if (error is AppFailure) {
+                  emit(ChatState.error(error.message));
+                } else {
+                  emit(ChatState.error(error.toString()));
+                }
+              },
+            );
       }
     } catch (e) {
       emit(ChatState.error(e.toString()));
@@ -287,7 +316,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   Future<void> _onCreateConversation(
-      CreateConversation event, Emitter<ChatState> emit) async {
+    CreateConversation event,
+    Emitter<ChatState> emit,
+  ) async {
     emit(const ChatState.loading());
     try {
       if (_useCleanArchitecture) {
@@ -309,9 +340,11 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
           initialMessage: event.initialMessage,
         );
         result.fold(
-            (failure) => emit(ChatState.error(failure.message)),
-            (conversationId) => emit(ChatState.conversationCreated(
-                newConversationId: conversationId)));
+          (failure) => emit(ChatState.error(failure.message)),
+          (conversationId) => emit(
+            ChatState.conversationCreated(newConversationId: conversationId),
+          ),
+        );
       }
     } catch (e) {
       emit(ChatState.error(e.toString()));
@@ -319,7 +352,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   Future<void> _onMarkMessagesAsRead(
-      MarkMessagesAsRead event, Emitter<ChatState> emit) async {
+    MarkMessagesAsRead event,
+    Emitter<ChatState> emit,
+  ) async {
     try {
       if (_useCleanArchitecture) {
         // Enfoque Clean Architecture

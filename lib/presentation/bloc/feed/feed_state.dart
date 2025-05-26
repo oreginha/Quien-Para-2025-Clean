@@ -12,9 +12,8 @@ class FeedState with _$FeedState {
 
   const factory FeedState.loading() = FeedLoading;
 
-  const factory FeedState.refreshing({
-    required final List<PlanEntity> plans,
-  }) = FeedRefreshing;
+  const factory FeedState.refreshing({required final List<PlanEntity> plans}) =
+      FeedRefreshing;
 
   const factory FeedState.paginating({
     required final List<PlanEntity> plans,

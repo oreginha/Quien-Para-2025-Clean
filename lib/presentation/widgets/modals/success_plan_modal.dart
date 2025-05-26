@@ -11,10 +11,7 @@ import '../../bloc/plan/plan_bloc.dart';
 class SuccessPlanModal extends StatefulWidget {
   final String planTitle;
 
-  const SuccessPlanModal({
-    super.key,
-    required this.planTitle,
-  });
+  const SuccessPlanModal({super.key, required this.planTitle});
 
   @override
   State<SuccessPlanModal> createState() => _SuccessPlanModalState();
@@ -26,8 +23,9 @@ class _SuccessPlanModalState extends State<SuccessPlanModal> {
   @override
   void initState() {
     super.initState();
-    _confettiController =
-        ConfettiController(duration: const Duration(seconds: 2));
+    _confettiController = ConfettiController(
+      duration: const Duration(seconds: 2),
+    );
     _confettiController.play();
   }
 
@@ -54,10 +52,7 @@ class _SuccessPlanModalState extends State<SuccessPlanModal> {
                 const SizedBox(height: 20),
                 const Text(
                   '¡Felicitaciones!',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Text(

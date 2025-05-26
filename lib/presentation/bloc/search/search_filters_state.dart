@@ -19,28 +19,28 @@ abstract class SearchFiltersState with _$SearchFiltersState {
   }) = _SearchFiltersState;
 
   factory SearchFiltersState.initial() => const SearchFiltersState(
-        searchQuery: '',
-        selectedCategory: '',
-        selectedTags: <String>[],
-        distanceValue: 18.0,
-        minDistance: 0.0,
-        maxDistance: 100.0,
-        conditions: <String, bool>{
-          'Free transfer': false,
-          'No check': false,
-          'Last minute': false,
-          'Pick me up': false,
-          'Non-stop': false,
-          'SOSI/SJ': false,
-          'Lunch': false,
-          'Delivery': false,
-          '24/7 reception': false,
-        },
-        additionalServices: <String, bool>{
-          'Free service check-in': false,
-          'Flexible refund policy': false,
-          'Cancellation protection': false,
-        },
-        isLoading: false,
-      );
+    searchQuery: '',
+    selectedCategory: '',
+    selectedTags: <String>[],
+    distanceValue: 18.0,
+    minDistance: 0.0,
+    maxDistance: 100.0,
+    conditions: <String, bool>{
+      'Free transfer': false,
+      'No check': false,
+      'Last minute': false,
+      'Pick me up': false,
+      'Non-stop': false,
+      'SOSI/SJ': false,
+      'Lunch': false,
+      'Delivery': false,
+      '24/7 reception': false,
+    },
+    additionalServices: <String, bool>{
+      'Free service check-in': false,
+      'Flexible refund policy': false,
+      'Cancellation protection': false,
+    },
+    isLoading: false,
+  );
 }

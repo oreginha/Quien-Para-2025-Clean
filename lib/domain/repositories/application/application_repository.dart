@@ -8,25 +8,32 @@ import '../../failures/app_failures.dart';
 abstract class ApplicationRepository {
   /// Aplica a un plan
   Future<Either<AppFailure, ApplicationEntity>> applyToPlan(
-      ApplicationEntity application);
+    ApplicationEntity application,
+  );
 
   /// Obtiene las aplicaciones de un plan
   Future<Either<AppFailure, List<ApplicationEntity>>> getPlanApplications(
-      String planId);
+    String planId,
+  );
 
   /// Obtiene las aplicaciones de un usuario
   Future<Either<AppFailure, List<ApplicationEntity>>> getUserApplications(
-      String userId);
+    String userId,
+  );
 
   /// Actualiza el estado de una aplicación
   Future<Either<AppFailure, ApplicationEntity>> updateApplicationStatus(
-      String applicationId, String status);
+    String applicationId,
+    String status,
+  );
 
   /// Cancela una aplicación
   Future<Either<AppFailure, ApplicationEntity>> cancelApplication(
-      String applicationId);
+    String applicationId,
+  );
 
   /// Obtiene una aplicación por su ID
   Future<Either<AppFailure, ApplicationEntity>> getApplicationById(
-      String applicationId);
+    String applicationId,
+  );
 }

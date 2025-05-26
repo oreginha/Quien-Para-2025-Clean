@@ -24,16 +24,17 @@ class AuthRepositoryImpl implements AuthRepository {
     GoogleSignIn? googleSignIn,
     FirebaseFirestore? firestore,
     Logger? logger,
-  })  : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _firestore = firestore ?? FirebaseFirestore.instance,
-        _logger = logger ?? Logger() {
+  }) : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
+       _googleSignIn = googleSignIn ?? GoogleSignIn(),
+       _firestore = firestore ?? FirebaseFirestore.instance,
+       _logger = logger ?? Logger() {
     // Suscribirse a los cambios de estado de autenticación
     _firebaseAuth.authStateChanges().listen((firebase_auth.User? user) {
       _authStateController.add(user != null);
       if (kDebugMode) {
         _logger.d(
-            '🔐 Estado de autenticación cambiado: ${user != null ? "Autenticado" : "No autenticado"}');
+          '🔐 Estado de autenticación cambiado: ${user != null ? "Autenticado" : "No autenticado"}',
+        );
       }
     });
   }
@@ -92,7 +93,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserEntity> signInWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     try {
       final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email,
@@ -121,7 +124,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name) async {
+    String email,
+    String password,
+    String name,
+  ) async {
     try {
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
@@ -139,11 +145,7 @@ class AuthRepositoryImpl implements AuthRepository {
       // Crear documento de usuario en Firestore
       await _createUserDocument(user, name);
 
-      return UserEntity(
-        id: user.uid,
-        name: name,
-        email: email,
-      );
+      return UserEntity(id: user.uid, name: name, email: email);
     } catch (e) {
       _logger.e('Error al registrar usuario: $e');
       rethrow;
@@ -228,8 +230,9 @@ class AuthRepositoryImpl implements AuthRepository {
         googleProvider.addScope('email');
         googleProvider.addScope('profile');
 
-        final userCredential =
-            await _firebaseAuth.signInWithPopup(googleProvider);
+        final userCredential = await _firebaseAuth.signInWithPopup(
+          googleProvider,
+        );
         user = userCredential.user;
       } else {
         // En Móvil - usar flujo estándar
@@ -248,8 +251,9 @@ class AuthRepositoryImpl implements AuthRepository {
           idToken: googleAuth.idToken,
         );
 
-        final userCredential =
-            await _firebaseAuth.signInWithCredential(credential);
+        final userCredential = await _firebaseAuth.signInWithCredential(
+          credential,
+        );
         user = userCredential.user;
       }
 
@@ -269,11 +273,7 @@ class AuthRepositoryImpl implements AuthRepository {
       };
     } catch (e) {
       _logger.e('Error al iniciar sesión con Google: $e');
-      return {
-        'status': 'error',
-        'message': e.toString(),
-        'success': false,
-      };
+      return {'status': 'error', 'message': e.toString(), 'success': false};
     }
   }
 

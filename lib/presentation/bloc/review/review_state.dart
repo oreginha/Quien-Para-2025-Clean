@@ -12,13 +12,13 @@ class ReviewState with _$ReviewState {
     @Default(ReviewStatus.initial) ReviewStatus status,
     String? error,
     bool? isLoading,
-    
+
     // ==================== RESEÑAS ====================
     @Default([]) List<ReviewEntity> userReviews,
     @Default([]) List<ReviewEntity> planReviews,
     @Default([]) List<ReviewEntity> reviewsByUser,
     @Default([]) List<ReviewEntity> pendingReviews,
-    
+
     // ==================== PAGINACIÓN ====================
     @Default(false) bool hasMoreUserReviews,
     @Default(false) bool hasMorePlanReviews,
@@ -28,33 +28,33 @@ class ReviewState with _$ReviewState {
     String? lastPlanReviewDocumentId,
     String? lastReviewsByUserDocumentId,
     String? lastPendingReviewDocumentId,
-    
+
     // ==================== RATING DE USUARIO ====================
     UserRatingEntity? currentUserRating,
     @Default([]) List<UserRatingEntity> topRatedUsers,
     UserRatingCalculationResult? lastCalculationResult,
     UserReviewsResult? lastUserReviewsResult,
     @Default([]) List<UserRatingComparison> userRatingComparisons,
-    
+
     // ==================== ACCIONES ====================
     String? lastCreatedReviewId,
     String? lastUpdatedReviewId,
     String? lastDeletedReviewId,
     @Default([]) List<String> helpfulReviewIds,
-    
+
     // ==================== MODERACIÓN ====================
     String? lastApprovedReviewId,
     String? lastRejectedReviewId,
     String? lastFlaggedReviewId,
-    
+
     // ==================== ANALYTICS ====================
     Map<String, dynamic>? reviewMetrics,
     Map<int, int>? ratingDistribution,
     Map<String, dynamic>? reviewTrends,
-    
+
     // ==================== PERMISOS ====================
-    @Default({}) Map<String, bool> canReviewPermissions, // planId + targetUserId -> bool
-    
+    @Default({})
+    Map<String, bool> canReviewPermissions, // planId + targetUserId -> bool
     // ==================== CACHE Y PERFORMANCE ====================
     DateTime? lastRefreshTime,
     @Default({}) Map<String, DateTime> lastDataFetchTimes,
@@ -82,7 +82,7 @@ enum ReviewStatus {
 
 extension ReviewStateExtensions on ReviewState {
   // ==================== GETTERS DE CONVENIENCIA ====================
-  
+
   bool get isInitial => status == ReviewStatus.initial;
   bool get isLoadingInitial => status == ReviewStatus.loading;
   bool get isLoadingMore => status == ReviewStatus.loadingMore;
@@ -93,9 +93,9 @@ extension ReviewStateExtensions on ReviewState {
   bool get isDeleting => status == ReviewStatus.deleting;
   bool get isModerating => status == ReviewStatus.moderating;
   bool get isCalculating => status == ReviewStatus.calculating;
-  
+
   // ==================== DATOS COMBINADOS ====================
-  
+
   /// Todas las reseñas cargadas actualmente
   List<ReviewEntity> get allReviews => [
     ...userReviews,
@@ -103,7 +103,7 @@ extension ReviewStateExtensions on ReviewState {
     ...reviewsByUser,
     ...pendingReviews,
   ];
-  
+
   /// Reseñas agrupadas por rating
   Map<int, List<ReviewEntity>> get userReviewsByRating {
     final grouped = <int, List<ReviewEntity>>{};
@@ -112,31 +112,28 @@ extension ReviewStateExtensions on ReviewState {
     }
     return grouped;
   }
-  
+
   /// Reseñas recientes del usuario
-  List<ReviewEntity> get recentUserReviews => userReviews
-      .where((r) => r.isRecent)
-      .toList();
-  
+  List<ReviewEntity> get recentUserReviews =>
+      userReviews.where((r) => r.isRecent).toList();
+
   /// Reseñas positivas del usuario
-  List<ReviewEntity> get positiveUserReviews => userReviews
-      .where((r) => r.isPositive)
-      .toList();
-  
+  List<ReviewEntity> get positiveUserReviews =>
+      userReviews.where((r) => r.isPositive).toList();
+
   /// Reseñas negativas del usuario
-  List<ReviewEntity> get negativeUserReviews => userReviews
-      .where((r) => r.isNegative)
-      .toList();
-  
+  List<ReviewEntity> get negativeUserReviews =>
+      userReviews.where((r) => r.isNegative).toList();
+
   // ==================== ESTADÍSTICAS ====================
-  
+
   /// Rating promedio de las reseñas del usuario actual
   double get averageUserRating {
     if (userReviews.isEmpty) return 0.0;
     final sum = userReviews.fold<double>(0, (sum, r) => sum + r.rating);
     return sum / userReviews.length;
   }
-  
+
   /// Distribución de ratings de las reseñas del usuario
   Map<int, int> get userReviewDistribution {
     final distribution = <int, int>{1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
@@ -146,12 +143,12 @@ extension ReviewStateExtensions on ReviewState {
     }
     return distribution;
   }
-  
+
   /// Total de reseñas útiles marcadas por el usuario actual
   int get totalHelpfulMarked => helpfulReviewIds.length;
-  
+
   // ==================== VALIDACIONES ====================
-  
+
   /// Verifica si se puede cargar más contenido
   bool canLoadMore(String type) {
     switch (type) {
@@ -167,44 +164,44 @@ extension ReviewStateExtensions on ReviewState {
         return false;
     }
   }
-  
+
   /// Verifica si los datos necesitan refresh
   bool needsRefresh([Duration? maxAge]) {
     final age = maxAge ?? const Duration(minutes: 5);
     if (lastRefreshTime == null) return true;
     return DateTime.now().difference(lastRefreshTime!) > age;
   }
-  
+
   /// Verifica si el usuario puede revisar un plan específico
   bool canUserReviewPlan(String planId, String targetUserId) {
     final key = '${planId}_$targetUserId';
     return canReviewPermissions[key] ?? false;
   }
-  
+
   // ==================== BÚSQUEDA Y FILTRADO ====================
-  
+
   /// Filtra reseñas del usuario por tipo
   List<ReviewEntity> getUserReviewsByType(ReviewType type) {
     return userReviews.where((r) => r.type == type).toList();
   }
-  
+
   /// Busca reseñas que contengan un texto específico
   List<ReviewEntity> searchReviews(String query) {
     final lowercaseQuery = query.toLowerCase();
-    return allReviews.where((r) => 
-        r.comment.toLowerCase().contains(lowercaseQuery)
-    ).toList();
+    return allReviews
+        .where((r) => r.comment.toLowerCase().contains(lowercaseQuery))
+        .toList();
   }
-  
+
   /// Obtiene reseñas por rango de fechas
   List<ReviewEntity> getReviewsByDateRange(DateTime start, DateTime end) {
-    return allReviews.where((r) => 
-        r.createdAt.isAfter(start) && r.createdAt.isBefore(end)
-    ).toList();
+    return allReviews
+        .where((r) => r.createdAt.isAfter(start) && r.createdAt.isBefore(end))
+        .toList();
   }
-  
+
   // ==================== UTILIDADES DE UI ====================
-  
+
   /// Mensaje de error formateado para mostrar en UI
   String get formattedError {
     if (error == null) return '';
@@ -219,7 +216,7 @@ extension ReviewStateExtensions on ReviewState {
     }
     return error!;
   }
-  
+
   /// Color sugerido basado en el rating promedio
   String get ratingColor {
     final rating = currentUserRating?.averageRating ?? averageUserRating;
@@ -229,7 +226,7 @@ extension ReviewStateExtensions on ReviewState {
     if (rating >= 3.0) return 'orange';
     return 'red';
   }
-  
+
   /// Ícono sugerido basado en el estado
   String get statusIcon {
     switch (status) {

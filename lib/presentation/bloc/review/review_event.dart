@@ -45,9 +45,8 @@ class ReviewEvent with _$ReviewEvent {
     ReviewType? type,
   }) = LoadMoreUserReviewsEvent;
 
-  const factory ReviewEvent.loadMorePlanReviews({
-    required String planId,
-  }) = LoadMorePlanReviewsEvent;
+  const factory ReviewEvent.loadMorePlanReviews({required String planId}) =
+      LoadMorePlanReviewsEvent;
 
   const factory ReviewEvent.loadMoreReviewsByUser({
     required String reviewerId,
@@ -55,13 +54,11 @@ class ReviewEvent with _$ReviewEvent {
 
   // ==================== ACCIONES DE RESEÑA ====================
 
-  const factory ReviewEvent.updateReview({
-    required ReviewEntity review,
-  }) = UpdateReviewEvent;
+  const factory ReviewEvent.updateReview({required ReviewEntity review}) =
+      UpdateReviewEvent;
 
-  const factory ReviewEvent.deleteReview({
-    required String reviewId,
-  }) = DeleteReviewEvent;
+  const factory ReviewEvent.deleteReview({required String reviewId}) =
+      DeleteReviewEvent;
 
   const factory ReviewEvent.markReviewAsHelpful({
     required String reviewId,
@@ -75,9 +72,8 @@ class ReviewEvent with _$ReviewEvent {
 
   // ==================== RATING DE USUARIO ====================
 
-  const factory ReviewEvent.getUserRating({
-    required String userId,
-  }) = GetUserRatingEvent;
+  const factory ReviewEvent.getUserRating({required String userId}) =
+      GetUserRatingEvent;
 
   const factory ReviewEvent.calculateUserRating({
     required String userId,
@@ -86,21 +82,16 @@ class ReviewEvent with _$ReviewEvent {
     bool? forceRecalculation,
   }) = CalculateUserRatingEvent;
 
-  const factory ReviewEvent.getTopRatedUsers({
-    ReviewType? type,
-    int? limit,
-  }) = GetTopRatedUsersEvent;
+  const factory ReviewEvent.getTopRatedUsers({ReviewType? type, int? limit}) =
+      GetTopRatedUsersEvent;
 
   // ==================== MODERACIÓN ====================
 
-  const factory ReviewEvent.getPendingReviews({
-    int? limit,
-    bool? refresh,
-  }) = GetPendingReviewsEvent;
+  const factory ReviewEvent.getPendingReviews({int? limit, bool? refresh}) =
+      GetPendingReviewsEvent;
 
-  const factory ReviewEvent.approveReview({
-    required String reviewId,
-  }) = ApproveReviewEvent;
+  const factory ReviewEvent.approveReview({required String reviewId}) =
+      ApproveReviewEvent;
 
   const factory ReviewEvent.rejectReview({
     required String reviewId,

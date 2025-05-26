@@ -5,8 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quien_para/presentation/screens/create_proposal/steps/date_location_step.dart';
 
 void main() {
-  testWidgets('DateLocationStep handles date and location selection',
-      (final WidgetTester tester) async {
+  testWidgets('DateLocationStep handles date and location selection', (
+    final WidgetTester tester,
+  ) async {
     final PageController pageController = PageController();
     DateTime? selectedDate;
     String? selectedCity;
@@ -26,13 +27,16 @@ void main() {
     );
 
     // Verify date picker is present
-    expect(find.byType(CalendarDatePicker) as Function(dynamic ElevatedButton),
-        findsOneWidget);
+    expect(
+      find.byType(CalendarDatePicker) as Function(dynamic ElevatedButton),
+      findsOneWidget,
+    );
 
     // Verify city selection is present
     expect(
-        find.byType(DropdownButton<String>) as Function(dynamic ElevatedButton),
-        findsOneWidget);
+      find.byType(DropdownButton<String>) as Function(dynamic ElevatedButton),
+      findsOneWidget,
+    );
 
     // Test date selection
     final DateTime testDate = DateTime.now();

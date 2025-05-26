@@ -15,7 +15,8 @@ class GetUserApplicationsUseCase {
 
   /// Obtiene todas las aplicaciones hechas por un usuario específico
   Future<Either<AppFailure, List<ApplicationEntity>>> call(
-      String userId) async {
+    String userId,
+  ) async {
     return await _repository.getUserApplications(userId);
   }
 

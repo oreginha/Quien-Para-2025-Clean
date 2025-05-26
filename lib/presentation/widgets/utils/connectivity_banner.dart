@@ -7,10 +7,7 @@ import '../../../core/network/network_helper.dart';
 class ConnectivityBanner extends StatefulWidget {
   final Widget child;
 
-  const ConnectivityBanner({
-    super.key,
-    required this.child,
-  });
+  const ConnectivityBanner({super.key, required this.child});
 
   @override
   State<ConnectivityBanner> createState() => _ConnectivityBannerState();
@@ -36,9 +33,10 @@ class _ConnectivityBannerState extends State<ConnectivityBanner>
     );
 
     // Animación para deslizar el banner
-    _animation = Tween<double>(begin: -60.0, end: 0.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _animation = Tween<double>(
+      begin: -60.0,
+      end: 0.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     // Verificar conectividad inicial
     _checkInitialConnectivity();
@@ -48,8 +46,8 @@ class _ConnectivityBannerState extends State<ConnectivityBanner>
   }
 
   Future<void> _checkInitialConnectivity() async {
-    final List<ConnectivityResult> result =
-        await Connectivity().checkConnectivity();
+    final List<ConnectivityResult> result = await Connectivity()
+        .checkConnectivity();
     _updateConnectivity(result);
     _isInitialized = true;
   }
@@ -104,11 +102,7 @@ class _ConnectivityBannerState extends State<ConnectivityBanner>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.wifi_off,
-                            color: Colors.white,
-                            size: 18,
-                          ),
+                          Icon(Icons.wifi_off, color: Colors.white, size: 18),
                           const SizedBox(width: 8),
                           Text(
                             'Sin conexión a internet',

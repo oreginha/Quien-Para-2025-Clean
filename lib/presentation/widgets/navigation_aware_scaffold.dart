@@ -92,7 +92,8 @@ class _NavigationAwareScaffoldState extends State<NavigationAwareScaffold>
     if (kDebugMode) {
       _rebuildCount++;
       print(
-          '🔄 [Scaffold-${widget.screenName}] Reconstrucción #$_rebuildCount');
+        '🔄 [Scaffold-${widget.screenName}] Reconstrucción #$_rebuildCount',
+      );
     }
 
     // Utilizamos un enfoque compatible con versiones recientes de Flutter
@@ -186,8 +187,6 @@ class _OptimizedBodyWrapperState extends State<OptimizedBodyWrapper> {
     }
 
     // Usar un RepaintBoundary para mejorar el rendimiento de renderizado
-    return RepaintBoundary(
-      child: _cachedChild,
-    );
+    return RepaintBoundary(child: _cachedChild);
   }
 }

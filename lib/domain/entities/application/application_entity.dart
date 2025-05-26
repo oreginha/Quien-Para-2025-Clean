@@ -62,18 +62,18 @@ class ApplicationEntity extends Equatable {
 
   @override
   List<Object?> get props => <Object?>[
-        id,
-        planId,
-        applicantId,
-        status,
-        appliedAt,
-        message,
-        processedAt,
-        planTitle,
-        planImageUrl,
-        applicantName,
-        applicantPhotoUrl,
-      ];
+    id,
+    planId,
+    applicantId,
+    status,
+    appliedAt,
+    message,
+    processedAt,
+    planTitle,
+    planImageUrl,
+    applicantName,
+    applicantPhotoUrl,
+  ];
 
   // Método para convertir la entidad a un Map para Firestore
   Map<String, dynamic> toMap() {
@@ -95,7 +95,9 @@ class ApplicationEntity extends Equatable {
 
   // Método para crear una entidad desde un Map de Firestore
   factory ApplicationEntity.fromMap(
-      Map<String, dynamic> map, String documentId) {
+    Map<String, dynamic> map,
+    String documentId,
+  ) {
     // Convertir appliedAt desde Timestamp o String
     DateTime parseDate(dynamic dateValue) {
       if (dateValue is Timestamp) {

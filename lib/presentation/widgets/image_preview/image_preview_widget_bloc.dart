@@ -94,8 +94,10 @@ class _ImagePreviewContent extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Colors.white),
-        title:
-            const Text('Editar imagen', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'Editar imagen',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           if (showEditControls)
             IconButton(
@@ -119,7 +121,8 @@ class _ImagePreviewContent extends StatelessWidget {
                 if (state.isLoading) {
                   return Center(
                     child: CircularProgressIndicator(
-                        color: AppColors.lightTextPrimary),
+                      color: AppColors.lightTextPrimary,
+                    ),
                   );
                 }
 
@@ -129,8 +132,11 @@ class _ImagePreviewContent extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.error_outline,
-                            color: Colors.red, size: 48),
+                        const Icon(
+                          Icons.error_outline,
+                          color: Colors.red,
+                          size: 48,
+                        ),
                         const SizedBox(height: 16),
                         Text(
                           state.error ?? 'Error al procesar la imagen',
@@ -194,16 +200,16 @@ class _ImagePreviewContent extends StatelessWidget {
               _buildEditButton(
                 icon: Icons.rotate_right,
                 label: 'Rotar',
-                onPressed: () => context
-                    .read<ImagePreviewBloc>()
-                    .add(const ImagePreviewEvent.rotateImage()),
+                onPressed: () => context.read<ImagePreviewBloc>().add(
+                  const ImagePreviewEvent.rotateImage(),
+                ),
               ),
               _buildEditButton(
                 icon: Icons.crop,
                 label: 'Recortar',
-                onPressed: () => context
-                    .read<ImagePreviewBloc>()
-                    .add(const ImagePreviewEvent.cropImage()),
+                onPressed: () => context.read<ImagePreviewBloc>().add(
+                  const ImagePreviewEvent.cropImage(),
+                ),
               ),
               _buildEditButton(
                 icon: Icons.tune,
@@ -218,9 +224,9 @@ class _ImagePreviewContent extends StatelessWidget {
               _buildEditButton(
                 icon: Icons.refresh,
                 label: 'Reiniciar',
-                onPressed: () => context
-                    .read<ImagePreviewBloc>()
-                    .add(const ImagePreviewEvent.resetFilter()),
+                onPressed: () => context.read<ImagePreviewBloc>().add(
+                  const ImagePreviewEvent.resetFilter(),
+                ),
               ),
             ],
           ),
@@ -236,33 +242,33 @@ class _ImagePreviewContent extends StatelessWidget {
     bool isActive = false,
   }) {
     return Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(8),
-          onTap: onPressed,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  icon,
-                  color: isActive ? AppColors.lightTextPrimary : Colors.white,
-                  size: 24,
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                color: isActive ? AppColors.lightTextPrimary : Colors.white,
+                size: 24,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                style: TextStyle(
+                  color: isActive ? AppColors.lightTextPrimary : Colors.white70,
+                  fontSize: 12,
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  label,
-                  style: TextStyle(
-                    color:
-                        isActive ? AppColors.lightTextPrimary : Colors.white70,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -270,7 +276,7 @@ class _ImagePreviewContent extends StatelessWidget {
 // como parte de la optimización de código durante la migración a Clean Architecture
 
 void _showFiltersDialog(BuildContext context) {
-// Implementación de diálogo para seleccionar filtros
+  // Implementación de diálogo para seleccionar filtros
   final bloc = context.read<ImagePreviewBloc>();
   final availableFilters = [
     'Original',
@@ -309,8 +315,9 @@ void _showFiltersDialog(BuildContext context) {
                 title: Text(
                   filterName,
                   style: TextStyle(
-                    color:
-                        isSelected ? AppColors.lightTextPrimary : Colors.white,
+                    color: isSelected
+                        ? AppColors.lightTextPrimary
+                        : Colors.white,
                   ),
                 ),
                 leading: index == 0
@@ -319,10 +326,10 @@ void _showFiltersDialog(BuildContext context) {
                 onTap: () {
                   Navigator.pop(context);
                   if (index == 0) {
-// Usar el evento resetFilter en lugar del método resetImage
+                    // Usar el evento resetFilter en lugar del método resetImage
                     bloc.add(const ImagePreviewEvent.resetFilter());
                   } else {
-// Usar el evento applyFilter en lugar del método applyFilter
+                    // Usar el evento applyFilter en lugar del método applyFilter
                     bloc.add(ImagePreviewEvent.applyFilter(filterName));
                   }
                 },
@@ -336,7 +343,7 @@ void _showFiltersDialog(BuildContext context) {
 }
 
 void _showAdjustmentDialog(BuildContext context) {
-// Implementación de diálogo para ajustes de brillo y contraste
+  // Implementación de diálogo para ajustes de brillo y contraste
   final bloc = context.read<ImagePreviewBloc>();
   double brightness = bloc.state.brightness;
   double contrast = bloc.state.contrast;
@@ -374,9 +381,13 @@ void _showAdjustmentDialog(BuildContext context) {
                       setState(() {
                         brightness = value;
                       });
-// Usar el evento adjustImage en lugar del método adjustImage
-                      bloc.add(ImagePreviewEvent.adjustImage(
-                          brightness: brightness, contrast: contrast));
+                      // Usar el evento adjustImage en lugar del método adjustImage
+                      bloc.add(
+                        ImagePreviewEvent.adjustImage(
+                          brightness: brightness,
+                          contrast: contrast,
+                        ),
+                      );
                     },
                     activeColor: AppColors.lightTextPrimary,
                   ),
@@ -397,9 +408,13 @@ void _showAdjustmentDialog(BuildContext context) {
                       setState(() {
                         contrast = value;
                       });
-// Usar el evento adjustImage en lugar del método adjustImage
-                      bloc.add(ImagePreviewEvent.adjustImage(
-                          brightness: brightness, contrast: contrast));
+                      // Usar el evento adjustImage en lugar del método adjustImage
+                      bloc.add(
+                        ImagePreviewEvent.adjustImage(
+                          brightness: brightness,
+                          contrast: contrast,
+                        ),
+                      );
                     },
                     activeColor: AppColors.lightTextPrimary,
                   ),
@@ -415,12 +430,18 @@ void _showAdjustmentDialog(BuildContext context) {
                       brightness = 0.0;
                       contrast = 1.0;
                     });
-// Usar el evento adjustImage en lugar del método adjustImage
-                    bloc.add(ImagePreviewEvent.adjustImage(
-                        brightness: brightness, contrast: contrast));
+                    // Usar el evento adjustImage en lugar del método adjustImage
+                    bloc.add(
+                      ImagePreviewEvent.adjustImage(
+                        brightness: brightness,
+                        contrast: contrast,
+                      ),
+                    );
                   },
-                  child: const Text('Restablecer',
-                      style: TextStyle(color: Colors.white)),
+                  child: const Text(
+                    'Restablecer',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () => Navigator.pop(context),

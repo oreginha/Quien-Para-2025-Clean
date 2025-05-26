@@ -126,8 +126,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       if (userId == null) throw Exception('No user authenticated');
 
       final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final Reference ref =
-          _storage.ref().child('user_photos').child(userId).child(fileName);
+      final Reference ref = _storage
+          .ref()
+          .child('user_photos')
+          .child(userId)
+          .child(fileName);
 
       final SettableMetadata metadata = SettableMetadata(
         contentType: 'image/jpeg',
@@ -221,11 +224,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         appBar: AppBar(
           backgroundColor: AppColors.getBackground(isDarkMode),
           elevation: 0,
-          title: Text('Editar Perfil',
-              style: AppTypography.appBarTitle(isDarkMode)),
+          title: Text(
+            'Editar Perfil',
+            style: AppTypography.appBarTitle(isDarkMode),
+          ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back,
-                color: AppColors.getTextPrimary(isDarkMode)),
+            icon: Icon(
+              Icons.arrow_back,
+              color: AppColors.getTextPrimary(isDarkMode),
+            ),
             onPressed: () => Navigator.pop(context),
           ),
         ),
@@ -245,8 +252,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           style: AppTypography.appBarTitle(isDarkMode),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,
-              color: AppColors.getTextPrimary(isDarkMode)),
+          icon: Icon(
+            Icons.arrow_back,
+            color: AppColors.getTextPrimary(isDarkMode),
+          ),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -277,19 +286,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         onTap: _pickImage,
                         child: CircleAvatar(
                           radius: 65,
-                          backgroundColor:
-                              AppColors.getCardBackground(isDarkMode),
+                          backgroundColor: AppColors.getCardBackground(
+                            isDarkMode,
+                          ),
                           backgroundImage: profileImage != null
                               ? FileImage(profileImage!)
                               : (currentPhotoUrl != null
-                                  ? NetworkImage(currentPhotoUrl!)
-                                      as ImageProvider
-                                  : null),
+                                    ? NetworkImage(currentPhotoUrl!)
+                                          as ImageProvider
+                                    : null),
                           child:
                               (profileImage == null && currentPhotoUrl == null)
-                                  ? Icon(Icons.person,
-                                      size: 65, color: AppColors.brandYellow)
-                                  : null,
+                              ? Icon(
+                                  Icons.person,
+                                  size: 65,
+                                  color: AppColors.brandYellow,
+                                )
+                              : null,
                         ),
                       ),
                     ),
@@ -360,10 +373,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     size: 20,
                   ),
                   const SizedBox(width: AppSpacing.xs),
-                  Text(
-                    'Intereses',
-                    style: AppTypography.heading5(isDarkMode),
-                  ),
+                  Text('Intereses', style: AppTypography.heading5(isDarkMode)),
                 ],
               ),
               const SizedBox(height: AppSpacing.xl),
@@ -381,8 +391,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   spacing: AppSpacing.xs,
                   runSpacing: AppSpacing.xs,
                   children: availableInterests.map((final String interest) {
-                    final bool isSelected =
-                        selectedInterests.contains(interest);
+                    final bool isSelected = selectedInterests.contains(
+                      interest,
+                    );
                     return FilterChip(
                       selected: isSelected,
                       label: Text(interest),
@@ -399,16 +410,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       checkmarkColor: isDarkMode
                           ? Colors.black
                           : AppColors.lightTextPrimary,
-                      backgroundColor:
-                          AppColors.getSecondaryBackground(isDarkMode),
+                      backgroundColor: AppColors.getSecondaryBackground(
+                        isDarkMode,
+                      ),
                       labelStyle: TextStyle(
                         color: isSelected
                             ? (isDarkMode
-                                ? Colors.black
-                                : AppColors.lightTextPrimary)
+                                  ? Colors.black
+                                  : AppColors.lightTextPrimary)
                             : AppColors.getTextPrimary(isDarkMode),
-                        fontWeight:
-                            isSelected ? FontWeight.bold : FontWeight.normal,
+                        fontWeight: isSelected
+                            ? FontWeight.bold
+                            : FontWeight.normal,
                       ),
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.xs,
@@ -423,8 +436,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.brandYellow,
-                    foregroundColor:
-                        isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+                    foregroundColor: isDarkMode
+                        ? Colors.black
+                        : AppColors.lightTextPrimary,
                     minimumSize: const Size(200, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppRadius.button),
@@ -441,8 +455,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           height: 24,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.black),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.black,
+                            ),
                           ),
                         )
                       : Row(
@@ -484,17 +499,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               Icon(icon, size: 18, color: AppColors.getTextPrimary(isDarkMode)),
               const SizedBox(width: AppSpacing.xs),
             ],
-            Text(
-              label,
-              style: AppTypography.heading6(isDarkMode),
-            ),
+            Text(label, style: AppTypography.heading6(isDarkMode)),
             if (required) ...[
               const SizedBox(width: AppSpacing.xs),
               Text(
                 '*',
-                style: AppTypography.heading6(isDarkMode).copyWith(
-                  color: AppColors.accentRed,
-                ),
+                style: AppTypography.heading6(
+                  isDarkMode,
+                ).copyWith(color: AppColors.accentRed),
               ),
             ],
           ],
@@ -517,26 +529,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             style: AppTypography.bodyLarge(isDarkMode),
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: AppTypography.bodyLarge(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              hintStyle: AppTypography.bodyLarge(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               prefixIcon: icon != null
                   ? Icon(icon, color: AppColors.getTextSecondary(isDarkMode))
                   : null,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppRadius.l),
                 borderSide: BorderSide(
-                    color: AppColors.getBorder(isDarkMode), width: 1.0),
+                  color: AppColors.getBorder(isDarkMode),
+                  width: 1.0,
+                ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppRadius.l),
                 borderSide: BorderSide(
-                    color: AppColors.getBorder(isDarkMode), width: 1.0),
+                  color: AppColors.getBorder(isDarkMode),
+                  width: 1.0,
+                ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppRadius.l),
-                borderSide:
-                    BorderSide(color: AppColors.brandYellow, width: 2.0),
+                borderSide: BorderSide(
+                  color: AppColors.brandYellow,
+                  width: 2.0,
+                ),
               ),
               filled: true,
               fillColor: AppColors.getCardBackground(isDarkMode),

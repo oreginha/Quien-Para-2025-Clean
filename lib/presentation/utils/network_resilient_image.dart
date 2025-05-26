@@ -76,10 +76,7 @@ class NetworkResilientImage extends StatelessWidget {
 
     // Aplicar el borderRadius si se especifica
     if (borderRadius != null) {
-      imageWidget = ClipRRect(
-        borderRadius: borderRadius!,
-        child: imageWidget,
-      );
+      imageWidget = ClipRRect(borderRadius: borderRadius!, child: imageWidget);
     }
 
     return imageWidget;
@@ -97,8 +94,9 @@ class NetworkResilientImage extends StatelessWidget {
               height: 24,
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(AppColors.brandYellow),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  AppColors.brandYellow,
+                ),
               ),
             ),
           ),
@@ -136,16 +134,18 @@ class NetworkResilientImage extends StatelessWidget {
               children: [
                 Icon(
                   Icons.broken_image,
-                  color:
-                      AppColors.lightTextPrimary.withAlpha((255 * 0.8).round()),
+                  color: AppColors.lightTextPrimary.withAlpha(
+                    (255 * 0.8).round(),
+                  ),
                   size: 24,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Error al cargar la imagen',
                   style: TextStyle(
-                    color: AppColors.lightTextPrimary
-                        .withAlpha((255 * 0.8).round()),
+                    color: AppColors.lightTextPrimary.withAlpha(
+                      (255 * 0.8).round(),
+                    ),
                     fontSize: 12,
                   ),
                   textAlign: TextAlign.center,

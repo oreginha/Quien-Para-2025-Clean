@@ -49,7 +49,8 @@ class ResourceManager {
   void _ensureInitialized() {
     if (!_isInitialized) {
       throw StateError(
-          'ResourceManager no ha sido inicializado. Llame a initialize() primero.');
+        'ResourceManager no ha sido inicializado. Llame a initialize() primero.',
+      );
     }
   }
 
@@ -64,7 +65,8 @@ class ResourceManager {
   /// });
   /// ```
   Future<T> withFirestore<T>(
-      Future<T> Function(FirebaseFirestore firestore) operation) async {
+    Future<T> Function(FirebaseFirestore firestore) operation,
+  ) async {
     _ensureInitialized();
     return _firestorePool.withFirestore(operation);
   }
@@ -87,9 +89,6 @@ class ResourceManager {
       return {'initialized': false};
     }
 
-    return {
-      'initialized': true,
-      'firestorePool': _firestorePool.getStats(),
-    };
+    return {'initialized': true, 'firestorePool': _firestorePool.getStats()};
   }
 }

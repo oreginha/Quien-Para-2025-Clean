@@ -24,36 +24,39 @@ class UpdatePlanUseCase implements UseCaseInterface<PlanEntity, PlanEntity> {
     // Validar plan
     if (!plan.isValid) {
       _logger.w('UpdatePlanUseCase: Plan inválido');
-      return Left(ValidationFailure(
-        message: 'El plan no es válido, faltan campos requeridos',
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El plan no es válido, faltan campos requeridos',
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     // Verificar que el plan tenga ID
     if (plan.id.isEmpty) {
       _logger.w('UpdatePlanUseCase: ID de plan vacío');
-      return Left(ValidationFailure(
-        message: 'No se puede actualizar un plan sin ID',
-        field: 'id',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'No se puede actualizar un plan sin ID',
+          field: 'id',
+          code: '',
+        ),
+      );
     }
 
     // Verificar que el plan exista
     final existsResult = await _planRepository.exists(plan.id);
-    final exists = existsResult.fold(
-      (failure) => false,
-      (exists) => exists,
-    );
+    final exists = existsResult.fold((failure) => false, (exists) => exists);
 
     if (!exists) {
       _logger.w('UpdatePlanUseCase: Plan no encontrado');
-      return Left(NotFoundFailure(
-        message: 'El plan con ID ${plan.id} no existe',
-        code: '',
-      ));
+      return Left(
+        NotFoundFailure(
+          message: 'El plan con ID ${plan.id} no existe',
+          code: '',
+        ),
+      );
     }
 
     // Delegar al repositorio

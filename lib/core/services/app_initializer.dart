@@ -31,13 +31,19 @@ class AppInitializer {
   /// Inicializa todos los componentes esenciales para la aplicación - MODO EMERGENCIA
   Future<void> initialize() async {
     if (_initialized) {
-      logger.d('[EMERGENCIA] AppInitializer ya está inicializado, omitiendo...');
+      logger.d(
+        '[EMERGENCIA] AppInitializer ya está inicializado, omitiendo...',
+      );
       return;
     }
 
     try {
-      logger.d('[EMERGENCIA] Iniciando inicialización mínima de la aplicación...');
-      DILogger.startProcess('[EMERGENCIA] Inicialización mínima de la aplicación');
+      logger.d(
+        '[EMERGENCIA] Iniciando inicialización mínima de la aplicación...',
+      );
+      DILogger.startProcess(
+        '[EMERGENCIA] Inicialización mínima de la aplicación',
+      );
       final initStopwatch = Stopwatch()..start();
 
       // 1. Inicializar Firebase (debe ser lo primero)
@@ -60,12 +66,18 @@ class AppInitializer {
       _initialized = true;
       initStopwatch.stop();
       DILogger.endProcess(
-          '[EMERGENCIA] Inicialización de la aplicación', initStopwatch.elapsedMilliseconds);
+        '[EMERGENCIA] Inicialización de la aplicación',
+        initStopwatch.elapsedMilliseconds,
+      );
       logger.d(
-          '[EMERGENCIA] Inicialización mínima completada en ${initStopwatch.elapsedMilliseconds}ms');
+        '[EMERGENCIA] Inicialización mínima completada en ${initStopwatch.elapsedMilliseconds}ms',
+      );
     } catch (e, stackTrace) {
-      logger.e('[EMERGENCIA] Error durante la inicialización',
-          error: e, stackTrace: stackTrace);
+      logger.e(
+        '[EMERGENCIA] Error durante la inicialización',
+        error: e,
+        stackTrace: stackTrace,
+      );
       rethrow; // Propagar el error para que la app pueda mostrar un mensaje adecuado
     }
   }
@@ -77,8 +89,11 @@ class AppInitializer {
         options: DefaultFirebaseOptions.currentPlatform,
       );
     } catch (e, stackTrace) {
-      logger.e('[EMERGENCIA] Error inicializando Firebase',
-          error: e, stackTrace: stackTrace);
+      logger.e(
+        '[EMERGENCIA] Error inicializando Firebase',
+        error: e,
+        stackTrace: stackTrace,
+      );
       rethrow;
     }
   }
@@ -95,15 +110,21 @@ class AppInitializer {
       _initialized = false;
       logger.d('[EMERGENCIA] Recursos liberados correctamente');
     } catch (e, stackTrace) {
-      logger.e('[EMERGENCIA] Error liberando recursos', 
-          error: e, stackTrace: stackTrace);
+      logger.e(
+        '[EMERGENCIA] Error liberando recursos',
+        error: e,
+        stackTrace: stackTrace,
+      );
     }
   }
 
   /// Maneja una excepción durante la inicialización.
   void handleInitializationError(Object error, StackTrace stackTrace) {
-    logger.e('[EMERGENCIA] Error durante la inicialización',
-        error: error, stackTrace: stackTrace);
+    logger.e(
+      '[EMERGENCIA] Error durante la inicialización',
+      error: error,
+      stackTrace: stackTrace,
+    );
 
     // Intentar liberar los recursos que se hayan inicializado
     dispose();

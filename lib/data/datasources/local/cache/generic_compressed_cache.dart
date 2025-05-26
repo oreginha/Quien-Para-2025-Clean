@@ -61,10 +61,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
     required String cacheName,
     String Function(T)? serializeCallback,
     T Function(String)? deserializeCallback,
-  })  : _cacheBoxName = 'compressed_${cacheName}_cache',
-        _metadataBoxName = 'compressed_${cacheName}_metadata',
-        _serializeCallback = serializeCallback,
-        _deserializeCallback = deserializeCallback;
+  }) : _cacheBoxName = 'compressed_${cacheName}_cache',
+       _metadataBoxName = 'compressed_${cacheName}_metadata',
+       _serializeCallback = serializeCallback,
+       _deserializeCallback = deserializeCallback;
 
   @override
   bool get isAvailable => _initialized;
@@ -98,7 +98,8 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
         unawaited(_cleanExpiredCache());
 
         logger.d(
-            'GenericCompressedCache $_cacheBoxName inicializado correctamente');
+          'GenericCompressedCache $_cacheBoxName inicializado correctamente',
+        );
       }
     } catch (e) {
       logger.e('Error inicializando GenericCompressedCache:', error: e);
@@ -170,7 +171,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       _metrics.recordMetric('compression', 'original_size', originalSize);
       _metrics.recordMetric('compression', 'compressed_size', compressedSize);
       _metrics.recordMetric(
-          'compression', 'ratio', (compressedSize / originalSize) * 100);
+        'compression',
+        'ratio',
+        (compressedSize / originalSize) * 100,
+      );
 
       // Guardar métricas
       await _saveMetrics();
@@ -178,8 +182,9 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       if (kDebugMode) {
         final compressionRatio = (compressedSize / originalSize) * 100;
         print(
-            'Compresión de $key: ${compressionRatio.toStringAsFixed(1)}% del original. '
-            'Ahorro: ${(savedBytes / 1024).toStringAsFixed(1)} KB');
+          'Compresión de $key: ${compressionRatio.toStringAsFixed(1)}% del original. '
+          'Ahorro: ${(savedBytes / 1024).toStringAsFixed(1)} KB',
+        );
       }
 
       logger.d('Cacheados ${items.length} elementos en $key');
@@ -251,8 +256,9 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       _incrementAccessCount(key);
 
       // Descomprimir datos
-      final List<dynamic>? itemsJson =
-          CompressionUtils.decompressToList(compressedData);
+      final List<dynamic>? itemsJson = CompressionUtils.decompressToList(
+        compressedData,
+      );
 
       if (itemsJson == null) {
         _cacheMisses++;
@@ -268,8 +274,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       _cacheHits++;
       await _saveMetrics();
 
-      logger.d('Recuperados ${items.length} elementos desde $key '
-          '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)');
+      logger.d(
+        'Recuperados ${items.length} elementos desde $key '
+        '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)',
+      );
       return items;
     } catch (e) {
       logger.e('Error obteniendo elementos desde caché:', error: e);
@@ -293,11 +301,13 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       // Obtener todas las claves que contienen datos
       final List<String> dataKeys = box.keys
           .cast<String>()
-          .where((key) =>
-              !key.contains('_timestamp') &&
-              !key.contains('_size_original') &&
-              !key.contains('_size_compressed') &&
-              !key.contains('_duration'))
+          .where(
+            (key) =>
+                !key.contains('_timestamp') &&
+                !key.contains('_size_original') &&
+                !key.contains('_size_compressed') &&
+                !key.contains('_duration'),
+          )
           .toList();
 
       for (final String key in dataKeys) {
@@ -306,8 +316,9 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
         if (compressedData == null) continue;
 
         // Descomprimir para procesar
-        final List<dynamic>? itemsJson =
-            CompressionUtils.decompressToList(compressedData);
+        final List<dynamic>? itemsJson = CompressionUtils.decompressToList(
+          compressedData,
+        );
         if (itemsJson == null) continue;
 
         // Verificar si hay elementos para actualizar
@@ -333,8 +344,9 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
         if (needsUpdate) {
           // Volver a comprimir los datos actualizados
           final String originalData = jsonEncode(updatedItemsJson);
-          final String updatedCompressedData =
-              CompressionUtils.compressList(updatedItemsJson);
+          final String updatedCompressedData = CompressionUtils.compressList(
+            updatedItemsJson,
+          );
 
           // Actualizar tamaños para métricas
           final int originalSize = originalData.length;
@@ -409,7 +421,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       _metrics.recordMetric('cache', 'lifetime_hits', _cacheHits);
       _metrics.recordMetric('cache', 'lifetime_misses', _cacheMisses);
       _metrics.recordMetric(
-          'cache', 'lifetime_savings_kb', _compressionSavingsBytes / 1024);
+        'cache',
+        'lifetime_savings_kb',
+        _compressionSavingsBytes / 1024,
+      );
 
       // Reiniciar contadores
       _cacheHits = 0;
@@ -431,11 +446,7 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
   @override
   Future<Map<String, int>> getCacheSize() async {
     if (!isAvailable) {
-      return {
-        'raw_size': 0,
-        'compressed_size': 0,
-        'savings': 0,
-      };
+      return {'raw_size': 0, 'compressed_size': 0, 'savings': 0};
     }
 
     _metrics.startTimer('get_cache_size');
@@ -464,20 +475,25 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
 
       // Registrar métricas
       _metrics.recordMetric(
-          'cache', 'total_raw_size_kb', totalOriginalSize / 1024);
+        'cache',
+        'total_raw_size_kb',
+        totalOriginalSize / 1024,
+      );
       _metrics.recordMetric(
-          'cache', 'total_compressed_size_kb', totalCompressedSize / 1024);
-      _metrics.recordMetric('cache', 'total_savings_kb',
-          (totalOriginalSize - totalCompressedSize) / 1024);
+        'cache',
+        'total_compressed_size_kb',
+        totalCompressedSize / 1024,
+      );
+      _metrics.recordMetric(
+        'cache',
+        'total_savings_kb',
+        (totalOriginalSize - totalCompressedSize) / 1024,
+      );
 
       return results;
     } catch (e) {
       logger.e('Error calculando tamaño del caché:', error: e);
-      return {
-        'raw_size': 0,
-        'compressed_size': 0,
-        'savings': 0,
-      };
+      return {'raw_size': 0, 'compressed_size': 0, 'savings': 0};
     } finally {
       _metrics.stopTimer('get_cache_size');
     }
@@ -623,7 +639,8 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       }
 
       logger.d(
-          'Limpiadas ${keysToDelete.length ~/ 5} entradas expiradas del caché');
+        'Limpiadas ${keysToDelete.length ~/ 5} entradas expiradas del caché',
+      );
     } catch (e) {
       logger.e('Error limpiando caché expirado:', error: e);
     } finally {
@@ -715,7 +732,8 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       }
 
       logger.d(
-          'Política de invalidación aplicada: eliminadas ${keysToRemove.length ~/ 5} entradas');
+        'Política de invalidación aplicada: eliminadas ${keysToRemove.length ~/ 5} entradas',
+      );
     } catch (e) {
       logger.e('Error aplicando política de invalidación:', error: e);
     } finally {
@@ -729,8 +747,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       final Box<dynamic> box = Hive.box(_metadataBoxName);
       _cacheHits = box.get('cache_hits', defaultValue: 0);
       _cacheMisses = box.get('cache_misses', defaultValue: 0);
-      _compressionSavingsBytes =
-          box.get('compression_savings_bytes', defaultValue: 0);
+      _compressionSavingsBytes = box.get(
+        'compression_savings_bytes',
+        defaultValue: 0,
+      );
     } catch (e) {
       // Si hay un error, reiniciar métricas
       _cacheHits = 0;
@@ -752,7 +772,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
       _metrics.recordMetric('cache', 'misses', _cacheMisses);
       _metrics.recordMetric('cache', 'hit_rate', hitRate * 100);
       _metrics.recordMetric(
-          'cache', 'compression_savings_kb', _compressionSavingsBytes / 1024);
+        'cache',
+        'compression_savings_kb',
+        _compressionSavingsBytes / 1024,
+      );
     } catch (e) {
       logger.e('Error guardando métricas de caché:', error: e);
     }
@@ -761,10 +784,12 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
 
 /// Función para no esperar a que se complete una operación asíncrona
 void unawaited(Future<void> future) {
-  future.then((_) {
-    // Operación completada correctamente
-  }).catchError((error) {
-    // Capturar errores para evitar excepciones no manejadas
-    debugPrint('Unhandled async error: $error');
-  });
+  future
+      .then((_) {
+        // Operación completada correctamente
+      })
+      .catchError((error) {
+        // Capturar errores para evitar excepciones no manejadas
+        debugPrint('Unhandled async error: $error');
+      });
 }

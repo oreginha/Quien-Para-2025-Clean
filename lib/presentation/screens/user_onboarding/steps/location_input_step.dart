@@ -50,8 +50,10 @@ class _LocationInputStepState extends State<LocationInputStep> {
   @override
   void initState() {
     super.initState();
-    final String? initialLocation =
-        context.read<UserProfileBloc>().state.location;
+    final String? initialLocation = context
+        .read<UserProfileBloc>()
+        .state
+        .location;
     _locationController.text = initialLocation ?? '';
     _updateContinueButton(_locationController.text);
   }
@@ -100,8 +102,8 @@ class _LocationInputStepState extends State<LocationInputStep> {
 
       // Actualizar en el bloc
       context.read<UserProfileBloc>().add(
-            UpdateLocationEvent(_locationController.text),
-          );
+        UpdateLocationEvent(_locationController.text),
+      );
       _updateContinueButton(_locationController.text);
     }
   }
@@ -120,11 +122,7 @@ class _LocationInputStepState extends State<LocationInputStep> {
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              AppBackButton(
-                onPressed: widget.onBack,
-              ),
-            ],
+            children: [AppBackButton(onPressed: widget.onBack)],
           ),
           const SizedBox(height: 20),
 
@@ -135,16 +133,19 @@ class _LocationInputStepState extends State<LocationInputStep> {
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               decoration: BoxDecoration(
                 color: _isUsingCurrentLocation
-                    ? AppColors.getCardBackground(false)
-                        .withAlpha((255 * 0.15).round())
-                    : AppColors.getCardBackground(false)
-                        .withAlpha((255 * 0.5).round()),
+                    ? AppColors.getCardBackground(
+                        false,
+                      ).withAlpha((255 * 0.15).round())
+                    : AppColors.getCardBackground(
+                        false,
+                      ).withAlpha((255 * 0.5).round()),
                 borderRadius: BorderRadius.circular(AppRadius.button),
                 border: Border.all(
                   color: _isUsingCurrentLocation
                       ? AppColors.getBorder(false)
-                      : AppColors.getBorder(false)
-                          .withAlpha((255 * 0.3).round()),
+                      : AppColors.getBorder(
+                          false,
+                        ).withAlpha((255 * 0.3).round()),
                   width: _isUsingCurrentLocation ? 1.5 : 1,
                 ),
               ),
@@ -165,8 +166,9 @@ class _LocationInputStepState extends State<LocationInputStep> {
                           Icons.my_location,
                           color: _isUsingCurrentLocation
                               ? AppColors.getBorder(false)
-                              : AppColors.lightTextPrimary
-                                  .withAlpha((255 * 0.7).round()),
+                              : AppColors.lightTextPrimary.withAlpha(
+                                  (255 * 0.7).round(),
+                                ),
                         ),
                   const SizedBox(width: 12),
                   Expanded(
@@ -186,10 +188,7 @@ class _LocationInputStepState extends State<LocationInputStep> {
                     ),
                   ),
                   if (_isUsingCurrentLocation)
-                    Icon(
-                      Icons.check_circle,
-                      color: AppColors.success,
-                    ),
+                    Icon(Icons.check_circle, color: AppColors.success),
                 ],
               ),
             ),
@@ -256,25 +255,29 @@ class _LocationInputStepState extends State<LocationInputStep> {
                     _errorText = null;
                   });
                   context.read<UserProfileBloc>().add(
-                        UpdateLocationEvent(location),
-                      );
+                    UpdateLocationEvent(location),
+                  );
                   _updateContinueButton(location);
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   decoration: BoxDecoration(
                     color: isSelected
                         ? AppColors.getBorder(false)
-                        : AppColors.lightTextPrimary
-                            .withAlpha((255 * 0.5).round()),
+                        : AppColors.lightTextPrimary.withAlpha(
+                            (255 * 0.5).round(),
+                          ),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: isSelected
                           ? AppColors.getBorder(false)
-                          : AppColors.getBorder(false)
-                              .withAlpha((255 * 0.3).round()),
+                          : AppColors.getBorder(
+                              false,
+                            ).withAlpha((255 * 0.3).round()),
                       width: 1,
                     ),
                   ),
@@ -284,8 +287,9 @@ class _LocationInputStepState extends State<LocationInputStep> {
                       color: isSelected
                           ? AppColors.lightTextPrimary
                           : AppColors.lightTextPrimary,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
+                      fontWeight: isSelected
+                          ? FontWeight.bold
+                          : FontWeight.normal,
                       fontSize: 14,
                     ),
                   ),
@@ -298,12 +302,14 @@ class _LocationInputStepState extends State<LocationInputStep> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppColors.getCardBackground(false)
-                  .withAlpha((255 * 0.1).round()),
+              color: AppColors.getCardBackground(
+                false,
+              ).withAlpha((255 * 0.1).round()),
               borderRadius: BorderRadius.circular(AppRadius.button),
               border: Border.all(
-                color:
-                    AppColors.getBorder(false).withAlpha((255 * 0.3).round()),
+                color: AppColors.getBorder(
+                  false,
+                ).withAlpha((255 * 0.3).round()),
                 width: 1,
               ),
             ),
@@ -320,8 +326,9 @@ class _LocationInputStepState extends State<LocationInputStep> {
                   child: Text(
                     'Tu ubicación nos ayuda a mostrarte planes y personas cercanas a ti. También puedes cambiarla más adelante.',
                     style: TextStyle(
-                      color: AppColors.lightTextPrimary
-                          .withAlpha((255 * 0.8).round()),
+                      color: AppColors.lightTextPrimary.withAlpha(
+                        (255 * 0.8).round(),
+                      ),
                       fontSize: 14,
                     ),
                   ),

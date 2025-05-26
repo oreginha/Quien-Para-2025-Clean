@@ -12,7 +12,8 @@ part of 'security_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SecurityState {
@@ -26,8 +27,7 @@ mixin _$SecurityState {
     required TResult Function(List<ReportEntity> reports) userReportsLoaded,
     required TResult Function(ReportEntity report) reportStatusUpdated,
     required TResult Function(String message) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -38,8 +38,7 @@ mixin _$SecurityState {
     TResult? Function(List<ReportEntity> reports)? userReportsLoaded,
     TResult? Function(ReportEntity report)? reportStatusUpdated,
     TResult? Function(String message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -51,8 +50,7 @@ mixin _$SecurityState {
     TResult Function(ReportEntity report)? reportStatusUpdated,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SecurityInitial value) initial,
@@ -63,8 +61,7 @@ mixin _$SecurityState {
     required TResult Function(UserReportsLoaded value) userReportsLoaded,
     required TResult Function(ReportStatusUpdated value) reportStatusUpdated,
     required TResult Function(SecurityError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SecurityInitial value)? initial,
@@ -75,8 +72,7 @@ mixin _$SecurityState {
     TResult? Function(UserReportsLoaded value)? userReportsLoaded,
     TResult? Function(ReportStatusUpdated value)? reportStatusUpdated,
     TResult? Function(SecurityError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SecurityInitial value)? initial,
@@ -88,15 +84,15 @@ mixin _$SecurityState {
     TResult Function(ReportStatusUpdated value)? reportStatusUpdated,
     TResult Function(SecurityError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SecurityStateCopyWith<$Res> {
   factory $SecurityStateCopyWith(
-          SecurityState value, $Res Function(SecurityState) then) =
-      _$SecurityStateCopyWithImpl<$Res, SecurityState>;
+    SecurityState value,
+    $Res Function(SecurityState) then,
+  ) = _$SecurityStateCopyWithImpl<$Res, SecurityState>;
 }
 
 /// @nodoc
@@ -115,9 +111,10 @@ class _$SecurityStateCopyWithImpl<$Res, $Val extends SecurityState>
 
 /// @nodoc
 abstract class _$$SecurityInitialImplCopyWith<$Res> {
-  factory _$$SecurityInitialImplCopyWith(_$SecurityInitialImpl value,
-          $Res Function(_$SecurityInitialImpl) then) =
-      __$$SecurityInitialImplCopyWithImpl<$Res>;
+  factory _$$SecurityInitialImplCopyWith(
+    _$SecurityInitialImpl value,
+    $Res Function(_$SecurityInitialImpl) then,
+  ) = __$$SecurityInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -125,8 +122,9 @@ class __$$SecurityInitialImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$SecurityInitialImpl>
     implements _$$SecurityInitialImplCopyWith<$Res> {
   __$$SecurityInitialImplCopyWithImpl(
-      _$SecurityInitialImpl _value, $Res Function(_$SecurityInitialImpl) _then)
-      : super(_value, _then);
+    _$SecurityInitialImpl _value,
+    $Res Function(_$SecurityInitialImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
@@ -256,9 +254,10 @@ abstract class SecurityInitial implements SecurityState {
 
 /// @nodoc
 abstract class _$$SecurityLoadingImplCopyWith<$Res> {
-  factory _$$SecurityLoadingImplCopyWith(_$SecurityLoadingImpl value,
-          $Res Function(_$SecurityLoadingImpl) then) =
-      __$$SecurityLoadingImplCopyWithImpl<$Res>;
+  factory _$$SecurityLoadingImplCopyWith(
+    _$SecurityLoadingImpl value,
+    $Res Function(_$SecurityLoadingImpl) then,
+  ) = __$$SecurityLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -266,8 +265,9 @@ class __$$SecurityLoadingImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$SecurityLoadingImpl>
     implements _$$SecurityLoadingImplCopyWith<$Res> {
   __$$SecurityLoadingImplCopyWithImpl(
-      _$SecurityLoadingImpl _value, $Res Function(_$SecurityLoadingImpl) _then)
-      : super(_value, _then);
+    _$SecurityLoadingImpl _value,
+    $Res Function(_$SecurityLoadingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
@@ -398,8 +398,9 @@ abstract class SecurityLoading implements SecurityState {
 /// @nodoc
 abstract class _$$ReportCreatedImplCopyWith<$Res> {
   factory _$$ReportCreatedImplCopyWith(
-          _$ReportCreatedImpl value, $Res Function(_$ReportCreatedImpl) then) =
-      __$$ReportCreatedImplCopyWithImpl<$Res>;
+    _$ReportCreatedImpl value,
+    $Res Function(_$ReportCreatedImpl) then,
+  ) = __$$ReportCreatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ReportEntity report});
 
@@ -411,22 +412,23 @@ class __$$ReportCreatedImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$ReportCreatedImpl>
     implements _$$ReportCreatedImplCopyWith<$Res> {
   __$$ReportCreatedImplCopyWithImpl(
-      _$ReportCreatedImpl _value, $Res Function(_$ReportCreatedImpl) _then)
-      : super(_value, _then);
+    _$ReportCreatedImpl _value,
+    $Res Function(_$ReportCreatedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? report = null,
-  }) {
-    return _then(_$ReportCreatedImpl(
-      null == report
-          ? _value.report
-          : report // ignore: cast_nullable_to_non_nullable
-              as ReportEntity,
-    ));
+  $Res call({Object? report = null}) {
+    return _then(
+      _$ReportCreatedImpl(
+        null == report
+            ? _value.report
+            : report // ignore: cast_nullable_to_non_nullable
+                  as ReportEntity,
+      ),
+    );
   }
 
   /// Create a copy of SecurityState
@@ -586,8 +588,9 @@ abstract class ReportCreated implements SecurityState {
 /// @nodoc
 abstract class _$$UserBlockedImplCopyWith<$Res> {
   factory _$$UserBlockedImplCopyWith(
-          _$UserBlockedImpl value, $Res Function(_$UserBlockedImpl) then) =
-      __$$UserBlockedImplCopyWithImpl<$Res>;
+    _$UserBlockedImpl value,
+    $Res Function(_$UserBlockedImpl) then,
+  ) = __$$UserBlockedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -595,8 +598,9 @@ class __$$UserBlockedImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$UserBlockedImpl>
     implements _$$UserBlockedImplCopyWith<$Res> {
   __$$UserBlockedImplCopyWithImpl(
-      _$UserBlockedImpl _value, $Res Function(_$UserBlockedImpl) _then)
-      : super(_value, _then);
+    _$UserBlockedImpl _value,
+    $Res Function(_$UserBlockedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
@@ -726,9 +730,10 @@ abstract class UserBlocked implements SecurityState {
 
 /// @nodoc
 abstract class _$$PendingReportsLoadedImplCopyWith<$Res> {
-  factory _$$PendingReportsLoadedImplCopyWith(_$PendingReportsLoadedImpl value,
-          $Res Function(_$PendingReportsLoadedImpl) then) =
-      __$$PendingReportsLoadedImplCopyWithImpl<$Res>;
+  factory _$$PendingReportsLoadedImplCopyWith(
+    _$PendingReportsLoadedImpl value,
+    $Res Function(_$PendingReportsLoadedImpl) then,
+  ) = __$$PendingReportsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ReportEntity> reports});
 }
@@ -737,23 +742,24 @@ abstract class _$$PendingReportsLoadedImplCopyWith<$Res> {
 class __$$PendingReportsLoadedImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$PendingReportsLoadedImpl>
     implements _$$PendingReportsLoadedImplCopyWith<$Res> {
-  __$$PendingReportsLoadedImplCopyWithImpl(_$PendingReportsLoadedImpl _value,
-      $Res Function(_$PendingReportsLoadedImpl) _then)
-      : super(_value, _then);
+  __$$PendingReportsLoadedImplCopyWithImpl(
+    _$PendingReportsLoadedImpl _value,
+    $Res Function(_$PendingReportsLoadedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reports = null,
-  }) {
-    return _then(_$PendingReportsLoadedImpl(
-      null == reports
-          ? _value._reports
-          : reports // ignore: cast_nullable_to_non_nullable
-              as List<ReportEntity>,
-    ));
+  $Res call({Object? reports = null}) {
+    return _then(
+      _$PendingReportsLoadedImpl(
+        null == reports
+            ? _value._reports
+            : reports // ignore: cast_nullable_to_non_nullable
+                  as List<ReportEntity>,
+      ),
+    );
   }
 }
 
@@ -761,7 +767,7 @@ class __$$PendingReportsLoadedImplCopyWithImpl<$Res>
 
 class _$PendingReportsLoadedImpl implements PendingReportsLoaded {
   const _$PendingReportsLoadedImpl(final List<ReportEntity> reports)
-      : _reports = reports;
+    : _reports = reports;
 
   final List<ReportEntity> _reports;
   @override
@@ -794,9 +800,11 @@ class _$PendingReportsLoadedImpl implements PendingReportsLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$PendingReportsLoadedImplCopyWith<_$PendingReportsLoadedImpl>
-      get copyWith =>
-          __$$PendingReportsLoadedImplCopyWithImpl<_$PendingReportsLoadedImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$PendingReportsLoadedImplCopyWithImpl<_$PendingReportsLoadedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -907,14 +915,15 @@ abstract class PendingReportsLoaded implements SecurityState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PendingReportsLoadedImplCopyWith<_$PendingReportsLoadedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UserReportsLoadedImplCopyWith<$Res> {
-  factory _$$UserReportsLoadedImplCopyWith(_$UserReportsLoadedImpl value,
-          $Res Function(_$UserReportsLoadedImpl) then) =
-      __$$UserReportsLoadedImplCopyWithImpl<$Res>;
+  factory _$$UserReportsLoadedImplCopyWith(
+    _$UserReportsLoadedImpl value,
+    $Res Function(_$UserReportsLoadedImpl) then,
+  ) = __$$UserReportsLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ReportEntity> reports});
 }
@@ -923,23 +932,24 @@ abstract class _$$UserReportsLoadedImplCopyWith<$Res> {
 class __$$UserReportsLoadedImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$UserReportsLoadedImpl>
     implements _$$UserReportsLoadedImplCopyWith<$Res> {
-  __$$UserReportsLoadedImplCopyWithImpl(_$UserReportsLoadedImpl _value,
-      $Res Function(_$UserReportsLoadedImpl) _then)
-      : super(_value, _then);
+  __$$UserReportsLoadedImplCopyWithImpl(
+    _$UserReportsLoadedImpl _value,
+    $Res Function(_$UserReportsLoadedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reports = null,
-  }) {
-    return _then(_$UserReportsLoadedImpl(
-      null == reports
-          ? _value._reports
-          : reports // ignore: cast_nullable_to_non_nullable
-              as List<ReportEntity>,
-    ));
+  $Res call({Object? reports = null}) {
+    return _then(
+      _$UserReportsLoadedImpl(
+        null == reports
+            ? _value._reports
+            : reports // ignore: cast_nullable_to_non_nullable
+                  as List<ReportEntity>,
+      ),
+    );
   }
 }
 
@@ -947,7 +957,7 @@ class __$$UserReportsLoadedImplCopyWithImpl<$Res>
 
 class _$UserReportsLoadedImpl implements UserReportsLoaded {
   const _$UserReportsLoadedImpl(final List<ReportEntity> reports)
-      : _reports = reports;
+    : _reports = reports;
 
   final List<ReportEntity> _reports;
   @override
@@ -981,7 +991,9 @@ class _$UserReportsLoadedImpl implements UserReportsLoaded {
   @pragma('vm:prefer-inline')
   _$$UserReportsLoadedImplCopyWith<_$UserReportsLoadedImpl> get copyWith =>
       __$$UserReportsLoadedImplCopyWithImpl<_$UserReportsLoadedImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1097,9 +1109,10 @@ abstract class UserReportsLoaded implements SecurityState {
 
 /// @nodoc
 abstract class _$$ReportStatusUpdatedImplCopyWith<$Res> {
-  factory _$$ReportStatusUpdatedImplCopyWith(_$ReportStatusUpdatedImpl value,
-          $Res Function(_$ReportStatusUpdatedImpl) then) =
-      __$$ReportStatusUpdatedImplCopyWithImpl<$Res>;
+  factory _$$ReportStatusUpdatedImplCopyWith(
+    _$ReportStatusUpdatedImpl value,
+    $Res Function(_$ReportStatusUpdatedImpl) then,
+  ) = __$$ReportStatusUpdatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ReportEntity report});
 
@@ -1110,23 +1123,24 @@ abstract class _$$ReportStatusUpdatedImplCopyWith<$Res> {
 class __$$ReportStatusUpdatedImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$ReportStatusUpdatedImpl>
     implements _$$ReportStatusUpdatedImplCopyWith<$Res> {
-  __$$ReportStatusUpdatedImplCopyWithImpl(_$ReportStatusUpdatedImpl _value,
-      $Res Function(_$ReportStatusUpdatedImpl) _then)
-      : super(_value, _then);
+  __$$ReportStatusUpdatedImplCopyWithImpl(
+    _$ReportStatusUpdatedImpl _value,
+    $Res Function(_$ReportStatusUpdatedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? report = null,
-  }) {
-    return _then(_$ReportStatusUpdatedImpl(
-      null == report
-          ? _value.report
-          : report // ignore: cast_nullable_to_non_nullable
-              as ReportEntity,
-    ));
+  $Res call({Object? report = null}) {
+    return _then(
+      _$ReportStatusUpdatedImpl(
+        null == report
+            ? _value.report
+            : report // ignore: cast_nullable_to_non_nullable
+                  as ReportEntity,
+      ),
+    );
   }
 
   /// Create a copy of SecurityState
@@ -1171,7 +1185,9 @@ class _$ReportStatusUpdatedImpl implements ReportStatusUpdated {
   @pragma('vm:prefer-inline')
   _$$ReportStatusUpdatedImplCopyWith<_$ReportStatusUpdatedImpl> get copyWith =>
       __$$ReportStatusUpdatedImplCopyWithImpl<_$ReportStatusUpdatedImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1288,8 +1304,9 @@ abstract class ReportStatusUpdated implements SecurityState {
 /// @nodoc
 abstract class _$$SecurityErrorImplCopyWith<$Res> {
   factory _$$SecurityErrorImplCopyWith(
-          _$SecurityErrorImpl value, $Res Function(_$SecurityErrorImpl) then) =
-      __$$SecurityErrorImplCopyWithImpl<$Res>;
+    _$SecurityErrorImpl value,
+    $Res Function(_$SecurityErrorImpl) then,
+  ) = __$$SecurityErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -1299,22 +1316,23 @@ class __$$SecurityErrorImplCopyWithImpl<$Res>
     extends _$SecurityStateCopyWithImpl<$Res, _$SecurityErrorImpl>
     implements _$$SecurityErrorImplCopyWith<$Res> {
   __$$SecurityErrorImplCopyWithImpl(
-      _$SecurityErrorImpl _value, $Res Function(_$SecurityErrorImpl) _then)
-      : super(_value, _then);
+    _$SecurityErrorImpl _value,
+    $Res Function(_$SecurityErrorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$SecurityErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$SecurityErrorImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 

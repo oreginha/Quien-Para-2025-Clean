@@ -7,11 +7,7 @@ class BottomNavItem {
   final String label;
   final String route;
 
-  BottomNavItem({
-    required this.icon,
-    required this.label,
-    required this.route,
-  });
+  BottomNavItem({required this.icon, required this.label, required this.route});
 }
 
 class ThemeAwareBottomNav extends StatelessWidget {
@@ -63,8 +59,10 @@ class ThemeAwareBottomNav extends StatelessWidget {
                 onTap: () => onTap(index),
                 behavior: HitTestBehavior.opaque,
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -75,8 +73,9 @@ class ThemeAwareBottomNav extends StatelessWidget {
                         decoration: isSelected
                             ? BoxDecoration(
                                 shape: BoxShape.circle,
-                                color:
-                                    activeColor.withAlpha((0.2 * 255).round()),
+                                color: activeColor.withAlpha(
+                                  (0.2 * 255).round(),
+                                ),
                               )
                             : null,
                         child: Center(
@@ -94,8 +93,9 @@ class ThemeAwareBottomNav extends StatelessWidget {
                         style: TextStyle(
                           color: isSelected ? activeColor : inactiveIconColor,
                           fontSize: 12,
-                          fontWeight:
-                              isSelected ? FontWeight.bold : FontWeight.normal,
+                          fontWeight: isSelected
+                              ? FontWeight.bold
+                              : FontWeight.normal,
                         ),
                       ),
                       // Punto indicador para ítem activo (para modo claro)
@@ -107,7 +107,11 @@ class ThemeAwareBottomNav extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: activeColor.withValues(
-                                red: 255, green: 193, blue: 7, alpha: 51),
+                              red: 255,
+                              green: 193,
+                              blue: 7,
+                              alpha: 51,
+                            ),
                           ),
                         ),
                     ],

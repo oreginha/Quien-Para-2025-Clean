@@ -43,7 +43,9 @@ class MockAuthRepository implements AuthRepository {
 
   @override
   Future<UserEntity> signInWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     return UserEntity.empty();
   }
 
@@ -57,7 +59,10 @@ class MockAuthRepository implements AuthRepository {
 
   @override
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name) async {
+    String email,
+    String password,
+    String name,
+  ) async {
     return UserEntity.empty();
   }
 
@@ -80,12 +85,12 @@ class MockAuthCubitImpl extends AuthCubit {
   }
 
   MockAuthCubitImpl._()
-      : super(
-          // Pasar el repositorio mock
-          MockAuthRepository(),
-          // Pasar la instancia ya inicializada de SharedPreferences
-          _sharedPrefs,
-        ) {
+    : super(
+        // Pasar el repositorio mock
+        MockAuthRepository(),
+        // Pasar la instancia ya inicializada de SharedPreferences
+        _sharedPrefs,
+      ) {
     if (kDebugMode) {
       print('🔴 [EMERGENCIA] MockAuthCubitImpl inicializado');
     }

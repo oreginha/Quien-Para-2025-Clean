@@ -61,11 +61,7 @@ class ChatMessageMapper {
     MessageType type = MessageType.text,
   }) {
     return entities
-        .map((entity) => fromEntity(
-              entity,
-              chatId: chatId,
-              type: type,
-            ))
+        .map((entity) => fromEntity(entity, chatId: chatId, type: type))
         .toList();
   }
 }

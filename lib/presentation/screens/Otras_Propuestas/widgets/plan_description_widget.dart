@@ -24,9 +24,9 @@ class PlanDescriptionWidget extends StatelessWidget {
         // Título de la sección
         Text(
           'Descripción',
-          style: AppTypography.heading2(isDarkMode).copyWith(
-            color: AppColors.brandYellow,
-          ),
+          style: AppTypography.heading2(
+            isDarkMode,
+          ).copyWith(color: AppColors.brandYellow),
         ),
         SizedBox(height: AppSpacing.xxl),
 
@@ -38,8 +38,9 @@ class PlanDescriptionWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.l),
             boxShadow: [
               BoxShadow(
-                color: AppColors.getCardBackground(isDarkMode)
-                    .withAlpha((0.2 * 255).round()),
+                color: AppColors.getCardBackground(
+                  isDarkMode,
+                ).withAlpha((0.2 * 255).round()),
                 blurRadius: 6,
                 offset: const Offset(0, 3),
               ),

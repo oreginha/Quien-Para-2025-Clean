@@ -53,13 +53,7 @@ class _GenderInputStepState extends State<GenderInputStep> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            children: [
-              AppBackButton(
-                onPressed: widget.onBack,
-              ),
-            ],
-          ),
+          child: Row(children: [AppBackButton(onPressed: widget.onBack)]),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

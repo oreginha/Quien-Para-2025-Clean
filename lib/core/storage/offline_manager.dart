@@ -206,7 +206,8 @@ class OfflineManager {
 
       if (kDebugMode && removedCount > 0) {
         print(
-            '🧹 Limpieza de caché: $removedCount elementos expirados eliminados');
+          '🧹 Limpieza de caché: $removedCount elementos expirados eliminados',
+        );
       }
 
       return removedCount;

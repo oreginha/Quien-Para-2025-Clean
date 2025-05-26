@@ -39,7 +39,10 @@ class DIValidator {
 
   /// Verifica dependencias específicas requeridas para un componente
   static void validateDependenciesFor(
-      String component, GetIt container, List<Type> requiredTypes) {
+    String component,
+    GetIt container,
+    List<Type> requiredTypes,
+  ) {
     DILogger.debug('Validando dependencias para: $component');
 
     final result = areTypesRegistered(container, requiredTypes);
@@ -48,7 +51,8 @@ class DIValidator {
       DILogger.success('Validación exitosa para: $component');
     } else {
       DILogger.error(
-          'Validación fallida para: $component - Dependencias faltantes');
+        'Validación fallida para: $component - Dependencias faltantes',
+      );
     }
   }
 
@@ -59,10 +63,12 @@ class DIValidator {
 
       if (container.allReadySync()) {
         DILogger.info(
-            'El contenedor está listo. No es posible listar los tipos registrados directamente porque GetIt no expone esta información públicamente.');
+          'El contenedor está listo. No es posible listar los tipos registrados directamente porque GetIt no expone esta información públicamente.',
+        );
       } else {
         DILogger.warning(
-            'El contenedor no está listo. No es posible listar los tipos registrados.');
+          'El contenedor no está listo. No es posible listar los tipos registrados.',
+        );
       }
       DILogger.success('Estado del contenedor volcado correctamente');
     } catch (e) {

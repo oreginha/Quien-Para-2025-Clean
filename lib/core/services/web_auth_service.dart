@@ -31,31 +31,43 @@ class WebAuthService {
       final dynamic window = html.window;
 
       // Manejar evento de visibilidad cambiada
-      js_util.setProperty(window, 'onpagehide', js_util.allowInterop((event) {
-        if (kDebugMode) {
-          print('🕜 WebAuthService: Evento onpagehide detectado');
-        }
-      }));
+      js_util.setProperty(
+        window,
+        'onpagehide',
+        js_util.allowInterop((event) {
+          if (kDebugMode) {
+            print('🕜 WebAuthService: Evento onpagehide detectado');
+          }
+        }),
+      );
 
       // Manejar evento de visibilidad restaurada
-      js_util.setProperty(window, 'onpageshow', js_util.allowInterop((event) {
-        if (kDebugMode) {
-          print('🕜 WebAuthService: Evento onpageshow detectado');
-        }
+      js_util.setProperty(
+        window,
+        'onpageshow',
+        js_util.allowInterop((event) {
+          if (kDebugMode) {
+            print('🕜 WebAuthService: Evento onpageshow detectado');
+          }
 
-        // Verificar si hay que volver a comprobar el resultado de redirección
-        _checkRedirectResult();
-      }));
+          // Verificar si hay que volver a comprobar el resultado de redirección
+          _checkRedirectResult();
+        }),
+      );
 
       // Manejar evento de foco restaurado
-      js_util.setProperty(window, 'onfocus', js_util.allowInterop((event) {
-        if (kDebugMode) {
-          print('🕜 WebAuthService: Evento onfocus detectado');
-        }
+      js_util.setProperty(
+        window,
+        'onfocus',
+        js_util.allowInterop((event) {
+          if (kDebugMode) {
+            print('🕜 WebAuthService: Evento onfocus detectado');
+          }
 
-        // Verificar si hay que volver a comprobar el resultado de redirección
-        _checkRedirectResult();
-      }));
+          // Verificar si hay que volver a comprobar el resultado de redirección
+          _checkRedirectResult();
+        }),
+      );
 
       if (kDebugMode) {
         print('✅ WebAuthService: Listeners de ciclo de vida configurados');
@@ -63,7 +75,8 @@ class WebAuthService {
     } catch (e) {
       if (kDebugMode) {
         print(
-            '❌ WebAuthService: Error configurando listeners de ciclo de vida: $e');
+          '❌ WebAuthService: Error configurando listeners de ciclo de vida: $e',
+        );
       }
     }
   }
@@ -85,10 +98,7 @@ class WebAuthService {
         await _saveUserData(result);
 
         // Notificar el cambio de estado
-        _authChangeController.add({
-          'authenticated': true,
-          'user': result,
-        });
+        _authChangeController.add({'authenticated': true, 'user': result});
       } else if (result != null && result['status'] == 'cancelled') {
         if (kDebugMode) {
           print('✖️ Autenticación cancelada tras redirección');
@@ -186,7 +196,8 @@ class WebAuthService {
             if (result != null && result['status'] == 'success') {
               if (kDebugMode) {
                 print(
-                    '✅ Se detectó un inicio de sesión exitoso tras redirección');
+                  '✅ Se detectó un inicio de sesión exitoso tras redirección',
+                );
               }
               // Guardar información del usuario autenticado
               await _saveUserData(result);
@@ -317,8 +328,11 @@ class WebAuthService {
 
       attempts++;
       if (attempts >= maxAttempts) {
-        completer.completeError(Exception(
-            'authWeb no está disponible después de $maxAttempts intentos'));
+        completer.completeError(
+          Exception(
+            'authWeb no está disponible después de $maxAttempts intentos',
+          ),
+        );
         return;
       }
 
@@ -332,8 +346,10 @@ class WebAuthService {
   }
 
   /// Llamar a un método JavaScript del objeto authWeb
-  Future<Map<String, dynamic>?> _callAuthMethod(String methodName,
-      [List<dynamic>? args]) async {
+  Future<Map<String, dynamic>?> _callAuthMethod(
+    String methodName, [
+    List<dynamic>? args,
+  ]) async {
     if (!_isInitialized) await initialize();
 
     try {
@@ -347,8 +363,9 @@ class WebAuthService {
       }
 
       // Llamar al método JavaScript
-      final dynamic result = await js_util
-          .promiseToFuture(js_util.callMethod(authWeb, methodName, args ?? []));
+      final dynamic result = await js_util.promiseToFuture(
+        js_util.callMethod(authWeb, methodName, args ?? []),
+      );
 
       // Convertir resultado a Map
       if (result == null) return null;
@@ -369,11 +386,13 @@ class WebAuthService {
     try {
       if (kDebugMode) {
         print(
-            '🔄 Iniciando sesión con Google usando WebAuthService (redirección)');
+          '🔄 Iniciando sesión con Google usando WebAuthService (redirección)',
+        );
       }
 
       // Llamar a signInWithGoogle en JavaScript
-      final response = await _callAuthMethod('signInWithGoogle') ??
+      final response =
+          await _callAuthMethod('signInWithGoogle') ??
           {'status': 'error', 'error': 'No response'};
 
       // Si es una cancelación, manejarla adecuadamente
@@ -394,7 +413,8 @@ class WebAuthService {
 
         if (kDebugMode) {
           print(
-              '✅ Autenticación web exitosa: ${response['name']} (${response['email']})');
+            '✅ Autenticación web exitosa: ${response['name']} (${response['email']})',
+          );
         }
       }
 
@@ -412,7 +432,7 @@ class WebAuthService {
         return {
           'status': 'cancelled',
           'message': 'Inicio de sesión cancelado',
-          'code': 'popup_closed'
+          'code': 'popup_closed',
         };
       }
 
@@ -451,10 +471,7 @@ class WebAuthService {
       await _prefs?.remove('web_auth_user');
 
       // Notificar cambio de estado
-      _authChangeController.add({
-        'authenticated': false,
-        'user': null,
-      });
+      _authChangeController.add({'authenticated': false, 'user': null});
 
       if (kDebugMode) {
         print('✅ Cierre de sesión web exitoso');

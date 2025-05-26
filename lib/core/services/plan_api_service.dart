@@ -7,7 +7,7 @@ class PlanApiService {
   final FirebaseFirestore _firestore;
 
   PlanApiService([FirebaseFirestore? firestore])
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+    : _firestore = firestore ?? FirebaseFirestore.instance;
 
   /// Obtiene un plan por su ID
   Future<DocumentSnapshot> getById(String id) async {

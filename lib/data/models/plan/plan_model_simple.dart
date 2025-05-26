@@ -38,20 +38,20 @@ class PlanModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        title,
-        description,
-        imageUrl,
-        creatorId,
-        date,
-        likes,
-        category,
-        location,
-        conditions,
-        selectedThemes,
-        createdAt,
-        esVisible,
-      ];
+    id,
+    title,
+    description,
+    imageUrl,
+    creatorId,
+    date,
+    likes,
+    category,
+    location,
+    conditions,
+    selectedThemes,
+    createdAt,
+    esVisible,
+  ];
 
   factory PlanModel.fromJson(Map<String, dynamic> json) {
     final prepared = _prepareJson(json);
@@ -67,9 +67,11 @@ class PlanModel extends Equatable {
       category: (prepared['category'] as String?) ?? '',
       location: (prepared['location'] as String?) ?? '',
       conditions: Map<String, String>.from(
-          (prepared['conditions'] as Map<String, dynamic>?) ?? {}),
+        (prepared['conditions'] as Map<String, dynamic>?) ?? {},
+      ),
       selectedThemes: List<String>.from(
-          (prepared['selectedThemes'] as List<dynamic>?) ?? []),
+        (prepared['selectedThemes'] as List<dynamic>?) ?? [],
+      ),
       createdAt: prepared['createdAt'] as String?,
       esVisible: (prepared['esVisible'] as bool?) ?? true,
     );
@@ -97,8 +99,9 @@ class PlanModel extends Equatable {
     final Map<String, dynamic> prepared = Map<String, dynamic>.from(json);
 
     if (prepared['date'] is Timestamp) {
-      prepared['date'] =
-          (prepared['date'] as Timestamp).toDate().toIso8601String();
+      prepared['date'] = (prepared['date'] as Timestamp)
+          .toDate()
+          .toIso8601String();
     } else if (prepared['date'] is String) {
       try {
         DateTime.parse(prepared['date'] as String);
@@ -117,7 +120,8 @@ class PlanModel extends Equatable {
 
     if (prepared['conditions'] != null && prepared['conditions'] is Map) {
       prepared['conditions'] = (prepared['conditions'] as Map).map(
-          (key, value) => MapEntry(key.toString(), value?.toString() ?? ''));
+        (key, value) => MapEntry(key.toString(), value?.toString() ?? ''),
+      );
     }
 
     if (prepared['selectedThemes'] != null &&

@@ -46,10 +46,7 @@ class PlanValidator {
 
     // Si hay errores, lanzar excepción
     if (errors.isNotEmpty) {
-      throw ValidationException(
-        'Plan validation failed',
-        data: errors,
-      );
+      throw ValidationException('Plan validation failed', data: errors);
     }
   }
 

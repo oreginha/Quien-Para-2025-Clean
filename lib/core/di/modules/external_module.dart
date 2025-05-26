@@ -42,7 +42,8 @@ class ExternalModule implements DIModule {
 
     if (kDebugMode) {
       print(
-          '✅ Recursos del módulo de Servicios Externos liberados exitosamente');
+        '✅ Recursos del módulo de Servicios Externos liberados exitosamente',
+      );
     }
   }
 
@@ -50,7 +51,8 @@ class ExternalModule implements DIModule {
   Future<void> registerTestDependencies(GetIt container) async {
     if (kDebugMode) {
       print(
-          '📣 Registrando dependencias de prueba para módulo de Servicios Externos');
+        '📣 Registrando dependencias de prueba para módulo de Servicios Externos',
+      );
     }
 
     // Registrar Dio con interceptores para pruebas
@@ -69,14 +71,16 @@ class ExternalModule implements DIModule {
           onResponse: (response, handler) {
             if (kDebugMode) {
               print(
-                  'Respuesta de prueba recibida de: ${response.requestOptions.uri}');
+                'Respuesta de prueba recibida de: ${response.requestOptions.uri}',
+              );
             }
             handler.next(response);
           },
           onError: (DioException error, handler) {
             if (kDebugMode) {
               print(
-                  'Error de prueba en solicitud a: ${error.requestOptions.uri}');
+                'Error de prueba en solicitud a: ${error.requestOptions.uri}',
+              );
             }
             handler.next(error);
           },
@@ -88,7 +92,8 @@ class ExternalModule implements DIModule {
 
     if (kDebugMode) {
       print(
-          '✅ Dependencias de prueba para módulo de Servicios Externos registradas exitosamente');
+        '✅ Dependencias de prueba para módulo de Servicios Externos registradas exitosamente',
+      );
     }
   }
 }

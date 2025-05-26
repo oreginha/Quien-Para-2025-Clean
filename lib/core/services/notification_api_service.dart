@@ -47,11 +47,13 @@ class NotificationApiService {
       );
 
       _logger.d(
-          'Notification permissions status: ${settings.authorizationStatus}');
+        'Notification permissions status: ${settings.authorizationStatus}',
+      );
 
       // Inicializar notificaciones locales
-      const initializationSettingsAndroid =
-          AndroidInitializationSettings('@mipmap/ic_launcher');
+      const initializationSettingsAndroid = AndroidInitializationSettings(
+        '@mipmap/ic_launcher',
+      );
       const initializationSettingsIOS = DarwinInitializationSettings();
       const initializationSettings = InitializationSettings(
         android: initializationSettingsAndroid,
@@ -103,7 +105,8 @@ class NotificationApiService {
 
   /// Envía una notificación a un usuario específico
   Future<NotificationEntity> sendNotification(
-      NotificationEntity notification) async {
+    NotificationEntity notification,
+  ) async {
     try {
       _logger.d('Sending notification to user: ${notification.userId}');
 

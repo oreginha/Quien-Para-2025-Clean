@@ -14,7 +14,7 @@ enum PlanCardType {
   myPlan,
 
   /// Para mostrar planes a los que el usuario se ha postulado
-  myApplication
+  myApplication,
 }
 
 /// Widget reutilizable para mostrar tarjetas de planes

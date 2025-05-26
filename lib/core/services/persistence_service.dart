@@ -20,15 +20,17 @@ class PersistenceService implements PersistenceInterface {
     required final SharedPreferences prefs,
     required final FirebaseFirestore firestore,
     required final Connectivity connectivity,
-  })  : _prefs = prefs,
-        _firestore = firestore,
-        _connectivity = connectivity {
+  }) : _prefs = prefs,
+       _firestore = firestore,
+       _connectivity = connectivity {
     _startSyncMonitoring();
   }
 
   @override
   Future<void> savePendingMetric(
-      final String city, final bool wasEnabled) async {
+    final String city,
+    final bool wasEnabled,
+  ) async {
     try {
       final List<Map<String, dynamic>> metrics = await getPendingMetrics();
       metrics.add(<String, dynamic>{
@@ -53,7 +55,8 @@ class PersistenceService implements PersistenceInterface {
       return [];
     }
     return List<Map<String, dynamic>>.from(
-        json.decode(metricsJson) as List<dynamic>);
+      json.decode(metricsJson) as List<dynamic>,
+    );
   }
 
   Future<void> _syncPendingMetrics() async {
@@ -73,11 +76,12 @@ class PersistenceService implements PersistenceInterface {
             .collection('cityMetrics')
             .doc(metric['city'].toString())
             .set({
-          'totalAttempts': FieldValue.increment(1),
-          'successfulSelections':
-              FieldValue.increment((metric['wasEnabled'] as bool) ? 1 : 0),
-          'lastUpdated': FieldValue.serverTimestamp(),
-        }, SetOptions(merge: true));
+              'totalAttempts': FieldValue.increment(1),
+              'successfulSelections': FieldValue.increment(
+                (metric['wasEnabled'] as bool) ? 1 : 0,
+              ),
+              'lastUpdated': FieldValue.serverTimestamp(),
+            }, SetOptions(merge: true));
       }
 
       await _prefs.setString(_metricsKey, json.encode([]));
@@ -89,8 +93,9 @@ class PersistenceService implements PersistenceInterface {
   }
 
   void _startSyncMonitoring() {
-    _connectivity.onConnectivityChanged
-        .listen((final List<ConnectivityResult> result) {
+    _connectivity.onConnectivityChanged.listen((
+      final List<ConnectivityResult> result,
+    ) {
       if (result.isNotEmpty && !result.contains(ConnectivityResult.none)) {
         _syncPendingMetrics();
       }

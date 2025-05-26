@@ -61,9 +61,9 @@ class ErrorHandler extends StatelessWidget {
             Text(
               title ?? _getTitleForErrorType(),
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: _getColorForErrorType(),
-                    fontWeight: FontWeight.bold,
-                  ),
+                color: _getColorForErrorType(),
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.center,
             ),
 
@@ -72,9 +72,9 @@ class ErrorHandler extends StatelessWidget {
             // Descripción del error
             Text(
               description ?? errorMessage,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.grey[200],
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: Colors.grey[200]),
               textAlign: TextAlign.center,
             ),
 

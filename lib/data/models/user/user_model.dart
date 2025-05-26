@@ -41,10 +41,12 @@ extension UserModelX on UserModel {
     return UserModel.fromJson({
       'id': id,
       ...data,
-      'createdAt':
-          (data['createdAt'] as Timestamp?)?.toDate().toIso8601String(),
-      'lastLogin':
-          (data['lastLogin'] as Timestamp?)?.toDate().toIso8601String(),
+      'createdAt': (data['createdAt'] as Timestamp?)
+          ?.toDate()
+          .toIso8601String(),
+      'lastLogin': (data['lastLogin'] as Timestamp?)
+          ?.toDate()
+          .toIso8601String(),
     });
   }
 }

@@ -29,8 +29,10 @@ class ApplicationsTracker {
     _state['navigation_started'] = true;
     _state['navigation_timestamp'] = DateTime.now().millisecondsSinceEpoch;
 
-    diagnostics.navigation('Navegación iniciada a MyApplicationsScreen',
-        details: 'userId: $userId');
+    diagnostics.navigation(
+      'Navegación iniciada a MyApplicationsScreen',
+      details: 'userId: $userId',
+    );
   }
 
   /// Registrar la construcción de la pantalla
@@ -52,8 +54,10 @@ class ApplicationsTracker {
     _state['data_requested'] = true;
     _state['data_requested_timestamp'] = DateTime.now().millisecondsSinceEpoch;
 
-    diagnostics.data('Solicitud de aplicaciones enviada',
-        details: 'userId: ${userId ?? "current"}');
+    diagnostics.data(
+      'Solicitud de aplicaciones enviada',
+      details: 'userId: ${userId ?? "current"}',
+    );
   }
 
   /// Registrar la recepción de datos
@@ -65,8 +69,10 @@ class ApplicationsTracker {
     final int elapsed =
         _state['data_received_timestamp'] - _state['data_requested_timestamp'];
 
-    diagnostics.data('Aplicaciones recibidas: $count',
-        details: 'Tiempo: ${elapsed}ms');
+    diagnostics.data(
+      'Aplicaciones recibidas: $count',
+      details: 'Tiempo: ${elapsed}ms',
+    );
   }
 
   /// Registrar el inicio de carga de planes
@@ -100,8 +106,10 @@ class ApplicationsTracker {
     final int totalElapsed =
         _state['render_completed_timestamp'] - _state['navigation_timestamp'];
 
-    diagnostics.ui('Renderizado de aplicaciones completado',
-        details: 'Tiempo total: ${totalElapsed}ms');
+    diagnostics.ui(
+      'Renderizado de aplicaciones completado',
+      details: 'Tiempo total: ${totalElapsed}ms',
+    );
   }
 
   /// Registrar estado del bloc
@@ -130,7 +138,8 @@ class ApplicationsTracker {
     buffer.writeln('Datos solicitados: ${_state['data_requested']}');
     buffer.writeln('Datos recibidos: ${_state['data_received']}');
     buffer.writeln(
-        'Carga de planes iniciada: ${_state['plans_loading_started']}');
+      'Carga de planes iniciada: ${_state['plans_loading_started']}',
+    );
     buffer.writeln('Planes cargados: ${_state['plans_loaded']}');
     buffer.writeln('Renderizado iniciado: ${_state['render_started']}');
     buffer.writeln('Renderizado completado: ${_state['render_completed']}');
@@ -149,9 +158,11 @@ class ApplicationsTracker {
         _state['render_completed_timestamp'] > 0) {
       buffer.writeln('\nTiempos:');
       buffer.writeln(
-          'Tiempo de solicitud de datos: ${_state['data_received_timestamp'] - _state['data_requested_timestamp']}ms');
+        'Tiempo de solicitud de datos: ${_state['data_received_timestamp'] - _state['data_requested_timestamp']}ms',
+      );
       buffer.writeln(
-          'Tiempo total: ${_state['render_completed_timestamp'] - _state['navigation_timestamp']}ms');
+        'Tiempo total: ${_state['render_completed_timestamp'] - _state['navigation_timestamp']}ms',
+      );
     }
 
     buffer.writeln('=======================================');

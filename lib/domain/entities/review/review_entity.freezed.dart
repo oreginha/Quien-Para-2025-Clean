@@ -12,7 +12,8 @@ part of 'review_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ReviewEntity _$ReviewEntityFromJson(Map<String, dynamic> json) {
   return _ReviewEntity.fromJson(json);
@@ -51,25 +52,27 @@ mixin _$ReviewEntity {
 /// @nodoc
 abstract class $ReviewEntityCopyWith<$Res> {
   factory $ReviewEntityCopyWith(
-          ReviewEntity value, $Res Function(ReviewEntity) then) =
-      _$ReviewEntityCopyWithImpl<$Res, ReviewEntity>;
+    ReviewEntity value,
+    $Res Function(ReviewEntity) then,
+  ) = _$ReviewEntityCopyWithImpl<$Res, ReviewEntity>;
   @useResult
-  $Res call(
-      {String id,
-      String reviewerId,
-      String reviewedUserId,
-      String planId,
-      double rating,
-      String comment,
-      DateTime createdAt,
-      ReviewType type,
-      ReviewStatus status,
-      String? response,
-      DateTime? responseDate,
-      int helpfulCount,
-      List<String> helpfulVotes,
-      bool isVerified,
-      Map<String, dynamic>? metadata});
+  $Res call({
+    String id,
+    String reviewerId,
+    String reviewedUserId,
+    String planId,
+    double rating,
+    String comment,
+    DateTime createdAt,
+    ReviewType type,
+    ReviewStatus status,
+    String? response,
+    DateTime? responseDate,
+    int helpfulCount,
+    List<String> helpfulVotes,
+    bool isVerified,
+    Map<String, dynamic>? metadata,
+  });
 }
 
 /// @nodoc
@@ -103,68 +106,71 @@ class _$ReviewEntityCopyWithImpl<$Res, $Val extends ReviewEntity>
     Object? isVerified = null,
     Object? metadata = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewedUserId: null == reviewedUserId
-          ? _value.reviewedUserId
-          : reviewedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      comment: null == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReviewType,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReviewStatus,
-      response: freezed == response
-          ? _value.response
-          : response // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responseDate: freezed == responseDate
-          ? _value.responseDate
-          : responseDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      helpfulCount: null == helpfulCount
-          ? _value.helpfulCount
-          : helpfulCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      helpfulVotes: null == helpfulVotes
-          ? _value.helpfulVotes
-          : helpfulVotes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isVerified: null == isVerified
-          ? _value.isVerified
-          : isVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      metadata: freezed == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reviewerId: null == reviewerId
+                ? _value.reviewerId
+                : reviewerId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reviewedUserId: null == reviewedUserId
+                ? _value.reviewedUserId
+                : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            planId: null == planId
+                ? _value.planId
+                : planId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            rating: null == rating
+                ? _value.rating
+                : rating // ignore: cast_nullable_to_non_nullable
+                      as double,
+            comment: null == comment
+                ? _value.comment
+                : comment // ignore: cast_nullable_to_non_nullable
+                      as String,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as ReviewType,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as ReviewStatus,
+            response: freezed == response
+                ? _value.response
+                : response // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            responseDate: freezed == responseDate
+                ? _value.responseDate
+                : responseDate // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            helpfulCount: null == helpfulCount
+                ? _value.helpfulCount
+                : helpfulCount // ignore: cast_nullable_to_non_nullable
+                      as int,
+            helpfulVotes: null == helpfulVotes
+                ? _value.helpfulVotes
+                : helpfulVotes // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            isVerified: null == isVerified
+                ? _value.isVerified
+                : isVerified // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            metadata: freezed == metadata
+                ? _value.metadata
+                : metadata // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -172,26 +178,28 @@ class _$ReviewEntityCopyWithImpl<$Res, $Val extends ReviewEntity>
 abstract class _$$ReviewEntityImplCopyWith<$Res>
     implements $ReviewEntityCopyWith<$Res> {
   factory _$$ReviewEntityImplCopyWith(
-          _$ReviewEntityImpl value, $Res Function(_$ReviewEntityImpl) then) =
-      __$$ReviewEntityImplCopyWithImpl<$Res>;
+    _$ReviewEntityImpl value,
+    $Res Function(_$ReviewEntityImpl) then,
+  ) = __$$ReviewEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String reviewerId,
-      String reviewedUserId,
-      String planId,
-      double rating,
-      String comment,
-      DateTime createdAt,
-      ReviewType type,
-      ReviewStatus status,
-      String? response,
-      DateTime? responseDate,
-      int helpfulCount,
-      List<String> helpfulVotes,
-      bool isVerified,
-      Map<String, dynamic>? metadata});
+  $Res call({
+    String id,
+    String reviewerId,
+    String reviewedUserId,
+    String planId,
+    double rating,
+    String comment,
+    DateTime createdAt,
+    ReviewType type,
+    ReviewStatus status,
+    String? response,
+    DateTime? responseDate,
+    int helpfulCount,
+    List<String> helpfulVotes,
+    bool isVerified,
+    Map<String, dynamic>? metadata,
+  });
 }
 
 /// @nodoc
@@ -199,8 +207,9 @@ class __$$ReviewEntityImplCopyWithImpl<$Res>
     extends _$ReviewEntityCopyWithImpl<$Res, _$ReviewEntityImpl>
     implements _$$ReviewEntityImplCopyWith<$Res> {
   __$$ReviewEntityImplCopyWithImpl(
-      _$ReviewEntityImpl _value, $Res Function(_$ReviewEntityImpl) _then)
-      : super(_value, _then);
+    _$ReviewEntityImpl _value,
+    $Res Function(_$ReviewEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -223,92 +232,94 @@ class __$$ReviewEntityImplCopyWithImpl<$Res>
     Object? isVerified = null,
     Object? metadata = freezed,
   }) {
-    return _then(_$ReviewEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewedUserId: null == reviewedUserId
-          ? _value.reviewedUserId
-          : reviewedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      comment: null == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReviewType,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReviewStatus,
-      response: freezed == response
-          ? _value.response
-          : response // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responseDate: freezed == responseDate
-          ? _value.responseDate
-          : responseDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      helpfulCount: null == helpfulCount
-          ? _value.helpfulCount
-          : helpfulCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      helpfulVotes: null == helpfulVotes
-          ? _value._helpfulVotes
-          : helpfulVotes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isVerified: null == isVerified
-          ? _value.isVerified
-          : isVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      metadata: freezed == metadata
-          ? _value._metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ));
+    return _then(
+      _$ReviewEntityImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reviewedUserId: null == reviewedUserId
+            ? _value.reviewedUserId
+            : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                  as double,
+        comment: null == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                  as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReviewType,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as ReviewStatus,
+        response: freezed == response
+            ? _value.response
+            : response // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        responseDate: freezed == responseDate
+            ? _value.responseDate
+            : responseDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        helpfulCount: null == helpfulCount
+            ? _value.helpfulCount
+            : helpfulCount // ignore: cast_nullable_to_non_nullable
+                  as int,
+        helpfulVotes: null == helpfulVotes
+            ? _value._helpfulVotes
+            : helpfulVotes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        isVerified: null == isVerified
+            ? _value.isVerified
+            : isVerified // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        metadata: freezed == metadata
+            ? _value._metadata
+            : metadata // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ReviewEntityImpl implements _ReviewEntity {
-  const _$ReviewEntityImpl(
-      {required this.id,
-      required this.reviewerId,
-      required this.reviewedUserId,
-      required this.planId,
-      required this.rating,
-      required this.comment,
-      required this.createdAt,
-      required this.type,
-      required this.status,
-      this.response,
-      this.responseDate,
-      this.helpfulCount = 0,
-      final List<String> helpfulVotes = const [],
-      this.isVerified = false,
-      final Map<String, dynamic>? metadata})
-      : _helpfulVotes = helpfulVotes,
-        _metadata = metadata;
+  const _$ReviewEntityImpl({
+    required this.id,
+    required this.reviewerId,
+    required this.reviewedUserId,
+    required this.planId,
+    required this.rating,
+    required this.comment,
+    required this.createdAt,
+    required this.type,
+    required this.status,
+    this.response,
+    this.responseDate,
+    this.helpfulCount = 0,
+    final List<String> helpfulVotes = const [],
+    this.isVerified = false,
+    final Map<String, dynamic>? metadata,
+  }) : _helpfulVotes = helpfulVotes,
+       _metadata = metadata;
 
   factory _$ReviewEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewEntityImplFromJson(json);
@@ -323,7 +334,7 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   final String planId;
   @override
   final double rating;
-// 1.0 - 5.0
+  // 1.0 - 5.0
   @override
   final String comment;
   @override
@@ -334,7 +345,7 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   final ReviewStatus status;
   @override
   final String? response;
-// Respuesta del usuario revisado
+  // Respuesta del usuario revisado
   @override
   final DateTime? responseDate;
   @override
@@ -352,9 +363,9 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   @override
   @JsonKey()
   final bool isVerified;
-// Si el revisor realmente participó en el plan
+  // Si el revisor realmente participó en el plan
   final Map<String, dynamic>? _metadata;
-// Si el revisor realmente participó en el plan
+  // Si el revisor realmente participó en el plan
   @override
   Map<String, dynamic>? get metadata {
     final value = _metadata;
@@ -392,8 +403,10 @@ class _$ReviewEntityImpl implements _ReviewEntity {
                 other.responseDate == responseDate) &&
             (identical(other.helpfulCount, helpfulCount) ||
                 other.helpfulCount == helpfulCount) &&
-            const DeepCollectionEquality()
-                .equals(other._helpfulVotes, _helpfulVotes) &&
+            const DeepCollectionEquality().equals(
+              other._helpfulVotes,
+              _helpfulVotes,
+            ) &&
             (identical(other.isVerified, isVerified) ||
                 other.isVerified == isVerified) &&
             const DeepCollectionEquality().equals(other._metadata, _metadata));
@@ -402,22 +415,23 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      reviewerId,
-      reviewedUserId,
-      planId,
-      rating,
-      comment,
-      createdAt,
-      type,
-      status,
-      response,
-      responseDate,
-      helpfulCount,
-      const DeepCollectionEquality().hash(_helpfulVotes),
-      isVerified,
-      const DeepCollectionEquality().hash(_metadata));
+    runtimeType,
+    id,
+    reviewerId,
+    reviewedUserId,
+    planId,
+    rating,
+    comment,
+    createdAt,
+    type,
+    status,
+    response,
+    responseDate,
+    helpfulCount,
+    const DeepCollectionEquality().hash(_helpfulVotes),
+    isVerified,
+    const DeepCollectionEquality().hash(_metadata),
+  );
 
   /// Create a copy of ReviewEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -429,29 +443,28 @@ class _$ReviewEntityImpl implements _ReviewEntity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReviewEntityImplToJson(
-      this,
-    );
+    return _$$ReviewEntityImplToJson(this);
   }
 }
 
 abstract class _ReviewEntity implements ReviewEntity {
-  const factory _ReviewEntity(
-      {required final String id,
-      required final String reviewerId,
-      required final String reviewedUserId,
-      required final String planId,
-      required final double rating,
-      required final String comment,
-      required final DateTime createdAt,
-      required final ReviewType type,
-      required final ReviewStatus status,
-      final String? response,
-      final DateTime? responseDate,
-      final int helpfulCount,
-      final List<String> helpfulVotes,
-      final bool isVerified,
-      final Map<String, dynamic>? metadata}) = _$ReviewEntityImpl;
+  const factory _ReviewEntity({
+    required final String id,
+    required final String reviewerId,
+    required final String reviewedUserId,
+    required final String planId,
+    required final double rating,
+    required final String comment,
+    required final DateTime createdAt,
+    required final ReviewType type,
+    required final ReviewStatus status,
+    final String? response,
+    final DateTime? responseDate,
+    final int helpfulCount,
+    final List<String> helpfulVotes,
+    final bool isVerified,
+    final Map<String, dynamic>? metadata,
+  }) = _$ReviewEntityImpl;
 
   factory _ReviewEntity.fromJson(Map<String, dynamic> json) =
       _$ReviewEntityImpl.fromJson;
@@ -528,21 +541,23 @@ mixin _$UserRatingEntity {
 /// @nodoc
 abstract class $UserRatingEntityCopyWith<$Res> {
   factory $UserRatingEntityCopyWith(
-          UserRatingEntity value, $Res Function(UserRatingEntity) then) =
-      _$UserRatingEntityCopyWithImpl<$Res, UserRatingEntity>;
+    UserRatingEntity value,
+    $Res Function(UserRatingEntity) then,
+  ) = _$UserRatingEntityCopyWithImpl<$Res, UserRatingEntity>;
   @useResult
-  $Res call(
-      {String userId,
-      double averageRating,
-      int totalReviews,
-      DateTime lastUpdated,
-      int totalPlansOrganized,
-      int totalPlansAttended,
-      int reliabilityScore,
-      Map<String, int>? ratingDistribution,
-      Map<String, double>? categoryRatings,
-      List<String>? topPositiveComments,
-      List<String>? commonConcerns});
+  $Res call({
+    String userId,
+    double averageRating,
+    int totalReviews,
+    DateTime lastUpdated,
+    int totalPlansOrganized,
+    int totalPlansAttended,
+    int reliabilityScore,
+    Map<String, int>? ratingDistribution,
+    Map<String, double>? categoryRatings,
+    List<String>? topPositiveComments,
+    List<String>? commonConcerns,
+  });
 }
 
 /// @nodoc
@@ -572,84 +587,90 @@ class _$UserRatingEntityCopyWithImpl<$Res, $Val extends UserRatingEntity>
     Object? topPositiveComments = freezed,
     Object? commonConcerns = freezed,
   }) {
-    return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      averageRating: null == averageRating
-          ? _value.averageRating
-          : averageRating // ignore: cast_nullable_to_non_nullable
-              as double,
-      totalReviews: null == totalReviews
-          ? _value.totalReviews
-          : totalReviews // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      totalPlansOrganized: null == totalPlansOrganized
-          ? _value.totalPlansOrganized
-          : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPlansAttended: null == totalPlansAttended
-          ? _value.totalPlansAttended
-          : totalPlansAttended // ignore: cast_nullable_to_non_nullable
-              as int,
-      reliabilityScore: null == reliabilityScore
-          ? _value.reliabilityScore
-          : reliabilityScore // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingDistribution: freezed == ratingDistribution
-          ? _value.ratingDistribution
-          : ratingDistribution // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>?,
-      categoryRatings: freezed == categoryRatings
-          ? _value.categoryRatings
-          : categoryRatings // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>?,
-      topPositiveComments: freezed == topPositiveComments
-          ? _value.topPositiveComments
-          : topPositiveComments // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      commonConcerns: freezed == commonConcerns
-          ? _value.commonConcerns
-          : commonConcerns // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            averageRating: null == averageRating
+                ? _value.averageRating
+                : averageRating // ignore: cast_nullable_to_non_nullable
+                      as double,
+            totalReviews: null == totalReviews
+                ? _value.totalReviews
+                : totalReviews // ignore: cast_nullable_to_non_nullable
+                      as int,
+            lastUpdated: null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            totalPlansOrganized: null == totalPlansOrganized
+                ? _value.totalPlansOrganized
+                : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
+                      as int,
+            totalPlansAttended: null == totalPlansAttended
+                ? _value.totalPlansAttended
+                : totalPlansAttended // ignore: cast_nullable_to_non_nullable
+                      as int,
+            reliabilityScore: null == reliabilityScore
+                ? _value.reliabilityScore
+                : reliabilityScore // ignore: cast_nullable_to_non_nullable
+                      as int,
+            ratingDistribution: freezed == ratingDistribution
+                ? _value.ratingDistribution
+                : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                      as Map<String, int>?,
+            categoryRatings: freezed == categoryRatings
+                ? _value.categoryRatings
+                : categoryRatings // ignore: cast_nullable_to_non_nullable
+                      as Map<String, double>?,
+            topPositiveComments: freezed == topPositiveComments
+                ? _value.topPositiveComments
+                : topPositiveComments // ignore: cast_nullable_to_non_nullable
+                      as List<String>?,
+            commonConcerns: freezed == commonConcerns
+                ? _value.commonConcerns
+                : commonConcerns // ignore: cast_nullable_to_non_nullable
+                      as List<String>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UserRatingEntityImplCopyWith<$Res>
     implements $UserRatingEntityCopyWith<$Res> {
-  factory _$$UserRatingEntityImplCopyWith(_$UserRatingEntityImpl value,
-          $Res Function(_$UserRatingEntityImpl) then) =
-      __$$UserRatingEntityImplCopyWithImpl<$Res>;
+  factory _$$UserRatingEntityImplCopyWith(
+    _$UserRatingEntityImpl value,
+    $Res Function(_$UserRatingEntityImpl) then,
+  ) = __$$UserRatingEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String userId,
-      double averageRating,
-      int totalReviews,
-      DateTime lastUpdated,
-      int totalPlansOrganized,
-      int totalPlansAttended,
-      int reliabilityScore,
-      Map<String, int>? ratingDistribution,
-      Map<String, double>? categoryRatings,
-      List<String>? topPositiveComments,
-      List<String>? commonConcerns});
+  $Res call({
+    String userId,
+    double averageRating,
+    int totalReviews,
+    DateTime lastUpdated,
+    int totalPlansOrganized,
+    int totalPlansAttended,
+    int reliabilityScore,
+    Map<String, int>? ratingDistribution,
+    Map<String, double>? categoryRatings,
+    List<String>? topPositiveComments,
+    List<String>? commonConcerns,
+  });
 }
 
 /// @nodoc
 class __$$UserRatingEntityImplCopyWithImpl<$Res>
     extends _$UserRatingEntityCopyWithImpl<$Res, _$UserRatingEntityImpl>
     implements _$$UserRatingEntityImplCopyWith<$Res> {
-  __$$UserRatingEntityImplCopyWithImpl(_$UserRatingEntityImpl _value,
-      $Res Function(_$UserRatingEntityImpl) _then)
-      : super(_value, _then);
+  __$$UserRatingEntityImplCopyWithImpl(
+    _$UserRatingEntityImpl _value,
+    $Res Function(_$UserRatingEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserRatingEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -668,74 +689,76 @@ class __$$UserRatingEntityImplCopyWithImpl<$Res>
     Object? topPositiveComments = freezed,
     Object? commonConcerns = freezed,
   }) {
-    return _then(_$UserRatingEntityImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      averageRating: null == averageRating
-          ? _value.averageRating
-          : averageRating // ignore: cast_nullable_to_non_nullable
-              as double,
-      totalReviews: null == totalReviews
-          ? _value.totalReviews
-          : totalReviews // ignore: cast_nullable_to_non_nullable
-              as int,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      totalPlansOrganized: null == totalPlansOrganized
-          ? _value.totalPlansOrganized
-          : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPlansAttended: null == totalPlansAttended
-          ? _value.totalPlansAttended
-          : totalPlansAttended // ignore: cast_nullable_to_non_nullable
-              as int,
-      reliabilityScore: null == reliabilityScore
-          ? _value.reliabilityScore
-          : reliabilityScore // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingDistribution: freezed == ratingDistribution
-          ? _value._ratingDistribution
-          : ratingDistribution // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>?,
-      categoryRatings: freezed == categoryRatings
-          ? _value._categoryRatings
-          : categoryRatings // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>?,
-      topPositiveComments: freezed == topPositiveComments
-          ? _value._topPositiveComments
-          : topPositiveComments // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      commonConcerns: freezed == commonConcerns
-          ? _value._commonConcerns
-          : commonConcerns // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ));
+    return _then(
+      _$UserRatingEntityImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        averageRating: null == averageRating
+            ? _value.averageRating
+            : averageRating // ignore: cast_nullable_to_non_nullable
+                  as double,
+        totalReviews: null == totalReviews
+            ? _value.totalReviews
+            : totalReviews // ignore: cast_nullable_to_non_nullable
+                  as int,
+        lastUpdated: null == lastUpdated
+            ? _value.lastUpdated
+            : lastUpdated // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        totalPlansOrganized: null == totalPlansOrganized
+            ? _value.totalPlansOrganized
+            : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
+                  as int,
+        totalPlansAttended: null == totalPlansAttended
+            ? _value.totalPlansAttended
+            : totalPlansAttended // ignore: cast_nullable_to_non_nullable
+                  as int,
+        reliabilityScore: null == reliabilityScore
+            ? _value.reliabilityScore
+            : reliabilityScore // ignore: cast_nullable_to_non_nullable
+                  as int,
+        ratingDistribution: freezed == ratingDistribution
+            ? _value._ratingDistribution
+            : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                  as Map<String, int>?,
+        categoryRatings: freezed == categoryRatings
+            ? _value._categoryRatings
+            : categoryRatings // ignore: cast_nullable_to_non_nullable
+                  as Map<String, double>?,
+        topPositiveComments: freezed == topPositiveComments
+            ? _value._topPositiveComments
+            : topPositiveComments // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+        commonConcerns: freezed == commonConcerns
+            ? _value._commonConcerns
+            : commonConcerns // ignore: cast_nullable_to_non_nullable
+                  as List<String>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UserRatingEntityImpl implements _UserRatingEntity {
-  const _$UserRatingEntityImpl(
-      {required this.userId,
-      required this.averageRating,
-      required this.totalReviews,
-      required this.lastUpdated,
-      this.totalPlansOrganized = 0,
-      this.totalPlansAttended = 0,
-      this.reliabilityScore = 0,
-      final Map<String, int>? ratingDistribution,
-      final Map<String, double>? categoryRatings,
-      final List<String>? topPositiveComments,
-      final List<String>? commonConcerns})
-      : _ratingDistribution = ratingDistribution,
-        _categoryRatings = categoryRatings,
-        _topPositiveComments = topPositiveComments,
-        _commonConcerns = commonConcerns;
+  const _$UserRatingEntityImpl({
+    required this.userId,
+    required this.averageRating,
+    required this.totalReviews,
+    required this.lastUpdated,
+    this.totalPlansOrganized = 0,
+    this.totalPlansAttended = 0,
+    this.reliabilityScore = 0,
+    final Map<String, int>? ratingDistribution,
+    final Map<String, double>? categoryRatings,
+    final List<String>? topPositiveComments,
+    final List<String>? commonConcerns,
+  }) : _ratingDistribution = ratingDistribution,
+       _categoryRatings = categoryRatings,
+       _topPositiveComments = topPositiveComments,
+       _commonConcerns = commonConcerns;
 
   factory _$UserRatingEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserRatingEntityImplFromJson(json);
@@ -744,7 +767,7 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   final String userId;
   @override
   final double averageRating;
-// 0.0 - 5.0
+  // 0.0 - 5.0
   @override
   final int totalReviews;
   @override
@@ -758,9 +781,9 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   @override
   @JsonKey()
   final int reliabilityScore;
-// 0-100
+  // 0-100
   final Map<String, int>? _ratingDistribution;
-// 0-100
+  // 0-100
   @override
   Map<String, int>? get ratingDistribution {
     final value = _ratingDistribution;
@@ -771,9 +794,9 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
     return EqualUnmodifiableMapView(value);
   }
 
-// {1: 0, 2: 1, 3: 5, 4: 20, 5: 15}
+  // {1: 0, 2: 1, 3: 5, 4: 20, 5: 15}
   final Map<String, double>? _categoryRatings;
-// {1: 0, 2: 1, 3: 5, 4: 20, 5: 15}
+  // {1: 0, 2: 1, 3: 5, 4: 20, 5: 15}
   @override
   Map<String, double>? get categoryRatings {
     final value = _categoryRatings;
@@ -783,9 +806,9 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
     return EqualUnmodifiableMapView(value);
   }
 
-// Ratings por categoría de planes
+  // Ratings por categoría de planes
   final List<String>? _topPositiveComments;
-// Ratings por categoría de planes
+  // Ratings por categoría de planes
   @override
   List<String>? get topPositiveComments {
     final value = _topPositiveComments;
@@ -829,31 +852,40 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
                 other.totalPlansAttended == totalPlansAttended) &&
             (identical(other.reliabilityScore, reliabilityScore) ||
                 other.reliabilityScore == reliabilityScore) &&
-            const DeepCollectionEquality()
-                .equals(other._ratingDistribution, _ratingDistribution) &&
-            const DeepCollectionEquality()
-                .equals(other._categoryRatings, _categoryRatings) &&
-            const DeepCollectionEquality()
-                .equals(other._topPositiveComments, _topPositiveComments) &&
-            const DeepCollectionEquality()
-                .equals(other._commonConcerns, _commonConcerns));
+            const DeepCollectionEquality().equals(
+              other._ratingDistribution,
+              _ratingDistribution,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._categoryRatings,
+              _categoryRatings,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._topPositiveComments,
+              _topPositiveComments,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._commonConcerns,
+              _commonConcerns,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      userId,
-      averageRating,
-      totalReviews,
-      lastUpdated,
-      totalPlansOrganized,
-      totalPlansAttended,
-      reliabilityScore,
-      const DeepCollectionEquality().hash(_ratingDistribution),
-      const DeepCollectionEquality().hash(_categoryRatings),
-      const DeepCollectionEquality().hash(_topPositiveComments),
-      const DeepCollectionEquality().hash(_commonConcerns));
+    runtimeType,
+    userId,
+    averageRating,
+    totalReviews,
+    lastUpdated,
+    totalPlansOrganized,
+    totalPlansAttended,
+    reliabilityScore,
+    const DeepCollectionEquality().hash(_ratingDistribution),
+    const DeepCollectionEquality().hash(_categoryRatings),
+    const DeepCollectionEquality().hash(_topPositiveComments),
+    const DeepCollectionEquality().hash(_commonConcerns),
+  );
 
   /// Create a copy of UserRatingEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -862,29 +894,30 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   @pragma('vm:prefer-inline')
   _$$UserRatingEntityImplCopyWith<_$UserRatingEntityImpl> get copyWith =>
       __$$UserRatingEntityImplCopyWithImpl<_$UserRatingEntityImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserRatingEntityImplToJson(
-      this,
-    );
+    return _$$UserRatingEntityImplToJson(this);
   }
 }
 
 abstract class _UserRatingEntity implements UserRatingEntity {
-  const factory _UserRatingEntity(
-      {required final String userId,
-      required final double averageRating,
-      required final int totalReviews,
-      required final DateTime lastUpdated,
-      final int totalPlansOrganized,
-      final int totalPlansAttended,
-      final int reliabilityScore,
-      final Map<String, int>? ratingDistribution,
-      final Map<String, double>? categoryRatings,
-      final List<String>? topPositiveComments,
-      final List<String>? commonConcerns}) = _$UserRatingEntityImpl;
+  const factory _UserRatingEntity({
+    required final String userId,
+    required final double averageRating,
+    required final int totalReviews,
+    required final DateTime lastUpdated,
+    final int totalPlansOrganized,
+    final int totalPlansAttended,
+    final int reliabilityScore,
+    final Map<String, int>? ratingDistribution,
+    final Map<String, double>? categoryRatings,
+    final List<String>? topPositiveComments,
+    final List<String>? commonConcerns,
+  }) = _$UserRatingEntityImpl;
 
   factory _UserRatingEntity.fromJson(Map<String, dynamic> json) =
       _$UserRatingEntityImpl.fromJson;

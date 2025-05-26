@@ -15,18 +15,24 @@ class ApiInterceptors extends Interceptor {
   ApiInterceptors(this._storageHelper);
 
   @override
-  void onRequest(final RequestOptions options,
-      final RequestInterceptorHandler handler) async {
+  void onRequest(
+    final RequestOptions options,
+    final RequestInterceptorHandler handler,
+  ) async {
     // Verificar rate limiting
     final String endpointKey = '${options.method}:${options.path}';
     final RateLimitTracker tracker = _getOrCreateTracker(endpointKey);
 
     if (!tracker.canMakeRequest()) {
       logger.w('Rate limit exceeded for $endpointKey');
-      return handler.reject(DioException(
-        requestOptions: options,
-        error: RateLimitException('Too many requests. Please try again later.'),
-      ));
+      return handler.reject(
+        DioException(
+          requestOptions: options,
+          error: RateLimitException(
+            'Too many requests. Please try again later.',
+          ),
+        ),
+      );
     }
 
     tracker.trackRequest();
@@ -42,21 +48,26 @@ class ApiInterceptors extends Interceptor {
     options.headers['Content-Type'] = 'application/json';
 
     if (kDebugMode) {
-      logger.d('API Request: ${options.method} ${options.uri}\n'
-          'Headers: ${options.headers}\n'
-          'Data: ${options.data}');
+      logger.d(
+        'API Request: ${options.method} ${options.uri}\n'
+        'Headers: ${options.headers}\n'
+        'Data: ${options.data}',
+      );
     }
 
     return handler.next(options);
   }
 
   @override
-  void onResponse(final Response<dynamic> response,
-      final ResponseInterceptorHandler handler) {
+  void onResponse(
+    final Response<dynamic> response,
+    final ResponseInterceptorHandler handler,
+  ) {
     if (kDebugMode) {
       logger.d(
-          'API Response: ${response.statusCode} ${response.requestOptions.uri}\n'
-          'Data: ${response.data}');
+        'API Response: ${response.statusCode} ${response.requestOptions.uri}\n'
+        'Data: ${response.data}',
+      );
     }
 
     return handler.next(response);
@@ -64,20 +75,23 @@ class ApiInterceptors extends Interceptor {
 
   @override
   void onError(final DioException err, final ErrorInterceptorHandler handler) {
-    logger
-        .e('API Error: ${err.response?.statusCode} ${err.requestOptions.uri}\n'
-            'Message: ${err.message}\n'
-            'Data: ${err.response?.data}');
+    logger.e(
+      'API Error: ${err.response?.statusCode} ${err.requestOptions.uri}\n'
+      'Message: ${err.message}\n'
+      'Data: ${err.response?.data}',
+    );
 
     // Transformar errores de Dio a nuestras excepciones personalizadas
     final AppException error = _handleDioError(err);
 
-    return handler.reject(DioException(
-      requestOptions: err.requestOptions,
-      error: error,
-      response: err.response,
-      type: err.type,
-    ));
+    return handler.reject(
+      DioException(
+        requestOptions: err.requestOptions,
+        error: error,
+        response: err.response,
+        type: err.type,
+      ),
+    );
   }
 
   AppException _handleDioError(final DioException error) {
@@ -133,8 +147,10 @@ class ApiInterceptors extends Interceptor {
       case 503:
         return ServerException('Server error', data: data);
       default:
-        return ServerException('Server error with status: $statusCode',
-            data: data);
+        return ServerException(
+          'Server error with status: $statusCode',
+          data: data,
+        );
     }
   }
 
@@ -163,21 +179,22 @@ class RateLimitTracker {
   void _cleanOldRequests() {
     final DateTime now = DateTime.now();
     _requestTimestamps.removeWhere(
-        (final DateTime timestamp) => now.difference(timestamp) > _timeWindow);
+      (final DateTime timestamp) => now.difference(timestamp) > _timeWindow,
+    );
   }
 }
 
 class RequestCancelledException extends NetworkException {
   RequestCancelledException(super.message, {final String? code, super.data})
-      : super(code: code ?? 'REQUEST_CANCELLED');
+    : super(code: code ?? 'REQUEST_CANCELLED');
 }
 
 class RateLimitException extends NetworkException {
   RateLimitException(super.message, {final String? code, super.data})
-      : super(code: code ?? 'RATE_LIMIT_EXCEEDED');
+    : super(code: code ?? 'RATE_LIMIT_EXCEEDED');
 }
 
 class ConflictException extends DataException {
   ConflictException(super.message, {final String? code, super.data})
-      : super(code: code ?? 'CONFLICT');
+    : super(code: code ?? 'CONFLICT');
 }

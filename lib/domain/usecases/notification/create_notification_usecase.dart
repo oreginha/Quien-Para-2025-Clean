@@ -20,18 +20,22 @@ class CreateNotificationUseCase
 
   @override
   Future<Either<AppFailure, Unit>> execute(
-      NotificationEntity notification) async {
+    NotificationEntity notification,
+  ) async {
     _logger.d(
-        'CreateNotificationUseCase: Creando notificación para: ${notification.userId}');
+      'CreateNotificationUseCase: Creando notificación para: ${notification.userId}',
+    );
 
     // Validar notificación
     if (!notification.isValid) {
       _logger.w('CreateNotificationUseCase: Notificación inválida');
-      return Left(ValidationFailure(
-        message: 'La notificación no es válida, faltan campos requeridos',
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'La notificación no es válida, faltan campos requeridos',
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     // Delegar al repositorio

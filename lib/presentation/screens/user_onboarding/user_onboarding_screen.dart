@@ -57,13 +57,9 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
       duration: const Duration(milliseconds: 400),
     );
 
-    _progressAnimation = Tween<double>(
-      begin: 0,
-      end: 1 / steps.length,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
+    _progressAnimation = Tween<double>(begin: 0, end: 1 / steps.length).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
 
     _animationController.forward();
 
@@ -163,8 +159,9 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
           } else if (state.status == UserProfileStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content:
-                    Text(state.errorMessage ?? 'Error al guardar el perfil'),
+                content: Text(
+                  state.errorMessage ?? 'Error al guardar el perfil',
+                ),
                 backgroundColor: AppColors.brandYellow,
                 behavior: SnackBarBehavior.floating,
                 margin: EdgeInsets.only(
@@ -197,7 +194,9 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
                       // Progress bar animation
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 16),
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
                         child: AnimatedBuilder(
                           animation: _animationController,
                           builder: (context, child) {
@@ -279,17 +278,17 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
                         child: _buildHeader(_currentPage),
                         transitionBuilder:
                             (Widget child, Animation<double> animation) {
-                          return FadeTransition(
-                            opacity: animation,
-                            child: SlideTransition(
-                              position: Tween<Offset>(
-                                begin: const Offset(0.0, 0.2),
-                                end: Offset.zero,
-                              ).animate(animation),
-                              child: child,
-                            ),
-                          );
-                        },
+                              return FadeTransition(
+                                opacity: animation,
+                                child: SlideTransition(
+                                  position: Tween<Offset>(
+                                    begin: const Offset(0.0, 0.2),
+                                    end: Offset.zero,
+                                  ).animate(animation),
+                                  child: child,
+                                ),
+                              );
+                            },
                       ),
 
                       // Page content
@@ -302,17 +301,21 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
                           },
                           children: <Widget>[
                             NameInputStep(
-                                onNext: () => _nextPage(),
-                                onBack: () => _previousPage()),
+                              onNext: () => _nextPage(),
+                              onBack: () => _previousPage(),
+                            ),
                             AgeInputStep(
-                                onNext: () => _nextPage(),
-                                onBack: () => _previousPage()),
+                              onNext: () => _nextPage(),
+                              onBack: () => _previousPage(),
+                            ),
                             GenderInputStep(
-                                onNext: () => _nextPage(),
-                                onBack: () => _previousPage()),
+                              onNext: () => _nextPage(),
+                              onBack: () => _previousPage(),
+                            ),
                             LocationInputStep(
-                                onNext: () => _nextPage(),
-                                onBack: () => _previousPage()),
+                              onNext: () => _nextPage(),
+                              onBack: () => _previousPage(),
+                            ),
                             AddPhotosStep(onNext: () => _nextPage()),
                             InterestsStep(onComplete: () => _nextPage()),
                             ProfileReviewStep(
@@ -344,7 +347,8 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
                             children: [
                               CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                    AppColors.brandYellow),
+                                  AppColors.brandYellow,
+                                ),
                               ),
                               const SizedBox(height: 16),
                               Text(

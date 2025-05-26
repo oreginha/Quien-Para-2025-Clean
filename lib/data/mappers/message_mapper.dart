@@ -37,16 +37,19 @@ class MessageMapper {
     if (!doc.exists) {
       throw Exception('El documento no existe: ${doc.reference.path}');
     }
-    
+
     // Obtener el modelo a partir del documento sin usar data
     final model = ChatMessageModel.fromFirestore(doc);
-    
+
     // Convertir del modelo a entidad
     return toEntity(model);
   }
 
   /// Convierte una entidad a un formato adecuado para Firestore
-  Map<String, dynamic> toFirestore(MessageEntity entity, {required String chatId}) {
+  Map<String, dynamic> toFirestore(
+    MessageEntity entity, {
+    required String chatId,
+  }) {
     final model = toModel(entity, chatId: chatId);
     return model.toFirestore();
   }

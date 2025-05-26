@@ -35,17 +35,17 @@ class EmptyStateWidget extends StatelessWidget {
             SizedBox(height: AppSpacing.xl),
             Text(
               title,
-              style: AppTypography.heading2(Theme.of(context).brightness == Brightness.dark).copyWith(
-                color: AppColors.lightTextPrimary,
-              ),
+              style: AppTypography.heading2(
+                Theme.of(context).brightness == Brightness.dark,
+              ).copyWith(color: AppColors.lightTextPrimary),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.xl),
             Text(
               description,
-              style: AppTypography.heading2(Theme.of(context).brightness == Brightness.dark).copyWith(
-                color: AppColors.lightTextSecondary,
-              ),
+              style: AppTypography.heading2(
+                Theme.of(context).brightness == Brightness.dark,
+              ).copyWith(color: AppColors.lightTextSecondary),
               textAlign: TextAlign.center,
             ),
             if (actionButton != null) ...[

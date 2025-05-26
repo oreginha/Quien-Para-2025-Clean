@@ -30,12 +30,12 @@ class NotificationEntity extends EntityBase {
 
   /// Constructor para crear una notificación vacía
   factory NotificationEntity.empty() => NotificationEntity(
-        id: '',
-        userId: '',
-        title: '',
-        message: '',
-        createdAt: DateTime.now(),
-      );
+    id: '',
+    userId: '',
+    title: '',
+    message: '',
+    createdAt: DateTime.now(),
+  );
 
   /// Crear una copia de esta entidad con campos específicos modificados
   NotificationEntity copyWith({
@@ -81,17 +81,17 @@ class NotificationEntity extends EntityBase {
 
   @override
   List<Object?> get props => [
-        id,
-        userId,
-        planId,
-        applicationId,
-        title,
-        message,
-        read,
-        createdAt,
-        type,
-        data,
-      ];
+    id,
+    userId,
+    planId,
+    applicationId,
+    title,
+    message,
+    read,
+    createdAt,
+    type,
+    data,
+  ];
 
   /// Convertir la entidad a un mapa para almacenamiento
   Map<String, dynamic> toJson() {

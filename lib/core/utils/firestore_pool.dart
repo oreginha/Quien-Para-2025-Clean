@@ -57,8 +57,9 @@ class FirestorePool {
     );
 
     _isInitialized = true;
-    logger
-        .d('FirestorePool inicializado con $maxConnections conexiones máximas');
+    logger.d(
+      'FirestorePool inicializado con $maxConnections conexiones máximas',
+    );
   }
 
   /// Obtiene una instancia de Firestore del pool.
@@ -92,7 +93,8 @@ class FirestorePool {
   void _ensureInitialized() {
     if (!_isInitialized) {
       throw StateError(
-          'FirestorePool no ha sido inicializado. Llame a initialize() primero.');
+        'FirestorePool no ha sido inicializado. Llame a initialize() primero.',
+      );
     }
   }
 
@@ -112,7 +114,8 @@ class FirestorePool {
   /// });
   /// ```
   Future<T> withFirestore<T>(
-      Future<T> Function(FirebaseFirestore firestore) operation) async {
+    Future<T> Function(FirebaseFirestore firestore) operation,
+  ) async {
     final firestore = await acquire();
     try {
       return await operation(firestore);

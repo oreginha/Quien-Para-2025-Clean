@@ -11,10 +11,7 @@ class FindCompatibleUsersUseCase {
   final FirebaseFirestore _firestore;
   final MatchingService _matchingService;
 
-  FindCompatibleUsersUseCase(
-    this._firestore,
-    this._matchingService,
-  );
+  FindCompatibleUsersUseCase(this._firestore, this._matchingService);
 
   /// Encuentra usuarios compatibles para un plan específico
   ///
@@ -37,8 +34,10 @@ class FindCompatibleUsersUseCase {
   }) async {
     try {
       // Obtener el plan para excluir al creador
-      final DocumentSnapshot<Map<String, dynamic>> planDoc =
-          await _firestore.collection('plans').doc(planId).get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
+          .collection('plans')
+          .doc(planId)
+          .get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');
@@ -49,8 +48,9 @@ class FindCompatibleUsersUseCase {
       final String creatorId = planData['creatorId'] as String;
 
       // Obtener todos los usuarios
-      final QuerySnapshot<Map<String, dynamic>> usersQuery =
-          await _firestore.collection('users').get();
+      final QuerySnapshot<Map<String, dynamic>> usersQuery = await _firestore
+          .collection('users')
+          .get();
 
       // Lista para almacenar usuarios compatibles
       final List<Map<String, dynamic>> compatibleUsers =
@@ -67,7 +67,8 @@ class FindCompatibleUsersUseCase {
 
         // Obtener intereses y ubicación del usuario
         final List<String> userInterests = List<String>.from(
-            userData['interests'] as List<dynamic>? ?? <String>[]);
+          userData['interests'] as List<dynamic>? ?? <String>[],
+        );
         final String userLocation = userData['location'] as String? ?? '';
 
         // Calcular puntuación de compatibilidad
@@ -85,7 +86,8 @@ class FindCompatibleUsersUseCase {
           compatibleUsers.add(<String, dynamic>{
             'userId': userId,
             'name': userData['name'] as String? ?? 'Usuario',
-            'photoUrl': userData['photoUrls'] != null &&
+            'photoUrl':
+                userData['photoUrls'] != null &&
                     (userData['photoUrls'] as List<dynamic>).isNotEmpty
                 ? (userData['photoUrls'] as List<dynamic>)[0]
                 : null,
@@ -97,8 +99,10 @@ class FindCompatibleUsersUseCase {
       }
 
       // Ordenar por puntuación de mayor a menor
-      compatibleUsers.sort((Map<String, dynamic> a, Map<String, dynamic> b) =>
-          (b['matchScore'] as double).compareTo(a['matchScore'] as double));
+      compatibleUsers.sort(
+        (Map<String, dynamic> a, Map<String, dynamic> b) =>
+            (b['matchScore'] as double).compareTo(a['matchScore'] as double),
+      );
 
       // Limitar el número de resultados
       return compatibleUsers.take(limit).toList();

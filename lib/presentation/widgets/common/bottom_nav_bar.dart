@@ -17,11 +17,7 @@ class BottomNavBar extends StatefulWidget {
   final int currentIndex;
   final Function(int)? onTap;
 
-  const BottomNavBar({
-    final Key? key,
-    required this.currentIndex,
-    this.onTap,
-  });
+  const BottomNavBar({final Key? key, required this.currentIndex, this.onTap});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -120,8 +116,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ? AppColors.darkBottomNavBackground
         : AppColors.lightBottomNavBackground;
     final Color activeIconColor = AppColors.brandYellow;
-    final Color inactiveIconColor =
-        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final Color inactiveIconColor = isDarkMode
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
 
     return Container(
       decoration: BoxDecoration(
@@ -193,24 +190,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
     final isDarkMode = themeProvider.isDarkMode;
 
     final Color activeColor = AppColors.brandYellow;
-    final Color inactiveColor =
-        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final Color inactiveColor = isDarkMode
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
 
     // Determinar el widget del icono según el estado
     Widget iconWidget;
 
     if (isSelected) {
-      iconWidget = Icon(
-        icon,
-        size: 28,
-        color: activeColor,
-      );
+      iconWidget = Icon(icon, size: 28, color: activeColor);
     } else {
-      iconWidget = Icon(
-        icon,
-        size: 28,
-        color: inactiveColor,
-      );
+      iconWidget = Icon(icon, size: 28, color: inactiveColor);
     }
 
     return BottomNavigationBarItem(

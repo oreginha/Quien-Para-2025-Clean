@@ -8,18 +8,20 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Pantalla de error absolutamente mínima
-  runApp(MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.red[100],
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, size: 80, color: Colors.red),
-            const SizedBox(height: 20),
-          ],
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red[100],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, size: 80, color: Colors.red),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     ),
-  ));
+  );
 }

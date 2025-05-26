@@ -14,11 +14,7 @@ class NameInputStep extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
 
-  const NameInputStep({
-    super.key,
-    required this.onNext,
-    required this.onBack,
-  });
+  const NameInputStep({super.key, required this.onNext, required this.onBack});
 
   @override
   State<NameInputStep> createState() => _NameInputStepState();
@@ -82,10 +78,7 @@ class _NameInputStepState extends State<NameInputStep> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              AppBackButton(
-                onPressed: widget.onBack,
-                showConfirmDialog: false,
-              ),
+              AppBackButton(onPressed: widget.onBack, showConfirmDialog: false),
             ],
           ),
           const SizedBox(height: 20),
@@ -115,12 +108,14 @@ class _NameInputStepState extends State<NameInputStep> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.getCardBackground(false)
-                    .withAlpha((255 * 0.1).round()),
+                color: AppColors.getCardBackground(
+                  false,
+                ).withAlpha((255 * 0.1).round()),
                 borderRadius: BorderRadius.circular(AppRadius.l),
                 border: Border.all(
-                  color:
-                      AppColors.getBorder(false).withAlpha((255 * 0.3).round()),
+                  color: AppColors.getBorder(
+                    false,
+                  ).withAlpha((255 * 0.3).round()),
                   width: 1,
                 ),
               ),
@@ -149,8 +144,9 @@ class _NameInputStepState extends State<NameInputStep> {
                   Text(
                     'Tu nombre ayudará a otros usuarios a conocerte mejor. Puede ser tu nombre completo o un apodo.',
                     style: TextStyle(
-                      color: AppColors.lightTextPrimary
-                          .withAlpha((255 * 0.8).round()),
+                      color: AppColors.lightTextPrimary.withAlpha(
+                        (255 * 0.8).round(),
+                      ),
                       fontSize: 14,
                     ),
                   ),
@@ -167,8 +163,9 @@ class _NameInputStepState extends State<NameInputStep> {
                 Text(
                   'Nombres populares:',
                   style: TextStyle(
-                    color: AppColors.lightTextPrimary
-                        .withAlpha((255 * 0.8).round()),
+                    color: AppColors.lightTextPrimary.withAlpha(
+                      (255 * 0.8).round(),
+                    ),
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -211,10 +208,7 @@ class _NameInputStepState extends State<NameInputStep> {
         ),
         child: Text(
           name,
-          style: TextStyle(
-            color: AppColors.lightTextPrimary,
-            fontSize: 14,
-          ),
+          style: TextStyle(color: AppColors.lightTextPrimary, fontSize: 14),
         ),
       ),
     );

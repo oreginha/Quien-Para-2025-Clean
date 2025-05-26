@@ -14,7 +14,10 @@ abstract class AuthRepository {
   Future<UserEntity?> getUserById(String userId);
   Future<UserEntity> signInWithEmailAndPassword(String email, String password);
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name);
+    String email,
+    String password,
+    String name,
+  );
   Future<Map<String, dynamic>> signInWithGoogle();
   Future<void> signOut();
   Future<void> deleteAccount();

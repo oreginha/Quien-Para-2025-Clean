@@ -17,8 +17,10 @@ class SettingsScreen extends StatelessWidget {
 
   // Método para mostrar diálogo de confirmación de eliminación de cuenta
   void _showDeleteAccountConfirmation(BuildContext context) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context, listen: false).isDarkMode;
+    final isDarkMode = Provider.of<ThemeProvider>(
+      context,
+      listen: false,
+    ).isDarkMode;
     final textColor = isDarkMode ? Colors.white : Colors.black87;
 
     showDialog(
@@ -27,13 +29,17 @@ class SettingsScreen extends StatelessWidget {
         return AlertDialog(
           title: Text('Eliminar cuenta', style: TextStyle(color: textColor)),
           content: const Text(
-              '¿Estás seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer y perderás todos tus datos.'),
+            '¿Estás seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer y perderás todos tus datos.',
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(),
-              child: Text('Cancelar',
-                  style: TextStyle(
-                      color: isDarkMode ? Colors.white70 : Colors.black54)),
+              child: Text(
+                'Cancelar',
+                style: TextStyle(
+                  color: isDarkMode ? Colors.white70 : Colors.black54,
+                ),
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -42,8 +48,9 @@ class SettingsScreen extends StatelessWidget {
                 // Usar el método logout() ya que deleteAccount() no está implementado
                 // En una implementación completa, aquí iría el código para eliminar la cuenta
                 context.read<AuthCubit>().logout();
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Funcionalidad en desarrollo')));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Funcionalidad en desarrollo')),
+                );
               },
               child: Text('Eliminar', style: TextStyle(color: Colors.red)),
             ),
@@ -61,8 +68,11 @@ class SettingsScreen extends StatelessWidget {
         return AboutDialog(
           applicationName: 'Quien Para',
           applicationVersion: '1.0.0',
-          applicationIcon:
-              Image.asset('assets/images/app_icon.png', width: 48, height: 48),
+          applicationIcon: Image.asset(
+            'assets/images/app_icon.png',
+            width: 48,
+            height: 48,
+          ),
           applicationLegalese:
               '© 2025 Quien Para. Todos los derechos reservados.',
           children: [
@@ -70,7 +80,8 @@ class SettingsScreen extends StatelessWidget {
             Text(
               'Quien Para es una aplicación para encontrar compañía para tus actividades y planes.',
               style: TextStyle(
-                  color: isDarkMode ? Colors.white70 : Colors.black87),
+                color: isDarkMode ? Colors.white70 : Colors.black87,
+              ),
             ),
           ],
         );
@@ -93,8 +104,10 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Configuración',
-            style: Theme.of(context).textTheme.headlineSmall),
+        title: Text(
+          'Configuración',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
       ),
       darkPrimaryBackground: backgroundColor,
       body: ListView(
@@ -108,8 +121,10 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Desarrollo',
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  'Desarrollo',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 12),
                 ThemeAwareButton(
                   iconLeft: Icons.color_lens,
@@ -142,8 +157,9 @@ class SettingsScreen extends StatelessWidget {
                   text: 'Preferencias de notificaciones',
                   onPressed: () {
                     // Añadir funcionalidad de configuración de notificaciones
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Próximamente disponible')));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Próximamente disponible')),
+                    );
                   },
                 ),
                 const SizedBox(height: 8),
@@ -172,16 +188,19 @@ class SettingsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Privacidad y seguridad',
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  'Privacidad y seguridad',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 12),
                 ThemeAwareButton(
                   iconLeft: Icons.privacy_tip,
                   text: 'Política de privacidad',
                   onPressed: () {
                     // Añadir navegación a la política de privacidad
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Próximamente disponible')));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Próximamente disponible')),
+                    );
                   },
                 ),
                 const SizedBox(height: 8),
@@ -190,8 +209,9 @@ class SettingsScreen extends StatelessWidget {
                   text: 'Términos y condiciones',
                   onPressed: () {
                     // Añadir navegación a los términos y condiciones
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Próximamente disponible')));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Próximamente disponible')),
+                    );
                   },
                 ),
               ],
@@ -210,8 +230,9 @@ class SettingsScreen extends StatelessWidget {
                   text: 'Centro de ayuda',
                   onPressed: () {
                     // Añadir navegación al centro de ayuda
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Próximamente disponible')));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Próximamente disponible')),
+                    );
                   },
                 ),
                 const SizedBox(height: 8),
@@ -220,8 +241,9 @@ class SettingsScreen extends StatelessWidget {
                   text: 'Enviar comentarios',
                   onPressed: () {
                     // Añadir funcionalidad de envío de comentarios
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Próximamente disponible')));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Próximamente disponible')),
+                    );
                   },
                 ),
                 const SizedBox(height: 8),

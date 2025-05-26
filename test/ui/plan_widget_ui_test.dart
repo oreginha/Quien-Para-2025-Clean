@@ -43,15 +43,14 @@ void main() {
       return MaterialApp(
         home: ChangeNotifierProvider<ThemeProvider>(
           create: (_) => MockThemeProvider(isDarkMode: false),
-          child: Scaffold(
-            body: child,
-          ),
+          child: Scaffold(body: child),
         ),
       );
     }
 
-    testWidgets('PlanCard responde correctamente a gestos de pulsación larga',
-        (WidgetTester tester) async {
+    testWidgets('PlanCard responde correctamente a gestos de pulsación larga', (
+      WidgetTester tester,
+    ) async {
       // Variable para rastrear si se detectó pulsación larga
       bool longPressed = false;
 
@@ -81,39 +80,41 @@ void main() {
 
     // Prueba para OtherUserPlanCard
     testWidgets(
-        'OtherUserPlanCard muestra información mínima y mantiene diseño compacto',
-        (WidgetTester tester) async {
-      // Preparar
-      await tester.pumpWidget(
-        buildTestableWidget(
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: OtherUserPlanCard(
-              title: testPlan.title,
-              description: testPlan.description,
-              location: testPlan.location,
-              imageUrl: testPlan.imageUrl,
-              date: testPlan.date,
-              planId: testPlan.id,
-              creatorId: testPlan.creatorId,
+      'OtherUserPlanCard muestra información mínima y mantiene diseño compacto',
+      (WidgetTester tester) async {
+        // Preparar
+        await tester.pumpWidget(
+          buildTestableWidget(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: OtherUserPlanCard(
+                title: testPlan.title,
+                description: testPlan.description,
+                location: testPlan.location,
+                imageUrl: testPlan.imageUrl,
+                date: testPlan.date,
+                planId: testPlan.id,
+                creatorId: testPlan.creatorId,
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      // Verificar que contiene información esencial
-      expect(find.text('Test Plan Title'), findsOneWidget);
+        // Verificar que contiene información esencial
+        expect(find.text('Test Plan Title'), findsOneWidget);
 
-      // Verificar que el tamaño es realmente compacto midiendo el widget
-      final size = tester.getSize(find.byType(OtherUserPlanCard));
+        // Verificar que el tamaño es realmente compacto midiendo el widget
+        final size = tester.getSize(find.byType(OtherUserPlanCard));
 
-      // El widget compacto no debería ocupar toda la altura de la pantalla
-      expect(size.height, lessThan(400));
-    });
+        // El widget compacto no debería ocupar toda la altura de la pantalla
+        expect(size.height, lessThan(400));
+      },
+    );
 
     // Prueba para MyPlanCard
-    testWidgets('MyPlanCard muestra título y permitir eliminar',
-        (WidgetTester tester) async {
+    testWidgets('MyPlanCard muestra título y permitir eliminar', (
+      WidgetTester tester,
+    ) async {
       // Flag para verificar si se llamó a onDeletePlan
       bool onDeleteCalled = false;
       String? deletedPlanId;
@@ -152,8 +153,9 @@ void main() {
     });
 
     // Prueba para MyApplicationCard
-    testWidgets('MyApplicationCard muestra información de aplicación',
-        (WidgetTester tester) async {
+    testWidgets('MyApplicationCard muestra información de aplicación', (
+      WidgetTester tester,
+    ) async {
       // Flag para verificar si se llamó a onCancelApplication
       bool onCancelCalled = false;
       String? canceledAppId;
@@ -206,8 +208,9 @@ void main() {
     });
 
     // Prueba de accesibilidad
-    testWidgets('PlanCard tiene suficiente tamaño para accesibilidad',
-        (WidgetTester tester) async {
+    testWidgets('PlanCard tiene suficiente tamaño para accesibilidad', (
+      WidgetTester tester,
+    ) async {
       // Preparar
       await tester.pumpWidget(
         buildTestableWidget(
@@ -229,8 +232,9 @@ void main() {
     });
 
     // Prueba del conjunto de widgets en un escenario realista
-    testWidgets('Múltiples PlanCards se muestran correctamente en un ListView',
-        (WidgetTester tester) async {
+    testWidgets('Múltiples PlanCards se muestran correctamente en un ListView', (
+      WidgetTester tester,
+    ) async {
       // Crear una lista de planes
       final plans = List.generate(
         5,

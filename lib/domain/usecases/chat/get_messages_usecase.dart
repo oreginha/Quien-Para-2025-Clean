@@ -27,7 +27,8 @@ class GetMessagesUseCase
 
   @override
   Stream<Either<AppFailure, List<MessageEntity>>> call(
-      GetMessagesParams params) {
+    GetMessagesParams params,
+  ) {
     return _chatRepository.getMessages(params.conversationId);
   }
 }

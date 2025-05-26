@@ -22,13 +22,17 @@ class EnvConfig {
       print('🔐 Inicializando configuración de entorno');
     }
 
-    _firebaseWebApiKey = const String.fromEnvironment('FIREBASE_WEB_API_KEY',
-        defaultValue: 'YOUR_FIREBASE_WEB_API_KEY');
+    _firebaseWebApiKey = const String.fromEnvironment(
+      'FIREBASE_WEB_API_KEY',
+      defaultValue: 'YOUR_FIREBASE_WEB_API_KEY',
+    );
 
     // Validar que las claves no sean los valores por defecto en producción
     if (!kDebugMode) {
-      assert(_firebaseWebApiKey != 'YOUR_FIREBASE_WEB_API_KEY',
-          'Firebase Web API Key real no configurada en producción');
+      assert(
+        _firebaseWebApiKey != 'YOUR_FIREBASE_WEB_API_KEY',
+        'Firebase Web API Key real no configurada en producción',
+      );
     }
   }
 

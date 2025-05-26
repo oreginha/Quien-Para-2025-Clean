@@ -47,8 +47,8 @@ class MapsRepositoryImpl implements MapsRepository {
       }
 
       // Verificar permisos de ubicación
-      location_pkg.PermissionStatus permissionStatus =
-          await _locationService.hasPermission();
+      location_pkg.PermissionStatus permissionStatus = await _locationService
+          .hasPermission();
       if (permissionStatus == location_pkg.PermissionStatus.denied) {
         permissionStatus = await _locationService.requestPermission();
         if (permissionStatus != location_pkg.PermissionStatus.granted) {
@@ -57,8 +57,8 @@ class MapsRepositoryImpl implements MapsRepository {
       }
 
       // Obtener la ubicación actual
-      final location_pkg.LocationData locationData =
-          await _locationService.getLocation();
+      final location_pkg.LocationData locationData = await _locationService
+          .getLocation();
 
       // Convertir a nuestra entidad
       return LocationEntity(
@@ -81,18 +81,15 @@ class MapsRepositoryImpl implements MapsRepository {
   @override
   Future<LocationEntity?> geocodeAddress(String address) async {
     try {
-      final List<geocoding.Location> locations =
-          await geocoding.locationFromAddress(address);
+      final List<geocoding.Location> locations = await geocoding
+          .locationFromAddress(address);
 
       if (locations.isNotEmpty) {
         final location = locations.first;
 
         // Intentar obtener detalles del lugar
-        final List<geocoding.Placemark> placemarks =
-            await geocoding.placemarkFromCoordinates(
-          location.latitude,
-          location.longitude,
-        );
+        final List<geocoding.Placemark> placemarks = await geocoding
+            .placemarkFromCoordinates(location.latitude, location.longitude);
 
         if (placemarks.isNotEmpty) {
           final placemark = placemarks.first;
@@ -124,18 +121,20 @@ class MapsRepositoryImpl implements MapsRepository {
 
   @override
   Future<LocationEntity?> reverseGeocode(
-      double latitude, double longitude) async {
+    double latitude,
+    double longitude,
+  ) async {
     try {
-      final List<geocoding.Placemark> placemarks =
-          await geocoding.placemarkFromCoordinates(latitude, longitude);
+      final List<geocoding.Placemark> placemarks = await geocoding
+          .placemarkFromCoordinates(latitude, longitude);
 
       if (placemarks.isNotEmpty) {
         final placemark = placemarks.first;
         final String name = placemark.name?.isNotEmpty == true
             ? placemark.name!
             : placemark.street?.isNotEmpty == true
-                ? placemark.street!
-                : 'Ubicación seleccionada';
+            ? placemark.street!
+            : 'Ubicación seleccionada';
 
         return LocationEntity(
           latitude: latitude,
@@ -166,7 +165,9 @@ class MapsRepositoryImpl implements MapsRepository {
 
   @override
   Future<double> calculateDistance(
-      LocationEntity origin, LocationEntity destination) async {
+    LocationEntity origin,
+    LocationEntity destination,
+  ) async {
     // Implementación simple con la fórmula de Haversine
     const double earthRadius = 6371.0; // Radio de la Tierra en km
     final double lat1 = _toRadians(origin.latitude);
@@ -177,7 +178,8 @@ class MapsRepositoryImpl implements MapsRepository {
     final double dlon = lon2 - lon1;
     final double dlat = lat2 - lat1;
 
-    final double a = math.pow(math.sin(dlat / 2), 2) +
+    final double a =
+        math.pow(math.sin(dlat / 2), 2) +
         math.cos(lat1) * math.cos(lat2) * math.pow(math.sin(dlon / 2), 2);
     final double c = 2 * math.asin(math.sqrt(a));
 
@@ -191,8 +193,10 @@ class MapsRepositoryImpl implements MapsRepository {
 
   @override
   Future<List<LocationEntity>> searchNearbyPlaces(
-      LocationEntity center, String query,
-      {double radiusInKm = 5.0}) async {
+    LocationEntity center,
+    String query, {
+    double radiusInKm = 5.0,
+  }) async {
     try {
       // NOTA: En una implementación real, esta función usaría la API de Places
       // A continuación se muestra una implementación simulada
@@ -235,8 +239,10 @@ class MapsRepositoryImpl implements MapsRepository {
 
   @override
   Future<Map<String, dynamic>> getDirections(
-      LocationEntity origin, LocationEntity destination,
-      {String mode = 'driving'}) async {
+    LocationEntity origin,
+    LocationEntity destination, {
+    String mode = 'driving',
+  }) async {
     try {
       // NOTA: En una implementación real, esta función usaría la API de Directions
       // A continuación se muestra una implementación simulada
@@ -245,8 +251,8 @@ class MapsRepositoryImpl implements MapsRepository {
 
       // Simular datos de ruta
       final double distanceInKm = await calculateDistance(origin, destination);
-      final int durationInMinutes =
-          (distanceInKm * 3).round(); // Estimación simple
+      final int durationInMinutes = (distanceInKm * 3)
+          .round(); // Estimación simple
 
       // Generar puntos de la polilinea
       final List<CustomLatLng> points = _generateFakeRoute(
@@ -263,16 +269,15 @@ class MapsRepositoryImpl implements MapsRepository {
           'text': '$durationInMinutes min',
           'value': durationInMinutes * 60, // En segundos
         },
-        'points':
-            points.map((p) => {'lat': p.latitude, 'lng': p.longitude}).toList(),
+        'points': points
+            .map((p) => {'lat': p.latitude, 'lng': p.longitude})
+            .toList(),
       };
     } catch (e) {
       if (kDebugMode) {
         print('Error al obtener direcciones: $e');
       }
-      return {
-        'error': 'No se pudo calcular la ruta',
-      };
+      return {'error': 'No se pudo calcular la ruta'};
     }
   }
 
@@ -289,10 +294,12 @@ class MapsRepositoryImpl implements MapsRepository {
       final double randomLat = (math.Random().nextDouble() - 0.5) * 0.005;
       final double randomLng = (math.Random().nextDouble() - 0.5) * 0.005;
 
-      final double lat = start.latitude +
+      final double lat =
+          start.latitude +
           (end.latitude - start.latitude) * fraction +
           randomLat;
-      final double lng = start.longitude +
+      final double lng =
+          start.longitude +
           (end.longitude - start.longitude) * fraction +
           randomLng;
 

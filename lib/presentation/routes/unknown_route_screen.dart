@@ -54,8 +54,10 @@ class UnknownRouteScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   'Error: $errorMessage',
-                  style:
-                      const TextStyle(fontSize: 14, color: AppColors.success),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: AppColors.success,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -65,8 +67,10 @@ class UnknownRouteScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.brandYellow,
                   foregroundColor: Colors.black,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
                 ),
                 child: const Text('Ir a la pantalla principal'),
               ),

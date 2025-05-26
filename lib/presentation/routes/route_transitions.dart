@@ -10,7 +10,7 @@ enum PageTransitionType {
   slide, // Transición deslizante desde la derecha
   slideUp, // Transición deslizante desde abajo
   scale, // Transición con escalado
-  none // Sin transición
+  none, // Sin transición
 }
 
 /// Utilidades para crear transiciones entre rutas
@@ -29,10 +29,7 @@ class RouteTransitions {
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         switch (transitionType) {
           case PageTransitionType.fade:
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
+            return FadeTransition(opacity: animation, child: child);
 
           case PageTransitionType.slide:
             return SlideTransition(
@@ -53,10 +50,7 @@ class RouteTransitions {
             );
 
           case PageTransitionType.scale:
-            return ScaleTransition(
-              scale: animation,
-              child: child,
-            );
+            return ScaleTransition(scale: animation, child: child);
 
           case PageTransitionType.none:
             return child;
@@ -65,7 +59,7 @@ class RouteTransitions {
       transitionDuration: duration,
     );
   }
-  
+
   // Método de conveniencia para crear una transición con desvanecimiento
   static CustomTransitionPage<void> fadeTransition({
     required GoRouterState state,

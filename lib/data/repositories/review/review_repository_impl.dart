@@ -11,7 +11,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
   final FirebaseFirestore firestore;
 
   ReviewRepositoryImpl({FirebaseFirestore? firestore})
-      : firestore = firestore ?? FirebaseFirestore.instance;
+    : firestore = firestore ?? FirebaseFirestore.instance;
 
   static const String reviewsCollection = 'reviews';
   static const String userRatingsCollection = 'user_ratings';
@@ -32,8 +32,11 @@ class ReviewRepositoryImpl implements IReviewRepository {
           .get();
 
       if (existingQuery.docs.isNotEmpty) {
-        return Left(ValidationFailure(
-            'Ya has escrito una reseña para este usuario en este plan'));
+        return Left(
+          ValidationFailure(
+            'Ya has escrito una reseña para este usuario en este plan',
+          ),
+        );
       }
 
       // Crear la reseña
@@ -62,8 +65,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
       var query = firestore
           .collection(reviewsCollection)
           .where('reviewedUserId', isEqualTo: userId)
-          .where('status',
-              isEqualTo: ReviewStatus.approved.toString().split('.').last)
+          .where(
+            'status',
+            isEqualTo: ReviewStatus.approved.toString().split('.').last,
+          )
           .orderBy('createdAt', descending: true)
           .limit(limit);
 
@@ -102,8 +107,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
       var query = firestore
           .collection(reviewsCollection)
           .where('planId', isEqualTo: planId)
-          .where('status',
-              isEqualTo: ReviewStatus.approved.toString().split('.').last)
+          .where(
+            'status',
+            isEqualTo: ReviewStatus.approved.toString().split('.').last,
+          )
           .orderBy('createdAt', descending: true)
           .limit(limit);
 
@@ -125,7 +132,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       return Right(reviews);
     } catch (e) {
       return Left(
-          ServerFailure('Error al obtener reseñas del plan: ${e.toString()}'));
+        ServerFailure('Error al obtener reseñas del plan: ${e.toString()}'),
+      );
     }
   }
 
@@ -159,8 +167,9 @@ class ReviewRepositoryImpl implements IReviewRepository {
 
       return Right(reviews);
     } catch (e) {
-      return Left(ServerFailure(
-          'Error al obtener reseñas del usuario: ${e.toString()}'));
+      return Left(
+        ServerFailure('Error al obtener reseñas del usuario: ${e.toString()}'),
+      );
     }
   }
 
@@ -182,15 +191,19 @@ class ReviewRepositoryImpl implements IReviewRepository {
   Future<Either<Failure, void>> deleteReview(String reviewId) async {
     try {
       // Obtener la reseña antes de eliminarla para actualizar estadísticas
-      final reviewDoc =
-          await firestore.collection(reviewsCollection).doc(reviewId).get();
+      final reviewDoc = await firestore
+          .collection(reviewsCollection)
+          .doc(reviewId)
+          .get();
 
       if (!reviewDoc.exists) {
         return Left(NotFoundFailure('Reseña no encontrada'));
       }
 
-      final review =
-          ReviewEntity.fromJson({...reviewDoc.data()!, 'id': reviewDoc.id});
+      final review = ReviewEntity.fromJson({
+        ...reviewDoc.data()!,
+        'id': reviewDoc.id,
+      });
 
       // Eliminar la reseña
       await firestore.collection(reviewsCollection).doc(reviewId).delete();
@@ -218,7 +231,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       return Right(null);
     } catch (e) {
       return Left(
-          ServerFailure('Error al marcar reseña como útil: ${e.toString()}'));
+        ServerFailure('Error al marcar reseña como útil: ${e.toString()}'),
+      );
     }
   }
 
@@ -235,8 +249,9 @@ class ReviewRepositoryImpl implements IReviewRepository {
 
       return Right(null);
     } catch (e) {
-      return Left(ServerFailure(
-          'Error al desmarcar reseña como útil: ${e.toString()}'));
+      return Left(
+        ServerFailure('Error al desmarcar reseña como útil: ${e.toString()}'),
+      );
     }
   }
 
@@ -261,7 +276,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       return Right(existingQuery.docs.isEmpty);
     } catch (e) {
       return Left(
-          ServerFailure('Error al verificar permisos: ${e.toString()}'));
+        ServerFailure('Error al verificar permisos: ${e.toString()}'),
+      );
     }
   }
 
@@ -270,8 +286,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
   @override
   Future<Either<Failure, UserRatingEntity>> getUserRating(String userId) async {
     try {
-      final doc =
-          await firestore.collection(userRatingsCollection).doc(userId).get();
+      final doc = await firestore
+          .collection(userRatingsCollection)
+          .doc(userId)
+          .get();
 
       if (!doc.exists) {
         // Crear rating inicial si no existe
@@ -291,8 +309,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
         return Right(initialRating);
       }
 
-      final rating =
-          UserRatingEntity.fromJson({...doc.data()!, 'userId': doc.id});
+      final rating = UserRatingEntity.fromJson({
+        ...doc.data()!,
+        'userId': doc.id,
+      });
       return Right(rating);
     } catch (e) {
       return Left(ServerFailure('Error al obtener rating: ${e.toString()}'));
@@ -309,14 +329,18 @@ class ReviewRepositoryImpl implements IReviewRepository {
       // Esta es una implementación simplificada
       // En producción, usarías Cloud Functions para cálculos más complejos
 
-      final doc =
-          await firestore.collection(userRatingsCollection).doc(userId).get();
+      final doc = await firestore
+          .collection(userRatingsCollection)
+          .doc(userId)
+          .get();
 
       UserRatingEntity currentRating;
 
       if (doc.exists) {
-        currentRating =
-            UserRatingEntity.fromJson({...doc.data()!, 'userId': doc.id});
+        currentRating = UserRatingEntity.fromJson({
+          ...doc.data()!,
+          'userId': doc.id,
+        });
       } else {
         currentRating = UserRatingEntity(
           userId: userId,
@@ -330,13 +354,14 @@ class ReviewRepositoryImpl implements IReviewRepository {
       // Calcular nuevo promedio
       final totalRating =
           (currentRating.averageRating * currentRating.totalReviews) +
-              newRating;
+          newRating;
       final newTotalReviews = currentRating.totalReviews + 1;
       final newAverageRating = totalRating / newTotalReviews;
 
       // Actualizar distribución
-      final newDistribution =
-          Map<String, int>.from(currentRating.ratingDistribution ?? {});
+      final newDistribution = Map<String, int>.from(
+        currentRating.ratingDistribution ?? {},
+      );
       final ratingKey = newRating.round().toString();
       newDistribution[ratingKey] = (newDistribution[ratingKey] ?? 0) + 1;
 
@@ -360,14 +385,17 @@ class ReviewRepositoryImpl implements IReviewRepository {
 
   @override
   Future<Either<Failure, UserRatingEntity>> recalculateUserRating(
-      String userId) async {
+    String userId,
+  ) async {
     try {
       // Obtener todas las reseñas aprobadas del usuario
       final reviewsQuery = await firestore
           .collection(reviewsCollection)
           .where('reviewedUserId', isEqualTo: userId)
-          .where('status',
-              isEqualTo: ReviewStatus.approved.toString().split('.').last)
+          .where(
+            'status',
+            isEqualTo: ReviewStatus.approved.toString().split('.').last,
+          )
           .get();
 
       if (reviewsQuery.docs.isEmpty) {
@@ -402,7 +430,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
         '2': 0,
         '3': 0,
         '4': 0,
-        '5': 0
+        '5': 0,
       };
       for (final review in reviews) {
         final key = review.rating.round().toString();
@@ -410,12 +438,14 @@ class ReviewRepositoryImpl implements IReviewRepository {
       }
 
       // Calcular reliability score basado en variaciones de rating
-      final variance = reviews.fold<double>(
-              0,
-              (sum, review) =>
-                  sum +
-                  ((review.rating - averageRating) *
-                      (review.rating - averageRating))) /
+      final variance =
+          reviews.fold<double>(
+            0,
+            (sum, review) =>
+                sum +
+                ((review.rating - averageRating) *
+                    (review.rating - averageRating)),
+          ) /
           reviews.length;
       final reliabilityScore = (100 - (variance * 20)).clamp(0, 100).round();
 
@@ -441,10 +471,13 @@ class ReviewRepositoryImpl implements IReviewRepository {
 
   @override
   Future<Either<Failure, Map<String, dynamic>>> getUserReviewStats(
-      String userId) async {
+    String userId,
+  ) async {
     try {
-      final doc =
-          await firestore.collection(reviewStatsCollection).doc(userId).get();
+      final doc = await firestore
+          .collection(reviewStatsCollection)
+          .doc(userId)
+          .get();
 
       if (!doc.exists) {
         return Right(<String, dynamic>{});
@@ -453,7 +486,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       return Right(doc.data()!);
     } catch (e) {
       return Left(
-          ServerFailure('Error al obtener estadísticas: ${e.toString()}'));
+        ServerFailure('Error al obtener estadísticas: ${e.toString()}'),
+      );
     }
   }
 
@@ -471,14 +505,17 @@ class ReviewRepositoryImpl implements IReviewRepository {
 
       final snapshot = await query.get();
       final ratings = snapshot.docs
-          .map((doc) =>
-              UserRatingEntity.fromJson({...doc.data(), 'userId': doc.id}))
+          .map(
+            (doc) =>
+                UserRatingEntity.fromJson({...doc.data(), 'userId': doc.id}),
+          )
           .toList();
 
       return Right(ratings);
     } catch (e) {
       return Left(
-          ServerFailure('Error al obtener top usuarios: ${e.toString()}'));
+        ServerFailure('Error al obtener top usuarios: ${e.toString()}'),
+      );
     }
   }
 
@@ -492,8 +529,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
     try {
       var query = firestore
           .collection(reviewsCollection)
-          .where('status',
-              isEqualTo: ReviewStatus.pending.toString().split('.').last)
+          .where(
+            'status',
+            isEqualTo: ReviewStatus.pending.toString().split('.').last,
+          )
           .orderBy('createdAt', descending: false) // Más antiguos primero
           .limit(limit);
 
@@ -514,8 +553,9 @@ class ReviewRepositoryImpl implements IReviewRepository {
 
       return Right(reviews);
     } catch (e) {
-      return Left(ServerFailure(
-          'Error al obtener reseñas pendientes: ${e.toString()}'));
+      return Left(
+        ServerFailure('Error al obtener reseñas pendientes: ${e.toString()}'),
+      );
     }
   }
 
@@ -573,8 +613,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
   @override
   Future<Either<Failure, Map<String, dynamic>>> getReviewMetrics() async {
     try {
-      final metricsDoc =
-          await firestore.collection('analytics').doc('review_metrics').get();
+      final metricsDoc = await firestore
+          .collection('analytics')
+          .doc('review_metrics')
+          .get();
 
       if (!metricsDoc.exists) {
         return Right(<String, dynamic>{});
@@ -608,7 +650,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       return Right(distribution);
     } catch (e) {
       return Left(
-          ServerFailure('Error al obtener distribución: ${e.toString()}'));
+        ServerFailure('Error al obtener distribución: ${e.toString()}'),
+      );
     }
   }
 
@@ -620,8 +663,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
     try {
       final trendsQuery = await firestore
           .collection(reviewsCollection)
-          .where('createdAt',
-              isGreaterThanOrEqualTo: Timestamp.fromDate(startDate))
+          .where(
+            'createdAt',
+            isGreaterThanOrEqualTo: Timestamp.fromDate(startDate),
+          )
           .where('createdAt', isLessThanOrEqualTo: Timestamp.fromDate(endDate))
           .get();
 
@@ -634,7 +679,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
       final averageRating = reviews.isEmpty
           ? 0.0
           : reviews.fold<double>(0, (sum, r) => sum + r.rating) /
-              reviews.length;
+                reviews.length;
 
       final dailyReviews = <String, int>{};
       final dailyAverages = <String, double>{};
@@ -661,7 +706,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       });
     } catch (e) {
       return Left(
-          ServerFailure('Error al obtener tendencias: ${e.toString()}'));
+        ServerFailure('Error al obtener tendencias: ${e.toString()}'),
+      );
     }
   }
 
@@ -674,10 +720,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
           .collection(reviewStatsCollection)
           .doc(review.reviewedUserId)
           .set({
-        'totalReviews': FieldValue.increment(1),
-        'lastReviewDate': review.createdAt.toIso8601String(),
-        'ratingSum': FieldValue.increment(review.rating),
-      }, SetOptions(merge: true));
+            'totalReviews': FieldValue.increment(1),
+            'lastReviewDate': review.createdAt.toIso8601String(),
+            'ratingSum': FieldValue.increment(review.rating),
+          }, SetOptions(merge: true));
 
       // Actualizar métricas globales
       await firestore.collection('analytics').doc('review_metrics').set({
@@ -705,9 +751,9 @@ class ReviewRepositoryImpl implements IReviewRepository {
           .collection(reviewStatsCollection)
           .doc(review.reviewedUserId)
           .update({
-        'totalReviews': FieldValue.increment(-1),
-        'ratingSum': FieldValue.increment(-review.rating),
-      });
+            'totalReviews': FieldValue.increment(-1),
+            'ratingSum': FieldValue.increment(-review.rating),
+          });
 
       // Restar de métricas globales
       await firestore.collection('analytics').doc('review_metrics').update({
@@ -717,12 +763,9 @@ class ReviewRepositoryImpl implements IReviewRepository {
       });
 
       // Restar de distribución de ratings
-      await firestore
-          .collection('analytics')
-          .doc('rating_distribution')
-          .update({
-        review.rating.round().toString(): FieldValue.increment(-1),
-      });
+      await firestore.collection('analytics').doc('rating_distribution').update(
+        {review.rating.round().toString(): FieldValue.increment(-1)},
+      );
     } catch (e) {
       if (kDebugMode) {
         print('Error removing review from stats: $e');

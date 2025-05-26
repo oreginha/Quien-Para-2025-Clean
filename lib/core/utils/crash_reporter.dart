@@ -17,7 +17,7 @@ class CrashReporter {
 
   // Ruta al archivo de registro de errores
   String? _logFilePath;
-  
+
   // Bandera para indicar si el reporte está habilitado
   bool _enabled = false;
 
@@ -26,17 +26,17 @@ class CrashReporter {
     if (kDebugMode) {
       print('🚨 [CrashReporter] Inicializando sistema de reporte de errores');
     }
-    
+
     try {
       // Obtener directorio para almacenar logs
       final Directory appDocDir = await getApplicationDocumentsDirectory();
       _logFilePath = '${appDocDir.path}/crash_logs.txt';
       _enabled = true;
-      
+
       if (kDebugMode) {
         print('📝 [CrashReporter] Archivo de logs: $_logFilePath');
       }
-      
+
       // Limpiar logs antiguos (mantener solo los últimos 30 días)
       await _cleanOldLogs();
     } catch (e) {
@@ -50,20 +50,22 @@ class CrashReporter {
   // Limpiar logs antiguos
   Future<void> _cleanOldLogs() async {
     if (!_enabled || _logFilePath == null) return;
-    
+
     try {
       final File logFile = File(_logFilePath!);
       if (await logFile.exists()) {
         final String content = await logFile.readAsString();
         final List<String> logs = content.split('\n\n===== ERROR LOG =====\n');
-        
+
         // Si hay menos de 50 registros, no hacer nada
         if (logs.length < 50) return;
-        
+
         // Conservar solo los últimos 50 registros
-        final String newContent = logs.sublist(logs.length - 50).join('\n\n===== ERROR LOG =====\n');
+        final String newContent = logs
+            .sublist(logs.length - 50)
+            .join('\n\n===== ERROR LOG =====\n');
         await logFile.writeAsString(newContent);
-        
+
         if (kDebugMode) {
           print('🧹 [CrashReporter] Logs antiguos eliminados');
         }
@@ -78,23 +80,26 @@ class CrashReporter {
   // Registrar un error con su stack trace
   Future<void> logError(dynamic error, StackTrace? stackTrace) async {
     if (!_enabled || _logFilePath == null) return;
-    
+
     try {
-      final String timestamp = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+      final String timestamp = DateFormat(
+        'yyyy-MM-dd HH:mm:ss',
+      ).format(DateTime.now());
       final String errorString = error.toString();
-      final String stackString = stackTrace?.toString() ?? 'No stack trace disponible';
-      
+      final String stackString =
+          stackTrace?.toString() ?? 'No stack trace disponible';
+
       // Formato del log
-      final String logEntry = 
+      final String logEntry =
           '\n===== ERROR LOG =====\n'
           'FECHA: $timestamp\n'
           'ERROR: $errorString\n'
           'STACK TRACE:\n$stackString\n';
-      
+
       // Escribir al archivo
       final File logFile = File(_logFilePath!);
       await logFile.writeAsString(logEntry, mode: FileMode.append);
-      
+
       if (kDebugMode) {
         print('📝 [CrashReporter] Error registrado en log');
       }
@@ -108,7 +113,7 @@ class CrashReporter {
   // Obtener todos los logs para enviar a soporte
   Future<String?> getErrorLogs() async {
     if (!_enabled || _logFilePath == null) return null;
-    
+
     try {
       final File logFile = File(_logFilePath!);
       if (await logFile.exists()) {
@@ -119,14 +124,14 @@ class CrashReporter {
         print('❌ [CrashReporter] Error al leer logs: $e');
       }
     }
-    
+
     return null;
   }
 
   // Borrar todos los logs
   Future<void> clearLogs() async {
     if (!_enabled || _logFilePath == null) return;
-    
+
     try {
       final File logFile = File(_logFilePath!);
       if (await logFile.exists()) {

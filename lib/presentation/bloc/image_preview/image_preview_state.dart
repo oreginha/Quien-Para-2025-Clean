@@ -14,8 +14,6 @@ class ImagePreviewState with _$ImagePreviewState {
     String? error,
   }) = _ImagePreviewState;
 
-  factory ImagePreviewState.initial() => ImagePreviewState(
-        currentImage: File(''),
-        originalImage: File(''),
-      );
+  factory ImagePreviewState.initial() =>
+      ImagePreviewState(currentImage: File(''), originalImage: File(''));
 }

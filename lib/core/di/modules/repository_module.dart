@@ -36,11 +36,13 @@ class RepositoryModule implements DIModule {
     // Registrar servicios de almacenamiento
     if (!sl.isRegistered<firebase.FirebaseStorage>()) {
       sl.registerLazySingleton<firebase.FirebaseStorage>(
-          () => firebase.FirebaseStorage.instance);
+        () => firebase.FirebaseStorage.instance,
+      );
     }
     if (!sl.isRegistered<metrics.FirebaseMetricsStorage>()) {
       sl.registerLazySingleton<metrics.FirebaseMetricsStorage>(
-          () => metrics.FirebaseMetricsStorage(sl<FirebaseFirestore>()));
+        () => metrics.FirebaseMetricsStorage(sl<FirebaseFirestore>()),
+      );
     }
 
     // Registrar mappers
@@ -49,7 +51,8 @@ class RepositoryModule implements DIModule {
     sl.registerLazySingleton<ChatMapper>(() => const ChatMapper());
     sl.registerLazySingleton<MessageMapper>(() => const MessageMapper());
     sl.registerLazySingleton<ApplicationMapper>(
-        () => const ApplicationMapper());
+      () => const ApplicationMapper(),
+    );
 
     // Registrar repositorios
     _registerPlanRepository(sl);
@@ -74,15 +77,16 @@ class RepositoryModule implements DIModule {
 
       final firebase.FirebaseStorage storage =
           sl.isRegistered<firebase.FirebaseStorage>()
-              ? sl<firebase.FirebaseStorage>()
-              : firebase.FirebaseStorage.instance;
+          ? sl<firebase.FirebaseStorage>()
+          : firebase.FirebaseStorage.instance;
 
       // Obtener el mapper
       final UserMapper mapper = sl<UserMapper>();
 
       // Obtener el caché de usuario si está disponible
-      final userCache =
-          sl.isRegistered<UserCache>() ? sl<UserCache>() : UserCache();
+      final userCache = sl.isRegistered<UserCache>()
+          ? sl<UserCache>()
+          : UserCache();
 
       // Obtener el logger si está disponible
       final Logger logger = sl.isRegistered<Logger>() ? sl<Logger>() : Logger();
@@ -119,15 +123,16 @@ class RepositoryModule implements DIModule {
       // Usar Firebase Storage para el repositorio de usuarios
       final firebase.FirebaseStorage storage =
           sl.isRegistered<firebase.FirebaseStorage>()
-              ? sl<firebase.FirebaseStorage>()
-              : firebase.FirebaseStorage.instance;
+          ? sl<firebase.FirebaseStorage>()
+          : firebase.FirebaseStorage.instance;
 
       // Obtener el mapper
       final UserMapper mapper = sl<UserMapper>();
 
       // Obtener el caché de usuario si está disponible
-      final userCache =
-          sl.isRegistered<UserCache>() ? sl<UserCache>() : UserCache();
+      final userCache = sl.isRegistered<UserCache>()
+          ? sl<UserCache>()
+          : UserCache();
 
       return UserRepositoryImpl(
         firestore: firestore,
@@ -184,7 +189,8 @@ class RepositoryModule implements DIModule {
 
     // Registrar también para la interfaz extendida
     sl.registerLazySingleton<ApplicationRepositoryInterface>(
-        () => applicationRepoImpl);
+      () => applicationRepoImpl,
+    );
   }
 
   @override
@@ -244,7 +250,8 @@ class RepositoryModule implements DIModule {
     container.registerLazySingleton<ChatMapper>(() => const ChatMapper());
     container.registerLazySingleton<MessageMapper>(() => const MessageMapper());
     container.registerLazySingleton<ApplicationMapper>(
-        () => const ApplicationMapper());
+      () => const ApplicationMapper(),
+    );
 
     // Ejemplo de cómo podríamos registrar mocks de repositorios:
     // Si tuviéramos implementaciones de prueba, las registraríamos aquí
@@ -263,6 +270,7 @@ class RepositoryModule implements DIModule {
     _registerApplicationRepository(container);
 
     _logger.d(
-        'Dependencias de prueba para repositorios registradas correctamente');
+      'Dependencias de prueba para repositorios registradas correctamente',
+    );
   }
 }

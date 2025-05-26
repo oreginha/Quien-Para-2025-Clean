@@ -16,7 +16,8 @@ class FirestoreServiceImpl implements FirestoreInterface {
 
   @override
   Future<List<Map<String, dynamic>>> getSuggestedPlans(
-      final List<String> categories) async {
+    final List<String> categories,
+  ) async {
     try {
       final QuerySnapshot<Map<String, dynamic>> snapshot = await _firestore
           .collection('events')
@@ -24,12 +25,14 @@ class FirestoreServiceImpl implements FirestoreInterface {
           .get();
 
       return snapshot.docs
-          .map((final QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
-              <String, String>{
-                'title': doc['nombre_evento'] as String,
-                'category': doc['categoria'] as String,
-                'imageUrl': doc['image_url_png'] as String,
-              })
+          .map(
+            (final QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
+                <String, String>{
+                  'title': doc['nombre_evento'] as String,
+                  'category': doc['categoria'] as String,
+                  'imageUrl': doc['image_url_png'] as String,
+                },
+          )
           .toList();
     } catch (e) {
       if (kDebugMode) {
@@ -48,15 +51,18 @@ class FirestoreServiceImpl implements FirestoreInterface {
         'events',
         queryBuilder: (collectionRef) => collectionRef
             .orderBy('nombre_evento')
-            .startAt(<Object?>[query]).endAt(<Object?>['$query\uf8ff']),
+            .startAt(<Object?>[query])
+            .endAt(<Object?>['$query\uf8ff']),
       );
 
       return docs
-          .map((final doc) => <String, String>{
-                'title': doc['nombre_evento'] as String,
-                'category': doc['categoria'] as String,
-                'imageUrl': doc['image_url_png'] as String,
-              })
+          .map(
+            (final doc) => <String, String>{
+              'title': doc['nombre_evento'] as String,
+              'category': doc['categoria'] as String,
+              'imageUrl': doc['image_url_png'] as String,
+            },
+          )
           .toList();
     } catch (e) {
       _logger.e('Error searching plans: $e');
@@ -96,10 +102,12 @@ class FirestoreServiceImpl implements FirestoreInterface {
       );
 
       return docs
-          .map((final doc) => <String, dynamic>{
-                ...?doc.data(),
-                'id': doc.id, // Incluir el ID del documento
-              })
+          .map(
+            (final doc) => <String, dynamic>{
+              ...?doc.data(),
+              'id': doc.id, // Incluir el ID del documento
+            },
+          )
           .toList();
     } catch (e) {
       _logger.e('Error getting collection data: $e');

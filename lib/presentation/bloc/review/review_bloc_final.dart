@@ -81,15 +81,16 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await createReviewUseCase(params);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviewId) => emit(state.copyWith(
-        status: ReviewStatus.created,
-        lastCreatedReviewId: reviewId,
-        lastRefreshTime: DateTime.now(),
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviewId) => emit(
+        state.copyWith(
+          status: ReviewStatus.created,
+          lastCreatedReviewId: reviewId,
+          lastRefreshTime: DateTime.now(),
+        ),
+      ),
     );
   }
 
@@ -100,12 +101,14 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     Emitter<ReviewState> emit,
   ) async {
     if (event.refresh == true) {
-      emit(state.copyWith(
-        status: ReviewStatus.loading,
-        userReviews: [],
-        hasMoreUserReviews: false,
-        lastUserReviewDocumentId: null,
-      ));
+      emit(
+        state.copyWith(
+          status: ReviewStatus.loading,
+          userReviews: [],
+          hasMoreUserReviews: false,
+          lastUserReviewDocumentId: null,
+        ),
+      );
     } else if (state.userReviews.isEmpty) {
       emit(state.copyWith(status: ReviewStatus.loading));
     }
@@ -119,21 +122,22 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await getUserReviewsUseCase(params);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviewsResult) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        userReviews: reviewsResult.reviews,
-        currentUserRating: reviewsResult.userRating,
-        hasMoreUserReviews: reviewsResult.hasMore,
-        lastUserReviewDocumentId: reviewsResult.reviews.isNotEmpty
-            ? reviewsResult.reviews.last.id
-            : null,
-        lastUserReviewsResult: reviewsResult,
-        lastRefreshTime: DateTime.now(),
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviewsResult) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          userReviews: reviewsResult.reviews,
+          currentUserRating: reviewsResult.userRating,
+          hasMoreUserReviews: reviewsResult.hasMore,
+          lastUserReviewDocumentId: reviewsResult.reviews.isNotEmpty
+              ? reviewsResult.reviews.last.id
+              : null,
+          lastUserReviewsResult: reviewsResult,
+          lastRefreshTime: DateTime.now(),
+        ),
+      ),
     );
   }
 
@@ -142,12 +146,14 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     Emitter<ReviewState> emit,
   ) async {
     if (event.refresh == true) {
-      emit(state.copyWith(
-        status: ReviewStatus.loading,
-        planReviews: [],
-        hasMorePlanReviews: false,
-        lastPlanReviewDocumentId: null,
-      ));
+      emit(
+        state.copyWith(
+          status: ReviewStatus.loading,
+          planReviews: [],
+          hasMorePlanReviews: false,
+          lastPlanReviewDocumentId: null,
+        ),
+      );
     } else if (state.planReviews.isEmpty) {
       emit(state.copyWith(status: ReviewStatus.loading));
     }
@@ -158,17 +164,18 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviews) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        planReviews: reviews,
-        hasMorePlanReviews: reviews.length == (event.limit ?? 20),
-        lastPlanReviewDocumentId: reviews.isNotEmpty ? reviews.last.id : null,
-        lastRefreshTime: DateTime.now(),
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviews) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          planReviews: reviews,
+          hasMorePlanReviews: reviews.length == (event.limit ?? 20),
+          lastPlanReviewDocumentId: reviews.isNotEmpty ? reviews.last.id : null,
+          lastRefreshTime: DateTime.now(),
+        ),
+      ),
     );
   }
 
@@ -177,12 +184,14 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     Emitter<ReviewState> emit,
   ) async {
     if (event.refresh == true) {
-      emit(state.copyWith(
-        status: ReviewStatus.loading,
-        reviewsByUser: [],
-        hasMoreReviewsByUser: false,
-        lastReviewsByUserDocumentId: null,
-      ));
+      emit(
+        state.copyWith(
+          status: ReviewStatus.loading,
+          reviewsByUser: [],
+          hasMoreReviewsByUser: false,
+          lastReviewsByUserDocumentId: null,
+        ),
+      );
     } else if (state.reviewsByUser.isEmpty) {
       emit(state.copyWith(status: ReviewStatus.loading));
     }
@@ -193,18 +202,20 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviews) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        reviewsByUser: reviews,
-        hasMoreReviewsByUser: reviews.length == (event.limit ?? 20),
-        lastReviewsByUserDocumentId:
-            reviews.isNotEmpty ? reviews.last.id : null,
-        lastRefreshTime: DateTime.now(),
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviews) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          reviewsByUser: reviews,
+          hasMoreReviewsByUser: reviews.length == (event.limit ?? 20),
+          lastReviewsByUserDocumentId: reviews.isNotEmpty
+              ? reviews.last.id
+              : null,
+          lastRefreshTime: DateTime.now(),
+        ),
+      ),
     );
   }
 
@@ -228,18 +239,19 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await getUserReviewsUseCase(params);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviewsResult) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        userReviews: [...state.userReviews, ...reviewsResult.reviews],
-        hasMoreUserReviews: reviewsResult.hasMore,
-        lastUserReviewDocumentId: reviewsResult.reviews.isNotEmpty
-            ? reviewsResult.reviews.last.id
-            : state.lastUserReviewDocumentId,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviewsResult) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          userReviews: [...state.userReviews, ...reviewsResult.reviews],
+          hasMoreUserReviews: reviewsResult.hasMore,
+          lastUserReviewDocumentId: reviewsResult.reviews.isNotEmpty
+              ? reviewsResult.reviews.last.id
+              : state.lastUserReviewDocumentId,
+        ),
+      ),
     );
   }
 
@@ -258,18 +270,19 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviews) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        planReviews: [...state.planReviews, ...reviews],
-        hasMorePlanReviews: reviews.length == 20,
-        lastPlanReviewDocumentId: reviews.isNotEmpty
-            ? reviews.last.id
-            : state.lastPlanReviewDocumentId,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviews) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          planReviews: [...state.planReviews, ...reviews],
+          hasMorePlanReviews: reviews.length == 20,
+          lastPlanReviewDocumentId: reviews.isNotEmpty
+              ? reviews.last.id
+              : state.lastPlanReviewDocumentId,
+        ),
+      ),
     );
   }
 
@@ -288,18 +301,19 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviews) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        reviewsByUser: [...state.reviewsByUser, ...reviews],
-        hasMoreReviewsByUser: reviews.length == 20,
-        lastReviewsByUserDocumentId: reviews.isNotEmpty
-            ? reviews.last.id
-            : state.lastReviewsByUserDocumentId,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviews) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          reviewsByUser: [...state.reviewsByUser, ...reviews],
+          hasMoreReviewsByUser: reviews.length == 20,
+          lastReviewsByUserDocumentId: reviews.isNotEmpty
+              ? reviews.last.id
+              : state.lastReviewsByUserDocumentId,
+        ),
+      ),
     );
   }
 
@@ -314,10 +328,9 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await repository.updateReview(event.review);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (_) {
         // Actualizar la reseña en las listas locales
         final updatedUserReviews = state.userReviews
@@ -332,13 +345,15 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
             .map((r) => r.id == event.review.id ? event.review : r)
             .toList();
 
-        emit(state.copyWith(
-          status: ReviewStatus.updated,
-          userReviews: updatedUserReviews,
-          planReviews: updatedPlanReviews,
-          reviewsByUser: updatedReviewsByUser,
-          lastUpdatedReviewId: event.review.id,
-        ));
+        emit(
+          state.copyWith(
+            status: ReviewStatus.updated,
+            userReviews: updatedUserReviews,
+            planReviews: updatedPlanReviews,
+            reviewsByUser: updatedReviewsByUser,
+            lastUpdatedReviewId: event.review.id,
+          ),
+        );
       },
     );
   }
@@ -352,28 +367,32 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await repository.deleteReview(event.reviewId);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (_) {
         // Remover la reseña de las listas locales
-        final updatedUserReviews =
-            state.userReviews.where((r) => r.id != event.reviewId).toList();
+        final updatedUserReviews = state.userReviews
+            .where((r) => r.id != event.reviewId)
+            .toList();
 
-        final updatedPlanReviews =
-            state.planReviews.where((r) => r.id != event.reviewId).toList();
+        final updatedPlanReviews = state.planReviews
+            .where((r) => r.id != event.reviewId)
+            .toList();
 
-        final updatedReviewsByUser =
-            state.reviewsByUser.where((r) => r.id != event.reviewId).toList();
+        final updatedReviewsByUser = state.reviewsByUser
+            .where((r) => r.id != event.reviewId)
+            .toList();
 
-        emit(state.copyWith(
-          status: ReviewStatus.deleted,
-          userReviews: updatedUserReviews,
-          planReviews: updatedPlanReviews,
-          reviewsByUser: updatedReviewsByUser,
-          lastDeletedReviewId: event.reviewId,
-        ));
+        emit(
+          state.copyWith(
+            status: ReviewStatus.deleted,
+            userReviews: updatedUserReviews,
+            planReviews: updatedPlanReviews,
+            reviewsByUser: updatedReviewsByUser,
+            lastDeletedReviewId: event.reviewId,
+          ),
+        );
       },
     );
   }
@@ -388,19 +407,16 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (_) {
         final updatedHelpfulIds = [...state.helpfulReviewIds];
         if (!updatedHelpfulIds.contains(event.reviewId)) {
           updatedHelpfulIds.add(event.reviewId);
         }
 
-        emit(state.copyWith(
-          helpfulReviewIds: updatedHelpfulIds,
-        ));
+        emit(state.copyWith(helpfulReviewIds: updatedHelpfulIds));
       },
     );
   }
@@ -415,17 +431,15 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (_) {
-        final updatedHelpfulIds =
-            state.helpfulReviewIds.where((id) => id != event.reviewId).toList();
+        final updatedHelpfulIds = state.helpfulReviewIds
+            .where((id) => id != event.reviewId)
+            .toList();
 
-        emit(state.copyWith(
-          helpfulReviewIds: updatedHelpfulIds,
-        ));
+        emit(state.copyWith(helpfulReviewIds: updatedHelpfulIds));
       },
     );
   }
@@ -439,13 +453,10 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await repository.getUserRating(event.userId);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (rating) => emit(state.copyWith(
-        currentUserRating: rating,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (rating) => emit(state.copyWith(currentUserRating: rating)),
     );
   }
 
@@ -465,15 +476,16 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await calculateUserRatingUseCase(params);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (calculationResult) => emit(state.copyWith(
-        status: ReviewStatus.calculated,
-        currentUserRating: calculationResult.newRating,
-        lastCalculationResult: calculationResult,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (calculationResult) => emit(
+        state.copyWith(
+          status: ReviewStatus.calculated,
+          currentUserRating: calculationResult.newRating,
+          lastCalculationResult: calculationResult,
+        ),
+      ),
     );
   }
 
@@ -487,13 +499,10 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (topUsers) => emit(state.copyWith(
-        topRatedUsers: topUsers,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (topUsers) => emit(state.copyWith(topRatedUsers: topUsers)),
     );
   }
 
@@ -504,32 +513,34 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     Emitter<ReviewState> emit,
   ) async {
     if (event.refresh == true) {
-      emit(state.copyWith(
-        status: ReviewStatus.loading,
-        pendingReviews: [],
-        hasMorePendingReviews: false,
-        lastPendingReviewDocumentId: null,
-      ));
+      emit(
+        state.copyWith(
+          status: ReviewStatus.loading,
+          pendingReviews: [],
+          hasMorePendingReviews: false,
+          lastPendingReviewDocumentId: null,
+        ),
+      );
     } else if (state.pendingReviews.isEmpty) {
       emit(state.copyWith(status: ReviewStatus.loading));
     }
 
-    final result = await repository.getPendingReviews(
-      limit: event.limit ?? 20,
-    );
+    final result = await repository.getPendingReviews(limit: event.limit ?? 20);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (reviews) => emit(state.copyWith(
-        status: ReviewStatus.success,
-        pendingReviews: reviews,
-        hasMorePendingReviews: reviews.length == (event.limit ?? 20),
-        lastPendingReviewDocumentId:
-            reviews.isNotEmpty ? reviews.last.id : null,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (reviews) => emit(
+        state.copyWith(
+          status: ReviewStatus.success,
+          pendingReviews: reviews,
+          hasMorePendingReviews: reviews.length == (event.limit ?? 20),
+          lastPendingReviewDocumentId: reviews.isNotEmpty
+              ? reviews.last.id
+              : null,
+        ),
+      ),
     );
   }
 
@@ -542,19 +553,21 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await repository.approveReview(event.reviewId);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (_) {
-        final updatedPendingReviews =
-            state.pendingReviews.where((r) => r.id != event.reviewId).toList();
+        final updatedPendingReviews = state.pendingReviews
+            .where((r) => r.id != event.reviewId)
+            .toList();
 
-        emit(state.copyWith(
-          status: ReviewStatus.moderated,
-          pendingReviews: updatedPendingReviews,
-          lastApprovedReviewId: event.reviewId,
-        ));
+        emit(
+          state.copyWith(
+            status: ReviewStatus.moderated,
+            pendingReviews: updatedPendingReviews,
+            lastApprovedReviewId: event.reviewId,
+          ),
+        );
       },
     );
   }
@@ -571,19 +584,21 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (_) {
-        final updatedPendingReviews =
-            state.pendingReviews.where((r) => r.id != event.reviewId).toList();
+        final updatedPendingReviews = state.pendingReviews
+            .where((r) => r.id != event.reviewId)
+            .toList();
 
-        emit(state.copyWith(
-          status: ReviewStatus.moderated,
-          pendingReviews: updatedPendingReviews,
-          lastRejectedReviewId: event.reviewId,
-        ));
+        emit(
+          state.copyWith(
+            status: ReviewStatus.moderated,
+            pendingReviews: updatedPendingReviews,
+            lastRejectedReviewId: event.reviewId,
+          ),
+        );
       },
     );
   }
@@ -600,14 +615,15 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (_) => emit(state.copyWith(
-        status: ReviewStatus.moderated,
-        lastFlaggedReviewId: event.reviewId,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (_) => emit(
+        state.copyWith(
+          status: ReviewStatus.moderated,
+          lastFlaggedReviewId: event.reviewId,
+        ),
+      ),
     );
   }
 
@@ -620,13 +636,10 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await repository.getReviewMetrics();
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (metrics) => emit(state.copyWith(
-        reviewMetrics: metrics,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (metrics) => emit(state.copyWith(reviewMetrics: metrics)),
     );
   }
 
@@ -637,13 +650,10 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await repository.getRatingDistribution();
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (distribution) => emit(state.copyWith(
-        ratingDistribution: distribution,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (distribution) => emit(state.copyWith(ratingDistribution: distribution)),
     );
   }
 
@@ -657,13 +667,10 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (trends) => emit(state.copyWith(
-        reviewTrends: trends,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (trends) => emit(state.copyWith(reviewTrends: trends)),
     );
   }
 
@@ -680,19 +687,17 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
       (canReview) {
         final key = '${event.planId}_${event.targetUserId}';
-        final updatedPermissions =
-            Map<String, bool>.from(state.canReviewPermissions);
+        final updatedPermissions = Map<String, bool>.from(
+          state.canReviewPermissions,
+        );
         updatedPermissions[key] = canReview;
 
-        emit(state.copyWith(
-          canReviewPermissions: updatedPermissions,
-        ));
+        emit(state.copyWith(canReviewPermissions: updatedPermissions));
       },
     );
   }
@@ -704,13 +709,10 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
     final result = await calculateUserRatingUseCase.compareUsers(event.userIds);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: ReviewStatus.error,
-        error: failure.message,
-      )),
-      (comparisons) => emit(state.copyWith(
-        userRatingComparisons: comparisons,
-      )),
+      (failure) => emit(
+        state.copyWith(status: ReviewStatus.error, error: failure.message),
+      ),
+      (comparisons) => emit(state.copyWith(userRatingComparisons: comparisons)),
     );
   }
 

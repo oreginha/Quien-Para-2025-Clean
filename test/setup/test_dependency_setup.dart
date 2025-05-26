@@ -58,49 +58,68 @@ Future<void> setupTestDependencies() async {
 
   sl.registerLazySingleton<ChatRepository>(() => MockChatRepository());
   sl.registerLazySingleton<NotificationServiceInterface>(
-      () => MockNotificationService());
+    () => MockNotificationService(),
+  );
 
   // Registrar casos de uso de planes
   sl.registerLazySingleton<GetPlanByIdUseCase>(
-      () => GetPlanByIdUseCase(sl<PlanRepository>()));
+    () => GetPlanByIdUseCase(sl<PlanRepository>()),
+  );
   sl.registerLazySingleton<CreatePlanUseCase>(
-      () => CreatePlanUseCase(sl<PlanRepository>()));
+    () => CreatePlanUseCase(sl<PlanRepository>()),
+  );
   sl.registerLazySingleton<UpdatePlanUseCase>(
-      () => UpdatePlanUseCase(sl<PlanRepository>()));
+    () => UpdatePlanUseCase(sl<PlanRepository>()),
+  );
   sl.registerLazySingleton<SavePlanUseCase>(
-      () => SavePlanUseCase(sl<PlanRepository>()));
+    () => SavePlanUseCase(sl<PlanRepository>()),
+  );
   sl.registerLazySingleton<MatchPlanUseCase>(
-      () => MatchPlanUseCase(sl<PlanRepository>()));
+    () => MatchPlanUseCase(sl<PlanRepository>()),
+  );
   sl.registerLazySingleton<DeletePlanUseCase>(
-      () => DeletePlanUseCase(sl<PlanRepository>()));
+    () => DeletePlanUseCase(sl<PlanRepository>()),
+  );
   sl.registerLazySingleton<GetPlansUseCase>(
-      () => GetPlansUseCase(sl<PlanRepository>()));
+    () => GetPlansUseCase(sl<PlanRepository>()),
+  );
 
   // Registrar casos de uso de aplicaciones
   sl.registerLazySingleton<ApplyToPlanUseCase>(
-      () => ApplyToPlanUseCase(sl<ApplicationRepositoryInterface>()));
+    () => ApplyToPlanUseCase(sl<ApplicationRepositoryInterface>()),
+  );
   sl.registerLazySingleton<GetPlanApplicationsUseCase>(
-      () => GetPlanApplicationsUseCase(sl<ApplicationRepositoryInterface>()));
+    () => GetPlanApplicationsUseCase(sl<ApplicationRepositoryInterface>()),
+  );
   sl.registerLazySingleton<GetUserApplicationsUseCase>(
-      () => GetUserApplicationsUseCase(sl<ApplicationRepositoryInterface>()));
-  sl.registerLazySingleton<UpdateApplicationStatusUseCase>(() =>
-      UpdateApplicationStatusUseCase(sl<ApplicationRepositoryInterface>()));
+    () => GetUserApplicationsUseCase(sl<ApplicationRepositoryInterface>()),
+  );
+  sl.registerLazySingleton<UpdateApplicationStatusUseCase>(
+    () => UpdateApplicationStatusUseCase(sl<ApplicationRepositoryInterface>()),
+  );
   sl.registerLazySingleton<CancelApplicationUseCase>(
-      () => CancelApplicationUseCase(sl<ApplicationRepositoryInterface>()));
+    () => CancelApplicationUseCase(sl<ApplicationRepositoryInterface>()),
+  );
   sl.registerLazySingleton<SendApplicationNotificationUseCase>(
-      () => SendApplicationNotificationUseCase());
+    () => SendApplicationNotificationUseCase(),
+  );
 
   // Registrar casos de uso de chat
   sl.registerLazySingleton<GetMessagesUseCase>(
-      () => GetMessagesUseCase(sl<ChatRepository>()));
+    () => GetMessagesUseCase(sl<ChatRepository>()),
+  );
   sl.registerLazySingleton<SendMessageUseCase>(
-      () => SendMessageUseCase(sl<ChatRepository>()));
+    () => SendMessageUseCase(sl<ChatRepository>()),
+  );
   sl.registerLazySingleton<CreateConversationUseCase>(
-      () => CreateConversationUseCase(sl<ChatRepository>()));
+    () => CreateConversationUseCase(sl<ChatRepository>()),
+  );
   sl.registerLazySingleton<GetUserConversationsUseCase>(
-      () => GetUserConversationsUseCase(sl<ChatRepository>()));
+    () => GetUserConversationsUseCase(sl<ChatRepository>()),
+  );
   sl.registerLazySingleton<MarkMessagesAsReadUseCase>(
-      () => MarkMessagesAsReadUseCase(sl<ChatRepository>()));
+    () => MarkMessagesAsReadUseCase(sl<ChatRepository>()),
+  );
 }
 
 class SendApplicationNotificationUseCase {}

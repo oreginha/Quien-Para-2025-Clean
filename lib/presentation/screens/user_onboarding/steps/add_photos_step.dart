@@ -22,10 +22,7 @@ import '../../../bloc/profile/user_profile_bloc.dart';
 class AddPhotosStep extends StatefulWidget {
   final VoidCallback onNext;
 
-  const AddPhotosStep({
-    super.key,
-    required this.onNext,
-  });
+  const AddPhotosStep({super.key, required this.onNext});
 
   @override
   State<AddPhotosStep> createState() => _AddPhotosStepState();
@@ -97,21 +94,27 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
         context: context,
         builder: (context) => AlertDialog(
           backgroundColor: ThemeUtils.brandYellow,
-          title: const Text('Seleccionar imagen',
-              style: TextStyle(color: Colors.white)),
+          title: const Text(
+            'Seleccionar imagen',
+            style: TextStyle(color: Colors.white),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
                 leading: const Icon(Icons.photo_library, color: Colors.white70),
-                title: const Text('Galería',
-                    style: TextStyle(color: Colors.white)),
+                title: const Text(
+                  'Galería',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () => Navigator.pop(context, ImageSource.gallery),
               ),
               ListTile(
                 leading: const Icon(Icons.camera_alt, color: Colors.white70),
-                title:
-                    const Text('Cámara', style: TextStyle(color: Colors.white)),
+                title: const Text(
+                  'Cámara',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () => Navigator.pop(context, ImageSource.camera),
               ),
             ],
@@ -126,14 +129,14 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
 
       final XFile? image = await _picker
           .pickImage(
-        source: source,
-        maxWidth: 1200,
-        maxHeight: 1200,
-        imageQuality: 85,
-      )
+            source: source,
+            maxWidth: 1200,
+            maxHeight: 1200,
+            imageQuality: 85,
+          )
           .catchError((error) {
-        throw Exception('Error al capturar la imagen: $error');
-      });
+            throw Exception('Error al capturar la imagen: $error');
+          });
 
       if (image == null) {
         throw Exception('No se seleccionó ninguna imagen');
@@ -229,17 +232,24 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
         context: context,
         builder: (context) => AlertDialog(
           backgroundColor: ThemeUtils.brandYellow,
-          title: const Text('Opciones de foto',
-              style: TextStyle(color: Colors.white)),
+          title: const Text(
+            'Opciones de foto',
+            style: TextStyle(color: Colors.white),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               if (index != _mainPhotoIndex)
                 ListTile(
-                  leading:
-                      const Icon(Icons.star, color: Colors.yellow, size: 16),
-                  title: const Text('Establecer como principal',
-                      style: TextStyle(color: Colors.white)),
+                  leading: const Icon(
+                    Icons.star,
+                    color: Colors.yellow,
+                    size: 16,
+                  ),
+                  title: const Text(
+                    'Establecer como principal',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   onTap: () {
                     _setMainPhoto(index);
                     Navigator.pop(context);
@@ -251,8 +261,10 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                 ),
               ListTile(
                 leading: const Icon(Icons.edit, color: Colors.white70),
-                title: const Text('Cambiar foto',
-                    style: TextStyle(color: Colors.white)),
+                title: const Text(
+                  'Cambiar foto',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () {
                   Navigator.pop(context);
                   _pickImage(index);
@@ -264,8 +276,10 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
               ),
               ListTile(
                 leading: const Icon(Icons.delete, color: Colors.red),
-                title: const Text('Eliminar foto',
-                    style: TextStyle(color: Colors.white)),
+                title: const Text(
+                  'Eliminar foto',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onTap: () {
                   _deletePhoto(index);
                   Navigator.pop(context);
@@ -306,7 +320,8 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                     Text(
                       'Tus fotos',
                       style: AppTypography.heading2(
-                          Theme.of(context).brightness == Brightness.dark),
+                        Theme.of(context).brightness == Brightness.dark,
+                      ),
                     ),
                     const Spacer(),
                     if (state.photos.isNotEmpty)
@@ -324,10 +339,7 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                   padding: const EdgeInsets.only(top: 8.0, left: 4),
                   child: Text(
                     _photoError!,
-                    style: TextStyle(
-                      color: ThemeUtils.accentRed,
-                      fontSize: 14,
-                    ),
+                    style: TextStyle(color: ThemeUtils.accentRed, fontSize: 14),
                   ),
                 ),
               const SizedBox(height: 16),
@@ -350,8 +362,9 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                       PhotoSlot(
                         photo: hasPhoto ? state.photos[index] : null,
                         hasPhoto: hasPhoto,
-                        onTap:
-                            _isLoading ? () {} : () => _handlePhotoTap(index),
+                        onTap: _isLoading
+                            ? () {}
+                            : () => _handlePhotoTap(index),
                         isMain: isMainPhoto,
                       ),
                       if (_isLoading)
@@ -369,7 +382,9 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                           right: 8,
                           child: Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 4),
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.black54,
                               borderRadius: BorderRadius.circular(12),
@@ -377,13 +392,18 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Icon(Icons.star,
-                                    color: Colors.yellow, size: 16),
+                                const Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 16,
+                                ),
                                 const SizedBox(width: 4),
                                 const Text(
                                   'Principal',
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 12),
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ],
                             ),
@@ -411,8 +431,9 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                       child: Text(
                         'La foto principal será la que los demás vean primero. Puedes elegir cuál es marcándola como principal.',
                         style: TextStyle(
-                          color: AppColors.lightTextPrimary
-                              .withAlpha((255 * 0.9).round()),
+                          color: AppColors.lightTextPrimary.withAlpha(
+                            (255 * 0.9).round(),
+                          ),
                         ),
                       ),
                     ),
@@ -423,7 +444,8 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
               Text(
                 'Cuéntanos sobre ti',
                 style: AppTypography.heading2(
-                    Theme.of(context).brightness == Brightness.dark),
+                  Theme.of(context).brightness == Brightness.dark,
+                ),
               ),
               const SizedBox(height: 12),
               StyledTextArea(
@@ -446,8 +468,9 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                     color: AppColors.brandYellow.withAlpha((255 * 0.1).round()),
                     borderRadius: BorderRadius.circular(AppRadius.button),
                     border: Border.all(
-                      color:
-                          AppColors.brandYellow.withAlpha((255 * 0.3).round()),
+                      color: AppColors.brandYellow.withAlpha(
+                        (255 * 0.3).round(),
+                      ),
                       width: 1,
                     ),
                   ),
@@ -464,8 +487,9 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                         child: Text(
                           'Un buen perfil aumenta tus posibilidades. Incluye tus intereses y lo que buscas en un plan.',
                           style: TextStyle(
-                            color: AppColors.lightTextPrimary
-                                .withAlpha((255 * 0.8).round()),
+                            color: AppColors.lightTextPrimary.withAlpha(
+                              (255 * 0.8).round(),
+                            ),
                             fontSize: 13,
                           ),
                         ),

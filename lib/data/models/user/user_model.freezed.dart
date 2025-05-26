@@ -12,7 +12,8 @@ part of 'user_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) {
   return _UserModel.fromJson(json);
@@ -47,18 +48,19 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      int age,
-      String email,
-      List<String> photoUrls,
-      List<String> interests,
-      String? bio,
-      bool isVisible,
-      bool hasCompletedOnboarding,
-      DateTime? createdAt,
-      DateTime? lastLogin});
+  $Res call({
+    String id,
+    String name,
+    int age,
+    String email,
+    List<String> photoUrls,
+    List<String> interests,
+    String? bio,
+    bool isVisible,
+    bool hasCompletedOnboarding,
+    DateTime? createdAt,
+    DateTime? lastLogin,
+  });
 }
 
 /// @nodoc
@@ -88,52 +90,55 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? createdAt = freezed,
     Object? lastLogin = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoUrls: null == photoUrls
-          ? _value.photoUrls
-          : photoUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      interests: null == interests
-          ? _value.interests
-          : interests // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      bio: freezed == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasCompletedOnboarding: null == hasCompletedOnboarding
-          ? _value.hasCompletedOnboarding
-          : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastLogin: freezed == lastLogin
-          ? _value.lastLogin
-          : lastLogin // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            age: null == age
+                ? _value.age
+                : age // ignore: cast_nullable_to_non_nullable
+                      as int,
+            email: null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String,
+            photoUrls: null == photoUrls
+                ? _value.photoUrls
+                : photoUrls // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            interests: null == interests
+                ? _value.interests
+                : interests // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            bio: freezed == bio
+                ? _value.bio
+                : bio // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            isVisible: null == isVisible
+                ? _value.isVisible
+                : isVisible // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            hasCompletedOnboarding: null == hasCompletedOnboarding
+                ? _value.hasCompletedOnboarding
+                : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            createdAt: freezed == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            lastLogin: freezed == lastLogin
+                ? _value.lastLogin
+                : lastLogin // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -141,22 +146,24 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
 abstract class _$$UserModelImplCopyWith<$Res>
     implements $UserModelCopyWith<$Res> {
   factory _$$UserModelImplCopyWith(
-          _$UserModelImpl value, $Res Function(_$UserModelImpl) then) =
-      __$$UserModelImplCopyWithImpl<$Res>;
+    _$UserModelImpl value,
+    $Res Function(_$UserModelImpl) then,
+  ) = __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      int age,
-      String email,
-      List<String> photoUrls,
-      List<String> interests,
-      String? bio,
-      bool isVisible,
-      bool hasCompletedOnboarding,
-      DateTime? createdAt,
-      DateTime? lastLogin});
+  $Res call({
+    String id,
+    String name,
+    int age,
+    String email,
+    List<String> photoUrls,
+    List<String> interests,
+    String? bio,
+    bool isVisible,
+    bool hasCompletedOnboarding,
+    DateTime? createdAt,
+    DateTime? lastLogin,
+  });
 }
 
 /// @nodoc
@@ -164,8 +171,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
     extends _$UserModelCopyWithImpl<$Res, _$UserModelImpl>
     implements _$$UserModelImplCopyWith<$Res> {
   __$$UserModelImplCopyWithImpl(
-      _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
-      : super(_value, _then);
+    _$UserModelImpl _value,
+    $Res Function(_$UserModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -184,72 +192,74 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? lastLogin = freezed,
   }) {
-    return _then(_$UserModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoUrls: null == photoUrls
-          ? _value._photoUrls
-          : photoUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      interests: null == interests
-          ? _value._interests
-          : interests // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      bio: freezed == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasCompletedOnboarding: null == hasCompletedOnboarding
-          ? _value.hasCompletedOnboarding
-          : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastLogin: freezed == lastLogin
-          ? _value.lastLogin
-          : lastLogin // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ));
+    return _then(
+      _$UserModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        age: null == age
+            ? _value.age
+            : age // ignore: cast_nullable_to_non_nullable
+                  as int,
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        photoUrls: null == photoUrls
+            ? _value._photoUrls
+            : photoUrls // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        interests: null == interests
+            ? _value._interests
+            : interests // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        bio: freezed == bio
+            ? _value.bio
+            : bio // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isVisible: null == isVisible
+            ? _value.isVisible
+            : isVisible // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        hasCompletedOnboarding: null == hasCompletedOnboarding
+            ? _value.hasCompletedOnboarding
+            : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        createdAt: freezed == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        lastLogin: freezed == lastLogin
+            ? _value.lastLogin
+            : lastLogin // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
-  const _$UserModelImpl(
-      {required this.id,
-      required this.name,
-      required this.age,
-      required this.email,
-      final List<String> photoUrls = const [],
-      final List<String> interests = const [],
-      this.bio,
-      this.isVisible = true,
-      this.hasCompletedOnboarding = false,
-      this.createdAt,
-      this.lastLogin})
-      : _photoUrls = photoUrls,
-        _interests = interests;
+  const _$UserModelImpl({
+    required this.id,
+    required this.name,
+    required this.age,
+    required this.email,
+    final List<String> photoUrls = const [],
+    final List<String> interests = const [],
+    this.bio,
+    this.isVisible = true,
+    this.hasCompletedOnboarding = false,
+    this.createdAt,
+    this.lastLogin,
+  }) : _photoUrls = photoUrls,
+       _interests = interests;
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -307,10 +317,14 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.age, age) || other.age == age) &&
             (identical(other.email, email) || other.email == email) &&
-            const DeepCollectionEquality()
-                .equals(other._photoUrls, _photoUrls) &&
-            const DeepCollectionEquality()
-                .equals(other._interests, _interests) &&
+            const DeepCollectionEquality().equals(
+              other._photoUrls,
+              _photoUrls,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._interests,
+              _interests,
+            ) &&
             (identical(other.bio, bio) || other.bio == bio) &&
             (identical(other.isVisible, isVisible) ||
                 other.isVisible == isVisible) &&
@@ -325,18 +339,19 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      age,
-      email,
-      const DeepCollectionEquality().hash(_photoUrls),
-      const DeepCollectionEquality().hash(_interests),
-      bio,
-      isVisible,
-      hasCompletedOnboarding,
-      createdAt,
-      lastLogin);
+    runtimeType,
+    id,
+    name,
+    age,
+    email,
+    const DeepCollectionEquality().hash(_photoUrls),
+    const DeepCollectionEquality().hash(_interests),
+    bio,
+    isVisible,
+    hasCompletedOnboarding,
+    createdAt,
+    lastLogin,
+  );
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -348,25 +363,24 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserModelImplToJson(
-      this,
-    );
+    return _$$UserModelImplToJson(this);
   }
 }
 
 abstract class _UserModel implements UserModel {
-  const factory _UserModel(
-      {required final String id,
-      required final String name,
-      required final int age,
-      required final String email,
-      final List<String> photoUrls,
-      final List<String> interests,
-      final String? bio,
-      final bool isVisible,
-      final bool hasCompletedOnboarding,
-      final DateTime? createdAt,
-      final DateTime? lastLogin}) = _$UserModelImpl;
+  const factory _UserModel({
+    required final String id,
+    required final String name,
+    required final int age,
+    required final String email,
+    final List<String> photoUrls,
+    final List<String> interests,
+    final String? bio,
+    final bool isVisible,
+    final bool hasCompletedOnboarding,
+    final DateTime? createdAt,
+    final DateTime? lastLogin,
+  }) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;

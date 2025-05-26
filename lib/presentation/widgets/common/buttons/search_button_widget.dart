@@ -16,10 +16,7 @@ class SearchButton extends StatelessWidget {
         context.navigateTo(AppRouter.searchFilters);
       },
       backgroundColor: AppColors.brandYellow,
-      child: const Icon(
-        Icons.search,
-        color: Colors.white,
-      ),
+      child: const Icon(Icons.search, color: Colors.white),
     );
   }
 }

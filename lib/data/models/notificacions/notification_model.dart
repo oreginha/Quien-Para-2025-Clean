@@ -30,12 +30,14 @@ class NotificationModel with _$NotificationModel {
   // Método para preparar el JSON antes de deserializarlo
   static Map<String, dynamic> _prepareJson(Map<String, dynamic> json) {
     final result = Map<String, dynamic>.from(json);
-    
+
     // Convertir Timestamp a String ISO8601 para createdAt
     if (json['createdAt'] is Timestamp) {
-      result['createdAt'] = (json['createdAt'] as Timestamp).toDate().toIso8601String();
+      result['createdAt'] = (json['createdAt'] as Timestamp)
+          .toDate()
+          .toIso8601String();
     }
-    
+
     return result;
   }
 

@@ -28,7 +28,7 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
     'Todos',
     'Hoy',
     'Esta semana',
-    'Este mes'
+    'Este mes',
   ];
 
   @override
@@ -43,12 +43,12 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
 
         return Scaffold(
           backgroundColor: AppColors.getBackground(
-              Theme.of(context).brightness ==
-                  Brightness.dark), // Usar color de fondo del tema
+            Theme.of(context).brightness == Brightness.dark,
+          ), // Usar color de fondo del tema
           appBar: AppBar(
             backgroundColor: AppColors.getBackground(
-                Theme.of(context).brightness ==
-                    Brightness.dark), // Usar color de fondo del tema
+              Theme.of(context).brightness == Brightness.dark,
+            ), // Usar color de fondo del tema
             elevation: 0,
             title: Text(
               'QUIÉN PARA?',
@@ -67,9 +67,12 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                       decoration: InputDecoration(
                         hintText: 'Buscar planes...',
                         hintStyle: TextStyle(
-                            color: Colors.white.withAlpha((0.5 * 255).round())),
-                        prefixIcon:
-                            const Icon(Icons.search, color: Colors.white),
+                          color: Colors.white.withAlpha((0.5 * 255).round()),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
                         filled: true,
                         fillColor: Colors.white.withAlpha((0.1 * 255).round()),
                         border: OutlineInputBorder(
@@ -90,28 +93,31 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
                       children: _filterOptions
-                          .map((filter) => Padding(
-                                padding: const EdgeInsets.only(right: 8),
-                                child: ChoiceChip(
-                                  label: Text(filter),
-                                  selected: _selectedFilter == filter,
-                                  onSelected: (selected) {
-                                    if (selected) {
-                                      setState(() {
-                                        _selectedFilter = filter;
-                                      });
-                                    }
-                                  },
-                                  selectedColor: Colors.yellow,
-                                  backgroundColor: Colors.white
-                                      .withAlpha((0.1 * 255).round()),
-                                  labelStyle: TextStyle(
-                                    color: _selectedFilter == filter
-                                        ? Colors.black
-                                        : Colors.white,
-                                  ),
+                          .map(
+                            (filter) => Padding(
+                              padding: const EdgeInsets.only(right: 8),
+                              child: ChoiceChip(
+                                label: Text(filter),
+                                selected: _selectedFilter == filter,
+                                onSelected: (selected) {
+                                  if (selected) {
+                                    setState(() {
+                                      _selectedFilter = filter;
+                                    });
+                                  }
+                                },
+                                selectedColor: Colors.yellow,
+                                backgroundColor: Colors.white.withAlpha(
+                                  (0.1 * 255).round(),
                                 ),
-                              ))
+                                labelStyle: TextStyle(
+                                  color: _selectedFilter == filter
+                                      ? Colors.black
+                                      : Colors.white,
+                                ),
+                              ),
+                            ),
+                          )
                           .toList(),
                     ),
                   ),
@@ -160,9 +166,9 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                       Text(
                         '${snapshot.error}',
                         style: TextStyle(
-                          color: AppColors.lightTextPrimary.withAlpha((0.7 *
-                                  255)
-                              .round()), // Reemplazado color directo por color del tema
+                          color: AppColors.lightTextPrimary.withAlpha(
+                            (0.7 * 255).round(),
+                          ), // Reemplazado color directo por color del tema
                           fontSize: 14,
                         ),
                         textAlign: TextAlign.center,
@@ -196,8 +202,10 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
               final plans = snapshot.data?.docs ?? [];
               final filteredPlans = plans.where((plan) {
                 final planData = plan.data() as Map<String, dynamic>;
-                final planModel =
-                    PlanModel.fromJson({...planData, 'id': plan.id});
+                final planModel = PlanModel.fromJson({
+                  ...planData,
+                  'id': plan.id,
+                });
 
                 // Aplicar filtro de búsqueda
                 if (_searchQuery.isNotEmpty) {
@@ -220,13 +228,16 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                           planDate.month == now.month &&
                           planDate.day == now.day;
                     case 'Esta semana':
-                      final startOfWeek =
-                          now.subtract(Duration(days: now.weekday - 1));
-                      final endOfWeek =
-                          startOfWeek.add(const Duration(days: 6));
+                      final startOfWeek = now.subtract(
+                        Duration(days: now.weekday - 1),
+                      );
+                      final endOfWeek = startOfWeek.add(
+                        const Duration(days: 6),
+                      );
                       return planDate.isAfter(startOfWeek) &&
-                          planDate
-                              .isBefore(endOfWeek.add(const Duration(days: 1)));
+                          planDate.isBefore(
+                            endOfWeek.add(const Duration(days: 1)),
+                          );
                     case 'Este mes':
                       return planDate.year == now.year &&
                           planDate.month == now.month;
@@ -260,14 +271,16 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                   final FirebaseException error =
                       snapshot.error as FirebaseException;
                   logger.e(
-                      'Firebase error code: ${error.code}, message: ${error.message}');
+                    'Firebase error code: ${error.code}, message: ${error.message}',
+                  );
 
                   if (error.code == 'failed-precondition' &&
                       error.message != null &&
                       error.message!.contains('requires an index')) {
                     // Extract the URL from the error message
-                    final RegExp urlRegex =
-                        RegExp(r'https://console\.firebase\.google\.com[^\s]+');
+                    final RegExp urlRegex = RegExp(
+                      r'https://console\.firebase\.google\.com[^\s]+',
+                    );
                     final Match? match = urlRegex.firstMatch(error.message!);
 
                     if (match != null) {
@@ -286,7 +299,8 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                  'Por favor, copia y pega esta URL en tu navegador: $indexUrl'),
+                                'Por favor, copia y pega esta URL en tu navegador: $indexUrl',
+                              ),
                               duration: const Duration(seconds: 10),
                               action: SnackBarAction(
                                 label: 'Copiar',
@@ -295,8 +309,10 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                   // For now just show another snackbar
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                        content: Text(
-                                            'URL copiada al portapapeles')),
+                                      content: Text(
+                                        'URL copiada al portapapeles',
+                                      ),
+                                    ),
                                   );
                                 },
                               ),
@@ -384,8 +400,9 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                               Icon(
                                 Icons.add_box_outlined,
                                 size: 80,
-                                color: Colors.yellow
-                                    .withAlpha((0.7 * 255).round()),
+                                color: Colors.yellow.withAlpha(
+                                  (0.7 * 255).round(),
+                                ),
                               ),
                               const SizedBox(height: 16),
                               const Text(
@@ -407,9 +424,9 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                               const SizedBox(height: 24),
                               ElevatedButton.icon(
                                 onPressed: () {
-                                  context
-                                      .read<PlanBloc>()
-                                      .add(const PlanEvent.clear());
+                                  context.read<PlanBloc>().add(
+                                    const PlanEvent.clear(),
+                                  );
                                   context.push(AppRouter.createProposal);
                                 },
                                 icon: const Icon(Icons.add),
@@ -439,8 +456,9 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                           ? Icons.add_box_outlined
                                           : Icons.search_off,
                                       size: 80,
-                                      color: Colors.yellow
-                                          .withAlpha((0.7 * 255).round()),
+                                      color: Colors.yellow.withAlpha(
+                                        (0.7 * 255).round(),
+                                      ),
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
@@ -467,11 +485,12 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                       const SizedBox(height: 24),
                                       ElevatedButton.icon(
                                         onPressed: () {
-                                          context
-                                              .read<PlanBloc>()
-                                              .add(const PlanEvent.clear());
-                                          context
-                                              .push(AppRouter.createProposal);
+                                          context.read<PlanBloc>().add(
+                                            const PlanEvent.clear(),
+                                          );
+                                          context.push(
+                                            AppRouter.createProposal,
+                                          );
                                         },
                                         icon: const Icon(Icons.add),
                                         label: const Text('Crear Propuesta'),
@@ -492,309 +511,339 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                 padding: const EdgeInsets.all(16),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 16,
-                                  mainAxisSpacing: 16,
-                                  childAspectRatio: 0.75,
-                                ),
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 16,
+                                      mainAxisSpacing: 16,
+                                      childAspectRatio: 0.75,
+                                    ),
                                 itemCount: filteredPlans.length,
                                 itemBuilder: (final context, final index) {
                                   final planDoc = filteredPlans[index];
                                   try {
                                     logger.d(
-                                        'Processing plan document: ${planDoc.id}');
+                                      'Processing plan document: ${planDoc.id}',
+                                    );
                                     final planData =
                                         planDoc.data() as Map<String, dynamic>;
                                     logger.d(
-                                        'Plan data: ${planData.keys.join(', ')}');
+                                      'Plan data: ${planData.keys.join(', ')}',
+                                    );
 
                                     final plan = PlanModel.fromJson({
                                       ...planData,
                                       'id': planDoc.id,
                                     });
                                     logger.d(
-                                        'Successfully parsed plan: ${plan.title}');
+                                      'Successfully parsed plan: ${plan.title}',
+                                    );
 
                                     return Card(
-                                        margin:
-                                            const EdgeInsets.only(bottom: 16),
-                                        color: const Color(0xFF383A6B),
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              if (plan.imageUrl.isNotEmpty)
-                                                Container(
-                                                  height: 200,
-                                                  width: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(
-                                                          plan.imageUrl),
-                                                      fit: BoxFit.cover,
-                                                      onError: (exception,
-                                                          stackTrace) {
-                                                        logger.e(
-                                                            'Error loading image: $exception');
-                                                      },
+                                      margin: const EdgeInsets.only(bottom: 16),
+                                      color: const Color(0xFF383A6B),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            if (plan.imageUrl.isNotEmpty)
+                                              Container(
+                                                height: 200,
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: NetworkImage(
+                                                      plan.imageUrl,
                                                     ),
-                                                  ),
-                                                  child: Stack(
-                                                    children: [
-                                                      // Add a semi-transparent overlay to make text more readable
-                                                      Container(
-                                                        color: Colors.black
-                                                            .withAlpha(77),
-                                                      ),
-                                                      // Add an error widget that will be shown if the image fails to load
-                                                      Positioned.fill(
-                                                        child: Image.network(
-                                                          plan.imageUrl,
-                                                          fit: BoxFit.cover,
-                                                          errorBuilder:
-                                                              (context, error,
-                                                                  stackTrace) {
-                                                            logger.e(
-                                                                'Image error: $error');
-                                                            return Container(
-                                                              color: Colors
-                                                                  .grey[800],
-                                                              child:
-                                                                  const Center(
-                                                                child: Column(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    Icon(
-                                                                      Icons
-                                                                          .broken_image,
-                                                                      color: Colors
-                                                                          .white70,
-                                                                      size: 40,
-                                                                    ),
-                                                                    SizedBox(
-                                                                        height:
-                                                                            8),
-                                                                    Text(
-                                                                      'No se pudo cargar la imagen',
-                                                                      style: TextStyle(
-                                                                          color:
-                                                                              Colors.white70),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                          loadingBuilder: (context,
-                                                              child,
-                                                              loadingProgress) {
-                                                            if (loadingProgress ==
-                                                                null) {
-                                                              return child;
-                                                            }
-                                                            return Container(
-                                                              color: Colors
-                                                                  .grey[800],
-                                                              child: Center(
-                                                                child:
-                                                                    CircularProgressIndicator(
-                                                                  value: loadingProgress
-                                                                              .expectedTotalBytes !=
-                                                                          null
-                                                                      ? loadingProgress
-                                                                              .cumulativeBytesLoaded /
-                                                                          (loadingProgress.expectedTotalBytes ??
-                                                                              1)
-                                                                      : null,
-                                                                  valueColor: const AlwaysStoppedAnimation<
-                                                                          Color>(
-                                                                      Colors
-                                                                          .yellow),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ),
-                                                      ),
-                                                    ],
+                                                    fit: BoxFit.cover,
+                                                    onError:
+                                                        (
+                                                          exception,
+                                                          stackTrace,
+                                                        ) {
+                                                          logger.e(
+                                                            'Error loading image: $exception',
+                                                          );
+                                                        },
                                                   ),
                                                 ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(16),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                child: Stack(
                                                   children: [
-                                                    Text(
-                                                      plan.title,
-                                                      style: const TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                                    // Add a semi-transparent overlay to make text more readable
+                                                    Container(
+                                                      color: Colors.black
+                                                          .withAlpha(77),
                                                     ),
-                                                    const SizedBox(height: 8),
-                                                    Text(
-                                                      plan.description,
-                                                      style: TextStyle(
-                                                        color: Colors.white
-                                                            .withAlpha(
-                                                                (0.7 * 255)
-                                                                    .round()),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(height: 16),
-                                                    SingleChildScrollView(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      child: Row(
-                                                        children: [
-                                                          _buildDetailChip(
-                                                            Icons
-                                                                .calendar_today,
-                                                            plan.date
-                                                                .toString()
-                                                                .split(' ')[0],
-                                                          ),
-                                                          const SizedBox(
-                                                              width: 8),
-                                                          _buildDetailChip(
-                                                            Icons.location_on,
-                                                            plan.location,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    const SizedBox(height: 16),
-                                                    SingleChildScrollView(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          ElevatedButton.icon(
-                                                            onPressed: () {
-                                                              showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (final BuildContext
-                                                                        context) {
-                                                                  return AlertDialog(
-                                                                    backgroundColor:
-                                                                        const Color(
-                                                                            0xFF1A1B2E),
-                                                                    title:
-                                                                        const Text(
-                                                                      'Eliminar Plan',
-                                                                      style: TextStyle(
-                                                                          color:
-                                                                              Colors.white),
-                                                                    ),
-                                                                    content:
-                                                                        Text(
-                                                                      '¿Estás seguro que deseas eliminar "${plan.title}"?',
-                                                                      style: const TextStyle(
-                                                                          color:
-                                                                              Colors.white),
-                                                                    ),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.of(context).pop(),
-                                                                        child:
-                                                                            const Text(
-                                                                          'Cancelar',
-                                                                          style:
-                                                                              TextStyle(color: Colors.white),
-                                                                        ),
+                                                    // Add an error widget that will be shown if the image fails to load
+                                                    Positioned.fill(
+                                                      child: Image.network(
+                                                        plan.imageUrl,
+                                                        fit: BoxFit.cover,
+                                                        errorBuilder:
+                                                            (
+                                                              context,
+                                                              error,
+                                                              stackTrace,
+                                                            ) {
+                                                              logger.e(
+                                                                'Image error: $error',
+                                                              );
+                                                              return Container(
+                                                                color: Colors
+                                                                    .grey[800],
+                                                                child: const Center(
+                                                                  child: Column(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      Icon(
+                                                                        Icons
+                                                                            .broken_image,
+                                                                        color: Colors
+                                                                            .white70,
+                                                                        size:
+                                                                            40,
                                                                       ),
-                                                                      ElevatedButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          FirebaseFirestore
-                                                                              .instance
-                                                                              .collection('plans')
-                                                                              .doc(plans[index].id)
-                                                                              .delete();
-                                                                          Navigator.of(context)
-                                                                              .pop();
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(
-                                                                            SnackBar(
-                                                                              content: Text('El plan "${plan.title}" ha sido eliminado'),
-                                                                              backgroundColor: Colors.red,
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                        style: ElevatedButton
-                                                                            .styleFrom(
-                                                                          backgroundColor:
-                                                                              Colors.red,
+                                                                      SizedBox(
+                                                                        height:
+                                                                            8,
+                                                                      ),
+                                                                      Text(
+                                                                        'No se pudo cargar la imagen',
+                                                                        style: TextStyle(
+                                                                          color:
+                                                                              Colors.white70,
                                                                         ),
-                                                                        child: const Text(
-                                                                            'Eliminar'),
                                                                       ),
                                                                     ],
-                                                                  );
-                                                                },
+                                                                  ),
+                                                                ),
                                                               );
                                                             },
-                                                            icon: const Icon(
-                                                                Icons.delete),
-                                                            label: const Text(
-                                                                'Eliminar'),
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Colors.red,
-                                                              foregroundColor:
-                                                                  Colors.white,
-                                                            ),
-                                                          ),
-                                                          ElevatedButton.icon(
-                                                            onPressed: () {
-                                                              context.push(
-                                                                  '/myPlanDetail/${plan.id}',
-                                                                  extra: {
-                                                                    'planId':
-                                                                        plan.id,
-                                                                    'isCreator':
-                                                                        true
-                                                                  });
+                                                        loadingBuilder:
+                                                            (
+                                                              context,
+                                                              child,
+                                                              loadingProgress,
+                                                            ) {
+                                                              if (loadingProgress ==
+                                                                  null) {
+                                                                return child;
+                                                              }
+                                                              return Container(
+                                                                color: Colors
+                                                                    .grey[800],
+                                                                child: Center(
+                                                                  child: CircularProgressIndicator(
+                                                                    value:
+                                                                        loadingProgress.expectedTotalBytes !=
+                                                                            null
+                                                                        ? loadingProgress.cumulativeBytesLoaded /
+                                                                              (loadingProgress.expectedTotalBytes ??
+                                                                                  1)
+                                                                        : null,
+                                                                    valueColor:
+                                                                        const AlwaysStoppedAnimation<
+                                                                          Color
+                                                                        >(
+                                                                          Colors
+                                                                              .yellow,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              );
                                                             },
-                                                            icon: const Icon(
-                                                                Icons
-                                                                    .visibility),
-                                                            label: const Text(
-                                                                'Ver más'),
-                                                            style:
-                                                                ElevatedButton
-                                                                    .styleFrom(
-                                                              backgroundColor:
-                                                                  Colors.yellow,
-                                                              foregroundColor:
-                                                                  Colors.black,
-                                                            ),
-                                                          ),
-                                                        ],
                                                       ),
                                                     ),
                                                   ],
                                                 ),
-                                              )
-                                            ],
-                                          ),
-                                        ));
+                                              ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(16),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    plan.title,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 8),
+                                                  Text(
+                                                    plan.description,
+                                                    style: TextStyle(
+                                                      color: Colors.white
+                                                          .withAlpha(
+                                                            (0.7 * 255).round(),
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 16),
+                                                  SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    child: Row(
+                                                      children: [
+                                                        _buildDetailChip(
+                                                          Icons.calendar_today,
+                                                          plan.date
+                                                              .toString()
+                                                              .split(' ')[0],
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 8,
+                                                        ),
+                                                        _buildDetailChip(
+                                                          Icons.location_on,
+                                                          plan.location,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 16),
+                                                  SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        ElevatedButton.icon(
+                                                          onPressed: () {
+                                                            showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (
+                                                                    final BuildContext
+                                                                    context,
+                                                                  ) {
+                                                                    return AlertDialog(
+                                                                      backgroundColor:
+                                                                          const Color(
+                                                                            0xFF1A1B2E,
+                                                                          ),
+                                                                      title: const Text(
+                                                                        'Eliminar Plan',
+                                                                        style: TextStyle(
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                      ),
+                                                                      content: Text(
+                                                                        '¿Estás seguro que deseas eliminar "${plan.title}"?',
+                                                                        style: const TextStyle(
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                      ),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.of(
+                                                                            context,
+                                                                          ).pop(),
+                                                                          child: const Text(
+                                                                            'Cancelar',
+                                                                            style: TextStyle(
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        ElevatedButton(
+                                                                          onPressed: () {
+                                                                            FirebaseFirestore.instance
+                                                                                .collection(
+                                                                                  'plans',
+                                                                                )
+                                                                                .doc(
+                                                                                  plans[index].id,
+                                                                                )
+                                                                                .delete();
+                                                                            Navigator.of(
+                                                                              context,
+                                                                            ).pop();
+                                                                            ScaffoldMessenger.of(
+                                                                              context,
+                                                                            ).showSnackBar(
+                                                                              SnackBar(
+                                                                                content: Text(
+                                                                                  'El plan "${plan.title}" ha sido eliminado',
+                                                                                ),
+                                                                                backgroundColor: Colors.red,
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                          style: ElevatedButton.styleFrom(
+                                                                            backgroundColor:
+                                                                                Colors.red,
+                                                                          ),
+                                                                          child: const Text(
+                                                                            'Eliminar',
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                            );
+                                                          },
+                                                          icon: const Icon(
+                                                            Icons.delete,
+                                                          ),
+                                                          label: const Text(
+                                                            'Eliminar',
+                                                          ),
+                                                          style:
+                                                              ElevatedButton.styleFrom(
+                                                                backgroundColor:
+                                                                    Colors.red,
+                                                                foregroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                              ),
+                                                        ),
+                                                        ElevatedButton.icon(
+                                                          onPressed: () {
+                                                            context.push(
+                                                              '/myPlanDetail/${plan.id}',
+                                                              extra: {
+                                                                'planId':
+                                                                    plan.id,
+                                                                'isCreator':
+                                                                    true,
+                                                              },
+                                                            );
+                                                          },
+                                                          icon: const Icon(
+                                                            Icons.visibility,
+                                                          ),
+                                                          label: const Text(
+                                                            'Ver más',
+                                                          ),
+                                                          style:
+                                                              ElevatedButton.styleFrom(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .yellow,
+                                                                foregroundColor:
+                                                                    Colors
+                                                                        .black,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
                                   } catch (e, stackTrace) {
                                     logger.e('Error parsing plan document: $e');
                                     logger.e('Stack trace: $stackTrace');
@@ -840,8 +889,11 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
     );
   }
 
-  Widget _buildEmptyState(BuildContext context,
-      {IconData icon = Icons.info_outline, String label = 'Sin información'}) {
+  Widget _buildEmptyState(
+    BuildContext context, {
+    IconData icon = Icons.info_outline,
+    String label = 'Sin información',
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
@@ -855,18 +907,19 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
           const SizedBox(width: 4),
           Text(
             label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 12),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildPlanCard(BuildContext context, DocumentSnapshot planDoc,
-      {IconData icon = Icons.event, String label = 'Plan'}) {
+  Widget _buildPlanCard(
+    BuildContext context,
+    DocumentSnapshot planDoc, {
+    IconData icon = Icons.event,
+    String label = 'Plan',
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
@@ -880,10 +933,7 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
           const SizedBox(width: 4),
           Text(
             label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 12),
           ),
         ],
       ),
@@ -904,10 +954,7 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
           const SizedBox(width: 4),
           Text(
             label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 12),
           ),
         ],
       ),

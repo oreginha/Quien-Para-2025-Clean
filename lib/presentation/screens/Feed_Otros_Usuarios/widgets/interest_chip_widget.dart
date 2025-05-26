@@ -8,10 +8,7 @@ import 'package:quien_para/core/theme/provider/theme_provider.dart';
 class InterestChipWidget extends StatelessWidget {
   final String label;
 
-  const InterestChipWidget({
-    super.key,
-    required this.label,
-  });
+  const InterestChipWidget({super.key, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +21,7 @@ class InterestChipWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: Theme.of(context).primaryColor,
-              width: 1,
-            ),
+            border: Border.all(color: Theme.of(context).primaryColor, width: 1),
           ),
           child: Text(
             label,

@@ -32,15 +32,14 @@ void main() {
     planBloc.close();
   });
 
-  testWidgets('ProposalDetailScreen shows all required fields',
-      (WidgetTester tester) async {
+  testWidgets('ProposalDetailScreen shows all required fields', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: BlocProvider.value(
           value: planBloc,
-          child: const DetallesPropuestaOtros(
-            planId: '',
-          ),
+          child: const DetallesPropuestaOtros(planId: ''),
         ),
       ),
     );
@@ -52,8 +51,9 @@ void main() {
     expect(find.byKey(const Key('plan_category_field')), findsOneWidget);
   });
 
-  testWidgets('ProposalDetailScreen can submit plan',
-      (WidgetTester tester) async {
+  testWidgets('ProposalDetailScreen can submit plan', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: BlocProvider.value(
@@ -65,11 +65,17 @@ void main() {
 
     // Fill in the form
     await tester.enterText(
-        find.byKey(const Key('plan_title_field')), 'Test Plan');
+      find.byKey(const Key('plan_title_field')),
+      'Test Plan',
+    );
     await tester.enterText(
-        find.byKey(const Key('plan_description_field')), 'Test Description');
+      find.byKey(const Key('plan_description_field')),
+      'Test Description',
+    );
     await tester.enterText(
-        find.byKey(const Key('plan_location_field')), 'Test Location');
+      find.byKey(const Key('plan_location_field')),
+      'Test Location',
+    );
 
     // Submit the form
     await tester.tap(find.byKey(const Key('submit_plan_button')));

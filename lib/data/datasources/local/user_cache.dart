@@ -29,7 +29,8 @@ class UserCache {
         } catch (e) {
           // Si path_provider falla, inicializar Hive sin una ruta específica
           logger.w(
-              'Path provider no disponible, usando inicialización básica de Hive');
+            'Path provider no disponible, usando inicialización básica de Hive',
+          );
           await Hive.initFlutter();
         }
 
@@ -153,8 +154,9 @@ class UserCache {
       }
 
       // Verificar si los datos están expirados
-      final DateTime cachedTime =
-          DateTime.fromMillisecondsSinceEpoch(timestamp);
+      final DateTime cachedTime = DateTime.fromMillisecondsSinceEpoch(
+        timestamp,
+      );
       if (DateTime.now().difference(cachedTime) > _cacheDuration) {
         logger.d('Cached user expired for user ID: $userId');
         return null;

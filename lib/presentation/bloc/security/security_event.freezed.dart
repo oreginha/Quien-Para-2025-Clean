@@ -12,71 +12,90 @@ part of 'security_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SecurityEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )
+    createReport,
     required TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )
+    blockUser,
     required TResult Function() loadPendingReports,
     required TResult Function(String userId) loadReportsByUser,
     required TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)
-        updateReportStatus,
-  }) =>
-      throw _privateConstructorUsedError;
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )
+    updateReportStatus,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult? Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult? Function()? loadPendingReports,
     TResult? Function(String userId)? loadReportsByUser,
     TResult? Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
-  }) =>
-      throw _privateConstructorUsedError;
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult Function()? loadPendingReports,
     TResult Function(String userId)? loadReportsByUser,
     TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreateReportEvent value) createReport,
@@ -84,8 +103,7 @@ mixin _$SecurityEvent {
     required TResult Function(LoadPendingReportsEvent value) loadPendingReports,
     required TResult Function(LoadReportsByUserEvent value) loadReportsByUser,
     required TResult Function(UpdateReportStatusEvent value) updateReportStatus,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateReportEvent value)? createReport,
@@ -93,8 +111,7 @@ mixin _$SecurityEvent {
     TResult? Function(LoadPendingReportsEvent value)? loadPendingReports,
     TResult? Function(LoadReportsByUserEvent value)? loadReportsByUser,
     TResult? Function(UpdateReportStatusEvent value)? updateReportStatus,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateReportEvent value)? createReport,
@@ -103,15 +120,15 @@ mixin _$SecurityEvent {
     TResult Function(LoadReportsByUserEvent value)? loadReportsByUser,
     TResult Function(UpdateReportStatusEvent value)? updateReportStatus,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SecurityEventCopyWith<$Res> {
   factory $SecurityEventCopyWith(
-          SecurityEvent value, $Res Function(SecurityEvent) then) =
-      _$SecurityEventCopyWithImpl<$Res, SecurityEvent>;
+    SecurityEvent value,
+    $Res Function(SecurityEvent) then,
+  ) = _$SecurityEventCopyWithImpl<$Res, SecurityEvent>;
 }
 
 /// @nodoc
@@ -130,26 +147,29 @@ class _$SecurityEventCopyWithImpl<$Res, $Val extends SecurityEvent>
 
 /// @nodoc
 abstract class _$$CreateReportEventImplCopyWith<$Res> {
-  factory _$$CreateReportEventImplCopyWith(_$CreateReportEventImpl value,
-          $Res Function(_$CreateReportEventImpl) then) =
-      __$$CreateReportEventImplCopyWithImpl<$Res>;
+  factory _$$CreateReportEventImplCopyWith(
+    _$CreateReportEventImpl value,
+    $Res Function(_$CreateReportEventImpl) then,
+  ) = __$$CreateReportEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String reportedUserId,
-      String? reportedPlanId,
-      ReportType type,
-      ReportReason reason,
-      String description,
-      Map<String, dynamic>? evidence});
+  $Res call({
+    String reportedUserId,
+    String? reportedPlanId,
+    ReportType type,
+    ReportReason reason,
+    String description,
+    Map<String, dynamic>? evidence,
+  });
 }
 
 /// @nodoc
 class __$$CreateReportEventImplCopyWithImpl<$Res>
     extends _$SecurityEventCopyWithImpl<$Res, _$CreateReportEventImpl>
     implements _$$CreateReportEventImplCopyWith<$Res> {
-  __$$CreateReportEventImplCopyWithImpl(_$CreateReportEventImpl _value,
-      $Res Function(_$CreateReportEventImpl) _then)
-      : super(_value, _then);
+  __$$CreateReportEventImplCopyWithImpl(
+    _$CreateReportEventImpl _value,
+    $Res Function(_$CreateReportEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -163,46 +183,48 @@ class __$$CreateReportEventImplCopyWithImpl<$Res>
     Object? description = null,
     Object? evidence = freezed,
   }) {
-    return _then(_$CreateReportEventImpl(
-      reportedUserId: null == reportedUserId
-          ? _value.reportedUserId
-          : reportedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportedPlanId: freezed == reportedPlanId
-          ? _value.reportedPlanId
-          : reportedPlanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReportType,
-      reason: null == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as ReportReason,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      evidence: freezed == evidence
-          ? _value._evidence
-          : evidence // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ));
+    return _then(
+      _$CreateReportEventImpl(
+        reportedUserId: null == reportedUserId
+            ? _value.reportedUserId
+            : reportedUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reportedPlanId: freezed == reportedPlanId
+            ? _value.reportedPlanId
+            : reportedPlanId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReportType,
+        reason: null == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as ReportReason,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        evidence: freezed == evidence
+            ? _value._evidence
+            : evidence // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CreateReportEventImpl implements CreateReportEvent {
-  const _$CreateReportEventImpl(
-      {required this.reportedUserId,
-      this.reportedPlanId,
-      required this.type,
-      required this.reason,
-      required this.description,
-      final Map<String, dynamic>? evidence})
-      : _evidence = evidence;
+  const _$CreateReportEventImpl({
+    required this.reportedUserId,
+    this.reportedPlanId,
+    required this.type,
+    required this.reason,
+    required this.description,
+    final Map<String, dynamic>? evidence,
+  }) : _evidence = evidence;
 
   @override
   final String reportedUserId;
@@ -247,13 +269,14 @@ class _$CreateReportEventImpl implements CreateReportEvent {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      reportedUserId,
-      reportedPlanId,
-      type,
-      reason,
-      description,
-      const DeepCollectionEquality().hash(_evidence));
+    runtimeType,
+    reportedUserId,
+    reportedPlanId,
+    type,
+    reason,
+    description,
+    const DeepCollectionEquality().hash(_evidence),
+  );
 
   /// Create a copy of SecurityEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -262,80 +285,121 @@ class _$CreateReportEventImpl implements CreateReportEvent {
   @pragma('vm:prefer-inline')
   _$$CreateReportEventImplCopyWith<_$CreateReportEventImpl> get copyWith =>
       __$$CreateReportEventImplCopyWithImpl<_$CreateReportEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )
+    createReport,
     required TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )
+    blockUser,
     required TResult Function() loadPendingReports,
     required TResult Function(String userId) loadReportsByUser,
     required TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )
+    updateReportStatus,
   }) {
     return createReport(
-        reportedUserId, reportedPlanId, type, reason, description, evidence);
+      reportedUserId,
+      reportedPlanId,
+      type,
+      reason,
+      description,
+      evidence,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult? Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult? Function()? loadPendingReports,
     TResult? Function(String userId)? loadReportsByUser,
     TResult? Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
   }) {
     return createReport?.call(
-        reportedUserId, reportedPlanId, type, reason, description, evidence);
+      reportedUserId,
+      reportedPlanId,
+      type,
+      reason,
+      description,
+      evidence,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult Function()? loadPendingReports,
     TResult Function(String userId)? loadReportsByUser,
     TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
     required TResult orElse(),
   }) {
     if (createReport != null) {
       return createReport(
-          reportedUserId, reportedPlanId, type, reason, description, evidence);
+        reportedUserId,
+        reportedPlanId,
+        type,
+        reason,
+        description,
+        evidence,
+      );
     }
     return orElse();
   }
@@ -382,13 +446,14 @@ class _$CreateReportEventImpl implements CreateReportEvent {
 }
 
 abstract class CreateReportEvent implements SecurityEvent {
-  const factory CreateReportEvent(
-      {required final String reportedUserId,
-      final String? reportedPlanId,
-      required final ReportType type,
-      required final ReportReason reason,
-      required final String description,
-      final Map<String, dynamic>? evidence}) = _$CreateReportEventImpl;
+  const factory CreateReportEvent({
+    required final String reportedUserId,
+    final String? reportedPlanId,
+    required final ReportType type,
+    required final ReportReason reason,
+    required final String description,
+    final Map<String, dynamic>? evidence,
+  }) = _$CreateReportEventImpl;
 
   String get reportedUserId;
   String? get reportedPlanId;
@@ -406,9 +471,10 @@ abstract class CreateReportEvent implements SecurityEvent {
 
 /// @nodoc
 abstract class _$$BlockUserEventImplCopyWith<$Res> {
-  factory _$$BlockUserEventImplCopyWith(_$BlockUserEventImpl value,
-          $Res Function(_$BlockUserEventImpl) then) =
-      __$$BlockUserEventImplCopyWithImpl<$Res>;
+  factory _$$BlockUserEventImplCopyWith(
+    _$BlockUserEventImpl value,
+    $Res Function(_$BlockUserEventImpl) then,
+  ) = __$$BlockUserEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String blockedUserId, ReportReason? reason, String? description});
 }
@@ -418,8 +484,9 @@ class __$$BlockUserEventImplCopyWithImpl<$Res>
     extends _$SecurityEventCopyWithImpl<$Res, _$BlockUserEventImpl>
     implements _$$BlockUserEventImplCopyWith<$Res> {
   __$$BlockUserEventImplCopyWithImpl(
-      _$BlockUserEventImpl _value, $Res Function(_$BlockUserEventImpl) _then)
-      : super(_value, _then);
+    _$BlockUserEventImpl _value,
+    $Res Function(_$BlockUserEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -430,28 +497,33 @@ class __$$BlockUserEventImplCopyWithImpl<$Res>
     Object? reason = freezed,
     Object? description = freezed,
   }) {
-    return _then(_$BlockUserEventImpl(
-      blockedUserId: null == blockedUserId
-          ? _value.blockedUserId
-          : blockedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reason: freezed == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as ReportReason?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BlockUserEventImpl(
+        blockedUserId: null == blockedUserId
+            ? _value.blockedUserId
+            : blockedUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reason: freezed == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as ReportReason?,
+        description: freezed == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$BlockUserEventImpl implements BlockUserEvent {
-  const _$BlockUserEventImpl(
-      {required this.blockedUserId, this.reason, this.description});
+  const _$BlockUserEventImpl({
+    required this.blockedUserId,
+    this.reason,
+    this.description,
+  });
 
   @override
   final String blockedUserId;
@@ -488,27 +560,36 @@ class _$BlockUserEventImpl implements BlockUserEvent {
   @pragma('vm:prefer-inline')
   _$$BlockUserEventImplCopyWith<_$BlockUserEventImpl> get copyWith =>
       __$$BlockUserEventImplCopyWithImpl<_$BlockUserEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )
+    createReport,
     required TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )
+    blockUser,
     required TResult Function() loadPendingReports,
     required TResult Function(String userId) loadReportsByUser,
     required TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )
+    updateReportStatus,
   }) {
     return blockUser(blockedUserId, reason, description);
   }
@@ -517,21 +598,28 @@ class _$BlockUserEventImpl implements BlockUserEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult? Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult? Function()? loadPendingReports,
     TResult? Function(String userId)? loadReportsByUser,
     TResult? Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
   }) {
     return blockUser?.call(blockedUserId, reason, description);
   }
@@ -540,21 +628,28 @@ class _$BlockUserEventImpl implements BlockUserEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult Function()? loadPendingReports,
     TResult Function(String userId)? loadReportsByUser,
     TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
     required TResult orElse(),
   }) {
     if (blockUser != null) {
@@ -605,10 +700,11 @@ class _$BlockUserEventImpl implements BlockUserEvent {
 }
 
 abstract class BlockUserEvent implements SecurityEvent {
-  const factory BlockUserEvent(
-      {required final String blockedUserId,
-      final ReportReason? reason,
-      final String? description}) = _$BlockUserEventImpl;
+  const factory BlockUserEvent({
+    required final String blockedUserId,
+    final ReportReason? reason,
+    final String? description,
+  }) = _$BlockUserEventImpl;
 
   String get blockedUserId;
   ReportReason? get reason;
@@ -624,9 +720,9 @@ abstract class BlockUserEvent implements SecurityEvent {
 /// @nodoc
 abstract class _$$LoadPendingReportsEventImplCopyWith<$Res> {
   factory _$$LoadPendingReportsEventImplCopyWith(
-          _$LoadPendingReportsEventImpl value,
-          $Res Function(_$LoadPendingReportsEventImpl) then) =
-      __$$LoadPendingReportsEventImplCopyWithImpl<$Res>;
+    _$LoadPendingReportsEventImpl value,
+    $Res Function(_$LoadPendingReportsEventImpl) then,
+  ) = __$$LoadPendingReportsEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -634,9 +730,9 @@ class __$$LoadPendingReportsEventImplCopyWithImpl<$Res>
     extends _$SecurityEventCopyWithImpl<$Res, _$LoadPendingReportsEventImpl>
     implements _$$LoadPendingReportsEventImplCopyWith<$Res> {
   __$$LoadPendingReportsEventImplCopyWithImpl(
-      _$LoadPendingReportsEventImpl _value,
-      $Res Function(_$LoadPendingReportsEventImpl) _then)
-      : super(_value, _then);
+    _$LoadPendingReportsEventImpl _value,
+    $Res Function(_$LoadPendingReportsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -666,21 +762,28 @@ class _$LoadPendingReportsEventImpl implements LoadPendingReportsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )
+    createReport,
     required TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )
+    blockUser,
     required TResult Function() loadPendingReports,
     required TResult Function(String userId) loadReportsByUser,
     required TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )
+    updateReportStatus,
   }) {
     return loadPendingReports();
   }
@@ -689,21 +792,28 @@ class _$LoadPendingReportsEventImpl implements LoadPendingReportsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult? Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult? Function()? loadPendingReports,
     TResult? Function(String userId)? loadReportsByUser,
     TResult? Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
   }) {
     return loadPendingReports?.call();
   }
@@ -712,21 +822,28 @@ class _$LoadPendingReportsEventImpl implements LoadPendingReportsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult Function()? loadPendingReports,
     TResult Function(String userId)? loadReportsByUser,
     TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
     required TResult orElse(),
   }) {
     if (loadPendingReports != null) {
@@ -783,9 +900,9 @@ abstract class LoadPendingReportsEvent implements SecurityEvent {
 /// @nodoc
 abstract class _$$LoadReportsByUserEventImplCopyWith<$Res> {
   factory _$$LoadReportsByUserEventImplCopyWith(
-          _$LoadReportsByUserEventImpl value,
-          $Res Function(_$LoadReportsByUserEventImpl) then) =
-      __$$LoadReportsByUserEventImplCopyWithImpl<$Res>;
+    _$LoadReportsByUserEventImpl value,
+    $Res Function(_$LoadReportsByUserEventImpl) then,
+  ) = __$$LoadReportsByUserEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String userId});
 }
@@ -795,23 +912,23 @@ class __$$LoadReportsByUserEventImplCopyWithImpl<$Res>
     extends _$SecurityEventCopyWithImpl<$Res, _$LoadReportsByUserEventImpl>
     implements _$$LoadReportsByUserEventImplCopyWith<$Res> {
   __$$LoadReportsByUserEventImplCopyWithImpl(
-      _$LoadReportsByUserEventImpl _value,
-      $Res Function(_$LoadReportsByUserEventImpl) _then)
-      : super(_value, _then);
+    _$LoadReportsByUserEventImpl _value,
+    $Res Function(_$LoadReportsByUserEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? userId = null,
-  }) {
-    return _then(_$LoadReportsByUserEventImpl(
-      null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? userId = null}) {
+    return _then(
+      _$LoadReportsByUserEventImpl(
+        null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -845,28 +962,38 @@ class _$LoadReportsByUserEventImpl implements LoadReportsByUserEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$LoadReportsByUserEventImplCopyWith<_$LoadReportsByUserEventImpl>
-      get copyWith => __$$LoadReportsByUserEventImplCopyWithImpl<
-          _$LoadReportsByUserEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$LoadReportsByUserEventImplCopyWithImpl<_$LoadReportsByUserEventImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )
+    createReport,
     required TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )
+    blockUser,
     required TResult Function() loadPendingReports,
     required TResult Function(String userId) loadReportsByUser,
     required TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )
+    updateReportStatus,
   }) {
     return loadReportsByUser(userId);
   }
@@ -875,21 +1002,28 @@ class _$LoadReportsByUserEventImpl implements LoadReportsByUserEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult? Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult? Function()? loadPendingReports,
     TResult? Function(String userId)? loadReportsByUser,
     TResult? Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
   }) {
     return loadReportsByUser?.call(userId);
   }
@@ -898,21 +1032,28 @@ class _$LoadReportsByUserEventImpl implements LoadReportsByUserEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult Function()? loadPendingReports,
     TResult Function(String userId)? loadReportsByUser,
     TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
     required TResult orElse(),
   }) {
     if (loadReportsByUser != null) {
@@ -972,15 +1113,15 @@ abstract class LoadReportsByUserEvent implements SecurityEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadReportsByUserEventImplCopyWith<_$LoadReportsByUserEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateReportStatusEventImplCopyWith<$Res> {
   factory _$$UpdateReportStatusEventImplCopyWith(
-          _$UpdateReportStatusEventImpl value,
-          $Res Function(_$UpdateReportStatusEventImpl) then) =
-      __$$UpdateReportStatusEventImplCopyWithImpl<$Res>;
+    _$UpdateReportStatusEventImpl value,
+    $Res Function(_$UpdateReportStatusEventImpl) then,
+  ) = __$$UpdateReportStatusEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reportId, ReportStatus status, String? moderatorNotes});
 }
@@ -990,9 +1131,9 @@ class __$$UpdateReportStatusEventImplCopyWithImpl<$Res>
     extends _$SecurityEventCopyWithImpl<$Res, _$UpdateReportStatusEventImpl>
     implements _$$UpdateReportStatusEventImplCopyWith<$Res> {
   __$$UpdateReportStatusEventImplCopyWithImpl(
-      _$UpdateReportStatusEventImpl _value,
-      $Res Function(_$UpdateReportStatusEventImpl) _then)
-      : super(_value, _then);
+    _$UpdateReportStatusEventImpl _value,
+    $Res Function(_$UpdateReportStatusEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SecurityEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1003,28 +1144,33 @@ class __$$UpdateReportStatusEventImplCopyWithImpl<$Res>
     Object? status = null,
     Object? moderatorNotes = freezed,
   }) {
-    return _then(_$UpdateReportStatusEventImpl(
-      reportId: null == reportId
-          ? _value.reportId
-          : reportId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReportStatus,
-      moderatorNotes: freezed == moderatorNotes
-          ? _value.moderatorNotes
-          : moderatorNotes // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$UpdateReportStatusEventImpl(
+        reportId: null == reportId
+            ? _value.reportId
+            : reportId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as ReportStatus,
+        moderatorNotes: freezed == moderatorNotes
+            ? _value.moderatorNotes
+            : moderatorNotes // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$UpdateReportStatusEventImpl implements UpdateReportStatusEvent {
-  const _$UpdateReportStatusEventImpl(
-      {required this.reportId, required this.status, this.moderatorNotes});
+  const _$UpdateReportStatusEventImpl({
+    required this.reportId,
+    required this.status,
+    this.moderatorNotes,
+  });
 
   @override
   final String reportId;
@@ -1060,28 +1206,37 @@ class _$UpdateReportStatusEventImpl implements UpdateReportStatusEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateReportStatusEventImplCopyWith<_$UpdateReportStatusEventImpl>
-      get copyWith => __$$UpdateReportStatusEventImplCopyWithImpl<
-          _$UpdateReportStatusEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$UpdateReportStatusEventImplCopyWithImpl<
+        _$UpdateReportStatusEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )
+    createReport,
     required TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )
+    blockUser,
     required TResult Function() loadPendingReports,
     required TResult Function(String userId) loadReportsByUser,
     required TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )
+    updateReportStatus,
   }) {
     return updateReportStatus(reportId, status, moderatorNotes);
   }
@@ -1090,21 +1245,28 @@ class _$UpdateReportStatusEventImpl implements UpdateReportStatusEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult? Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult? Function()? loadPendingReports,
     TResult? Function(String userId)? loadReportsByUser,
     TResult? Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
   }) {
     return updateReportStatus?.call(reportId, status, moderatorNotes);
   }
@@ -1113,21 +1275,28 @@ class _$UpdateReportStatusEventImpl implements UpdateReportStatusEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reportedUserId,
-            String? reportedPlanId,
-            ReportType type,
-            ReportReason reason,
-            String description,
-            Map<String, dynamic>? evidence)?
-        createReport,
+      String reportedUserId,
+      String? reportedPlanId,
+      ReportType type,
+      ReportReason reason,
+      String description,
+      Map<String, dynamic>? evidence,
+    )?
+    createReport,
     TResult Function(
-            String blockedUserId, ReportReason? reason, String? description)?
-        blockUser,
+      String blockedUserId,
+      ReportReason? reason,
+      String? description,
+    )?
+    blockUser,
     TResult Function()? loadPendingReports,
     TResult Function(String userId)? loadReportsByUser,
     TResult Function(
-            String reportId, ReportStatus status, String? moderatorNotes)?
-        updateReportStatus,
+      String reportId,
+      ReportStatus status,
+      String? moderatorNotes,
+    )?
+    updateReportStatus,
     required TResult orElse(),
   }) {
     if (updateReportStatus != null) {
@@ -1178,10 +1347,11 @@ class _$UpdateReportStatusEventImpl implements UpdateReportStatusEvent {
 }
 
 abstract class UpdateReportStatusEvent implements SecurityEvent {
-  const factory UpdateReportStatusEvent(
-      {required final String reportId,
-      required final ReportStatus status,
-      final String? moderatorNotes}) = _$UpdateReportStatusEventImpl;
+  const factory UpdateReportStatusEvent({
+    required final String reportId,
+    required final ReportStatus status,
+    final String? moderatorNotes,
+  }) = _$UpdateReportStatusEventImpl;
 
   String get reportId;
   ReportStatus get status;
@@ -1191,5 +1361,5 @@ abstract class UpdateReportStatusEvent implements SecurityEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateReportStatusEventImplCopyWith<_$UpdateReportStatusEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

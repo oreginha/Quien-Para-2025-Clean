@@ -70,8 +70,9 @@ class ApplicationStatusWidget extends StatelessWidget {
                         icon: const Icon(Icons.check_circle, size: 18),
                         label: const Text('Aceptar'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color(0xFF27AE60), // accentGreen
+                          backgroundColor: const Color(
+                            0xFF27AE60,
+                          ), // accentGreen
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(
                             horizontal: AppSpacing.l,
@@ -129,11 +130,11 @@ class ApplicationStatusWidget extends StatelessWidget {
               Text(
                 'Mensaje del aplicante:',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.lightTextPrimary.withAlpha(
-                          (255 * AppTheme.of(context).mediumEmphasisOpacity)
-                              .round()),
-                      fontWeight: FontWeight.bold,
-                    ),
+                  color: AppColors.lightTextPrimary.withAlpha(
+                    (255 * AppTheme.of(context).mediumEmphasisOpacity).round(),
+                  ),
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: AppSpacing.xs),
               Container(
@@ -145,9 +146,9 @@ class ApplicationStatusWidget extends StatelessWidget {
                 child: Text(
                   application.message!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.lightTextPrimary,
-                        fontStyle: FontStyle.italic,
-                      ),
+                    color: AppColors.lightTextPrimary,
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
               ),
             ],
@@ -166,8 +167,8 @@ class ApplicationStatusWidget extends StatelessWidget {
                     Text(
                       'Aplicado el ${_formatDate(application.appliedAt)}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).dividerColor,
-                          ),
+                        color: Theme.of(context).dividerColor,
+                      ),
                     ),
                   ],
                 ),
@@ -175,8 +176,8 @@ class ApplicationStatusWidget extends StatelessWidget {
                   Text(
                     'Procesado el ${_formatDate(application.processedAt!)}',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(context).dividerColor,
-                        ),
+                      color: Theme.of(context).dividerColor,
+                    ),
                   ),
                 ],
               ],
@@ -216,11 +217,13 @@ class ApplicationStatusWidget extends StatelessWidget {
   Color _getStatusBackgroundColor(String status) {
     switch (status) {
       case 'pending':
-        return const Color(0xFFF39C12)
-            .withAlpha((0.15 * 255).round()); // accentYellow
+        return const Color(
+          0xFFF39C12,
+        ).withAlpha((0.15 * 255).round()); // accentYellow
       case 'accepted':
-        return const Color(0xFF27AE60)
-            .withAlpha((0.15 * 255).round()); // accentGreen
+        return const Color(
+          0xFF27AE60,
+        ).withAlpha((0.15 * 255).round()); // accentGreen
       case 'rejected':
         return AppColors.brandYellow.withAlpha((0.15 * 255).round());
       default:
@@ -248,37 +251,37 @@ class ApplicationStatusWidget extends StatelessWidget {
   void _handleAccept(BuildContext context) {
     // Intentar usar el ApplicationsManagementBloc si está disponible
     try {
-      context
-          .read<ApplicationsManagementBloc>()
-          .add(ApplicationsManagementEvent.acceptApplication(application.id));
+      context.read<ApplicationsManagementBloc>().add(
+        ApplicationsManagementEvent.acceptApplication(application.id),
+      );
     } catch (e) {
       // Si no está disponible, usar el MatchingBloc como fallback
-      context
-          .read<MatchingBloc>()
-          .add(MatchingEvent.acceptApplication(application.id));
+      context.read<MatchingBloc>().add(
+        MatchingEvent.acceptApplication(application.id),
+      );
     }
   }
 
   void _handleReject(BuildContext context) {
     // Intentar usar el ApplicationsManagementBloc si está disponible
     try {
-      context
-          .read<ApplicationsManagementBloc>()
-          .add(ApplicationsManagementEvent.rejectApplication(application.id));
+      context.read<ApplicationsManagementBloc>().add(
+        ApplicationsManagementEvent.rejectApplication(application.id),
+      );
     } catch (e) {
       // Si no está disponible, usar el MatchingBloc como fallback
-      context
-          .read<MatchingBloc>()
-          .add(MatchingEvent.rejectApplication(application.id));
+      context.read<MatchingBloc>().add(
+        MatchingEvent.rejectApplication(application.id),
+      );
     }
   }
 
   void _handleCancel(BuildContext context) {
     // Para cancelar siempre usar el MatchingBloc, ya que esta funcionalidad
     // es específica del usuario que hace la aplicación, no del gestor
-    context
-        .read<MatchingBloc>()
-        .add(MatchingEvent.cancelApplication(application.id));
+    context.read<MatchingBloc>().add(
+      MatchingEvent.cancelApplication(application.id),
+    );
   }
 
   void _showAcceptConfirmation(BuildContext context) {
@@ -286,10 +289,7 @@ class ApplicationStatusWidget extends StatelessWidget {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         backgroundColor: Theme.of(context).cardColor,
-        title: Text(
-          'Aceptar aplicación',
-          style: AppTypography.heading2(false),
-        ),
+        title: Text('Aceptar aplicación', style: AppTypography.heading2(false)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,17 +308,14 @@ class ApplicationStatusWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.info_outline,
-                    color: AppColors.success,
-                  ),
+                  const Icon(Icons.info_outline, color: AppColors.success),
                   const SizedBox(width: AppSpacing.xs),
                   Expanded(
                     child: Text(
                       'Se le notificará al usuario y se creará un chat para que puedan coordinar.',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: ThemeUtils.background,
-                          ),
+                        color: ThemeUtils.background,
+                      ),
                     ),
                   ),
                 ],
@@ -355,7 +352,8 @@ class ApplicationStatusWidget extends StatelessWidget {
         title: Text(
           'Rechazar aplicación',
           style: AppTypography.heading2(
-              Theme.of(context).brightness == Brightness.dark),
+            Theme.of(context).brightness == Brightness.dark,
+          ),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -375,17 +373,14 @@ class ApplicationStatusWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.info_outline,
-                    color: AppColors.brandYellow,
-                  ),
+                  Icon(Icons.info_outline, color: AppColors.brandYellow),
                   const SizedBox(width: AppSpacing.xs),
                   Expanded(
                     child: Text(
                       'Se le notificará al usuario que su solicitud ha sido rechazada.',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: ThemeUtils.background,
-                          ),
+                        color: ThemeUtils.background,
+                      ),
                     ),
                   ),
                 ],

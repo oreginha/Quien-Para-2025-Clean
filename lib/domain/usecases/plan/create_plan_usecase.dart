@@ -24,11 +24,13 @@ class CreatePlanUseCase implements UseCaseInterface<PlanEntity, PlanEntity> {
     // Validar plan
     if (!plan.isValid) {
       _logger.w('CreatePlanUseCase: Plan inválido');
-      return Left(ValidationFailure(
-        message: 'El plan no es válido, faltan campos requeridos',
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El plan no es válido, faltan campos requeridos',
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     // Delegar al repositorio

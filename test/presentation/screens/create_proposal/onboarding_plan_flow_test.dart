@@ -24,7 +24,7 @@ void main() {
   /* Código original comentado temporalmente
   late MockPlanRepositoryImpl mockPlanRepository;
   late PlanBloc planBloc;*/
-/*
+  /*
   setUp(() {
     mockPlanRepository = MockPlanRepositoryImpl();
     planBloc = PlanBloc(planRepository: mockPlanRepository);

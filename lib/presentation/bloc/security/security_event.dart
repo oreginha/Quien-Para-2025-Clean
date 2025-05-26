@@ -24,7 +24,8 @@ class SecurityEvent with _$SecurityEvent {
 
   const factory SecurityEvent.loadPendingReports() = LoadPendingReportsEvent;
 
-  const factory SecurityEvent.loadReportsByUser(String userId) = LoadReportsByUserEvent;
+  const factory SecurityEvent.loadReportsByUser(String userId) =
+      LoadReportsByUserEvent;
 
   const factory SecurityEvent.updateReportStatus({
     required String reportId,

@@ -45,9 +45,10 @@ class InterestsSectionWidget extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: interests
-                .map((final dynamic interest) => InterestChipWidget(
-                      label: interest.toString(),
-                    ))
+                .map(
+                  (final dynamic interest) =>
+                      InterestChipWidget(label: interest.toString()),
+                )
                 .toList(),
           ),
           const SizedBox(height: 24),

@@ -27,11 +27,13 @@ class OnboardingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isActive = isEnabled && !isLoading;
 
-    final Color darkPrimaryBackground =
-        isPrimary ? AppColors.lightTextPrimary : AppColors.lightBackground;
+    final Color darkPrimaryBackground = isPrimary
+        ? AppColors.lightTextPrimary
+        : AppColors.lightBackground;
 
-    final Color textColor =
-        isPrimary ? AppColors.lightTextPrimary : AppColors.lightTextPrimary;
+    final Color textColor = isPrimary
+        ? AppColors.lightTextPrimary
+        : AppColors.lightTextPrimary;
 
     final double horizontalPadding = isSmall ? 16.0 : 24.0;
     final double verticalPadding = isSmall ? 10.0 : 16.0;
@@ -46,8 +48,9 @@ class OnboardingButton extends StatelessWidget {
         boxShadow: isActive && isPrimary
             ? [
                 BoxShadow(
-                  color:
-                      AppColors.lightTextPrimary.withAlpha((255 * 0.3).round()),
+                  color: AppColors.lightTextPrimary.withAlpha(
+                    (255 * 0.3).round(),
+                  ),
                   blurRadius: 8,
                   offset: const Offset(0, 3),
                 ),
@@ -69,10 +72,12 @@ class OnboardingButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.l),
           ),
           elevation: isActive ? 2 : 0,
-          disabledBackgroundColor:
-              AppColors.lightTextPrimary.withAlpha((255 * 0.4).round()),
-          disabledForegroundColor:
-              AppColors.lightTextPrimary.withAlpha((255 * 0.6).round()),
+          disabledBackgroundColor: AppColors.lightTextPrimary.withAlpha(
+            (255 * 0.4).round(),
+          ),
+          disabledForegroundColor: AppColors.lightTextPrimary.withAlpha(
+            (255 * 0.6).round(),
+          ),
         ),
         child: isLoading
             ? Center(
@@ -97,8 +102,9 @@ class OnboardingButton extends StatelessWidget {
                     style: TextStyle(
                       color: isActive
                           ? textColor
-                          : AppColors.lightTextPrimary
-                              .withAlpha((255 * 0.7).round()),
+                          : AppColors.lightTextPrimary.withAlpha(
+                              (255 * 0.7).round(),
+                            ),
                       fontSize: fontSize,
                       fontWeight: FontWeight.w600,
                     ),
@@ -138,9 +144,7 @@ class OnboardingSecondaryButton extends StatelessWidget {
           horizontal: isSmall ? 12.0 : 16.0,
           vertical: isSmall ? 8.0 : 12.0,
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         foregroundColor: AppColors.lightTextPrimary,
         backgroundColor: Colors.transparent,
       ),

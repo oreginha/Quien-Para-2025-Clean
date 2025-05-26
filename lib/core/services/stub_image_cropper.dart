@@ -2,11 +2,10 @@
 // This file is only used when compiling for web and provides empty implementations
 // of classes and methods from the image_cropper package
 
-
 /// Stub implementation of ImageCropper for web
 class ImageCropper {
   const ImageCropper();
-  
+
   Future<CroppedFile?> cropImage({
     required String sourcePath,
     List<CropAspectRatioPreset>? aspectRatioPresets,
@@ -39,10 +38,7 @@ enum CropAspectRatioPreset {
 }
 
 /// Stub for CropStyle enum
-enum CropStyle {
-  rectangle,
-  circle,
-}
+enum CropStyle { rectangle, circle }
 
 /// Base class for platform UI settings
 abstract class PlatformUiSettings {}

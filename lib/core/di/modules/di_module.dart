@@ -11,7 +11,7 @@ abstract class DIModule {
   ///
   /// Las implementaciones deberían registrar todas sus dependencias aquí.
   Future<void> register(GetIt container);
-  
+
   /// Registra dependencias de prueba (mocks) para uso en tests unitarios.
   ///
   /// Por defecto es un método vacío, pero los módulos pueden sobrescribirlo
@@ -19,7 +19,7 @@ abstract class DIModule {
   Future<void> registerTestDependencies(GetIt container) async {
     // Por defecto no hace nada
   }
-  
+
   /// Limpia los recursos del módulo.
   ///
   /// Las implementaciones pueden sobrescribir este método para realizar

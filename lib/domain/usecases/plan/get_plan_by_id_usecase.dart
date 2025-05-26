@@ -24,11 +24,13 @@ class GetPlanByIdUseCase implements UseCaseInterface<PlanEntity?, String> {
     // Validar parámetros
     if (planId.isEmpty) {
       _logger.w('GetPlanByIdUseCase: ID de plan vacío');
-      return Left(ValidationFailure(
-        message: 'El ID del plan no puede estar vacío',
-        field: 'planId',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID del plan no puede estar vacío',
+          field: 'planId',
+          code: '',
+        ),
+      );
     }
 
     // Delegar al repositorio

@@ -152,8 +152,8 @@ class _VirtualizedListViewState<T> extends State<VirtualizedListView<T>> {
 
         // Calcular el último índice visible
         final double itemExtent = widget.estimatedItemHeight;
-        final int visibleIndex =
-            (notification.metrics.pixels / itemExtent).floor();
+        final int visibleIndex = (notification.metrics.pixels / itemExtent)
+            .floor();
 
         if (visibleIndex != _lastVisibleIndex) {
           _lastVisibleIndex = visibleIndex;

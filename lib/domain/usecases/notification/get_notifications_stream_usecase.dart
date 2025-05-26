@@ -24,8 +24,10 @@ class GetNotificationsStreamParams {
 /// de notificaciones para obtener un stream de notificaciones para un usuario.
 class GetNotificationsStreamUseCase
     implements
-        StreamUseCaseInterface<List<NotificationEntity>,
-            GetNotificationsStreamParams> {
+        StreamUseCaseInterface<
+          List<NotificationEntity>,
+          GetNotificationsStreamParams
+        > {
   final NotificationRepository _notificationRepository;
   final Logger _logger = Logger();
 
@@ -33,18 +35,24 @@ class GetNotificationsStreamUseCase
 
   @override
   Stream<Either<AppFailure, List<NotificationEntity>>> execute(
-      GetNotificationsStreamParams params) {
+    GetNotificationsStreamParams params,
+  ) {
     _logger.d(
-        'GetNotificationsStreamUseCase: Obteniendo stream de notificaciones para: ${params.userId}');
+      'GetNotificationsStreamUseCase: Obteniendo stream de notificaciones para: ${params.userId}',
+    );
 
     // Validar parámetros
     if (params.userId.isEmpty) {
       _logger.w('GetNotificationsStreamUseCase: ID de usuario vacío');
-      return Stream.value(Left(ValidationFailure(
-        message: 'El ID del usuario no puede estar vacío',
-        field: 'userId',
-        code: '',
-      )));
+      return Stream.value(
+        Left(
+          ValidationFailure(
+            message: 'El ID del usuario no puede estar vacío',
+            field: 'userId',
+            code: '',
+          ),
+        ),
+      );
     }
 
     // Delegar al repositorio
@@ -56,24 +64,22 @@ class GetNotificationsStreamUseCase
 
   /// Método de conveniencia para usar el caso de uso como una función.
   Stream<Either<AppFailure, List<NotificationEntity>>> call(
-          GetNotificationsStreamParams params) =>
-      execute(params);
+    GetNotificationsStreamParams params,
+  ) => execute(params);
 
   /// Método de conveniencia para obtener un stream de todas las notificaciones
   Stream<Either<AppFailure, List<NotificationEntity>>>
-      getAllNotificationsStream(String userId) {
-    return execute(GetNotificationsStreamParams(
-      userId: userId,
-      includeRead: true,
-    ));
+  getAllNotificationsStream(String userId) {
+    return execute(
+      GetNotificationsStreamParams(userId: userId, includeRead: true),
+    );
   }
 
   /// Método de conveniencia para obtener un stream de notificaciones sin leer
   Stream<Either<AppFailure, List<NotificationEntity>>>
-      getUnreadNotificationsStream(String userId) {
-    return execute(GetNotificationsStreamParams(
-      userId: userId,
-      includeRead: false,
-    ));
+  getUnreadNotificationsStream(String userId) {
+    return execute(
+      GetNotificationsStreamParams(userId: userId, includeRead: false),
+    );
   }
 }

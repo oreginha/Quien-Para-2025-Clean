@@ -30,6 +30,7 @@ setUpAll() async {
   // Utilizar la clase de utilidad para configurar Firebase
   await FirebaseTestUtils.initializeFirebase();
 }
+
 /*
 void main() {
   late PlanBloc planBloc;

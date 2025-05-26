@@ -42,12 +42,14 @@ class DI {
   /// Inicializa solo las dependencias esenciales
   static Future<void> initializeEmergencyDI() async {
     DILogger.info(
-        '[EMERGENCIA] Iniciando sistema de inyección de dependencias sin casos de uso');
+      '[EMERGENCIA] Iniciando sistema de inyección de dependencias sin casos de uso',
+    );
 
     // Evitar inicializaciones múltiples simultáneas
     if (_isInitializing || _isInitialized) {
       DILogger.warning(
-          'Sistema DI ya inicializado o en proceso de inicialización');
+        'Sistema DI ya inicializado o en proceso de inicialización',
+      );
       return;
     }
 
@@ -71,10 +73,14 @@ class DI {
 
       _isInitialized = true;
       DILogger.success(
-          '[EMERGENCIA] Sistema DI inicializado correctamente en ${stopwatch.elapsedMilliseconds}ms (sin casos de uso)');
+        '[EMERGENCIA] Sistema DI inicializado correctamente en ${stopwatch.elapsedMilliseconds}ms (sin casos de uso)',
+      );
     } catch (e, stackTrace) {
       DILogger.error(
-          '[EMERGENCIA] Error al inicializar dependencias', e, stackTrace);
+        '[EMERGENCIA] Error al inicializar dependencias',
+        e,
+        stackTrace,
+      );
       // No propagamos el error para permitir continuar
       DILogger.warning('[EMERGENCIA] Continuando a pesar del error');
     } finally {
@@ -91,10 +97,14 @@ class DI {
       DILogger.success('[EMERGENCIA] Módulos core registrados correctamente');
     } catch (e, stack) {
       DILogger.error(
-          '[EMERGENCIA] Error registrando módulos principales', e, stack);
+        '[EMERGENCIA] Error registrando módulos principales',
+        e,
+        stack,
+      );
       // No lanzamos excepción para permitir continuar
       DILogger.warning(
-          '[EMERGENCIA] Continuando a pesar del error en módulos principales');
+        '[EMERGENCIA] Continuando a pesar del error en módulos principales',
+      );
     }
   }
 

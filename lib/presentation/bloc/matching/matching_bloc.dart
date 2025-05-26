@@ -70,7 +70,10 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
   /// Maneja la postulación a un plan
   Future<void> _handleApplyToPlan(
-      String planId, String? message, Emitter<MatchingState> emit) async {
+    String planId,
+    String? message,
+    Emitter<MatchingState> emit,
+  ) async {
     await BlocUseCaseExecutor.execute<ApplicationEntity, MatchingState>(
       emit: emit,
       loadingState: const MatchingState.loading(),
@@ -80,37 +83,36 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
         // en lugar de accederlo directamente desde Firebase
 
         // Crear la entidad de aplicación con userId obtenido a través del caso de uso
-        final ApplicationEntity application =
-            await _applyToPlanUseCase.createApplicationEntity(
-          planId: planId,
-          message: message,
-          status: 'pending',
-          appliedAt: DateTime.now(),
-        );
+        final ApplicationEntity application = await _applyToPlanUseCase
+            .createApplicationEntity(
+              planId: planId,
+              message: message,
+              status: 'pending',
+              appliedAt: DateTime.now(),
+            );
 
         // Delegar al caso de uso
         final Either<AppFailure, ApplicationEntity> result =
-            await _applyToPlanUseCase(
-          application,
-        );
+            await _applyToPlanUseCase(application);
 
         // Desempaquetar el Either
-        return result.fold(
-          (failure) => throw Exception(failure.message),
-          (appEntity) async {
-            await _sendNotificationUseCase.call(
-              application: appEntity,
-              notificationType: 'new_application',
-            );
-            return appEntity;
-          },
-        );
+        return result.fold((failure) => throw Exception(failure.message), (
+          appEntity,
+        ) async {
+          await _sendNotificationUseCase.call(
+            application: appEntity,
+            notificationType: 'new_application',
+          );
+          return appEntity;
+        });
       },
       onSuccess: (application) {
         // Actualizar la lista de aplicaciones del usuario en segundo plano
         _handleLoadUserApplications(null, emit);
         return MatchingState.applicationActionSuccess(
-            'Aplicación enviada con éxito', application);
+          'Aplicación enviada con éxito',
+          application,
+        );
       },
       onError: (e) => MatchingState.error(e.toString()),
     );
@@ -118,14 +120,16 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
   /// Carga las aplicaciones de un usuario específico o del usuario actual si no se proporciona ID
   Future<void> _handleLoadUserApplications(
-      String? userId, Emitter<MatchingState> emit) async {
+    String? userId,
+    Emitter<MatchingState> emit,
+  ) async {
     await BlocUseCaseExecutor.execute<List<ApplicationEntity>, MatchingState>(
       emit: emit,
       loadingState: const MatchingState.loading(),
       operation: 'cargar aplicaciones de usuario',
       execute: () async {
-        final String userIdToUse =
-            await _getUserApplicationsUseCase.getCurrentUserId(userId);
+        final String userIdToUse = await _getUserApplicationsUseCase
+            .getCurrentUserId(userId);
         if (userIdToUse.isEmpty) {
           throw Exception('Usuario no autenticado');
         }
@@ -141,7 +145,8 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
       onSuccess: (applications) {
         if (kDebugMode) {
           print(
-              '✅ MatchingBloc - Emitiendo userApplicationsLoaded con ${applications.length} aplicaciones');
+            '✅ MatchingBloc - Emitiendo userApplicationsLoaded con ${applications.length} aplicaciones',
+          );
         }
         return MatchingState.userApplicationsLoaded(applications);
       },
@@ -151,7 +156,9 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
   /// Carga las aplicaciones para un plan específico
   Future<void> _handleLoadPlanApplications(
-      String planId, Emitter<MatchingState> emit) async {
+    String planId,
+    Emitter<MatchingState> emit,
+  ) async {
     await BlocUseCaseExecutor.execute<List<ApplicationEntity>, MatchingState>(
       emit: emit,
       loadingState: const MatchingState.loading(),
@@ -176,32 +183,35 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
   /// Acepta una aplicación a un plan
   Future<void> _handleAcceptApplication(
-      String applicationId, Emitter<MatchingState> emit) async {
+    String applicationId,
+    Emitter<MatchingState> emit,
+  ) async {
     await BlocUseCaseExecutor.execute<ApplicationEntity, MatchingState>(
       emit: emit,
       loadingState: const MatchingState.loading(),
       operation: 'aceptar aplicación',
       execute: () async {
         try {
-          final result =
-              await _updateApplicationStatusUseCase(applicationId, 'accepted');
-          return result.fold(
-            (failure) => throw Exception(failure.message),
-            (application) async {
-              await _sendNotificationUseCase.call(
-                application: application,
-                notificationType: 'application_accepted',
-              );
-              if (application.status == 'accepted') {
-                final String? chatId = await _applicationChatService
-                    .createChatForAcceptedApplication(application);
-                if (chatId != null) {
-                  logger.d('Chat creado con éxito: $chatId');
-                }
-              }
-              return application;
-            },
+          final result = await _updateApplicationStatusUseCase(
+            applicationId,
+            'accepted',
           );
+          return result.fold((failure) => throw Exception(failure.message), (
+            application,
+          ) async {
+            await _sendNotificationUseCase.call(
+              application: application,
+              notificationType: 'application_accepted',
+            );
+            if (application.status == 'accepted') {
+              final String? chatId = await _applicationChatService
+                  .createChatForAcceptedApplication(application);
+              if (chatId != null) {
+                logger.d('Chat creado con éxito: $chatId');
+              }
+            }
+            return application;
+          });
         } catch (e) {
           logger.e('Error al aceptar aplicación: $e');
           rethrow;
@@ -212,7 +222,9 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
           _handleLoadPlanApplications(application.planId, emit);
         }
         return MatchingState.applicationActionSuccess(
-            'Aplicación aceptada', application);
+          'Aplicación aceptada',
+          application,
+        );
       },
       onError: (e) => MatchingState.error(e.toString()),
     );
@@ -220,31 +232,36 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
   /// Rechaza una aplicación a un plan
   Future<void> _handleRejectApplication(
-      String applicationId, Emitter<MatchingState> emit) async {
+    String applicationId,
+    Emitter<MatchingState> emit,
+  ) async {
     await BlocUseCaseExecutor.execute<ApplicationEntity, MatchingState>(
       emit: emit,
       loadingState: const MatchingState.loading(),
       operation: 'rechazar aplicación',
       execute: () async {
-        final result =
-            await _updateApplicationStatusUseCase(applicationId, 'rejected');
-        return result.fold(
-          (failure) => throw Exception(failure.message),
-          (application) async {
-            await _sendNotificationUseCase.call(
-              application: application,
-              notificationType: 'application_rejected',
-            );
-            return application;
-          },
+        final result = await _updateApplicationStatusUseCase(
+          applicationId,
+          'rejected',
         );
+        return result.fold((failure) => throw Exception(failure.message), (
+          application,
+        ) async {
+          await _sendNotificationUseCase.call(
+            application: application,
+            notificationType: 'application_rejected',
+          );
+          return application;
+        });
       },
       onSuccess: (application) {
         if (application.planId.isNotEmpty) {
           _handleLoadPlanApplications(application.planId, emit);
         }
         return MatchingState.applicationActionSuccess(
-            'Aplicación rechazada', application);
+          'Aplicación rechazada',
+          application,
+        );
       },
       onError: (e) => MatchingState.error(e.toString()),
     );
@@ -252,7 +269,9 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
   /// Cancela una aplicación a un plan
   Future<void> _handleCancelApplication(
-      String applicationId, Emitter<MatchingState> emit) async {
+    String applicationId,
+    Emitter<MatchingState> emit,
+  ) async {
     await BlocUseCaseExecutor.execute<ApplicationEntity, MatchingState>(
       emit: emit,
       loadingState: const MatchingState.loading(),
@@ -262,8 +281,8 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
           // 1. Obtener el ID del usuario actual usando el caso de uso
           // Este enfoque sigue los principios de Clean Architecture al encapsular la lógica
           // de autenticación dentro del caso de uso
-          final String userId =
-              await _getUserApplicationsUseCase.getCurrentUserId(null);
+          final String userId = await _getUserApplicationsUseCase
+              .getCurrentUserId(null);
 
           // 2. Crear una aplicación temporal con el ID para mostrar en el estado
           final ApplicationEntity tempApplication = ApplicationEntity(
@@ -293,7 +312,9 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
         // Recargar las aplicaciones del usuario en segundo plano
         _handleLoadUserApplications(null, emit);
         return MatchingState.applicationActionSuccess(
-            'Aplicación cancelada', application);
+          'Aplicación cancelada',
+          application,
+        );
       },
       onError: (e) => MatchingState.error(e.toString()),
     );
@@ -306,7 +327,8 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
 
     // Log para depuración
     logger.d(
-        'Refrescando aplicaciones desde estado: ${currentState.runtimeType}');
+      'Refrescando aplicaciones desde estado: ${currentState.runtimeType}',
+    );
 
     await currentState.map(
       initial: (_) {
@@ -333,13 +355,17 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
         // Determinar qué refrescar basado en el application
         if (successState.application.planId.isNotEmpty) {
           logger.d(
-              'Refresh después de acción en plan: ${successState.application.planId}');
+            'Refresh después de acción en plan: ${successState.application.planId}',
+          );
           await _handleLoadPlanApplications(
-              successState.application.planId, emit);
+            successState.application.planId,
+            emit,
+          );
         } else {
           // Si no hay planId, refrescar las del usuario
           logger.d(
-              'Refresh después de acción - cargando aplicaciones de usuario');
+            'Refresh después de acción - cargando aplicaciones de usuario',
+          );
           await _handleLoadUserApplications(null, emit);
         }
       },

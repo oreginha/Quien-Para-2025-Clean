@@ -22,28 +22,27 @@ class SimpleChatState extends Equatable {
 
   const SimpleChatState.error(String message) : this._(errorMessage: message);
 
-  const SimpleChatState.conversationsLoaded(List<Map<String, dynamic>> conversations)
-      : this._(conversations: conversations);
+  const SimpleChatState.conversationsLoaded(
+    List<Map<String, dynamic>> conversations,
+  ) : this._(conversations: conversations);
 
   const SimpleChatState.messagesLoaded(
     List<Map<String, dynamic>> messages,
     String conversationId,
-  ) : this._(
-          messages: messages,
-          currentConversationId: conversationId,
-        );
+  ) : this._(messages: messages, currentConversationId: conversationId);
 
   @override
   List<Object?> get props => [
-        isLoading,
-        errorMessage,
-        conversations,
-        messages,
-        currentConversationId,
-      ];
+    isLoading,
+    errorMessage,
+    conversations,
+    messages,
+    currentConversationId,
+  ];
 
   // Getters de conveniencia para compatibilidad
   bool get hasError => errorMessage != null;
-  bool get hasConversations => conversations != null && conversations!.isNotEmpty;
+  bool get hasConversations =>
+      conversations != null && conversations!.isNotEmpty;
   bool get hasMessages => messages != null && messages!.isNotEmpty;
 }

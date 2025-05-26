@@ -22,7 +22,8 @@ _$ReviewEntityImpl _$$ReviewEntityImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['responseDate'] as String),
       helpfulCount: (json['helpfulCount'] as num?)?.toInt() ?? 0,
-      helpfulVotes: (json['helpfulVotes'] as List<dynamic>?)
+      helpfulVotes:
+          (json['helpfulVotes'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
@@ -63,42 +64,40 @@ const _$ReviewStatusEnumMap = {
 };
 
 _$UserRatingEntityImpl _$$UserRatingEntityImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UserRatingEntityImpl(
-      userId: json['userId'] as String,
-      averageRating: (json['averageRating'] as num).toDouble(),
-      totalReviews: (json['totalReviews'] as num).toInt(),
-      lastUpdated: DateTime.parse(json['lastUpdated'] as String),
-      totalPlansOrganized: (json['totalPlansOrganized'] as num?)?.toInt() ?? 0,
-      totalPlansAttended: (json['totalPlansAttended'] as num?)?.toInt() ?? 0,
-      reliabilityScore: (json['reliabilityScore'] as num?)?.toInt() ?? 0,
-      ratingDistribution:
-          (json['ratingDistribution'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, (e as num).toInt()),
-      ),
-      categoryRatings: (json['categoryRatings'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, (e as num).toDouble()),
-      ),
-      topPositiveComments: (json['topPositiveComments'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      commonConcerns: (json['commonConcerns'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => _$UserRatingEntityImpl(
+  userId: json['userId'] as String,
+  averageRating: (json['averageRating'] as num).toDouble(),
+  totalReviews: (json['totalReviews'] as num).toInt(),
+  lastUpdated: DateTime.parse(json['lastUpdated'] as String),
+  totalPlansOrganized: (json['totalPlansOrganized'] as num?)?.toInt() ?? 0,
+  totalPlansAttended: (json['totalPlansAttended'] as num?)?.toInt() ?? 0,
+  reliabilityScore: (json['reliabilityScore'] as num?)?.toInt() ?? 0,
+  ratingDistribution: (json['ratingDistribution'] as Map<String, dynamic>?)
+      ?.map((k, e) => MapEntry(k, (e as num).toInt())),
+  categoryRatings: (json['categoryRatings'] as Map<String, dynamic>?)?.map(
+    (k, e) => MapEntry(k, (e as num).toDouble()),
+  ),
+  topPositiveComments: (json['topPositiveComments'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  commonConcerns: (json['commonConcerns'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+);
 
 Map<String, dynamic> _$$UserRatingEntityImplToJson(
-        _$UserRatingEntityImpl instance) =>
-    <String, dynamic>{
-      'userId': instance.userId,
-      'averageRating': instance.averageRating,
-      'totalReviews': instance.totalReviews,
-      'lastUpdated': instance.lastUpdated.toIso8601String(),
-      'totalPlansOrganized': instance.totalPlansOrganized,
-      'totalPlansAttended': instance.totalPlansAttended,
-      'reliabilityScore': instance.reliabilityScore,
-      'ratingDistribution': instance.ratingDistribution,
-      'categoryRatings': instance.categoryRatings,
-      'topPositiveComments': instance.topPositiveComments,
-      'commonConcerns': instance.commonConcerns,
-    };
+  _$UserRatingEntityImpl instance,
+) => <String, dynamic>{
+  'userId': instance.userId,
+  'averageRating': instance.averageRating,
+  'totalReviews': instance.totalReviews,
+  'lastUpdated': instance.lastUpdated.toIso8601String(),
+  'totalPlansOrganized': instance.totalPlansOrganized,
+  'totalPlansAttended': instance.totalPlansAttended,
+  'reliabilityScore': instance.reliabilityScore,
+  'ratingDistribution': instance.ratingDistribution,
+  'categoryRatings': instance.categoryRatings,
+  'topPositiveComments': instance.topPositiveComments,
+  'commonConcerns': instance.commonConcerns,
+};

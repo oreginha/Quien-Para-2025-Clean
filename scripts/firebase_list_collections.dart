@@ -21,8 +21,9 @@ class _FirestoreListScreenState extends State<FirestoreListScreen> {
   }
 
   Future<void> obtenerDocumentos() async {
-    final url =
-        Uri.parse('https://54ad-200-26-226-115.ngrok-free.app/openai/call');
+    final url = Uri.parse(
+      'https://54ad-200-26-226-115.ngrok-free.app/openai/call',
+    );
 
     try {
       final response = await http.post(
@@ -33,8 +34,8 @@ class _FirestoreListScreenState extends State<FirestoreListScreen> {
           'name': 'firestore_list_documents',
           'arguments': {
             'collection': 'usuarios', // Cambiá por tu colección real
-            'limit': 20
-          }
+            'limit': 20,
+          },
         }),
       );
 
@@ -61,9 +62,7 @@ class _FirestoreListScreenState extends State<FirestoreListScreen> {
   @override
   Widget build(BuildContext context) {
     if (cargando) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     if (error.isNotEmpty) {

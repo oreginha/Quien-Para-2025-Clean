@@ -11,7 +11,7 @@ class PlanCardUtils {
   /// Parse una fecha desde diferentes formatos (Timestamp, String)
   static DateTime? parseDate(dynamic dateData) {
     if (dateData == null) return null;
-    
+
     try {
       if (dateData is Timestamp) {
         return dateData.toDate();
@@ -23,10 +23,10 @@ class PlanCardUtils {
         print('Error parseando fecha: $e');
       }
     }
-    
+
     return null;
   }
-  
+
   /// Obtiene el texto legible para un estado de aplicación
   static String getStatusText(String status) {
     switch (status) {
@@ -54,9 +54,13 @@ class PlanCardUtils {
         return Colors.grey.shade700;
     }
   }
-  
+
   /// Construye un chip para detalles del plan (fecha, ubicación, etc.)
-  static Widget buildDetailChip(IconData icon, String label, {bool isDarkMode = false}) {
+  static Widget buildDetailChip(
+    IconData icon,
+    String label, {
+    bool isDarkMode = false,
+  }) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.m,
@@ -65,23 +69,14 @@ class PlanCardUtils {
       decoration: BoxDecoration(
         color: AppColors.getSecondaryBackground(isDarkMode),
         borderRadius: BorderRadius.circular(AppRadius.chip),
-        border: Border.all(
-          color: AppColors.getBorder(isDarkMode),
-        ),
+        border: Border.all(color: AppColors.getBorder(isDarkMode)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Icon(
-            icon,
-            color: AppColors.brandYellow,
-            size: AppIconSize.xs,
-          ),
+          Icon(icon, color: AppColors.brandYellow, size: AppIconSize.xs),
           const SizedBox(width: AppSpacing.xs),
-          Text(
-            label,
-            style: AppTypography.labelSmall(isDarkMode),
-          ),
+          Text(label, style: AppTypography.labelSmall(isDarkMode)),
         ],
       ),
     );

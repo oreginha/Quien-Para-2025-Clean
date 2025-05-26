@@ -38,7 +38,7 @@ class OtherUserPlanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.isDarkMode;
-    
+
     return Card(
       margin: const EdgeInsets.only(bottom: AppSpacing.m),
       color: AppColors.getCardBackground(isDarkMode),
@@ -64,7 +64,9 @@ class OtherUserPlanCard extends StatelessWidget {
         children: <Widget>[
           // Imagen del plan
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadius.card)),
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(AppRadius.card),
+            ),
             child: SizedBox(
               width: double.infinity,
               height: 200,
@@ -124,14 +126,11 @@ class OtherUserPlanCard extends StatelessWidget {
                 style: AppTypography.bodyMedium(isDarkMode),
               ),
             ),
-            
+
           // Título del plan
-          Text(
-            title,
-            style: AppTypography.heading5(isDarkMode),
-          ),
+          Text(title, style: AppTypography.heading5(isDarkMode)),
           const SizedBox(height: AppSpacing.s),
-          
+
           // Descripción
           Text(
             description,
@@ -174,7 +173,9 @@ class OtherUserPlanCard extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.brandYellow,
-                foregroundColor: isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+                foregroundColor: isDarkMode
+                    ? Colors.black
+                    : AppColors.lightTextPrimary,
                 padding: const EdgeInsets.symmetric(vertical: AppSpacing.m),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppRadius.button),
@@ -201,7 +202,10 @@ class OtherUserPlanCard extends StatelessWidget {
 
     // Si no, los obtenemos de Firestore
     return FutureBuilder<DocumentSnapshot>(
-      future: FirebaseFirestore.instance.collection('users').doc(creatorId).get(),
+      future: FirebaseFirestore.instance
+          .collection('users')
+          .doc(creatorId)
+          .get(),
       builder: (context, userSnapshot) {
         // Obtener datos del usuario
         final Map<String, dynamic>? userData =
@@ -235,10 +239,7 @@ class OtherUserPlanCard extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(
-                color: AppColors.brandYellow,
-                width: 2,
-              ),
+              border: Border.all(color: AppColors.brandYellow, width: 2),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.2),
@@ -250,11 +251,13 @@ class OtherUserPlanCard extends StatelessWidget {
             child: CircleAvatar(
               radius: 24,
               backgroundColor: AppColors.getSecondaryBackground(isDarkMode),
-              backgroundImage: userData['photoUrls'] != null &&
+              backgroundImage:
+                  userData['photoUrls'] != null &&
                       (userData['photoUrls'] as List).isNotEmpty
                   ? NetworkImage(userData['photoUrls'][0] as String)
                   : null,
-              child: (userData['photoUrls'] == null ||
+              child:
+                  (userData['photoUrls'] == null ||
                       (userData['photoUrls'] as List).isEmpty)
                   ? Icon(
                       Icons.person,

@@ -12,7 +12,8 @@ part of 'report_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ReportEntity _$ReportEntityFromJson(Map<String, dynamic> json) {
   return _ReportEntity.fromJson(json);
@@ -47,23 +48,25 @@ mixin _$ReportEntity {
 /// @nodoc
 abstract class $ReportEntityCopyWith<$Res> {
   factory $ReportEntityCopyWith(
-          ReportEntity value, $Res Function(ReportEntity) then) =
-      _$ReportEntityCopyWithImpl<$Res, ReportEntity>;
+    ReportEntity value,
+    $Res Function(ReportEntity) then,
+  ) = _$ReportEntityCopyWithImpl<$Res, ReportEntity>;
   @useResult
-  $Res call(
-      {String id,
-      String reporterId,
-      String reportedUserId,
-      String? reportedPlanId,
-      ReportType type,
-      ReportReason reason,
-      String description,
-      DateTime createdAt,
-      ReportStatus status,
-      String? moderatorId,
-      String? moderatorNotes,
-      DateTime? resolvedAt,
-      Map<String, dynamic>? evidence});
+  $Res call({
+    String id,
+    String reporterId,
+    String reportedUserId,
+    String? reportedPlanId,
+    ReportType type,
+    ReportReason reason,
+    String description,
+    DateTime createdAt,
+    ReportStatus status,
+    String? moderatorId,
+    String? moderatorNotes,
+    DateTime? resolvedAt,
+    Map<String, dynamic>? evidence,
+  });
 }
 
 /// @nodoc
@@ -95,60 +98,63 @@ class _$ReportEntityCopyWithImpl<$Res, $Val extends ReportEntity>
     Object? resolvedAt = freezed,
     Object? evidence = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reporterId: null == reporterId
-          ? _value.reporterId
-          : reporterId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportedUserId: null == reportedUserId
-          ? _value.reportedUserId
-          : reportedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportedPlanId: freezed == reportedPlanId
-          ? _value.reportedPlanId
-          : reportedPlanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReportType,
-      reason: null == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as ReportReason,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReportStatus,
-      moderatorId: freezed == moderatorId
-          ? _value.moderatorId
-          : moderatorId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      moderatorNotes: freezed == moderatorNotes
-          ? _value.moderatorNotes
-          : moderatorNotes // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resolvedAt: freezed == resolvedAt
-          ? _value.resolvedAt
-          : resolvedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      evidence: freezed == evidence
-          ? _value.evidence
-          : evidence // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reporterId: null == reporterId
+                ? _value.reporterId
+                : reporterId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reportedUserId: null == reportedUserId
+                ? _value.reportedUserId
+                : reportedUserId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reportedPlanId: freezed == reportedPlanId
+                ? _value.reportedPlanId
+                : reportedPlanId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as ReportType,
+            reason: null == reason
+                ? _value.reason
+                : reason // ignore: cast_nullable_to_non_nullable
+                      as ReportReason,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as ReportStatus,
+            moderatorId: freezed == moderatorId
+                ? _value.moderatorId
+                : moderatorId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            moderatorNotes: freezed == moderatorNotes
+                ? _value.moderatorNotes
+                : moderatorNotes // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            resolvedAt: freezed == resolvedAt
+                ? _value.resolvedAt
+                : resolvedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            evidence: freezed == evidence
+                ? _value.evidence
+                : evidence // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -156,24 +162,26 @@ class _$ReportEntityCopyWithImpl<$Res, $Val extends ReportEntity>
 abstract class _$$ReportEntityImplCopyWith<$Res>
     implements $ReportEntityCopyWith<$Res> {
   factory _$$ReportEntityImplCopyWith(
-          _$ReportEntityImpl value, $Res Function(_$ReportEntityImpl) then) =
-      __$$ReportEntityImplCopyWithImpl<$Res>;
+    _$ReportEntityImpl value,
+    $Res Function(_$ReportEntityImpl) then,
+  ) = __$$ReportEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String reporterId,
-      String reportedUserId,
-      String? reportedPlanId,
-      ReportType type,
-      ReportReason reason,
-      String description,
-      DateTime createdAt,
-      ReportStatus status,
-      String? moderatorId,
-      String? moderatorNotes,
-      DateTime? resolvedAt,
-      Map<String, dynamic>? evidence});
+  $Res call({
+    String id,
+    String reporterId,
+    String reportedUserId,
+    String? reportedPlanId,
+    ReportType type,
+    ReportReason reason,
+    String description,
+    DateTime createdAt,
+    ReportStatus status,
+    String? moderatorId,
+    String? moderatorNotes,
+    DateTime? resolvedAt,
+    Map<String, dynamic>? evidence,
+  });
 }
 
 /// @nodoc
@@ -181,8 +189,9 @@ class __$$ReportEntityImplCopyWithImpl<$Res>
     extends _$ReportEntityCopyWithImpl<$Res, _$ReportEntityImpl>
     implements _$$ReportEntityImplCopyWith<$Res> {
   __$$ReportEntityImplCopyWithImpl(
-      _$ReportEntityImpl _value, $Res Function(_$ReportEntityImpl) _then)
-      : super(_value, _then);
+    _$ReportEntityImpl _value,
+    $Res Function(_$ReportEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReportEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -203,81 +212,83 @@ class __$$ReportEntityImplCopyWithImpl<$Res>
     Object? resolvedAt = freezed,
     Object? evidence = freezed,
   }) {
-    return _then(_$ReportEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reporterId: null == reporterId
-          ? _value.reporterId
-          : reporterId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportedUserId: null == reportedUserId
-          ? _value.reportedUserId
-          : reportedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reportedPlanId: freezed == reportedPlanId
-          ? _value.reportedPlanId
-          : reportedPlanId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReportType,
-      reason: null == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as ReportReason,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as ReportStatus,
-      moderatorId: freezed == moderatorId
-          ? _value.moderatorId
-          : moderatorId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      moderatorNotes: freezed == moderatorNotes
-          ? _value.moderatorNotes
-          : moderatorNotes // ignore: cast_nullable_to_non_nullable
-              as String?,
-      resolvedAt: freezed == resolvedAt
-          ? _value.resolvedAt
-          : resolvedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      evidence: freezed == evidence
-          ? _value._evidence
-          : evidence // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ));
+    return _then(
+      _$ReportEntityImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reporterId: null == reporterId
+            ? _value.reporterId
+            : reporterId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reportedUserId: null == reportedUserId
+            ? _value.reportedUserId
+            : reportedUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reportedPlanId: freezed == reportedPlanId
+            ? _value.reportedPlanId
+            : reportedPlanId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReportType,
+        reason: null == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as ReportReason,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as ReportStatus,
+        moderatorId: freezed == moderatorId
+            ? _value.moderatorId
+            : moderatorId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        moderatorNotes: freezed == moderatorNotes
+            ? _value.moderatorNotes
+            : moderatorNotes // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        resolvedAt: freezed == resolvedAt
+            ? _value.resolvedAt
+            : resolvedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        evidence: freezed == evidence
+            ? _value._evidence
+            : evidence // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ReportEntityImpl implements _ReportEntity {
-  const _$ReportEntityImpl(
-      {required this.id,
-      required this.reporterId,
-      required this.reportedUserId,
-      this.reportedPlanId,
-      required this.type,
-      required this.reason,
-      required this.description,
-      required this.createdAt,
-      this.status = ReportStatus.pending,
-      this.moderatorId,
-      this.moderatorNotes,
-      this.resolvedAt,
-      final Map<String, dynamic>? evidence})
-      : _evidence = evidence;
+  const _$ReportEntityImpl({
+    required this.id,
+    required this.reporterId,
+    required this.reportedUserId,
+    this.reportedPlanId,
+    required this.type,
+    required this.reason,
+    required this.description,
+    required this.createdAt,
+    this.status = ReportStatus.pending,
+    this.moderatorId,
+    this.moderatorNotes,
+    this.resolvedAt,
+    final Map<String, dynamic>? evidence,
+  }) : _evidence = evidence;
 
   factory _$ReportEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReportEntityImplFromJson(json);
@@ -353,20 +364,21 @@ class _$ReportEntityImpl implements _ReportEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      reporterId,
-      reportedUserId,
-      reportedPlanId,
-      type,
-      reason,
-      description,
-      createdAt,
-      status,
-      moderatorId,
-      moderatorNotes,
-      resolvedAt,
-      const DeepCollectionEquality().hash(_evidence));
+    runtimeType,
+    id,
+    reporterId,
+    reportedUserId,
+    reportedPlanId,
+    type,
+    reason,
+    description,
+    createdAt,
+    status,
+    moderatorId,
+    moderatorNotes,
+    resolvedAt,
+    const DeepCollectionEquality().hash(_evidence),
+  );
 
   /// Create a copy of ReportEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -378,27 +390,26 @@ class _$ReportEntityImpl implements _ReportEntity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReportEntityImplToJson(
-      this,
-    );
+    return _$$ReportEntityImplToJson(this);
   }
 }
 
 abstract class _ReportEntity implements ReportEntity {
-  const factory _ReportEntity(
-      {required final String id,
-      required final String reporterId,
-      required final String reportedUserId,
-      final String? reportedPlanId,
-      required final ReportType type,
-      required final ReportReason reason,
-      required final String description,
-      required final DateTime createdAt,
-      final ReportStatus status,
-      final String? moderatorId,
-      final String? moderatorNotes,
-      final DateTime? resolvedAt,
-      final Map<String, dynamic>? evidence}) = _$ReportEntityImpl;
+  const factory _ReportEntity({
+    required final String id,
+    required final String reporterId,
+    required final String reportedUserId,
+    final String? reportedPlanId,
+    required final ReportType type,
+    required final ReportReason reason,
+    required final String description,
+    required final DateTime createdAt,
+    final ReportStatus status,
+    final String? moderatorId,
+    final String? moderatorNotes,
+    final DateTime? resolvedAt,
+    final Map<String, dynamic>? evidence,
+  }) = _$ReportEntityImpl;
 
   factory _ReportEntity.fromJson(Map<String, dynamic> json) =
       _$ReportEntityImpl.fromJson;

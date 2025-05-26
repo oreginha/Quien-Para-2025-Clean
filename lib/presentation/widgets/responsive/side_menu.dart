@@ -14,11 +14,7 @@ class SideMenu extends StatefulWidget {
   final int currentIndex;
   final Function(int)? onTap;
 
-  const SideMenu({
-    super.key,
-    required this.currentIndex,
-    this.onTap,
-  });
+  const SideMenu({super.key, required this.currentIndex, this.onTap});
 
   @override
   State<SideMenu> createState() => _SideMenuState();
@@ -118,10 +114,12 @@ class _SideMenuState extends State<SideMenu> {
         ? AppColors.darkBottomNavBackground
         : AppColors.lightBottomNavBackground;
     final Color activeIconColor = AppColors.brandYellow;
-    final Color inactiveIconColor =
-        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
-    final Color textColor =
-        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final Color inactiveIconColor = isDarkMode
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
+    final Color textColor = isDarkMode
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
 
     return Container(
       width: 250,
@@ -150,13 +148,15 @@ class _SideMenuState extends State<SideMenu> {
                     _titles[index],
                     style: TextStyle(
                       color: isSelected ? activeIconColor : textColor,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
+                      fontWeight: isSelected
+                          ? FontWeight.bold
+                          : FontWeight.normal,
                     ),
                   ),
                   selected: isSelected,
-                  selectedTileColor:
-                      isDarkMode ? Colors.black12 : Colors.white10,
+                  selectedTileColor: isDarkMode
+                      ? Colors.black12
+                      : Colors.white10,
                   onTap: () => _handleNavigation(context, index),
                 );
               },
@@ -167,28 +167,14 @@ class _SideMenuState extends State<SideMenu> {
           const Divider(height: 1),
 
           ListTile(
-            leading: Icon(
-              Icons.settings,
-              color: inactiveIconColor,
-              size: 24,
-            ),
-            title: Text(
-              'Configuración',
-              style: TextStyle(color: textColor),
-            ),
+            leading: Icon(Icons.settings, color: inactiveIconColor, size: 24),
+            title: Text('Configuración', style: TextStyle(color: textColor)),
             onTap: () => context.push(AppRouter.settings),
           ),
 
           ListTile(
-            leading: Icon(
-              Icons.logout,
-              color: inactiveIconColor,
-              size: 24,
-            ),
-            title: Text(
-              'Cerrar sesión',
-              style: TextStyle(color: textColor),
-            ),
+            leading: Icon(Icons.logout, color: inactiveIconColor, size: 24),
+            title: Text('Cerrar sesión', style: TextStyle(color: textColor)),
             onTap: () {
               // Mostrar diálogo de confirmación
               showDialog(
@@ -197,7 +183,8 @@ class _SideMenuState extends State<SideMenu> {
                   return AlertDialog(
                     title: const Text('Cerrar sesión'),
                     content: const Text(
-                        '¿Estás seguro de que quieres cerrar sesión?'),
+                      '¿Estás seguro de que quieres cerrar sesión?',
+                    ),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.of(dialogContext).pop(),
@@ -230,25 +217,24 @@ class _SideMenuState extends State<SideMenu> {
 
   // Widget para mostrar el perfil del usuario en la parte superior
   Widget _buildUserProfile(
-      BuildContext context, bool isDarkMode, Color textColor) {
+    BuildContext context,
+    bool isDarkMode,
+    Color textColor,
+  ) {
     // En lugar de intentar acceder al AuthCubit, mostramos siempre un perfil genérico
     // Esto evita completamente el error de Provider
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 24),
       child: Column(
         children: [
-          Icon(
-            Icons.account_circle,
-            size: 80,
-            color: Colors.grey.shade400,
-          ),
+          Icon(Icons.account_circle, size: 80, color: Colors.grey.shade400),
           const SizedBox(height: 12),
           Text(
             '¿Quién Para?',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                ),
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
           ),
           const SizedBox(height: 4),
           GestureDetector(
@@ -263,9 +249,9 @@ class _SideMenuState extends State<SideMenu> {
             },
             child: Text(
               'Ver perfil',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.brandYellow,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(color: AppColors.brandYellow),
             ),
           ),
         ],

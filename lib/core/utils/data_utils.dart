@@ -15,7 +15,7 @@ class DataUtils {
   static T? safeCast<T>(dynamic value) {
     if (value == null) return null;
     if (value is T) return value;
-    
+
     // Conversiones específicas
     if (T == String && value != null) {
       return value.toString() as T;
@@ -40,7 +40,7 @@ class DataUtils {
         }
       }
     }
-    
+
     if (kDebugMode) {
       print('Warning: Failed to cast $value to $T');
     }
@@ -52,7 +52,7 @@ class DataUtils {
     if (map == null || !map.containsKey(key)) return null;
     return safeCast<T>(map[key]);
   }
-  
+
   /// Convierte una lista de documentos de Firestore a una lista de objetos
   static List<T> mapQuerySnapshot<T>(
     QuerySnapshot snapshot,
@@ -62,7 +62,7 @@ class DataUtils {
         .map((doc) => fromJson(doc.data() as Map<String, dynamic>))
         .toList();
   }
-  
+
   /// Convierte un documento de Firestore a un objeto
   static T? mapDocumentSnapshot<T>(
     DocumentSnapshot? snapshot,
@@ -71,7 +71,7 @@ class DataUtils {
     if (snapshot == null || !snapshot.exists) return null;
     return fromJson(snapshot.data() as Map<String, dynamic>);
   }
-  
+
   /// Convierte un Timestamp a DateTime de manera segura
   static DateTime? timestampToDateTime(dynamic value) {
     if (value == null) return null;
@@ -86,22 +86,23 @@ class DataUtils {
     }
     return null;
   }
-  
+
   /// Filtra las claves nulas o vacías de un mapa
   static Map<String, dynamic> filterNullOrEmpty(Map<String, dynamic> map) {
     return Map.fromEntries(
-      map.entries.where((entry) => 
-        entry.value != null && 
-        (entry.value is! String || (entry.value as String).isNotEmpty)
-      )
+      map.entries.where(
+        (entry) =>
+            entry.value != null &&
+            (entry.value is! String || (entry.value as String).isNotEmpty),
+      ),
     );
   }
-  
+
   /// Comprueba si un string es null, vacío o solo espacios en blanco
   static bool isNullOrBlank(String? str) {
     return str == null || str.trim().isEmpty;
   }
-  
+
   /// Actualiza un mapa con nuevos valores, omitiendo nulos
   static Map<String, dynamic> updateMapSkipNull(
     Map<String, dynamic> original,
@@ -115,7 +116,7 @@ class DataUtils {
     });
     return result;
   }
-  
+
   /// Convierte los valores nulos en un mapa a valores por defecto
   static Map<String, dynamic> setDefaultsForNullValues<T>(
     Map<String, dynamic> map,

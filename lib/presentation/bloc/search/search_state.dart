@@ -81,16 +81,16 @@ class SearchFilters extends Equatable {
 
   @override
   List<Object?> get props => [
-        hasLocationFilter,
-        latitude,
-        longitude,
-        radiusKm,
-        hasDateFilter,
-        startDate,
-        endDate,
-        hasCategoryFilter,
-        category,
-      ];
+    hasLocationFilter,
+    latitude,
+    longitude,
+    radiusKm,
+    hasDateFilter,
+    startDate,
+    endDate,
+    hasCategoryFilter,
+    category,
+  ];
 }
 
 class SearchState extends Equatable {
@@ -144,12 +144,12 @@ class SearchState extends Equatable {
 
   @override
   List<Object?> get props => [
-        status,
-        results,
-        recentSearches,
-        query,
-        error,
-        hasReachedMax,
-        activeFilters,
-      ];
+    status,
+    results,
+    recentSearches,
+    query,
+    error,
+    hasReachedMax,
+    activeFilters,
+  ];
 }

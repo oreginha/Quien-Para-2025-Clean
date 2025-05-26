@@ -38,11 +38,11 @@ class LoadingStateHandler<T> extends StatelessWidget {
     Widget? emptyWidget,
     this.fullscreenLoading = false,
     this.isOverlay = false,
-  })  : loadingWidget =
-            loadingWidget ?? const Center(child: CircularProgressIndicator()),
-        errorWidget = errorWidget ?? _defaultErrorWidget,
-        emptyWidget = emptyWidget ??
-            const Center(child: Text('No hay datos disponibles'));
+  }) : loadingWidget =
+           loadingWidget ?? const Center(child: CircularProgressIndicator()),
+       errorWidget = errorWidget ?? _defaultErrorWidget,
+       emptyWidget =
+           emptyWidget ?? const Center(child: Text('No hay datos disponibles'));
 
   static Widget _defaultErrorWidget(String message) =>
       Center(child: Text("Error: $message"));
@@ -70,7 +70,11 @@ class LoadingStateHandler<T> extends StatelessWidget {
             Positioned.fill(
               child: ColoredBox(
                 color: const Color.fromRGBO(
-                    0, 0, 0, 0.3), // Valor constante para la opacidad
+                  0,
+                  0,
+                  0,
+                  0.3,
+                ), // Valor constante para la opacidad
                 child: loadingWidget,
               ),
             ),
@@ -97,7 +101,4 @@ class LoadingStateHandler<T> extends StatelessWidget {
   }
 }
 
-
-
-  // Método auxiliar para construir la capa de datos de manera segura
-
+// Método auxiliar para construir la capa de datos de manera segura

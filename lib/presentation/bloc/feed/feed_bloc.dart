@@ -39,12 +39,15 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
   }
 
   Future<void> _onFetchPlans(
-      final FetchPlans event, final Emitter<FeedState> emit) async {
+    final FetchPlans event,
+    final Emitter<FeedState> emit,
+  ) async {
     emit(const FeedState.loading());
     try {
       logger.d('Fetching initial plans');
-      final result =
-          await _getPlansUseCase(GetPlansParams(limit: _plansPerPage));
+      final result = await _getPlansUseCase(
+        GetPlansParams(limit: _plansPerPage),
+      );
       final Either<AppFailure, List<PlanEntity>> unwrappedResult = result;
       unwrappedResult.fold(
         (failure) => emit(FeedState.error(message: failure.toString())),
@@ -53,11 +56,13 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
             emit(const FeedState.empty());
           } else {
             final String? lastDocId = plans.isNotEmpty ? plans.last.id : null;
-            emit(FeedState.loaded(
-              plans: plans,
-              hasReachedEnd: plans.length < _plansPerPage,
-              lastDocumentId: lastDocId,
-            ));
+            emit(
+              FeedState.loaded(
+                plans: plans,
+                hasReachedEnd: plans.length < _plansPerPage,
+                lastDocumentId: lastDocId,
+              ),
+            );
           }
         },
       );
@@ -68,7 +73,9 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
   }
 
   Future<void> _onRefreshPlans(
-      final RefreshPlans event, final Emitter<FeedState> emit) async {
+    final RefreshPlans event,
+    final Emitter<FeedState> emit,
+  ) async {
     // Conservar planes actuales mientras se refresca
     final FeedState currentState = state;
     List<PlanEntity> currentPlans = <PlanEntity>[];
@@ -82,8 +89,9 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
 
     try {
       logger.d('Refreshing plans');
-      final result =
-          await _getPlansUseCase(GetPlansParams(limit: _plansPerPage));
+      final result = await _getPlansUseCase(
+        GetPlansParams(limit: _plansPerPage),
+      );
       final Either<AppFailure, List<PlanEntity>> unwrappedResult = result;
       unwrappedResult.fold(
         (failure) => emit(FeedState.error(message: failure.toString())),
@@ -92,11 +100,13 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
             emit(const FeedState.empty());
           } else {
             final String? lastDocId = plans.isNotEmpty ? plans.last.id : null;
-            emit(FeedState.loaded(
-              plans: plans,
-              hasReachedEnd: plans.length < _plansPerPage,
-              lastDocumentId: lastDocId,
-            ));
+            emit(
+              FeedState.loaded(
+                plans: plans,
+                hasReachedEnd: plans.length < _plansPerPage,
+                lastDocumentId: lastDocId,
+              ),
+            );
           }
         },
       );
@@ -106,21 +116,26 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
       if (currentPlans.isNotEmpty) {
         emit(FeedState.loaded(plans: currentPlans));
       } else {
-        emit(FeedState.error(
-            message: 'Failed to refresh plans: ${e.toString()}'));
+        emit(
+          FeedState.error(message: 'Failed to refresh plans: ${e.toString()}'),
+        );
       }
     }
   }
 
   Future<void> _onLoadMorePlans(
-      final LoadMorePlans event, final Emitter<FeedState> emit) async {
+    final LoadMorePlans event,
+    final Emitter<FeedState> emit,
+  ) async {
     final FeedState currentState = state;
 
     if (currentState is FeedLoaded && !currentState.hasReachedEnd) {
-      emit(FeedState.paginating(
-        plans: currentState.plans,
-        hasReachedEnd: currentState.hasReachedEnd,
-      ));
+      emit(
+        FeedState.paginating(
+          plans: currentState.plans,
+          hasReachedEnd: currentState.hasReachedEnd,
+        ),
+      );
 
       try {
         logger.d('Loading more plans from ${currentState.lastDocumentId}');
@@ -136,18 +151,20 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
           (morePlans) {
             final List<PlanEntity> allPlans = <PlanEntity>[
               ...currentState.plans,
-              ...morePlans
+              ...morePlans,
             ];
             final bool hasReachedEnd = morePlans.length < _plansPerPage;
             final String? lastDocId = morePlans.isNotEmpty
                 ? morePlans.last.id
                 : currentState.lastDocumentId;
 
-            emit(FeedState.loaded(
-              plans: allPlans,
-              hasReachedEnd: hasReachedEnd,
-              lastDocumentId: lastDocId,
-            ));
+            emit(
+              FeedState.loaded(
+                plans: allPlans,
+                hasReachedEnd: hasReachedEnd,
+                lastDocumentId: lastDocId,
+              ),
+            );
           },
         );
       } catch (e) {
@@ -155,22 +172,27 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
         // Volver al estado anterior sin paginación
         emit(currentState);
         // Emitir error pero mantener los planes actuales
-        emit(FeedState.error(
-          message: 'Failed to load more plans: ${e.toString()}',
-          plans: currentState.plans,
-        ));
+        emit(
+          FeedState.error(
+            message: 'Failed to load more plans: ${e.toString()}',
+            plans: currentState.plans,
+          ),
+        );
       }
     }
   }
 
   Future<void> _onFilterPlansByCategory(
-      final FilterPlansByCategory event, final Emitter<FeedState> emit) async {
+    final FilterPlansByCategory event,
+    final Emitter<FeedState> emit,
+  ) async {
     emit(const FeedState.loading());
 
     try {
       logger.d('Filtering plans by category: ${event.category}');
       final result = await _getPlansUseCase(
-          GetPlansParams(category: event.category, limit: _plansPerPage));
+        GetPlansParams(category: event.category, limit: _plansPerPage),
+      );
       final Either<AppFailure, List<PlanEntity>> unwrappedResult = result;
 
       unwrappedResult.fold(
@@ -179,10 +201,12 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
           if (filteredPlans.isEmpty) {
             emit(const FeedState.empty());
           } else {
-            emit(FeedState.filtered(
-              plans: filteredPlans,
-              filterCategory: event.category,
-            ));
+            emit(
+              FeedState.filtered(
+                plans: filteredPlans,
+                filterCategory: event.category,
+              ),
+            );
           }
         },
       );
@@ -193,13 +217,17 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
   }
 
   void _onClearFilters(
-      final ClearFilters event, final Emitter<FeedState> emit) {
+    final ClearFilters event,
+    final Emitter<FeedState> emit,
+  ) {
     logger.d('Clearing filters');
     add(const FeedEvent.fetchPlans());
   }
 
   Future<void> _onLikePlan(
-      final LikePlan event, final Emitter<FeedState> emit) async {
+    final LikePlan event,
+    final Emitter<FeedState> emit,
+  ) async {
     try {
       logger.d('Liking plan: ${event.planId}');
       await _matchPlanUseCase(event.planId);
@@ -228,7 +256,9 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
   }
 
   Future<void> _onUnlikePlan(
-      final UnlikePlan event, final Emitter<FeedState> emit) async {
+    final UnlikePlan event,
+    final Emitter<FeedState> emit,
+  ) async {
     try {
       logger.d('Unliking plan: ${event.planId}');
       // Implementar la lógica para unlike (necesitarás un caso de uso)
@@ -244,7 +274,9 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
   }
 
   Future<void> _onCreatePlan(
-      final CreatePlan event, final Emitter<FeedState> emit) async {
+    final CreatePlan event,
+    final Emitter<FeedState> emit,
+  ) async {
     try {
       logger.d('Creating new plan: ${event.title}');
 
@@ -257,7 +289,10 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
         location: event.location,
         date: event.date,
         conditions: event.conditions,
-        selectedThemes: event.selectedThemes, tags: [], creatorId: '', likes: 0,
+        selectedThemes: event.selectedThemes,
+        tags: [],
+        creatorId: '',
+        likes: 0,
         extraConditions: '',
       );
 
@@ -272,7 +307,9 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
   }
 
   Future<void> _onDeletePlan(
-      final DeletePlan event, final Emitter<FeedState> emit) async {
+    final DeletePlan event,
+    final Emitter<FeedState> emit,
+  ) async {
     try {
       logger.d('Deleting plan: ${event.planId}');
       await _deletePlanUseCase(event.planId);
@@ -296,16 +333,20 @@ class FeedBloc extends BaseBloc<FeedEvent, FeedState> {
         if (updatedPlans.isEmpty) {
           emit(const FeedState.empty());
         } else if (currentState is FeedLoaded) {
-          emit(FeedState.loaded(
-            plans: updatedPlans,
-            hasReachedEnd: (currentState).hasReachedEnd,
-            lastDocumentId: (currentState).lastDocumentId,
-          ));
+          emit(
+            FeedState.loaded(
+              plans: updatedPlans,
+              hasReachedEnd: (currentState).hasReachedEnd,
+              lastDocumentId: (currentState).lastDocumentId,
+            ),
+          );
         } else if (currentState is FeedFiltered) {
-          emit(FeedState.filtered(
-            plans: updatedPlans,
-            filterCategory: (currentState).filterCategory,
-          ));
+          emit(
+            FeedState.filtered(
+              plans: updatedPlans,
+              filterCategory: (currentState).filterCategory,
+            ),
+          );
         }
       }
     } catch (e) {

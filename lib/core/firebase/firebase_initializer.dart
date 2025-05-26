@@ -88,7 +88,8 @@ class FirebaseInitializer {
     try {
       // Configurar el manejo de mensajes en segundo plano
       FirebaseMessaging.onBackgroundMessage(
-          _firebaseMessagingBackgroundHandler);
+        _firebaseMessagingBackgroundHandler,
+      );
 
       // Solicitar permisos de notificación
       final settings = await FirebaseMessaging.instance.requestPermission(

@@ -12,7 +12,8 @@ part of 'my_applications_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$MyApplicationsData {
@@ -32,14 +33,16 @@ mixin _$MyApplicationsData {
 /// @nodoc
 abstract class $MyApplicationsDataCopyWith<$Res> {
   factory $MyApplicationsDataCopyWith(
-          MyApplicationsData value, $Res Function(MyApplicationsData) then) =
-      _$MyApplicationsDataCopyWithImpl<$Res, MyApplicationsData>;
+    MyApplicationsData value,
+    $Res Function(MyApplicationsData) then,
+  ) = _$MyApplicationsDataCopyWithImpl<$Res, MyApplicationsData>;
   @useResult
-  $Res call(
-      {List<ApplicationEntity> applications,
-      Map<String, PlanEntity?> plansCache,
-      String? selectedFilter,
-      bool isRefreshing});
+  $Res call({
+    List<ApplicationEntity> applications,
+    Map<String, PlanEntity?> plansCache,
+    String? selectedFilter,
+    bool isRefreshing,
+  });
 }
 
 /// @nodoc
@@ -62,49 +65,55 @@ class _$MyApplicationsDataCopyWithImpl<$Res, $Val extends MyApplicationsData>
     Object? selectedFilter = freezed,
     Object? isRefreshing = null,
   }) {
-    return _then(_value.copyWith(
-      applications: null == applications
-          ? _value.applications
-          : applications // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationEntity>,
-      plansCache: null == plansCache
-          ? _value.plansCache
-          : plansCache // ignore: cast_nullable_to_non_nullable
-              as Map<String, PlanEntity?>,
-      selectedFilter: freezed == selectedFilter
-          ? _value.selectedFilter
-          : selectedFilter // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRefreshing: null == isRefreshing
-          ? _value.isRefreshing
-          : isRefreshing // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            applications: null == applications
+                ? _value.applications
+                : applications // ignore: cast_nullable_to_non_nullable
+                      as List<ApplicationEntity>,
+            plansCache: null == plansCache
+                ? _value.plansCache
+                : plansCache // ignore: cast_nullable_to_non_nullable
+                      as Map<String, PlanEntity?>,
+            selectedFilter: freezed == selectedFilter
+                ? _value.selectedFilter
+                : selectedFilter // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            isRefreshing: null == isRefreshing
+                ? _value.isRefreshing
+                : isRefreshing // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$MyApplicationsDataImplCopyWith<$Res>
     implements $MyApplicationsDataCopyWith<$Res> {
-  factory _$$MyApplicationsDataImplCopyWith(_$MyApplicationsDataImpl value,
-          $Res Function(_$MyApplicationsDataImpl) then) =
-      __$$MyApplicationsDataImplCopyWithImpl<$Res>;
+  factory _$$MyApplicationsDataImplCopyWith(
+    _$MyApplicationsDataImpl value,
+    $Res Function(_$MyApplicationsDataImpl) then,
+  ) = __$$MyApplicationsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<ApplicationEntity> applications,
-      Map<String, PlanEntity?> plansCache,
-      String? selectedFilter,
-      bool isRefreshing});
+  $Res call({
+    List<ApplicationEntity> applications,
+    Map<String, PlanEntity?> plansCache,
+    String? selectedFilter,
+    bool isRefreshing,
+  });
 }
 
 /// @nodoc
 class __$$MyApplicationsDataImplCopyWithImpl<$Res>
     extends _$MyApplicationsDataCopyWithImpl<$Res, _$MyApplicationsDataImpl>
     implements _$$MyApplicationsDataImplCopyWith<$Res> {
-  __$$MyApplicationsDataImplCopyWithImpl(_$MyApplicationsDataImpl _value,
-      $Res Function(_$MyApplicationsDataImpl) _then)
-      : super(_value, _then);
+  __$$MyApplicationsDataImplCopyWithImpl(
+    _$MyApplicationsDataImpl _value,
+    $Res Function(_$MyApplicationsDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MyApplicationsData
   /// with the given fields replaced by the non-null parameter values.
@@ -116,24 +125,26 @@ class __$$MyApplicationsDataImplCopyWithImpl<$Res>
     Object? selectedFilter = freezed,
     Object? isRefreshing = null,
   }) {
-    return _then(_$MyApplicationsDataImpl(
-      applications: null == applications
-          ? _value._applications
-          : applications // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationEntity>,
-      plansCache: null == plansCache
-          ? _value._plansCache
-          : plansCache // ignore: cast_nullable_to_non_nullable
-              as Map<String, PlanEntity?>,
-      selectedFilter: freezed == selectedFilter
-          ? _value.selectedFilter
-          : selectedFilter // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRefreshing: null == isRefreshing
-          ? _value.isRefreshing
-          : isRefreshing // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$MyApplicationsDataImpl(
+        applications: null == applications
+            ? _value._applications
+            : applications // ignore: cast_nullable_to_non_nullable
+                  as List<ApplicationEntity>,
+        plansCache: null == plansCache
+            ? _value._plansCache
+            : plansCache // ignore: cast_nullable_to_non_nullable
+                  as Map<String, PlanEntity?>,
+        selectedFilter: freezed == selectedFilter
+            ? _value.selectedFilter
+            : selectedFilter // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isRefreshing: null == isRefreshing
+            ? _value.isRefreshing
+            : isRefreshing // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -142,13 +153,13 @@ class __$$MyApplicationsDataImplCopyWithImpl<$Res>
 class _$MyApplicationsDataImpl
     with DiagnosticableTreeMixin
     implements _MyApplicationsData {
-  const _$MyApplicationsDataImpl(
-      {required final List<ApplicationEntity> applications,
-      required final Map<String, PlanEntity?> plansCache,
-      required this.selectedFilter,
-      required this.isRefreshing})
-      : _applications = applications,
-        _plansCache = plansCache;
+  const _$MyApplicationsDataImpl({
+    required final List<ApplicationEntity> applications,
+    required final Map<String, PlanEntity?> plansCache,
+    required this.selectedFilter,
+    required this.isRefreshing,
+  }) : _applications = applications,
+       _plansCache = plansCache;
 
   final List<ApplicationEntity> _applications;
   @override
@@ -192,10 +203,14 @@ class _$MyApplicationsDataImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyApplicationsDataImpl &&
-            const DeepCollectionEquality()
-                .equals(other._applications, _applications) &&
-            const DeepCollectionEquality()
-                .equals(other._plansCache, _plansCache) &&
+            const DeepCollectionEquality().equals(
+              other._applications,
+              _applications,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._plansCache,
+              _plansCache,
+            ) &&
             (identical(other.selectedFilter, selectedFilter) ||
                 other.selectedFilter == selectedFilter) &&
             (identical(other.isRefreshing, isRefreshing) ||
@@ -204,11 +219,12 @@ class _$MyApplicationsDataImpl
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_applications),
-      const DeepCollectionEquality().hash(_plansCache),
-      selectedFilter,
-      isRefreshing);
+    runtimeType,
+    const DeepCollectionEquality().hash(_applications),
+    const DeepCollectionEquality().hash(_plansCache),
+    selectedFilter,
+    isRefreshing,
+  );
 
   /// Create a copy of MyApplicationsData
   /// with the given fields replaced by the non-null parameter values.
@@ -217,15 +233,18 @@ class _$MyApplicationsDataImpl
   @pragma('vm:prefer-inline')
   _$$MyApplicationsDataImplCopyWith<_$MyApplicationsDataImpl> get copyWith =>
       __$$MyApplicationsDataImplCopyWithImpl<_$MyApplicationsDataImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _MyApplicationsData implements MyApplicationsData {
-  const factory _MyApplicationsData(
-      {required final List<ApplicationEntity> applications,
-      required final Map<String, PlanEntity?> plansCache,
-      required final String? selectedFilter,
-      required final bool isRefreshing}) = _$MyApplicationsDataImpl;
+  const factory _MyApplicationsData({
+    required final List<ApplicationEntity> applications,
+    required final Map<String, PlanEntity?> plansCache,
+    required final String? selectedFilter,
+    required final bool isRefreshing,
+  }) = _$MyApplicationsDataImpl;
 
   @override
   List<ApplicationEntity> get applications;

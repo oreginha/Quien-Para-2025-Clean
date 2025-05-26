@@ -12,9 +12,7 @@ import 'package:quien_para/presentation/widgets/errors/failures.dart';
 class GetPlansStreamParams {
   final Map<String, dynamic>? filters;
 
-  const GetPlansStreamParams({
-    this.filters,
-  });
+  const GetPlansStreamParams({this.filters});
 }
 
 /// Caso de uso para obtener un stream de planes
@@ -30,7 +28,8 @@ class GetPlansStreamUseCase
 
   @override
   Stream<Either<AppFailure, List<PlanEntity>>> execute(
-      GetPlansStreamParams params) {
+    GetPlansStreamParams params,
+  ) {
     _logger.d('GetPlansStreamUseCase: Obteniendo stream de planes');
 
     // Obtener stream del repositorio
@@ -39,10 +38,15 @@ class GetPlansStreamUseCase
     // Si no hay stream disponible, devolver un stream con error
     if (stream == null) {
       _logger.e('GetPlansStreamUseCase: Stream no disponible');
-      return Stream.value(Left(
-        ServerFailure('Stream no disponible',
-            originalError: 'No stream available') as AppFailure,
-      ));
+      return Stream.value(
+        Left(
+          ServerFailure(
+                'Stream no disponible',
+                originalError: 'No stream available',
+              )
+              as AppFailure,
+        ),
+      );
     }
 
     return stream;
@@ -50,8 +54,8 @@ class GetPlansStreamUseCase
 
   /// Método de conveniencia para usar el caso de uso como una función.
   Stream<Either<AppFailure, List<PlanEntity>>> call(
-          GetPlansStreamParams params) =>
-      execute(params);
+    GetPlansStreamParams params,
+  ) => execute(params);
 
   /// Método de conveniencia para obtener un stream de todos los planes
   Stream<Either<AppFailure, List<PlanEntity>>> getAllPlansStream() {
@@ -60,21 +64,23 @@ class GetPlansStreamUseCase
 
   /// Método de conveniencia para obtener un stream de planes por categoría
   Stream<Either<AppFailure, List<PlanEntity>>> getPlansByCategoryStream(
-      String category) {
-    return execute(GetPlansStreamParams(
-      filters: {'category': category},
-    ));
+    String category,
+  ) {
+    return execute(GetPlansStreamParams(filters: {'category': category}));
   }
 
   /// Método de conveniencia para obtener un stream de planes de otros usuarios
   Stream<Either<AppFailure, List<PlanEntity>>> getOtherUsersPlansStream(
-      String currentUserId,
-      {int? limit}) {
-    return execute(GetPlansStreamParams(
-      filters: {
-        'currentUserId': currentUserId,
-        if (limit != null) 'limit': limit,
-      },
-    ));
+    String currentUserId, {
+    int? limit,
+  }) {
+    return execute(
+      GetPlansStreamParams(
+        filters: {
+          'currentUserId': currentUserId,
+          if (limit != null) 'limit': limit,
+        },
+      ),
+    );
   }
 }

@@ -49,12 +49,14 @@ class UpdatePlanParams {
         fieldErrors['error_$i'] = errors[i];
       }
 
-      return Left(ValidationFailure(
-        message: 'Error de validación al actualizar plan',
-        fieldErrors: fieldErrors,
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'Error de validación al actualizar plan',
+          fieldErrors: fieldErrors,
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     return const Right(true);
@@ -80,7 +82,8 @@ class EnhancedUpdatePlanUseCase
         return validationResult.fold(
           (failure) => Left(failure),
           (_) => throw StateError(
-              'Estado inesperado en validación'), // Nunca debería ocurrir
+            'Estado inesperado en validación',
+          ), // Nunca debería ocurrir
         );
       }
 
@@ -101,18 +104,22 @@ class EnhancedUpdatePlanUseCase
         (existingPlan) {
           // Si el plan no existe, retornar error
           if (existingPlan == null) {
-            return Left(NotFoundFailure(
-              message: 'No se encontró ningún plan con ID: ${plan.id}',
-              code: '',
-            ));
+            return Left(
+              NotFoundFailure(
+                message: 'No se encontró ningún plan con ID: ${plan.id}',
+                code: '',
+              ),
+            );
           }
 
           // Si el plan existe pero el creador no coincide, retornar error de permisos
           if (existingPlan.creatorId != plan.creatorId) {
-            return Left(PermissionFailure(
-              message: 'No tienes permiso para actualizar este plan',
-              code: '',
-            ));
+            return Left(
+              PermissionFailure(
+                message: 'No tienes permiso para actualizar este plan',
+                code: '',
+              ),
+            );
           }
 
           // Si todo está correcto, delegar al repositorio

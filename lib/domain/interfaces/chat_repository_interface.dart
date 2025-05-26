@@ -10,7 +10,10 @@ abstract class ChatRepository {
 
   /// Envía un mensaje a una conversación
   Future<MessageEntity> sendMessage(
-      String conversationId, String senderId, String content);
+    String conversationId,
+    String senderId,
+    String content,
+  );
 
   /// Marca todos los mensajes de una conversación como leídos para el usuario actual
   Future<void> markAsRead(String conversationId, String userId);
@@ -20,7 +23,9 @@ abstract class ChatRepository {
 
   /// Crea una nueva conversación entre usuarios
   Future<String> createConversation(
-      List<String> participants, String initialMessage);
+    List<String> participants,
+    String initialMessage,
+  );
 
   /// Verifica si existe una conversación entre usuarios específicos
   Future<String?> getExistingConversation(List<String> participants);

@@ -23,26 +23,24 @@ class DeletePlanUseCase implements UseCaseInterface<Unit, String> {
     // Validar parámetros
     if (planId.isEmpty) {
       _logger.w('DeletePlanUseCase: ID de plan vacío');
-      return Left(ValidationFailure(
-        message: 'El ID del plan no puede estar vacío',
-        field: 'planId',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID del plan no puede estar vacío',
+          field: 'planId',
+          code: '',
+        ),
+      );
     }
 
     // Verificar que el plan exista
     final existsResult = await _planRepository.exists(planId);
-    final exists = existsResult.fold(
-      (failure) => false,
-      (exists) => exists,
-    );
+    final exists = existsResult.fold((failure) => false, (exists) => exists);
 
     if (!exists) {
       _logger.w('DeletePlanUseCase: Plan no encontrado');
-      return Left(NotFoundFailure(
-        message: 'El plan con ID $planId no existe',
-        code: '',
-      ));
+      return Left(
+        NotFoundFailure(message: 'El plan con ID $planId no existe', code: ''),
+      );
     }
 
     // Delegar al repositorio

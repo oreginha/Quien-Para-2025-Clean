@@ -12,10 +12,7 @@ import '../../../bloc/profile/user_profile_bloc.dart';
 class InterestsStep extends StatefulWidget {
   final VoidCallback onComplete;
 
-  const InterestsStep({
-    super.key,
-    required this.onComplete,
-  });
+  const InterestsStep({super.key, required this.onComplete});
 
   @override
   State<InterestsStep> createState() => _InterestsStepState();
@@ -32,7 +29,7 @@ class _InterestsStepState extends State<InterestsStep> {
     'Viajes',
     'Tecnología',
     'Fiestas',
-    'Cultura'
+    'Cultura',
   ];
 
   Set<String> selectedInterests = <String>{};
@@ -42,8 +39,10 @@ class _InterestsStepState extends State<InterestsStep> {
   void initState() {
     super.initState();
     // Get initial interests from state
-    final List<String> userInterests =
-        context.read<UserProfileBloc>().state.interests;
+    final List<String> userInterests = context
+        .read<UserProfileBloc>()
+        .state
+        .interests;
     selectedInterests = Set.from(userInterests);
     _updateContinueButton();
   }
@@ -64,9 +63,9 @@ class _InterestsStepState extends State<InterestsStep> {
     });
 
     // Update the bloc
-    context
-        .read<UserProfileBloc>()
-        .add(UpdateInterestsEvent(selectedInterests.toList()));
+    context.read<UserProfileBloc>().add(
+      UpdateInterestsEvent(selectedInterests.toList()),
+    );
 
     _updateContinueButton();
   }
@@ -97,7 +96,9 @@ class _InterestsStepState extends State<InterestsStep> {
                   onTap: () => _toggleInterest(interest),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: isSelected
                           ? AppColors.lightCardBackground.withValues(alpha: 0.2)

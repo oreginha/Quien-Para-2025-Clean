@@ -12,7 +12,8 @@ part of 'auth_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -23,8 +24,7 @@ mixin _$AuthEvent {
     required TResult Function() signOut,
     required TResult Function() deleteAccount,
     required TResult Function() completeOnboarding,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuthStatus,
@@ -32,8 +32,7 @@ mixin _$AuthEvent {
     TResult? Function()? signOut,
     TResult? Function()? deleteAccount,
     TResult? Function()? completeOnboarding,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuthStatus,
@@ -42,8 +41,7 @@ mixin _$AuthEvent {
     TResult Function()? deleteAccount,
     TResult Function()? completeOnboarding,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckAuthStatus value) checkAuthStatus,
@@ -51,8 +49,7 @@ mixin _$AuthEvent {
     required TResult Function(SignOut value) signOut,
     required TResult Function(DeleteAccount value) deleteAccount,
     required TResult Function(CompleteOnboarding value) completeOnboarding,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckAuthStatus value)? checkAuthStatus,
@@ -60,8 +57,7 @@ mixin _$AuthEvent {
     TResult? Function(SignOut value)? signOut,
     TResult? Function(DeleteAccount value)? deleteAccount,
     TResult? Function(CompleteOnboarding value)? completeOnboarding,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckAuthStatus value)? checkAuthStatus,
@@ -70,8 +66,7 @@ mixin _$AuthEvent {
     TResult Function(DeleteAccount value)? deleteAccount,
     TResult Function(CompleteOnboarding value)? completeOnboarding,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -96,9 +91,10 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 
 /// @nodoc
 abstract class _$$CheckAuthStatusImplCopyWith<$Res> {
-  factory _$$CheckAuthStatusImplCopyWith(_$CheckAuthStatusImpl value,
-          $Res Function(_$CheckAuthStatusImpl) then) =
-      __$$CheckAuthStatusImplCopyWithImpl<$Res>;
+  factory _$$CheckAuthStatusImplCopyWith(
+    _$CheckAuthStatusImpl value,
+    $Res Function(_$CheckAuthStatusImpl) then,
+  ) = __$$CheckAuthStatusImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -106,8 +102,9 @@ class __$$CheckAuthStatusImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$CheckAuthStatusImpl>
     implements _$$CheckAuthStatusImplCopyWith<$Res> {
   __$$CheckAuthStatusImplCopyWithImpl(
-      _$CheckAuthStatusImpl _value, $Res Function(_$CheckAuthStatusImpl) _then)
-      : super(_value, _then);
+    _$CheckAuthStatusImpl _value,
+    $Res Function(_$CheckAuthStatusImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -220,18 +217,20 @@ abstract class CheckAuthStatus extends AuthEvent {
 
 /// @nodoc
 abstract class _$$SignInWithGoogleImplCopyWith<$Res> {
-  factory _$$SignInWithGoogleImplCopyWith(_$SignInWithGoogleImpl value,
-          $Res Function(_$SignInWithGoogleImpl) then) =
-      __$$SignInWithGoogleImplCopyWithImpl<$Res>;
+  factory _$$SignInWithGoogleImplCopyWith(
+    _$SignInWithGoogleImpl value,
+    $Res Function(_$SignInWithGoogleImpl) then,
+  ) = __$$SignInWithGoogleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$SignInWithGoogleImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$SignInWithGoogleImpl>
     implements _$$SignInWithGoogleImplCopyWith<$Res> {
-  __$$SignInWithGoogleImplCopyWithImpl(_$SignInWithGoogleImpl _value,
-      $Res Function(_$SignInWithGoogleImpl) _then)
-      : super(_value, _then);
+  __$$SignInWithGoogleImplCopyWithImpl(
+    _$SignInWithGoogleImpl _value,
+    $Res Function(_$SignInWithGoogleImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -345,8 +344,9 @@ abstract class SignInWithGoogle extends AuthEvent {
 /// @nodoc
 abstract class _$$SignOutImplCopyWith<$Res> {
   factory _$$SignOutImplCopyWith(
-          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
-      __$$SignOutImplCopyWithImpl<$Res>;
+    _$SignOutImpl value,
+    $Res Function(_$SignOutImpl) then,
+  ) = __$$SignOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -354,8 +354,9 @@ class __$$SignOutImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$SignOutImpl>
     implements _$$SignOutImplCopyWith<$Res> {
   __$$SignOutImplCopyWithImpl(
-      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
-      : super(_value, _then);
+    _$SignOutImpl _value,
+    $Res Function(_$SignOutImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -469,8 +470,9 @@ abstract class SignOut extends AuthEvent {
 /// @nodoc
 abstract class _$$DeleteAccountImplCopyWith<$Res> {
   factory _$$DeleteAccountImplCopyWith(
-          _$DeleteAccountImpl value, $Res Function(_$DeleteAccountImpl) then) =
-      __$$DeleteAccountImplCopyWithImpl<$Res>;
+    _$DeleteAccountImpl value,
+    $Res Function(_$DeleteAccountImpl) then,
+  ) = __$$DeleteAccountImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -478,8 +480,9 @@ class __$$DeleteAccountImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$DeleteAccountImpl>
     implements _$$DeleteAccountImplCopyWith<$Res> {
   __$$DeleteAccountImplCopyWithImpl(
-      _$DeleteAccountImpl _value, $Res Function(_$DeleteAccountImpl) _then)
-      : super(_value, _then);
+    _$DeleteAccountImpl _value,
+    $Res Function(_$DeleteAccountImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -592,18 +595,20 @@ abstract class DeleteAccount extends AuthEvent {
 
 /// @nodoc
 abstract class _$$CompleteOnboardingImplCopyWith<$Res> {
-  factory _$$CompleteOnboardingImplCopyWith(_$CompleteOnboardingImpl value,
-          $Res Function(_$CompleteOnboardingImpl) then) =
-      __$$CompleteOnboardingImplCopyWithImpl<$Res>;
+  factory _$$CompleteOnboardingImplCopyWith(
+    _$CompleteOnboardingImpl value,
+    $Res Function(_$CompleteOnboardingImpl) then,
+  ) = __$$CompleteOnboardingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$CompleteOnboardingImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$CompleteOnboardingImpl>
     implements _$$CompleteOnboardingImplCopyWith<$Res> {
-  __$$CompleteOnboardingImplCopyWithImpl(_$CompleteOnboardingImpl _value,
-      $Res Function(_$CompleteOnboardingImpl) _then)
-      : super(_value, _then);
+  __$$CompleteOnboardingImplCopyWithImpl(
+    _$CompleteOnboardingImpl _value,
+    $Res Function(_$CompleteOnboardingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.

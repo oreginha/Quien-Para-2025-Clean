@@ -57,10 +57,12 @@ void main() {
   group('GetOtherUserPlansUseCase', () {
     test('should get stream of plans from other users from repository', () {
       // Configurar el mock para devolver un stream de planes
-      when(mockPlanRepository.getOtherUserPlansStream(
-        currentUserId: testUserId,
-        limit: testLimit,
-      )).thenAnswer((_) => Stream.value(Right(testPlans)));
+      when(
+        mockPlanRepository.getOtherUserPlansStream(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      ).thenAnswer((_) => Stream.value(Right(testPlans)));
 
       // Ejecutar el caso de uso
       final result = getOtherUserPlansUseCase.execute(
@@ -69,10 +71,12 @@ void main() {
       );
 
       // Verificar que el método del repositorio fue llamado con los parámetros correctos
-      verify(mockPlanRepository.getOtherUserPlansStream(
-        currentUserId: testUserId,
-        limit: testLimit,
-      ));
+      verify(
+        mockPlanRepository.getOtherUserPlansStream(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      );
 
       // Verificar que el resultado es un stream que emite Either con los planes esperados
       expect(result, emits(Right(testPlans)));
@@ -80,10 +84,12 @@ void main() {
 
     test('should handle errors and return empty stream', () {
       // Configurar el mock para lanzar una excepción
-      when(mockPlanRepository.getOtherUserPlansStream(
-        currentUserId: testUserId,
-        limit: testLimit,
-      )).thenThrow(Exception('Repository error'));
+      when(
+        mockPlanRepository.getOtherUserPlansStream(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      ).thenThrow(Exception('Repository error'));
 
       // Ejecutar el caso de uso
       final result = getOtherUserPlansUseCase.execute(
@@ -97,23 +103,33 @@ void main() {
 
     test('should refresh plans using repository method', () async {
       // Configurar el mock para el método refreshOtherUserPlans
-      when(mockPlanRepository.refreshOtherUserPlans(
-              currentUserId: testUserId, limit: testLimit))
-          .thenAnswer((_) async => Right(unit));
+      when(
+        mockPlanRepository.refreshOtherUserPlans(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      ).thenAnswer((_) async => Right(unit));
 
       // Ejecutar el método refreshPlans del caso de uso
       await getOtherUserPlansUseCase.refreshPlans(testUserId);
 
       // Verificar que el método del repositorio fue llamado con el ID de usuario correcto
-      verify(mockPlanRepository.refreshOtherUserPlans(
-          currentUserId: testUserId, limit: testLimit));
+      verify(
+        mockPlanRepository.refreshOtherUserPlans(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      );
     });
 
     test('should rethrow exception when refresh fails', () async {
       // Configurar el mock para lanzar una excepción
-      when(mockPlanRepository.refreshOtherUserPlans(
-              currentUserId: testUserId, limit: testLimit))
-          .thenThrow(Exception('Refresh error'));
+      when(
+        mockPlanRepository.refreshOtherUserPlans(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      ).thenThrow(Exception('Refresh error'));
 
       // Verificar que se lanza la misma excepción
       expect(
@@ -122,8 +138,12 @@ void main() {
       );
 
       // Verificar que el método del repositorio fue llamado con el ID de usuario correcto
-      verify(mockPlanRepository.refreshOtherUserPlans(
-          currentUserId: testUserId, limit: testLimit));
+      verify(
+        mockPlanRepository.refreshOtherUserPlans(
+          currentUserId: testUserId,
+          limit: testLimit,
+        ),
+      );
     });
   });
 }

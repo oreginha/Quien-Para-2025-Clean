@@ -58,8 +58,9 @@ class AppConfig {
       _isInitialized = true;
     });
 
-    final int startupTime =
-        DateTime.now().difference(_appStartTime).inMilliseconds;
+    final int startupTime = DateTime.now()
+        .difference(_appStartTime)
+        .inMilliseconds;
     if (kDebugMode) {
       print('✅ [AppConfig] Aplicación inicializada en $startupTime ms');
     }
@@ -138,9 +139,11 @@ class AppConfig {
     _useGenericCacheSystem = useGenericCacheSystem;
 
     if (kDebugMode) {
-      print('💾 [AppConfig] Sistema de caché configurado: '
-          'compresión=$_useCompressedCache, '
-          'genérico=$_useGenericCacheSystem');
+      print(
+        '💾 [AppConfig] Sistema de caché configurado: '
+        'compresión=$_useCompressedCache, '
+        'genérico=$_useGenericCacheSystem',
+      );
     }
   }
 

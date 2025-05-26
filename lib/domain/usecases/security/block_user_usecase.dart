@@ -15,8 +15,9 @@ class BlockUserUseCase {
   Future<Either<Failure, void>> call(BlockUserParams params) async {
     // Validaciones
     if (params.blockerId == params.blockedUserId) {
-      return Left(ServerFailure('No puedes bloquearte a ti mismo',
-          originalError: "null"));
+      return Left(
+        ServerFailure('No puedes bloquearte a ti mismo', originalError: "null"),
+      );
     }
 
     // Bloquear usuario

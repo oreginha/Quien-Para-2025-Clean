@@ -16,8 +16,10 @@ import '../../helpers/mock_firebase_auth.dart' as helpers;
 import 'package:mockito/annotations.dart';
 import 'plan_repository_impl_test.mocks.dart';
 
-@GenerateMocks([FirebaseStorage, UserCache, PlanApiService, Logger],
-    customMocks: [MockSpec<UserMapper>(as: #MockUserMapper)])
+@GenerateMocks(
+  [FirebaseStorage, UserCache, PlanApiService, Logger],
+  customMocks: [MockSpec<UserMapper>(as: #MockUserMapper)],
+)
 const testPlanId = 'test-plan-id';
 final testPlan = PlanEntity(
   id: testPlanId,
@@ -70,12 +72,14 @@ void main() {
     mockUserMapper = MockUserMapper();
 
     // Configurar comportamiento básico de los mocks
-    when(mockUserMapper.toEntity(testUserModel)).thenReturn(const UserEntity(
-      id: 'test-user-id',
-      name: 'Test User',
-      email: 'test@example.com',
-      age: 25,
-    ));
+    when(mockUserMapper.toEntity(testUserModel)).thenReturn(
+      const UserEntity(
+        id: 'test-user-id',
+        name: 'Test User',
+        email: 'test@example.com',
+        age: 25,
+      ),
+    );
 
     // Crear repositorio
     repository = PlanRepositoryImpl(
@@ -99,22 +103,18 @@ void main() {
 
       // Verificar el resultado
       expect(result.isRight(), isTrue);
-      result.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          expect(plan.title, equals(planToCreate.title));
-          expect(plan.description, equals(planToCreate.description));
-          expect(plan.id, isNotEmpty);
-        },
-      );
+      result.fold((failure) => fail('Should not return failure'), (plan) {
+        expect(plan.title, equals(planToCreate.title));
+        expect(plan.description, equals(planToCreate.description));
+        expect(plan.id, isNotEmpty);
+      });
     });
 
     test('getById should return plan when document exists', () async {
       // Primero crear el plan
-      await fakeFirestore
-          .collection('plans')
-          .doc(testPlanId)
-          .set({'test': 'data'});
+      await fakeFirestore.collection('plans').doc(testPlanId).set({
+        'test': 'data',
+      });
 
       // Obtener el plan
       final result = await repository.getById(testPlanId);

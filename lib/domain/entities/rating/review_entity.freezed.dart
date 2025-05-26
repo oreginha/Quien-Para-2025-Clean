@@ -12,7 +12,8 @@ part of 'review_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ReviewEntity _$ReviewEntityFromJson(Map<String, dynamic> json) {
   return _ReviewEntity.fromJson(json);
@@ -45,21 +46,23 @@ mixin _$ReviewEntity {
 /// @nodoc
 abstract class $ReviewEntityCopyWith<$Res> {
   factory $ReviewEntityCopyWith(
-          ReviewEntity value, $Res Function(ReviewEntity) then) =
-      _$ReviewEntityCopyWithImpl<$Res, ReviewEntity>;
+    ReviewEntity value,
+    $Res Function(ReviewEntity) then,
+  ) = _$ReviewEntityCopyWithImpl<$Res, ReviewEntity>;
   @useResult
-  $Res call(
-      {String id,
-      String reviewerId,
-      String reviewedUserId,
-      String planId,
-      double rating,
-      String comment,
-      DateTime createdAt,
-      bool isAnonymous,
-      List<String> helpfulVotes,
-      String? reviewerName,
-      String? reviewerProfileImage});
+  $Res call({
+    String id,
+    String reviewerId,
+    String reviewedUserId,
+    String planId,
+    double rating,
+    String comment,
+    DateTime createdAt,
+    bool isAnonymous,
+    List<String> helpfulVotes,
+    String? reviewerName,
+    String? reviewerProfileImage,
+  });
 }
 
 /// @nodoc
@@ -89,52 +92,55 @@ class _$ReviewEntityCopyWithImpl<$Res, $Val extends ReviewEntity>
     Object? reviewerName = freezed,
     Object? reviewerProfileImage = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewedUserId: null == reviewedUserId
-          ? _value.reviewedUserId
-          : reviewedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      comment: null == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isAnonymous: null == isAnonymous
-          ? _value.isAnonymous
-          : isAnonymous // ignore: cast_nullable_to_non_nullable
-              as bool,
-      helpfulVotes: null == helpfulVotes
-          ? _value.helpfulVotes
-          : helpfulVotes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      reviewerName: freezed == reviewerName
-          ? _value.reviewerName
-          : reviewerName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      reviewerProfileImage: freezed == reviewerProfileImage
-          ? _value.reviewerProfileImage
-          : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reviewerId: null == reviewerId
+                ? _value.reviewerId
+                : reviewerId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            reviewedUserId: null == reviewedUserId
+                ? _value.reviewedUserId
+                : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            planId: null == planId
+                ? _value.planId
+                : planId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            rating: null == rating
+                ? _value.rating
+                : rating // ignore: cast_nullable_to_non_nullable
+                      as double,
+            comment: null == comment
+                ? _value.comment
+                : comment // ignore: cast_nullable_to_non_nullable
+                      as String,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            isAnonymous: null == isAnonymous
+                ? _value.isAnonymous
+                : isAnonymous // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            helpfulVotes: null == helpfulVotes
+                ? _value.helpfulVotes
+                : helpfulVotes // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            reviewerName: freezed == reviewerName
+                ? _value.reviewerName
+                : reviewerName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            reviewerProfileImage: freezed == reviewerProfileImage
+                ? _value.reviewerProfileImage
+                : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -142,22 +148,24 @@ class _$ReviewEntityCopyWithImpl<$Res, $Val extends ReviewEntity>
 abstract class _$$ReviewEntityImplCopyWith<$Res>
     implements $ReviewEntityCopyWith<$Res> {
   factory _$$ReviewEntityImplCopyWith(
-          _$ReviewEntityImpl value, $Res Function(_$ReviewEntityImpl) then) =
-      __$$ReviewEntityImplCopyWithImpl<$Res>;
+    _$ReviewEntityImpl value,
+    $Res Function(_$ReviewEntityImpl) then,
+  ) = __$$ReviewEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String reviewerId,
-      String reviewedUserId,
-      String planId,
-      double rating,
-      String comment,
-      DateTime createdAt,
-      bool isAnonymous,
-      List<String> helpfulVotes,
-      String? reviewerName,
-      String? reviewerProfileImage});
+  $Res call({
+    String id,
+    String reviewerId,
+    String reviewedUserId,
+    String planId,
+    double rating,
+    String comment,
+    DateTime createdAt,
+    bool isAnonymous,
+    List<String> helpfulVotes,
+    String? reviewerName,
+    String? reviewerProfileImage,
+  });
 }
 
 /// @nodoc
@@ -165,8 +173,9 @@ class __$$ReviewEntityImplCopyWithImpl<$Res>
     extends _$ReviewEntityCopyWithImpl<$Res, _$ReviewEntityImpl>
     implements _$$ReviewEntityImplCopyWith<$Res> {
   __$$ReviewEntityImplCopyWithImpl(
-      _$ReviewEntityImpl _value, $Res Function(_$ReviewEntityImpl) _then)
-      : super(_value, _then);
+    _$ReviewEntityImpl _value,
+    $Res Function(_$ReviewEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -185,71 +194,73 @@ class __$$ReviewEntityImplCopyWithImpl<$Res>
     Object? reviewerName = freezed,
     Object? reviewerProfileImage = freezed,
   }) {
-    return _then(_$ReviewEntityImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewedUserId: null == reviewedUserId
-          ? _value.reviewedUserId
-          : reviewedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      comment: null == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      isAnonymous: null == isAnonymous
-          ? _value.isAnonymous
-          : isAnonymous // ignore: cast_nullable_to_non_nullable
-              as bool,
-      helpfulVotes: null == helpfulVotes
-          ? _value._helpfulVotes
-          : helpfulVotes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      reviewerName: freezed == reviewerName
-          ? _value.reviewerName
-          : reviewerName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      reviewerProfileImage: freezed == reviewerProfileImage
-          ? _value.reviewerProfileImage
-          : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ReviewEntityImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reviewedUserId: null == reviewedUserId
+            ? _value.reviewedUserId
+            : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                  as double,
+        comment: null == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                  as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        isAnonymous: null == isAnonymous
+            ? _value.isAnonymous
+            : isAnonymous // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        helpfulVotes: null == helpfulVotes
+            ? _value._helpfulVotes
+            : helpfulVotes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        reviewerName: freezed == reviewerName
+            ? _value.reviewerName
+            : reviewerName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        reviewerProfileImage: freezed == reviewerProfileImage
+            ? _value.reviewerProfileImage
+            : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ReviewEntityImpl implements _ReviewEntity {
-  const _$ReviewEntityImpl(
-      {required this.id,
-      required this.reviewerId,
-      required this.reviewedUserId,
-      required this.planId,
-      required this.rating,
-      required this.comment,
-      required this.createdAt,
-      this.isAnonymous = false,
-      final List<String> helpfulVotes = const [],
-      this.reviewerName,
-      this.reviewerProfileImage})
-      : _helpfulVotes = helpfulVotes;
+  const _$ReviewEntityImpl({
+    required this.id,
+    required this.reviewerId,
+    required this.reviewedUserId,
+    required this.planId,
+    required this.rating,
+    required this.comment,
+    required this.createdAt,
+    this.isAnonymous = false,
+    final List<String> helpfulVotes = const [],
+    this.reviewerName,
+    this.reviewerProfileImage,
+  }) : _helpfulVotes = helpfulVotes;
 
   factory _$ReviewEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewEntityImplFromJson(json);
@@ -264,7 +275,7 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   final String planId;
   @override
   final double rating;
-// 1.0 - 5.0
+  // 1.0 - 5.0
   @override
   final String comment;
   @override
@@ -308,8 +319,10 @@ class _$ReviewEntityImpl implements _ReviewEntity {
                 other.createdAt == createdAt) &&
             (identical(other.isAnonymous, isAnonymous) ||
                 other.isAnonymous == isAnonymous) &&
-            const DeepCollectionEquality()
-                .equals(other._helpfulVotes, _helpfulVotes) &&
+            const DeepCollectionEquality().equals(
+              other._helpfulVotes,
+              _helpfulVotes,
+            ) &&
             (identical(other.reviewerName, reviewerName) ||
                 other.reviewerName == reviewerName) &&
             (identical(other.reviewerProfileImage, reviewerProfileImage) ||
@@ -319,18 +332,19 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      reviewerId,
-      reviewedUserId,
-      planId,
-      rating,
-      comment,
-      createdAt,
-      isAnonymous,
-      const DeepCollectionEquality().hash(_helpfulVotes),
-      reviewerName,
-      reviewerProfileImage);
+    runtimeType,
+    id,
+    reviewerId,
+    reviewedUserId,
+    planId,
+    rating,
+    comment,
+    createdAt,
+    isAnonymous,
+    const DeepCollectionEquality().hash(_helpfulVotes),
+    reviewerName,
+    reviewerProfileImage,
+  );
 
   /// Create a copy of ReviewEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -342,25 +356,24 @@ class _$ReviewEntityImpl implements _ReviewEntity {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReviewEntityImplToJson(
-      this,
-    );
+    return _$$ReviewEntityImplToJson(this);
   }
 }
 
 abstract class _ReviewEntity implements ReviewEntity {
-  const factory _ReviewEntity(
-      {required final String id,
-      required final String reviewerId,
-      required final String reviewedUserId,
-      required final String planId,
-      required final double rating,
-      required final String comment,
-      required final DateTime createdAt,
-      final bool isAnonymous,
-      final List<String> helpfulVotes,
-      final String? reviewerName,
-      final String? reviewerProfileImage}) = _$ReviewEntityImpl;
+  const factory _ReviewEntity({
+    required final String id,
+    required final String reviewerId,
+    required final String reviewedUserId,
+    required final String planId,
+    required final double rating,
+    required final String comment,
+    required final DateTime createdAt,
+    final bool isAnonymous,
+    final List<String> helpfulVotes,
+    final String? reviewerName,
+    final String? reviewerProfileImage,
+  }) = _$ReviewEntityImpl;
 
   factory _ReviewEntity.fromJson(Map<String, dynamic> json) =
       _$ReviewEntityImpl.fromJson;
@@ -422,15 +435,17 @@ mixin _$UserRatingEntity {
 /// @nodoc
 abstract class $UserRatingEntityCopyWith<$Res> {
   factory $UserRatingEntityCopyWith(
-          UserRatingEntity value, $Res Function(UserRatingEntity) then) =
-      _$UserRatingEntityCopyWithImpl<$Res, UserRatingEntity>;
+    UserRatingEntity value,
+    $Res Function(UserRatingEntity) then,
+  ) = _$UserRatingEntityCopyWithImpl<$Res, UserRatingEntity>;
   @useResult
-  $Res call(
-      {String userId,
-      double averageRating,
-      int totalReviews,
-      Map<int, int> ratingDistribution,
-      DateTime lastUpdated});
+  $Res call({
+    String userId,
+    double averageRating,
+    int totalReviews,
+    Map<int, int> ratingDistribution,
+    DateTime lastUpdated,
+  });
 }
 
 /// @nodoc
@@ -454,54 +469,60 @@ class _$UserRatingEntityCopyWithImpl<$Res, $Val extends UserRatingEntity>
     Object? ratingDistribution = null,
     Object? lastUpdated = null,
   }) {
-    return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      averageRating: null == averageRating
-          ? _value.averageRating
-          : averageRating // ignore: cast_nullable_to_non_nullable
-              as double,
-      totalReviews: null == totalReviews
-          ? _value.totalReviews
-          : totalReviews // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingDistribution: null == ratingDistribution
-          ? _value.ratingDistribution
-          : ratingDistribution // ignore: cast_nullable_to_non_nullable
-              as Map<int, int>,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            averageRating: null == averageRating
+                ? _value.averageRating
+                : averageRating // ignore: cast_nullable_to_non_nullable
+                      as double,
+            totalReviews: null == totalReviews
+                ? _value.totalReviews
+                : totalReviews // ignore: cast_nullable_to_non_nullable
+                      as int,
+            ratingDistribution: null == ratingDistribution
+                ? _value.ratingDistribution
+                : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                      as Map<int, int>,
+            lastUpdated: null == lastUpdated
+                ? _value.lastUpdated
+                : lastUpdated // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UserRatingEntityImplCopyWith<$Res>
     implements $UserRatingEntityCopyWith<$Res> {
-  factory _$$UserRatingEntityImplCopyWith(_$UserRatingEntityImpl value,
-          $Res Function(_$UserRatingEntityImpl) then) =
-      __$$UserRatingEntityImplCopyWithImpl<$Res>;
+  factory _$$UserRatingEntityImplCopyWith(
+    _$UserRatingEntityImpl value,
+    $Res Function(_$UserRatingEntityImpl) then,
+  ) = __$$UserRatingEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String userId,
-      double averageRating,
-      int totalReviews,
-      Map<int, int> ratingDistribution,
-      DateTime lastUpdated});
+  $Res call({
+    String userId,
+    double averageRating,
+    int totalReviews,
+    Map<int, int> ratingDistribution,
+    DateTime lastUpdated,
+  });
 }
 
 /// @nodoc
 class __$$UserRatingEntityImplCopyWithImpl<$Res>
     extends _$UserRatingEntityCopyWithImpl<$Res, _$UserRatingEntityImpl>
     implements _$$UserRatingEntityImplCopyWith<$Res> {
-  __$$UserRatingEntityImplCopyWithImpl(_$UserRatingEntityImpl _value,
-      $Res Function(_$UserRatingEntityImpl) _then)
-      : super(_value, _then);
+  __$$UserRatingEntityImplCopyWithImpl(
+    _$UserRatingEntityImpl _value,
+    $Res Function(_$UserRatingEntityImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UserRatingEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -514,41 +535,43 @@ class __$$UserRatingEntityImplCopyWithImpl<$Res>
     Object? ratingDistribution = null,
     Object? lastUpdated = null,
   }) {
-    return _then(_$UserRatingEntityImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      averageRating: null == averageRating
-          ? _value.averageRating
-          : averageRating // ignore: cast_nullable_to_non_nullable
-              as double,
-      totalReviews: null == totalReviews
-          ? _value.totalReviews
-          : totalReviews // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingDistribution: null == ratingDistribution
-          ? _value._ratingDistribution
-          : ratingDistribution // ignore: cast_nullable_to_non_nullable
-              as Map<int, int>,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+    return _then(
+      _$UserRatingEntityImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        averageRating: null == averageRating
+            ? _value.averageRating
+            : averageRating // ignore: cast_nullable_to_non_nullable
+                  as double,
+        totalReviews: null == totalReviews
+            ? _value.totalReviews
+            : totalReviews // ignore: cast_nullable_to_non_nullable
+                  as int,
+        ratingDistribution: null == ratingDistribution
+            ? _value._ratingDistribution
+            : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                  as Map<int, int>,
+        lastUpdated: null == lastUpdated
+            ? _value.lastUpdated
+            : lastUpdated // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$UserRatingEntityImpl implements _UserRatingEntity {
-  const _$UserRatingEntityImpl(
-      {required this.userId,
-      required this.averageRating,
-      required this.totalReviews,
-      required final Map<int, int> ratingDistribution,
-      required this.lastUpdated})
-      : _ratingDistribution = ratingDistribution;
+  const _$UserRatingEntityImpl({
+    required this.userId,
+    required this.averageRating,
+    required this.totalReviews,
+    required final Map<int, int> ratingDistribution,
+    required this.lastUpdated,
+  }) : _ratingDistribution = ratingDistribution;
 
   factory _$UserRatingEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserRatingEntityImplFromJson(json);
@@ -568,7 +591,7 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
     return EqualUnmodifiableMapView(_ratingDistribution);
   }
 
-// star -> count
+  // star -> count
   @override
   final DateTime lastUpdated;
 
@@ -587,8 +610,10 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
                 other.averageRating == averageRating) &&
             (identical(other.totalReviews, totalReviews) ||
                 other.totalReviews == totalReviews) &&
-            const DeepCollectionEquality()
-                .equals(other._ratingDistribution, _ratingDistribution) &&
+            const DeepCollectionEquality().equals(
+              other._ratingDistribution,
+              _ratingDistribution,
+            ) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated));
   }
@@ -596,12 +621,13 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      userId,
-      averageRating,
-      totalReviews,
-      const DeepCollectionEquality().hash(_ratingDistribution),
-      lastUpdated);
+    runtimeType,
+    userId,
+    averageRating,
+    totalReviews,
+    const DeepCollectionEquality().hash(_ratingDistribution),
+    lastUpdated,
+  );
 
   /// Create a copy of UserRatingEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -610,23 +636,24 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   @pragma('vm:prefer-inline')
   _$$UserRatingEntityImplCopyWith<_$UserRatingEntityImpl> get copyWith =>
       __$$UserRatingEntityImplCopyWithImpl<_$UserRatingEntityImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserRatingEntityImplToJson(
-      this,
-    );
+    return _$$UserRatingEntityImplToJson(this);
   }
 }
 
 abstract class _UserRatingEntity implements UserRatingEntity {
-  const factory _UserRatingEntity(
-      {required final String userId,
-      required final double averageRating,
-      required final int totalReviews,
-      required final Map<int, int> ratingDistribution,
-      required final DateTime lastUpdated}) = _$UserRatingEntityImpl;
+  const factory _UserRatingEntity({
+    required final String userId,
+    required final double averageRating,
+    required final int totalReviews,
+    required final Map<int, int> ratingDistribution,
+    required final DateTime lastUpdated,
+  }) = _$UserRatingEntityImpl;
 
   factory _UserRatingEntity.fromJson(Map<String, dynamic> json) =
       _$UserRatingEntityImpl.fromJson;

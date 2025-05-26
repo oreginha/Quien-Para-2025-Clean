@@ -7,10 +7,7 @@ import 'applications_management_bloc.dart';
 class ApplicationsManagementProvider extends StatelessWidget {
   final Widget child;
 
-  const ApplicationsManagementProvider({
-    super.key,
-    required this.child,
-  });
+  const ApplicationsManagementProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

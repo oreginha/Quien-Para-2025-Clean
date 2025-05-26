@@ -14,16 +14,14 @@ part 'simple_chat_state.dart';
 class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
-  
+
   StreamSubscription? _messagesSubscription;
   StreamSubscription? _conversationsSubscription;
 
-  SimpleChatBloc({
-    FirebaseFirestore? firestore,
-    FirebaseAuth? auth,
-  })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _auth = auth ?? FirebaseAuth.instance,
-        super(const SimpleChatState.initial()) {
+  SimpleChatBloc({FirebaseFirestore? firestore, FirebaseAuth? auth})
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _auth = auth ?? FirebaseAuth.instance,
+      super(const SimpleChatState.initial()) {
     on<LoadConversations>(_onLoadConversations);
     on<LoadMessages>(_onLoadMessages);
     on<SendMessage>(_onSendMessage);
@@ -47,7 +45,7 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
 
     try {
       await _conversationsSubscription?.cancel();
-      
+
       // Query simplificada sin orderBy para evitar errores
       _conversationsSubscription = _firestore
           .collection('conversations')
@@ -63,7 +61,9 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
 
               final conversations = snapshot.docs.map((doc) {
                 final data = doc.data();
-                final participants = List<String>.from(data['participants'] ?? []);
+                final participants = List<String>.from(
+                  data['participants'] ?? [],
+                );
                 final otherParticipantId = participants.firstWhere(
                   (id) => id != _currentUserId,
                   orElse: () => 'unknown',
@@ -73,10 +73,17 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
                   'id': doc.id,
                   'participants': participants,
                   'otherParticipantId': otherParticipantId,
-                  'otherParticipantName': _getParticipantName(data, otherParticipantId),
-                  'otherParticipantPhoto': _getParticipantPhoto(data, otherParticipantId),
+                  'otherParticipantName': _getParticipantName(
+                    data,
+                    otherParticipantId,
+                  ),
+                  'otherParticipantPhoto': _getParticipantPhoto(
+                    data,
+                    otherParticipantId,
+                  ),
                   'lastMessage': data['lastMessage'] ?? '',
-                  'lastMessageTimestamp': data['lastMessageTimestamp'] ?? Timestamp.now(),
+                  'lastMessageTimestamp':
+                      data['lastMessageTimestamp'] ?? Timestamp.now(),
                   'unreadCount': _getUnreadCount(data, _currentUserId),
                 };
               }).toList();
@@ -94,7 +101,9 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
               if (kDebugMode) {
                 print('Error en conversaciones: $error');
               }
-              emit(SimpleChatState.error('Error al cargar conversaciones: $error'));
+              emit(
+                SimpleChatState.error('Error al cargar conversaciones: $error'),
+              );
             },
           );
     } catch (e) {
@@ -161,21 +170,21 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
           .doc(event.conversationId)
           .collection('messages')
           .add({
-        'content': event.content,
-        'senderId': event.senderId,
-        'timestamp': FieldValue.serverTimestamp(),
-        'read': false,
-      });
+            'content': event.content,
+            'senderId': event.senderId,
+            'timestamp': FieldValue.serverTimestamp(),
+            'read': false,
+          });
 
       // Actualizar información de la conversación
       await _firestore
           .collection('conversations')
           .doc(event.conversationId)
           .update({
-        'lastMessage': event.content,
-        'lastMessageTimestamp': FieldValue.serverTimestamp(),
-        'unreadCounts.${event.receiverId}': FieldValue.increment(1),
-      });
+            'lastMessage': event.content,
+            'lastMessageTimestamp': FieldValue.serverTimestamp(),
+            'unreadCounts.${event.receiverId}': FieldValue.increment(1),
+          });
     } catch (e) {
       emit(SimpleChatState.error('Error al enviar mensaje: $e'));
     }
@@ -192,10 +201,7 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
     MessagesUpdated event,
     Emitter<SimpleChatState> emit,
   ) {
-    emit(SimpleChatState.messagesLoaded(
-      event.messages,
-      event.conversationId,
-    ));
+    emit(SimpleChatState.messagesLoaded(event.messages, event.conversationId));
   }
 
   Future<void> _onMarkAsRead(
@@ -205,7 +211,7 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
     try {
       // Marcar mensajes como leídos
       final batch = _firestore.batch();
-      
+
       final messagesQuery = await _firestore
           .collection('conversations')
           .doc(event.conversationId)
@@ -234,12 +240,17 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
   }
 
   String _getParticipantName(Map<String, dynamic> data, String participantId) {
-    final participantsInfo = data['participantsInfo'] as Map<String, dynamic>? ?? {};
+    final participantsInfo =
+        data['participantsInfo'] as Map<String, dynamic>? ?? {};
     return participantsInfo[participantId]?['name'] as String? ?? 'Usuario';
   }
 
-  String? _getParticipantPhoto(Map<String, dynamic> data, String participantId) {
-    final participantsInfo = data['participantsInfo'] as Map<String, dynamic>? ?? {};
+  String? _getParticipantPhoto(
+    Map<String, dynamic> data,
+    String participantId,
+  ) {
+    final participantsInfo =
+        data['participantsInfo'] as Map<String, dynamic>? ?? {};
     return participantsInfo[participantId]?['photoUrl'] as String?;
   }
 

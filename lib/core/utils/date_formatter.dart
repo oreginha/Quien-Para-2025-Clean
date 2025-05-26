@@ -8,13 +8,19 @@ class DateFormatter {
   DateFormatter._(); // Constructor privado para evitar instanciación
 
   /// Formatea una fecha en formato dd/MM/yyyy
-  static String formatDate(DateTime? date, {String defaultText = 'Fecha no disponible'}) {
+  static String formatDate(
+    DateTime? date, {
+    String defaultText = 'Fecha no disponible',
+  }) {
     if (date == null) return defaultText;
     return DateFormat('dd/MM/yyyy').format(date);
   }
 
   /// Formatea una fecha en formato dd/MM/yyyy HH:mm
-  static String formatDateTime(DateTime? date, {String defaultText = 'Fecha no disponible'}) {
+  static String formatDateTime(
+    DateTime? date, {
+    String defaultText = 'Fecha no disponible',
+  }) {
     if (date == null) return defaultText;
     return DateFormat('dd/MM/yyyy HH:mm').format(date);
   }
@@ -22,7 +28,7 @@ class DateFormatter {
   /// Convierte un Timestamp o un String a DateTime
   static DateTime? parseDate(dynamic value) {
     if (value == null) return null;
-    
+
     try {
       if (value is Timestamp) {
         return value.toDate();
@@ -51,17 +57,17 @@ class DateFormatter {
         print('Valor original: $value');
       }
     }
-    
+
     return null;
   }
-  
+
   /// Retorna un texto relativo a la fecha actual (hace X minutos, hoy, ayer, etc.)
   static String getRelativeTime(DateTime? date) {
     if (date == null) return 'Fecha desconocida';
-    
+
     final now = DateTime.now();
     final difference = now.difference(date);
-    
+
     if (difference.inSeconds < 60) {
       return 'Hace un momento';
     } else if (difference.inMinutes < 60) {
@@ -86,20 +92,20 @@ class DateFormatter {
       return 'Hace $years ${years == 1 ? 'año' : 'años'}';
     }
   }
-  
+
   /// Obtiene la edad a partir de una fecha de nacimiento
   static int? calculateAge(DateTime? birthDate) {
     if (birthDate == null) return null;
-    
+
     final now = DateTime.now();
     int age = now.year - birthDate.year;
-    
+
     // Ajusta la edad si aún no se ha cumplido el cumpleaños este año
-    if (now.month < birthDate.month || 
+    if (now.month < birthDate.month ||
         (now.month == birthDate.month && now.day < birthDate.day)) {
       age--;
     }
-    
+
     return age;
   }
 }

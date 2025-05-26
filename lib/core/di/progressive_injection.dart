@@ -69,21 +69,27 @@ class ProgressiveInjection {
 
       // Firebase (verificar si ya están registrados desde main)
       if (!sl.isRegistered<FirebaseFirestore>(
-          instanceName: 'FirebaseFirestore')) {
+        instanceName: 'FirebaseFirestore',
+      )) {
         _safeRegister<FirebaseFirestore>(
-            FirebaseFirestore.instance, 'FirebaseFirestore');
+          FirebaseFirestore.instance,
+          'FirebaseFirestore',
+        );
       }
       if (!sl.isRegistered<FirebaseAuth>(instanceName: 'FirebaseAuth')) {
         _safeRegister<FirebaseAuth>(FirebaseAuth.instance, 'FirebaseAuth');
       }
       if (!sl.isRegistered<FirebaseStorage>(instanceName: 'FirebaseStorage')) {
         _safeRegister<FirebaseStorage>(
-            FirebaseStorage.instance, 'FirebaseStorage');
+          FirebaseStorage.instance,
+          'FirebaseStorage',
+        );
       }
 
       // SharedPreferences
       if (!sl.isRegistered<SharedPreferences>(
-          instanceName: 'SharedPreferences')) {
+        instanceName: 'SharedPreferences',
+      )) {
         final prefs = await SharedPreferences.getInstance();
         _safeRegister<SharedPreferences>(prefs, 'SharedPreferences');
       }
@@ -99,9 +105,12 @@ class ProgressiveInjection {
         _safeRegister<UserMapper>(const UserMapper(), 'UserMapper');
       }
       if (!sl.isRegistered<ApplicationMapper>(
-          instanceName: 'ApplicationMapper')) {
+        instanceName: 'ApplicationMapper',
+      )) {
         _safeRegister<ApplicationMapper>(
-            const ApplicationMapper(), 'ApplicationMapper');
+          const ApplicationMapper(),
+          'ApplicationMapper',
+        );
       }
       if (!sl.isRegistered<PlanApiService>(instanceName: 'PlanApiService')) {
         _safeRegister<PlanApiService>(PlanApiService(), 'PlanApiService');
@@ -109,16 +118,17 @@ class ProgressiveInjection {
 
       // Servicio de notificaciones
       if (!sl.isRegistered<NotificationService>(
-          instanceName: 'NotificationService')) {
+        instanceName: 'NotificationService',
+      )) {
         _safeRegister<NotificationService>(
-            NotificationService(), 'NotificationService');
+          NotificationService(),
+          'NotificationService',
+        );
       }
 
       // SimpleChatBloc
-      if (!sl.isRegistered<SimpleChatBloc>(
-          instanceName: 'SimpleChatBloc')) {
-        _safeRegister<SimpleChatBloc>(
-            SimpleChatBloc(), 'SimpleChatBloc');
+      if (!sl.isRegistered<SimpleChatBloc>(instanceName: 'SimpleChatBloc')) {
+        _safeRegister<SimpleChatBloc>(SimpleChatBloc(), 'SimpleChatBloc');
       }
 
       _servicesInitialized = true;
@@ -162,7 +172,9 @@ class ProgressiveInjection {
         logger: sl.get(instanceName: 'Logger'),
       );
       _safeRegister<ApplicationRepositoryInterface>(
-          appRepo, 'ApplicationRepository');
+        appRepo,
+        'ApplicationRepository',
+      );
 
       // Report Repository
       final reportRepo = ReportRepositoryImpl(
@@ -312,7 +324,8 @@ class ProgressiveInjection {
 
   /// Inicializa múltiples casos de uso
   static Future<Map<String, bool>> initializeMultipleUseCases(
-      List<String> names) async {
+    List<String> names,
+  ) async {
     final Map<String, bool> results = {};
 
     for (final name in names) {
@@ -328,7 +341,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<CreatePlanUseCase>(
-          CreatePlanUseCase(repo), 'CreatePlanUseCase');
+        CreatePlanUseCase(repo),
+        'CreatePlanUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -340,7 +355,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<GetPlanByIdUseCase>(
-          GetPlanByIdUseCase(repo), 'GetPlanByIdUseCase');
+        GetPlanByIdUseCase(repo),
+        'GetPlanByIdUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -352,7 +369,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<UpdatePlanUseCase>(
-          UpdatePlanUseCase(repo), 'UpdatePlanUseCase');
+        UpdatePlanUseCase(repo),
+        'UpdatePlanUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -386,7 +405,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<MatchPlanUseCase>(
-          MatchPlanUseCase(repo), 'MatchPlanUseCase');
+        MatchPlanUseCase(repo),
+        'MatchPlanUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -398,7 +419,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<DeletePlanUseCase>(
-          DeletePlanUseCase(repo), 'DeletePlanUseCase');
+        DeletePlanUseCase(repo),
+        'DeletePlanUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -410,7 +433,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<GetOtherUserPlansUseCase>(
-          GetOtherUserPlansUseCase(repo), 'GetOtherUsersPlansUseCase');
+        GetOtherUserPlansUseCase(repo),
+        'GetOtherUsersPlansUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -421,9 +446,12 @@ class ProgressiveInjection {
   static bool _initializeApplyToPlanUseCase() {
     try {
       final repo = sl.get<ApplicationRepositoryInterface>(
-          instanceName: 'ApplicationRepository');
+        instanceName: 'ApplicationRepository',
+      );
       _safeRegister<ApplyToPlanUseCase>(
-          ApplyToPlanUseCase(repo), 'ApplyToPlanUseCase');
+        ApplyToPlanUseCase(repo),
+        'ApplyToPlanUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -434,9 +462,12 @@ class ProgressiveInjection {
   static bool _initializeGetPlanApplicationsUseCase() {
     try {
       final repo = sl.get<ApplicationRepositoryInterface>(
-          instanceName: 'ApplicationRepository');
+        instanceName: 'ApplicationRepository',
+      );
       _safeRegister<GetPlanApplicationsUseCase>(
-          GetPlanApplicationsUseCase(repo), 'GetPlanApplicationsUseCase');
+        GetPlanApplicationsUseCase(repo),
+        'GetPlanApplicationsUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -447,9 +478,12 @@ class ProgressiveInjection {
   static bool _initializeGetUserApplicationsUseCase() {
     try {
       final repo = sl.get<ApplicationRepositoryInterface>(
-          instanceName: 'ApplicationRepository');
+        instanceName: 'ApplicationRepository',
+      );
       _safeRegister<GetUserApplicationsUseCase>(
-          GetUserApplicationsUseCase(repo), 'GetUserApplicationsUseCase');
+        GetUserApplicationsUseCase(repo),
+        'GetUserApplicationsUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -460,10 +494,12 @@ class ProgressiveInjection {
   static bool _initializeUpdateApplicationStatusUseCase() {
     try {
       final repo = sl.get<ApplicationRepositoryInterface>(
-          instanceName: 'ApplicationRepository');
+        instanceName: 'ApplicationRepository',
+      );
       _safeRegister<UpdateApplicationStatusUseCase>(
-          UpdateApplicationStatusUseCase(repo),
-          'UpdateApplicationStatusUseCase');
+        UpdateApplicationStatusUseCase(repo),
+        'UpdateApplicationStatusUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -474,9 +510,12 @@ class ProgressiveInjection {
   static bool _initializeCancelApplicationUseCase() {
     try {
       final repo = sl.get<ApplicationRepositoryInterface>(
-          instanceName: 'ApplicationRepository');
+        instanceName: 'ApplicationRepository',
+      );
       _safeRegister<CancelApplicationUseCase>(
-          CancelApplicationUseCase(repo), 'CancelApplicationUseCase');
+        CancelApplicationUseCase(repo),
+        'CancelApplicationUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -487,17 +526,21 @@ class ProgressiveInjection {
   static bool _initializeSendApplicationNotificationUseCase() {
     try {
       if (!sl.isRegistered<NotificationService>(
-          instanceName: 'NotificationService')) {
+        instanceName: 'NotificationService',
+      )) {
         _log(
-            '⚠️ NotificationService no registrado, omitiendo SendApplicationNotificationUseCase');
+          '⚠️ NotificationService no registrado, omitiendo SendApplicationNotificationUseCase',
+        );
         return false;
       }
 
       final service = sl.get<NotificationServiceInterface>(
-          instanceName: 'NotificationService');
+        instanceName: 'NotificationService',
+      );
       _safeRegister<SendApplicationNotificationUseCase>(
-          SendApplicationNotificationUseCase(service),
-          'SendApplicationNotificationUseCase');
+        SendApplicationNotificationUseCase(service),
+        'SendApplicationNotificationUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -511,7 +554,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<SearchPlansUseCase>(
-          SearchPlansUseCase(repo), 'SearchPlansUseCase');
+        SearchPlansUseCase(repo),
+        'SearchPlansUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -523,7 +568,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<FilterPlansByLocationUseCase>(
-          FilterPlansByLocationUseCase(repo), 'FilterPlansByLocationUseCase');
+        FilterPlansByLocationUseCase(repo),
+        'FilterPlansByLocationUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -535,7 +582,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<FilterPlansByDateUseCase>(
-          FilterPlansByDateUseCase(repo), 'FilterPlansByDateUseCase');
+        FilterPlansByDateUseCase(repo),
+        'FilterPlansByDateUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -547,7 +596,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
       _safeRegister<FilterPlansByCategoryUseCase>(
-          FilterPlansByCategoryUseCase(repo), 'FilterPlansByCategoryUseCase');
+        FilterPlansByCategoryUseCase(repo),
+        'FilterPlansByCategoryUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -561,7 +612,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<ReportRepository>(instanceName: 'ReportRepository');
       _safeRegister<CreateReportUseCase>(
-          CreateReportUseCase(repo), 'CreateReportUseCase');
+        CreateReportUseCase(repo),
+        'CreateReportUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -573,7 +626,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<ReportRepository>(instanceName: 'ReportRepository');
       _safeRegister<GetPendingReportsUseCase>(
-          GetPendingReportsUseCase(repo), 'GetPendingReportsUseCase');
+        GetPendingReportsUseCase(repo),
+        'GetPendingReportsUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -585,7 +640,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<ReportRepository>(instanceName: 'ReportRepository');
       _safeRegister<GetReportsByUserUseCase>(
-          GetReportsByUserUseCase(repo), 'GetReportsByUserUseCase');
+        GetReportsByUserUseCase(repo),
+        'GetReportsByUserUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -597,7 +654,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<ReportRepository>(instanceName: 'ReportRepository');
       _safeRegister<UpdateReportStatusUseCase>(
-          UpdateReportStatusUseCase(repo), 'UpdateReportStatusUseCase');
+        UpdateReportStatusUseCase(repo),
+        'UpdateReportStatusUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -611,7 +670,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<IReviewRepository>(instanceName: 'ReviewRepository');
       _safeRegister<CreateReviewUseCase>(
-          CreateReviewUseCase(repo), 'CreateReviewUseCase');
+        CreateReviewUseCase(repo),
+        'CreateReviewUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -623,7 +684,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<IReviewRepository>(instanceName: 'ReviewRepository');
       _safeRegister<GetUserReviewsUseCase>(
-          GetUserReviewsUseCase(repo), 'GetUserReviewsUseCase');
+        GetUserReviewsUseCase(repo),
+        'GetUserReviewsUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');
@@ -635,7 +698,9 @@ class ProgressiveInjection {
     try {
       final repo = sl.get<IReviewRepository>(instanceName: 'ReviewRepository');
       _safeRegister<CalculateUserRatingUseCase>(
-          CalculateUserRatingUseCase(repo), 'CalculateUserRatingUseCase');
+        CalculateUserRatingUseCase(repo),
+        'CalculateUserRatingUseCase',
+      );
       return true;
     } catch (e) {
       _log('Error: $e');

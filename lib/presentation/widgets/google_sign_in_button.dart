@@ -4,10 +4,7 @@ import 'package:quien_para/data/datasources/auth_data_source.dart';
 import 'package:quien_para/domain/entities/user/user_entity.dart';
 
 class GoogleSignInButton extends StatefulWidget {
-  const GoogleSignInButton({
-    super.key,
-    required this.onSignInSuccess,
-  });
+  const GoogleSignInButton({super.key, required this.onSignInSuccess});
 
   final Function(UserEntity user) onSignInSuccess;
 
@@ -53,13 +50,15 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   @override
   Widget build(final BuildContext context) {
     return ElevatedButton(
-      onPressed:
-          _isLoading ? null : _handleSignIn, // Deshabilitar durante la carga
+      onPressed: _isLoading
+          ? null
+          : _handleSignIn, // Deshabilitar durante la carga
       child: _isLoading
           ? const SizedBox(
               width: 20,
               height: 20,
-              child: CircularProgressIndicator(strokeWidth: 2))
+              child: CircularProgressIndicator(strokeWidth: 2),
+            )
           : const Text('Iniciar sesión con Google'),
     );
   }

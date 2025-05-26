@@ -28,15 +28,19 @@ class SearchRepositoryImpl implements SearchRepository {
     Query plansQuery = _firestore.collection('plans');
 
     // Apply keyword search (title, description, category)
-    plansQuery =
-        plansQuery.where('searchKeywords', arrayContains: normalizedQuery);
+    plansQuery = plansQuery.where(
+      'searchKeywords',
+      arrayContains: normalizedQuery,
+    );
 
     // Apply filters if provided
     if (filters != null) {
       // Category filter
       if (filters['category'] != null) {
-        plansQuery =
-            plansQuery.where('category', isEqualTo: filters['category']);
+        plansQuery = plansQuery.where(
+          'category',
+          isEqualTo: filters['category'],
+        );
       }
 
       // Date range filter
@@ -51,8 +55,10 @@ class SearchRepositoryImpl implements SearchRepository {
 
     // Apply pagination
     if (lastDocumentId != null && lastDocumentId.isNotEmpty) {
-      final lastDoc =
-          await _firestore.collection('plans').doc(lastDocumentId).get();
+      final lastDoc = await _firestore
+          .collection('plans')
+          .doc(lastDocumentId)
+          .get();
       if (lastDoc.exists) {
         plansQuery = plansQuery.startAfterDocument(lastDoc);
       }
@@ -69,7 +75,8 @@ class SearchRepositoryImpl implements SearchRepository {
 
   // Helper method to process query snapshots
   Future<List<PlanWithCreatorEntity>> _processQuerySnapshot(
-      QuerySnapshot snapshot) async {
+    QuerySnapshot snapshot,
+  ) async {
     final List<PlanWithCreatorEntity> results = [];
 
     for (final doc in snapshot.docs) {
@@ -82,8 +89,10 @@ class SearchRepositoryImpl implements SearchRepository {
       if (creatorId == null) continue;
 
       // Get creator user info
-      final creatorDoc =
-          await _firestore.collection('users').doc(creatorId).get();
+      final creatorDoc = await _firestore
+          .collection('users')
+          .doc(creatorId)
+          .get();
 
       if (creatorDoc.exists && creatorDoc.data() != null) {
         final creator = creatorDoc.data()!;
@@ -102,20 +111,25 @@ class SearchRepositoryImpl implements SearchRepository {
           location: '',
           tags: [],
           likes: 0,
-          extraConditions: '', imageUrl: '', conditions: {}, selectedThemes: [],
+          extraConditions: '',
+          imageUrl: '',
+          conditions: {},
+          selectedThemes: [],
         );
 
         // Now create PlanWithCreatorEntity with the plan and creator data
-        results.add(PlanWithCreatorEntity(
-          plan: planEntity,
-          creatorData: {
-            'name': creator['displayName'] != null
-                ? creator['displayName'] as String
-                : 'Usuario',
-            'photoUrl': creator['photoURL'] as String?,
-            'username': creator['username'] as String?,
-          },
-        ));
+        results.add(
+          PlanWithCreatorEntity(
+            plan: planEntity,
+            creatorData: {
+              'name': creator['displayName'] != null
+                  ? creator['displayName'] as String
+                  : 'Usuario',
+              'photoUrl': creator['photoURL'] as String?,
+              'username': creator['username'] as String?,
+            },
+          ),
+        );
       }
     }
 
@@ -170,9 +184,9 @@ class SearchRepositoryImpl implements SearchRepository {
 
     // If exists, just update timestamp
     if (existingQuerySnapshot.docs.isNotEmpty) {
-      await recentSearchRef
-          .doc(existingQuerySnapshot.docs.first.id)
-          .update({'timestamp': FieldValue.serverTimestamp()});
+      await recentSearchRef.doc(existingQuerySnapshot.docs.first.id).update({
+        'timestamp': FieldValue.serverTimestamp(),
+      });
     } else {
       // Add new search query
       await recentSearchRef.add({
@@ -181,8 +195,9 @@ class SearchRepositoryImpl implements SearchRepository {
       });
 
       // Check count and delete oldest if over limit
-      final allQueries =
-          await recentSearchRef.orderBy('timestamp', descending: true).get();
+      final allQueries = await recentSearchRef
+          .orderBy('timestamp', descending: true)
+          .get();
 
       if (allQueries.docs.length > 10) {
         // Keep max 10 recent searches
@@ -196,9 +211,7 @@ class SearchRepositoryImpl implements SearchRepository {
   }
 
   @override
-  Future<void> clearRecentSearches({
-    required String userId,
-  }) async {
+  Future<void> clearRecentSearches({required String userId}) async {
     final batch = _firestore.batch();
     final snapshot = await _firestore
         .collection('users')

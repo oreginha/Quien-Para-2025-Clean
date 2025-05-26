@@ -34,18 +34,22 @@ class GetNotificationsUseCase
 
   @override
   Future<Either<AppFailure, List<NotificationEntity>>> execute(
-      GetNotificationsParams params) async {
+    GetNotificationsParams params,
+  ) async {
     _logger.d(
-        'GetNotificationsUseCase: Obteniendo notificaciones para usuario: ${params.userId}');
+      'GetNotificationsUseCase: Obteniendo notificaciones para usuario: ${params.userId}',
+    );
 
     // Validar parámetros
     if (params.userId.isEmpty) {
       _logger.w('GetNotificationsUseCase: ID de usuario vacío');
-      return Left(ValidationFailure(
-        message: 'El ID del usuario no puede estar vacío',
-        field: 'userId',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID del usuario no puede estar vacío',
+          field: 'userId',
+          code: '',
+        ),
+      );
     }
 
     // Delegar al repositorio
@@ -58,28 +62,26 @@ class GetNotificationsUseCase
 
   /// Método de conveniencia para usar el caso de uso como una función.
   Future<Either<AppFailure, List<NotificationEntity>>> call(
-          GetNotificationsParams params) =>
-      execute(params);
+    GetNotificationsParams params,
+  ) => execute(params);
 
   /// Método de conveniencia para obtener todas las notificaciones de un usuario
   Future<Either<AppFailure, List<NotificationEntity>>> getAllNotifications(
-      String userId,
-      {int? limit}) {
-    return execute(GetNotificationsParams(
-      userId: userId,
-      limit: limit,
-      includeRead: true,
-    ));
+    String userId, {
+    int? limit,
+  }) {
+    return execute(
+      GetNotificationsParams(userId: userId, limit: limit, includeRead: true),
+    );
   }
 
   /// Método de conveniencia para obtener solo notificaciones sin leer
   Future<Either<AppFailure, List<NotificationEntity>>> getUnreadNotifications(
-      String userId,
-      {int? limit}) {
-    return execute(GetNotificationsParams(
-      userId: userId,
-      limit: limit,
-      includeRead: false,
-    ));
+    String userId, {
+    int? limit,
+  }) {
+    return execute(
+      GetNotificationsParams(userId: userId, limit: limit, includeRead: false),
+    );
   }
 }

@@ -47,7 +47,8 @@ class MatchingService {
       );
 
       // Combinación ponderada de las puntuaciones
-      final double finalScore = (interestsScore * 0.4) +
+      final double finalScore =
+          (interestsScore * 0.4) +
           (locationScore * 0.4) +
           (availabilityScore * 0.2);
 
@@ -71,8 +72,9 @@ class MatchingService {
     }
 
     // Verificar coincidencia directa con la categoría
-    final bool hasCategoryMatch = userInterests.any((String interest) =>
-        interest.toLowerCase() == planCategory.toLowerCase());
+    final bool hasCategoryMatch = userInterests.any(
+      (String interest) => interest.toLowerCase() == planCategory.toLowerCase(),
+    );
 
     if (hasCategoryMatch) {
       return 0.8; // Alta coincidencia si hay un interés directo con la categoría
@@ -85,14 +87,14 @@ class MatchingService {
         'fiesta',
         'reunión',
         'comunicación',
-        'networking'
+        'networking',
       ],
       'deporte': <String>[
         'ejercicio',
         'fitness',
         'atletismo',
         'competición',
-        'entrenamiento'
+        'entrenamiento',
       ],
       'cultura': <String>[
         'arte',
@@ -100,28 +102,28 @@ class MatchingService {
         'teatro',
         'literatura',
         'música',
-        'cine'
+        'cine',
       ],
       'gastronomía': <String>[
         'comida',
         'cocina',
         'restaurantes',
         'bebidas',
-        'gourmet'
+        'gourmet',
       ],
       'naturaleza': <String>[
         'aire libre',
         'aventura',
         'senderismo',
         'camping',
-        'playa'
+        'playa',
       ],
       'educación': <String>[
         'aprendizaje',
         'cursos',
         'talleres',
         'idiomas',
-        'conferencias'
+        'conferencias',
       ],
     };
 
@@ -182,9 +184,7 @@ class MatchingService {
   }
 
   /// Calcula la puntuación basada en disponibilidad
-  double _calculateAvailabilityScore({
-    DateTime? planDate,
-  }) {
+  double _calculateAvailabilityScore({DateTime? planDate}) {
     if (planDate == null) {
       return 0.5; // Puntuación neutra si no hay fecha
     }
@@ -238,16 +238,15 @@ class MatchingService {
       );
 
       if (score >= minimumScore) {
-        compatiblePlans.add(<String, dynamic>{
-          ...plan,
-          'matchScore': score,
-        });
+        compatiblePlans.add(<String, dynamic>{...plan, 'matchScore': score});
       }
     }
 
     // Ordenar por puntuación de mayor a menor
-    compatiblePlans.sort((Map<String, dynamic> a, Map<String, dynamic> b) =>
-        (b['matchScore'] as double).compareTo(a['matchScore'] as double));
+    compatiblePlans.sort(
+      (Map<String, dynamic> a, Map<String, dynamic> b) =>
+          (b['matchScore'] as double).compareTo(a['matchScore'] as double),
+    );
 
     return compatiblePlans;
   }

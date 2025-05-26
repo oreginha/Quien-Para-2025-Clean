@@ -32,8 +32,11 @@ class ErrorHandler {
     } else if (exception is CacheException) {
       return CacheFailure(exception.message, code: exception.code);
     } else {
-      return ServerFailure(exception.message,
-          code: exception.code, originalError: exception);
+      return ServerFailure(
+        exception.message,
+        code: exception.code,
+        originalError: exception,
+      );
     }
   }
 
@@ -42,13 +45,17 @@ class ErrorHandler {
       case 'user-not-found':
       case 'wrong-password':
       case 'invalid-email':
-        return AuthFailure(error.message ?? 'Authentication failed',
-            code: error.code);
+        return AuthFailure(
+          error.message ?? 'Authentication failed',
+          code: error.code,
+        );
       case 'user-disabled':
         return AuthFailure('This user has been disabled', code: error.code);
       case 'too-many-requests':
-        return RateLimitFailure('Too many unsuccessful login attempts',
-            code: error.code);
+        return RateLimitFailure(
+          'Too many unsuccessful login attempts',
+          code: error.code,
+        );
       case 'operation-not-allowed':
         return AuthFailure('Operation not allowed', code: error.code);
       case 'email-already-in-use':
@@ -56,11 +63,15 @@ class ErrorHandler {
       case 'weak-password':
         return ValidationFailure('The password is too weak', code: error.code);
       case 'requires-recent-login':
-        return AuthFailure('Please log in again before retrying this request',
-            code: error.code);
+        return AuthFailure(
+          'Please log in again before retrying this request',
+          code: error.code,
+        );
       default:
-        return AuthFailure(error.message ?? 'Authentication error',
-            code: error.code);
+        return AuthFailure(
+          error.message ?? 'Authentication error',
+          code: error.code,
+        );
     }
   }
 
@@ -69,22 +80,32 @@ class ErrorHandler {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return NetworkFailure('Connection timeout',
-            code: error.type.toString());
+        return NetworkFailure(
+          'Connection timeout',
+          code: error.type.toString(),
+        );
       case DioExceptionType.badResponse:
         return _handleDioResponseError(error);
       case DioExceptionType.cancel:
         return RequestCancelledFailure('Request was cancelled');
       case DioExceptionType.unknown:
         if (error.error.toString().contains('SocketException')) {
-          return NetworkFailure('No internet connection',
-              code: 'SOCKET_EXCEPTION');
+          return NetworkFailure(
+            'No internet connection',
+            code: 'SOCKET_EXCEPTION',
+          );
         }
-        return ServerFailure('Unexpected error occurred',
-            code: 'DIO_ERROR_OTHER', originalError: Exception);
+        return ServerFailure(
+          'Unexpected error occurred',
+          code: 'DIO_ERROR_OTHER',
+          originalError: Exception,
+        );
       default:
-        return ServerFailure('Server error',
-            code: 'SERVER_ERROR', originalError: Exception);
+        return ServerFailure(
+          'Server error',
+          code: 'SERVER_ERROR',
+          originalError: Exception,
+        );
     }
   }
 
@@ -94,34 +115,55 @@ class ErrorHandler {
 
     switch (statusCode) {
       case 400:
-        return ValidationFailure('Bad request',
-            code: 'BAD_REQUEST', data: data);
+        return ValidationFailure(
+          'Bad request',
+          code: 'BAD_REQUEST',
+          data: data,
+        );
       case 401:
         return AuthFailure('Unauthorized', code: 'UNAUTHORIZED', data: data);
       case 403:
         return AuthFailure('Forbidden', code: 'FORBIDDEN', data: data);
       case 404:
-        return NotFoundFailure('Resource not found',
-            code: 'NOT_FOUND', data: data);
+        return NotFoundFailure(
+          'Resource not found',
+          code: 'NOT_FOUND',
+          data: data,
+        );
       case 409:
-        return ConflictFailure('Conflict occurred',
-            code: 'CONFLICT', data: data);
+        return ConflictFailure(
+          'Conflict occurred',
+          code: 'CONFLICT',
+          data: data,
+        );
       case 422:
-        return ValidationFailure('Validation failed',
-            code: 'UNPROCESSABLE_ENTITY', data: data);
+        return ValidationFailure(
+          'Validation failed',
+          code: 'UNPROCESSABLE_ENTITY',
+          data: data,
+        );
       case 429:
-        return RateLimitFailure('Too many requests',
-            code: 'TOO_MANY_REQUESTS', data: data);
+        return RateLimitFailure(
+          'Too many requests',
+          code: 'TOO_MANY_REQUESTS',
+          data: data,
+        );
       case 500:
       case 501:
       case 503:
-        return ServerFailure('Server error',
-            code: 'SERVER_ERROR_$statusCode',
-            data: data,
-            originalError: Exception);
+        return ServerFailure(
+          'Server error',
+          code: 'SERVER_ERROR_$statusCode',
+          data: data,
+          originalError: Exception,
+        );
       default:
-        return ServerFailure('Server error with status: $statusCode',
-            code: 'SERVER_ERROR', data: data, originalError: Exception);
+        return ServerFailure(
+          'Server error with status: $statusCode',
+          code: 'SERVER_ERROR',
+          data: data,
+          originalError: Exception,
+        );
     }
   }
 }

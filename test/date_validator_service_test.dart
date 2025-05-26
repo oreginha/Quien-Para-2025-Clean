@@ -6,26 +6,16 @@ class ValidationResult {
   final String? message; // Hacemos message opcional
   final String? errorMessage; // Agregamos errorMessage para manejar errores
 
-  ValidationResult({
-    required this.isValid,
-    this.message,
-    this.errorMessage,
-  });
+  ValidationResult({required this.isValid, this.message, this.errorMessage});
 
   // Constructor factory para crear resultados exitosos
   factory ValidationResult.success([final String? message]) {
-    return ValidationResult(
-      isValid: true,
-      message: message,
-    );
+    return ValidationResult(isValid: true, message: message);
   }
 
   // Constructor factory para crear resultados de error
   factory ValidationResult.error(final String errorMessage) {
-    return ValidationResult(
-      isValid: false,
-      errorMessage: errorMessage,
-    );
+    return ValidationResult(isValid: false, errorMessage: errorMessage);
   }
 }
 
@@ -43,23 +33,23 @@ class DateValidatorService {
   // Horarios por ciudad
   static final Map<String, Map<String, TimeOfDay>> _cityHours =
       <String, Map<String, TimeOfDay>>{
-    'Ciudad Autónoma de Buenos Aires': <String, TimeOfDay>{
-      'start': const TimeOfDay(hour: 8, minute: 0),
-      'end': const TimeOfDay(hour: 23, minute: 0),
-    },
-    'La Plata': <String, TimeOfDay>{
-      'start': const TimeOfDay(hour: 8, minute: 0),
-      'end': const TimeOfDay(hour: 22, minute: 0),
-    },
-    'Rosario': <String, TimeOfDay>{
-      'start': const TimeOfDay(hour: 8, minute: 0),
-      'end': const TimeOfDay(hour: 22, minute: 0),
-    },
-    'Córdoba': <String, TimeOfDay>{
-      'start': const TimeOfDay(hour: 8, minute: 0),
-      'end': const TimeOfDay(hour: 22, minute: 0),
-    },
-  };
+        'Ciudad Autónoma de Buenos Aires': <String, TimeOfDay>{
+          'start': const TimeOfDay(hour: 8, minute: 0),
+          'end': const TimeOfDay(hour: 23, minute: 0),
+        },
+        'La Plata': <String, TimeOfDay>{
+          'start': const TimeOfDay(hour: 8, minute: 0),
+          'end': const TimeOfDay(hour: 22, minute: 0),
+        },
+        'Rosario': <String, TimeOfDay>{
+          'start': const TimeOfDay(hour: 8, minute: 0),
+          'end': const TimeOfDay(hour: 22, minute: 0),
+        },
+        'Córdoba': <String, TimeOfDay>{
+          'start': const TimeOfDay(hour: 8, minute: 0),
+          'end': const TimeOfDay(hour: 22, minute: 0),
+        },
+      };
 
   // Validar si es día laboral
   static bool isWorkday(final DateTime date) {
@@ -69,10 +59,12 @@ class DateValidatorService {
     }
 
     // Verificar si es feriado
-    return !_holidays.any((final DateTime holiday) =>
-        holiday.year == date.year &&
-        holiday.month == date.month &&
-        holiday.day == date.day);
+    return !_holidays.any(
+      (final DateTime holiday) =>
+          holiday.year == date.year &&
+          holiday.month == date.month &&
+          holiday.day == date.day,
+    );
   }
 
   // Validar horario según la ciudad
@@ -93,16 +85,21 @@ class DateValidatorService {
 
   // Validar fecha completa (incluyendo hora)
   static ValidationResult validateDateTime(
-      final DateTime date, final TimeOfDay time, final String city) {
+    final DateTime date,
+    final TimeOfDay time,
+    final String city,
+  ) {
     if (!isWorkday(date)) {
       return ValidationResult.error(
-          'Esta fecha no está disponible por ser fin de semana o feriado');
+        'Esta fecha no está disponible por ser fin de semana o feriado',
+      );
     }
 
     if (!isValidTime(city, time)) {
       // ignore: unnecessary_brace_in_string_interps
       return ValidationResult.error(
-          'El horario está fuera del rango permitido para $city');
+        'El horario está fuera del rango permitido para $city',
+      );
     }
 
     // Validar que la fecha no sea pasada

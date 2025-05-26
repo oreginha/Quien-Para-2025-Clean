@@ -83,8 +83,11 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
       }
 
       final List<String> firestoreCategories = selectedThemes
-          .expand((theme) =>
-              PlanType.planTypes[theme]!['firestoreCategories'] as List<String>)
+          .expand(
+            (theme) =>
+                PlanType.planTypes[theme]!['firestoreCategories']
+                    as List<String>,
+          )
           .toList();
 
       if (kDebugMode) {
@@ -150,8 +153,9 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
 
       // Filtrado local para búsqueda más flexible
       final filteredDocs = snapshot.docs.where((doc) {
-        final nombreEvento =
-            (doc['nombre_evento'] ?? '').toString().toLowerCase();
+        final nombreEvento = (doc['nombre_evento'] ?? '')
+            .toString()
+            .toLowerCase();
         return nombreEvento.contains(queryLower);
       }).toList();
 
@@ -188,10 +192,7 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            ThemeUtils.background,
-            ThemeUtils.darkSecondaryBackground,
-          ],
+          colors: [ThemeUtils.background, ThemeUtils.darkSecondaryBackground],
         ),
       ),
       child: SafeArea(
@@ -199,54 +200,62 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
           children: [
             // Header con botón de crear plan
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Planes Sugeridos',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white.withAlpha((255 * 0.9).toInt()),
-                      ),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Planes Sugeridos',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white.withAlpha((255 * 0.9).toInt()),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        // Limpiar valores de título y descripción con BLoC
-                        widget.state.add(const PlanEvent.updateField(
-                          field: 'title',
-                          value: '',
-                        ));
-                        widget.state.add(const PlanEvent.updateField(
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      // Limpiar valores de título y descripción con BLoC
+                      widget.state.add(
+                        const PlanEvent.updateField(field: 'title', value: ''),
+                      );
+                      widget.state.add(
+                        const PlanEvent.updateField(
                           field: 'description',
                           value: '',
-                        ));
-                        widget.state.add(const PlanEvent.updateField(
+                        ),
+                      );
+                      widget.state.add(
+                        const PlanEvent.updateField(
                           field: 'location',
                           value: '',
-                        ));
-
-                        // Notificar al padre sobre la actualización
-                        widget.onStateUpdate(widget.state);
-
-                        // Ir al siguiente paso
-                        widget.onNext();
-                      },
-                      icon: const Icon(Icons.add),
-                      label: const Text('Crea tu plan'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: ThemeUtils.brandYellow,
-                        foregroundColor: Colors.black,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
                         ),
+                      );
+
+                      // Notificar al padre sobre la actualización
+                      widget.onStateUpdate(widget.state);
+
+                      // Ir al siguiente paso
+                      widget.onNext();
+                    },
+                    icon: const Icon(Icons.add),
+                    label: const Text('Crea tu plan'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ThemeUtils.brandYellow,
+                      foregroundColor: Colors.black,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
-                    )
-                  ]),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             // Buscador
             Padding(
@@ -257,7 +266,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                 decoration: InputDecoration(
                   hintText: 'Buscar planes...',
                   hintStyle: TextStyle(
-                      color: Colors.white.withAlpha((0.5 * 255).toInt())),
+                    color: Colors.white.withAlpha((0.5 * 255).toInt()),
+                  ),
                   prefixIcon: const Icon(Icons.search, color: Colors.white),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -266,7 +276,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide(
-                        color: Colors.white.withAlpha((0.3 * 255).toInt())),
+                      color: Colors.white.withAlpha((0.3 * 255).toInt()),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -290,8 +301,9 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                             child: Text(
                               'No se encontraron planes. Intenta con otra búsqueda o crea tu propio plan.',
                               style: TextStyle(
-                                color:
-                                    Colors.white.withAlpha((0.7 * 255).toInt()),
+                                color: Colors.white.withAlpha(
+                                  (0.7 * 255).toInt(),
+                                ),
                                 fontSize: 16,
                               ),
                               textAlign: TextAlign.center,
@@ -303,7 +315,9 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                               final planData = _suggestedPlans[index];
                               return Card(
                                 margin: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 8),
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
                                 color: Colors.white.withAlpha(25),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
@@ -322,47 +336,56 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                             height: 200,
                                             width: double.infinity,
                                             fit: BoxFit.cover,
-                                            loadingBuilder: (context, child,
-                                                loadingProgress) {
-                                              if (loadingProgress == null) {
-                                                if (kDebugMode) {
-                                                  print(
-                                                      '✅ Imagen cargada correctamente: ${planData['image_url_png']}');
-                                                }
-                                                return child;
-                                              }
-                                              return Container(
-                                                height: 200,
-                                                color: Colors.grey[800],
-                                                child: Center(
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color:
-                                                        ThemeUtils.brandYellow,
-                                                  ),
-                                                ),
-                                              );
-                                            },
+                                            loadingBuilder:
+                                                (
+                                                  context,
+                                                  child,
+                                                  loadingProgress,
+                                                ) {
+                                                  if (loadingProgress == null) {
+                                                    if (kDebugMode) {
+                                                      print(
+                                                        '✅ Imagen cargada correctamente: ${planData['image_url_png']}',
+                                                      );
+                                                    }
+                                                    return child;
+                                                  }
+                                                  return Container(
+                                                    height: 200,
+                                                    color: Colors.grey[800],
+                                                    child: Center(
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                            color: ThemeUtils
+                                                                .brandYellow,
+                                                          ),
+                                                    ),
+                                                  );
+                                                },
                                             errorBuilder:
                                                 (context, error, stackTrace) {
-                                              if (kDebugMode) {
-                                                print(
-                                                    '❌ Error cargando imagen:');
-                                                print(
-                                                    'URL: ${planData['image_url_png']}');
-                                                print('Error: $error');
-                                              }
-                                              return Container(
-                                                height: 200,
-                                                color: Colors.grey[800],
-                                                child: Icon(
-                                                  Icons.error_outline,
-                                                  size: 50,
-                                                  color: Colors.white.withAlpha(
-                                                      (0.3 * 255).toInt()),
-                                                ),
-                                              );
-                                            },
+                                                  if (kDebugMode) {
+                                                    print(
+                                                      '❌ Error cargando imagen:',
+                                                    );
+                                                    print(
+                                                      'URL: ${planData['image_url_png']}',
+                                                    );
+                                                    print('Error: $error');
+                                                  }
+                                                  return Container(
+                                                    height: 200,
+                                                    color: Colors.grey[800],
+                                                    child: Icon(
+                                                      Icons.error_outline,
+                                                      size: 50,
+                                                      color: Colors.white
+                                                          .withAlpha(
+                                                            (0.3 * 255).toInt(),
+                                                          ),
+                                                    ),
+                                                  );
+                                                },
                                           ),
                                         ],
                                       ),
@@ -379,7 +402,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white.withAlpha(
-                                                  (0.9 * 255).toInt()),
+                                                (0.9 * 255).toInt(),
+                                              ),
                                             ),
                                           ),
                                           const SizedBox(height: 8),
@@ -389,7 +413,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                                 '',
                                             style: TextStyle(
                                               color: Colors.white.withAlpha(
-                                                  (0.7 * 255).toInt()),
+                                                (0.7 * 255).toInt(),
+                                              ),
                                             ),
                                           ),
                                           const SizedBox(height: 16),
@@ -399,22 +424,27 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                               onPressed: () {
                                                 if (kDebugMode) {
                                                   print(
-                                                      'Datos del plan seleccionado:');
-                                                  final data = planData.data()
-                                                      as Map<String, dynamic>;
+                                                    'Datos del plan seleccionado:',
+                                                  );
+                                                  final data =
+                                                      planData.data()
+                                                          as Map<
+                                                            String,
+                                                            dynamic
+                                                          >;
                                                   data.forEach((key, value) {
                                                     if (kDebugMode) {
                                                       print('$key: $value');
                                                     }
                                                   });
                                                   print(
-                                                      'URL de imagen específica: ${planData['image_url_png']}');
+                                                    'URL de imagen específica: ${planData['image_url_png']}',
+                                                  );
                                                 }
 
                                                 // Actualizar plan con BLoC
                                                 widget.state.add(
-                                                  PlanEvent
-                                                      .updateFromSuggestedPlan(
+                                                  PlanEvent.updateFromSuggestedPlan(
                                                     planData.data()
                                                         as Map<String, dynamic>,
                                                   ),
@@ -422,22 +452,26 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
 
                                                 // Notificar al padre sobre la actualización
                                                 widget.onStateUpdate(
-                                                    widget.state);
+                                                  widget.state,
+                                                );
 
                                                 // Ir al siguiente paso
                                                 widget.onNext();
                                               },
                                               icon: const Icon(
-                                                  Icons.check_circle_outline),
+                                                Icons.check_circle_outline,
+                                              ),
                                               label: const Text(
-                                                  'Seleccionar este plan'),
+                                                'Seleccionar este plan',
+                                              ),
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor:
                                                     ThemeUtils.brandYellow,
                                                 foregroundColor: Colors.black,
                                                 padding:
                                                     const EdgeInsets.symmetric(
-                                                        vertical: 12),
+                                                      vertical: 12,
+                                                    ),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(8),

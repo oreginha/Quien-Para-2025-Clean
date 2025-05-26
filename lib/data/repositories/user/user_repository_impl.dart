@@ -31,12 +31,12 @@ class UserRepositoryImpl implements IUserRepository {
     required UserCache cache,
     required UserMapper mapper,
     Logger? logger,
-  })  : _firestore = firestore,
-        _storage = storage,
-        _auth = auth,
-        _cache = cache,
-        _mapper = mapper,
-        _logger = logger ?? Logger();
+  }) : _firestore = firestore,
+       _storage = storage,
+       _auth = auth,
+       _cache = cache,
+       _mapper = mapper,
+       _logger = logger ?? Logger();
 
   @override
   Either<AppFailure, String?> getCurrentUserId() {
@@ -60,15 +60,19 @@ class UserRepositoryImpl implements IUserRepository {
       return const Right(null);
     } catch (e) {
       _logger.e('Error fatal al obtener el ID del usuario: $e');
-      return Left(AuthFailure(
+      return Left(
+        AuthFailure(
           message: 'Error al obtener el ID del usuario: $e',
-          code: 'get-user-id-error'));
+          code: 'get-user-id-error',
+        ),
+      );
     }
   }
 
   @override
   Future<Either<AppFailure, List<String>>> uploadUserPhotos(
-      final List<File> photos) async {
+    final List<File> photos,
+  ) async {
     if (photos.isEmpty) return const Right(<String>[]);
 
     // Obtener el ID del usuario
@@ -87,9 +91,12 @@ class UserRepositoryImpl implements IUserRepository {
       _logger.d('Error de autenticación - Estado actual:');
       _logger.d('Auth actual: ${_auth.currentUser}');
       _logger.d('Auth state: ${await _auth.authStateChanges().first}');
-      return Left(AuthFailure(
+      return Left(
+        AuthFailure(
           message: 'Usuario no autenticado después de varios intentos',
-          code: 'auth-user-null'));
+          code: 'auth-user-null',
+        ),
+      );
     }
 
     final List<String> photoUrls = <String>[];
@@ -97,8 +104,11 @@ class UserRepositoryImpl implements IUserRepository {
     for (File photo in photos) {
       try {
         final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-        final Reference ref =
-            _storage.ref().child('user_photos').child(userId).child(fileName);
+        final Reference ref = _storage
+            .ref()
+            .child('user_photos')
+            .child(userId)
+            .child(fileName);
 
         // Metadata con información adicional
         final SettableMetadata metadata = SettableMetadata(
@@ -123,8 +133,12 @@ class UserRepositoryImpl implements IUserRepository {
         }
       } catch (e) {
         _logger.d('Error detallado al subir foto: $e');
-        return Left(DatabaseFailure(
-            message: 'Error al subir la foto: $e', code: 'upload-photo-error'));
+        return Left(
+          DatabaseFailure(
+            message: 'Error al subir la foto: $e',
+            code: 'upload-photo-error',
+          ),
+        );
       }
     }
 
@@ -149,9 +163,12 @@ class UserRepositoryImpl implements IUserRepository {
 
       // Si no hay ID de usuario, no podemos continuar
       if (userId.isEmpty) {
-        return Left(AuthFailure(
+        return Left(
+          AuthFailure(
             message: 'No se pudo obtener el ID del usuario',
-            code: 'user-id-null'));
+            code: 'user-id-null',
+          ),
+        );
       }
 
       // Obtener el documento del usuario de forma segura
@@ -181,7 +198,8 @@ class UserRepositoryImpl implements IUserRepository {
 
   @override
   Future<Either<AppFailure, UserEntity?>> getUserProfileById(
-      String userId) async {
+    String userId,
+  ) async {
     try {
       // Primero verificar en el caché
       if (_cache.isAvailable) {
@@ -227,12 +245,15 @@ class UserRepositoryImpl implements IUserRepository {
       final String userId = user.id;
       if (userId.isEmpty) {
         final Either<AppFailure, String?> idResult = getCurrentUserId();
-        final String? currentUserId =
-            idResult.fold((failure) => null, (id) => id);
+        final String? currentUserId = idResult.fold(
+          (failure) => null,
+          (id) => id,
+        );
 
         if (currentUserId == null) {
-          return Left(AuthFailure(
-              message: 'Usuario no autenticado', code: 'auth-error'));
+          return Left(
+            AuthFailure(message: 'Usuario no autenticado', code: 'auth-error'),
+          );
         }
       }
 
@@ -245,9 +266,12 @@ class UserRepositoryImpl implements IUserRepository {
       );
 
       if (success == null) {
-        return Left(DatabaseFailure(
+        return Left(
+          DatabaseFailure(
             message: 'Error al guardar el perfil del usuario',
-            code: 'save-profile-error'));
+            code: 'save-profile-error',
+          ),
+        );
       }
 
       // Actualizar la caché
@@ -270,7 +294,9 @@ class UserRepositoryImpl implements IUserRepository {
 
   @override
   Future<Either<AppFailure, Unit>> updateUserInterests(
-      String userId, List<String> interests) async {
+    String userId,
+    List<String> interests,
+  ) async {
     try {
       final success = await FirebaseCrudHelper.updateDocumentSafely(
         _firestore,
@@ -284,9 +310,12 @@ class UserRepositoryImpl implements IUserRepository {
       );
 
       if (!success) {
-        return Left(DatabaseFailure(
+        return Left(
+          DatabaseFailure(
             message: 'Error al actualizar intereses',
-            code: 'update-interests-error'));
+            code: 'update-interests-error',
+          ),
+        );
       }
 
       // Invalidar la caché para este usuario
@@ -309,22 +338,24 @@ class UserRepositoryImpl implements IUserRepository {
 
   @override
   Future<Either<AppFailure, Unit>> updateUserLocation(
-      String userId, String location) async {
+    String userId,
+    String location,
+  ) async {
     try {
       final success = await FirebaseCrudHelper.updateDocumentSafely(
         _firestore,
         'users',
         userId,
-        {
-          'location': location,
-          'updatedAt': FieldValue.serverTimestamp(),
-        },
+        {'location': location, 'updatedAt': FieldValue.serverTimestamp()},
       );
 
       if (!success) {
-        return Left(DatabaseFailure(
+        return Left(
+          DatabaseFailure(
             message: 'Error al actualizar ubicación',
-            code: 'update-location-error'));
+            code: 'update-location-error',
+          ),
+        );
       }
 
       // Invalidar la caché para este usuario
@@ -377,8 +408,10 @@ class UserRepositoryImpl implements IUserRepository {
   }
 
   @override
-  Future<Either<AppFailure, Unit>> blockUser(
-      {required String blockerId, required String blockedUserId}) {
+  Future<Either<AppFailure, Unit>> blockUser({
+    required String blockerId,
+    required String blockedUserId,
+  }) {
     // TODO: implement blockUser
     throw UnimplementedError();
   }
@@ -390,8 +423,10 @@ class UserRepositoryImpl implements IUserRepository {
   }
 
   @override
-  Future<Either<AppFailure, bool>> isUserBlocked(
-      {required String userId, required String targetUserId}) {
+  Future<Either<AppFailure, bool>> isUserBlocked({
+    required String userId,
+    required String targetUserId,
+  }) {
     // TODO: implement isUserBlocked
     throw UnimplementedError();
   }

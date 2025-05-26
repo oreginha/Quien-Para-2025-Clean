@@ -111,9 +111,10 @@ class _OptimizedNetworkImageState extends State<OptimizedNetworkImage>
 
     try {
       // Usamos getCachedImagePath en lugar de getImage
-      final String cachedPath = 
-          await ImageCacheService.getCachedImagePath(widget.imageUrl);
-      
+      final String cachedPath = await ImageCacheService.getCachedImagePath(
+        widget.imageUrl,
+      );
+
       // Crear el imageProvider adecuado
       final imageProvider = NetworkImage(cachedPath);
 
@@ -167,9 +168,7 @@ class _OptimizedNetworkImageState extends State<OptimizedNetworkImage>
       width: widget.width,
       height: widget.height,
       color: Colors.grey[300],
-      child: const Center(
-        child: CircularProgressIndicator(),
-      ),
+      child: const Center(child: CircularProgressIndicator()),
     );
   }
 
@@ -182,12 +181,7 @@ class _OptimizedNetworkImageState extends State<OptimizedNetworkImage>
       width: widget.width,
       height: widget.height,
       color: Colors.grey[300],
-      child: const Center(
-        child: Icon(
-          Icons.error_outline,
-          color: Colors.red,
-        ),
-      ),
+      child: const Center(child: Icon(Icons.error_outline, color: Colors.red)),
     );
   }
 }

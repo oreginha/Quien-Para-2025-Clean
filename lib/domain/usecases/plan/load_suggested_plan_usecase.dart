@@ -25,12 +25,14 @@ class LoadSuggestedPlanUseCase {
     try {
       if (kDebugMode) {
         print(
-            'LoadSuggestedPlanUseCase: Cargando plan sugerido para usuario: $creatorId');
+          'LoadSuggestedPlanUseCase: Cargando plan sugerido para usuario: $creatorId',
+        );
       }
 
       // Crear un PlanEntity con los datos sugeridos
       final PlanEntity suggestedPlan = PlanEntity(
-        id: suggestedData['id'] as String? ??
+        id:
+            suggestedData['id'] as String? ??
             '', // Puede ser vacío para un plan nuevo
         creatorId: creatorId,
         title: suggestedData['title'] as String? ?? '',
@@ -38,25 +40,30 @@ class LoadSuggestedPlanUseCase {
         location: suggestedData['location'] as String? ?? '',
         date: suggestedData['date'] != null
             ? (suggestedData['date'] is Timestamp
-                ? (suggestedData['date'] as Timestamp).toDate()
-                : suggestedData['date'] as DateTime)
+                  ? (suggestedData['date'] as Timestamp).toDate()
+                  : suggestedData['date'] as DateTime)
             : null,
         category: suggestedData['category'] as String? ?? '',
         imageUrl: suggestedData['imageUrl'] as String? ?? '',
         conditions: suggestedData['conditions'] != null
             ? Map<String, String>.from(
-                suggestedData['conditions'] as Map<dynamic, dynamic>)
+                suggestedData['conditions'] as Map<dynamic, dynamic>,
+              )
             : <String, String>{},
         selectedThemes: suggestedData['selectedThemes'] != null
             ? List<String>.from(
-                suggestedData['selectedThemes'] as List<dynamic>)
+                suggestedData['selectedThemes'] as List<dynamic>,
+              )
             : <String>[],
-        tags: [], likes: 0, extraConditions: '',
+        tags: [],
+        likes: 0,
+        extraConditions: '',
       );
 
       if (kDebugMode) {
         print(
-            'LoadSuggestedPlanUseCase: Plan sugerido cargado: ${suggestedPlan.title}');
+          'LoadSuggestedPlanUseCase: Plan sugerido cargado: ${suggestedPlan.title}',
+        );
       }
 
       return suggestedPlan;

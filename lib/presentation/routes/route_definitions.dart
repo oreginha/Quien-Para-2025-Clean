@@ -135,9 +135,9 @@ class RouteDefinitions {
       ),
 
       GoRoute(
-          path: AppRoutes.mainPlan,
-          builder: (context, state) =>
-              const FeedMisPlanes(title: "Quien para?")),
+        path: AppRoutes.mainPlan,
+        builder: (context, state) => const FeedMisPlanes(title: "Quien para?"),
+      ),
 
       GoRoute(
         path: AppRoutes.createProposal,
@@ -158,8 +158,9 @@ class RouteDefinitions {
       GoRoute(
         path: AppRoutes.proposalDetail,
         builder: (context, state) => BlocProvider(
-            create: (context) => sl<PlanBloc>(),
-            child: const FeedMisPlanes(title: "Quien para?")),
+          create: (context) => sl<PlanBloc>(),
+          child: const FeedMisPlanes(title: "Quien para?"),
+        ),
       ),
 
       // Generic Plan Detail (handles both own and other plans)
@@ -173,18 +174,11 @@ class RouteDefinitions {
 
           // First check if it's a user's own plan
           if (isCreator) {
-            return MyPlanDetailScreen(
-              planId: planId,
-              isCreator: isCreator,
-            );
+            return MyPlanDetailScreen(planId: planId, isCreator: isCreator);
           } else {
             // Otherwise show as other user's plan
             return MultiBlocProvider(
-              providers: [
-                BlocProvider<ChatBloc>.value(
-                  value: sl<ChatBloc>(),
-                ),
-              ],
+              providers: [BlocProvider<ChatBloc>.value(value: sl<ChatBloc>())],
               child: DetallesPropuestaOtros(
                 planId: planId,
                 isCreator: isCreator,
@@ -203,10 +197,7 @@ class RouteDefinitions {
           final String planId = state.pathParameters['planId'] ?? '';
           final bool isCreator = extras['isCreator'] as bool? ?? false;
 
-          return MyPlanDetailScreen(
-            planId: planId,
-            isCreator: isCreator,
-          );
+          return MyPlanDetailScreen(planId: planId, isCreator: isCreator);
         },
       ),
 
@@ -299,15 +290,8 @@ class RouteDefinitions {
           }
 
           return MultiBlocProvider(
-            providers: [
-              BlocProvider<ChatBloc>.value(
-                value: sl<ChatBloc>(),
-              ),
-            ],
-            child: DetallesPropuestaOtros(
-              planId: planId,
-              isCreator: isCreator,
-            ),
+            providers: [BlocProvider<ChatBloc>.value(value: sl<ChatBloc>())],
+            child: DetallesPropuestaOtros(planId: planId, isCreator: isCreator),
           );
         },
       ),

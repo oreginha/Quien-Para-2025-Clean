@@ -58,10 +58,7 @@ class ImageHelper {
 
     // Si se especifica un borderRadius, envuelve la imagen en un ClipRRect
     if (borderRadius != null) {
-      return ClipRRect(
-        borderRadius: borderRadius,
-        child: imageWidget,
-      );
+      return ClipRRect(borderRadius: borderRadius, child: imageWidget);
     }
 
     return imageWidget;
@@ -83,7 +80,8 @@ class ImageHelper {
         icon,
         color: iconColor ?? Colors.white54,
         size: (width != null && height != null)
-            ? (width + height) / 4 // Tamaño proporcional al contenedor
+            ? (width + height) /
+                  4 // Tamaño proporcional al contenedor
             : 24,
       ),
     );

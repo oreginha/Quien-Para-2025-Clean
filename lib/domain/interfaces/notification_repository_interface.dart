@@ -33,7 +33,8 @@ abstract class INotificationRepository {
 
   /// Crea una nueva notificación
   Future<Either<AppFailure, Unit>> createNotification(
-      NotificationEntity notification);
+    NotificationEntity notification,
+  );
 
   /// Obtiene las notificaciones de un usuario
   Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForUser(
@@ -47,7 +48,8 @@ abstract class INotificationRepository {
 
   /// Obtiene notificaciones relacionadas con un plan
   Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForPlan(
-      String planId);
+    String planId,
+  );
 
   /// Elimina notificaciones antiguas
   Future<Either<AppFailure, Unit>> cleanupOldNotifications(int olderThanDays);
@@ -60,7 +62,8 @@ abstract class INotificationRepository {
 
   /// Marca una notificación como leída
   Future<Either<AppFailure, Unit>> markNotificationAsRead(
-      String notificationId);
+    String notificationId,
+  );
 
   /// Marca todas las notificaciones como leídas para un usuario
   Future<Either<AppFailure, Unit>> markAllAsRead(String userId);

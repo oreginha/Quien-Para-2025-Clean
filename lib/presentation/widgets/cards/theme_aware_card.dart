@@ -40,14 +40,22 @@ class ThemeAwareCard extends StatelessWidget {
     // Configuración de sombra según tema
     final BoxShadow shadow = theme.isDarkMode
         ? BoxShadow(
-            color:
-                Colors.black.withValues(red: 0, green: 0, blue: 0, alpha: 77),
+            color: Colors.black.withValues(
+              red: 0,
+              green: 0,
+              blue: 0,
+              alpha: 77,
+            ),
             blurRadius: 8,
             offset: const Offset(0, 4),
           )
         : BoxShadow(
-            color:
-                Colors.black.withValues(red: 0, green: 0, blue: 0, alpha: 13),
+            color: Colors.black.withValues(
+              red: 0,
+              green: 0,
+              blue: 0,
+              alpha: 13,
+            ),
             blurRadius: 8,
             offset: const Offset(0, 2),
           );
@@ -83,12 +91,14 @@ class ThemeAwareCard extends StatelessWidget {
                           red: 0,
                           green: 0,
                           blue: 0,
-                          alpha: 102) // Overlay más oscuro para modo oscuro
+                          alpha: 102,
+                        ) // Overlay más oscuro para modo oscuro
                       : Colors.black.withValues(
                           red: 0,
                           green: 0,
                           blue: 0,
-                          alpha: 26), // Overlay muy sutil para modo claro
+                          alpha: 26,
+                        ), // Overlay muy sutil para modo claro
                 ),
               ),
             ),
@@ -112,10 +122,7 @@ class ThemeAwareCard extends StatelessWidget {
 
     // Aplicar Hero animation si se proporciona heroTag
     if (heroTag != null) {
-      cardContent = Hero(
-        tag: heroTag!,
-        child: cardContent,
-      );
+      cardContent = Hero(tag: heroTag!, child: cardContent);
     }
 
     // Construir la tarjeta

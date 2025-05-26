@@ -17,11 +17,7 @@ class AgeInputStep extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onBack;
 
-  const AgeInputStep({
-    super.key,
-    required this.onNext,
-    required this.onBack,
-  });
+  const AgeInputStep({super.key, required this.onNext, required this.onBack});
 
   @override
   State<AgeInputStep> createState() => _AgeInputStepState();
@@ -84,11 +80,7 @@ class _AgeInputStepState extends State<AgeInputStep> {
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              AppBackButton(
-                onPressed: widget.onBack,
-              ),
-            ],
+            children: [AppBackButton(onPressed: widget.onBack)],
           ),
           const SizedBox(height: 20),
 
@@ -120,9 +112,9 @@ class _AgeInputStepState extends State<AgeInputStep> {
                   )
                 : null,
             onChanged: (final String value) {
-              context
-                  .read<UserProfileBloc>()
-                  .add(UpdateAgeEvent(int.tryParse(value) ?? 0));
+              context.read<UserProfileBloc>().add(
+                UpdateAgeEvent(int.tryParse(value) ?? 0),
+              );
               _updateContinueButton(value);
             },
             textInputAction: TextInputAction.done,
@@ -162,12 +154,14 @@ class _AgeInputStepState extends State<AgeInputStep> {
               margin: const EdgeInsets.only(top: 8),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.getCardBackground(false)
-                    .withAlpha((255 * 0.1).round()),
+                color: AppColors.getCardBackground(
+                  false,
+                ).withAlpha((255 * 0.1).round()),
                 borderRadius: BorderRadius.circular(AppRadius.button),
                 border: Border.all(
-                  color:
-                      AppColors.getBorder(false).withAlpha((255 * 0.3).round()),
+                  color: AppColors.getBorder(
+                    false,
+                  ).withAlpha((255 * 0.3).round()),
                   width: 1,
                 ),
               ),
@@ -184,8 +178,9 @@ class _AgeInputStepState extends State<AgeInputStep> {
                     child: Text(
                       'Esta aplicación es solo para mayores de edad. Debes tener al menos 18 años para crear un perfil.',
                       style: TextStyle(
-                        color: AppColors.brandYellow
-                            .withAlpha((255 * 0.9).round()),
+                        color: AppColors.brandYellow.withAlpha(
+                          (255 * 0.9).round(),
+                        ),
                         fontSize: 14,
                       ),
                     ),
@@ -198,12 +193,14 @@ class _AgeInputStepState extends State<AgeInputStep> {
               margin: const EdgeInsets.only(top: 8),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color:
-                    AppColors.lightTextPrimary.withAlpha((255 * 0.1).round()),
+                color: AppColors.lightTextPrimary.withAlpha(
+                  (255 * 0.1).round(),
+                ),
                 borderRadius: BorderRadius.circular(AppRadius.button),
                 border: Border.all(
-                  color:
-                      AppColors.lightTextPrimary.withAlpha((255 * 0.3).round()),
+                  color: AppColors.lightTextPrimary.withAlpha(
+                    (255 * 0.3).round(),
+                  ),
                   width: 1,
                 ),
               ),
@@ -220,8 +217,9 @@ class _AgeInputStepState extends State<AgeInputStep> {
                     child: Text(
                       'Tu edad nos ayuda a mostrarte planes acordes a tu grupo etario y asegurar que cumples con los requisitos legales.',
                       style: TextStyle(
-                        color: AppColors.lightTextPrimary
-                            .withAlpha((255 * 0.8).round()),
+                        color: AppColors.lightTextPrimary.withAlpha(
+                          (255 * 0.8).round(),
+                        ),
                         fontSize: 14,
                       ),
                     ),
@@ -250,21 +248,24 @@ class _AgeInputStepState extends State<AgeInputStep> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.getCardBackground(false)
-                  .withAlpha((255 * 0.2).round())
+              ? AppColors.getCardBackground(
+                  false,
+                ).withAlpha((255 * 0.2).round())
               : AppColors.getCardBackground(false),
           borderRadius: BorderRadius.circular(AppRadius.button),
           border: Border.all(
-            color:
-                isSelected ? AppColors.brandYellow : AppColors.getBorder(false),
+            color: isSelected
+                ? AppColors.brandYellow
+                : AppColors.getBorder(false),
             width: isSelected ? 1.5 : 1,
           ),
         ),
         child: Text(
           label,
           style: TextStyle(
-            color:
-                isSelected ? AppColors.brandYellow : AppColors.lightTextPrimary,
+            color: isSelected
+                ? AppColors.brandYellow
+                : AppColors.lightTextPrimary,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             fontSize: 14,
           ),

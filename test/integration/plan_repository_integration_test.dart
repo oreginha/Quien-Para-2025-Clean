@@ -81,37 +81,55 @@ void main() {
 
       // Todas las variantes posibles del método where() que pueden ser llamadas
       when(mockQuery.where(any)).thenReturn(mockQuery);
-      when(mockQuery.where(any, isEqualTo: anyNamed('isEqualTo')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, isNotEqualTo: anyNamed('isNotEqualTo')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, isLessThan: anyNamed('isLessThan')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any,
-              isLessThanOrEqualTo: anyNamed('isLessThanOrEqualTo')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, isGreaterThan: anyNamed('isGreaterThan')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any,
-              isGreaterThanOrEqualTo: anyNamed('isGreaterThanOrEqualTo')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, arrayContains: anyNamed('arrayContains')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, arrayContainsAny: anyNamed('arrayContainsAny')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, whereIn: anyNamed('whereIn')))
-          .thenReturn(mockQuery);
-      when(mockQuery.where(any, whereNotIn: anyNamed('whereNotIn')))
-          .thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, isEqualTo: anyNamed('isEqualTo')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, isNotEqualTo: anyNamed('isNotEqualTo')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, isLessThan: anyNamed('isLessThan')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(
+          any,
+          isLessThanOrEqualTo: anyNamed('isLessThanOrEqualTo'),
+        ),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, isGreaterThan: anyNamed('isGreaterThan')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(
+          any,
+          isGreaterThanOrEqualTo: anyNamed('isGreaterThanOrEqualTo'),
+        ),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, arrayContains: anyNamed('arrayContains')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, arrayContainsAny: anyNamed('arrayContainsAny')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, whereIn: anyNamed('whereIn')),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.where(any, whereNotIn: anyNamed('whereNotIn')),
+      ).thenReturn(mockQuery);
 
       // Configuración para orderBy y limit
       when(mockCollectionReference.orderBy(any)).thenReturn(mockQuery);
-      when(mockCollectionReference.orderBy(any,
-              descending: anyNamed('descending')))
-          .thenReturn(mockQuery);
+      when(
+        mockCollectionReference.orderBy(
+          any,
+          descending: anyNamed('descending'),
+        ),
+      ).thenReturn(mockQuery);
       when(mockQuery.orderBy(any)).thenReturn(mockQuery);
-      when(mockQuery.orderBy(any, descending: anyNamed('descending')))
-          .thenReturn(mockQuery);
+      when(
+        mockQuery.orderBy(any, descending: anyNamed('descending')),
+      ).thenReturn(mockQuery);
       when(mockQuery.limit(any)).thenReturn(mockQuery);
 
       // Configuración del caché
@@ -167,12 +185,13 @@ void main() {
       final resultPlan = await getPlanByIdUseCase.execute('test-id-123');
 
       // Verificar que el plan correcto ha sido devuelto
-      resultPlan
-          .fold((failure) => fail('Expected success but got failure: $failure'),
-              (plan) {
-        expect(plan?.id, equals('test-id-123'));
-        expect(plan?.title, equals('Test Plan'));
-      });
+      resultPlan.fold(
+        (failure) => fail('Expected success but got failure: $failure'),
+        (plan) {
+          expect(plan?.id, equals('test-id-123'));
+          expect(plan?.title, equals('Test Plan'));
+        },
+      );
 
       // Verificar que se utilizó el caché
       //verify(mockPlanCache.getCachedPlans(isPriority: true)).called(1);
@@ -180,52 +199,55 @@ void main() {
     });
 
     test(
-        'Flujo integrado: obtener plan por ID desde Firestore cuando no está en caché',
-        () async {
-      // Plan de muestra
-      final Map<String, dynamic> testPlanMap = {
-        'id': 'test-id-123',
-        'title': 'Test Plan',
-        'description': 'Description',
-        'creatorId': 'creator-123',
-        'location': 'Test Location',
-        'date': Timestamp.fromDate(DateTime(2023, 5, 1)),
-        'createdAt': Timestamp.fromDate(DateTime(2023, 4, 1)),
-        'category': 'Test Category',
-        'imageUrl': 'https://example.com/image.jpg',
-      };
+      'Flujo integrado: obtener plan por ID desde Firestore cuando no está en caché',
+      () async {
+        // Plan de muestra
+        final Map<String, dynamic> testPlanMap = {
+          'id': 'test-id-123',
+          'title': 'Test Plan',
+          'description': 'Description',
+          'creatorId': 'creator-123',
+          'location': 'Test Location',
+          'date': Timestamp.fromDate(DateTime(2023, 5, 1)),
+          'createdAt': Timestamp.fromDate(DateTime(2023, 4, 1)),
+          'category': 'Test Category',
+          'imageUrl': 'https://example.com/image.jpg',
+        };
 
-      // Configurar caché para devolver null (sin datos)
-      /* when(mockPlanCache.getCachedPlans(isPriority: true))
+        // Configurar caché para devolver null (sin datos)
+        /* when(mockPlanCache.getCachedPlans(isPriority: true))
           .thenAnswer((_) async => null);*/
 
-      // Configurar Firestore para devolver el plan
-      when(mockDocumentReference.get())
-          .thenAnswer((_) async => mockDocumentSnapshot);
-      when(mockDocumentSnapshot.exists).thenReturn(true);
-      when(mockDocumentSnapshot.data()).thenReturn(testPlanMap);
-      when(mockDocumentSnapshot.id).thenReturn('test-id-123');
+        // Configurar Firestore para devolver el plan
+        when(
+          mockDocumentReference.get(),
+        ).thenAnswer((_) async => mockDocumentSnapshot);
+        when(mockDocumentSnapshot.exists).thenReturn(true);
+        when(mockDocumentSnapshot.data()).thenReturn(testPlanMap);
+        when(mockDocumentSnapshot.id).thenReturn('test-id-123');
 
-      // Configurar caché para almacenar el plan
-      /* when(mockPlanCache.cachePlans(any, isPriority: true))
+        // Configurar caché para almacenar el plan
+        /* when(mockPlanCache.cachePlans(any, isPriority: true))
           .thenAnswer((_) async {});*/
 
-      // Ejecutar caso de uso
-      final resultPlan = await getPlanByIdUseCase.execute('test-id-123');
+        // Ejecutar caso de uso
+        final resultPlan = await getPlanByIdUseCase.execute('test-id-123');
 
-      // Verificar que el plan correcto ha sido devuelto
-      resultPlan
-          .fold((failure) => fail('Expected success but got failure: $failure'),
-              (plan) {
-        expect(plan?.id, equals('test-id-123'));
-        expect(plan?.title, equals('Test Plan'));
-      });
+        // Verificar que el plan correcto ha sido devuelto
+        resultPlan.fold(
+          (failure) => fail('Expected success but got failure: $failure'),
+          (plan) {
+            expect(plan?.id, equals('test-id-123'));
+            expect(plan?.title, equals('Test Plan'));
+          },
+        );
 
-      // Verificar el flujo de datos
-      //verify(mockPlanCache.getCachedPlans(isPriority: true)).called(1);
-      verify(mockDocumentReference.get()).called(1);
-      //verify(mockPlanCache.cachePlans(any, isPriority: true)).called(1);
-    });
+        // Verificar el flujo de datos
+        //verify(mockPlanCache.getCachedPlans(isPriority: true)).called(1);
+        verify(mockDocumentReference.get()).called(1);
+        //verify(mockPlanCache.cachePlans(any, isPriority: true)).called(1);
+      },
+    );
 
     test('Verificación del caché para GetOtherUserPlansUseCase', () async {
       // Simplificamos esta prueba para enfocarnos solo en el caché
@@ -264,8 +286,9 @@ void main() {
       ];
 
       // Configurar caché para devolver los planes directamente
-      when(mockPlanCache.getOtherUserPlans('current-user'))
-          .thenAnswer((_) async {
+      when(mockPlanCache.getOtherUserPlans('current-user')).thenAnswer((
+        _,
+      ) async {
         return testPlans;
       });
 
@@ -274,8 +297,9 @@ void main() {
       //   .thenAnswer((_) => Stream.value(Right(testPlans)));
 
       // Ejecutar caso de uso
-      final stream =
-          getOtherUserPlansUseCase.execute(currentUserId: 'current-user');
+      final stream = getOtherUserPlansUseCase.execute(
+        currentUserId: 'current-user',
+      );
 
       // Obtener los datos del stream
       final receivedEither = await stream.first.timeout(Duration(seconds: 2));

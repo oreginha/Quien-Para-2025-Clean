@@ -34,8 +34,10 @@ class ActionButtonsWidget extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('applications')
-          .where('applicantId',
-              isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+          .where(
+            'applicantId',
+            isEqualTo: FirebaseAuth.instance.currentUser?.uid,
+          )
           .where('planId', isEqualTo: plan.id)
           .snapshots(),
       builder: (context, applicationsSnapshot) {
@@ -54,8 +56,9 @@ class ActionButtonsWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.l),
             boxShadow: [
               BoxShadow(
-                color: AppColors.getBorder(isDarkMode)
-                    .withAlpha((0.2 * 255).round()),
+                color: AppColors.getBorder(
+                  isDarkMode,
+                ).withAlpha((0.2 * 255).round()),
                 blurRadius: 6,
                 offset: const Offset(0, 3),
               ),
@@ -66,32 +69,35 @@ class ActionButtonsWidget extends StatelessWidget {
             children: [
               Text(
                 '¿Te interesa este plan?',
-                style: AppTypography.heading2(isDarkMode).copyWith(
-                  color: AppColors.brandYellow,
-                ),
+                style: AppTypography.heading2(
+                  isDarkMode,
+                ).copyWith(color: AppColors.brandYellow),
               ),
               SizedBox(height: AppSpacing.xl),
               hasApplied
                   ? Container(
                       padding: EdgeInsets.symmetric(
-                          horizontal: AppSpacing.xl, vertical: AppSpacing.xl),
+                        horizontal: AppSpacing.xl,
+                        vertical: AppSpacing.xl,
+                      ),
                       decoration: BoxDecoration(
-                        color: AppTheme.of(context)
-                            .getColorWithAlpha(AppColors.success, 0.1),
+                        color: AppTheme.of(
+                          context,
+                        ).getColorWithAlpha(AppColors.success, 0.1),
                         borderRadius: BorderRadius.circular(AppRadius.l),
                         border: Border.all(color: AppColors.success, width: 1),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.check_circle,
-                              color: AppColors.success),
+                          const Icon(
+                            Icons.check_circle,
+                            color: AppColors.success,
+                          ),
                           SizedBox(width: AppSpacing.xl),
                           Expanded(
                             child: Text(
                               'Ya te has postulado a este plan. El creador te notificará cuando acepte o rechace tu solicitud.',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
+                              style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     color: isDarkMode
                                         ? Colors.white
@@ -100,7 +106,8 @@ class ActionButtonsWidget extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ))
+                      ),
+                    )
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -127,24 +134,27 @@ class ActionButtonsWidget extends StatelessWidget {
                                 onPressed: () {
                                   // Iniciar chat con el creador
                                   final chatBloc = context.read<ChatBloc>();
-                                  chatBloc.add(CreateConversation(
-                                    participants: [
-                                      FirebaseAuth.instance.currentUser!.uid,
-                                      plan.creatorId
-                                    ],
-                                    initialMessage:
-                                        'Hola, estoy interesado en tu plan "${plan.title}".',
-                                  ));
+                                  chatBloc.add(
+                                    CreateConversation(
+                                      participants: [
+                                        FirebaseAuth.instance.currentUser!.uid,
+                                        plan.creatorId,
+                                      ],
+                                      initialMessage:
+                                          'Hola, estoy interesado en tu plan "${plan.title}".',
+                                    ),
+                                  );
 
                                   // Escuchar para la navegación
                                   chatBloc.stream.listen((state) {
                                     if (state is ConversationCreated) {
                                       context.push(
-                                          '/chat/${state.conversationId}',
-                                          extra: <String, String>{
-                                            'receiverId': plan.creatorId,
-                                            'receiverName': creatorName,
-                                          });
+                                        '/chat/${state.conversationId}',
+                                        extra: <String, String>{
+                                          'receiverId': plan.creatorId,
+                                          'receiverName': creatorName,
+                                        },
+                                      );
                                     }
                                   });
                                 },
@@ -159,12 +169,12 @@ class ActionButtonsWidget extends StatelessWidget {
                         Center(
                           child: Text(
                             '${applicationsSnapshot.data?.docs.length ?? 0} personas ya se han postulado',
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      color: isDarkMode
-                                          ? Colors.white70
-                                          : Colors.black54,
-                                    ),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                  color: isDarkMode
+                                      ? Colors.white70
+                                      : Colors.black54,
+                                ),
                           ),
                         ),
                       ],

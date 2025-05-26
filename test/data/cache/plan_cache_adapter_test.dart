@@ -25,8 +25,10 @@ void main() {
     test('isAvailable should delegate to the underlying cache', () {
       // Esta prueba es limitada porque no podemos inyectar el mock
       // Solo verificamos que el método exista y no falle
-      expect(planCacheAdapter.isAvailable,
-          isFalse); // Porque el caché no se inicializó
+      expect(
+        planCacheAdapter.isAvailable,
+        isFalse,
+      ); // Porque el caché no se inicializó
     });
 
     test('hitRate should return a value between 0 and 1', () {

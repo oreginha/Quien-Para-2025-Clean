@@ -51,18 +51,21 @@ class _MyApplicationsContent extends StatelessWidget {
         children: [
           _buildFilterChips(context),
           Expanded(
-            child: BlocBuilder<MyApplicationsCubit,
-                LoadingState<MyApplicationsData>>(
-              builder: (context, state) {
-                return BlocLoadingStateHandler<MyApplicationsData>(
-                  state: state,
-                  onRefresh: () => cubit.loadApplications(),
-                  emptyMessage: 'No has enviado ninguna aplicación todavía',
-                  emptyIcon: Icons.inbox_outlined,
-                  builder: (data) => _buildApplicationsList(context, data),
-                );
-              },
-            ),
+            child:
+                BlocBuilder<
+                  MyApplicationsCubit,
+                  LoadingState<MyApplicationsData>
+                >(
+                  builder: (context, state) {
+                    return BlocLoadingStateHandler<MyApplicationsData>(
+                      state: state,
+                      onRefresh: () => cubit.loadApplications(),
+                      emptyMessage: 'No has enviado ninguna aplicación todavía',
+                      emptyIcon: Icons.inbox_outlined,
+                      builder: (data) => _buildApplicationsList(context, data),
+                    );
+                  },
+                ),
           ),
         ],
       ),
@@ -166,10 +169,9 @@ class _MyApplicationsContent extends StatelessWidget {
         label: Text(label),
         selected: isSelected,
         onSelected: onSelected,
-        selectedColor: Theme.of(context)
-            .colorScheme
-            .primary
-            .withAlpha((0.1 * 255).round()),
+        selectedColor: Theme.of(
+          context,
+        ).colorScheme.primary.withAlpha((0.1 * 255).round()),
         checkmarkColor: Theme.of(context).colorScheme.primary,
       ),
     );
@@ -184,12 +186,13 @@ class _MyApplicationsContent extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.filter_list,
-                size: 48,
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withAlpha((0.38 * 255).round())),
+            Icon(
+              Icons.filter_list,
+              size: 48,
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withAlpha((0.38 * 255).round()),
+            ),
             const SizedBox(height: 16),
             Text(
               'No hay aplicaciones con el filtro seleccionado',
@@ -215,7 +218,9 @@ class _MyApplicationsContent extends StatelessWidget {
   }
 
   Widget _buildApplicationCard(
-      BuildContext context, ApplicationEntity application) {
+    BuildContext context,
+    ApplicationEntity application,
+  ) {
     final cubit = context.read<MyApplicationsCubit>();
     final plan = cubit.getPlanForApplication(application);
 
@@ -239,14 +244,17 @@ class _MyApplicationsContent extends StatelessWidget {
   }
 
   Widget _buildApplicationHeader(
-      BuildContext context, ApplicationEntity application) {
+    BuildContext context,
+    ApplicationEntity application,
+  ) {
     final statusText = _getStatusText(application.status);
 
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color:
-            _getStatusColor(application.status).withAlpha((0.1 * 255).round()),
+        color: _getStatusColor(
+          application.status,
+        ).withAlpha((0.1 * 255).round()),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(4.0),
           topRight: Radius.circular(4.0),
@@ -273,8 +281,9 @@ class _MyApplicationsContent extends StatelessWidget {
           ),
           Chip(
             label: Text(statusText),
-            backgroundColor: _getStatusColor(application.status)
-                .withAlpha((0.2 * 255).round()),
+            backgroundColor: _getStatusColor(
+              application.status,
+            ).withAlpha((0.2 * 255).round()),
             labelStyle: TextStyle(color: _getStatusColor(application.status)),
           ),
         ],
@@ -283,7 +292,10 @@ class _MyApplicationsContent extends StatelessWidget {
   }
 
   Widget _buildPlanDetails(
-      BuildContext context, PlanEntity plan, ApplicationEntity application) {
+    BuildContext context,
+    PlanEntity plan,
+    ApplicationEntity application,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -334,10 +346,7 @@ class _MyApplicationsContent extends StatelessWidget {
             const SizedBox(height: 16),
             const Divider(),
             const SizedBox(height: 8),
-            Text(
-              'Tu mensaje:',
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
+            Text('Tu mensaje:', style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(height: 4),
             Text(
               application.message!,
@@ -350,7 +359,9 @@ class _MyApplicationsContent extends StatelessWidget {
   }
 
   Widget _buildApplicationActions(
-      BuildContext context, ApplicationEntity application) {
+    BuildContext context,
+    ApplicationEntity application,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(

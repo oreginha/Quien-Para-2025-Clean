@@ -34,63 +34,33 @@ import 'package:quien_para/domain/entities/user/user_entity.dart' as _i6;
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeFirebaseApp_0 extends _i1.SmartFake implements _i2.FirebaseApp {
-  _FakeFirebaseApp_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeFirebaseApp_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeDuration_1 extends _i1.SmartFake implements Duration {
-  _FakeDuration_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeDuration_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeReference_2 extends _i1.SmartFake implements _i3.Reference {
-  _FakeReference_2(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeReference_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakePlanEntity_3 extends _i1.SmartFake implements _i4.PlanEntity {
-  _FakePlanEntity_3(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakePlanEntity_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeUserModel_4 extends _i1.SmartFake implements _i5.UserModel {
-  _FakeUserModel_4(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeUserModel_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeUserEntity_5 extends _i1.SmartFake implements _i6.UserEntity {
-  _FakeUserEntity_5(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeUserEntity_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [FirebaseStorage].
@@ -102,130 +72,116 @@ class MockFirebaseStorage extends _i1.Mock implements _i3.FirebaseStorage {
   }
 
   @override
-  _i2.FirebaseApp get app => (super.noSuchMethod(
-        Invocation.getter(#app),
-        returnValue: _FakeFirebaseApp_0(
-          this,
-          Invocation.getter(#app),
-        ),
-      ) as _i2.FirebaseApp);
+  _i2.FirebaseApp get app =>
+      (super.noSuchMethod(
+            Invocation.getter(#app),
+            returnValue: _FakeFirebaseApp_0(this, Invocation.getter(#app)),
+          )
+          as _i2.FirebaseApp);
 
   @override
   set app(_i2.FirebaseApp? _app) => super.noSuchMethod(
-        Invocation.setter(
-          #app,
-          _app,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#app, _app),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  String get bucket => (super.noSuchMethod(
-        Invocation.getter(#bucket),
-        returnValue: _i7.dummyValue<String>(
-          this,
-          Invocation.getter(#bucket),
-        ),
-      ) as String);
+  String get bucket =>
+      (super.noSuchMethod(
+            Invocation.getter(#bucket),
+            returnValue: _i7.dummyValue<String>(
+              this,
+              Invocation.getter(#bucket),
+            ),
+          )
+          as String);
 
   @override
   set bucket(String? _bucket) => super.noSuchMethod(
-        Invocation.setter(
-          #bucket,
-          _bucket,
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.setter(#bucket, _bucket),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  Duration get maxOperationRetryTime => (super.noSuchMethod(
-        Invocation.getter(#maxOperationRetryTime),
-        returnValue: _FakeDuration_1(
-          this,
-          Invocation.getter(#maxOperationRetryTime),
-        ),
-      ) as Duration);
+  Duration get maxOperationRetryTime =>
+      (super.noSuchMethod(
+            Invocation.getter(#maxOperationRetryTime),
+            returnValue: _FakeDuration_1(
+              this,
+              Invocation.getter(#maxOperationRetryTime),
+            ),
+          )
+          as Duration);
 
   @override
-  Duration get maxUploadRetryTime => (super.noSuchMethod(
-        Invocation.getter(#maxUploadRetryTime),
-        returnValue: _FakeDuration_1(
-          this,
-          Invocation.getter(#maxUploadRetryTime),
-        ),
-      ) as Duration);
+  Duration get maxUploadRetryTime =>
+      (super.noSuchMethod(
+            Invocation.getter(#maxUploadRetryTime),
+            returnValue: _FakeDuration_1(
+              this,
+              Invocation.getter(#maxUploadRetryTime),
+            ),
+          )
+          as Duration);
 
   @override
-  Duration get maxDownloadRetryTime => (super.noSuchMethod(
-        Invocation.getter(#maxDownloadRetryTime),
-        returnValue: _FakeDuration_1(
-          this,
-          Invocation.getter(#maxDownloadRetryTime),
-        ),
-      ) as Duration);
+  Duration get maxDownloadRetryTime =>
+      (super.noSuchMethod(
+            Invocation.getter(#maxDownloadRetryTime),
+            returnValue: _FakeDuration_1(
+              this,
+              Invocation.getter(#maxDownloadRetryTime),
+            ),
+          )
+          as Duration);
 
   @override
-  Map<dynamic, dynamic> get pluginConstants => (super.noSuchMethod(
-        Invocation.getter(#pluginConstants),
-        returnValue: <dynamic, dynamic>{},
-      ) as Map<dynamic, dynamic>);
+  Map<dynamic, dynamic> get pluginConstants =>
+      (super.noSuchMethod(
+            Invocation.getter(#pluginConstants),
+            returnValue: <dynamic, dynamic>{},
+          )
+          as Map<dynamic, dynamic>);
 
   @override
-  _i3.Reference ref([String? path]) => (super.noSuchMethod(
-        Invocation.method(
-          #ref,
-          [path],
-        ),
-        returnValue: _FakeReference_2(
-          this,
-          Invocation.method(
-            #ref,
-            [path],
-          ),
-        ),
-      ) as _i3.Reference);
+  _i3.Reference ref([String? path]) =>
+      (super.noSuchMethod(
+            Invocation.method(#ref, [path]),
+            returnValue: _FakeReference_2(
+              this,
+              Invocation.method(#ref, [path]),
+            ),
+          )
+          as _i3.Reference);
 
   @override
-  _i3.Reference refFromURL(String? url) => (super.noSuchMethod(
-        Invocation.method(
-          #refFromURL,
-          [url],
-        ),
-        returnValue: _FakeReference_2(
-          this,
-          Invocation.method(
-            #refFromURL,
-            [url],
-          ),
-        ),
-      ) as _i3.Reference);
+  _i3.Reference refFromURL(String? url) =>
+      (super.noSuchMethod(
+            Invocation.method(#refFromURL, [url]),
+            returnValue: _FakeReference_2(
+              this,
+              Invocation.method(#refFromURL, [url]),
+            ),
+          )
+          as _i3.Reference);
 
   @override
   void setMaxOperationRetryTime(Duration? time) => super.noSuchMethod(
-        Invocation.method(
-          #setMaxOperationRetryTime,
-          [time],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setMaxOperationRetryTime, [time]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void setMaxUploadRetryTime(Duration? time) => super.noSuchMethod(
-        Invocation.method(
-          #setMaxUploadRetryTime,
-          [time],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setMaxUploadRetryTime, [time]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void setMaxDownloadRetryTime(Duration? time) => super.noSuchMethod(
-        Invocation.method(
-          #setMaxDownloadRetryTime,
-          [time],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setMaxDownloadRetryTime, [time]),
+    returnValueForMissingStub: null,
+  );
 
   @override
   _i8.Future<void> useStorageEmulator(
@@ -234,17 +190,15 @@ class MockFirebaseStorage extends _i1.Mock implements _i3.FirebaseStorage {
     bool? automaticHostMapping = true,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #useStorageEmulator,
-          [
-            host,
-            port,
-          ],
-          {#automaticHostMapping: automaticHostMapping},
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+            Invocation.method(
+              #useStorageEmulator,
+              [host, port],
+              {#automaticHostMapping: automaticHostMapping},
+            ),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 }
 
 /// A class which mocks [UserCache].
@@ -256,144 +210,118 @@ class MockUserCache extends _i1.Mock implements _i9.UserCache {
   }
 
   @override
-  bool get isAvailable => (super.noSuchMethod(
-        Invocation.getter(#isAvailable),
-        returnValue: false,
-      ) as bool);
+  bool get isAvailable =>
+      (super.noSuchMethod(Invocation.getter(#isAvailable), returnValue: false)
+          as bool);
 
   @override
-  _i8.Future<void> init() => (super.noSuchMethod(
-        Invocation.method(
-          #init,
-          [],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> init() =>
+      (super.noSuchMethod(
+            Invocation.method(#init, []),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
   _i8.Future<void> cacheCurrentUser(_i6.UserEntity? user) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #cacheCurrentUser,
-          [user],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+            Invocation.method(#cacheCurrentUser, [user]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
-  _i8.Future<_i6.UserEntity?> getCachedCurrentUser() => (super.noSuchMethod(
-        Invocation.method(
-          #getCachedCurrentUser,
-          [],
-        ),
-        returnValue: _i8.Future<_i6.UserEntity?>.value(),
-      ) as _i8.Future<_i6.UserEntity?>);
+  _i8.Future<_i6.UserEntity?> getCachedCurrentUser() =>
+      (super.noSuchMethod(
+            Invocation.method(#getCachedCurrentUser, []),
+            returnValue: _i8.Future<_i6.UserEntity?>.value(),
+          )
+          as _i8.Future<_i6.UserEntity?>);
 
   @override
-  _i8.Future<void> cacheUser(_i6.UserEntity? user) => (super.noSuchMethod(
-        Invocation.method(
-          #cacheUser,
-          [user],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> cacheUser(_i6.UserEntity? user) =>
+      (super.noSuchMethod(
+            Invocation.method(#cacheUser, [user]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
   _i8.Future<_i6.UserEntity?> getCachedUser(String? userId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCachedUser,
-          [userId],
-        ),
-        returnValue: _i8.Future<_i6.UserEntity?>.value(),
-      ) as _i8.Future<_i6.UserEntity?>);
+            Invocation.method(#getCachedUser, [userId]),
+            returnValue: _i8.Future<_i6.UserEntity?>.value(),
+          )
+          as _i8.Future<_i6.UserEntity?>);
 
   @override
   _i8.Future<void> cacheUsers(List<_i6.UserEntity>? users) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #cacheUsers,
-          [users],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+            Invocation.method(#cacheUsers, [users]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
-  _i8.Future<void> invalidateUserCache(String? userId) => (super.noSuchMethod(
-        Invocation.method(
-          #invalidateUserCache,
-          [userId],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
-
-  @override
-  _i8.Future<void> invalidateCurrentUserCache() => (super.noSuchMethod(
-        Invocation.method(
-          #invalidateCurrentUserCache,
-          [],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
-
-  @override
-  _i8.Future<void> clearCache() => (super.noSuchMethod(
-        Invocation.method(
-          #clearCache,
-          [],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
-
-  @override
-  _i8.Future<void> invalidateCache({String? key}) => (super.noSuchMethod(
-        Invocation.method(
-          #invalidateCache,
-          [],
-          {#key: key},
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
-
-  @override
-  _i8.Future<void> cacheList(
-    List<dynamic>? items,
-    String? key,
-  ) =>
+  _i8.Future<void> invalidateUserCache(String? userId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #cacheList,
-          [
-            items,
-            key,
-          ],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+            Invocation.method(#invalidateUserCache, [userId]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
-  _i8.Future<List<String>> getAllCacheKeys() => (super.noSuchMethod(
-        Invocation.method(
-          #getAllCacheKeys,
-          [],
-        ),
-        returnValue: _i8.Future<List<String>>.value(<String>[]),
-      ) as _i8.Future<List<String>>);
+  _i8.Future<void> invalidateCurrentUserCache() =>
+      (super.noSuchMethod(
+            Invocation.method(#invalidateCurrentUserCache, []),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
-  dynamic getCachedList(String? key) => super.noSuchMethod(Invocation.method(
-        #getCachedList,
-        [key],
-      ));
+  _i8.Future<void> clearCache() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearCache, []),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
+
+  @override
+  _i8.Future<void> invalidateCache({String? key}) =>
+      (super.noSuchMethod(
+            Invocation.method(#invalidateCache, [], {#key: key}),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
+
+  @override
+  _i8.Future<void> cacheList(List<dynamic>? items, String? key) =>
+      (super.noSuchMethod(
+            Invocation.method(#cacheList, [items, key]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
+
+  @override
+  _i8.Future<List<String>> getAllCacheKeys() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllCacheKeys, []),
+            returnValue: _i8.Future<List<String>>.value(<String>[]),
+          )
+          as _i8.Future<List<String>>);
+
+  @override
+  dynamic getCachedList(String? key) =>
+      super.noSuchMethod(Invocation.method(#getCachedList, [key]));
 }
 
 /// A class which mocks [PlanApiService].
@@ -407,18 +335,12 @@ class MockPlanApiService extends _i1.Mock implements _i10.PlanApiService {
   @override
   _i8.Future<_i4.PlanEntity> createPlan(_i4.PlanEntity? plan) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #createPlan,
-          [plan],
-        ),
-        returnValue: _i8.Future<_i4.PlanEntity>.value(_FakePlanEntity_3(
-          this,
-          Invocation.method(
-            #createPlan,
-            [plan],
-          ),
-        )),
-      ) as _i8.Future<_i4.PlanEntity>);
+            Invocation.method(#createPlan, [plan]),
+            returnValue: _i8.Future<_i4.PlanEntity>.value(
+              _FakePlanEntity_3(this, Invocation.method(#createPlan, [plan])),
+            ),
+          )
+          as _i8.Future<_i4.PlanEntity>);
 
   @override
   _i8.Future<List<_i4.PlanEntity>> getPlans({
@@ -427,47 +349,43 @@ class MockPlanApiService extends _i1.Mock implements _i10.PlanApiService {
     String? category,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getPlans,
-          [],
-          {
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-            #category: category,
-          },
-        ),
-        returnValue: _i8.Future<List<_i4.PlanEntity>>.value(<_i4.PlanEntity>[]),
-      ) as _i8.Future<List<_i4.PlanEntity>>);
+            Invocation.method(#getPlans, [], {
+              #limit: limit,
+              #lastDocumentId: lastDocumentId,
+              #category: category,
+            }),
+            returnValue: _i8.Future<List<_i4.PlanEntity>>.value(
+              <_i4.PlanEntity>[],
+            ),
+          )
+          as _i8.Future<List<_i4.PlanEntity>>);
 
   @override
-  _i8.Future<void> matchPlan(String? planId) => (super.noSuchMethod(
-        Invocation.method(
-          #matchPlan,
-          [planId],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> matchPlan(String? planId) =>
+      (super.noSuchMethod(
+            Invocation.method(#matchPlan, [planId]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
-  _i8.Future<void> unlikePlan(String? planId) => (super.noSuchMethod(
-        Invocation.method(
-          #unlikePlan,
-          [planId],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> unlikePlan(String? planId) =>
+      (super.noSuchMethod(
+            Invocation.method(#unlikePlan, [planId]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
-  _i8.Future<void> deletePlan(String? planId) => (super.noSuchMethod(
-        Invocation.method(
-          #deletePlan,
-          [planId],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> deletePlan(String? planId) =>
+      (super.noSuchMethod(
+            Invocation.method(#deletePlan, [planId]),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 }
 
 /// A class which mocks [Logger].
@@ -479,10 +397,12 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
   }
 
   @override
-  _i8.Future<void> get init => (super.noSuchMethod(
-        Invocation.getter(#init),
-        returnValue: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> get init =>
+      (super.noSuchMethod(
+            Invocation.getter(#init),
+            returnValue: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 
   @override
   void v(
@@ -490,19 +410,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #v,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #v,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void t(
@@ -510,19 +425,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #t,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #t,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void d(
@@ -530,19 +440,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #d,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #d,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void i(
@@ -550,19 +455,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #i,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #i,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void w(
@@ -570,19 +470,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #w,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #w,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void e(
@@ -590,19 +485,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #e,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #e,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void wtf(
@@ -610,19 +500,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #wtf,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #wtf,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void f(
@@ -630,19 +515,14 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #f,
-          [message],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #f,
+      [message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
   void log(
@@ -651,41 +531,28 @@ class MockLogger extends _i1.Mock implements _i11.Logger {
     DateTime? time,
     Object? error,
     StackTrace? stackTrace,
-  }) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #log,
-          [
-            level,
-            message,
-          ],
-          {
-            #time: time,
-            #error: error,
-            #stackTrace: stackTrace,
-          },
-        ),
-        returnValueForMissingStub: null,
-      );
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #log,
+      [level, message],
+      {#time: time, #error: error, #stackTrace: stackTrace},
+    ),
+    returnValueForMissingStub: null,
+  );
 
   @override
-  bool isClosed() => (super.noSuchMethod(
-        Invocation.method(
-          #isClosed,
-          [],
-        ),
-        returnValue: false,
-      ) as bool);
+  bool isClosed() =>
+      (super.noSuchMethod(Invocation.method(#isClosed, []), returnValue: false)
+          as bool);
 
   @override
-  _i8.Future<void> close() => (super.noSuchMethod(
-        Invocation.method(
-          #close,
-          [],
-        ),
-        returnValue: _i8.Future<void>.value(),
-        returnValueForMissingStub: _i8.Future<void>.value(),
-      ) as _i8.Future<void>);
+  _i8.Future<void> close() =>
+      (super.noSuchMethod(
+            Invocation.method(#close, []),
+            returnValue: _i8.Future<void>.value(),
+            returnValueForMissingStub: _i8.Future<void>.value(),
+          )
+          as _i8.Future<void>);
 }
 
 /// A class which mocks [UserMapper].
@@ -697,133 +564,104 @@ class MockUserMapper extends _i1.Mock implements _i13.UserMapper {
   }
 
   @override
-  _i5.UserModel toModel(_i6.UserEntity? entity) => (super.noSuchMethod(
-        Invocation.method(
-          #toModel,
-          [entity],
-        ),
-        returnValue: _FakeUserModel_4(
-          this,
-          Invocation.method(
-            #toModel,
-            [entity],
-          ),
-        ),
-      ) as _i5.UserModel);
+  _i5.UserModel toModel(_i6.UserEntity? entity) =>
+      (super.noSuchMethod(
+            Invocation.method(#toModel, [entity]),
+            returnValue: _FakeUserModel_4(
+              this,
+              Invocation.method(#toModel, [entity]),
+            ),
+          )
+          as _i5.UserModel);
 
   @override
-  _i6.UserEntity toEntity(_i5.UserModel? model) => (super.noSuchMethod(
-        Invocation.method(
-          #toEntity,
-          [model],
-        ),
-        returnValue: _FakeUserEntity_5(
-          this,
-          Invocation.method(
-            #toEntity,
-            [model],
-          ),
-        ),
-      ) as _i6.UserEntity);
+  _i6.UserEntity toEntity(_i5.UserModel? model) =>
+      (super.noSuchMethod(
+            Invocation.method(#toEntity, [model]),
+            returnValue: _FakeUserEntity_5(
+              this,
+              Invocation.method(#toEntity, [model]),
+            ),
+          )
+          as _i6.UserEntity);
 
   @override
   _i6.UserEntity fromFirestore(_i14.DocumentSnapshot<Object?>? doc) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #fromFirestore,
-          [doc],
-        ),
-        returnValue: _FakeUserEntity_5(
-          this,
-          Invocation.method(
-            #fromFirestore,
-            [doc],
-          ),
-        ),
-      ) as _i6.UserEntity);
+            Invocation.method(#fromFirestore, [doc]),
+            returnValue: _FakeUserEntity_5(
+              this,
+              Invocation.method(#fromFirestore, [doc]),
+            ),
+          )
+          as _i6.UserEntity);
 
   @override
   List<_i6.UserEntity> fromFirestoreList(
-          List<_i14.DocumentSnapshot<Object?>>? docs) =>
+    List<_i14.DocumentSnapshot<Object?>>? docs,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #fromFirestoreList,
-          [docs],
-        ),
-        returnValue: <_i6.UserEntity>[],
-      ) as List<_i6.UserEntity>);
+            Invocation.method(#fromFirestoreList, [docs]),
+            returnValue: <_i6.UserEntity>[],
+          )
+          as List<_i6.UserEntity>);
 
   @override
   Map<String, dynamic> toFirestore(_i6.UserEntity? entity) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #toFirestore,
-          [entity],
-        ),
-        returnValue: <String, dynamic>{},
-      ) as Map<String, dynamic>);
+            Invocation.method(#toFirestore, [entity]),
+            returnValue: <String, dynamic>{},
+          )
+          as Map<String, dynamic>);
 
   @override
-  Map<String, dynamic> toJson(_i6.UserEntity? entity) => (super.noSuchMethod(
-        Invocation.method(
-          #toJson,
-          [entity],
-        ),
-        returnValue: <String, dynamic>{},
-      ) as Map<String, dynamic>);
+  Map<String, dynamic> toJson(_i6.UserEntity? entity) =>
+      (super.noSuchMethod(
+            Invocation.method(#toJson, [entity]),
+            returnValue: <String, dynamic>{},
+          )
+          as Map<String, dynamic>);
 
   @override
-  _i6.UserEntity fromJson(Map<String, dynamic>? json) => (super.noSuchMethod(
-        Invocation.method(
-          #fromJson,
-          [json],
-        ),
-        returnValue: _FakeUserEntity_5(
-          this,
-          Invocation.method(
-            #fromJson,
-            [json],
-          ),
-        ),
-      ) as _i6.UserEntity);
+  _i6.UserEntity fromJson(Map<String, dynamic>? json) =>
+      (super.noSuchMethod(
+            Invocation.method(#fromJson, [json]),
+            returnValue: _FakeUserEntity_5(
+              this,
+              Invocation.method(#fromJson, [json]),
+            ),
+          )
+          as _i6.UserEntity);
 
   @override
   List<_i5.UserModel> toModelList(List<_i6.UserEntity>? entities) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #toModelList,
-          [entities],
-        ),
-        returnValue: <_i5.UserModel>[],
-      ) as List<_i5.UserModel>);
+            Invocation.method(#toModelList, [entities]),
+            returnValue: <_i5.UserModel>[],
+          )
+          as List<_i5.UserModel>);
 
   @override
   List<_i6.UserEntity> toEntityList(List<_i5.UserModel>? models) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #toEntityList,
-          [models],
-        ),
-        returnValue: <_i6.UserEntity>[],
-      ) as List<_i6.UserEntity>);
+            Invocation.method(#toEntityList, [models]),
+            returnValue: <_i6.UserEntity>[],
+          )
+          as List<_i6.UserEntity>);
 
   @override
   List<Map<String, dynamic>> toJsonList(List<_i6.UserEntity>? entities) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #toJsonList,
-          [entities],
-        ),
-        returnValue: <Map<String, dynamic>>[],
-      ) as List<Map<String, dynamic>>);
+            Invocation.method(#toJsonList, [entities]),
+            returnValue: <Map<String, dynamic>>[],
+          )
+          as List<Map<String, dynamic>>);
 
   @override
   List<_i6.UserEntity> fromJsonList(List<Map<String, dynamic>>? jsonList) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #fromJsonList,
-          [jsonList],
-        ),
-        returnValue: <_i6.UserEntity>[],
-      ) as List<_i6.UserEntity>);
+            Invocation.method(#fromJsonList, [jsonList]),
+            returnValue: <_i6.UserEntity>[],
+          )
+          as List<_i6.UserEntity>);
 }

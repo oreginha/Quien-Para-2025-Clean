@@ -10,10 +10,7 @@ import '../../bloc/matching/matching_event.dart';
 class ApplicationMessageModal extends StatefulWidget {
   final String planId;
 
-  const ApplicationMessageModal({
-    super.key,
-    required this.planId,
-  });
+  const ApplicationMessageModal({super.key, required this.planId});
 
   @override
   State<ApplicationMessageModal> createState() =>
@@ -36,9 +33,7 @@ class _ApplicationMessageModalState extends State<ApplicationMessageModal> {
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
-      decoration: const BoxDecoration(
-        color: Colors.transparent,
-      ),
+      decoration: const BoxDecoration(color: Colors.transparent),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
@@ -117,11 +112,11 @@ class _ApplicationMessageModalState extends State<ApplicationMessageModal> {
                       final String message = _messageController.text.trim();
                       Navigator.pop(context);
                       context.read<MatchingBloc>().add(
-                            MatchingEvent.applyToPlan(
-                              widget.planId,
-                              message.isNotEmpty ? message : null,
-                            ),
-                          );
+                        MatchingEvent.applyToPlan(
+                          widget.planId,
+                          message.isNotEmpty ? message : null,
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,

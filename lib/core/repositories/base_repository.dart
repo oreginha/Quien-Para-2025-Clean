@@ -16,28 +16,34 @@ abstract class BaseRepository {
   final ErrorHandler _errorHandler;
 
   /// Constructor que recibe un logger para registro de errores
-  BaseRepository({
-    required Logger logger,
-  })  : _logger = logger,
-        _errorHandler = ErrorHandler(logger: logger);
+  BaseRepository({required Logger logger})
+    : _logger = logger,
+      _errorHandler = ErrorHandler(logger: logger);
 
   /// Ejecuta una operación con manejo de errores incorporado
   ///
   /// Devuelve un Either con el resultado o un AppFailure en caso de error
   Future<Either<AppFailure, T>> executeWithTryCatch<T>(
-      String operation, Future<T> Function() action) async {
+    String operation,
+    Future<T> Function() action,
+  ) async {
     return _errorHandler.executeWithTryCatch(operation, action);
   }
 
   /// Ejecuta una operación que ya devuelve un Either, manejando cualquier excepción adicional
   Future<Either<AppFailure, T>> executeSafe<T>(
-      String operation, Future<Either<AppFailure, T>> Function() action) async {
+    String operation,
+    Future<Either<AppFailure, T>> Function() action,
+  ) async {
     return _errorHandler.executeSafe(operation, action);
   }
 
   /// Maneja un error y devuelve un AppFailure apropiado
-  AppFailure handleError(String operation, dynamic error,
-      [StackTrace? stackTrace]) {
+  AppFailure handleError(
+    String operation,
+    dynamic error, [
+    StackTrace? stackTrace,
+  ]) {
     return _errorHandler.handleError(operation, error, stackTrace);
   }
 
@@ -58,7 +64,9 @@ abstract class BaseRepository {
 
   /// Mapea un Future<T> a un Future<Either<AppFailure, T>>
   Future<Either<AppFailure, T>> mapToEither<T>(
-      String operation, Future<T> future) async {
+    String operation,
+    Future<T> future,
+  ) async {
     try {
       final result = await future;
       return right(result);
@@ -70,7 +78,10 @@ abstract class BaseRepository {
 
   /// Convierte un valor a un Either, manejando el caso null como un error
   Either<AppFailure, T> valueToEither<T>(
-      T? value, String errorMessage, String errorCode) {
+    T? value,
+    String errorMessage,
+    String errorCode,
+  ) {
     if (value == null) {
       return left(AppFailure(message: errorMessage, code: errorCode));
     }

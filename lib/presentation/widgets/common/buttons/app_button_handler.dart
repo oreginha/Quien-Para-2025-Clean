@@ -70,10 +70,7 @@ class AppButtonHandler extends StatelessWidget {
       buttonContent = Stack(
         alignment: Alignment.center,
         children: [
-          Opacity(
-            opacity: 0.0,
-            child: buttonContent,
-          ),
+          Opacity(opacity: 0.0, child: buttonContent),
           SizedBox(
             width: 20,
             height: 20,
@@ -110,10 +107,7 @@ class AppButtonHandler extends StatelessWidget {
 
     // Si debe ocupar todo el ancho
     if (fullWidth) {
-      button = SizedBox(
-        width: double.infinity,
-        child: button,
-      );
+      button = SizedBox(width: double.infinity, child: button);
     }
 
     return button;
@@ -133,20 +127,12 @@ class AppButtonHandler extends StatelessWidget {
     if (iconLeading) {
       return Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          iconElement,
-          SizedBox(width: 8),
-          textElement,
-        ],
+        children: [iconElement, SizedBox(width: 8), textElement],
       );
     } else {
       return Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          textElement,
-          SizedBox(width: 8),
-          iconElement,
-        ],
+        children: [textElement, SizedBox(width: 8), iconElement],
       );
     }
   }

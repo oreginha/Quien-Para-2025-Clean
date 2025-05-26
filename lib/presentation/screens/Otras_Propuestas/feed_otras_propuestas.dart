@@ -139,9 +139,7 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
     }
 
     if (_isLoading) {
-      return Center(
-        child: LoadingIndicator(color: AppColors.brandYellow),
-      );
+      return Center(child: LoadingIndicator(color: AppColors.brandYellow));
     }
 
     if (_error != null) {
@@ -161,10 +159,7 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
       elevation: 0,
       toolbarHeight: 56,
       centerTitle: true,
-      title: Text(
-        "Quién Para?",
-        style: AppTypography.appBarTitle(isDarkMode),
-      ),
+      title: Text("Quién Para?", style: AppTypography.appBarTitle(isDarkMode)),
       actions: <Widget>[
         // Botón para filtros de búsqueda
         Padding(
@@ -219,11 +214,7 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Icon(
-            Icons.error_outline,
-            color: AppColors.accentRed,
-            size: 48,
-          ),
+          Icon(Icons.error_outline, color: AppColors.accentRed, size: 48),
           const SizedBox(height: AppSpacing.m),
           Text(
             'Error al cargar los planes',
@@ -240,8 +231,9 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
             onPressed: _loadPlans,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor:
-                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+              foregroundColor: isDarkMode
+                  ? Colors.black
+                  : AppColors.lightTextPrimary,
             ),
             child: const Text('Reintentar'),
           ),
@@ -280,8 +272,9 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
             label: const Text('Crear Plan'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor:
-                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+              foregroundColor: isDarkMode
+                  ? Colors.black
+                  : AppColors.lightTextPrimary,
               elevation: AppElevation.s,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppRadius.button),
@@ -392,8 +385,9 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
                       foregroundColor: isDarkMode
                           ? Colors.black
                           : AppColors.lightTextPrimary,
-                      padding:
-                          const EdgeInsets.symmetric(vertical: AppSpacing.m),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.m,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(AppRadius.button),
                       ),
@@ -439,10 +433,11 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
                       child: CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes!
+                                  loadingProgress.expectedTotalBytes!
                             : null,
                         valueColor: AlwaysStoppedAnimation<Color>(
-                            AppColors.brandYellow),
+                          AppColors.brandYellow,
+                        ),
                       ),
                     ),
                   );
@@ -466,10 +461,7 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
               color: AppColors.getTextSecondary(isDarkMode),
             ),
             const SizedBox(height: AppSpacing.xs),
-            Text(
-              'Sin imagen',
-              style: AppTypography.bodySmall(isDarkMode),
-            ),
+            Text('Sin imagen', style: AppTypography.bodySmall(isDarkMode)),
           ],
         ),
       ),
@@ -489,11 +481,7 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            size: 14,
-            color: AppColors.getTextPrimary(isDarkMode),
-          ),
+          Icon(icon, size: 14, color: AppColors.getTextPrimary(isDarkMode)),
           const SizedBox(width: AppSpacing.xs),
           Flexible(
             child: Text(

@@ -69,11 +69,13 @@ abstract class IReviewRepository {
 
   /// Recalcular rating completo de un usuario
   Future<Either<Failure, UserRatingEntity>> recalculateUserRating(
-      String userId);
+    String userId,
+  );
 
   /// Obtener estadísticas de reviews de un usuario
   Future<Either<Failure, Map<String, dynamic>>> getUserReviewStats(
-      String userId);
+    String userId,
+  );
 
   /// Obtener usuarios mejor calificados
   Future<Either<Failure, List<UserRatingEntity>>> getTopRatedUsers({

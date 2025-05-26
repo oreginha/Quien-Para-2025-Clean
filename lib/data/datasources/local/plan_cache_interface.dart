@@ -17,19 +17,26 @@ abstract class PlanCacheInterface {
   Future<void> cachePlans(List<PlanEntity> plans, {bool isPriority = false});
 
   /// Almacena planes por categoría en caché
-  Future<void> cacheCategoryPlans(String category, List<PlanEntity> plans,
-      {bool isPriority = false});
+  Future<void> cacheCategoryPlans(
+    String category,
+    List<PlanEntity> plans, {
+    bool isPriority = false,
+  });
 
   /// Obtiene planes desde el caché
   Future<List<PlanEntity>?> getCachedPlans({bool isPriority = false});
 
   /// Obtiene planes por categoría desde el caché
-  Future<List<PlanEntity>?> getCategoryPlans(String category,
-      {bool isPriority = false});
+  Future<List<PlanEntity>?> getCategoryPlans(
+    String category, {
+    bool isPriority = false,
+  });
 
   /// Almacena planes de otros usuarios en el caché
   Future<void> storeOtherUserPlans(
-      String currentUserId, List<PlanEntity> plans);
+    String currentUserId,
+    List<PlanEntity> plans,
+  );
 
   /// Obtiene planes de otros usuarios desde el caché
   Future<List<PlanEntity>?> getOtherUserPlans(String currentUserId);

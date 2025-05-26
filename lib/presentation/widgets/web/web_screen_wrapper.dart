@@ -77,10 +77,12 @@ class _WebScreenWrapperState extends State<WebScreenWrapper> {
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores basados en el tema activo
-    final Color backgroundColor =
-        isDarkMode ? AppColors.darkBackground : Colors.white;
-    final Color textColor =
-        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final Color backgroundColor = isDarkMode
+        ? AppColors.darkBackground
+        : Colors.white;
+    final Color textColor = isDarkMode
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
 
     // Ancho máximo para el contenido de la pantalla móvil (similar a Bumble)
     const double mobileContentWidth = 450.0;
@@ -108,7 +110,8 @@ class _WebScreenWrapperState extends State<WebScreenWrapper> {
             // Contenido principal (ocupa todo el espacio restante)
             Expanded(
               child: Scaffold(
-                appBar: widget.appBar ??
+                appBar:
+                    widget.appBar ??
                     (widget.title.isNotEmpty
                         ? AppBar(
                             title: Text(

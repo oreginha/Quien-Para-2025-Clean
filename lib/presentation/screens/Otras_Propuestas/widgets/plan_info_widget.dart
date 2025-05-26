@@ -25,8 +25,9 @@ class PlanInfoWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.l),
         boxShadow: [
           BoxShadow(
-            color: AppColors.getCardBackground(isDarkMode)
-                .withAlpha((0.2 * 255).round()),
+            color: AppColors.getCardBackground(
+              isDarkMode,
+            ).withAlpha((0.2 * 255).round()),
             blurRadius: 6,
             offset: const Offset(0, 3),
           ),
@@ -50,8 +51,8 @@ class PlanInfoWidget extends StatelessWidget {
                       ? '${plan.date!.day}/${plan.date!.month}/${plan.date!.year}'
                       : 'Fecha no disponible',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: isDarkMode ? Colors.white : Colors.black,
-                      ),
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -61,8 +62,9 @@ class PlanInfoWidget extends StatelessWidget {
           Container(
             height: 40,
             width: 1,
-            color:
-                AppColors.getBorder(isDarkMode).withAlpha((0.3 * 255).round()),
+            color: AppColors.getBorder(
+              isDarkMode,
+            ).withAlpha((0.3 * 255).round()),
           ),
           // Ubicación
           Expanded(
@@ -79,8 +81,8 @@ class PlanInfoWidget extends StatelessWidget {
                       ? plan.location
                       : 'Ubicación no especificada',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: isDarkMode ? Colors.white : Colors.black,
-                      ),
+                    color: isDarkMode ? Colors.white : Colors.black,
+                  ),
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,

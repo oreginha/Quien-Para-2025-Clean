@@ -15,25 +15,16 @@ class PlanState with _$PlanState {
   // Estado de carga
   const factory PlanState.loading() = _Loading;
 
-  const factory PlanState.loaded({
-    required final PlanEntity plan,
-  }) = PlanLoaded;
+  const factory PlanState.loaded({required final PlanEntity plan}) = PlanLoaded;
 
-  const factory PlanState.saving({
-    final PlanEntity? plan,
-  }) = PlanSaving;
+  const factory PlanState.saving({final PlanEntity? plan}) = PlanSaving;
 
-  const factory PlanState.updating({
-    final PlanEntity? plan,
-  }) = PlanUpdating;
+  const factory PlanState.updating({final PlanEntity? plan}) = PlanUpdating;
 
-  const factory PlanState.plansLoaded({
-    required final List<PlanEntity> plans,
-  }) = PlansLoaded;
+  const factory PlanState.plansLoaded({required final List<PlanEntity> plans}) =
+      PlansLoaded;
 
-  const factory PlanState.saved({
-    required final PlanEntity plan,
-  }) = PlanSaved;
+  const factory PlanState.saved({required final PlanEntity plan}) = PlanSaved;
 
   const factory PlanState.error({
     required final String message,

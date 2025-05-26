@@ -2,7 +2,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'core/config/firebase_options.dart';  // Importamos las opciones de Firebase
+import 'core/config/firebase_options.dart'; // Importamos las opciones de Firebase
 
 /// Esta aplicación es un selector que permite elegir entre diferentes modos
 /// de inicialización para facilitar la depuración
@@ -122,12 +122,7 @@ class AppSelectorScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    description,
-                    style: const TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
+                  Text(description, style: const TextStyle(fontSize: 12)),
                 ],
               ),
             ),
@@ -156,7 +151,8 @@ class AppSelectorScreen extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-              'Para cambiar al modo normal, modifique flutter run para usar main.dart'),
+            'Para cambiar al modo normal, modifique flutter run para usar main.dart',
+          ),
           backgroundColor: Colors.blue,
           duration: Duration(seconds: 5),
         ),
@@ -185,7 +181,8 @@ class AppSelectorScreen extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-              'Para cambiar al modo progresivo, modifique flutter run para usar main_progressive.dart'),
+            'Para cambiar al modo progresivo, modifique flutter run para usar main_progressive.dart',
+          ),
           backgroundColor: Colors.orange,
           duration: Duration(seconds: 5),
         ),
@@ -213,7 +210,8 @@ class AppSelectorScreen extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-              'Para cambiar al modo emergencia extrema, utilice el main.dart actual'),
+            'Para cambiar al modo emergencia extrema, utilice el main.dart actual',
+          ),
           backgroundColor: Colors.red,
           duration: Duration(seconds: 5),
         ),
@@ -246,8 +244,9 @@ class AppSelectorScreen extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Error de Inicialización'),
-        content:
-            Text('Ocurrió un error al iniciar la aplicación:\n$errorMessage'),
+        content: Text(
+          'Ocurrió un error al iniciar la aplicación:\n$errorMessage',
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -276,25 +275,31 @@ void main() async {
     }
 
     // Pantalla de error simple
-    runApp(MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.blue[100],
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.error_outline, size: 80, color: Colors.blue),
-              const SizedBox(height: 20),
-              const Text('ERROR DEL LANZADOR',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 10),
-              Text(e.toString(),
+    runApp(
+      MaterialApp(
+        home: Scaffold(
+          backgroundColor: Colors.blue[100],
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 80, color: Colors.blue),
+                const SizedBox(height: 20),
+                const Text(
+                  'ERROR DEL LANZADOR',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  e.toString(),
                   style: const TextStyle(fontSize: 14),
-                  textAlign: TextAlign.center),
-            ],
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 }

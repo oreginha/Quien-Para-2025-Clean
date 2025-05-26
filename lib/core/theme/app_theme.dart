@@ -60,7 +60,9 @@ class AppTheme {
           backgroundColor: AppColors.brandYellow,
           foregroundColor: AppColors.lightTextPrimary,
           padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.m, vertical: AppSpacing.s),
+            horizontal: AppSpacing.m,
+            vertical: AppSpacing.s,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.button),
           ),
@@ -73,7 +75,9 @@ class AppTheme {
           foregroundColor: AppColors.lightTextPrimary,
           side: const BorderSide(color: AppColors.lightTextPrimary, width: 2),
           padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.m, vertical: AppSpacing.s),
+            horizontal: AppSpacing.m,
+            vertical: AppSpacing.s,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.button),
           ),
@@ -91,7 +95,9 @@ class AppTheme {
         color: AppColors.lightCardBackground,
         elevation: AppElevation.card,
         margin: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.s, vertical: AppSpacing.xs),
+          horizontal: AppSpacing.s,
+          vertical: AppSpacing.xs,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.card),
         ),
@@ -163,7 +169,9 @@ class AppTheme {
           backgroundColor: AppColors.brandYellow,
           foregroundColor: AppColors.lightTextPrimary,
           padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.m, vertical: AppSpacing.s),
+            horizontal: AppSpacing.m,
+            vertical: AppSpacing.s,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.button),
           ),
@@ -176,7 +184,9 @@ class AppTheme {
           foregroundColor: AppColors.darkTextPrimary,
           side: const BorderSide(color: AppColors.darkTextPrimary, width: 2),
           padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.m, vertical: AppSpacing.s),
+            horizontal: AppSpacing.m,
+            vertical: AppSpacing.s,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.button),
           ),
@@ -194,7 +204,9 @@ class AppTheme {
         color: AppColors.darkCardBackground,
         elevation: AppElevation.card,
         margin: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.s, vertical: AppSpacing.xs),
+          horizontal: AppSpacing.s,
+          vertical: AppSpacing.xs,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.card),
         ),
@@ -253,15 +265,15 @@ class AppTheme {
 
   // Gradiente de fondo
   LinearGradient get backgroundGradient => LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
-          isDarkMode
-              ? AppColors.darkSecondaryBackground
-              : AppColors.lightSecondaryBackground,
-        ],
-      );
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
+      isDarkMode
+          ? AppColors.darkSecondaryBackground
+          : AppColors.lightSecondaryBackground,
+    ],
+  );
 
   // Método para obtener color con alpha
   Color getColorWithAlpha(Color color, double opacity) {

@@ -35,17 +35,20 @@ class GetPlansUseCase
 
   @override
   Future<Either<AppFailure, List<PlanEntity>>> execute(
-      GetPlansParams params) async {
+    GetPlansParams params,
+  ) async {
     _logger.d('GetPlansUseCase: Obteniendo planes');
 
     // Validar parámetros
     if (params.limit != null && params.limit! <= 0) {
       _logger.w('GetPlansUseCase: Límite inválido: ${params.limit}');
-      return Left(ValidationFailure(
-        message: 'El límite debe ser un número positivo',
-        field: 'limit',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El límite debe ser un número positivo',
+          field: 'limit',
+          code: '',
+        ),
+      );
     }
 
     // Construir filtros combinados
@@ -73,8 +76,9 @@ class GetPlansUseCase
 
   /// Método de conveniencia para obtener planes por categoría
   Future<Either<AppFailure, List<PlanEntity>>> getPlansByCategory(
-      String category,
-      {int? limit}) {
+    String category, {
+    int? limit,
+  }) {
     return execute(GetPlansParams(category: category, limit: limit));
   }
 }

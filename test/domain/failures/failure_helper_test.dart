@@ -123,21 +123,23 @@ void main() {
       expect(failure.originalError, equals(error));
     });
 
-    test('should return original failure if input is already an AppFailure',
-        () {
-      // Arrange
-      final originalFailure = NetworkFailure(
-        message: 'Original network error',
-        code: 'NETWORK_ERROR',
-        stackTrace: StackTrace.current,
-        originalError: Exception('Original error'),
-      );
+    test(
+      'should return original failure if input is already an AppFailure',
+      () {
+        // Arrange
+        final originalFailure = NetworkFailure(
+          message: 'Original network error',
+          code: 'NETWORK_ERROR',
+          stackTrace: StackTrace.current,
+          originalError: Exception('Original error'),
+        );
 
-      // Act
-      final failure = FailureHelper.fromException(originalFailure);
+        // Act
+        final failure = FailureHelper.fromException(originalFailure);
 
-      // Assert
-      expect(failure, equals(originalFailure));
-    });
+        // Assert
+        expect(failure, equals(originalFailure));
+      },
+    );
   });
 }

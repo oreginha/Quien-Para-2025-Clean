@@ -39,7 +39,8 @@ class ErrorDiagnostic {
         print('🔍 Verificando registro de caso de uso: $name');
       }
 
-      final bool isRegistered = sl.isRegistered<Object>(instanceName: name) ||
+      final bool isRegistered =
+          sl.isRegistered<Object>(instanceName: name) ||
           sl.isRegistered<Type>();
 
       if (kDebugMode) {
@@ -102,7 +103,8 @@ class ErrorDiagnostic {
       } catch (e) {
         if (kDebugMode) {
           print(
-              '⚠️ Firebase services no registrados por nombre, verificando por tipo...');
+            '⚠️ Firebase services no registrados por nombre, verificando por tipo...',
+          );
         }
         // Verificar si están registrados por tipo en su lugar
         GetIt.instance.get<Object>(instanceName: 'FirebaseFirestore');

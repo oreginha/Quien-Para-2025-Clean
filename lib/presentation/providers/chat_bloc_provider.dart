@@ -18,10 +18,7 @@ const bool USE_REFACTORED_BLOC = true;
 class ChatBlocProvider extends StatelessWidget {
   final Widget child;
 
-  const ChatBlocProvider({
-    super.key,
-    required this.child,
-  });
+  const ChatBlocProvider({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

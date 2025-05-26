@@ -17,8 +17,10 @@ class GetDirectionsUseCase {
   /// [destination] - Ubicación de destino
   /// [mode] - Modo de transporte (driving, walking, bicycling, transit)
   Future<Map<String, dynamic>> execute(
-      LocationEntity origin, LocationEntity destination,
-      {String mode = 'driving'}) {
+    LocationEntity origin,
+    LocationEntity destination, {
+    String mode = 'driving',
+  }) {
     return _mapsRepository.getDirections(origin, destination, mode: mode);
   }
 }

@@ -12,11 +12,9 @@ import '../../domain/interfaces/image_service_interface.dart';
 
 class ImageServiceImpl implements ImageServiceInterface {
   final ImagePicker _picker;
-  
+
   // Constructor simple para compatibilidad web y móvil
-  ImageServiceImpl({
-    ImagePicker? picker,
-  }) : _picker = picker ?? ImagePicker();
+  ImageServiceImpl({ImagePicker? picker}) : _picker = picker ?? ImagePicker();
 
   @override
   Future<File?> pickImageFromGallery({
@@ -30,7 +28,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image picking/cropping not supported');
       return null;
     }
-    
+
     try {
       final XFile? image = await _picker.pickImage(
         source: ImageSource.gallery,
@@ -44,7 +42,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       File imageFile = File(image.path);
       // Para desarrollo en Chrome, omitimos el recorte de imágenes
       // En la versión completa para móvil, aquí se haría el cropImage
-      
+
       return imageFile;
     } catch (e) {
       logger.e('Error picking image from gallery: $e');
@@ -64,7 +62,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image picking/cropping not supported');
       return null;
     }
-    
+
     try {
       final XFile? image = await _picker.pickImage(
         source: ImageSource.camera,
@@ -78,7 +76,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       File imageFile = File(image.path);
       // Para desarrollo en Chrome, omitimos el recorte de imágenes
       // En la versión completa para móvil, aquí se haría el cropImage
-      
+
       return imageFile;
     } catch (e) {
       logger.e('Error picking image from camera: $e');
@@ -93,7 +91,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image cropping not supported');
       return imageFile; // Devolvemos la imagen original en web
     }
-    
+
     try {
       // En una versión real, aquí usaríamos image_cropper
       // Para desarrollo web, simplemente devolvemos la imagen original
@@ -111,13 +109,15 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image rotation not supported');
       return imageFile;
     }
-    
+
     try {
       final img.Image? image = img.decodeImage(await imageFile.readAsBytes());
       if (image == null) return null;
 
-      final img.Image rotatedImage =
-          img.copyRotate(image, angle: degrees.toInt());
+      final img.Image rotatedImage = img.copyRotate(
+        image,
+        angle: degrees.toInt(),
+      );
       final String tempPath = (await getTemporaryDirectory()).path;
       final String outputPath =
           '$tempPath/${DateTime.now().millisecondsSinceEpoch}.jpg';
@@ -138,7 +138,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image filtering not supported');
       return imageFile;
     }
-    
+
     try {
       final img.Image? image = img.decodeImage(await imageFile.readAsBytes());
       if (image == null) return null;
@@ -179,7 +179,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image adjustment not supported');
       return imageFile;
     }
-    
+
     try {
       final img.Image? image = img.decodeImage(await imageFile.readAsBytes());
       if (image == null) return imageFile;
@@ -210,7 +210,7 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, image compression not supported');
       return imageFile;
     }
-    
+
     try {
       final img.Image? image = img.decodeImage(await imageFile.readAsBytes());
       if (image == null) return imageFile;
@@ -235,13 +235,16 @@ class ImageServiceImpl implements ImageServiceInterface {
       logger.d('Web platform detected, thumbnail generation not supported');
       return imageFile;
     }
-    
+
     try {
       final img.Image? image = img.decodeImage(await imageFile.readAsBytes());
       if (image == null) return imageFile;
 
-      final img.Image thumbnail =
-          img.copyResize(image, width: size, height: size);
+      final img.Image thumbnail = img.copyResize(
+        image,
+        width: size,
+        height: size,
+      );
       final String tempPath = (await getTemporaryDirectory()).path;
       final String outputPath =
           '$tempPath/thumb_${DateTime.now().millisecondsSinceEpoch}.jpg';

@@ -31,7 +31,8 @@ class NotificationCache implements Cache<NotificationEntity> {
           await Hive.initFlutter(appDir.path);
         } catch (e) {
           logger.w(
-              'Path provider no disponible, usando inicialización básica de Hive');
+            'Path provider no disponible, usando inicialización básica de Hive',
+          );
           await Hive.initFlutter();
         }
 
@@ -73,8 +74,9 @@ class NotificationCache implements Cache<NotificationEntity> {
       if (data == null) return null;
 
       return data
-          .map((item) =>
-              NotificationEntity.fromJson(item as Map<String, dynamic>))
+          .map(
+            (item) => NotificationEntity.fromJson(item as Map<String, dynamic>),
+          )
           .toList();
     } catch (e) {
       logger.e('Error retrieving cached notifications:', error: e);
@@ -163,7 +165,8 @@ class NotificationCache implements Cache<NotificationEntity> {
 
   /// Obtiene la lista de notificaciones no leídas para un usuario específico
   Future<List<NotificationEntity>?> getUnreadNotifications(
-      String userId) async {
+    String userId,
+  ) async {
     final notifications = await getCachedItems(key: userId);
     if (notifications == null) return null;
 
@@ -215,11 +218,13 @@ class NotificationCache implements Cache<NotificationEntity> {
       // Aquí necesitamos obtener todas las notificaciones, quitar la específica y volver a guardar
       final notifications = await getCachedItems();
       if (notifications != null) {
-        final updatedNotifications =
-            notifications.where((n) => n.id != notificationId).toList();
+        final updatedNotifications = notifications
+            .where((n) => n.id != notificationId)
+            .toList();
         await cacheItems(updatedNotifications);
-        logger
-            .d('Caché de notificación específica invalidada: $notificationId');
+        logger.d(
+          'Caché de notificación específica invalidada: $notificationId',
+        );
       }
     } catch (e) {
       logger.e('Error invalidando caché de notificación específica:', error: e);

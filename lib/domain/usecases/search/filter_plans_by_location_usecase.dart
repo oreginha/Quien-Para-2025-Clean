@@ -34,17 +34,20 @@ class FilterPlansByLocationUseCase {
       // Validar parámetros
       if (latitude < -90 || latitude > 90) {
         return const Left(
-            ValidationFailure('Latitud inválida: debe estar entre -90 y 90'));
+          ValidationFailure('Latitud inválida: debe estar entre -90 y 90'),
+        );
       }
 
       if (longitude < -180 || longitude > 180) {
-        return const Left(ValidationFailure(
-            'Longitud inválida: debe estar entre -180 y 180'));
+        return const Left(
+          ValidationFailure('Longitud inválida: debe estar entre -180 y 180'),
+        );
       }
 
       if (radiusKm <= 0 || radiusKm > 1000) {
         return const Left(
-            ValidationFailure('Radio inválido: debe estar entre 0 y 1000 km'));
+          ValidationFailure('Radio inválido: debe estar entre 0 y 1000 km'),
+        );
       }
 
       // Ejecutar filtro por ubicación
@@ -58,8 +61,9 @@ class FilterPlansByLocationUseCase {
 
       return result;
     } catch (e) {
-      return Left(ServerFailure(
-          null, 'Error al filtrar por ubicación: ${e.toString()}'));
+      return Left(
+        ServerFailure(null, 'Error al filtrar por ubicación: ${e.toString()}'),
+      );
     }
   }
 
@@ -77,12 +81,14 @@ class FilterPlansByLocationUseCase {
     try {
       if (cityName.trim().isEmpty) {
         return const Left(
-            ValidationFailure('El nombre de la ciudad no puede estar vacío'));
+          ValidationFailure('El nombre de la ciudad no puede estar vacío'),
+        );
       }
 
       // Obtener coordenadas de la ciudad usando el repositorio
-      final coordinatesResult =
-          await repository.getCityCoordinates(cityName.trim());
+      final coordinatesResult = await repository.getCityCoordinates(
+        cityName.trim(),
+      );
 
       return coordinatesResult.fold(
         (failure) => Left(failure),
@@ -96,7 +102,8 @@ class FilterPlansByLocationUseCase {
       );
     } catch (e) {
       return Left(
-          ServerFailure(null, 'Error al buscar por ciudad: ${e.toString()}'));
+        ServerFailure(null, 'Error al buscar por ciudad: ${e.toString()}'),
+      );
     }
   }
 }

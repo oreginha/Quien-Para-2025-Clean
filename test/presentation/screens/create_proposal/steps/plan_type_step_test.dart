@@ -3,8 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quien_para/presentation/screens/create_proposal/steps/plan_type_step.dart';
 
 void main() {
-  testWidgets('PlanTypeStep displays plan types correctly',
-      (WidgetTester tester) async {
+  testWidgets('PlanTypeStep displays plan types correctly', (
+    WidgetTester tester,
+  ) async {
     final PageController pageController = PageController();
     final List<String> planTypes = <String>['Social', 'Cultural', 'Deportivo'];
     String? selectedType;

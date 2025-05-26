@@ -18,13 +18,17 @@ class InvitationConditionsStep extends StatefulWidget {
 
   static const Map<String, List<String>> conditionOptions =
       <String, List<String>>{
-    'Número de invitados': <String>['∞', '1', '2', '3', '4'],
-    'Condiciones de pago': <String>['Cada uno lo suyo', '50/50', 'Yo invito'],
-    'Nivel de actividad': <String>['Tranquilo', 'Moderado', 'Intenso'],
-    'Edad recomendada': <String>['Todas las edades', '18+', '21+'],
-    'Transporte': <String>['No necesario', 'Compartido', 'Individual'],
-    'Equipamiento': <String>['No necesario', 'Básico', 'Especializado']
-  };
+        'Número de invitados': <String>['∞', '1', '2', '3', '4'],
+        'Condiciones de pago': <String>[
+          'Cada uno lo suyo',
+          '50/50',
+          'Yo invito',
+        ],
+        'Nivel de actividad': <String>['Tranquilo', 'Moderado', 'Intenso'],
+        'Edad recomendada': <String>['Todas las edades', '18+', '21+'],
+        'Transporte': <String>['No necesario', 'Compartido', 'Individual'],
+        'Equipamiento': <String>['No necesario', 'Básico', 'Especializado'],
+      };
 
   const InvitationConditionsStep({
     super.key,
@@ -108,8 +112,9 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
       InvitationConditionsStep.logger.i('🟢 Título: ${state.plan.title}');
       InvitationConditionsStep.logger.i('🟢 Categoría: ${state.plan.category}');
       InvitationConditionsStep.logger.i('🟢 Ubicación: ${state.plan.location}');
-      InvitationConditionsStep.logger
-          .i('🟢 Condiciones: ${state.plan.conditions}');
+      InvitationConditionsStep.logger.i(
+        '🟢 Condiciones: ${state.plan.conditions}',
+      );
 
       // Navegar a la pantalla de detalle usando GoRouter
       context.goNamed(
@@ -120,8 +125,9 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
       // Mostrar mensaje de error
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content:
-              Text('Por favor, selecciona todas las condiciones requeridas'),
+          content: Text(
+            'Por favor, selecciona todas las condiciones requeridas',
+          ),
           backgroundColor: Colors.red,
         ),
       );
@@ -147,10 +153,7 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                ThemeUtils.background,
-                ThemeUtils.brandYellow,
-              ],
+              colors: [ThemeUtils.background, ThemeUtils.brandYellow],
             ),
           ),
           child: SingleChildScrollView(
@@ -161,8 +164,9 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
                 children: <Widget>[
                   const SizedBox(height: 24),
                   ...InvitationConditionsStep.conditionOptions.entries.map(
-                    (final MapEntry<String, List<String>> entry) =>
-                        _buildSection(
+                    (
+                      final MapEntry<String, List<String>> entry,
+                    ) => _buildSection(
                       title: entry.key,
                       child: _buildOptionGrid(
                         context: context,
@@ -175,13 +179,14 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
 
                           if (kDebugMode) {
                             print(
-                                'Seleccionando condición para ${entry.key}: $option');
+                              'Seleccionando condición para ${entry.key}: $option',
+                            );
                             print('Condiciones actualizadas: $newOptions');
                           }
 
-                          context
-                              .read<PlanBloc>()
-                              .add(PlanEvent.updateSelectedOptions(newOptions));
+                          context.read<PlanBloc>().add(
+                            PlanEvent.updateSelectedOptions(newOptions),
+                          );
                         },
                       ),
                     ),
@@ -218,12 +223,13 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
                         onChanged: (final String value) {
                           if (kDebugMode) {
                             print(
-                                'Actualizando condiciones adicionales: $value');
+                              'Actualizando condiciones adicionales: $value',
+                            );
                           }
 
-                          context
-                              .read<PlanBloc>()
-                              .add(PlanEvent.updateExtraConditions(value));
+                          context.read<PlanBloc>().add(
+                            PlanEvent.updateExtraConditions(value),
+                          );
                         },
                       ),
                     ),
@@ -267,8 +273,10 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
     final Iterable<String> requiredOptions =
         InvitationConditionsStep.conditionOptions.keys;
 
-    final bool result = requiredOptions.every((final String key) =>
-        conditions.containsKey(key) && conditions[key]!.isNotEmpty);
+    final bool result = requiredOptions.every(
+      (final String key) =>
+          conditions.containsKey(key) && conditions[key]!.isNotEmpty,
+    );
 
     if (kDebugMode) {
       print('Validando condiciones requeridas: $result');
@@ -279,8 +287,10 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
     return result;
   }
 
-  Widget _buildSection(
-      {required final String title, required final Widget child}) {
+  Widget _buildSection({
+    required final String title,
+    required final Widget child,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

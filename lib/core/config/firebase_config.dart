@@ -13,8 +13,6 @@ class FirebaseConfig {
     FirebaseStorage.instance.setMaxDownloadRetryTime(
       const Duration(minutes: 3),
     );
-    FirebaseStorage.instance.setMaxUploadRetryTime(
-      const Duration(minutes: 3),
-    );
+    FirebaseStorage.instance.setMaxUploadRetryTime(const Duration(minutes: 3));
   }
 }

@@ -7,10 +7,10 @@ import 'package:logger/logger.dart';
 /// Proporciona registro coherente y monitoreo de errores en un único lugar
 class AppBlocObserver extends BlocObserver {
   final Logger _logger = Logger();
-  
+
   // Controla si se registran los eventos y transiciones (puede ser costoso en producción)
   final bool _verbose;
-  
+
   AppBlocObserver({bool verbose = false}) : _verbose = verbose;
 
   @override
@@ -36,12 +36,16 @@ class AppBlocObserver extends BlocObserver {
     super.onChange(bloc, change);
     // En modo verbose, registramos todos los cambios de estado
     if (_verbose && kDebugMode) {
-      _logger.d('${bloc.runtimeType} cambió de ${change.currentState} a ${change.nextState}');
+      _logger.d(
+        '${bloc.runtimeType} cambió de ${change.currentState} a ${change.nextState}',
+      );
     }
-    
+
     // Siempre mostrar cambios de estado en modo debug
     if (kDebugMode) {
-      print('🔴 BLOC CAMBIO DE ESTADO: ${bloc.runtimeType} -> ${change.nextState.runtimeType}');
+      print(
+        '🔴 BLOC CAMBIO DE ESTADO: ${bloc.runtimeType} -> ${change.nextState.runtimeType}',
+      );
     }
   }
 

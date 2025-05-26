@@ -29,10 +29,7 @@ class EnhancedCancelApplicationUseCase {
     ApplicationEntity? originalApplication;
     try {
       final either = await _repository.getApplicationById(applicationId);
-      originalApplication = either.fold(
-        (failure) => null,
-        (app) => app,
-      );
+      originalApplication = either.fold((failure) => null, (app) => app);
     } catch (e) {
       // Si no podemos obtener la aplicación original, continuamos con la eliminación
     }

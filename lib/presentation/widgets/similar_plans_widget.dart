@@ -15,10 +15,7 @@ import '../bloc/matching/matching_state.dart';
 class SimilarPlansWidget extends StatefulWidget {
   final String planId;
 
-  const SimilarPlansWidget({
-    super.key,
-    required this.planId,
-  });
+  const SimilarPlansWidget({super.key, required this.planId});
 
   @override
   State<SimilarPlansWidget> createState() => _SimilarPlansWidgetState();
@@ -85,14 +82,14 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
     return Container(
       height: 150,
       padding: const EdgeInsets.symmetric(vertical: 16),
-      child: const Center(
-        child: CircularProgressIndicator(),
-      ),
+      child: const Center(child: CircularProgressIndicator()),
     );
   }
 
   Widget _buildLoadedState(
-      BuildContext context, List<Map<String, dynamic>> plans) {
+    BuildContext context,
+    List<Map<String, dynamic>> plans,
+  ) {
     if (plans.isEmpty) {
       return _buildEmptyState();
     }
@@ -133,9 +130,7 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Card(
         color: const Color(0xFF252840),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: () {
@@ -160,8 +155,11 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
                           ? NetworkImage(plan['creatorPhotoUrl'] as String)
                           : null,
                       child: plan['creatorPhotoUrl'] == null
-                          ? const Icon(Icons.person,
-                              size: 14, color: Color(0xFF1A1B2E))
+                          ? const Icon(
+                              Icons.person,
+                              size: 14,
+                              color: Color(0xFF1A1B2E),
+                            )
                           : null,
                     ),
                     const SizedBox(width: 8),
@@ -191,10 +189,13 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 2),
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF46FAF7)
-                            .withAlpha((0.2 * 255).round()),
+                        color: const Color(
+                          0xFF46FAF7,
+                        ).withAlpha((0.2 * 255).round()),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -215,10 +216,7 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
                 Expanded(
                   child: Text(
                     plan['description'] as String,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 12,
-                    ),
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -244,10 +242,7 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
             Text(
               'Error: $message',
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 12, color: Colors.white70),
             ),
             TextButton(
               onPressed: _loadSimilarPlans,
@@ -276,7 +271,8 @@ class _SimilarPlansWidgetState extends State<SimilarPlansWidget> {
 
   // Esta función convierte ApplicationEntity en planes similares (solución temporal)
   List<Map<String, dynamic>> _mockSimilarPlansFromApplications(
-      List<ApplicationEntity> applications) {
+    List<ApplicationEntity> applications,
+  ) {
     // Convertir aplicaciones a planes "similares" (esto es una solución temporal)
     // En la implementación real, deberías tener una respuesta del backend con planes realmente similares
     final List<Map<String, dynamic>> mockPlans = [];

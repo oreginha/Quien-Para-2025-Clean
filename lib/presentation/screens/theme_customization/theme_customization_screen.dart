@@ -102,10 +102,7 @@ class _ThemeCustomizationScreenState extends State<ThemeCustomizationScreen> {
                     ),
                     Text(
                       'Este color se usa para botones, resaltados y elementos importantes',
-                      style: TextStyle(
-                        color: darkTextSecondary,
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: darkTextSecondary, fontSize: 14),
                     ),
                     const SizedBox(height: 16),
 
@@ -133,10 +130,7 @@ class _ThemeCustomizationScreenState extends State<ThemeCustomizationScreen> {
                     ),
                     Text(
                       'Este color se usa para alertas, errores y elementos secundarios',
-                      style: TextStyle(
-                        color: darkTextSecondary,
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: darkTextSecondary, fontSize: 14),
                     ),
                     const SizedBox(height: 16),
 
@@ -206,7 +200,8 @@ class _ThemeCustomizationScreenState extends State<ThemeCustomizationScreen> {
       children: [
         // Opciones de colores predefinidos
         ...AppColors.predefinedColors.map((color) {
-          final isSelected = color.r == selectedColor.r &&
+          final isSelected =
+              color.r == selectedColor.r &&
               color.g == selectedColor.g &&
               color.b == selectedColor.b;
 
@@ -224,8 +219,12 @@ class _ThemeCustomizationScreenState extends State<ThemeCustomizationScreen> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black
-                        .withValues(red: 0, green: 0, blue: 0, alpha: 0.1),
+                    color: Colors.black.withValues(
+                      red: 0,
+                      green: 0,
+                      blue: 0,
+                      alpha: 0.1,
+                    ),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),
@@ -247,10 +246,7 @@ class _ThemeCustomizationScreenState extends State<ThemeCustomizationScreen> {
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.grey,
-                width: 1,
-              ),
+              border: Border.all(color: Colors.grey, width: 1),
             ),
             child: const Icon(Icons.add, color: Colors.grey),
           ),
@@ -403,8 +399,12 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
   // Actualizar el color seleccionado
   void _updateColor() {
     setState(() {
-      _selectedColor =
-          HSVColor.fromAHSV(1.0, _hue, _saturation, _value).toColor();
+      _selectedColor = HSVColor.fromAHSV(
+        1.0,
+        _hue,
+        _saturation,
+        _value,
+      ).toColor();
     });
   }
 
@@ -420,10 +420,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
 
     return AlertDialog(
       backgroundColor: darkPrimaryBackground,
-      title: Text(
-        'Seleccionar Color',
-        style: TextStyle(color: textColor),
-      ),
+      title: Text('Seleccionar Color', style: TextStyle(color: textColor)),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -440,10 +437,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
           const SizedBox(height: 24),
 
           // Slider para Hue (tono)
-          Text(
-            'Tono',
-            style: TextStyle(color: textColor),
-          ),
+          Text('Tono', style: TextStyle(color: textColor)),
           Slider(
             value: _hue,
             min: 0,
@@ -458,10 +452,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
           ),
 
           // Slider para Saturation (saturación)
-          Text(
-            'Saturación',
-            style: TextStyle(color: textColor),
-          ),
+          Text('Saturación', style: TextStyle(color: textColor)),
           Slider(
             value: _saturation,
             min: 0,
@@ -472,15 +463,16 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
                 _updateColor();
               });
             },
-            activeColor:
-                HSVColor.fromAHSV(1.0, _hue, _saturation, 1.0).toColor(),
+            activeColor: HSVColor.fromAHSV(
+              1.0,
+              _hue,
+              _saturation,
+              1.0,
+            ).toColor(),
           ),
 
           // Slider para Value (valor/brillo)
-          Text(
-            'Brillo',
-            style: TextStyle(color: textColor),
-          ),
+          Text('Brillo', style: TextStyle(color: textColor)),
           Slider(
             value: _value,
             min: 0,
@@ -498,10 +490,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text(
-            'Cancelar',
-            style: TextStyle(color: textColor),
-          ),
+          child: Text('Cancelar', style: TextStyle(color: textColor)),
         ),
         ElevatedButton(
           onPressed: () => Navigator.pop(context, _selectedColor),

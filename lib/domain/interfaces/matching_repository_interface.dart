@@ -10,8 +10,10 @@ abstract class MatchingRepositoryInterface {
   Future<List<UserEntity>> findCompatibleUsers(String planId, {int limit = 10});
 
   /// Encuentra planes recomendados para un usuario específico
-  Future<List<PlanEntity>> findRecommendedPlans(String userId,
-      {int limit = 15});
+  Future<List<PlanEntity>> findRecommendedPlans(
+    String userId, {
+    int limit = 15,
+  });
 
   /// Encuentra planes similares a uno específico
   Future<List<PlanEntity>> findSimilarPlans(String planId, {int limit = 5});

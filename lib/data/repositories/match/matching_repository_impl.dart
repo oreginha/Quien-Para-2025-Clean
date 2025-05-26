@@ -36,8 +36,10 @@ class MatchingRepositoryImpl implements MatchingRepository {
   }
 
   @override
-  Future<List<PlanEntity>> findSimilarPlans(String planId,
-      {int limit = 5}) async {
+  Future<List<PlanEntity>> findSimilarPlans(
+    String planId, {
+    int limit = 5,
+  }) async {
     // Obtener las aplicaciones
     final applications = await _remoteDataSource.findSimilarPlans(planId);
 
@@ -49,8 +51,9 @@ class MatchingRepositoryImpl implements MatchingRepository {
 
   // Método auxiliar para convertir ApplicationEntity a PlanEntity
   List<PlanEntity> _convertApplicationsToPlanEntities(
-      List<ApplicationEntity> applications,
-      {int limit = 5}) {
+    List<ApplicationEntity> applications, {
+    int limit = 5,
+  }) {
     final List<PlanEntity> plans = [];
 
     // Limitar la cantidad de planes según el parámetro
@@ -59,14 +62,23 @@ class MatchingRepositoryImpl implements MatchingRepository {
     for (var app in limitedApplications) {
       // Crear un PlanEntity básico a partir de la aplicación
       // En un caso real, obtendríamos todos los datos del plan
-      plans.add(PlanEntity(
-        id: app.planId,
-        title: app.planTitle ?? 'Plan sin título', // Manejo de valor nulo
-        creatorId: '', description: '', location: '', category: '', tags: [],
-        likes: 0, extraConditions: '', imageUrl: '', conditions: {},
-        selectedThemes: [], // No tenemos este dato en la aplicación
-        // Agregamos valores predeterminados para los campos requeridos
-      ));
+      plans.add(
+        PlanEntity(
+          id: app.planId,
+          title: app.planTitle ?? 'Plan sin título', // Manejo de valor nulo
+          creatorId: '',
+          description: '',
+          location: '',
+          category: '',
+          tags: [],
+          likes: 0,
+          extraConditions: '',
+          imageUrl: '',
+          conditions: {},
+          selectedThemes: [], // No tenemos este dato en la aplicación
+          // Agregamos valores predeterminados para los campos requeridos
+        ),
+      );
     }
 
     return plans;
@@ -74,16 +86,20 @@ class MatchingRepositoryImpl implements MatchingRepository {
 
   // Método de la antigua interfaz MatchingRepository, mantenido por compatibilidad
   @override
-  Future<List<UserEntity>> findCompatibleUsers(String planId,
-      {int limit = 10}) async {
+  Future<List<UserEntity>> findCompatibleUsers(
+    String planId, {
+    int limit = 10,
+  }) async {
     // Implementación temporal - se debe reemplazar con lógica real
     return [];
   }
 
   // Método de la antigua interfaz MatchingRepository, mantenido por compatibilidad
   @override
-  Future<List<PlanEntity>> findRecommendedPlans(String userId,
-      {int limit = 15}) async {
+  Future<List<PlanEntity>> findRecommendedPlans(
+    String userId, {
+    int limit = 15,
+  }) async {
     // Implementación temporal - se debe reemplazar con lógica real
     return [];
   }

@@ -21,8 +21,10 @@ class CreatorProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-      future:
-          FirebaseFirestore.instance.collection('users').doc(creatorId).get(),
+      future: FirebaseFirestore.instance
+          .collection('users')
+          .doc(creatorId)
+          .get(),
       builder: (context, creatorSnapshot) {
         if (creatorSnapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -36,8 +38,9 @@ class CreatorProfileWidget extends StatelessWidget {
             (creatorData['name'] as String?) ?? 'Usuario';
         final List<dynamic> photoUrls =
             creatorData['photoUrls'] as List<dynamic>? ?? [];
-        final String photoUrl =
-            photoUrls.isNotEmpty ? photoUrls[0] as String : '';
+        final String photoUrl = photoUrls.isNotEmpty
+            ? photoUrls[0] as String
+            : '';
         final int age = (creatorData['age'] as int?) ?? 0;
 
         return Container(
@@ -47,7 +50,9 @@ class CreatorProfileWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.l),
             boxShadow: [
               BoxShadow(
-                color: AppColors.getBorder(isDarkMode).withAlpha((0.2 * 255).round()),
+                color: AppColors.getBorder(
+                  isDarkMode,
+                ).withAlpha((0.2 * 255).round()),
                 blurRadius: 6,
                 offset: const Offset(0, 3),
               ),
@@ -73,16 +78,17 @@ class CreatorProfileWidget extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 28,
                   backgroundColor: AppColors.getCardBackground(isDarkMode),
-                  backgroundImage:
-                      photoUrl.isNotEmpty ? NetworkImage(photoUrl) : null,
+                  backgroundImage: photoUrl.isNotEmpty
+                      ? NetworkImage(photoUrl)
+                      : null,
                   child: photoUrl.isEmpty
                       ? Text(
                           creatorName.isNotEmpty
                               ? creatorName[0].toUpperCase()
                               : '?',
-                          style: AppTypography.heading2(isDarkMode).copyWith(
-                            color: AppColors.brandYellow,
-                          ),
+                          style: AppTypography.heading2(
+                            isDarkMode,
+                          ).copyWith(color: AppColors.brandYellow),
                         )
                       : null,
                 ),
@@ -107,8 +113,9 @@ class CreatorProfileWidget extends StatelessWidget {
                       Text(
                         '$age años',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: (isDarkMode ? Colors.white : Colors.black).withAlpha((0.87 * 255).round()),
-                            ),
+                          color: (isDarkMode ? Colors.white : Colors.black)
+                              .withAlpha((0.87 * 255).round()),
+                        ),
                       ),
                     ],
                     // Nivel y valoración del usuario
@@ -118,18 +125,18 @@ class CreatorProfileWidget extends StatelessWidget {
                         if (creatorData['level'] != null) ...[
                           Container(
                             padding: EdgeInsets.symmetric(
-                                horizontal: AppSpacing.xl,
-                                vertical: AppSpacing.xs),
+                              horizontal: AppSpacing.xl,
+                              vertical: AppSpacing.xs,
+                            ),
                             decoration: BoxDecoration(
-                              color: AppColors.brandYellow
-                                  .withAlpha((0.3 * 255).round()),
+                              color: AppColors.brandYellow.withAlpha(
+                                (0.3 * 255).round(),
+                              ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
                               creatorData['level'] as String,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
+                              style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     color: AppColors.brandYellow,
                                     fontWeight: FontWeight.bold,
@@ -141,11 +148,13 @@ class CreatorProfileWidget extends StatelessWidget {
                         if (creatorData['rating'] != null) ...[
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: AppSpacing.xl,
-                                vertical: AppSpacing.xs),
+                              horizontal: AppSpacing.xl,
+                              vertical: AppSpacing.xs,
+                            ),
                             decoration: BoxDecoration(
-                              color: AppColors.brandYellow
-                                  .withAlpha((0.3 * 255).round()),
+                              color: AppColors.brandYellow.withAlpha(
+                                (0.3 * 255).round(),
+                              ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -160,9 +169,7 @@ class CreatorProfileWidget extends StatelessWidget {
                                 Text(
                                   (creatorData['rating'] as num)
                                       .toStringAsFixed(1),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium
+                                  style: Theme.of(context).textTheme.bodyMedium
                                       ?.copyWith(
                                         color: AppColors.brandYellow,
                                         fontWeight: FontWeight.bold,
@@ -179,8 +186,11 @@ class CreatorProfileWidget extends StatelessWidget {
               ),
               // Ver perfil botón
               IconButton(
-                icon: Icon(Icons.arrow_forward_ios,
-                    size: 18, color: AppColors.brandYellow),
+                icon: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18,
+                  color: AppColors.brandYellow,
+                ),
                 onPressed: () {
                   context.push('/otherUserProfile/$creatorId');
                 },

@@ -77,28 +77,24 @@ void main() {
 
       // Get the created plan ID
       String planId = '';
-      createResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          planId = plan.id;
-          expect(planId, isNotEmpty);
-        },
-      );
+      createResult.fold((failure) => fail('Should not return failure'), (plan) {
+        planId = plan.id;
+        expect(planId, isNotEmpty);
+      });
 
       // Retrieve the plan by ID
       final retrieveResult = await repository.getById(planId);
 
       // Verify retrieval
-      retrieveResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          expect(plan, isNotNull);
-          expect(plan?.id, equals(planId));
-          expect(plan?.title, equals(testPlan.title));
-          expect(plan?.description, equals(testPlan.description));
-          expect(plan?.creatorId, equals(testPlan.creatorId));
-        },
-      );
+      retrieveResult.fold((failure) => fail('Should not return failure'), (
+        plan,
+      ) {
+        expect(plan, isNotNull);
+        expect(plan?.id, equals(planId));
+        expect(plan?.title, equals(testPlan.title));
+        expect(plan?.description, equals(testPlan.description));
+        expect(plan?.creatorId, equals(testPlan.creatorId));
+      });
     });
 
     test('should update an existing plan in Firestore', () async {
@@ -107,13 +103,10 @@ void main() {
 
       // Get the created plan ID
       String planId = '';
-      createResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          planId = plan.id;
-          expect(planId, isNotEmpty);
-        },
-      );
+      createResult.fold((failure) => fail('Should not return failure'), (plan) {
+        planId = plan.id;
+        expect(planId, isNotEmpty);
+      });
 
       // Now update the plan
       final updatedPlan = testPlan.copyWith(
@@ -125,26 +118,22 @@ void main() {
       final updateResult = await repository.update(updatedPlan);
 
       // Verify update was successful
-      updateResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          expect(plan.id, equals(planId));
-          expect(plan.title, equals('Updated Title'));
-          expect(plan.description, equals('Updated Description'));
-        },
-      );
+      updateResult.fold((failure) => fail('Should not return failure'), (plan) {
+        expect(plan.id, equals(planId));
+        expect(plan.title, equals('Updated Title'));
+        expect(plan.description, equals('Updated Description'));
+      });
 
       // Verify the update is persisted in the database
       final retrieveResult = await repository.getById(planId);
 
-      retrieveResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          expect(plan, isNotNull);
-          expect(plan?.title, equals('Updated Title'));
-          expect(plan?.description, equals('Updated Description'));
-        },
-      );
+      retrieveResult.fold((failure) => fail('Should not return failure'), (
+        plan,
+      ) {
+        expect(plan, isNotNull);
+        expect(plan?.title, equals('Updated Title'));
+        expect(plan?.description, equals('Updated Description'));
+      });
     });
 
     test('should delete a plan from Firestore', () async {
@@ -153,13 +142,10 @@ void main() {
 
       // Get the created plan ID
       String planId = '';
-      createResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plan) {
-          planId = plan.id;
-          expect(planId, isNotEmpty);
-        },
-      );
+      createResult.fold((failure) => fail('Should not return failure'), (plan) {
+        planId = plan.id;
+        expect(planId, isNotEmpty);
+      });
 
       // Now delete the plan
       final deleteResult = await repository.delete(planId);
@@ -198,18 +184,17 @@ void main() {
       final getResult = await repository.getAll(limit: 10);
 
       // Verify we got all plans
-      getResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plans) {
-          expect(plans, isNotEmpty);
-          expect(plans.length, equals(3));
+      getResult.fold((failure) => fail('Should not return failure'), (plans) {
+        expect(plans, isNotEmpty);
+        expect(plans.length, equals(3));
 
-          // Verify the plans have the expected titles
-          final titles = plans.map((p) => p.title).toList();
-          expect(titles,
-              containsAll(['Test Plan 0', 'Test Plan 1', 'Test Plan 2']));
-        },
-      );
+        // Verify the plans have the expected titles
+        final titles = plans.map((p) => p.title).toList();
+        expect(
+          titles,
+          containsAll(['Test Plan 0', 'Test Plan 1', 'Test Plan 2']),
+        );
+      });
     });
 
     test('should filter plans by category', () async {
@@ -233,18 +218,17 @@ void main() {
       final searchResult = await repository.search({'category': 'sports'});
 
       // Verify we get only sports plans
-      searchResult.fold(
-        (failure) => fail('Should not return failure'),
-        (plans) {
-          expect(plans, isNotEmpty);
-          expect(plans.length, equals(2)); // We created 2 sports plans
+      searchResult.fold((failure) => fail('Should not return failure'), (
+        plans,
+      ) {
+        expect(plans, isNotEmpty);
+        expect(plans.length, equals(2)); // We created 2 sports plans
 
-          // Verify all plans have sports category
-          for (final plan in plans) {
-            expect(plan.category, equals('sports'));
-          }
-        },
-      );
+        // Verify all plans have sports category
+        for (final plan in plans) {
+          expect(plan.category, equals('sports'));
+        }
+      });
     });
 
     test('should retrieve plans created by a specific user', () async {
@@ -268,18 +252,15 @@ void main() {
       final result = await repository.getPlansByUserId('user1');
 
       // Verify we get only user1's plans
-      result.fold(
-        (failure) => fail('Should not return failure'),
-        (plans) {
-          expect(plans, isNotEmpty);
-          expect(plans.length, equals(2)); // We created 2 plans for user1
+      result.fold((failure) => fail('Should not return failure'), (plans) {
+        expect(plans, isNotEmpty);
+        expect(plans.length, equals(2)); // We created 2 plans for user1
 
-          // Verify all plans have user1 as creator
-          for (final plan in plans) {
-            expect(plan.creatorId, equals('user1'));
-          }
-        },
-      );
+        // Verify all plans have user1 as creator
+        for (final plan in plans) {
+          expect(plan.creatorId, equals('user1'));
+        }
+      });
     });
   });
 }

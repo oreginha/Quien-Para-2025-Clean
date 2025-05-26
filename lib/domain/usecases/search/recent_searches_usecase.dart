@@ -5,28 +5,20 @@ class GetRecentSearchesParams {
   final String userId;
   final int limit;
 
-  const GetRecentSearchesParams({
-    required this.userId,
-    this.limit = 5,
-  });
+  const GetRecentSearchesParams({required this.userId, this.limit = 5});
 }
 
 class SaveSearchQueryParams {
   final String userId;
   final String query;
 
-  const SaveSearchQueryParams({
-    required this.userId,
-    required this.query,
-  });
+  const SaveSearchQueryParams({required this.userId, required this.query});
 }
 
 class ClearRecentSearchesParams {
   final String userId;
 
-  const ClearRecentSearchesParams({
-    required this.userId,
-  });
+  const ClearRecentSearchesParams({required this.userId});
 }
 
 class GetRecentSearchesUseCase {
@@ -61,8 +53,6 @@ class ClearRecentSearchesUseCase {
   ClearRecentSearchesUseCase(this._searchRepository);
 
   Future<void> execute(ClearRecentSearchesParams params) {
-    return _searchRepository.clearRecentSearches(
-      userId: params.userId,
-    );
+    return _searchRepository.clearRecentSearches(userId: params.userId);
   }
 }

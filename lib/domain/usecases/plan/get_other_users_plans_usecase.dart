@@ -20,26 +20,35 @@ class GetOtherUserPlansUseCase {
   /// Parámetros:
   /// - currentUserId: ID del usuario actual cuyos planes serán excluidos
   /// - limit: número máximo de planes a recuperar (por defecto: 20)
-  Stream<Either<AppFailure, List<PlanEntity>>> execute(
-      {required String currentUserId, int limit = 20}) {
+  Stream<Either<AppFailure, List<PlanEntity>>> execute({
+    required String currentUserId,
+    int limit = 20,
+  }) {
     try {
       if (kDebugMode) {
         print(
-            'GetOtherUserPlansUseCase: Obteniendo planes de otros usuarios, ID de usuario actual: $currentUserId');
+          'GetOtherUserPlansUseCase: Obteniendo planes de otros usuarios, ID de usuario actual: $currentUserId',
+        );
       }
 
       return _planRepository.getOtherUserPlansStream(
-          currentUserId: currentUserId, limit: limit);
+        currentUserId: currentUserId,
+        limit: limit,
+      );
     } catch (e) {
       if (kDebugMode) {
         print('GetOtherUserPlansUseCase: Error al obtener planes: $e');
       }
 
       // En caso de error, retornamos un stream con Either.left
-      return Stream.value(Left(AppFailure(
-        message: 'Error al obtener planes: $e',
-        code: 'GET_OTHER_USERS_PLANS_ERROR',
-      )));
+      return Stream.value(
+        Left(
+          AppFailure(
+            message: 'Error al obtener planes: $e',
+            code: 'GET_OTHER_USERS_PLANS_ERROR',
+          ),
+        ),
+      );
     }
   }
 

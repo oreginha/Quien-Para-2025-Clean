@@ -17,15 +17,15 @@ class FirebaseChatDataSource implements ChatDataSource {
   final FirebaseFirestore _firestore;
   final Logger _logger;
 
-  FirebaseChatDataSource({
-    FirebaseFirestore? firestore,
-    Logger? logger,
-  })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _logger = logger ?? Logger();
+  FirebaseChatDataSource({FirebaseFirestore? firestore, Logger? logger})
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _logger = logger ?? Logger();
 
   @override
   Future<String> createConversation(
-      List<String> participants, String initialMessage) async {
+    List<String> participants,
+    String initialMessage,
+  ) async {
     try {
       // Ensure participants list is sorted to maintain consistent conversation IDs
       final sortedParticipants = [...participants]..sort();
@@ -44,9 +44,10 @@ class FirebaseChatDataSource implements ChatDataSource {
         // Send the initial message if provided
         if (initialMessage.isNotEmpty) {
           await sendMessage(
-              existingConversationId,
-              participants[0], // Assuming the first participant is the sender
-              initialMessage);
+            existingConversationId,
+            participants[0], // Assuming the first participant is the sender
+            initialMessage,
+          );
         }
 
         return existingConversationId;
@@ -63,9 +64,10 @@ class FirebaseChatDataSource implements ChatDataSource {
       // Send the initial message
       if (initialMessage.isNotEmpty) {
         await sendMessage(
-            conversationDoc.id,
-            participants[0], // Assuming the first participant is the sender
-            initialMessage);
+          conversationDoc.id,
+          participants[0], // Assuming the first participant is the sender
+          initialMessage,
+        );
       }
 
       return conversationDoc.id;
@@ -143,7 +145,7 @@ class FirebaseChatDataSource implements ChatDataSource {
           lastMessageSenderId: data['lastSenderId'] as String?,
           unreadCount:
               (data['unreadCount'] as Map<String, dynamic>?)?[userId] as int? ??
-                  0,
+              0,
         );
 
         // Convertir modelo a entidad usando el mapper
@@ -159,18 +161,21 @@ class FirebaseChatDataSource implements ChatDataSource {
 
   @override
   Future<MessageEntity> sendMessage(
-      String conversationId, String senderId, String content) async {
+    String conversationId,
+    String senderId,
+    String content,
+  ) async {
     try {
       final messageDoc = await _firestore
           .collection('conversations')
           .doc(conversationId)
           .collection('messages')
           .add({
-        'senderId': senderId,
-        'content': content,
-        'timestamp': FieldValue.serverTimestamp(),
-        'read': false,
-      });
+            'senderId': senderId,
+            'content': content,
+            'timestamp': FieldValue.serverTimestamp(),
+            'read': false,
+          });
 
       // Update conversation with last message info
       await _firestore.collection('conversations').doc(conversationId).update({
@@ -206,24 +211,24 @@ class FirebaseChatDataSource implements ChatDataSource {
         .orderBy('timestamp', descending: true)
         .snapshots()
         .map((snapshot) {
-      // Convertir documentos a modelos de mensaje
-      final List<ChatMessageModel> messageModels = snapshot.docs.map((doc) {
-        final data = doc.data();
-        final Timestamp? timestamp = data['timestamp'] as Timestamp?;
+          // Convertir documentos a modelos de mensaje
+          final List<ChatMessageModel> messageModels = snapshot.docs.map((doc) {
+            final data = doc.data();
+            final Timestamp? timestamp = data['timestamp'] as Timestamp?;
 
-        return ChatMessageModel(
-          id: doc.id,
-          chatId: conversationId,
-          senderId: data['senderId'] as String,
-          content: data['content'] as String,
-          timestamp: timestamp?.toDate() ?? DateTime.now(),
-          isRead: data['read'] as bool? ?? false,
-        );
-      }).toList();
+            return ChatMessageModel(
+              id: doc.id,
+              chatId: conversationId,
+              senderId: data['senderId'] as String,
+              content: data['content'] as String,
+              timestamp: timestamp?.toDate() ?? DateTime.now(),
+              isRead: data['read'] as bool? ?? false,
+            );
+          }).toList();
 
-      // Convertir modelos a entidades usando el mapper
-      return ChatMessageMapper.toEntityList(messageModels);
-    });
+          // Convertir modelos a entidades usando el mapper
+          return ChatMessageMapper.toEntityList(messageModels);
+        });
   }
 
   @override

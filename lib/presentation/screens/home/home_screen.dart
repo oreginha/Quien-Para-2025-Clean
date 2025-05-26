@@ -68,8 +68,9 @@ class _HomeScreenState extends State<HomeScreen>
         // Usar el nuevo componente responsive
         return NewResponsiveScaffold(
           screenName: 'HomeScreen',
-          darkPrimaryBackground:
-              isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
+          darkPrimaryBackground: isDarkMode
+              ? AppColors.darkBackground
+              : AppColors.lightBackground,
           appBar: homeAppBar,
           body: homeContent,
           currentIndex: 2, // Índice por defecto (Home)
@@ -84,14 +85,15 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     return AppBar(
-      backgroundColor:
-          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
+      backgroundColor: isDarkMode
+          ? AppColors.darkBackground
+          : AppColors.lightBackground,
       elevation: 0,
       title: Text(
         '¿Quién para?',
-        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+        style: Theme.of(
+          context,
+        ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -123,10 +125,12 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores según el tema
-    final textPrimary =
-        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary =
-        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary = isDarkMode
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
+    final textSecondary = isDarkMode
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
 
     // Extraer datos de usuario de manera eficiente
     final Map<String, dynamic> userData = state.user ?? <String, dynamic>{};
@@ -143,12 +147,14 @@ class _HomeScreenState extends State<HomeScreen>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Perfil del usuario
-          _buildProfileSection(context,
-              name: name,
-              age: age,
-              photoUrl: photoUrl,
-              level: level,
-              rating: rating),
+          _buildProfileSection(
+            context,
+            name: name,
+            age: age,
+            photoUrl: photoUrl,
+            level: level,
+            rating: rating,
+          ),
 
           const SizedBox(height: 30),
 
@@ -171,10 +177,12 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores según el tema
-    final textPrimary =
-        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary =
-        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary = isDarkMode
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
+    final textSecondary = isDarkMode
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -248,10 +256,7 @@ class _HomeScreenState extends State<HomeScreen>
           // Edad
           Text(
             age > 0 ? '$age años' : '',
-            style: TextStyle(
-              color: textSecondary,
-              fontSize: 20,
-            ),
+            style: TextStyle(color: textSecondary, fontSize: 20),
           ),
           const SizedBox(height: 20),
           // Rating y nivel
@@ -259,8 +264,10 @@ class _HomeScreenState extends State<HomeScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.brandYellow,
                   borderRadius: BorderRadius.circular(20),
@@ -286,8 +293,10 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               const SizedBox(width: 16),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFF3182CE),
                   borderRadius: BorderRadius.circular(20),
@@ -333,8 +342,9 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores según el tema
-    final textPrimary =
-        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textPrimary = isDarkMode
+        ? AppColors.darkTextPrimary
+        : AppColors.lightTextPrimary;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
@@ -358,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen>
             features: const <String>[
               '3 planes/mes',
               'Chat básico',
-              'Perfil simple'
+              'Perfil simple',
             ],
             cardColor: AppColors.brandYellow,
             isFreePlan: true,
@@ -372,7 +382,7 @@ class _HomeScreenState extends State<HomeScreen>
             features: const <String>[
               '10 planes/mes',
               'Chat grupal',
-              'Perfil destacado'
+              'Perfil destacado',
             ],
             cardColor: AppColors.accentRed,
             isFreePlan: false,
@@ -417,15 +427,14 @@ class _HomeScreenState extends State<HomeScreen>
           // Encabezado con icono y título
           Row(
             children: [
-              Text(
-                icon,
-                style: const TextStyle(fontSize: 24),
-              ),
+              Text(icon, style: const TextStyle(fontSize: 24)),
               const SizedBox(width: 8),
               // Etiqueta FREE o Plus
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   color: isFreePlan
                       ? const Color(0xFF3182CE)
@@ -445,28 +454,27 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           const SizedBox(height: 24),
           // Lista de características
-          ...features.map((feature) => Padding(
-                padding: const EdgeInsets.only(bottom: 16),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.check,
-                      color: isFreePlan ? AppColors.success : Colors.white,
-                      size: 24,
+          ...features.map(
+            (feature) => Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.check,
+                    color: isFreePlan ? AppColors.success : Colors.white,
+                    size: 24,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      feature,
+                      style: TextStyle(color: textColor, fontSize: 18),
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        feature,
-                        style: TextStyle(
-                          color: textColor,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

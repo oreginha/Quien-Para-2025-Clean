@@ -12,7 +12,8 @@ part of 'applications_management_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ApplicationsManagementEvent {
@@ -26,8 +27,7 @@ mixin _$ApplicationsManagementEvent {
     required TResult Function(String filterType) filterApplications,
     required TResult Function(String query) searchApplications,
     required TResult Function(String viewType) changeView,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String planId)? initialize,
@@ -38,8 +38,7 @@ mixin _$ApplicationsManagementEvent {
     TResult? Function(String filterType)? filterApplications,
     TResult? Function(String query)? searchApplications,
     TResult? Function(String viewType)? changeView,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String planId)? initialize,
@@ -51,8 +50,7 @@ mixin _$ApplicationsManagementEvent {
     TResult Function(String query)? searchApplications,
     TResult Function(String viewType)? changeView,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
@@ -63,8 +61,7 @@ mixin _$ApplicationsManagementEvent {
     required TResult Function(_FilterApplications value) filterApplications,
     required TResult Function(_SearchApplications value) searchApplications,
     required TResult Function(_ChangeView value) changeView,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
@@ -75,8 +72,7 @@ mixin _$ApplicationsManagementEvent {
     TResult? Function(_FilterApplications value)? filterApplications,
     TResult? Function(_SearchApplications value)? searchApplications,
     TResult? Function(_ChangeView value)? changeView,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
@@ -88,22 +84,26 @@ mixin _$ApplicationsManagementEvent {
     TResult Function(_SearchApplications value)? searchApplications,
     TResult Function(_ChangeView value)? changeView,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ApplicationsManagementEventCopyWith<$Res> {
   factory $ApplicationsManagementEventCopyWith(
-          ApplicationsManagementEvent value,
-          $Res Function(ApplicationsManagementEvent) then) =
-      _$ApplicationsManagementEventCopyWithImpl<$Res,
-          ApplicationsManagementEvent>;
+    ApplicationsManagementEvent value,
+    $Res Function(ApplicationsManagementEvent) then,
+  ) =
+      _$ApplicationsManagementEventCopyWithImpl<
+        $Res,
+        ApplicationsManagementEvent
+      >;
 }
 
 /// @nodoc
-class _$ApplicationsManagementEventCopyWithImpl<$Res,
-        $Val extends ApplicationsManagementEvent>
+class _$ApplicationsManagementEventCopyWithImpl<
+  $Res,
+  $Val extends ApplicationsManagementEvent
+>
     implements $ApplicationsManagementEventCopyWith<$Res> {
   _$ApplicationsManagementEventCopyWithImpl(this._value, this._then);
 
@@ -119,8 +119,9 @@ class _$ApplicationsManagementEventCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$InitializeImplCopyWith<$Res> {
   factory _$$InitializeImplCopyWith(
-          _$InitializeImpl value, $Res Function(_$InitializeImpl) then) =
-      __$$InitializeImplCopyWithImpl<$Res>;
+    _$InitializeImpl value,
+    $Res Function(_$InitializeImpl) then,
+  ) = __$$InitializeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId});
 }
@@ -130,22 +131,23 @@ class __$$InitializeImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementEventCopyWithImpl<$Res, _$InitializeImpl>
     implements _$$InitializeImplCopyWith<$Res> {
   __$$InitializeImplCopyWithImpl(
-      _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
-      : super(_value, _then);
+    _$InitializeImpl _value,
+    $Res Function(_$InitializeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? planId = null,
-  }) {
-    return _then(_$InitializeImpl(
-      null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? planId = null}) {
+    return _then(
+      _$InitializeImpl(
+        null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -294,35 +296,37 @@ abstract class _Initialize implements ApplicationsManagementEvent {
 
 /// @nodoc
 abstract class _$$LoadApplicationsImplCopyWith<$Res> {
-  factory _$$LoadApplicationsImplCopyWith(_$LoadApplicationsImpl value,
-          $Res Function(_$LoadApplicationsImpl) then) =
-      __$$LoadApplicationsImplCopyWithImpl<$Res>;
+  factory _$$LoadApplicationsImplCopyWith(
+    _$LoadApplicationsImpl value,
+    $Res Function(_$LoadApplicationsImpl) then,
+  ) = __$$LoadApplicationsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId});
 }
 
 /// @nodoc
 class __$$LoadApplicationsImplCopyWithImpl<$Res>
-    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
-        _$LoadApplicationsImpl>
+    extends
+        _$ApplicationsManagementEventCopyWithImpl<$Res, _$LoadApplicationsImpl>
     implements _$$LoadApplicationsImplCopyWith<$Res> {
-  __$$LoadApplicationsImplCopyWithImpl(_$LoadApplicationsImpl _value,
-      $Res Function(_$LoadApplicationsImpl) _then)
-      : super(_value, _then);
+  __$$LoadApplicationsImplCopyWithImpl(
+    _$LoadApplicationsImpl _value,
+    $Res Function(_$LoadApplicationsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? planId = null,
-  }) {
-    return _then(_$LoadApplicationsImpl(
-      null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? planId = null}) {
+    return _then(
+      _$LoadApplicationsImpl(
+        null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -357,7 +361,9 @@ class _$LoadApplicationsImpl implements _LoadApplications {
   @pragma('vm:prefer-inline')
   _$$LoadApplicationsImplCopyWith<_$LoadApplicationsImpl> get copyWith =>
       __$$LoadApplicationsImplCopyWithImpl<_$LoadApplicationsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -472,19 +478,21 @@ abstract class _LoadApplications implements ApplicationsManagementEvent {
 
 /// @nodoc
 abstract class _$$LoadUserProfilesImplCopyWith<$Res> {
-  factory _$$LoadUserProfilesImplCopyWith(_$LoadUserProfilesImpl value,
-          $Res Function(_$LoadUserProfilesImpl) then) =
-      __$$LoadUserProfilesImplCopyWithImpl<$Res>;
+  factory _$$LoadUserProfilesImplCopyWith(
+    _$LoadUserProfilesImpl value,
+    $Res Function(_$LoadUserProfilesImpl) then,
+  ) = __$$LoadUserProfilesImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$LoadUserProfilesImplCopyWithImpl<$Res>
-    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
-        _$LoadUserProfilesImpl>
+    extends
+        _$ApplicationsManagementEventCopyWithImpl<$Res, _$LoadUserProfilesImpl>
     implements _$$LoadUserProfilesImplCopyWith<$Res> {
-  __$$LoadUserProfilesImplCopyWithImpl(_$LoadUserProfilesImpl _value,
-      $Res Function(_$LoadUserProfilesImpl) _then)
-      : super(_value, _then);
+  __$$LoadUserProfilesImplCopyWithImpl(
+    _$LoadUserProfilesImpl _value,
+    $Res Function(_$LoadUserProfilesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -614,35 +622,37 @@ abstract class _LoadUserProfiles implements ApplicationsManagementEvent {
 
 /// @nodoc
 abstract class _$$AcceptApplicationImplCopyWith<$Res> {
-  factory _$$AcceptApplicationImplCopyWith(_$AcceptApplicationImpl value,
-          $Res Function(_$AcceptApplicationImpl) then) =
-      __$$AcceptApplicationImplCopyWithImpl<$Res>;
+  factory _$$AcceptApplicationImplCopyWith(
+    _$AcceptApplicationImpl value,
+    $Res Function(_$AcceptApplicationImpl) then,
+  ) = __$$AcceptApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String applicationId});
 }
 
 /// @nodoc
 class __$$AcceptApplicationImplCopyWithImpl<$Res>
-    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
-        _$AcceptApplicationImpl>
+    extends
+        _$ApplicationsManagementEventCopyWithImpl<$Res, _$AcceptApplicationImpl>
     implements _$$AcceptApplicationImplCopyWith<$Res> {
-  __$$AcceptApplicationImplCopyWithImpl(_$AcceptApplicationImpl _value,
-      $Res Function(_$AcceptApplicationImpl) _then)
-      : super(_value, _then);
+  __$$AcceptApplicationImplCopyWithImpl(
+    _$AcceptApplicationImpl _value,
+    $Res Function(_$AcceptApplicationImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? applicationId = null,
-  }) {
-    return _then(_$AcceptApplicationImpl(
-      null == applicationId
-          ? _value.applicationId
-          : applicationId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? applicationId = null}) {
+    return _then(
+      _$AcceptApplicationImpl(
+        null == applicationId
+            ? _value.applicationId
+            : applicationId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -678,7 +688,9 @@ class _$AcceptApplicationImpl implements _AcceptApplication {
   @pragma('vm:prefer-inline')
   _$$AcceptApplicationImplCopyWith<_$AcceptApplicationImpl> get copyWith =>
       __$$AcceptApplicationImplCopyWithImpl<_$AcceptApplicationImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -794,35 +806,37 @@ abstract class _AcceptApplication implements ApplicationsManagementEvent {
 
 /// @nodoc
 abstract class _$$RejectApplicationImplCopyWith<$Res> {
-  factory _$$RejectApplicationImplCopyWith(_$RejectApplicationImpl value,
-          $Res Function(_$RejectApplicationImpl) then) =
-      __$$RejectApplicationImplCopyWithImpl<$Res>;
+  factory _$$RejectApplicationImplCopyWith(
+    _$RejectApplicationImpl value,
+    $Res Function(_$RejectApplicationImpl) then,
+  ) = __$$RejectApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String applicationId});
 }
 
 /// @nodoc
 class __$$RejectApplicationImplCopyWithImpl<$Res>
-    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
-        _$RejectApplicationImpl>
+    extends
+        _$ApplicationsManagementEventCopyWithImpl<$Res, _$RejectApplicationImpl>
     implements _$$RejectApplicationImplCopyWith<$Res> {
-  __$$RejectApplicationImplCopyWithImpl(_$RejectApplicationImpl _value,
-      $Res Function(_$RejectApplicationImpl) _then)
-      : super(_value, _then);
+  __$$RejectApplicationImplCopyWithImpl(
+    _$RejectApplicationImpl _value,
+    $Res Function(_$RejectApplicationImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? applicationId = null,
-  }) {
-    return _then(_$RejectApplicationImpl(
-      null == applicationId
-          ? _value.applicationId
-          : applicationId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? applicationId = null}) {
+    return _then(
+      _$RejectApplicationImpl(
+        null == applicationId
+            ? _value.applicationId
+            : applicationId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -858,7 +872,9 @@ class _$RejectApplicationImpl implements _RejectApplication {
   @pragma('vm:prefer-inline')
   _$$RejectApplicationImplCopyWith<_$RejectApplicationImpl> get copyWith =>
       __$$RejectApplicationImplCopyWithImpl<_$RejectApplicationImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -974,35 +990,40 @@ abstract class _RejectApplication implements ApplicationsManagementEvent {
 
 /// @nodoc
 abstract class _$$FilterApplicationsImplCopyWith<$Res> {
-  factory _$$FilterApplicationsImplCopyWith(_$FilterApplicationsImpl value,
-          $Res Function(_$FilterApplicationsImpl) then) =
-      __$$FilterApplicationsImplCopyWithImpl<$Res>;
+  factory _$$FilterApplicationsImplCopyWith(
+    _$FilterApplicationsImpl value,
+    $Res Function(_$FilterApplicationsImpl) then,
+  ) = __$$FilterApplicationsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String filterType});
 }
 
 /// @nodoc
 class __$$FilterApplicationsImplCopyWithImpl<$Res>
-    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
-        _$FilterApplicationsImpl>
+    extends
+        _$ApplicationsManagementEventCopyWithImpl<
+          $Res,
+          _$FilterApplicationsImpl
+        >
     implements _$$FilterApplicationsImplCopyWith<$Res> {
-  __$$FilterApplicationsImplCopyWithImpl(_$FilterApplicationsImpl _value,
-      $Res Function(_$FilterApplicationsImpl) _then)
-      : super(_value, _then);
+  __$$FilterApplicationsImplCopyWithImpl(
+    _$FilterApplicationsImpl _value,
+    $Res Function(_$FilterApplicationsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? filterType = null,
-  }) {
-    return _then(_$FilterApplicationsImpl(
-      null == filterType
-          ? _value.filterType
-          : filterType // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? filterType = null}) {
+    return _then(
+      _$FilterApplicationsImpl(
+        null == filterType
+            ? _value.filterType
+            : filterType // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1038,7 +1059,9 @@ class _$FilterApplicationsImpl implements _FilterApplications {
   @pragma('vm:prefer-inline')
   _$$FilterApplicationsImplCopyWith<_$FilterApplicationsImpl> get copyWith =>
       __$$FilterApplicationsImplCopyWithImpl<_$FilterApplicationsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1154,35 +1177,40 @@ abstract class _FilterApplications implements ApplicationsManagementEvent {
 
 /// @nodoc
 abstract class _$$SearchApplicationsImplCopyWith<$Res> {
-  factory _$$SearchApplicationsImplCopyWith(_$SearchApplicationsImpl value,
-          $Res Function(_$SearchApplicationsImpl) then) =
-      __$$SearchApplicationsImplCopyWithImpl<$Res>;
+  factory _$$SearchApplicationsImplCopyWith(
+    _$SearchApplicationsImpl value,
+    $Res Function(_$SearchApplicationsImpl) then,
+  ) = __$$SearchApplicationsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
 class __$$SearchApplicationsImplCopyWithImpl<$Res>
-    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
-        _$SearchApplicationsImpl>
+    extends
+        _$ApplicationsManagementEventCopyWithImpl<
+          $Res,
+          _$SearchApplicationsImpl
+        >
     implements _$$SearchApplicationsImplCopyWith<$Res> {
-  __$$SearchApplicationsImplCopyWithImpl(_$SearchApplicationsImpl _value,
-      $Res Function(_$SearchApplicationsImpl) _then)
-      : super(_value, _then);
+  __$$SearchApplicationsImplCopyWithImpl(
+    _$SearchApplicationsImpl _value,
+    $Res Function(_$SearchApplicationsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$SearchApplicationsImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? query = null}) {
+    return _then(
+      _$SearchApplicationsImpl(
+        null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1217,7 +1245,9 @@ class _$SearchApplicationsImpl implements _SearchApplications {
   @pragma('vm:prefer-inline')
   _$$SearchApplicationsImplCopyWith<_$SearchApplicationsImpl> get copyWith =>
       __$$SearchApplicationsImplCopyWithImpl<_$SearchApplicationsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1334,8 +1364,9 @@ abstract class _SearchApplications implements ApplicationsManagementEvent {
 /// @nodoc
 abstract class _$$ChangeViewImplCopyWith<$Res> {
   factory _$$ChangeViewImplCopyWith(
-          _$ChangeViewImpl value, $Res Function(_$ChangeViewImpl) then) =
-      __$$ChangeViewImplCopyWithImpl<$Res>;
+    _$ChangeViewImpl value,
+    $Res Function(_$ChangeViewImpl) then,
+  ) = __$$ChangeViewImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String viewType});
 }
@@ -1345,22 +1376,23 @@ class __$$ChangeViewImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementEventCopyWithImpl<$Res, _$ChangeViewImpl>
     implements _$$ChangeViewImplCopyWith<$Res> {
   __$$ChangeViewImplCopyWithImpl(
-      _$ChangeViewImpl _value, $Res Function(_$ChangeViewImpl) _then)
-      : super(_value, _then);
+    _$ChangeViewImpl _value,
+    $Res Function(_$ChangeViewImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? viewType = null,
-  }) {
-    return _then(_$ChangeViewImpl(
-      null == viewType
-          ? _value.viewType
-          : viewType // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? viewType = null}) {
+    return _then(
+      _$ChangeViewImpl(
+        null == viewType
+            ? _value.viewType
+            : viewType // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 

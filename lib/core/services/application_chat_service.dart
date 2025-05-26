@@ -12,18 +12,20 @@ class ApplicationChatService {
 
   /// Constructor por defecto que utiliza la instancia de Firestore
   ApplicationChatService({FirebaseFirestore? firestore})
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+    : _firestore = firestore ?? FirebaseFirestore.instance;
 
   /// Crea un chat para una aplicación que ha sido aceptada
   ///
   /// Retorna el ID del chat creado o null si hubo un error
   Future<String?> createChatForAcceptedApplication(
-      ApplicationEntity application) async {
+    ApplicationEntity application,
+  ) async {
     try {
       if (application.status != 'accepted') {
         if (kDebugMode) {
           print(
-              '⚠️ No se puede crear chat para una aplicación que no está aceptada');
+            '⚠️ No se puede crear chat para una aplicación que no está aceptada',
+          );
         }
         return null;
       }
@@ -50,7 +52,7 @@ class ApplicationChatService {
         'planId': application.planId,
         'participants': [
           application.applicantId, // Aplicante
-          application.planId // Creador del plan
+          application.planId, // Creador del plan
         ],
         'createdAt': FieldValue.serverTimestamp(),
         'lastMessage': null,
@@ -65,12 +67,13 @@ class ApplicationChatService {
             '¡Chat iniciado! Ahora pueden coordinar los detalles del plan.',
         'timestamp': FieldValue.serverTimestamp(),
         'read': false,
-        'type': 'system'
+        'type': 'system',
       });
 
       if (kDebugMode) {
         print(
-            '✅ Chat creado exitosamente para la aplicación ${application.id}');
+          '✅ Chat creado exitosamente para la aplicación ${application.id}',
+        );
       }
 
       return newChatRef.id;

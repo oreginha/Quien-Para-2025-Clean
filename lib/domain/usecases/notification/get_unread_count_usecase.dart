@@ -19,16 +19,19 @@ class GetUnreadCountUseCase implements UseCaseInterface<int, String> {
   @override
   Future<Either<AppFailure, int>> execute(String userId) async {
     _logger.d(
-        'GetUnreadCountUseCase: Obteniendo cantidad de notificaciones sin leer para: $userId');
+      'GetUnreadCountUseCase: Obteniendo cantidad de notificaciones sin leer para: $userId',
+    );
 
     // Validar parámetros
     if (userId.isEmpty) {
       _logger.w('GetUnreadCountUseCase: ID de usuario vacío');
-      return Left(ValidationFailure(
-        message: 'El ID del usuario no puede estar vacío',
-        field: 'userId',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID del usuario no puede estar vacío',
+          field: 'userId',
+          code: '',
+        ),
+      );
     }
 
     // Delegar al repositorio

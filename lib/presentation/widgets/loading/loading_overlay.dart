@@ -55,7 +55,9 @@ class LoadingOverlay extends StatelessWidget {
 
     // Devolver un Scaffold para overlay completo
     return Scaffold(
-      backgroundColor: AppColors.getSecondaryBackground(Theme.of(context).brightness == Brightness.dark),
+      backgroundColor: AppColors.getSecondaryBackground(
+        Theme.of(context).brightness == Brightness.dark,
+      ),
       body: Center(child: loadingIndicator),
     );
   }
@@ -95,27 +97,27 @@ class CustomSnackbar extends SnackBar {
     bool isSuccess = true,
     required BuildContext context,
   }) : super(
-          content: Row(
-            children: <Widget>[
-              Icon(
-                isSuccess ? Icons.check_circle : Icons.error,
-                color: isSuccess ? Colors.green : Colors.red,
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Text(
-                  message,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-          backgroundColor: AppColors.getSecondaryBackground(Theme.of(context).brightness == Brightness.dark),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        );
+         content: Row(
+           children: <Widget>[
+             Icon(
+               isSuccess ? Icons.check_circle : Icons.error,
+               color: isSuccess ? Colors.green : Colors.red,
+             ),
+             const SizedBox(width: 10),
+             Expanded(
+               child: Text(
+                 message,
+                 style: const TextStyle(color: Colors.white),
+               ),
+             ),
+           ],
+         ),
+         backgroundColor: AppColors.getSecondaryBackground(
+           Theme.of(context).brightness == Brightness.dark,
+         ),
+         behavior: SnackBarBehavior.floating,
+         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+       );
 }
 
 /// Extensión para mostrar un SnackBar personalizado

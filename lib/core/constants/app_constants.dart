@@ -54,15 +54,18 @@ class AppConstants {
 class AppColors2 {
   static const Color brandYellow = Color(0xFFF39C12); // Azul principal
   static const Color secondaryColor = Color(0xFF2ECC71); // Verde secundario
-  static const Color accentColor =
-      Color(0xFFF39C12); // Amarillo/Naranja de acento
-  static const Color darkPrimaryBackground =
-      Color(0xFFECF0F1); // Gris claro de fondo
+  static const Color accentColor = Color(
+    0xFFF39C12,
+  ); // Amarillo/Naranja de acento
+  static const Color darkPrimaryBackground = Color(
+    0xFFECF0F1,
+  ); // Gris claro de fondo
   static const Color textColor = Color(0xFF2C3E50); // Texto oscuro
   static const Color accentRed = Color(0xFFE74C3C); // Rojo para errores
   static const Color accentGreen = Color(0xFF27AE60); // Verde para éxitos
-  static const Color disabledColor =
-      Color(0xFFBDC3C7); // Gris para deshabilitado
+  static const Color disabledColor = Color(
+    0xFFBDC3C7,
+  ); // Gris para deshabilitado
   static const Color whiteColor = Colors.white; // Blanco
   static const Color blackColor = Colors.black; // Negro
 }
@@ -149,36 +152,36 @@ class PlanType {
         'musica',
         'Música',
         'Música internacional',
-        'música'
-      ]
+        'música',
+      ],
     },
     'Deportes': {
       'emoji': '🏟️',
-      'firestoreCategories': ['deportes', 'Deportes']
+      'firestoreCategories': ['deportes', 'Deportes'],
     },
     'Teatro': {
       'emoji': '🎭',
-      'firestoreCategories': ['teatro', 'Teatro']
+      'firestoreCategories': ['teatro', 'Teatro'],
     },
     'Cine': {
       'emoji': '🎬',
-      'firestoreCategories': ['cine', 'Cine']
+      'firestoreCategories': ['cine', 'Cine'],
     },
     'Eventos Sociales': {
       'emoji': '👥',
-      'firestoreCategories': ['social', 'Social']
+      'firestoreCategories': ['social', 'Social'],
     },
     'Restaurantes': {
       'emoji': '🍽️',
-      'firestoreCategories': ['restaurantes', 'Restaurantes']
+      'firestoreCategories': ['restaurantes', 'Restaurantes'],
     },
     'Infantiles': {
       'emoji': '🎪',
-      'firestoreCategories': ['infantiles', 'Infantiles']
+      'firestoreCategories': ['infantiles', 'Infantiles'],
     },
     'Festivales': {
       'emoji': '🎉',
-      'firestoreCategories': ['festivales', 'Festivales']
-    }
+      'firestoreCategories': ['festivales', 'Festivales'],
+    },
   };
 }

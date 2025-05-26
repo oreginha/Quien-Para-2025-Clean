@@ -69,11 +69,7 @@ class ProfileCardWidget extends StatelessWidget {
                 color: borderColor,
               ),
               child: Center(
-                child: Icon(
-                  Icons.person,
-                  size: 80,
-                  color: textSecondary,
-                ),
+                child: Icon(Icons.person, size: 80, color: textSecondary),
               ),
             ),
 
@@ -117,26 +113,18 @@ class ProfileCardWidget extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.location_on,
-                      size: 16,
-                      color: textSecondary,
-                    ),
+                    Icon(Icons.location_on, size: 16, color: textSecondary),
                     const SizedBox(width: 4),
                     Text(
                       userData['location']?.toString() ?? 'Sin ubicación',
-                      style: TextStyle(
-                        color: textSecondary,
-                      ),
+                      style: TextStyle(color: textSecondary),
                     ),
                   ],
                 ),
                 const SizedBox(height: 16),
                 Text(
                   userData['bio']?.toString() ?? 'Sin biografía',
-                  style: TextStyle(
-                    color: textPrimary,
-                  ),
+                  style: TextStyle(color: textPrimary),
                 ),
               ],
             ),

@@ -12,7 +12,8 @@ part of 'search_filters_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 SearchFiltersModel _$SearchFiltersModelFromJson(Map<String, dynamic> json) {
   return _SearchFiltersModel.fromJson(json);
@@ -40,15 +41,17 @@ mixin _$SearchFiltersModel {
 /// @nodoc
 abstract class $SearchFiltersModelCopyWith<$Res> {
   factory $SearchFiltersModelCopyWith(
-          SearchFiltersModel value, $Res Function(SearchFiltersModel) then) =
-      _$SearchFiltersModelCopyWithImpl<$Res, SearchFiltersModel>;
+    SearchFiltersModel value,
+    $Res Function(SearchFiltersModel) then,
+  ) = _$SearchFiltersModelCopyWithImpl<$Res, SearchFiltersModel>;
   @useResult
-  $Res call(
-      {double distanceValue,
-      double minDistance,
-      double maxDistance,
-      Map<String, bool> conditions,
-      Map<String, bool> additionalServices});
+  $Res call({
+    double distanceValue,
+    double minDistance,
+    double maxDistance,
+    Map<String, bool> conditions,
+    Map<String, bool> additionalServices,
+  });
 }
 
 /// @nodoc
@@ -72,54 +75,60 @@ class _$SearchFiltersModelCopyWithImpl<$Res, $Val extends SearchFiltersModel>
     Object? conditions = null,
     Object? additionalServices = null,
   }) {
-    return _then(_value.copyWith(
-      distanceValue: null == distanceValue
-          ? _value.distanceValue
-          : distanceValue // ignore: cast_nullable_to_non_nullable
-              as double,
-      minDistance: null == minDistance
-          ? _value.minDistance
-          : minDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      maxDistance: null == maxDistance
-          ? _value.maxDistance
-          : maxDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      conditions: null == conditions
-          ? _value.conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-      additionalServices: null == additionalServices
-          ? _value.additionalServices
-          : additionalServices // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            distanceValue: null == distanceValue
+                ? _value.distanceValue
+                : distanceValue // ignore: cast_nullable_to_non_nullable
+                      as double,
+            minDistance: null == minDistance
+                ? _value.minDistance
+                : minDistance // ignore: cast_nullable_to_non_nullable
+                      as double,
+            maxDistance: null == maxDistance
+                ? _value.maxDistance
+                : maxDistance // ignore: cast_nullable_to_non_nullable
+                      as double,
+            conditions: null == conditions
+                ? _value.conditions
+                : conditions // ignore: cast_nullable_to_non_nullable
+                      as Map<String, bool>,
+            additionalServices: null == additionalServices
+                ? _value.additionalServices
+                : additionalServices // ignore: cast_nullable_to_non_nullable
+                      as Map<String, bool>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SearchFiltersModelImplCopyWith<$Res>
     implements $SearchFiltersModelCopyWith<$Res> {
-  factory _$$SearchFiltersModelImplCopyWith(_$SearchFiltersModelImpl value,
-          $Res Function(_$SearchFiltersModelImpl) then) =
-      __$$SearchFiltersModelImplCopyWithImpl<$Res>;
+  factory _$$SearchFiltersModelImplCopyWith(
+    _$SearchFiltersModelImpl value,
+    $Res Function(_$SearchFiltersModelImpl) then,
+  ) = __$$SearchFiltersModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {double distanceValue,
-      double minDistance,
-      double maxDistance,
-      Map<String, bool> conditions,
-      Map<String, bool> additionalServices});
+  $Res call({
+    double distanceValue,
+    double minDistance,
+    double maxDistance,
+    Map<String, bool> conditions,
+    Map<String, bool> additionalServices,
+  });
 }
 
 /// @nodoc
 class __$$SearchFiltersModelImplCopyWithImpl<$Res>
     extends _$SearchFiltersModelCopyWithImpl<$Res, _$SearchFiltersModelImpl>
     implements _$$SearchFiltersModelImplCopyWith<$Res> {
-  __$$SearchFiltersModelImplCopyWithImpl(_$SearchFiltersModelImpl _value,
-      $Res Function(_$SearchFiltersModelImpl) _then)
-      : super(_value, _then);
+  __$$SearchFiltersModelImplCopyWithImpl(
+    _$SearchFiltersModelImpl _value,
+    $Res Function(_$SearchFiltersModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersModel
   /// with the given fields replaced by the non-null parameter values.
@@ -132,42 +141,44 @@ class __$$SearchFiltersModelImplCopyWithImpl<$Res>
     Object? conditions = null,
     Object? additionalServices = null,
   }) {
-    return _then(_$SearchFiltersModelImpl(
-      distanceValue: null == distanceValue
-          ? _value.distanceValue
-          : distanceValue // ignore: cast_nullable_to_non_nullable
-              as double,
-      minDistance: null == minDistance
-          ? _value.minDistance
-          : minDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      maxDistance: null == maxDistance
-          ? _value.maxDistance
-          : maxDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      conditions: null == conditions
-          ? _value._conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-      additionalServices: null == additionalServices
-          ? _value._additionalServices
-          : additionalServices // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-    ));
+    return _then(
+      _$SearchFiltersModelImpl(
+        distanceValue: null == distanceValue
+            ? _value.distanceValue
+            : distanceValue // ignore: cast_nullable_to_non_nullable
+                  as double,
+        minDistance: null == minDistance
+            ? _value.minDistance
+            : minDistance // ignore: cast_nullable_to_non_nullable
+                  as double,
+        maxDistance: null == maxDistance
+            ? _value.maxDistance
+            : maxDistance // ignore: cast_nullable_to_non_nullable
+                  as double,
+        conditions: null == conditions
+            ? _value._conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                  as Map<String, bool>,
+        additionalServices: null == additionalServices
+            ? _value._additionalServices
+            : additionalServices // ignore: cast_nullable_to_non_nullable
+                  as Map<String, bool>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$SearchFiltersModelImpl implements _SearchFiltersModel {
-  _$SearchFiltersModelImpl(
-      {required this.distanceValue,
-      required this.minDistance,
-      required this.maxDistance,
-      required final Map<String, bool> conditions,
-      required final Map<String, bool> additionalServices})
-      : _conditions = conditions,
-        _additionalServices = additionalServices;
+  _$SearchFiltersModelImpl({
+    required this.distanceValue,
+    required this.minDistance,
+    required this.maxDistance,
+    required final Map<String, bool> conditions,
+    required final Map<String, bool> additionalServices,
+  }) : _conditions = conditions,
+       _additionalServices = additionalServices;
 
   factory _$SearchFiltersModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchFiltersModelImplFromJson(json);
@@ -211,21 +222,26 @@ class _$SearchFiltersModelImpl implements _SearchFiltersModel {
                 other.minDistance == minDistance) &&
             (identical(other.maxDistance, maxDistance) ||
                 other.maxDistance == maxDistance) &&
-            const DeepCollectionEquality()
-                .equals(other._conditions, _conditions) &&
-            const DeepCollectionEquality()
-                .equals(other._additionalServices, _additionalServices));
+            const DeepCollectionEquality().equals(
+              other._conditions,
+              _conditions,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._additionalServices,
+              _additionalServices,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      distanceValue,
-      minDistance,
-      maxDistance,
-      const DeepCollectionEquality().hash(_conditions),
-      const DeepCollectionEquality().hash(_additionalServices));
+    runtimeType,
+    distanceValue,
+    minDistance,
+    maxDistance,
+    const DeepCollectionEquality().hash(_conditions),
+    const DeepCollectionEquality().hash(_additionalServices),
+  );
 
   /// Create a copy of SearchFiltersModel
   /// with the given fields replaced by the non-null parameter values.
@@ -234,24 +250,24 @@ class _$SearchFiltersModelImpl implements _SearchFiltersModel {
   @pragma('vm:prefer-inline')
   _$$SearchFiltersModelImplCopyWith<_$SearchFiltersModelImpl> get copyWith =>
       __$$SearchFiltersModelImplCopyWithImpl<_$SearchFiltersModelImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SearchFiltersModelImplToJson(
-      this,
-    );
+    return _$$SearchFiltersModelImplToJson(this);
   }
 }
 
 abstract class _SearchFiltersModel implements SearchFiltersModel {
-  factory _SearchFiltersModel(
-          {required final double distanceValue,
-          required final double minDistance,
-          required final double maxDistance,
-          required final Map<String, bool> conditions,
-          required final Map<String, bool> additionalServices}) =
-      _$SearchFiltersModelImpl;
+  factory _SearchFiltersModel({
+    required final double distanceValue,
+    required final double minDistance,
+    required final double maxDistance,
+    required final Map<String, bool> conditions,
+    required final Map<String, bool> additionalServices,
+  }) = _$SearchFiltersModelImpl;
 
   factory _SearchFiltersModel.fromJson(Map<String, dynamic> json) =
       _$SearchFiltersModelImpl.fromJson;

@@ -13,7 +13,10 @@ abstract class AuthDataSource {
 
   /// Sign up with email and password
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name);
+    String email,
+    String password,
+    String name,
+  );
 
   /// Sign out the current user
   Future<void> signOut();

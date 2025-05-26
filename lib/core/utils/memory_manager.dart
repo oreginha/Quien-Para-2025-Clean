@@ -47,10 +47,12 @@ class MemoryManager {
           print('📡 [MemoryManager] Ejecutando limpieza programada');
         }
         performCleanup(
-            aggressive: false); // Nunca usar limpieza agresiva automáticamente
+          aggressive: false,
+        ); // Nunca usar limpieza agresiva automáticamente
       } else if (kDebugMode) {
         print(
-            '📡 [MemoryManager] Omitiendo limpieza programada (app en segundo plano)');
+          '📡 [MemoryManager] Omitiendo limpieza programada (app en segundo plano)',
+        );
       }
     });
   }
@@ -83,12 +85,14 @@ class MemoryManager {
     bool aggressive = false,
   }) {
     if (kDebugMode) {
-      print('🕒 [MemoryManager] Programando limpieza para dentro de ${delay.inSeconds}s');
+      print(
+        '🕒 [MemoryManager] Programando limpieza para dentro de ${delay.inSeconds}s',
+      );
     }
-    
+
     // Cancelar cualquier limpieza programada anteriormente
     _cleanupTimer?.cancel();
-    
+
     // Programar la nueva limpieza
     _cleanupTimer = Timer(delay, () {
       performCleanup(aggressive: aggressive);
@@ -99,7 +103,8 @@ class MemoryManager {
   void performCleanup({bool aggressive = false}) {
     if (kDebugMode) {
       print(
-          '🧹 [MemoryManager] Realizando limpieza de memoria${aggressive ? " agresiva" : ""}');
+        '🧹 [MemoryManager] Realizando limpieza de memoria${aggressive ? " agresiva" : ""}',
+      );
     }
 
     try {
@@ -170,9 +175,7 @@ class MemoryManager {
 class _AppLifecycleObserver extends WidgetsBindingObserver {
   final Function(AppLifecycleState) onStateChanged;
 
-  _AppLifecycleObserver({
-    required this.onStateChanged,
-  });
+  _AppLifecycleObserver({required this.onStateChanged});
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {

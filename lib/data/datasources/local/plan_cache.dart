@@ -35,7 +35,8 @@ class PlanCache implements Cache<PlanEntity> {
           // Si path_provider falla, inicializar Hive sin una ruta específica
           // Esto usará una ubicación temporal en memoria durante el desarrollo
           logger.w(
-              'Path provider no disponible, usando inicialización básica de Hive');
+            'Path provider no disponible, usando inicialización básica de Hive',
+          );
           await Hive.initFlutter();
         }
 
@@ -70,7 +71,9 @@ class PlanCache implements Cache<PlanEntity> {
 
   /// Método anterior - ahora usa cacheItems internamente
   Future<void> cacheCategoryPlans(
-      final String category, final List<PlanEntity> plans) async {
+    final String category,
+    final List<PlanEntity> plans,
+  ) async {
     await cacheItems(plans, key: 'category_$category');
   }
 
@@ -81,7 +84,8 @@ class PlanCache implements Cache<PlanEntity> {
 
   /// Método anterior - ahora usa getCachedItems internamente
   Future<List<PlanEntity>?> getCachedCategoryPlans(
-      final String category) async {
+    final String category,
+  ) async {
     return await getCachedItems(key: 'category_$category');
   }
 
@@ -101,8 +105,9 @@ class PlanCache implements Cache<PlanEntity> {
 
       // Usar el mapper para convertir las entidades a JSON
       final List<Map<String, dynamic>> itemsJson = _mapper.toJsonList(items);
-      final List<String> serializedItems =
-          itemsJson.map((json) => jsonEncode(json)).toList();
+      final List<String> serializedItems = itemsJson
+          .map((json) => jsonEncode(json))
+          .toList();
 
       await box.put(cacheKey, serializedItems);
       await box.put(timeKey, DateTime.now().millisecondsSinceEpoch);
@@ -142,14 +147,16 @@ class PlanCache implements Cache<PlanEntity> {
 
       final List<dynamic> itemsJson = cachedData as List<dynamic>;
       final List<Map<String, dynamic>> decodedItems = itemsJson
-          .map((jsonStr) =>
-              jsonDecode(jsonStr as String) as Map<String, dynamic>)
+          .map(
+            (jsonStr) => jsonDecode(jsonStr as String) as Map<String, dynamic>,
+          )
           .toList();
 
       final List<PlanEntity> items = _mapper.fromJsonList(decodedItems);
 
-      logger
-          .d('Retrieved ${items.length} items from cache with key: $cacheKey');
+      logger.d(
+        'Retrieved ${items.length} items from cache with key: $cacheKey',
+      );
       return items;
     } catch (e) {
       logger.e('Error retrieving cached items:', error: e);
@@ -178,7 +185,9 @@ class PlanCache implements Cache<PlanEntity> {
   /// @param currentUserId ID del usuario actual (para excluir sus planes)
   /// @param plans Lista de planes de otros usuarios para almacenar
   Future<void> storeOtherUserPlans(
-      String currentUserId, List<PlanEntity> plans) async {
+    String currentUserId,
+    List<PlanEntity> plans,
+  ) async {
     final String key = _otherUserPlansCachePrefix + currentUserId;
     await cacheItems(plans, key: key);
   }

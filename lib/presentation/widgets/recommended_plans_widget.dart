@@ -34,8 +34,9 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
   void _loadRecommendations() {
     final String? currentUserId = _authRepository.getCurrentUserId();
     if (currentUserId != null) {
-      _matchingBloc
-          .add(MatchingEvent.loadUserApplications(userId: currentUserId));
+      _matchingBloc.add(
+        MatchingEvent.loadUserApplications(userId: currentUserId),
+      );
     }
   }
 
@@ -51,16 +52,18 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
             userApplicationsLoaded: (List<ApplicationEntity> applications) {
               // Convertir las aplicaciones a un formato compatible con _buildLoadedState
               final List<Map<String, dynamic>> plans = applications
-                  .map((ApplicationEntity app) => {
-                        'planId': app.planId,
-                        'title': app.planTitle ?? 'Sin título',
-                        'description': app.message ?? 'Sin descripción',
-                        'creatorName': app.applicantName ?? 'Usuario',
-                        'creatorPhotoUrl': app.applicantPhotoUrl,
-                        'category': 'General', // Valor por defecto
-                        'location': '', // Valor por defecto
-                        'score': 0.8, // Valor por defecto
-                      })
+                  .map(
+                    (ApplicationEntity app) => {
+                      'planId': app.planId,
+                      'title': app.planTitle ?? 'Sin título',
+                      'description': app.message ?? 'Sin descripción',
+                      'creatorName': app.applicantName ?? 'Usuario',
+                      'creatorPhotoUrl': app.applicantPhotoUrl,
+                      'category': 'General', // Valor por defecto
+                      'location': '', // Valor por defecto
+                      'score': 0.8, // Valor por defecto
+                    },
+                  )
                   .toList();
               return _buildLoadedState(context, plans);
             },
@@ -77,14 +80,14 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
     return Container(
       height: 220,
       padding: const EdgeInsets.symmetric(vertical: 16),
-      child: const Center(
-        child: CircularProgressIndicator(),
-      ),
+      child: const Center(child: CircularProgressIndicator()),
     );
   }
 
   Widget _buildLoadedState(
-      BuildContext context, List<Map<String, dynamic>> plans) {
+    BuildContext context,
+    List<Map<String, dynamic>> plans,
+  ) {
     if (plans.isEmpty) {
       return _buildEmptyState();
     }
@@ -125,9 +128,7 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Card(
         color: const Color(0xFF252840),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: () {
@@ -165,8 +166,10 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
                   style: const TextStyle(color: Colors.white70),
                 ),
                 trailing: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFF46FAF7).withAlpha(51),
                     borderRadius: BorderRadius.circular(16),
@@ -202,7 +205,9 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
                   children: <Widget>[
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFF1A1B2E),
                         borderRadius: BorderRadius.circular(16),
@@ -220,8 +225,11 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
                         (plan['location'] as String).isNotEmpty)
                       Row(
                         children: <Widget>[
-                          const Icon(Icons.location_on,
-                              size: 14, color: Colors.white70),
+                          const Icon(
+                            Icons.location_on,
+                            size: 14,
+                            color: Colors.white70,
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             plan['location'] as String,
@@ -264,10 +272,7 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
             Text(
               message,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
-              ),
+              style: const TextStyle(fontSize: 14, color: Colors.white70),
             ),
             const SizedBox(height: 16),
             TextButton.icon(
@@ -306,10 +311,7 @@ class _RecommendedPlansWidgetState extends State<RecommendedPlansWidget> {
             Text(
               'Completa tu perfil y actividades para recibir recomendaciones personalizadas',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.white70,
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.white70),
             ),
           ],
         ),

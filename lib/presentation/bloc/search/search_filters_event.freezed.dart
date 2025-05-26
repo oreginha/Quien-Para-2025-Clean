@@ -12,7 +12,8 @@ part of 'search_filters_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SearchFiltersEvent {
@@ -25,13 +26,12 @@ mixin _$SearchFiltersEvent {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
     required TResult Function() loadSavedFilters,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? updateSearchQuery,
@@ -45,8 +45,7 @@ mixin _$SearchFiltersEvent {
     TResult? Function()? applyFilters,
     TResult? Function()? saveFilters,
     TResult? Function()? loadSavedFilters,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? updateSearchQuery,
@@ -61,8 +60,7 @@ mixin _$SearchFiltersEvent {
     TResult Function()? saveFilters,
     TResult Function()? loadSavedFilters,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateSearchQuery value) updateSearchQuery,
@@ -72,13 +70,12 @@ mixin _$SearchFiltersEvent {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
     required TResult Function(_LoadSavedFilters value) loadSavedFilters,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateSearchQuery value)? updateSearchQuery,
@@ -88,13 +85,12 @@ mixin _$SearchFiltersEvent {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
     TResult? Function(_LoadSavedFilters value)? loadSavedFilters,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateSearchQuery value)? updateSearchQuery,
@@ -109,15 +105,15 @@ mixin _$SearchFiltersEvent {
     TResult Function(_SaveFilters value)? saveFilters,
     TResult Function(_LoadSavedFilters value)? loadSavedFilters,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SearchFiltersEventCopyWith<$Res> {
   factory $SearchFiltersEventCopyWith(
-          SearchFiltersEvent value, $Res Function(SearchFiltersEvent) then) =
-      _$SearchFiltersEventCopyWithImpl<$Res, SearchFiltersEvent>;
+    SearchFiltersEvent value,
+    $Res Function(SearchFiltersEvent) then,
+  ) = _$SearchFiltersEventCopyWithImpl<$Res, SearchFiltersEvent>;
 }
 
 /// @nodoc
@@ -136,9 +132,10 @@ class _$SearchFiltersEventCopyWithImpl<$Res, $Val extends SearchFiltersEvent>
 
 /// @nodoc
 abstract class _$$UpdateSearchQueryImplCopyWith<$Res> {
-  factory _$$UpdateSearchQueryImplCopyWith(_$UpdateSearchQueryImpl value,
-          $Res Function(_$UpdateSearchQueryImpl) then) =
-      __$$UpdateSearchQueryImplCopyWithImpl<$Res>;
+  factory _$$UpdateSearchQueryImplCopyWith(
+    _$UpdateSearchQueryImpl value,
+    $Res Function(_$UpdateSearchQueryImpl) then,
+  ) = __$$UpdateSearchQueryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
@@ -147,23 +144,24 @@ abstract class _$$UpdateSearchQueryImplCopyWith<$Res> {
 class __$$UpdateSearchQueryImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$UpdateSearchQueryImpl>
     implements _$$UpdateSearchQueryImplCopyWith<$Res> {
-  __$$UpdateSearchQueryImplCopyWithImpl(_$UpdateSearchQueryImpl _value,
-      $Res Function(_$UpdateSearchQueryImpl) _then)
-      : super(_value, _then);
+  __$$UpdateSearchQueryImplCopyWithImpl(
+    _$UpdateSearchQueryImpl _value,
+    $Res Function(_$UpdateSearchQueryImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$UpdateSearchQueryImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? query = null}) {
+    return _then(
+      _$UpdateSearchQueryImpl(
+        null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -198,7 +196,9 @@ class _$UpdateSearchQueryImpl implements _UpdateSearchQuery {
   @pragma('vm:prefer-inline')
   _$$UpdateSearchQueryImplCopyWith<_$UpdateSearchQueryImpl> get copyWith =>
       __$$UpdateSearchQueryImplCopyWithImpl<_$UpdateSearchQueryImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -210,7 +210,7 @@ class _$UpdateSearchQueryImpl implements _UpdateSearchQuery {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -269,7 +269,7 @@ class _$UpdateSearchQueryImpl implements _UpdateSearchQuery {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -288,7 +288,7 @@ class _$UpdateSearchQueryImpl implements _UpdateSearchQuery {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -335,9 +335,10 @@ abstract class _UpdateSearchQuery implements SearchFiltersEvent {
 
 /// @nodoc
 abstract class _$$UpdateCategoryFilterImplCopyWith<$Res> {
-  factory _$$UpdateCategoryFilterImplCopyWith(_$UpdateCategoryFilterImpl value,
-          $Res Function(_$UpdateCategoryFilterImpl) then) =
-      __$$UpdateCategoryFilterImplCopyWithImpl<$Res>;
+  factory _$$UpdateCategoryFilterImplCopyWith(
+    _$UpdateCategoryFilterImpl value,
+    $Res Function(_$UpdateCategoryFilterImpl) then,
+  ) = __$$UpdateCategoryFilterImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String category});
 }
@@ -346,23 +347,24 @@ abstract class _$$UpdateCategoryFilterImplCopyWith<$Res> {
 class __$$UpdateCategoryFilterImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$UpdateCategoryFilterImpl>
     implements _$$UpdateCategoryFilterImplCopyWith<$Res> {
-  __$$UpdateCategoryFilterImplCopyWithImpl(_$UpdateCategoryFilterImpl _value,
-      $Res Function(_$UpdateCategoryFilterImpl) _then)
-      : super(_value, _then);
+  __$$UpdateCategoryFilterImplCopyWithImpl(
+    _$UpdateCategoryFilterImpl _value,
+    $Res Function(_$UpdateCategoryFilterImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? category = null,
-  }) {
-    return _then(_$UpdateCategoryFilterImpl(
-      null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? category = null}) {
+    return _then(
+      _$UpdateCategoryFilterImpl(
+        null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -397,9 +399,11 @@ class _$UpdateCategoryFilterImpl implements _UpdateCategoryFilter {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCategoryFilterImplCopyWith<_$UpdateCategoryFilterImpl>
-      get copyWith =>
-          __$$UpdateCategoryFilterImplCopyWithImpl<_$UpdateCategoryFilterImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$UpdateCategoryFilterImplCopyWithImpl<_$UpdateCategoryFilterImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -411,7 +415,7 @@ class _$UpdateCategoryFilterImpl implements _UpdateCategoryFilter {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -470,7 +474,7 @@ class _$UpdateCategoryFilterImpl implements _UpdateCategoryFilter {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -489,7 +493,7 @@ class _$UpdateCategoryFilterImpl implements _UpdateCategoryFilter {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -531,14 +535,15 @@ abstract class _UpdateCategoryFilter implements SearchFiltersEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCategoryFilterImplCopyWith<_$UpdateCategoryFilterImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateTagFilterImplCopyWith<$Res> {
-  factory _$$UpdateTagFilterImplCopyWith(_$UpdateTagFilterImpl value,
-          $Res Function(_$UpdateTagFilterImpl) then) =
-      __$$UpdateTagFilterImplCopyWithImpl<$Res>;
+  factory _$$UpdateTagFilterImplCopyWith(
+    _$UpdateTagFilterImpl value,
+    $Res Function(_$UpdateTagFilterImpl) then,
+  ) = __$$UpdateTagFilterImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String tag, bool selected});
 }
@@ -548,27 +553,27 @@ class __$$UpdateTagFilterImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$UpdateTagFilterImpl>
     implements _$$UpdateTagFilterImplCopyWith<$Res> {
   __$$UpdateTagFilterImplCopyWithImpl(
-      _$UpdateTagFilterImpl _value, $Res Function(_$UpdateTagFilterImpl) _then)
-      : super(_value, _then);
+    _$UpdateTagFilterImpl _value,
+    $Res Function(_$UpdateTagFilterImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? tag = null,
-    Object? selected = null,
-  }) {
-    return _then(_$UpdateTagFilterImpl(
-      null == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == selected
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? tag = null, Object? selected = null}) {
+    return _then(
+      _$UpdateTagFilterImpl(
+        null == tag
+            ? _value.tag
+            : tag // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == selected
+            ? _value.selected
+            : selected // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -607,7 +612,9 @@ class _$UpdateTagFilterImpl implements _UpdateTagFilter {
   @pragma('vm:prefer-inline')
   _$$UpdateTagFilterImplCopyWith<_$UpdateTagFilterImpl> get copyWith =>
       __$$UpdateTagFilterImplCopyWithImpl<_$UpdateTagFilterImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -619,7 +626,7 @@ class _$UpdateTagFilterImpl implements _UpdateTagFilter {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -678,7 +685,7 @@ class _$UpdateTagFilterImpl implements _UpdateTagFilter {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -697,7 +704,7 @@ class _$UpdateTagFilterImpl implements _UpdateTagFilter {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -746,8 +753,9 @@ abstract class _UpdateTagFilter implements SearchFiltersEvent {
 /// @nodoc
 abstract class _$$ClearFiltersImplCopyWith<$Res> {
   factory _$$ClearFiltersImplCopyWith(
-          _$ClearFiltersImpl value, $Res Function(_$ClearFiltersImpl) then) =
-      __$$ClearFiltersImplCopyWithImpl<$Res>;
+    _$ClearFiltersImpl value,
+    $Res Function(_$ClearFiltersImpl) then,
+  ) = __$$ClearFiltersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -755,8 +763,9 @@ class __$$ClearFiltersImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$ClearFiltersImpl>
     implements _$$ClearFiltersImplCopyWith<$Res> {
   __$$ClearFiltersImplCopyWithImpl(
-      _$ClearFiltersImpl _value, $Res Function(_$ClearFiltersImpl) _then)
-      : super(_value, _then);
+    _$ClearFiltersImpl _value,
+    $Res Function(_$ClearFiltersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -791,7 +800,7 @@ class _$ClearFiltersImpl implements _ClearFilters {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -850,7 +859,7 @@ class _$ClearFiltersImpl implements _ClearFilters {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -869,7 +878,7 @@ class _$ClearFiltersImpl implements _ClearFilters {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -907,9 +916,10 @@ abstract class _ClearFilters implements SearchFiltersEvent {
 
 /// @nodoc
 abstract class _$$DistanceChangedImplCopyWith<$Res> {
-  factory _$$DistanceChangedImplCopyWith(_$DistanceChangedImpl value,
-          $Res Function(_$DistanceChangedImpl) then) =
-      __$$DistanceChangedImplCopyWithImpl<$Res>;
+  factory _$$DistanceChangedImplCopyWith(
+    _$DistanceChangedImpl value,
+    $Res Function(_$DistanceChangedImpl) then,
+  ) = __$$DistanceChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double value});
 }
@@ -919,22 +929,23 @@ class __$$DistanceChangedImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$DistanceChangedImpl>
     implements _$$DistanceChangedImplCopyWith<$Res> {
   __$$DistanceChangedImplCopyWithImpl(
-      _$DistanceChangedImpl _value, $Res Function(_$DistanceChangedImpl) _then)
-      : super(_value, _then);
+    _$DistanceChangedImpl _value,
+    $Res Function(_$DistanceChangedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$DistanceChangedImpl(
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      _$DistanceChangedImpl(
+        null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as double,
+      ),
+    );
   }
 }
 
@@ -969,7 +980,9 @@ class _$DistanceChangedImpl implements _DistanceChanged {
   @pragma('vm:prefer-inline')
   _$$DistanceChangedImplCopyWith<_$DistanceChangedImpl> get copyWith =>
       __$$DistanceChangedImplCopyWithImpl<_$DistanceChangedImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -981,7 +994,7 @@ class _$DistanceChangedImpl implements _DistanceChanged {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -1040,7 +1053,7 @@ class _$DistanceChangedImpl implements _DistanceChanged {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -1059,7 +1072,7 @@ class _$DistanceChangedImpl implements _DistanceChanged {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -1105,9 +1118,10 @@ abstract class _DistanceChanged implements SearchFiltersEvent {
 
 /// @nodoc
 abstract class _$$ConditionToggledImplCopyWith<$Res> {
-  factory _$$ConditionToggledImplCopyWith(_$ConditionToggledImpl value,
-          $Res Function(_$ConditionToggledImpl) then) =
-      __$$ConditionToggledImplCopyWithImpl<$Res>;
+  factory _$$ConditionToggledImplCopyWith(
+    _$ConditionToggledImpl value,
+    $Res Function(_$ConditionToggledImpl) then,
+  ) = __$$ConditionToggledImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String condition, bool value});
 }
@@ -1116,28 +1130,28 @@ abstract class _$$ConditionToggledImplCopyWith<$Res> {
 class __$$ConditionToggledImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$ConditionToggledImpl>
     implements _$$ConditionToggledImplCopyWith<$Res> {
-  __$$ConditionToggledImplCopyWithImpl(_$ConditionToggledImpl _value,
-      $Res Function(_$ConditionToggledImpl) _then)
-      : super(_value, _then);
+  __$$ConditionToggledImplCopyWithImpl(
+    _$ConditionToggledImpl _value,
+    $Res Function(_$ConditionToggledImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? condition = null,
-    Object? value = null,
-  }) {
-    return _then(_$ConditionToggledImpl(
-      null == condition
-          ? _value.condition
-          : condition // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? condition = null, Object? value = null}) {
+    return _then(
+      _$ConditionToggledImpl(
+        null == condition
+            ? _value.condition
+            : condition // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -1176,7 +1190,9 @@ class _$ConditionToggledImpl implements _ConditionToggled {
   @pragma('vm:prefer-inline')
   _$$ConditionToggledImplCopyWith<_$ConditionToggledImpl> get copyWith =>
       __$$ConditionToggledImplCopyWithImpl<_$ConditionToggledImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1188,7 +1204,7 @@ class _$ConditionToggledImpl implements _ConditionToggled {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -1247,7 +1263,7 @@ class _$ConditionToggledImpl implements _ConditionToggled {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -1266,7 +1282,7 @@ class _$ConditionToggledImpl implements _ConditionToggled {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -1315,41 +1331,40 @@ abstract class _ConditionToggled implements SearchFiltersEvent {
 /// @nodoc
 abstract class _$$AdditionalServiceToggledImplCopyWith<$Res> {
   factory _$$AdditionalServiceToggledImplCopyWith(
-          _$AdditionalServiceToggledImpl value,
-          $Res Function(_$AdditionalServiceToggledImpl) then) =
-      __$$AdditionalServiceToggledImplCopyWithImpl<$Res>;
+    _$AdditionalServiceToggledImpl value,
+    $Res Function(_$AdditionalServiceToggledImpl) then,
+  ) = __$$AdditionalServiceToggledImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String service, bool value});
 }
 
 /// @nodoc
 class __$$AdditionalServiceToggledImplCopyWithImpl<$Res>
-    extends _$SearchFiltersEventCopyWithImpl<$Res,
-        _$AdditionalServiceToggledImpl>
+    extends
+        _$SearchFiltersEventCopyWithImpl<$Res, _$AdditionalServiceToggledImpl>
     implements _$$AdditionalServiceToggledImplCopyWith<$Res> {
   __$$AdditionalServiceToggledImplCopyWithImpl(
-      _$AdditionalServiceToggledImpl _value,
-      $Res Function(_$AdditionalServiceToggledImpl) _then)
-      : super(_value, _then);
+    _$AdditionalServiceToggledImpl _value,
+    $Res Function(_$AdditionalServiceToggledImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? service = null,
-    Object? value = null,
-  }) {
-    return _then(_$AdditionalServiceToggledImpl(
-      null == service
-          ? _value.service
-          : service // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? service = null, Object? value = null}) {
+    return _then(
+      _$AdditionalServiceToggledImpl(
+        null == service
+            ? _value.service
+            : service // ignore: cast_nullable_to_non_nullable
+                  as String,
+        null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -1386,8 +1401,10 @@ class _$AdditionalServiceToggledImpl implements _AdditionalServiceToggled {
   @override
   @pragma('vm:prefer-inline')
   _$$AdditionalServiceToggledImplCopyWith<_$AdditionalServiceToggledImpl>
-      get copyWith => __$$AdditionalServiceToggledImplCopyWithImpl<
-          _$AdditionalServiceToggledImpl>(this, _$identity);
+  get copyWith =>
+      __$$AdditionalServiceToggledImplCopyWithImpl<
+        _$AdditionalServiceToggledImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1399,7 +1416,7 @@ class _$AdditionalServiceToggledImpl implements _AdditionalServiceToggled {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -1458,7 +1475,7 @@ class _$AdditionalServiceToggledImpl implements _AdditionalServiceToggled {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -1477,7 +1494,7 @@ class _$AdditionalServiceToggledImpl implements _AdditionalServiceToggled {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -1511,7 +1528,9 @@ class _$AdditionalServiceToggledImpl implements _AdditionalServiceToggled {
 
 abstract class _AdditionalServiceToggled implements SearchFiltersEvent {
   const factory _AdditionalServiceToggled(
-      final String service, final bool value) = _$AdditionalServiceToggledImpl;
+    final String service,
+    final bool value,
+  ) = _$AdditionalServiceToggledImpl;
 
   String get service;
   bool get value;
@@ -1520,14 +1539,15 @@ abstract class _AdditionalServiceToggled implements SearchFiltersEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AdditionalServiceToggledImplCopyWith<_$AdditionalServiceToggledImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ResetFiltersImplCopyWith<$Res> {
   factory _$$ResetFiltersImplCopyWith(
-          _$ResetFiltersImpl value, $Res Function(_$ResetFiltersImpl) then) =
-      __$$ResetFiltersImplCopyWithImpl<$Res>;
+    _$ResetFiltersImpl value,
+    $Res Function(_$ResetFiltersImpl) then,
+  ) = __$$ResetFiltersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1535,8 +1555,9 @@ class __$$ResetFiltersImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$ResetFiltersImpl>
     implements _$$ResetFiltersImplCopyWith<$Res> {
   __$$ResetFiltersImplCopyWithImpl(
-      _$ResetFiltersImpl _value, $Res Function(_$ResetFiltersImpl) _then)
-      : super(_value, _then);
+    _$ResetFiltersImpl _value,
+    $Res Function(_$ResetFiltersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1571,7 +1592,7 @@ class _$ResetFiltersImpl implements _ResetFilters {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -1630,7 +1651,7 @@ class _$ResetFiltersImpl implements _ResetFilters {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -1649,7 +1670,7 @@ class _$ResetFiltersImpl implements _ResetFilters {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -1688,8 +1709,9 @@ abstract class _ResetFilters implements SearchFiltersEvent {
 /// @nodoc
 abstract class _$$ApplyFiltersImplCopyWith<$Res> {
   factory _$$ApplyFiltersImplCopyWith(
-          _$ApplyFiltersImpl value, $Res Function(_$ApplyFiltersImpl) then) =
-      __$$ApplyFiltersImplCopyWithImpl<$Res>;
+    _$ApplyFiltersImpl value,
+    $Res Function(_$ApplyFiltersImpl) then,
+  ) = __$$ApplyFiltersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1697,8 +1719,9 @@ class __$$ApplyFiltersImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$ApplyFiltersImpl>
     implements _$$ApplyFiltersImplCopyWith<$Res> {
   __$$ApplyFiltersImplCopyWithImpl(
-      _$ApplyFiltersImpl _value, $Res Function(_$ApplyFiltersImpl) _then)
-      : super(_value, _then);
+    _$ApplyFiltersImpl _value,
+    $Res Function(_$ApplyFiltersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1733,7 +1756,7 @@ class _$ApplyFiltersImpl implements _ApplyFilters {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -1792,7 +1815,7 @@ class _$ApplyFiltersImpl implements _ApplyFilters {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -1811,7 +1834,7 @@ class _$ApplyFiltersImpl implements _ApplyFilters {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -1850,8 +1873,9 @@ abstract class _ApplyFilters implements SearchFiltersEvent {
 /// @nodoc
 abstract class _$$SaveFiltersImplCopyWith<$Res> {
   factory _$$SaveFiltersImplCopyWith(
-          _$SaveFiltersImpl value, $Res Function(_$SaveFiltersImpl) then) =
-      __$$SaveFiltersImplCopyWithImpl<$Res>;
+    _$SaveFiltersImpl value,
+    $Res Function(_$SaveFiltersImpl) then,
+  ) = __$$SaveFiltersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1859,8 +1883,9 @@ class __$$SaveFiltersImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$SaveFiltersImpl>
     implements _$$SaveFiltersImplCopyWith<$Res> {
   __$$SaveFiltersImplCopyWithImpl(
-      _$SaveFiltersImpl _value, $Res Function(_$SaveFiltersImpl) _then)
-      : super(_value, _then);
+    _$SaveFiltersImpl _value,
+    $Res Function(_$SaveFiltersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1895,7 +1920,7 @@ class _$SaveFiltersImpl implements _SaveFilters {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -1954,7 +1979,7 @@ class _$SaveFiltersImpl implements _SaveFilters {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -1973,7 +1998,7 @@ class _$SaveFiltersImpl implements _SaveFilters {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,
@@ -2011,18 +2036,20 @@ abstract class _SaveFilters implements SearchFiltersEvent {
 
 /// @nodoc
 abstract class _$$LoadSavedFiltersImplCopyWith<$Res> {
-  factory _$$LoadSavedFiltersImplCopyWith(_$LoadSavedFiltersImpl value,
-          $Res Function(_$LoadSavedFiltersImpl) then) =
-      __$$LoadSavedFiltersImplCopyWithImpl<$Res>;
+  factory _$$LoadSavedFiltersImplCopyWith(
+    _$LoadSavedFiltersImpl value,
+    $Res Function(_$LoadSavedFiltersImpl) then,
+  ) = __$$LoadSavedFiltersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$LoadSavedFiltersImplCopyWithImpl<$Res>
     extends _$SearchFiltersEventCopyWithImpl<$Res, _$LoadSavedFiltersImpl>
     implements _$$LoadSavedFiltersImplCopyWith<$Res> {
-  __$$LoadSavedFiltersImplCopyWithImpl(_$LoadSavedFiltersImpl _value,
-      $Res Function(_$LoadSavedFiltersImpl) _then)
-      : super(_value, _then);
+  __$$LoadSavedFiltersImplCopyWithImpl(
+    _$LoadSavedFiltersImpl _value,
+    $Res Function(_$LoadSavedFiltersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2057,7 +2084,7 @@ class _$LoadSavedFiltersImpl implements _LoadSavedFilters {
     required TResult Function(double value) distanceChanged,
     required TResult Function(String condition, bool value) conditionToggled,
     required TResult Function(String service, bool value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function() resetFilters,
     required TResult Function() applyFilters,
     required TResult Function() saveFilters,
@@ -2116,7 +2143,7 @@ class _$LoadSavedFiltersImpl implements _LoadSavedFilters {
     required TResult Function(_DistanceChanged value) distanceChanged,
     required TResult Function(_ConditionToggled value) conditionToggled,
     required TResult Function(_AdditionalServiceToggled value)
-        additionalServiceToggled,
+    additionalServiceToggled,
     required TResult Function(_ResetFilters value) resetFilters,
     required TResult Function(_ApplyFilters value) applyFilters,
     required TResult Function(_SaveFilters value) saveFilters,
@@ -2135,7 +2162,7 @@ class _$LoadSavedFiltersImpl implements _LoadSavedFilters {
     TResult? Function(_DistanceChanged value)? distanceChanged,
     TResult? Function(_ConditionToggled value)? conditionToggled,
     TResult? Function(_AdditionalServiceToggled value)?
-        additionalServiceToggled,
+    additionalServiceToggled,
     TResult? Function(_ResetFilters value)? resetFilters,
     TResult? Function(_ApplyFilters value)? applyFilters,
     TResult? Function(_SaveFilters value)? saveFilters,

@@ -47,11 +47,7 @@ class ThemeSwitch extends StatelessWidget {
 }
 
 class ThemeModeIcon extends StatelessWidget {
-  const ThemeModeIcon({
-    super.key,
-    this.size = 24,
-    this.showBorder = false,
-  });
+  const ThemeModeIcon({super.key, this.size = 24, this.showBorder = false});
 
   final double size;
   final bool showBorder;
@@ -73,8 +69,9 @@ class ThemeModeIcon extends StatelessWidget {
             ? BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color:
-                      AppColors.lightTextPrimary.withAlpha((0.5 * 255).round()),
+                  color: AppColors.lightTextPrimary.withAlpha(
+                    (0.5 * 255).round(),
+                  ),
                   width: 1,
                 ),
               )
@@ -85,10 +82,7 @@ class ThemeModeIcon extends StatelessWidget {
             transitionBuilder: (Widget child, Animation<double> animation) {
               return FadeTransition(
                 opacity: animation,
-                child: ScaleTransition(
-                  scale: animation,
-                  child: child,
-                ),
+                child: ScaleTransition(scale: animation, child: child),
               );
             },
             child: Icon(

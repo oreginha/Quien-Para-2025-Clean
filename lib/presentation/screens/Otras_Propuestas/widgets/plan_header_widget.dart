@@ -47,8 +47,11 @@ class PlanHeaderWidget extends StatelessWidget {
                   height: 220,
                   width: double.infinity,
                   color: AppColors.getCardBackground(isDarkMode),
-                  child: Icon(Icons.image,
-                      size: 80, color: AppColors.getBorder(isDarkMode)),
+                  child: Icon(
+                    Icons.image,
+                    size: 80,
+                    color: AppColors.getBorder(isDarkMode),
+                  ),
                 ),
 
           // Degradado para mejorar legibilidad del texto sobre la imagen
@@ -102,8 +105,10 @@ class PlanHeaderWidget extends StatelessWidget {
               top: 16,
               right: 16,
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.brandYellow,
                   borderRadius: BorderRadius.circular(16),
@@ -118,9 +123,9 @@ class PlanHeaderWidget extends StatelessWidget {
                 child: Text(
                   plan.category,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: AppColors.lightTextPrimary,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    color: AppColors.lightTextPrimary,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

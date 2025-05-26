@@ -21,10 +21,12 @@ class EditProfileScreenResponsive extends StatefulWidget {
   const EditProfileScreenResponsive({super.key});
 
   @override
-  State<EditProfileScreenResponsive> createState() => _EditProfileScreenResponsiveState();
+  State<EditProfileScreenResponsive> createState() =>
+      _EditProfileScreenResponsiveState();
 }
 
-class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsive> {
+class _EditProfileScreenResponsiveState
+    extends State<EditProfileScreenResponsive> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
@@ -127,8 +129,11 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
       if (userId == null) throw Exception('No user authenticated');
 
       final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final Reference ref =
-          _storage.ref().child('user_photos').child(userId).child(fileName);
+      final Reference ref = _storage
+          .ref()
+          .child('user_photos')
+          .child(userId)
+          .child(fileName);
 
       final SettableMetadata metadata = SettableMetadata(
         contentType: 'image/jpeg',
@@ -220,12 +225,12 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
     final appBar = AppBar(
       backgroundColor: AppColors.getBackground(isDarkMode),
       elevation: 0,
-      title: Text(
-        'Editar Perfil',
-        style: AppTypography.heading2(isDarkMode),
-      ),
+      title: Text('Editar Perfil', style: AppTypography.heading2(isDarkMode)),
       leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: AppColors.getTextPrimary(isDarkMode)),
+        icon: Icon(
+          Icons.arrow_back,
+          color: AppColors.getTextPrimary(isDarkMode),
+        ),
         onPressed: () => Navigator.pop(context),
       ),
     );
@@ -261,8 +266,9 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: AppColors.darkBackground
-                              .withAlpha((0.25 * 255).round()),
+                          color: AppColors.darkBackground.withAlpha(
+                            (0.25 * 255).round(),
+                          ),
                           blurRadius: 8,
                           spreadRadius: 2,
                         ),
@@ -272,18 +278,22 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                       onTap: _pickImage,
                       child: CircleAvatar(
                         radius: 65,
-                        backgroundColor: AppColors.getCardBackground(isDarkMode),
+                        backgroundColor: AppColors.getCardBackground(
+                          isDarkMode,
+                        ),
                         backgroundImage: profileImage != null
                             ? FileImage(profileImage!)
                             : (currentPhotoUrl != null
-                                ? NetworkImage(currentPhotoUrl!)
-                                    as ImageProvider
-                                : null),
-                        child:
-                            (profileImage == null && currentPhotoUrl == null)
-                                ? Icon(Icons.person,
-                                    size: 65, color: AppColors.brandYellow)
-                                : null,
+                                  ? NetworkImage(currentPhotoUrl!)
+                                        as ImageProvider
+                                  : null),
+                        child: (profileImage == null && currentPhotoUrl == null)
+                            ? Icon(
+                                Icons.person,
+                                size: 65,
+                                color: AppColors.brandYellow,
+                              )
+                            : null,
                       ),
                     ),
                   ),
@@ -295,8 +305,9 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.darkBackground
-                                .withAlpha((0.25 * 255).round()),
+                            color: AppColors.darkBackground.withAlpha(
+                              (0.25 * 255).round(),
+                            ),
                             blurRadius: 4,
                             spreadRadius: 1,
                           ),
@@ -306,8 +317,10 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                         backgroundColor: AppColors.darkBorder,
                         radius: 20,
                         child: IconButton(
-                          icon: Icon(Icons.camera_alt,
-                              color: AppColors.lightTextPrimary),
+                          icon: Icon(
+                            Icons.camera_alt,
+                            color: AppColors.lightTextPrimary,
+                          ),
                           onPressed: _pickImage,
                         ),
                       ),
@@ -342,11 +355,7 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
             const SizedBox(height: 32),
             Row(
               children: [
-                Icon(
-                  Icons.interests,
-                  color: AppColors.darkBorder,
-                  size: 20,
-                ),
+                Icon(Icons.interests, color: AppColors.darkBorder, size: 20),
                 const SizedBox(width: AppSpacing.xs),
                 Text(
                   'Intereses',
@@ -365,17 +374,13 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
               decoration: BoxDecoration(
                 color: AppColors.lightCardBackground,
                 borderRadius: BorderRadius.circular(AppRadius.l),
-                border: Border.all(
-                  color: AppColors.darkBorder,
-                  width: 1,
-                ),
+                border: Border.all(color: AppColors.darkBorder, width: 1),
               ),
               child: Wrap(
                 spacing: AppSpacing.xs,
                 runSpacing: AppSpacing.xs,
                 children: availableInterests.map((final String interest) {
-                  final bool isSelected =
-                      selectedInterests.contains(interest);
+                  final bool isSelected = selectedInterests.contains(interest);
                   return FilterChip(
                     selected: isSelected,
                     label: Text(interest),
@@ -390,14 +395,16 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                     },
                     selectedColor: AppColors.lightTextPrimary,
                     checkmarkColor: AppColors.lightTextPrimary,
-                    backgroundColor: AppColors.getSecondaryBackground(isDarkMode)
-                        .withAlpha((0.7 * 255).round()),
+                    backgroundColor: AppColors.getSecondaryBackground(
+                      isDarkMode,
+                    ).withAlpha((0.7 * 255).round()),
                     labelStyle: TextStyle(
                       color: isSelected
                           ? AppColors.lightTextPrimary
                           : AppColors.lightTextPrimary,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
+                      fontWeight: isSelected
+                          ? FontWeight.bold
+                          : FontWeight.normal,
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.xs,
@@ -415,8 +422,7 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                   foregroundColor: AppColors.lightTextPrimary,
                   minimumSize: const Size(200, 50),
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(AppRadius.l),
+                    borderRadius: BorderRadius.circular(AppRadius.l),
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppSpacing.xl,
@@ -430,8 +436,9 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                         height: 24,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.black),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.black,
+                          ),
                         ),
                       )
                     : Row(
@@ -508,8 +515,7 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
             borderRadius: BorderRadius.circular(AppRadius.l),
             boxShadow: [
               BoxShadow(
-                color: AppColors.darkBackground
-                    .withAlpha((0.1 * 255).round()),
+                color: AppColors.darkBackground.withAlpha((0.1 * 255).round()),
                 blurRadius: 4,
                 offset: const Offset(0, 2),
               ),
@@ -526,17 +532,19 @@ class _EditProfileScreenResponsiveState extends State<EditProfileScreenResponsiv
                   : null,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                borderSide:
-                    BorderSide(color: AppColors.darkBorder, width: 2.0),
+                borderSide: BorderSide(color: AppColors.darkBorder, width: 2.0),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
-                borderSide:
-                    BorderSide(color: AppColors.darkBorder, width: 2.0),
+                borderSide: BorderSide(color: AppColors.darkBorder, width: 2.0),
               ),
               filled: true,
-              fillColor: Colors.white
-                  .withValues(alpha: 230, red: 255, green: 255, blue: 255),
+              fillColor: Colors.white.withValues(
+                alpha: 230,
+                red: 255,
+                green: 255,
+                blue: 255,
+              ),
             ),
           ),
         ),

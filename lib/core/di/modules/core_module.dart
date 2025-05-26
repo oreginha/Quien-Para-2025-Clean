@@ -136,7 +136,8 @@ class CoreModule implements DIModule {
       container.registerLazySingleton<SharedPreferences>(() {
         // En un entorno real de pruebas, crearías un mock usando mockito o similar
         throw UnimplementedError(
-            'Para pruebas, debes proporcionar un mock de SharedPreferences');
+          'Para pruebas, debes proporcionar un mock de SharedPreferences',
+        );
       });
     }
 
@@ -145,7 +146,8 @@ class CoreModule implements DIModule {
       container.registerLazySingleton<FirebaseFirestore>(() {
         // En un entorno real de pruebas, crearías un mock usando mockito o similar
         throw UnimplementedError(
-            'Para pruebas, debes proporcionar un mock de FirebaseFirestore');
+          'Para pruebas, debes proporcionar un mock de FirebaseFirestore',
+        );
       });
     }
 
@@ -154,7 +156,8 @@ class CoreModule implements DIModule {
       container.registerLazySingleton<FirebaseStorage>(() {
         // En un entorno real de pruebas, crearías un mock usando mockito o similar
         throw UnimplementedError(
-            'Para pruebas, debes proporcionar un mock de FirebaseStorage');
+          'Para pruebas, debes proporcionar un mock de FirebaseStorage',
+        );
       });
     }
 
@@ -163,7 +166,8 @@ class CoreModule implements DIModule {
       container.registerLazySingleton<FirebaseAuth>(() {
         // En un entorno real de pruebas, crearías un mock usando mockito o similar
         throw UnimplementedError(
-            'Para pruebas, debes proporcionar un mock de FirebaseAuth');
+          'Para pruebas, debes proporcionar un mock de FirebaseAuth',
+        );
       });
     }
 
@@ -177,7 +181,8 @@ class CoreModule implements DIModule {
 
     if (kDebugMode) {
       print(
-          '✅ Dependencias de prueba para módulo Core registradas exitosamente');
+        '✅ Dependencias de prueba para módulo Core registradas exitosamente',
+      );
     }
   }
 }

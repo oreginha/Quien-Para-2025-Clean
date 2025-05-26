@@ -81,10 +81,7 @@ class StyledInput extends StatelessWidget {
             readOnly: readOnly,
             onTap: onTap,
             maxLines: maxLines,
-            style: TextStyle(
-              color: ThemeUtils.textPrimary,
-              fontSize: 16,
-            ),
+            style: TextStyle(color: ThemeUtils.textPrimary, fontSize: 16),
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: TextStyle(
@@ -92,10 +89,7 @@ class StyledInput extends StatelessWidget {
                 fontSize: 15,
               ),
               errorText: errorText,
-              errorStyle: TextStyle(
-                color: AppColors.accentRed,
-                fontSize: 13,
-              ),
+              errorStyle: TextStyle(color: AppColors.accentRed, fontSize: 13),
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
               contentPadding: const EdgeInsets.symmetric(
@@ -124,17 +118,11 @@ class StyledInput extends StatelessWidget {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: ThemeUtils.accentRed,
-                  width: 1,
-                ),
+                borderSide: BorderSide(color: ThemeUtils.accentRed, width: 1),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: ThemeUtils.accentRed,
-                  width: 1.5,
-                ),
+                borderSide: BorderSide(color: ThemeUtils.accentRed, width: 1.5),
               ),
             ),
           ),
@@ -203,10 +191,7 @@ class StyledTextArea extends StatelessWidget {
             autofocus: autoFocus,
             maxLines: maxLines,
             maxLength: maxLength,
-            style: TextStyle(
-              color: ThemeUtils.textPrimary,
-              fontSize: 16,
-            ),
+            style: TextStyle(color: ThemeUtils.textPrimary, fontSize: 16),
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: TextStyle(
@@ -214,10 +199,7 @@ class StyledTextArea extends StatelessWidget {
                 fontSize: 15,
               ),
               errorText: errorText,
-              errorStyle: TextStyle(
-                color: ThemeUtils.accentRed,
-                fontSize: 13,
-              ),
+              errorStyle: TextStyle(color: ThemeUtils.accentRed, fontSize: 13),
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: 16,
@@ -247,17 +229,11 @@ class StyledTextArea extends StatelessWidget {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: ThemeUtils.accentRed,
-                  width: 1,
-                ),
+                borderSide: BorderSide(color: ThemeUtils.accentRed, width: 1),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: ThemeUtils.accentRed,
-                  width: 1.5,
-                ),
+                borderSide: BorderSide(color: ThemeUtils.accentRed, width: 1.5),
               ),
             ),
           ),

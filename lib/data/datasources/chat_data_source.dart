@@ -5,7 +5,9 @@ import 'package:quien_para/domain/entities/message_entity.dart';
 abstract class ChatDataSource {
   /// Create or retrieve a conversation between participants
   Future<String> createConversation(
-      List<String> participants, String initialMessage);
+    List<String> participants,
+    String initialMessage,
+  );
 
   /// Get a conversation by ID
   Future<ConversationEntity?> getConversation(String conversationId);
@@ -15,7 +17,10 @@ abstract class ChatDataSource {
 
   /// Send a message to a conversation
   Future<MessageEntity> sendMessage(
-      String conversationId, String senderId, String content);
+    String conversationId,
+    String senderId,
+    String content,
+  );
 
   /// Get messages for a conversation
   Stream<List<MessageEntity>> getMessages(String conversationId);

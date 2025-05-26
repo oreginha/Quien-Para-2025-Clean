@@ -18,13 +18,13 @@ import 'package:provider/provider.dart';
 class LocationPickerWidget extends StatefulWidget {
   /// Callback cuando se selecciona una ubicación
   final Function(LocationEntity) onLocationSelected;
-  
+
   /// Ubicación inicial (opcional)
   final LocationEntity? initialLocation;
-  
+
   /// Altura del widget
   final double height;
-  
+
   /// Constructor
   const LocationPickerWidget({
     super.key,
@@ -39,23 +39,24 @@ class LocationPickerWidget extends StatefulWidget {
 
 class _LocationPickerWidgetState extends State<LocationPickerWidget> {
   /// Controlador del mapa
-  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
-  
+  final Completer<GoogleMapController> _controller =
+      Completer<GoogleMapController>();
+
   /// Caso de uso para obtener la ubicación actual
   late final GetCurrentLocationUseCase _getCurrentLocationUseCase;
-  
+
   /// Caso de uso para geocodificación inversa
   late final ReverseGeocodeUseCase _reverseGeocodeUseCase;
-  
+
   /// Ubicación seleccionada actualmente
   LocationEntity? _selectedLocation;
-  
+
   /// Marcadores del mapa
   Set<Marker> _markers = {};
-  
+
   /// Estado de carga
   bool _isLoading = true;
-  
+
   /// Cámara inicial del mapa
   final CameraPosition _initialCameraPosition = const CameraPosition(
     target: LatLng(40.4168, -3.7038), // Madrid como posición predeterminada
@@ -65,15 +66,15 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
   @override
   void initState() {
     super.initState();
-    
+
     // Inicializar casos de uso
     _getCurrentLocationUseCase = GetIt.I<GetCurrentLocationUseCase>();
     _reverseGeocodeUseCase = GetIt.I<ReverseGeocodeUseCase>();
-    
+
     // Establecer ubicación inicial o cargar la ubicación actual
     _loadInitialLocation();
   }
-  
+
   /// Carga la ubicación inicial o la ubicación del usuario
   Future<void> _loadInitialLocation() async {
     try {
@@ -88,7 +89,9 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
       } else {
         // Si no hay ubicación inicial, intentar obtener la ubicación actual
         final currentLocation = await _getCurrentLocationUseCase.execute();
-        await _selectLocation(LatLng(currentLocation.latitude, currentLocation.longitude));
+        await _selectLocation(
+          LatLng(currentLocation.latitude, currentLocation.longitude),
+        );
       }
     } catch (e) {
       // En caso de error, usar la ubicación predeterminada
@@ -108,7 +111,7 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
       }
     }
   }
-  
+
   /// Selecciona una ubicación en el mapa
   Future<void> _selectLocation(LatLng latLng) async {
     try {
@@ -117,7 +120,7 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
         latLng.latitude,
         latLng.longitude,
       );
-      
+
       if (locationInfo != null) {
         _selectedLocation = locationInfo;
       } else {
@@ -127,7 +130,7 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
           name: 'Ubicación seleccionada',
         );
       }
-      
+
       // Actualizar marcador en el mapa
       setState(() {
         _markers = {
@@ -141,11 +144,11 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
           ),
         };
       });
-      
+
       // Animar cámara a la nueva ubicación
       final GoogleMapController controller = await _controller.future;
       controller.animateCamera(CameraUpdate.newLatLng(latLng));
-      
+
       // Notificar la selección
       widget.onLocationSelected(_selectedLocation!);
     } catch (e) {
@@ -164,7 +167,7 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.isDarkMode;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -174,7 +177,7 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
           style: AppTypography.heading6(isDarkMode),
         ),
         const SizedBox(height: AppSpacing.s),
-        
+
         // Mapa
         SizedBox(
           height: widget.height,
@@ -194,8 +197,8 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                   onMapCreated: (GoogleMapController controller) {
                     _controller.complete(controller);
                   },
-                  style: isDarkMode ? 
-                    '''[{
+                  style: isDarkMode
+                      ? '''[{
                       "elementType": "geometry",
                       "stylers": [{
                         "color": "#242f3e"
@@ -318,23 +321,25 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                         "color": "#17263c"
                       }]
                     }]'''
-                    : null,
+                      : null,
                   onTap: _selectLocation,
                   mapType: MapType.normal,
                   padding: const EdgeInsets.all(AppSpacing.m),
                 ),
-                
+
                 // Indicador de carga
                 if (_isLoading)
                   Container(
                     color: AppColors.withAlpha(Colors.black, 0.3),
                     child: Center(
                       child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.brandYellow),
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          AppColors.brandYellow,
+                        ),
                       ),
                     ),
                   ),
-                
+
                 // Botones de control
                 Positioned(
                   right: AppSpacing.s,
@@ -348,18 +353,23 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                           setState(() {
                             _isLoading = true;
                           });
-                          
+
                           try {
-                            final location = await _getCurrentLocationUseCase.execute();
+                            final location = await _getCurrentLocationUseCase
+                                .execute();
                             if (mounted) {
-                              await _selectLocation(LatLng(location.latitude, location.longitude));
+                              await _selectLocation(
+                                LatLng(location.latitude, location.longitude),
+                              );
                             }
                           } catch (e) {
                             // Verificamos si el widget está montado antes de usar el BuildContext
                             if (mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('Error al obtener ubicación: $e'),
+                                  content: Text(
+                                    'Error al obtener ubicación: $e',
+                                  ),
                                 ),
                               );
                             }
@@ -372,7 +382,10 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                           }
                         },
                         backgroundColor: AppColors.brandYellow,
-                        child: const Icon(Icons.my_location, color: Colors.black),
+                        child: const Icon(
+                          Icons.my_location,
+                          color: Colors.black,
+                        ),
                       ),
                       const SizedBox(height: AppSpacing.s),
                       // Botón de zoom in
@@ -384,8 +397,13 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                             controller.animateCamera(CameraUpdate.zoomIn());
                           }
                         },
-                        backgroundColor: AppColors.getCardBackground(isDarkMode),
-                        child: Icon(Icons.add, color: AppColors.getTextPrimary(isDarkMode)),
+                        backgroundColor: AppColors.getCardBackground(
+                          isDarkMode,
+                        ),
+                        child: Icon(
+                          Icons.add,
+                          color: AppColors.getTextPrimary(isDarkMode),
+                        ),
                       ),
                       const SizedBox(height: AppSpacing.xs),
                       // Botón de zoom out
@@ -397,8 +415,13 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                             controller.animateCamera(CameraUpdate.zoomOut());
                           }
                         },
-                        backgroundColor: AppColors.getCardBackground(isDarkMode),
-                        child: Icon(Icons.remove, color: AppColors.getTextPrimary(isDarkMode)),
+                        backgroundColor: AppColors.getCardBackground(
+                          isDarkMode,
+                        ),
+                        child: Icon(
+                          Icons.remove,
+                          color: AppColors.getTextPrimary(isDarkMode),
+                        ),
                       ),
                     ],
                   ),
@@ -407,9 +430,9 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
             ),
           ),
         ),
-        
+
         // Información de la ubicación seleccionada
-        if (_selectedLocation != null) ...[  
+        if (_selectedLocation != null) ...[
           const SizedBox(height: AppSpacing.s),
           Container(
             padding: const EdgeInsets.all(AppSpacing.s),
@@ -423,18 +446,19 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
               children: [
                 Text(
                   _selectedLocation?.name ?? 'Ubicación seleccionada',
-                  style: AppTypography.labelLarge(isDarkMode).copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTypography.labelLarge(
+                    isDarkMode,
+                  ).copyWith(fontWeight: FontWeight.bold),
                 ),
-                if (_selectedLocation?.address != null) ...[  
+                if (_selectedLocation?.address != null) ...[
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     _selectedLocation!.address!,
                     style: AppTypography.bodyMedium(isDarkMode),
                   ),
                 ],
-                if (_selectedLocation?.city != null || _selectedLocation?.country != null) ...[  
+                if (_selectedLocation?.city != null ||
+                    _selectedLocation?.country != null) ...[
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     [

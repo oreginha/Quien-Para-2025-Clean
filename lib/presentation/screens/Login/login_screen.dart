@@ -59,7 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
       // Verificar si el widget sigue montado
       if (!_mounted) {
         AuthDebugger.log(
-            'LoginScreen: Widget no montado después de autenticación');
+          'LoginScreen: Widget no montado después de autenticación',
+        );
         return;
       }
 
@@ -122,10 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.topRight,
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
-                child: ThemeModeIcon(
-                  size: 28,
-                  showBorder: true,
-                ),
+                child: ThemeModeIcon(size: 28, showBorder: true),
               ),
             ),
 
@@ -186,7 +184,8 @@ class _LoginScreenState extends State<LoginScreen> {
               current.status == AuthStatus.error,
           listener: (BuildContext context, AuthState state) {
             AuthDebugger.log(
-                'LoginScreen: Error detectado: ${state.errorMessage}');
+              'LoginScreen: Error detectado: ${state.errorMessage}',
+            );
 
             if (_mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -214,8 +213,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.black.withAlpha(128), // 0.5 * 255 = 128
                 child: Center(
                   child: CircularProgressIndicator(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(ThemeUtils.brandYellow),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      ThemeUtils.brandYellow,
+                    ),
                   ),
                 ),
               );

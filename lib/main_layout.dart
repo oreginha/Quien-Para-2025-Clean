@@ -69,10 +69,7 @@ class _MainLayoutState extends State<MainLayout> with WidgetsBindingObserver {
         : const Color(0xFFF7FAFC); // Light theme background
 
     // Contenido principal compartido entre layouts
-    final mainContent = IndexedStack(
-      index: _currentIndex,
-      children: _screens,
-    );
+    final mainContent = IndexedStack(index: _currentIndex, children: _screens);
 
     // Layout compartido con barra de navegación adaptativa
     final sharedLayout = Scaffold(

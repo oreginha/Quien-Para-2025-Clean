@@ -30,21 +30,26 @@ class FilterPlansByDateUseCase {
     try {
       // Validar parámetros
       if (startDate.isAfter(endDate)) {
-        return const Left(ValidationFailure(
-            'La fecha de inicio no puede ser posterior a la fecha de fin'));
+        return const Left(
+          ValidationFailure(
+            'La fecha de inicio no puede ser posterior a la fecha de fin',
+          ),
+        );
       }
 
       final now = DateTime.now();
       if (endDate.isBefore(now.subtract(const Duration(days: 1)))) {
         return const Left(
-            ValidationFailure('No se pueden buscar planes que ya han pasado'));
+          ValidationFailure('No se pueden buscar planes que ya han pasado'),
+        );
       }
 
       // Verificar que el rango no sea demasiado amplio (máximo 1 año)
       final difference = endDate.difference(startDate);
       if (difference.inDays > 365) {
         return const Left(
-            ValidationFailure('El rango de fechas no puede ser mayor a 1 año'));
+          ValidationFailure('El rango de fechas no puede ser mayor a 1 año'),
+        );
       }
 
       // Ejecutar filtro por fechas
@@ -58,7 +63,8 @@ class FilterPlansByDateUseCase {
       return result;
     } catch (e) {
       return Left(
-          ServerFailure(null, 'Error al filtrar por fechas: ${e.toString()}'));
+        ServerFailure(null, 'Error al filtrar por fechas: ${e.toString()}'),
+      );
     }
   }
 
@@ -86,8 +92,9 @@ class FilterPlansByDateUseCase {
   }) async {
     final now = DateTime.now();
     final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
-    final endOfWeek = startOfWeek
-        .add(const Duration(days: 6, hours: 23, minutes: 59, seconds: 59));
+    final endOfWeek = startOfWeek.add(
+      const Duration(days: 6, hours: 23, minutes: 59, seconds: 59),
+    );
 
     return execute(
       startDate: DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day),
@@ -134,10 +141,19 @@ class FilterPlansByDateUseCase {
     final saturday = now.add(Duration(days: daysUntilSaturday));
     final sunday = saturday.add(const Duration(days: 1));
 
-    final startOfSaturday =
-        DateTime(saturday.year, saturday.month, saturday.day);
-    final endOfSunday =
-        DateTime(sunday.year, sunday.month, sunday.day, 23, 59, 59);
+    final startOfSaturday = DateTime(
+      saturday.year,
+      saturday.month,
+      saturday.day,
+    );
+    final endOfSunday = DateTime(
+      sunday.year,
+      sunday.month,
+      sunday.day,
+      23,
+      59,
+      59,
+    );
 
     return execute(
       startDate: startOfSaturday,

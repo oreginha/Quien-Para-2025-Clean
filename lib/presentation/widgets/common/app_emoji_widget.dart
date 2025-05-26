@@ -8,7 +8,7 @@ enum IconDisplayMode {
   materialIcon, // Mostrar solo el ícono de Material Design
   emoji, // Mostrar solo el emoji
   both, // Mostrar ambos (ícono y emoji)
-  adaptive // Adaptar según la plataforma (Android: Material, iOS: Emoji)
+  adaptive, // Adaptar según la plataforma (Android: Material, iOS: Emoji)
 }
 
 /// Widget para mostrar íconos de la aplicación de manera consistente.
@@ -83,45 +83,23 @@ class AppEmojiWidget extends StatelessWidget {
 
     switch (effectiveMode) {
       case IconDisplayMode.materialIcon:
-        return Icon(
-          icon,
-          size: size,
-          color: effectiveColor,
-        );
+        return Icon(icon, size: size, color: effectiveColor);
 
       case IconDisplayMode.emoji:
-        return Text(
-          emoji,
-          style: TextStyle(
-            fontSize: size,
-          ),
-        );
+        return Text(emoji, style: TextStyle(fontSize: size));
 
       case IconDisplayMode.both:
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(
-              icon,
-              size: size,
-              color: effectiveColor,
-            ),
+            Icon(icon, size: size, color: effectiveColor),
             SizedBox(width: spacing),
-            Text(
-              emoji,
-              style: TextStyle(
-                fontSize: size,
-              ),
-            ),
+            Text(emoji, style: TextStyle(fontSize: size)),
           ],
         );
 
       default:
-        return Icon(
-          icon,
-          size: size,
-          color: effectiveColor,
-        );
+        return Icon(icon, size: size, color: effectiveColor);
     }
   }
 }

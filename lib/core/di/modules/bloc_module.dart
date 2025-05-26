@@ -79,7 +79,8 @@ class BlocModule implements DIModule {
         logger.d('UserProfileBloc registrado correctamente');
       } catch (e) {
         logger.w(
-            'Error registrando UserProfileBloc: ${e.toString().split('\n')[0]}');
+          'Error registrando UserProfileBloc: ${e.toString().split('\n')[0]}',
+        );
       }
     }
 
@@ -120,20 +121,24 @@ class BlocModule implements DIModule {
             container.isRegistered<NotificationServiceInterface>()) {
           final applicationRepo = container<ApplicationRepositoryInterface>();
 
-          container.registerLazySingleton<MatchingBloc>(() => MatchingBloc(
+          container.registerLazySingleton<MatchingBloc>(
+            () => MatchingBloc(
               ApplyToPlanUseCase(applicationRepo),
               GetPlanApplicationsUseCase(applicationRepo),
               GetUserApplicationsUseCase(applicationRepo),
               UpdateApplicationStatusUseCase(applicationRepo),
               CancelApplicationUseCase(applicationRepo),
-              container<SendApplicationNotificationUseCase>()));
+              container<SendApplicationNotificationUseCase>(),
+            ),
+          );
           logger.d('MatchingBloc registrado correctamente');
         } else {
           logger.w('No se pudo registrar MatchingBloc - faltan repositorios');
         }
       } catch (e) {
         logger.w(
-            'Error registrando MatchingBloc: ${e.toString().split('\n')[0]}');
+          'Error registrando MatchingBloc: ${e.toString().split('\n')[0]}',
+        );
       }
     }
 
@@ -247,14 +252,16 @@ class BlocModule implements DIModule {
         logger.d('UseCaseModule registrado en verificación');
       } catch (e) {
         logger.d(
-            'No se pudo registrar UseCaseModule: ${e.toString().split('\n')[0]}');
+          'No se pudo registrar UseCaseModule: ${e.toString().split('\n')[0]}',
+        );
       }
 
       // No fallamos catastróficamente para permitir que la app inicie
       // Registrar BLoCs individualmente manejará los casos de uso faltantes
     } catch (e) {
       logger.w(
-          'Error en verificación de dependencias: ${e.toString().split('\n')[0]}');
+        'Error en verificación de dependencias: ${e.toString().split('\n')[0]}',
+      );
       // Continuamos a pesar del error
     }
   }
@@ -297,7 +304,8 @@ class BlocModule implements DIModule {
     // Asegurarse de que se registren los mocks de repositorios primero
     if (!container.isRegistered<AuthRepository>()) {
       throw StateError(
-          'Los mocks de repositorios deben registrarse antes de BlocModule.registerTestDependencies');
+        'Los mocks de repositorios deben registrarse antes de BlocModule.registerTestDependencies',
+      );
     }
 
     // Registrar BLoCs con dependencias mock

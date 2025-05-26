@@ -74,7 +74,9 @@ Widget iconosSesion(final BuildContext context) {
           GoogleSignInButton(
             onSignInSuccess: (final user) {
               Navigator.pushReplacementNamed(
-                  context, AppRouter.login); // Cambia por tu ruta
+                context,
+                AppRouter.login,
+              ); // Cambia por tu ruta
             },
           ),
           const SizedBox(height: 15),
@@ -131,4 +133,5 @@ Widget iconosSesion(final BuildContext context) {
     ),
   );
 }
+
 // #endregion

@@ -27,27 +27,24 @@ class _RatingStarsWidgetState extends State<RatingStarsWidget> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: List.generate(
-        widget.starCount,
-        (index) {
-          return GestureDetector(
-            onTap: widget.onRatingChanged != null
-                ? () => widget.onRatingChanged!(index + 1.0)
-                : null,
-            child: Icon(
-              index < widget.rating.floor()
-                  ? Icons.star
-                  : index < widget.rating
-                      ? Icons.star_half
-                      : Icons.star_border,
-              color: index < widget.rating
-                  ? widget.color
-                  : widget.backgroundColor,
-              size: widget.size,
-            ),
-          );
-        },
-      ),
+      children: List.generate(widget.starCount, (index) {
+        return GestureDetector(
+          onTap: widget.onRatingChanged != null
+              ? () => widget.onRatingChanged!(index + 1.0)
+              : null,
+          child: Icon(
+            index < widget.rating.floor()
+                ? Icons.star
+                : index < widget.rating
+                ? Icons.star_half
+                : Icons.star_border,
+            color: index < widget.rating
+                ? widget.color
+                : widget.backgroundColor,
+            size: widget.size,
+          ),
+        );
+      }),
     );
   }
 }

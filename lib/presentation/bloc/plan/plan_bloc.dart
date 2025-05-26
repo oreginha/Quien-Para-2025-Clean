@@ -31,12 +31,12 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
     required SavePlanUseCase savePlanUseCase,
     //required GetOtherUserPlansUseCase otherUsersPlansUseCase,
     required PlanRepository planRepository,
-  })  : _getPlanByIdUseCase = getPlanByIdUseCase,
-        _createPlanUseCase = createPlanUseCase,
-        _updatePlanUseCase = updatePlanUseCase,
-        _savePlanUseCase = savePlanUseCase,
-        //_otherUsersPlansUseCase = otherUsersPlansUseCase,
-        super(const PlanState.initial()) {
+  }) : _getPlanByIdUseCase = getPlanByIdUseCase,
+       _createPlanUseCase = createPlanUseCase,
+       _updatePlanUseCase = updatePlanUseCase,
+       _savePlanUseCase = savePlanUseCase,
+       //_otherUsersPlansUseCase = otherUsersPlansUseCase,
+       super(const PlanState.initial()) {
     on<PlanEvent>((event, emit) {
       event.when(
         create: (creatorId, planData) =>
@@ -88,7 +88,8 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
     final state = this.state;
     if (state is! PlanLoaded) {
       emit(
-          const PlanState.error(message: 'No hay un plan activo para guardar'));
+        const PlanState.error(message: 'No hay un plan activo para guardar'),
+      );
       return;
     }
 
@@ -98,13 +99,18 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
 
       final result = await _savePlanUseCase.execute(currentPlan);
       result.fold(
-          (failure) => emit(
-              PlanState.error(message: failure.message, plan: currentPlan)),
-          (savedPlan) => emit(PlanState.saved(plan: savedPlan)));
+        (failure) =>
+            emit(PlanState.error(message: failure.message, plan: currentPlan)),
+        (savedPlan) => emit(PlanState.saved(plan: savedPlan)),
+      );
     } catch (e, stackTrace) {
       _handleError('guardar plan', e, stackTrace);
-      emit(PlanState.error(
-          message: 'Error al guardar plan: $e', plan: currentPlan));
+      emit(
+        PlanState.error(
+          message: 'Error al guardar plan: $e',
+          plan: currentPlan,
+        ),
+      );
     }
   }
 
@@ -143,22 +149,31 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
           }
           break;
         case 'guestCount':
-          updatedPlan =
-              currentPlan.copyWith(guestCount: int.tryParse(value.toString()));
+          updatedPlan = currentPlan.copyWith(
+            guestCount: int.tryParse(value.toString()),
+          );
           break;
         case 'payCondition':
           updatedPlan = currentPlan.copyWith(payCondition: value as String);
           break;
         default:
-          emit(PlanState.error(
-              message: 'Campo no reconocido: $field', plan: currentPlan));
+          emit(
+            PlanState.error(
+              message: 'Campo no reconocido: $field',
+              plan: currentPlan,
+            ),
+          );
           return;
       }
       emit(PlanState.loaded(plan: updatedPlan));
     } catch (e, stackTrace) {
       _handleError('actualizar campo', e, stackTrace);
-      emit(PlanState.error(
-          message: 'Error al actualizar campo: $e', plan: state.plan));
+      emit(
+        PlanState.error(
+          message: 'Error al actualizar campo: $e',
+          plan: state.plan,
+        ),
+      );
     }
   }
 
@@ -174,8 +189,12 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
       emit(PlanState.loaded(plan: updatedPlan));
     } catch (e, stackTrace) {
       _handleError('actualizar opciones seleccionadas', e, stackTrace);
-      emit(PlanState.error(
-          message: 'Error al actualizar opciones: $e', plan: state.plan));
+      emit(
+        PlanState.error(
+          message: 'Error al actualizar opciones: $e',
+          plan: state.plan,
+        ),
+      );
     }
   }
 
@@ -191,8 +210,12 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
       emit(PlanState.loaded(plan: updatedPlan));
     } catch (e, stackTrace) {
       _handleError('actualizar temas seleccionados', e, stackTrace);
-      emit(PlanState.error(
-          message: 'Error al actualizar temas: $e', plan: state.plan));
+      emit(
+        PlanState.error(
+          message: 'Error al actualizar temas: $e',
+          plan: state.plan,
+        ),
+      );
     }
   }
 
@@ -208,8 +231,12 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
       emit(PlanState.loaded(plan: updatedPlan));
     } catch (e, stackTrace) {
       _handleError('actualizar condiciones extra', e, stackTrace);
-      emit(PlanState.error(
-          message: 'Error al actualizar condiciones: $e', plan: state.plan));
+      emit(
+        PlanState.error(
+          message: 'Error al actualizar condiciones: $e',
+          plan: state.plan,
+        ),
+      );
     }
   }
 
@@ -232,17 +259,21 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
 
     try {
       final updatedPlan = state.plan.copyWith(
-          title: planData['title'] as String? ?? state.plan.title,
-          description:
-              planData['description'] as String? ?? state.plan.description,
-          location: planData['location'] as String? ?? state.plan.location,
-          category: planData['category'] as String? ?? state.plan.category);
+        title: planData['title'] as String? ?? state.plan.title,
+        description:
+            planData['description'] as String? ?? state.plan.description,
+        location: planData['location'] as String? ?? state.plan.location,
+        category: planData['category'] as String? ?? state.plan.category,
+      );
       emit(PlanState.loaded(plan: updatedPlan));
     } catch (e, stackTrace) {
       _handleError('actualizar desde plan sugerido', e, stackTrace);
-      emit(PlanState.error(
+      emit(
+        PlanState.error(
           message: 'Error al actualizar desde plan sugerido: $e',
-          plan: state.plan));
+          plan: state.plan,
+        ),
+      );
     }
   }
 
@@ -273,8 +304,9 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
   Future<void> _onUpdatePlan(Emitter<PlanState> emit) async {
     final state = this.state;
     if (state is! PlanLoaded) {
-      emit(const PlanState.error(
-          message: 'No hay un plan activo para actualizar'));
+      emit(
+        const PlanState.error(message: 'No hay un plan activo para actualizar'),
+      );
       return;
     }
 
@@ -290,13 +322,19 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
       );
     } catch (e, stackTrace) {
       _handleError('actualizar plan', e, stackTrace);
-      emit(PlanState.error(
-          message: 'Error al actualizar plan: $e', plan: state.plan));
+      emit(
+        PlanState.error(
+          message: 'Error al actualizar plan: $e',
+          plan: state.plan,
+        ),
+      );
     }
   }
 
   Future<void> _loadOtherUsersPlans(
-      String currentUserId, Emitter<PlanState> emit) async {
+    String currentUserId,
+    Emitter<PlanState> emit,
+  ) async {
     try {
       emit(const PlanState.loading());
 

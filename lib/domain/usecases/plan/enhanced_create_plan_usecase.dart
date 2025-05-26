@@ -68,12 +68,14 @@ class CreatePlanParams {
         fieldErrors['error_$i'] = errors[i];
       }
 
-      return Left(ValidationFailure(
-        message: 'Error de validación al crear plan',
-        fieldErrors: fieldErrors,
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'Error de validación al crear plan',
+          fieldErrors: fieldErrors,
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     return const Right(true);
@@ -121,7 +123,8 @@ class EnhancedCreatePlanUseCase
         return validationResult.fold(
           (failure) => Left(failure),
           (_) => throw StateError(
-              'Estado inesperado en validación'), // Nunca debería ocurrir
+            'Estado inesperado en validación',
+          ), // Nunca debería ocurrir
         );
       }
 

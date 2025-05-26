@@ -107,10 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return AppBar(
       backgroundColor: AppColors.getBackground(isDarkMode),
       elevation: 0,
-      title: Text(
-        'Búsqueda',
-        style: AppTypography.appBarTitle(isDarkMode),
-      ),
+      title: Text('Búsqueda', style: AppTypography.appBarTitle(isDarkMode)),
       actions: <Widget>[
         // Botón para filtros de búsqueda
         Padding(
@@ -149,7 +146,9 @@ class _SearchScreenState extends State<SearchScreen> {
         boxShadow: [
           BoxShadow(
             color: AppColors.withAlpha(
-                AppColors.getTextSecondary(isDarkMode), 0.1),
+              AppColors.getTextSecondary(isDarkMode),
+              0.1,
+            ),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -167,9 +166,9 @@ class _SearchScreenState extends State<SearchScreen> {
         },
         decoration: InputDecoration(
           hintText: 'Buscar planes...',
-          hintStyle: AppTypography.bodyMedium(isDarkMode).copyWith(
-            color: AppColors.getTextSecondary(isDarkMode),
-          ),
+          hintStyle: AppTypography.bodyMedium(
+            isDarkMode,
+          ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
           prefixIcon: Icon(
             Icons.search,
             color: AppColors.getTextSecondary(isDarkMode),
@@ -192,16 +191,17 @@ class _SearchScreenState extends State<SearchScreen> {
             borderRadius: BorderRadius.circular(AppRadius.s),
             borderSide: BorderSide.none,
           ),
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: AppSpacing.s,
-          ),
+          contentPadding: const EdgeInsets.symmetric(vertical: AppSpacing.s),
         ),
       ),
     );
   }
 
   Widget _buildRecentSearches(
-      BuildContext context, SearchState state, bool isDarkMode) {
+    BuildContext context,
+    SearchState state,
+    bool isDarkMode,
+  ) {
     if (state.recentSearches.isEmpty) {
       return Center(
         child: Column(
@@ -221,9 +221,9 @@ class _SearchScreenState extends State<SearchScreen> {
             const SizedBox(height: AppSpacing.s),
             Text(
               'Aquí se mostrarán tus búsquedas recientes',
-              style: AppTypography.labelLarge(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.labelLarge(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               textAlign: TextAlign.center,
             ),
           ],
@@ -249,9 +249,9 @@ class _SearchScreenState extends State<SearchScreen> {
                 },
                 child: Text(
                   'Borrar todo',
-                  style: AppTypography.labelLarge(isDarkMode).copyWith(
-                    color: AppColors.brandYellow,
-                  ),
+                  style: AppTypography.labelLarge(
+                    isDarkMode,
+                  ).copyWith(color: AppColors.brandYellow),
                 ),
               ),
             ],
@@ -270,7 +270,10 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildRecentSearchChip(
-      BuildContext context, String query, bool isDarkMode) {
+    BuildContext context,
+    String query,
+    bool isDarkMode,
+  ) {
     return GestureDetector(
       onTap: () {
         _searchController.text = query;
@@ -278,10 +281,7 @@ class _SearchScreenState extends State<SearchScreen> {
       },
       child: Chip(
         backgroundColor: AppColors.getSecondaryBackground(isDarkMode),
-        label: Text(
-          query,
-          style: AppTypography.bodyMedium(isDarkMode),
-        ),
+        label: Text(query, style: AppTypography.bodyMedium(isDarkMode)),
         avatar: Icon(
           Icons.history,
           size: AppIconSize.xs,
@@ -301,14 +301,17 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildSearchResults(
-      BuildContext context, SearchState state, bool isDarkMode) {
+    BuildContext context,
+    SearchState state,
+    bool isDarkMode,
+  ) {
     return RefreshIndicator(
       color: AppColors.brandYellow,
       onRefresh: () async {
         if (_searchController.text.isNotEmpty) {
-          context
-              .read<SearchBloc>()
-              .add(SubmitSearch(query: _searchController.text));
+          context.read<SearchBloc>().add(
+            SubmitSearch(query: _searchController.text),
+          );
         }
       },
       child: ListView.builder(
@@ -329,8 +332,11 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Widget _buildPlanCard(BuildContext context,
-      PlanWithCreatorEntity planWithCreator, bool isDarkMode) {
+  Widget _buildPlanCard(
+    BuildContext context,
+    PlanWithCreatorEntity planWithCreator,
+    bool isDarkMode,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.m),
       child: GestureDetector(
@@ -368,16 +374,15 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildErrorWidget(
-      BuildContext context, String? errorMessage, bool isDarkMode) {
+    BuildContext context,
+    String? errorMessage,
+    bool isDarkMode,
+  ) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 64.0,
-            color: AppColors.accentRed,
-          ),
+          Icon(Icons.error_outline, size: 64.0, color: AppColors.accentRed),
           const SizedBox(height: AppSpacing.m),
           Text(
             'Error al realizar la búsqueda',
@@ -399,9 +404,9 @@ class _SearchScreenState extends State<SearchScreen> {
           ElevatedButton(
             onPressed: () {
               if (_searchController.text.isNotEmpty) {
-                context
-                    .read<SearchBloc>()
-                    .add(SubmitSearch(query: _searchController.text));
+                context.read<SearchBloc>().add(
+                  SubmitSearch(query: _searchController.text),
+                );
               } else {
                 context.read<SearchBloc>().add(const InitializeSearch());
               }
@@ -439,9 +444,9 @@ class _SearchScreenState extends State<SearchScreen> {
           const SizedBox(height: AppSpacing.s),
           Text(
             'Intenta con otra búsqueda o ajusta los filtros',
-            style: AppTypography.bodyMedium(isDarkMode).copyWith(
-              color: AppColors.getTextSecondary(isDarkMode),
-            ),
+            style: AppTypography.bodyMedium(
+              isDarkMode,
+            ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
             textAlign: TextAlign.center,
           ),
         ],

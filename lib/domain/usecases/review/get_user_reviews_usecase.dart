@@ -9,7 +9,8 @@ class GetUserReviewsUseCase {
   GetUserReviewsUseCase(this.repository);
 
   Future<Either<Failure, UserReviewsResult>> call(
-      GetUserReviewsParams params) async {
+    GetUserReviewsParams params,
+  ) async {
     // Validaciones
     if (params.userId.isEmpty) {
       return Left(ValidationFailure('ID de usuario requerido'));
@@ -49,12 +50,14 @@ class GetUserReviewsUseCase {
       stats = (statsResult as Right).value;
     }
 
-    return Right(UserReviewsResult(
-      reviews: reviews,
-      userRating: userRating,
-      stats: stats,
-      hasMore: reviews.length == params.limit,
-    ));
+    return Right(
+      UserReviewsResult(
+        reviews: reviews,
+        userRating: userRating,
+        stats: stats,
+        hasMore: reviews.length == params.limit,
+      ),
+    );
   }
 }
 

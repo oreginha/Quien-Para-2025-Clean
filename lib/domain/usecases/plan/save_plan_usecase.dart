@@ -25,24 +25,27 @@ class SavePlanUseCase implements UseCaseInterface<PlanEntity, PlanEntity> {
     this._planRepository, {
     CreatePlanUseCase? createPlanUseCase,
     UpdatePlanUseCase? updatePlanUseCase,
-  })  : _createPlanUseCase =
-            createPlanUseCase ?? CreatePlanUseCase(_planRepository),
-        _updatePlanUseCase =
-            updatePlanUseCase ?? UpdatePlanUseCase(_planRepository);
+  }) : _createPlanUseCase =
+           createPlanUseCase ?? CreatePlanUseCase(_planRepository),
+       _updatePlanUseCase =
+           updatePlanUseCase ?? UpdatePlanUseCase(_planRepository);
 
   @override
   Future<Either<AppFailure, PlanEntity>> execute(PlanEntity plan) async {
     _logger.d(
-        'SavePlanUseCase: Guardando plan: ${plan.id.isEmpty ? "nuevo" : plan.id}');
+      'SavePlanUseCase: Guardando plan: ${plan.id.isEmpty ? "nuevo" : plan.id}',
+    );
 
     // Validar plan
     if (!plan.isValid) {
       _logger.w('SavePlanUseCase: Plan inválido');
-      return Left(ValidationFailure(
-        message: 'El plan no es válido, faltan campos requeridos',
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El plan no es válido, faltan campos requeridos',
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     // Determinar si es un plan nuevo o existente

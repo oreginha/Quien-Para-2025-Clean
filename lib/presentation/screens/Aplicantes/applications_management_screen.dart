@@ -52,20 +52,22 @@ class _ApplicationsManagementScreenState
   @override
   void initState() {
     super.initState();
-    context
-        .read<MatchingBloc>()
-        .add(MatchingEvent.loadPlanApplications(widget.planId));
+    context.read<MatchingBloc>().add(
+      MatchingEvent.loadPlanApplications(widget.planId),
+    );
   }
 
   Future<void> _loadUserProfiles(
-      final List<ApplicationEntity> applications) async {
+    final List<ApplicationEntity> applications,
+  ) async {
     // Cargar perfiles de usuario para mostrar detalles
     final Map<String, dynamic> profiles = <String, dynamic>{};
     for (ApplicationEntity app in applications) {
       if (!_userProfiles.containsKey(app.applicantId)) {
         try {
-          final Map<String, dynamic> userProfile = (await _userRepository
-              .getUserProfileById(app.applicantId)) as Map<String, dynamic>;
+          final Map<String, dynamic> userProfile =
+              (await _userRepository.getUserProfileById(app.applicantId))
+                  as Map<String, dynamic>;
           profiles[app.applicantId] = userProfile;
         } catch (e) {
           logger.d('Error cargando perfil del usuario ${app.applicantId}: $e');
@@ -93,14 +95,14 @@ class _ApplicationsManagementScreenState
             Text(
               'Aplicantes',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
             Text(
               widget.planTitle,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -108,12 +110,14 @@ class _ApplicationsManagementScreenState
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh,
-                color: Theme.of(context).colorScheme.primary),
+            icon: Icon(
+              Icons.refresh,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             onPressed: () {
-              context
-                  .read<MatchingBloc>()
-                  .add(MatchingEvent.loadPlanApplications(widget.planId));
+              context.read<MatchingBloc>().add(
+                MatchingEvent.loadPlanApplications(widget.planId),
+              );
             },
             tooltip: 'Refrescar aplicaciones',
           ),
@@ -132,22 +136,22 @@ class _ApplicationsManagementScreenState
                   (final List<ApplicationEntity> applications) {},
               planApplicationsLoaded:
                   (final List<ApplicationEntity> applications) {
-                _loadUserProfiles(applications);
-              },
+                    _loadUserProfiles(applications);
+                  },
               applicationActionSuccess:
                   (final String message, final ApplicationEntity application) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(message),
-                    backgroundColor: AppColors.darkBackground,
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
-                // Recargar las aplicaciones después de una acción exitosa
-                context
-                    .read<MatchingBloc>()
-                    .add(MatchingEvent.loadPlanApplications(widget.planId));
-              },
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(message),
+                        backgroundColor: AppColors.darkBackground,
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                    // Recargar las aplicaciones después de una acción exitosa
+                    context.read<MatchingBloc>().add(
+                      MatchingEvent.loadPlanApplications(widget.planId),
+                    );
+                  },
               error: (final String message) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -162,9 +166,7 @@ class _ApplicationsManagementScreenState
           builder: (final BuildContext context, final MatchingState state) {
             return state.when(
               initial: () => const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.brandYellow,
-                ),
+                child: CircularProgressIndicator(color: AppColors.brandYellow),
               ),
               loading: () => const LoadingOverlay(
                 isLoading: true,
@@ -175,11 +177,11 @@ class _ApplicationsManagementScreenState
               ),
               planApplicationsLoaded:
                   (final List<ApplicationEntity> applications) {
-                if (applications.isEmpty) {
-                  return _buildEmptyApplicationsView();
-                }
-                return _buildApplicationsListView(applications);
-              },
+                    if (applications.isEmpty) {
+                      return _buildEmptyApplicationsView();
+                    }
+                    return _buildApplicationsListView(applications);
+                  },
               applicationActionSuccess: (final _, final __) =>
                   _buildSuccessView(),
               error: (final String message) => _buildErrorView(message),
@@ -200,8 +202,9 @@ class _ApplicationsManagementScreenState
           borderRadius: BorderRadius.circular(AppRadius.l),
           boxShadow: [
             BoxShadow(
-              color:
-                  Theme.of(context).shadowColor.withAlpha((0.2 * 255).round()),
+              color: Theme.of(
+                context,
+              ).shadowColor.withAlpha((0.2 * 255).round()),
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),
@@ -211,25 +214,27 @@ class _ApplicationsManagementScreenState
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.person_off,
-                size: 80, color: Theme.of(context).dividerColor),
+            Icon(
+              Icons.person_off,
+              size: 80,
+              color: Theme.of(context).dividerColor,
+            ),
             SizedBox(height: AppSpacing.l),
             Text(
               'Aún no hay aplicaciones para este plan',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.m),
             Text(
               'Comparte tu plan para recibir solicitudes de otros usuarios interesados',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withValues(alpha: 0.7),
-                  ),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withValues(alpha: 0.7),
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.xl),
@@ -238,9 +243,9 @@ class _ApplicationsManagementScreenState
               children: [
                 ElevatedButton.icon(
                   onPressed: () {
-                    context
-                        .read<MatchingBloc>()
-                        .add(MatchingEvent.loadPlanApplications(widget.planId));
+                    context.read<MatchingBloc>().add(
+                      MatchingEvent.loadPlanApplications(widget.planId),
+                    );
                   },
                   icon: const Icon(Icons.refresh),
                   label: const Text('Refrescar'),
@@ -248,7 +253,9 @@ class _ApplicationsManagementScreenState
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Theme.of(context).colorScheme.onPrimary,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.l, vertical: AppSpacing.m),
+                      horizontal: AppSpacing.l,
+                      vertical: AppSpacing.m,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppRadius.l),
                     ),
@@ -270,9 +277,12 @@ class _ApplicationsManagementScreenState
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Theme.of(context).colorScheme.primary,
                     side: BorderSide(
-                        color: Theme.of(context).colorScheme.primary),
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.l, vertical: AppSpacing.m),
+                      horizontal: AppSpacing.l,
+                      vertical: AppSpacing.m,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppRadius.l),
                     ),
@@ -287,23 +297,27 @@ class _ApplicationsManagementScreenState
   }
 
   Widget _buildApplicationsListView(
-      final List<ApplicationEntity> applications) {
+    final List<ApplicationEntity> applications,
+  ) {
     // Separar aplicaciones por estado
-    final pendingApplications =
-        applications.where((app) => app.status == 'pending').toList();
-    final acceptedApplications =
-        applications.where((app) => app.status == 'accepted').toList();
-    final rejectedApplications =
-        applications.where((app) => app.status == 'rejected').toList();
+    final pendingApplications = applications
+        .where((app) => app.status == 'pending')
+        .toList();
+    final acceptedApplications = applications
+        .where((app) => app.status == 'accepted')
+        .toList();
+    final rejectedApplications = applications
+        .where((app) => app.status == 'rejected')
+        .toList();
 
     return RefreshIndicator(
       color: Theme.of(context).colorScheme.primary,
       backgroundColor:
           Theme.of(context).cardTheme.color ?? Theme.of(context).cardColor,
       onRefresh: () async {
-        context
-            .read<MatchingBloc>()
-            .add(MatchingEvent.loadPlanApplications(widget.planId));
+        context.read<MatchingBloc>().add(
+          MatchingEvent.loadPlanApplications(widget.planId),
+        );
       },
       child: ListView(
         padding: const EdgeInsets.all(AppSpacing.m),
@@ -320,19 +334,28 @@ class _ApplicationsManagementScreenState
                 Text(
                   'Resumen de aplicaciones',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
                 const SizedBox(height: AppSpacing.m),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _buildCountBadge('Pendientes', pendingApplications.length,
-                        Colors.orange),
                     _buildCountBadge(
-                        'Aceptadas', acceptedApplications.length, Colors.green),
-                    _buildCountBadge('Rechazadas', rejectedApplications.length,
-                        AppColors.accentRed),
+                      'Pendientes',
+                      pendingApplications.length,
+                      Colors.orange,
+                    ),
+                    _buildCountBadge(
+                      'Aceptadas',
+                      acceptedApplications.length,
+                      Colors.green,
+                    ),
+                    _buildCountBadge(
+                      'Rechazadas',
+                      rejectedApplications.length,
+                      AppColors.accentRed,
+                    ),
                   ],
                 ),
               ],
@@ -344,27 +367,51 @@ class _ApplicationsManagementScreenState
           // Sección de aplicaciones pendientes
           if (pendingApplications.isNotEmpty) ...[
             _buildSectionHeader(
-                'Pendientes', Icons.hourglass_empty, AppColors.warning),
-            ...pendingApplications.map((application) => _buildApplicationCard(
-                context, application, _userProfiles[application.applicantId])),
+              'Pendientes',
+              Icons.hourglass_empty,
+              AppColors.warning,
+            ),
+            ...pendingApplications.map(
+              (application) => _buildApplicationCard(
+                context,
+                application,
+                _userProfiles[application.applicantId],
+              ),
+            ),
             const SizedBox(height: AppSpacing.l),
           ],
 
           // Sección de aplicaciones aceptadas
           if (acceptedApplications.isNotEmpty) ...[
             _buildSectionHeader(
-                'Aceptadas', Icons.check_circle, AppColors.success),
-            ...acceptedApplications.map((application) => _buildApplicationCard(
-                context, application, _userProfiles[application.applicantId])),
+              'Aceptadas',
+              Icons.check_circle,
+              AppColors.success,
+            ),
+            ...acceptedApplications.map(
+              (application) => _buildApplicationCard(
+                context,
+                application,
+                _userProfiles[application.applicantId],
+              ),
+            ),
             const SizedBox(height: AppSpacing.l),
           ],
 
           // Sección de aplicaciones rechazadas
           if (rejectedApplications.isNotEmpty) ...[
             _buildSectionHeader(
-                'Rechazadas', Icons.cancel, AppColors.accentRed),
-            ...rejectedApplications.map((application) => _buildApplicationCard(
-                context, application, _userProfiles[application.applicantId])),
+              'Rechazadas',
+              Icons.cancel,
+              AppColors.accentRed,
+            ),
+            ...rejectedApplications.map(
+              (application) => _buildApplicationCard(
+                context,
+                application,
+                _userProfiles[application.applicantId],
+              ),
+            ),
           ],
 
           // Espacio al final para evitar que el FAB cubra contenido
@@ -388,9 +435,9 @@ class _ApplicationsManagementScreenState
           child: Center(
             child: Text(
               count.toString(),
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontSize: 18,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(fontSize: 18),
             ),
           ),
         ),
@@ -398,15 +445,15 @@ class _ApplicationsManagementScreenState
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         const SizedBox(height: AppSpacing.xs),
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
       ],
     );
@@ -421,9 +468,9 @@ class _ApplicationsManagementScreenState
           const SizedBox(width: AppSpacing.s),
           Text(
             title,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: color,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium?.copyWith(color: color),
           ),
         ],
       ),
@@ -440,8 +487,9 @@ class _ApplicationsManagementScreenState
           borderRadius: BorderRadius.circular(AppRadius.l),
           boxShadow: [
             BoxShadow(
-              color:
-                  Theme.of(context).shadowColor.withAlpha((0.2 * 255).round()),
+              color: Theme.of(
+                context,
+              ).shadowColor.withAlpha((0.2 * 255).round()),
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),
@@ -450,29 +498,32 @@ class _ApplicationsManagementScreenState
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.check_circle,
-                size: 80, color: Theme.of(context).colorScheme.primary),
+            Icon(
+              Icons.check_circle,
+              size: 80,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             const SizedBox(height: AppSpacing.l),
             Text(
               '¡Acción completada con éxito!',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.m),
             Text(
               'La aplicación ha sido procesada correctamente y se ha notificado al usuario',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
             const SizedBox(height: AppSpacing.xl),
             ElevatedButton.icon(
               onPressed: () {
-                context
-                    .read<MatchingBloc>()
-                    .add(MatchingEvent.loadPlanApplications(widget.planId));
+                context.read<MatchingBloc>().add(
+                  MatchingEvent.loadPlanApplications(widget.planId),
+                );
               },
               icon: const Icon(Icons.refresh),
               label: const Text('Ver aplicaciones'),
@@ -480,7 +531,9 @@ class _ApplicationsManagementScreenState
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
                 padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.l, vertical: AppSpacing.m),
+                  horizontal: AppSpacing.l,
+                  vertical: AppSpacing.m,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppRadius.l),
                 ),
@@ -502,8 +555,9 @@ class _ApplicationsManagementScreenState
           borderRadius: BorderRadius.circular(AppRadius.l),
           boxShadow: [
             BoxShadow(
-              color:
-                  Theme.of(context).shadowColor.withAlpha((0.2 * 255).round()),
+              color: Theme.of(
+                context,
+              ).shadowColor.withAlpha((0.2 * 255).round()),
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),
@@ -512,30 +566,33 @@ class _ApplicationsManagementScreenState
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.error_outline,
-                size: 80, color: Theme.of(context).colorScheme.primary),
+            Icon(
+              Icons.error_outline,
+              size: 80,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             const SizedBox(height: AppSpacing.l),
             Text(
               'Ha ocurrido un error',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.m),
             Text(
               message,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.xl),
             ElevatedButton.icon(
               onPressed: () {
-                context
-                    .read<MatchingBloc>()
-                    .add(MatchingEvent.loadPlanApplications(widget.planId));
+                context.read<MatchingBloc>().add(
+                  MatchingEvent.loadPlanApplications(widget.planId),
+                );
               },
               icon: const Icon(Icons.refresh),
               label: const Text('Reintentar'),
@@ -543,7 +600,9 @@ class _ApplicationsManagementScreenState
                 backgroundColor: AppColors.accentRed,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.l, vertical: AppSpacing.m),
+                  horizontal: AppSpacing.l,
+                  vertical: AppSpacing.m,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppRadius.l),
                 ),
@@ -555,8 +614,11 @@ class _ApplicationsManagementScreenState
     );
   }
 
-  Widget _buildApplicationCard(final BuildContext context,
-      final ApplicationEntity application, final dynamic userProfile) {
+  Widget _buildApplicationCard(
+    final BuildContext context,
+    final ApplicationEntity application,
+    final dynamic userProfile,
+  ) {
     if (userProfile == null) {
       return Container(
         margin: const EdgeInsets.only(bottom: AppSpacing.m),
@@ -568,9 +630,7 @@ class _ApplicationsManagementScreenState
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(AppSpacing.m),
-            child: CircularProgressIndicator(
-              color: AppColors.brandYellow,
-            ),
+            child: CircularProgressIndicator(color: AppColors.brandYellow),
           ),
         ),
       );
@@ -621,8 +681,8 @@ class _ApplicationsManagementScreenState
             title: Text(
               displayName,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -632,21 +692,18 @@ class _ApplicationsManagementScreenState
                   Text(
                     '$age años',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 if (email != null && email.isNotEmpty) ...[
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     email,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withValues(
-                                  alpha: AppTheme.of(context)
-                                      .mediumEmphasisOpacity),
-                        ),
+                      color: Theme.of(context).colorScheme.primary.withValues(
+                        alpha: AppTheme.of(context).mediumEmphasisOpacity,
+                      ),
+                    ),
                   ),
                 ],
                 // Mostrar badges para nivel y calificación si están disponibles
@@ -656,17 +713,18 @@ class _ApplicationsManagementScreenState
                     if (profile['level'] != null) ...[
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpacing.m, vertical: AppSpacing.xs),
+                          horizontal: AppSpacing.m,
+                          vertical: AppSpacing.xs,
+                        ),
                         decoration: BoxDecoration(
-                          color: AppColors.brandYellow
-                              .withAlpha((0.3 * 255).round()),
+                          color: AppColors.brandYellow.withAlpha(
+                            (0.3 * 255).round(),
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
                           profile['level'] as String,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
+                          style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
@@ -678,10 +736,13 @@ class _ApplicationsManagementScreenState
                     if (profile['rating'] != null) ...[
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpacing.m, vertical: AppSpacing.xs),
+                          horizontal: AppSpacing.m,
+                          vertical: AppSpacing.xs,
+                        ),
                         decoration: BoxDecoration(
-                          color: AppColors.brandYellow
-                              .withAlpha((0.3 * 255).round()),
+                          color: AppColors.brandYellow.withAlpha(
+                            (0.3 * 255).round(),
+                          ),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
@@ -695,12 +756,11 @@ class _ApplicationsManagementScreenState
                             const SizedBox(width: 4),
                             Text(
                               (profile['rating'] as num).toStringAsFixed(1),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
+                              style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
@@ -727,10 +787,7 @@ class _ApplicationsManagementScreenState
           ),
 
           // Widget para mostrar el estado y acciones
-          ApplicationStatusWidget(
-            application: application,
-            isCreator: true,
-          ),
+          ApplicationStatusWidget(application: application, isCreator: true),
         ],
       ),
     );

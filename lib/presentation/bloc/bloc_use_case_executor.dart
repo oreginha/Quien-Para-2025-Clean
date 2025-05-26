@@ -36,13 +36,15 @@ class BlocUseCaseExecutor {
       if (!emit.isDone) {
         if (kDebugMode) {
           print(
-              '💡 BlocUseCaseExecutor - Emitiendo estado de carga para $operation');
+            '💡 BlocUseCaseExecutor - Emitiendo estado de carga para $operation',
+          );
         }
         emit(loadingState);
       } else {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de carga para $operation');
+            '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de carga para $operation',
+          );
         }
       }
 
@@ -51,7 +53,8 @@ class BlocUseCaseExecutor {
 
       if (kDebugMode) {
         print(
-            '✅ BlocUseCaseExecutor - Operación $operation completada exitosamente');
+          '✅ BlocUseCaseExecutor - Operación $operation completada exitosamente',
+        );
       }
 
       // Verificar nuevamente si el emisor está disponible antes de emitir el estado de éxito
@@ -59,13 +62,15 @@ class BlocUseCaseExecutor {
         final State successState = onSuccess(result);
         if (kDebugMode) {
           print(
-              '💡 BlocUseCaseExecutor - Emitiendo estado de éxito tipo ${successState.runtimeType} para $operation');
+            '💡 BlocUseCaseExecutor - Emitiendo estado de éxito tipo ${successState.runtimeType} para $operation',
+          );
         }
         emit(successState);
       } else {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de éxito para $operation');
+            '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de éxito para $operation',
+          );
         }
       }
     } catch (e, stackTrace) {
@@ -82,7 +87,8 @@ class BlocUseCaseExecutor {
           stackTrace: exception.stackTrace,
         );
         print(
-            '⛔ BlocUseCaseExecutor - ERROR en $operation: ${exception.message}');
+          '⛔ BlocUseCaseExecutor - ERROR en $operation: ${exception.message}',
+        );
       }
 
       // Emitir estado de error solo si el emisor aún está disponible
@@ -90,13 +96,15 @@ class BlocUseCaseExecutor {
         final State errorState = onError(exception);
         if (kDebugMode) {
           print(
-              '💡 BlocUseCaseExecutor - Emitiendo estado de error tipo ${errorState.runtimeType} para $operation');
+            '💡 BlocUseCaseExecutor - Emitiendo estado de error tipo ${errorState.runtimeType} para $operation',
+          );
         }
         emit(errorState);
       } else {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de error para $operation');
+            '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de error para $operation',
+          );
         }
       }
     }
@@ -133,7 +141,8 @@ class BlocUseCaseExecutor {
       if (bloc.isClosed) {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - BLoC ${bloc.runtimeType} cerrado, abortando operación $operation');
+            '⚠️ BlocUseCaseExecutor - BLoC ${bloc.runtimeType} cerrado, abortando operación $operation',
+          );
         }
         return; // Salir sin hacer nada si el bloc está cerrado
       }
@@ -142,7 +151,8 @@ class BlocUseCaseExecutor {
       if (!emit.isDone) {
         if (kDebugMode) {
           print(
-              '💡 BlocUseCaseExecutor - Emitiendo estado de carga para $operation');
+            '💡 BlocUseCaseExecutor - Emitiendo estado de carga para $operation',
+          );
         }
 
         // Intentar emitir con protección
@@ -151,14 +161,16 @@ class BlocUseCaseExecutor {
         } catch (e) {
           if (kDebugMode) {
             print(
-                '⚠️ BlocUseCaseExecutor - Error al emitir estado de carga: $e');
+              '⚠️ BlocUseCaseExecutor - Error al emitir estado de carga: $e',
+            );
           }
           // No interrumpir, continuar con la operación
         }
       } else {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de carga para $operation');
+            '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de carga para $operation',
+          );
         }
       }
 
@@ -167,7 +179,8 @@ class BlocUseCaseExecutor {
 
       if (kDebugMode) {
         print(
-            '✅ BlocUseCaseExecutor - Operación $operation completada exitosamente');
+          '✅ BlocUseCaseExecutor - Operación $operation completada exitosamente',
+        );
       }
 
       // Preparar el estado de éxito antes de intentar emitirlo
@@ -177,7 +190,8 @@ class BlocUseCaseExecutor {
       if (bloc.isClosed) {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - BLoC cerrado después de completar operación $operation - no se emitirá estado');
+            '⚠️ BlocUseCaseExecutor - BLoC cerrado después de completar operación $operation - no se emitirá estado',
+          );
         }
         return;
       }
@@ -186,7 +200,8 @@ class BlocUseCaseExecutor {
       if (!emit.isDone) {
         if (kDebugMode) {
           print(
-              '💡 BlocUseCaseExecutor - Emitiendo estado de éxito tipo ${successState.runtimeType} para $operation');
+            '💡 BlocUseCaseExecutor - Emitiendo estado de éxito tipo ${successState.runtimeType} para $operation',
+          );
         }
 
         try {
@@ -194,7 +209,8 @@ class BlocUseCaseExecutor {
         } catch (e) {
           if (kDebugMode) {
             print(
-                '⚠️ BlocUseCaseExecutor - Error al emitir estado de éxito: $e');
+              '⚠️ BlocUseCaseExecutor - Error al emitir estado de éxito: $e',
+            );
           }
 
           // Intentar añadir un evento de refresco como último recurso
@@ -202,21 +218,24 @@ class BlocUseCaseExecutor {
             if (!bloc.isClosed) {
               if (kDebugMode) {
                 print(
-                    '🔄 BlocUseCaseExecutor - Intentando añadir evento de refresco');
+                  '🔄 BlocUseCaseExecutor - Intentando añadir evento de refresco',
+                );
               }
               bloc.add(refreshEvent);
             }
           } catch (e) {
             if (kDebugMode) {
               print(
-                  '⚠️ BlocUseCaseExecutor - Error al añadir evento de refresco: $e');
+                '⚠️ BlocUseCaseExecutor - Error al añadir evento de refresco: $e',
+              );
             }
           }
         }
       } else {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de éxito para $operation');
+            '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de éxito para $operation',
+          );
         }
 
         // Intentar añadir un evento de refresco como último recurso
@@ -224,14 +243,16 @@ class BlocUseCaseExecutor {
           if (!bloc.isClosed) {
             if (kDebugMode) {
               print(
-                  '🔄 BlocUseCaseExecutor - Emisor cerrado, intentando añadir evento de refresco');
+                '🔄 BlocUseCaseExecutor - Emisor cerrado, intentando añadir evento de refresco',
+              );
             }
             bloc.add(refreshEvent);
           }
         } catch (e) {
           if (kDebugMode) {
             print(
-                '⚠️ BlocUseCaseExecutor - Error al añadir evento de refresco: $e');
+              '⚠️ BlocUseCaseExecutor - Error al añadir evento de refresco: $e',
+            );
           }
         }
       }
@@ -249,7 +270,8 @@ class BlocUseCaseExecutor {
           stackTrace: exception.stackTrace,
         );
         print(
-            '⛔ BlocUseCaseExecutor - ERROR en $operation: ${exception.message}');
+          '⛔ BlocUseCaseExecutor - ERROR en $operation: ${exception.message}',
+        );
       }
 
       // Preparar el estado de error antes de intentar emitirlo
@@ -259,7 +281,8 @@ class BlocUseCaseExecutor {
       if (bloc.isClosed) {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - BLoC cerrado después de error en operación $operation - no se emitirá estado');
+            '⚠️ BlocUseCaseExecutor - BLoC cerrado después de error en operación $operation - no se emitirá estado',
+          );
         }
         return;
       }
@@ -268,7 +291,8 @@ class BlocUseCaseExecutor {
       if (!emit.isDone) {
         if (kDebugMode) {
           print(
-              '💡 BlocUseCaseExecutor - Emitiendo estado de error tipo ${errorState.runtimeType} para $operation');
+            '💡 BlocUseCaseExecutor - Emitiendo estado de error tipo ${errorState.runtimeType} para $operation',
+          );
         }
 
         try {
@@ -276,13 +300,15 @@ class BlocUseCaseExecutor {
         } catch (e) {
           if (kDebugMode) {
             print(
-                '⚠️ BlocUseCaseExecutor - Error al emitir estado de error: $e');
+              '⚠️ BlocUseCaseExecutor - Error al emitir estado de error: $e',
+            );
           }
         }
       } else {
         if (kDebugMode) {
           print(
-              '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de error para $operation');
+            '⚠️ BlocUseCaseExecutor - Emisor cerrado, no se pudo emitir estado de error para $operation',
+          );
         }
       }
     }

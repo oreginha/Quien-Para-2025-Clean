@@ -12,7 +12,8 @@ part of 'applications_management_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ApplicationsManagementState {
@@ -21,59 +22,59 @@ mixin _$ApplicationsManagementState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )
+    loaded,
     required TResult Function(String message, ApplicationEntity application)
-        actionSuccess,
+    actionSuccess,
     required TResult Function(String message) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult? Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult? Function(String message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -81,8 +82,7 @@ mixin _$ApplicationsManagementState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionSuccess value) actionSuccess,
     required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -90,8 +90,7 @@ mixin _$ApplicationsManagementState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionSuccess value)? actionSuccess,
     TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -100,22 +99,26 @@ mixin _$ApplicationsManagementState {
     TResult Function(_ActionSuccess value)? actionSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ApplicationsManagementStateCopyWith<$Res> {
   factory $ApplicationsManagementStateCopyWith(
-          ApplicationsManagementState value,
-          $Res Function(ApplicationsManagementState) then) =
-      _$ApplicationsManagementStateCopyWithImpl<$Res,
-          ApplicationsManagementState>;
+    ApplicationsManagementState value,
+    $Res Function(ApplicationsManagementState) then,
+  ) =
+      _$ApplicationsManagementStateCopyWithImpl<
+        $Res,
+        ApplicationsManagementState
+      >;
 }
 
 /// @nodoc
-class _$ApplicationsManagementStateCopyWithImpl<$Res,
-        $Val extends ApplicationsManagementState>
+class _$ApplicationsManagementStateCopyWithImpl<
+  $Res,
+  $Val extends ApplicationsManagementState
+>
     implements $ApplicationsManagementStateCopyWith<$Res> {
   _$ApplicationsManagementStateCopyWithImpl(this._value, this._then);
 
@@ -131,8 +134,9 @@ class _$ApplicationsManagementStateCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -140,8 +144,9 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
@@ -172,17 +177,18 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )
+    loaded,
     required TResult Function(String message, ApplicationEntity application)
-        actionSuccess,
+    actionSuccess,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -194,17 +200,18 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult? Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -216,17 +223,18 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -284,8 +292,9 @@ abstract class _Initial implements ApplicationsManagementState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -293,8 +302,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
@@ -325,17 +335,18 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )
+    loaded,
     required TResult Function(String message, ApplicationEntity application)
-        actionSuccess,
+    actionSuccess,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -347,17 +358,18 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult? Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -369,17 +381,18 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -437,18 +450,20 @@ abstract class _Loading implements ApplicationsManagementState {
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+    _$LoadedImpl value,
+    $Res Function(_$LoadedImpl) then,
+  ) = __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<ApplicationEntity> allApplications,
-      List<ApplicationEntity> filteredApplications,
-      Map<String, dynamic> userProfiles,
-      String currentFilter,
-      String currentSearch,
-      String viewType,
-      bool isRefreshing,
-      String? message});
+  $Res call({
+    List<ApplicationEntity> allApplications,
+    List<ApplicationEntity> filteredApplications,
+    Map<String, dynamic> userProfiles,
+    String currentFilter,
+    String currentSearch,
+    String viewType,
+    bool isRefreshing,
+    String? message,
+  });
 }
 
 /// @nodoc
@@ -456,8 +471,9 @@ class __$$LoadedImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
+    _$LoadedImpl _value,
+    $Res Function(_$LoadedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
@@ -473,58 +489,60 @@ class __$$LoadedImplCopyWithImpl<$Res>
     Object? isRefreshing = null,
     Object? message = freezed,
   }) {
-    return _then(_$LoadedImpl(
-      allApplications: null == allApplications
-          ? _value._allApplications
-          : allApplications // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationEntity>,
-      filteredApplications: null == filteredApplications
-          ? _value._filteredApplications
-          : filteredApplications // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationEntity>,
-      userProfiles: null == userProfiles
-          ? _value._userProfiles
-          : userProfiles // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      currentFilter: null == currentFilter
-          ? _value.currentFilter
-          : currentFilter // ignore: cast_nullable_to_non_nullable
-              as String,
-      currentSearch: null == currentSearch
-          ? _value.currentSearch
-          : currentSearch // ignore: cast_nullable_to_non_nullable
-              as String,
-      viewType: null == viewType
-          ? _value.viewType
-          : viewType // ignore: cast_nullable_to_non_nullable
-              as String,
-      isRefreshing: null == isRefreshing
-          ? _value.isRefreshing
-          : isRefreshing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$LoadedImpl(
+        allApplications: null == allApplications
+            ? _value._allApplications
+            : allApplications // ignore: cast_nullable_to_non_nullable
+                  as List<ApplicationEntity>,
+        filteredApplications: null == filteredApplications
+            ? _value._filteredApplications
+            : filteredApplications // ignore: cast_nullable_to_non_nullable
+                  as List<ApplicationEntity>,
+        userProfiles: null == userProfiles
+            ? _value._userProfiles
+            : userProfiles // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>,
+        currentFilter: null == currentFilter
+            ? _value.currentFilter
+            : currentFilter // ignore: cast_nullable_to_non_nullable
+                  as String,
+        currentSearch: null == currentSearch
+            ? _value.currentSearch
+            : currentSearch // ignore: cast_nullable_to_non_nullable
+                  as String,
+        viewType: null == viewType
+            ? _value.viewType
+            : viewType // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isRefreshing: null == isRefreshing
+            ? _value.isRefreshing
+            : isRefreshing // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        message: freezed == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(
-      {required final List<ApplicationEntity> allApplications,
-      required final List<ApplicationEntity> filteredApplications,
-      required final Map<String, dynamic> userProfiles,
-      required this.currentFilter,
-      required this.currentSearch,
-      required this.viewType,
-      this.isRefreshing = false,
-      this.message})
-      : _allApplications = allApplications,
-        _filteredApplications = filteredApplications,
-        _userProfiles = userProfiles;
+  const _$LoadedImpl({
+    required final List<ApplicationEntity> allApplications,
+    required final List<ApplicationEntity> filteredApplications,
+    required final Map<String, dynamic> userProfiles,
+    required this.currentFilter,
+    required this.currentSearch,
+    required this.viewType,
+    this.isRefreshing = false,
+    this.message,
+  }) : _allApplications = allApplications,
+       _filteredApplications = filteredApplications,
+       _userProfiles = userProfiles;
 
   final List<ApplicationEntity> _allApplications;
   @override
@@ -573,12 +591,18 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._allApplications, _allApplications) &&
-            const DeepCollectionEquality()
-                .equals(other._filteredApplications, _filteredApplications) &&
-            const DeepCollectionEquality()
-                .equals(other._userProfiles, _userProfiles) &&
+            const DeepCollectionEquality().equals(
+              other._allApplications,
+              _allApplications,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._filteredApplications,
+              _filteredApplications,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._userProfiles,
+              _userProfiles,
+            ) &&
             (identical(other.currentFilter, currentFilter) ||
                 other.currentFilter == currentFilter) &&
             (identical(other.currentSearch, currentSearch) ||
@@ -592,15 +616,16 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_allApplications),
-      const DeepCollectionEquality().hash(_filteredApplications),
-      const DeepCollectionEquality().hash(_userProfiles),
-      currentFilter,
-      currentSearch,
-      viewType,
-      isRefreshing,
-      message);
+    runtimeType,
+    const DeepCollectionEquality().hash(_allApplications),
+    const DeepCollectionEquality().hash(_filteredApplications),
+    const DeepCollectionEquality().hash(_userProfiles),
+    currentFilter,
+    currentSearch,
+    viewType,
+    isRefreshing,
+    message,
+  );
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
@@ -616,21 +641,30 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )
+    loaded,
     required TResult Function(String message, ApplicationEntity application)
-        actionSuccess,
+    actionSuccess,
     required TResult Function(String message) error,
   }) {
-    return loaded(allApplications, filteredApplications, userProfiles,
-        currentFilter, currentSearch, viewType, isRefreshing, message);
+    return loaded(
+      allApplications,
+      filteredApplications,
+      userProfiles,
+      currentFilter,
+      currentSearch,
+      viewType,
+      isRefreshing,
+      message,
+    );
   }
 
   @override
@@ -639,21 +673,30 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult? Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(allApplications, filteredApplications, userProfiles,
-        currentFilter, currentSearch, viewType, isRefreshing, message);
+    return loaded?.call(
+      allApplications,
+      filteredApplications,
+      userProfiles,
+      currentFilter,
+      currentSearch,
+      viewType,
+      isRefreshing,
+      message,
+    );
   }
 
   @override
@@ -662,23 +705,32 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(allApplications, filteredApplications, userProfiles,
-          currentFilter, currentSearch, viewType, isRefreshing, message);
+      return loaded(
+        allApplications,
+        filteredApplications,
+        userProfiles,
+        currentFilter,
+        currentSearch,
+        viewType,
+        isRefreshing,
+        message,
+      );
     }
     return orElse();
   }
@@ -725,15 +777,16 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ApplicationsManagementState {
-  const factory _Loaded(
-      {required final List<ApplicationEntity> allApplications,
-      required final List<ApplicationEntity> filteredApplications,
-      required final Map<String, dynamic> userProfiles,
-      required final String currentFilter,
-      required final String currentSearch,
-      required final String viewType,
-      final bool isRefreshing,
-      final String? message}) = _$LoadedImpl;
+  const factory _Loaded({
+    required final List<ApplicationEntity> allApplications,
+    required final List<ApplicationEntity> filteredApplications,
+    required final Map<String, dynamic> userProfiles,
+    required final String currentFilter,
+    required final String currentSearch,
+    required final String viewType,
+    final bool isRefreshing,
+    final String? message,
+  }) = _$LoadedImpl;
 
   List<ApplicationEntity> get allApplications;
   List<ApplicationEntity> get filteredApplications;
@@ -754,8 +807,9 @@ abstract class _Loaded implements ApplicationsManagementState {
 /// @nodoc
 abstract class _$$ActionSuccessImplCopyWith<$Res> {
   factory _$$ActionSuccessImplCopyWith(
-          _$ActionSuccessImpl value, $Res Function(_$ActionSuccessImpl) then) =
-      __$$ActionSuccessImplCopyWithImpl<$Res>;
+    _$ActionSuccessImpl value,
+    $Res Function(_$ActionSuccessImpl) then,
+  ) = __$$ActionSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message, ApplicationEntity application});
 }
@@ -765,27 +819,27 @@ class __$$ActionSuccessImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementStateCopyWithImpl<$Res, _$ActionSuccessImpl>
     implements _$$ActionSuccessImplCopyWith<$Res> {
   __$$ActionSuccessImplCopyWithImpl(
-      _$ActionSuccessImpl _value, $Res Function(_$ActionSuccessImpl) _then)
-      : super(_value, _then);
+    _$ActionSuccessImpl _value,
+    $Res Function(_$ActionSuccessImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? application = null,
-  }) {
-    return _then(_$ActionSuccessImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      application: null == application
-          ? _value.application
-          : application // ignore: cast_nullable_to_non_nullable
-              as ApplicationEntity,
-    ));
+  $Res call({Object? message = null, Object? application = null}) {
+    return _then(
+      _$ActionSuccessImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        application: null == application
+            ? _value.application
+            : application // ignore: cast_nullable_to_non_nullable
+                  as ApplicationEntity,
+      ),
+    );
   }
 }
 
@@ -831,17 +885,18 @@ class _$ActionSuccessImpl implements _ActionSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )
+    loaded,
     required TResult Function(String message, ApplicationEntity application)
-        actionSuccess,
+    actionSuccess,
     required TResult Function(String message) error,
   }) {
     return actionSuccess(message, application);
@@ -853,17 +908,18 @@ class _$ActionSuccessImpl implements _ActionSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult? Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return actionSuccess?.call(message, application);
@@ -875,17 +931,18 @@ class _$ActionSuccessImpl implements _ActionSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -937,9 +994,10 @@ class _$ActionSuccessImpl implements _ActionSuccess {
 }
 
 abstract class _ActionSuccess implements ApplicationsManagementState {
-  const factory _ActionSuccess(
-      {required final String message,
-      required final ApplicationEntity application}) = _$ActionSuccessImpl;
+  const factory _ActionSuccess({
+    required final String message,
+    required final ApplicationEntity application,
+  }) = _$ActionSuccessImpl;
 
   String get message;
   ApplicationEntity get application;
@@ -954,8 +1012,9 @@ abstract class _ActionSuccess implements ApplicationsManagementState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+    _$ErrorImpl value,
+    $Res Function(_$ErrorImpl) then,
+  ) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -965,22 +1024,23 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$ApplicationsManagementStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
+    _$ErrorImpl _value,
+    $Res Function(_$ErrorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$ErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ErrorImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1022,17 +1082,18 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )
+    loaded,
     required TResult Function(String message, ApplicationEntity application)
-        actionSuccess,
+    actionSuccess,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1044,17 +1105,18 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult? Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1066,17 +1128,18 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(
-            List<ApplicationEntity> allApplications,
-            List<ApplicationEntity> filteredApplications,
-            Map<String, dynamic> userProfiles,
-            String currentFilter,
-            String currentSearch,
-            String viewType,
-            bool isRefreshing,
-            String? message)?
-        loaded,
+      List<ApplicationEntity> allApplications,
+      List<ApplicationEntity> filteredApplications,
+      Map<String, dynamic> userProfiles,
+      String currentFilter,
+      String currentSearch,
+      String viewType,
+      bool isRefreshing,
+      String? message,
+    )?
+    loaded,
     TResult Function(String message, ApplicationEntity application)?
-        actionSuccess,
+    actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

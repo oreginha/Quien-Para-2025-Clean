@@ -33,8 +33,9 @@ class AuthWrapper extends StatelessWidget {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(AppColors.brandYellow),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  AppColors.brandYellow,
+                ),
               ),
             ),
           );

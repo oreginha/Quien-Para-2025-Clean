@@ -123,8 +123,10 @@ void main() {
       // Assert
       expect(date1, expectedDate);
       expect(date2, expectedDate);
-      expect(date3.year,
-          DateTime.now().year); // Debería ser una fecha cercana a ahora
+      expect(
+        date3.year,
+        DateTime.now().year,
+      ); // Debería ser una fecha cercana a ahora
     });
   });
 }

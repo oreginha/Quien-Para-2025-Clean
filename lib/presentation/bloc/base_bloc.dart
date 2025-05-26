@@ -24,8 +24,11 @@ abstract class BaseBloc<Event, State> extends Bloc<Event, State> {
   /// Registra el error y la pila de llamadas, facilitando la depuración.
   void handleError(String operation, dynamic error, StackTrace stackTrace) {
     if (kDebugMode) {
-      logger.e('Error en $runtimeType durante $operation',
-          error: error, stackTrace: stackTrace);
+      logger.e(
+        'Error en $runtimeType durante $operation',
+        error: error,
+        stackTrace: stackTrace,
+      );
     }
   }
 

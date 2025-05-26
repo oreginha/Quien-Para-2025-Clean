@@ -39,7 +39,7 @@ class ProfileValidator {
         'Hombre',
         'Mujer',
         'No binario',
-        'Prefiero no decirlo'
+        'Prefiero no decirlo',
       ];
       if (!validGenders.contains(gender)) {
         errors.add('Invalid gender selection');
@@ -93,7 +93,7 @@ class ProfileValidator {
         'gay',
         'lesbian',
         'bisexual',
-        'other'
+        'other',
       ];
       if (!validOrientations.contains(orientation.toLowerCase())) {
         errors.add('Invalid orientation selection');

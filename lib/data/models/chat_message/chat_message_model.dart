@@ -5,15 +5,15 @@ part 'chat_message_model.freezed.dart';
 part 'chat_message_model.g.dart';
 
 @JsonEnum()
-enum MessageType { 
+enum MessageType {
   @JsonValue('text')
-  text, 
+  text,
   @JsonValue('image')
-  image, 
+  image,
   @JsonValue('system')
-  system, 
+  system,
   @JsonValue('voiceNote')
-  voiceNote 
+  voiceNote,
 }
 
 // Extensión para añadir método toJson a MessageType
@@ -50,13 +50,13 @@ class ChatMessageModel with _$ChatMessageModel {
   const ChatMessageModel._();
 
   // Método de conversión a JSON
-  factory ChatMessageModel.fromJson(Map<String, dynamic> json) => 
+  factory ChatMessageModel.fromJson(Map<String, dynamic> json) =>
       _$ChatMessageModelFromJson(json);
 
   // Método de conversión desde Firestore
   factory ChatMessageModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
-    
+
     return ChatMessageModel(
       id: doc.id,
       chatId: data['chatId'] ?? '',
@@ -95,11 +95,11 @@ class ChatMessageModel with _$ChatMessageModel {
   // Método para parsear el tipo de mensaje
   static MessageType _parseMessageType(dynamic typeData) {
     if (typeData == null) return MessageType.text;
-    
+
     try {
       return MessageType.values.firstWhere(
         (type) => type.toJson() == typeData,
-        orElse: () => MessageType.text
+        orElse: () => MessageType.text,
       );
     } catch (e) {
       return MessageType.text;

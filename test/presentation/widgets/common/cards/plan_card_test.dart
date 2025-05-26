@@ -6,8 +6,9 @@ import 'package:quien_para/presentation/widgets/common/cards/plan_card_types/my_
 import 'package:quien_para/presentation/widgets/common/cards/plan_card_types/other_user_plan_card.dart';
 
 void main() {
-  testWidgets('PlanCard renders OtherUserPlanCard for otherUserPlan type',
-      (WidgetTester tester) async {
+  testWidgets('PlanCard renders OtherUserPlanCard for otherUserPlan type', (
+    WidgetTester tester,
+  ) async {
     // Arrange
     final testPlan = PlanEntity(
       id: 'test-id',
@@ -48,8 +49,9 @@ void main() {
     expect(find.text('Test Description'), findsOneWidget);
   });
 
-  testWidgets('PlanCard renders MyPlanCard for myPlan type',
-      (WidgetTester tester) async {
+  testWidgets('PlanCard renders MyPlanCard for myPlan type', (
+    WidgetTester tester,
+  ) async {
     // Arrange
     final testPlan = PlanEntity(
       id: 'test-id',
@@ -113,8 +115,9 @@ void main() {
     }
   });
 
-  testWidgets('PlanCard handles Map data correctly',
-      (WidgetTester tester) async {
+  testWidgets('PlanCard handles Map data correctly', (
+    WidgetTester tester,
+  ) async {
     // Arrange
     final Map<String, dynamic> testPlanMap = {
       'title': 'Map Test Plan',
@@ -145,8 +148,9 @@ void main() {
     expect(find.text('Map Test Description'), findsOneWidget);
   });
 
-  testWidgets('PlanCard handles missing data gracefully',
-      (WidgetTester tester) async {
+  testWidgets('PlanCard handles missing data gracefully', (
+    WidgetTester tester,
+  ) async {
     // Arrange
     final Map<String, dynamic> testPlanMap = {
       // Missing title and description

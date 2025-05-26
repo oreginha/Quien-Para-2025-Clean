@@ -18,33 +18,39 @@ class ChatError extends ChatState {
 
 class MessagesLoaded extends ChatState {
   final List<ChatMessageModel> messagesModels;
-  
+
   // Eliminado 'const' porque realiza operaciones no constantes
-  MessagesLoaded(this.messagesModels) 
-      : super(
-          messages: messagesModels.map((msg) => MessageEntity(
-            id: msg.id,
-            content: msg.content,
-            timestamp: msg.timestamp,
-            senderId: msg.senderId,
-            read: msg.isRead, // Cambiado a isRead que es la propiedad correcta en ChatMessageModel
-          )).toList(),
-          // Extraer chatId de forma segura
-          activeConversationId: messagesModels.isNotEmpty ? messagesModels.first.chatId : null,
-        );
+  MessagesLoaded(this.messagesModels)
+    : super(
+        messages: messagesModels
+            .map(
+              (msg) => MessageEntity(
+                id: msg.id,
+                content: msg.content,
+                timestamp: msg.timestamp,
+                senderId: msg.senderId,
+                read: msg
+                    .isRead, // Cambiado a isRead que es la propiedad correcta en ChatMessageModel
+              ),
+            )
+            .toList(),
+        // Extraer chatId de forma segura
+        activeConversationId: messagesModels.isNotEmpty
+            ? messagesModels.first.chatId
+            : null,
+      );
 }
 
 class ConversationsLoaded extends ChatState {
-  const ConversationsLoaded(List<ConversationEntity> loadedConversations) 
-      : super(conversations: loadedConversations);
+  const ConversationsLoaded(List<ConversationEntity> loadedConversations)
+    : super(conversations: loadedConversations);
 }
 
 class ConversationCreated extends ChatState {
   final String id;
-  
-  const ConversationCreated(this.id) 
-      : super(createdConversationId: id);
-      
+
+  const ConversationCreated(this.id) : super(createdConversationId: id);
+
   /// Getter para compatibilidad con código existente
   String get conversationId => id;
 }
@@ -63,7 +69,7 @@ class ChatState extends Equatable {
   final List<MessageEntity>? messages;
   final String? activeConversationId;
   final String? createdConversationId;
-  
+
   const ChatState({
     this.isLoading = false,
     this.errorMessage,
@@ -72,46 +78,48 @@ class ChatState extends Equatable {
     this.activeConversationId,
     this.createdConversationId,
   });
-  
+
   bool get hasError => errorMessage != null;
-  bool get hasConversations => conversations != null && conversations!.isNotEmpty;
+  bool get hasConversations =>
+      conversations != null && conversations!.isNotEmpty;
   bool get hasMessages => messages != null && messages!.isNotEmpty;
   bool get hasActiveConversation => activeConversationId != null;
   bool get hasCreatedConversation => createdConversationId != null;
-  
+
   /// Estado inicial cuando se crea el BLoC
   const ChatState.initial() : this();
-  
+
   /// Estado de carga durante operaciones asíncronas
   const ChatState.loading() : this(isLoading: true);
-  
+
   /// Estado cuando se han cargado las conversaciones
-  const ChatState.conversationsLoaded(List<ConversationEntity> loadedConversations) 
-      : this(conversations: loadedConversations);
-      
+  const ChatState.conversationsLoaded(
+    List<ConversationEntity> loadedConversations,
+  ) : this(conversations: loadedConversations);
+
   /// Estado cuando se ha cargado una conversación específica con sus mensajes
   const ChatState.messagesLoaded({
     required List<MessageEntity> loadedMessages,
     required String conversationId,
     List<ConversationEntity>? existingConversations,
   }) : this(
-          messages: loadedMessages,
-          activeConversationId: conversationId,
-          conversations: existingConversations,
-        );
-  
+         messages: loadedMessages,
+         activeConversationId: conversationId,
+         conversations: existingConversations,
+       );
+
   /// Estado cuando se ha creado una nueva conversación
   const ChatState.conversationCreated({
     required String newConversationId,
     List<ConversationEntity>? existingConversations,
   }) : this(
-          createdConversationId: newConversationId,
-          conversations: existingConversations,
-        );
-  
+         createdConversationId: newConversationId,
+         conversations: existingConversations,
+       );
+
   /// Estado de error
   const ChatState.error(String message) : this(errorMessage: message);
-  
+
   /// Crear una copia del estado actual con algunos campos modificados
   ChatState copyWith({
     bool? isLoading,
@@ -127,10 +135,11 @@ class ChatState extends Equatable {
       conversations: conversations ?? this.conversations,
       messages: messages ?? this.messages,
       activeConversationId: activeConversationId ?? this.activeConversationId,
-      createdConversationId: createdConversationId ?? this.createdConversationId,
+      createdConversationId:
+          createdConversationId ?? this.createdConversationId,
     );
   }
-  
+
   @override
   List<Object?> get props => [
     isLoading,
@@ -140,12 +149,12 @@ class ChatState extends Equatable {
     activeConversationId,
     createdConversationId,
   ];
-  
+
   @override
   String toString() {
     return 'ChatState{isLoading: $isLoading, hasError: $hasError, '
-           'conversationCount: ${conversations?.length}, '
-           'messageCount: ${messages?.length}, '
-           'activeConversationId: $activeConversationId}';
+        'conversationCount: ${conversations?.length}, '
+        'messageCount: ${messages?.length}, '
+        'activeConversationId: $activeConversationId}';
   }
 }

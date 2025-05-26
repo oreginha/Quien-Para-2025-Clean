@@ -38,22 +38,30 @@ void main() {
       expect(mapper, isA<NotificationMapper>());
     });
 
-    test('should cache mappers and return same instance on subsequent calls',
-        () {
-      // Act
-      final mapper1 = mapperFactory.getPlanMapper();
-      final mapper2 = mapperFactory.getPlanMapper();
+    test(
+      'should cache mappers and return same instance on subsequent calls',
+      () {
+        // Act
+        final mapper1 = mapperFactory.getPlanMapper();
+        final mapper2 = mapperFactory.getPlanMapper();
 
-      // Assert
-      expect(mapper1, same(mapper2)); // Se espera que sean la misma instancia
-    });
+        // Assert
+        expect(mapper1, same(mapper2)); // Se espera que sean la misma instancia
+      },
+    );
 
     test('should throw UnsupportedError for unsupported entity type', () {
       // Act & Assert
       expect(
-          () => mapperFactory.getMapper<EntityMapper<PlanEntity, void, void>,
-              PlanEntity, void, void>(),
-          throwsA(isA<UnsupportedError>()));
+        () => mapperFactory
+            .getMapper<
+              EntityMapper<PlanEntity, void, void>,
+              PlanEntity,
+              void,
+              void
+            >(),
+        throwsA(isA<UnsupportedError>()),
+      );
     });
 
     test('should clear all cached mappers', () {
@@ -66,7 +74,9 @@ void main() {
 
       // Assert
       expect(
-          mapper1, isNot(same(mapper2))); // No deberían ser la misma instancia
+        mapper1,
+        isNot(same(mapper2)),
+      ); // No deberían ser la misma instancia
     });
 
     test('should register custom mapper', () {

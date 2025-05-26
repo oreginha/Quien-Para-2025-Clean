@@ -15,17 +15,10 @@ class TestModel {
 
   TestModel({required this.id, required this.name, required this.age});
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'age': age,
-      };
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'age': age};
 
-  factory TestModel.fromJson(Map<String, dynamic> json) => TestModel(
-        id: json['id'],
-        name: json['name'],
-        age: json['age'],
-      );
+  factory TestModel.fromJson(Map<String, dynamic> json) =>
+      TestModel(id: json['id'], name: json['name'], age: json['age']);
 
   @override
   bool operator ==(Object other) =>
@@ -85,32 +78,34 @@ void main() {
       expect(serializedData, '{"custom":{"id":"1","name":"Test","age":25}}');
     });
 
-    test('registerDeserializeCallback should set the deserialization function',
-        () {
-      // Arrange
-      final json = '{"id":"1","name":"Test","age":25}';
-      TestModel? deserializedModel;
+    test(
+      'registerDeserializeCallback should set the deserialization function',
+      () {
+        // Arrange
+        final json = '{"id":"1","name":"Test","age":25}';
+        TestModel? deserializedModel;
 
-      // Act
-      cache.registerDeserializeCallback((data) {
-        final Map<String, dynamic> jsonMap = jsonDecode(data);
-        return TestModel(
-          id: jsonMap['id'],
-          name: jsonMap['name'],
-          age: jsonMap['age'],
-        );
-      });
+        // Act
+        cache.registerDeserializeCallback((data) {
+          final Map<String, dynamic> jsonMap = jsonDecode(data);
+          return TestModel(
+            id: jsonMap['id'],
+            name: jsonMap['name'],
+            age: jsonMap['age'],
+          );
+        });
 
-      // We can't directly test private fields, but we can verify the method exists
-      try {
-        deserializedModel = TestModel.fromJson(jsonDecode(json));
-      } catch (e) {
-        // Ignore errors
-      }
+        // We can't directly test private fields, but we can verify the method exists
+        try {
+          deserializedModel = TestModel.fromJson(jsonDecode(json));
+        } catch (e) {
+          // Ignore errors
+        }
 
-      // Assert - merely testing that the code compiles and methods exist
-      expect(deserializedModel, TestModel(id: '1', name: 'Test', age: 25));
-    });
+        // Assert - merely testing that the code compiles and methods exist
+        expect(deserializedModel, TestModel(id: '1', name: 'Test', age: 25));
+      },
+    );
 
     test('setDefaultCacheDuration should set regular cache duration', () {
       // Arrange

@@ -12,7 +12,8 @@ part of 'plan_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 PlanModel _$PlanModelFromJson(Map<String, dynamic> json) {
   return _PlanModel.fromJson(json);
@@ -49,20 +50,21 @@ abstract class $PlanModelCopyWith<$Res> {
   factory $PlanModelCopyWith(PlanModel value, $Res Function(PlanModel) then) =
       _$PlanModelCopyWithImpl<$Res, PlanModel>;
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String description,
-      String imageUrl,
-      String creatorId,
-      DateTime date,
-      int likes,
-      String category,
-      String location,
-      Map<String, String> conditions,
-      List<String> selectedThemes,
-      String? createdAt,
-      bool esVisible});
+  $Res call({
+    String id,
+    String title,
+    String description,
+    String imageUrl,
+    String creatorId,
+    DateTime date,
+    int likes,
+    String category,
+    String location,
+    Map<String, String> conditions,
+    List<String> selectedThemes,
+    String? createdAt,
+    bool esVisible,
+  });
 }
 
 /// @nodoc
@@ -94,60 +96,63 @@ class _$PlanModelCopyWithImpl<$Res, $Val extends PlanModel>
     Object? createdAt = freezed,
     Object? esVisible = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      creatorId: null == creatorId
-          ? _value.creatorId
-          : creatorId // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      likes: null == likes
-          ? _value.likes
-          : likes // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String,
-      conditions: null == conditions
-          ? _value.conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      selectedThemes: null == selectedThemes
-          ? _value.selectedThemes
-          : selectedThemes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      esVisible: null == esVisible
-          ? _value.esVisible
-          : esVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            description: null == description
+                ? _value.description
+                : description // ignore: cast_nullable_to_non_nullable
+                      as String,
+            imageUrl: null == imageUrl
+                ? _value.imageUrl
+                : imageUrl // ignore: cast_nullable_to_non_nullable
+                      as String,
+            creatorId: null == creatorId
+                ? _value.creatorId
+                : creatorId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            date: null == date
+                ? _value.date
+                : date // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            likes: null == likes
+                ? _value.likes
+                : likes // ignore: cast_nullable_to_non_nullable
+                      as int,
+            category: null == category
+                ? _value.category
+                : category // ignore: cast_nullable_to_non_nullable
+                      as String,
+            location: null == location
+                ? _value.location
+                : location // ignore: cast_nullable_to_non_nullable
+                      as String,
+            conditions: null == conditions
+                ? _value.conditions
+                : conditions // ignore: cast_nullable_to_non_nullable
+                      as Map<String, String>,
+            selectedThemes: null == selectedThemes
+                ? _value.selectedThemes
+                : selectedThemes // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            createdAt: freezed == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            esVisible: null == esVisible
+                ? _value.esVisible
+                : esVisible // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -155,24 +160,26 @@ class _$PlanModelCopyWithImpl<$Res, $Val extends PlanModel>
 abstract class _$$PlanModelImplCopyWith<$Res>
     implements $PlanModelCopyWith<$Res> {
   factory _$$PlanModelImplCopyWith(
-          _$PlanModelImpl value, $Res Function(_$PlanModelImpl) then) =
-      __$$PlanModelImplCopyWithImpl<$Res>;
+    _$PlanModelImpl value,
+    $Res Function(_$PlanModelImpl) then,
+  ) = __$$PlanModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String description,
-      String imageUrl,
-      String creatorId,
-      DateTime date,
-      int likes,
-      String category,
-      String location,
-      Map<String, String> conditions,
-      List<String> selectedThemes,
-      String? createdAt,
-      bool esVisible});
+  $Res call({
+    String id,
+    String title,
+    String description,
+    String imageUrl,
+    String creatorId,
+    DateTime date,
+    int likes,
+    String category,
+    String location,
+    Map<String, String> conditions,
+    List<String> selectedThemes,
+    String? createdAt,
+    bool esVisible,
+  });
 }
 
 /// @nodoc
@@ -180,8 +187,9 @@ class __$$PlanModelImplCopyWithImpl<$Res>
     extends _$PlanModelCopyWithImpl<$Res, _$PlanModelImpl>
     implements _$$PlanModelImplCopyWith<$Res> {
   __$$PlanModelImplCopyWithImpl(
-      _$PlanModelImpl _value, $Res Function(_$PlanModelImpl) _then)
-      : super(_value, _then);
+    _$PlanModelImpl _value,
+    $Res Function(_$PlanModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanModel
   /// with the given fields replaced by the non-null parameter values.
@@ -202,83 +210,85 @@ class __$$PlanModelImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? esVisible = null,
   }) {
-    return _then(_$PlanModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      creatorId: null == creatorId
-          ? _value.creatorId
-          : creatorId // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      likes: null == likes
-          ? _value.likes
-          : likes // ignore: cast_nullable_to_non_nullable
-              as int,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String,
-      conditions: null == conditions
-          ? _value._conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      selectedThemes: null == selectedThemes
-          ? _value._selectedThemes
-          : selectedThemes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
-      esVisible: null == esVisible
-          ? _value.esVisible
-          : esVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$PlanModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        imageUrl: null == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+        creatorId: null == creatorId
+            ? _value.creatorId
+            : creatorId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        date: null == date
+            ? _value.date
+            : date // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        likes: null == likes
+            ? _value.likes
+            : likes // ignore: cast_nullable_to_non_nullable
+                  as int,
+        category: null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as String,
+        location: null == location
+            ? _value.location
+            : location // ignore: cast_nullable_to_non_nullable
+                  as String,
+        conditions: null == conditions
+            ? _value._conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
+        selectedThemes: null == selectedThemes
+            ? _value._selectedThemes
+            : selectedThemes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        createdAt: freezed == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        esVisible: null == esVisible
+            ? _value.esVisible
+            : esVisible // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PlanModelImpl extends _PlanModel {
-  const _$PlanModelImpl(
-      {required this.id,
-      required this.title,
-      required this.description,
-      this.imageUrl = '',
-      required this.creatorId,
-      required this.date,
-      this.likes = 0,
-      this.category = '',
-      this.location = '',
-      final Map<String, String> conditions = const {},
-      final List<String> selectedThemes = const [],
-      this.createdAt,
-      this.esVisible = true})
-      : _conditions = conditions,
-        _selectedThemes = selectedThemes,
-        super._();
+  const _$PlanModelImpl({
+    required this.id,
+    required this.title,
+    required this.description,
+    this.imageUrl = '',
+    required this.creatorId,
+    required this.date,
+    this.likes = 0,
+    this.category = '',
+    this.location = '',
+    final Map<String, String> conditions = const {},
+    final List<String> selectedThemes = const [],
+    this.createdAt,
+    this.esVisible = true,
+  }) : _conditions = conditions,
+       _selectedThemes = selectedThemes,
+       super._();
 
   factory _$PlanModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PlanModelImplFromJson(json);
@@ -353,10 +363,14 @@ class _$PlanModelImpl extends _PlanModel {
                 other.category == category) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            const DeepCollectionEquality()
-                .equals(other._conditions, _conditions) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedThemes, _selectedThemes) &&
+            const DeepCollectionEquality().equals(
+              other._conditions,
+              _conditions,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._selectedThemes,
+              _selectedThemes,
+            ) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.esVisible, esVisible) ||
@@ -366,20 +380,21 @@ class _$PlanModelImpl extends _PlanModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      description,
-      imageUrl,
-      creatorId,
-      date,
-      likes,
-      category,
-      location,
-      const DeepCollectionEquality().hash(_conditions),
-      const DeepCollectionEquality().hash(_selectedThemes),
-      createdAt,
-      esVisible);
+    runtimeType,
+    id,
+    title,
+    description,
+    imageUrl,
+    creatorId,
+    date,
+    likes,
+    category,
+    location,
+    const DeepCollectionEquality().hash(_conditions),
+    const DeepCollectionEquality().hash(_selectedThemes),
+    createdAt,
+    esVisible,
+  );
 
   /// Create a copy of PlanModel
   /// with the given fields replaced by the non-null parameter values.
@@ -391,27 +406,26 @@ class _$PlanModelImpl extends _PlanModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PlanModelImplToJson(
-      this,
-    );
+    return _$$PlanModelImplToJson(this);
   }
 }
 
 abstract class _PlanModel extends PlanModel {
-  const factory _PlanModel(
-      {required final String id,
-      required final String title,
-      required final String description,
-      final String imageUrl,
-      required final String creatorId,
-      required final DateTime date,
-      final int likes,
-      final String category,
-      final String location,
-      final Map<String, String> conditions,
-      final List<String> selectedThemes,
-      final String? createdAt,
-      final bool esVisible}) = _$PlanModelImpl;
+  const factory _PlanModel({
+    required final String id,
+    required final String title,
+    required final String description,
+    final String imageUrl,
+    required final String creatorId,
+    required final DateTime date,
+    final int likes,
+    final String category,
+    final String location,
+    final Map<String, String> conditions,
+    final List<String> selectedThemes,
+    final String? createdAt,
+    final bool esVisible,
+  }) = _$PlanModelImpl;
   const _PlanModel._() : super._();
 
   factory _PlanModel.fromJson(Map<String, dynamic> json) =

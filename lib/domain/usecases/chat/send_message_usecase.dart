@@ -36,10 +36,13 @@ class SendMessageUseCase implements UseCase<void, SendMessageParams> {
   Future<Either<AppFailure, void>> call(SendMessageParams params) async {
     // Validar que el mensaje no esté vacío
     if (params.content.trim().isEmpty) {
-      return Left(ValidationFailure(
+      return Left(
+        ValidationFailure(
           message: 'El contenido del mensaje no puede estar vacío',
           code: '',
-          field: ''));
+          field: '',
+        ),
+      );
     }
 
     // Llamar al método sendMessage con los parámetros nombrados según la interfaz consolidada

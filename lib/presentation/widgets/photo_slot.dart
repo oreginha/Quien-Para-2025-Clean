@@ -75,11 +75,7 @@ class PhotoSlot extends StatelessWidget {
                     color: Colors.yellow.withAlpha(51),
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: const Icon(
-                    Icons.star,
-                    color: Colors.yellow,
-                    size: 12,
-                  ),
+                  child: const Icon(Icons.star, color: Colors.yellow, size: 12),
                 ),
               ),
           ],

@@ -27,7 +27,10 @@ abstract class AuthRepositoryInterface {
 
   /// Registrarse con email y contraseña
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name);
+    String email,
+    String password,
+    String name,
+  );
 
   /// Cierra la sesión del usuario actual
   Future<void> signOut();

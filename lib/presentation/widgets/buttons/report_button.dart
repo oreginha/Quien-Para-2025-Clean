@@ -65,9 +65,9 @@ class ReportButton extends StatelessWidget {
       ),
       label: Text(
         'Reportar',
-        style: AppTypography.bodyMedium(isDarkMode).copyWith(
-          color: AppColors.accentRed.withValues(alpha: 0.8),
-        ),
+        style: AppTypography.bodyMedium(
+          isDarkMode,
+        ).copyWith(color: AppColors.accentRed.withValues(alpha: 0.8)),
       ),
     );
   }
@@ -75,17 +75,12 @@ class ReportButton extends StatelessWidget {
   Widget _buildElevatedButton(BuildContext context, bool isDarkMode) {
     return ElevatedButton.icon(
       onPressed: () => _showReportDialog(context),
-      icon: const Icon(
-        Icons.report_outlined,
-        size: 18,
-        color: Colors.white,
-      ),
+      icon: const Icon(Icons.report_outlined, size: 18, color: Colors.white),
       label: Text(
         'Reportar',
-        style: AppTypography.bodyMedium(isDarkMode).copyWith(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-        ),
+        style: AppTypography.bodyMedium(
+          isDarkMode,
+        ).copyWith(color: Colors.white, fontWeight: FontWeight.w600),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.accentRed,
@@ -110,9 +105,9 @@ class ReportButton extends StatelessWidget {
       ),
       title: Text(
         'Reportar ${type == ReportType.user ? 'usuario' : 'plan'}',
-        style: AppTypography.bodyMedium(isDarkMode).copyWith(
-          color: AppColors.accentRed,
-        ),
+        style: AppTypography.bodyMedium(
+          isDarkMode,
+        ).copyWith(color: AppColors.accentRed),
       ),
       onTap: () {
         Navigator.of(context).pop(); // Cerrar el menú
@@ -140,12 +135,7 @@ class ReportButton extends StatelessWidget {
   }
 }
 
-enum ReportButtonStyle {
-  icon,
-  text,
-  elevated,
-  menuItem,
-}
+enum ReportButtonStyle { icon, text, elevated, menuItem }
 
 // Widget para mostrar opciones de seguridad en un bottom sheet
 class SecurityBottomSheet extends StatelessWidget {
@@ -197,11 +187,7 @@ class SecurityBottomSheet extends StatelessWidget {
             padding: const EdgeInsets.all(AppSpacing.l),
             child: Row(
               children: [
-                Icon(
-                  Icons.security,
-                  color: AppColors.brandYellow,
-                  size: 24,
-                ),
+                Icon(Icons.security, color: AppColors.brandYellow, size: 24),
                 const SizedBox(width: AppSpacing.s),
                 Expanded(
                   child: Text(
@@ -234,21 +220,14 @@ class SecurityBottomSheet extends StatelessWidget {
           ),
 
           if (type == ReportType.user) ...[
-            Divider(
-              color: AppColors.getBorder(isDarkMode),
-              height: 1,
-            ),
+            Divider(color: AppColors.getBorder(isDarkMode), height: 1),
             ListTile(
-              leading: Icon(
-                Icons.block,
-                color: AppColors.accentRed,
-                size: 20,
-              ),
+              leading: Icon(Icons.block, color: AppColors.accentRed, size: 20),
               title: Text(
                 'Bloquear usuario',
-                style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                  color: AppColors.accentRed,
-                ),
+                style: AppTypography.bodyMedium(
+                  isDarkMode,
+                ).copyWith(color: AppColors.accentRed),
               ),
               onTap: () {
                 Navigator.of(context).pop();
@@ -263,7 +242,8 @@ class SecurityBottomSheet extends StatelessWidget {
           ],
 
           SizedBox(
-              height: MediaQuery.of(context).padding.bottom + AppSpacing.m),
+            height: MediaQuery.of(context).padding.bottom + AppSpacing.m,
+          ),
         ],
       ),
     );
@@ -283,11 +263,7 @@ class SecurityBottomSheet extends StatelessWidget {
           ),
           title: Row(
             children: [
-              Icon(
-                Icons.block,
-                color: AppColors.accentRed,
-                size: 24,
-              ),
+              Icon(Icons.block, color: AppColors.accentRed, size: 24),
               const SizedBox(width: AppSpacing.s),
               Text(
                 'Bloquear usuario',
@@ -314,9 +290,9 @@ class SecurityBottomSheet extends StatelessWidget {
                 ),
                 child: Text(
                   'Al bloquear este usuario:\n• No podrás ver sus planes\n• No podrá contactarte\n• No aparecerá en búsquedas',
-                  style: AppTypography.labelMedium(isDarkMode).copyWith(
-                    color: AppColors.accentRed,
-                  ),
+                  style: AppTypography.labelMedium(
+                    isDarkMode,
+                  ).copyWith(color: AppColors.accentRed),
                 ),
               ),
             ],
@@ -326,9 +302,9 @@ class SecurityBottomSheet extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               child: Text(
                 'Cancelar',
-                style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                  color: AppColors.getTextSecondary(isDarkMode),
-                ),
+                style: AppTypography.bodyMedium(
+                  isDarkMode,
+                ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               ),
             ),
             ElevatedButton(

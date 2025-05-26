@@ -19,19 +19,23 @@ abstract class ChatRepository {
   ///
   /// Retorna la conversación encontrada o null si no existe
   Future<Either<AppFailure, ConversationEntity?>> getConversation(
-      String conversationId);
+    String conversationId,
+  );
 
   /// Verificar si existe una conversación entre dos usuarios
   ///
   /// Retorna la conversación existente o null si no hay conversación
   Future<Either<AppFailure, ConversationEntity?>> getExistingConversation(
-      String userId1, String userId2);
+    String userId1,
+    String userId2,
+  );
 
   /// Obtener todas las conversaciones para un usuario
   ///
   /// Retorna un stream de conversaciones
   Stream<Either<AppFailure, List<ConversationEntity>>> getConversations(
-      String userId);
+    String userId,
+  );
 
   /// Enviar un mensaje a una conversación
   ///
@@ -46,7 +50,8 @@ abstract class ChatRepository {
   ///
   /// Retorna un stream de mensajes
   Stream<Either<AppFailure, List<MessageEntity>>> getMessages(
-      String conversationId);
+    String conversationId,
+  );
 
   /// Marcar conversación como leída
   ///
@@ -70,5 +75,7 @@ abstract class ChatRepository {
   ///
   /// Retorna void para éxito o un error
   Future<Either<AppFailure, Unit>> markMessagesAsRead(
-      String conversationId, String userId);
+    String conversationId,
+    String userId,
+  );
 }

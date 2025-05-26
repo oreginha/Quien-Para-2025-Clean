@@ -49,7 +49,8 @@ class DI {
     // Evitar inicializaciones múltiples simultáneas
     if (_isInitializing || _isInitialized) {
       DILogger.warning(
-          'Sistema DI ya inicializado o en proceso de inicialización');
+        'Sistema DI ya inicializado o en proceso de inicialización',
+      );
       return;
     }
 
@@ -59,16 +60,17 @@ class DI {
     try {
       // Registrar módulos principales primero
       await _registerCoreModules(locator);
-      
+
       // Registrar casos de uso de forma directa para evitar problemas
       await _registerUseCases(locator);
-      
+
       // Registrar el resto de módulos
       await _registerOtherModules(locator);
 
       _isInitialized = true;
       DILogger.success(
-          'Sistema de inyección de dependencias inicializado correctamente en ${stopwatch.elapsedMilliseconds}ms');
+        'Sistema de inyección de dependencias inicializado correctamente en ${stopwatch.elapsedMilliseconds}ms',
+      );
     } catch (e, stackTrace) {
       DILogger.error('Error al inicializar dependencias', e, stackTrace);
       rethrow;
@@ -76,7 +78,7 @@ class DI {
       _isInitializing = false;
     }
   }
-  
+
   /// Registra los módulos principales
   static Future<void> _registerCoreModules(GetIt sl) async {
     try {
@@ -88,7 +90,7 @@ class DI {
       throw Exception('Error en módulos principales: $e');
     }
   }
-  
+
   /// Registra los casos de uso directamente
   static Future<void> _registerUseCases(GetIt sl) async {
     try {
@@ -101,7 +103,7 @@ class DI {
       DILogger.warning('Continuando sin casos de uso registrados');
     }
   }
-  
+
   /// Registra los módulos restantes
   static Future<void> _registerOtherModules(GetIt sl) async {
     try {
@@ -127,14 +129,16 @@ class DI {
     if (!_isInitialized) {
       DILogger.error('Intento de registrar módulo sin inicializar DI');
       throw StateError(
-          'Inicialice DI.init() antes de registrar módulos adicionales');
+        'Inicialice DI.init() antes de registrar módulos adicionales',
+      );
     }
 
     DILogger.info('Registrando módulo adicional: ${module.runtimeType}');
     await module.register(locator);
     _modules.add(module);
     DILogger.success(
-        'Módulo adicional ${module.runtimeType} registrado correctamente');
+      'Módulo adicional ${module.runtimeType} registrado correctamente',
+    );
   }
 
   /// Restablece todas las dependencias (util para testing)
@@ -150,7 +154,9 @@ class DI {
         await module.dispose(locator);
       } catch (e) {
         DILogger.error(
-            'Error liberando recursos en módulo ${module.runtimeType}', e);
+          'Error liberando recursos en módulo ${module.runtimeType}',
+          e,
+        );
       }
     }
 
@@ -160,7 +166,8 @@ class DI {
 
     _isInitialized = false;
     DILogger.success(
-        'Sistema de inyección de dependencias reseteado correctamente');
+      'Sistema de inyección de dependencias reseteado correctamente',
+    );
   }
 }
 

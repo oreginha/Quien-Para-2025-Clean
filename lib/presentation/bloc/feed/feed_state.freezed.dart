@@ -12,7 +12,8 @@ part of 'feed_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$FeedState {
@@ -22,16 +23,18 @@ mixin _$FeedState {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -39,13 +42,15 @@ mixin _$FeedState {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -53,14 +58,16 @@ mixin _$FeedState {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FeedInitial value) initial,
@@ -71,8 +78,7 @@ mixin _$FeedState {
     required TResult Function(FeedFiltered value) filtered,
     required TResult Function(FeedEmpty value) empty,
     required TResult Function(FeedError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FeedInitial value)? initial,
@@ -83,8 +89,7 @@ mixin _$FeedState {
     TResult? Function(FeedFiltered value)? filtered,
     TResult? Function(FeedEmpty value)? empty,
     TResult? Function(FeedError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FeedInitial value)? initial,
@@ -96,8 +101,7 @@ mixin _$FeedState {
     TResult Function(FeedEmpty value)? empty,
     TResult Function(FeedError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -123,8 +127,9 @@ class _$FeedStateCopyWithImpl<$Res, $Val extends FeedState>
 /// @nodoc
 abstract class _$$FeedInitialImplCopyWith<$Res> {
   factory _$$FeedInitialImplCopyWith(
-          _$FeedInitialImpl value, $Res Function(_$FeedInitialImpl) then) =
-      __$$FeedInitialImplCopyWithImpl<$Res>;
+    _$FeedInitialImpl value,
+    $Res Function(_$FeedInitialImpl) then,
+  ) = __$$FeedInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -132,8 +137,9 @@ class __$$FeedInitialImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedInitialImpl>
     implements _$$FeedInitialImplCopyWith<$Res> {
   __$$FeedInitialImplCopyWithImpl(
-      _$FeedInitialImpl _value, $Res Function(_$FeedInitialImpl) _then)
-      : super(_value, _then);
+    _$FeedInitialImpl _value,
+    $Res Function(_$FeedInitialImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -165,12 +171,15 @@ class _$FeedInitialImpl extends FeedInitial {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -185,8 +194,11 @@ class _$FeedInitialImpl extends FeedInitial {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -202,8 +214,11 @@ class _$FeedInitialImpl extends FeedInitial {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -273,8 +288,9 @@ abstract class FeedInitial extends FeedState {
 /// @nodoc
 abstract class _$$FeedLoadingImplCopyWith<$Res> {
   factory _$$FeedLoadingImplCopyWith(
-          _$FeedLoadingImpl value, $Res Function(_$FeedLoadingImpl) then) =
-      __$$FeedLoadingImplCopyWithImpl<$Res>;
+    _$FeedLoadingImpl value,
+    $Res Function(_$FeedLoadingImpl) then,
+  ) = __$$FeedLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -282,8 +298,9 @@ class __$$FeedLoadingImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedLoadingImpl>
     implements _$$FeedLoadingImplCopyWith<$Res> {
   __$$FeedLoadingImplCopyWithImpl(
-      _$FeedLoadingImpl _value, $Res Function(_$FeedLoadingImpl) _then)
-      : super(_value, _then);
+    _$FeedLoadingImpl _value,
+    $Res Function(_$FeedLoadingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -315,12 +332,15 @@ class _$FeedLoadingImpl extends FeedLoading {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -335,8 +355,11 @@ class _$FeedLoadingImpl extends FeedLoading {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -352,8 +375,11 @@ class _$FeedLoadingImpl extends FeedLoading {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -422,9 +448,10 @@ abstract class FeedLoading extends FeedState {
 
 /// @nodoc
 abstract class _$$FeedRefreshingImplCopyWith<$Res> {
-  factory _$$FeedRefreshingImplCopyWith(_$FeedRefreshingImpl value,
-          $Res Function(_$FeedRefreshingImpl) then) =
-      __$$FeedRefreshingImplCopyWithImpl<$Res>;
+  factory _$$FeedRefreshingImplCopyWith(
+    _$FeedRefreshingImpl value,
+    $Res Function(_$FeedRefreshingImpl) then,
+  ) = __$$FeedRefreshingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PlanEntity> plans});
 }
@@ -434,22 +461,23 @@ class __$$FeedRefreshingImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedRefreshingImpl>
     implements _$$FeedRefreshingImplCopyWith<$Res> {
   __$$FeedRefreshingImplCopyWithImpl(
-      _$FeedRefreshingImpl _value, $Res Function(_$FeedRefreshingImpl) _then)
-      : super(_value, _then);
+    _$FeedRefreshingImpl _value,
+    $Res Function(_$FeedRefreshingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plans = null,
-  }) {
-    return _then(_$FeedRefreshingImpl(
-      plans: null == plans
-          ? _value._plans
-          : plans // ignore: cast_nullable_to_non_nullable
-              as List<PlanEntity>,
-    ));
+  $Res call({Object? plans = null}) {
+    return _then(
+      _$FeedRefreshingImpl(
+        plans: null == plans
+            ? _value._plans
+            : plans // ignore: cast_nullable_to_non_nullable
+                  as List<PlanEntity>,
+      ),
+    );
   }
 }
 
@@ -457,8 +485,8 @@ class __$$FeedRefreshingImplCopyWithImpl<$Res>
 
 class _$FeedRefreshingImpl extends FeedRefreshing {
   const _$FeedRefreshingImpl({required final List<PlanEntity> plans})
-      : _plans = plans,
-        super._();
+    : _plans = plans,
+      super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -492,7 +520,9 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
   @pragma('vm:prefer-inline')
   _$$FeedRefreshingImplCopyWith<_$FeedRefreshingImpl> get copyWith =>
       __$$FeedRefreshingImplCopyWithImpl<_$FeedRefreshingImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -501,12 +531,15 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -521,8 +554,11 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -538,8 +574,11 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -617,9 +656,10 @@ abstract class FeedRefreshing extends FeedState {
 
 /// @nodoc
 abstract class _$$FeedPaginatingImplCopyWith<$Res> {
-  factory _$$FeedPaginatingImplCopyWith(_$FeedPaginatingImpl value,
-          $Res Function(_$FeedPaginatingImpl) then) =
-      __$$FeedPaginatingImplCopyWithImpl<$Res>;
+  factory _$$FeedPaginatingImplCopyWith(
+    _$FeedPaginatingImpl value,
+    $Res Function(_$FeedPaginatingImpl) then,
+  ) = __$$FeedPaginatingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PlanEntity> plans, bool hasReachedEnd});
 }
@@ -629,37 +669,38 @@ class __$$FeedPaginatingImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedPaginatingImpl>
     implements _$$FeedPaginatingImplCopyWith<$Res> {
   __$$FeedPaginatingImplCopyWithImpl(
-      _$FeedPaginatingImpl _value, $Res Function(_$FeedPaginatingImpl) _then)
-      : super(_value, _then);
+    _$FeedPaginatingImpl _value,
+    $Res Function(_$FeedPaginatingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plans = null,
-    Object? hasReachedEnd = null,
-  }) {
-    return _then(_$FeedPaginatingImpl(
-      plans: null == plans
-          ? _value._plans
-          : plans // ignore: cast_nullable_to_non_nullable
-              as List<PlanEntity>,
-      hasReachedEnd: null == hasReachedEnd
-          ? _value.hasReachedEnd
-          : hasReachedEnd // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? plans = null, Object? hasReachedEnd = null}) {
+    return _then(
+      _$FeedPaginatingImpl(
+        plans: null == plans
+            ? _value._plans
+            : plans // ignore: cast_nullable_to_non_nullable
+                  as List<PlanEntity>,
+        hasReachedEnd: null == hasReachedEnd
+            ? _value.hasReachedEnd
+            : hasReachedEnd // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$FeedPaginatingImpl extends FeedPaginating {
-  const _$FeedPaginatingImpl(
-      {required final List<PlanEntity> plans, required this.hasReachedEnd})
-      : _plans = plans,
-        super._();
+  const _$FeedPaginatingImpl({
+    required final List<PlanEntity> plans,
+    required this.hasReachedEnd,
+  }) : _plans = plans,
+       super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -689,7 +730,10 @@ class _$FeedPaginatingImpl extends FeedPaginating {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_plans), hasReachedEnd);
+    runtimeType,
+    const DeepCollectionEquality().hash(_plans),
+    hasReachedEnd,
+  );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -698,7 +742,9 @@ class _$FeedPaginatingImpl extends FeedPaginating {
   @pragma('vm:prefer-inline')
   _$$FeedPaginatingImplCopyWith<_$FeedPaginatingImpl> get copyWith =>
       __$$FeedPaginatingImplCopyWithImpl<_$FeedPaginatingImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -707,12 +753,15 @@ class _$FeedPaginatingImpl extends FeedPaginating {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -727,8 +776,11 @@ class _$FeedPaginatingImpl extends FeedPaginating {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -744,8 +796,11 @@ class _$FeedPaginatingImpl extends FeedPaginating {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -808,9 +863,10 @@ class _$FeedPaginatingImpl extends FeedPaginating {
 }
 
 abstract class FeedPaginating extends FeedState {
-  const factory FeedPaginating(
-      {required final List<PlanEntity> plans,
-      required final bool hasReachedEnd}) = _$FeedPaginatingImpl;
+  const factory FeedPaginating({
+    required final List<PlanEntity> plans,
+    required final bool hasReachedEnd,
+  }) = _$FeedPaginatingImpl;
   const FeedPaginating._() : super._();
 
   List<PlanEntity> get plans;
@@ -826,11 +882,15 @@ abstract class FeedPaginating extends FeedState {
 /// @nodoc
 abstract class _$$FeedLoadedImplCopyWith<$Res> {
   factory _$$FeedLoadedImplCopyWith(
-          _$FeedLoadedImpl value, $Res Function(_$FeedLoadedImpl) then) =
-      __$$FeedLoadedImplCopyWithImpl<$Res>;
+    _$FeedLoadedImpl value,
+    $Res Function(_$FeedLoadedImpl) then,
+  ) = __$$FeedLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId});
+  $Res call({
+    List<PlanEntity> plans,
+    bool hasReachedEnd,
+    String? lastDocumentId,
+  });
 }
 
 /// @nodoc
@@ -838,8 +898,9 @@ class __$$FeedLoadedImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedLoadedImpl>
     implements _$$FeedLoadedImplCopyWith<$Res> {
   __$$FeedLoadedImplCopyWithImpl(
-      _$FeedLoadedImpl _value, $Res Function(_$FeedLoadedImpl) _then)
-      : super(_value, _then);
+    _$FeedLoadedImpl _value,
+    $Res Function(_$FeedLoadedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -850,32 +911,34 @@ class __$$FeedLoadedImplCopyWithImpl<$Res>
     Object? hasReachedEnd = null,
     Object? lastDocumentId = freezed,
   }) {
-    return _then(_$FeedLoadedImpl(
-      plans: null == plans
-          ? _value._plans
-          : plans // ignore: cast_nullable_to_non_nullable
-              as List<PlanEntity>,
-      hasReachedEnd: null == hasReachedEnd
-          ? _value.hasReachedEnd
-          : hasReachedEnd // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastDocumentId: freezed == lastDocumentId
-          ? _value.lastDocumentId
-          : lastDocumentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$FeedLoadedImpl(
+        plans: null == plans
+            ? _value._plans
+            : plans // ignore: cast_nullable_to_non_nullable
+                  as List<PlanEntity>,
+        hasReachedEnd: null == hasReachedEnd
+            ? _value.hasReachedEnd
+            : hasReachedEnd // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        lastDocumentId: freezed == lastDocumentId
+            ? _value.lastDocumentId
+            : lastDocumentId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$FeedLoadedImpl extends FeedLoaded {
-  const _$FeedLoadedImpl(
-      {required final List<PlanEntity> plans,
-      this.hasReachedEnd = false,
-      this.lastDocumentId})
-      : _plans = plans,
-        super._();
+  const _$FeedLoadedImpl({
+    required final List<PlanEntity> plans,
+    this.hasReachedEnd = false,
+    this.lastDocumentId,
+  }) : _plans = plans,
+       super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -910,10 +973,11 @@ class _$FeedLoadedImpl extends FeedLoaded {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_plans),
-      hasReachedEnd,
-      lastDocumentId);
+    runtimeType,
+    const DeepCollectionEquality().hash(_plans),
+    hasReachedEnd,
+    lastDocumentId,
+  );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -930,12 +994,15 @@ class _$FeedLoadedImpl extends FeedLoaded {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -950,8 +1017,11 @@ class _$FeedLoadedImpl extends FeedLoaded {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -967,8 +1037,11 @@ class _$FeedLoadedImpl extends FeedLoaded {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1031,10 +1104,11 @@ class _$FeedLoadedImpl extends FeedLoaded {
 }
 
 abstract class FeedLoaded extends FeedState {
-  const factory FeedLoaded(
-      {required final List<PlanEntity> plans,
-      final bool hasReachedEnd,
-      final String? lastDocumentId}) = _$FeedLoadedImpl;
+  const factory FeedLoaded({
+    required final List<PlanEntity> plans,
+    final bool hasReachedEnd,
+    final String? lastDocumentId,
+  }) = _$FeedLoadedImpl;
   const FeedLoaded._() : super._();
 
   List<PlanEntity> get plans;
@@ -1051,8 +1125,9 @@ abstract class FeedLoaded extends FeedState {
 /// @nodoc
 abstract class _$$FeedFilteredImplCopyWith<$Res> {
   factory _$$FeedFilteredImplCopyWith(
-          _$FeedFilteredImpl value, $Res Function(_$FeedFilteredImpl) then) =
-      __$$FeedFilteredImplCopyWithImpl<$Res>;
+    _$FeedFilteredImpl value,
+    $Res Function(_$FeedFilteredImpl) then,
+  ) = __$$FeedFilteredImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PlanEntity> plans, String filterCategory});
 }
@@ -1062,37 +1137,38 @@ class __$$FeedFilteredImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedFilteredImpl>
     implements _$$FeedFilteredImplCopyWith<$Res> {
   __$$FeedFilteredImplCopyWithImpl(
-      _$FeedFilteredImpl _value, $Res Function(_$FeedFilteredImpl) _then)
-      : super(_value, _then);
+    _$FeedFilteredImpl _value,
+    $Res Function(_$FeedFilteredImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plans = null,
-    Object? filterCategory = null,
-  }) {
-    return _then(_$FeedFilteredImpl(
-      plans: null == plans
-          ? _value._plans
-          : plans // ignore: cast_nullable_to_non_nullable
-              as List<PlanEntity>,
-      filterCategory: null == filterCategory
-          ? _value.filterCategory
-          : filterCategory // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? plans = null, Object? filterCategory = null}) {
+    return _then(
+      _$FeedFilteredImpl(
+        plans: null == plans
+            ? _value._plans
+            : plans // ignore: cast_nullable_to_non_nullable
+                  as List<PlanEntity>,
+        filterCategory: null == filterCategory
+            ? _value.filterCategory
+            : filterCategory // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$FeedFilteredImpl extends FeedFiltered {
-  const _$FeedFilteredImpl(
-      {required final List<PlanEntity> plans, required this.filterCategory})
-      : _plans = plans,
-        super._();
+  const _$FeedFilteredImpl({
+    required final List<PlanEntity> plans,
+    required this.filterCategory,
+  }) : _plans = plans,
+       super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -1122,7 +1198,10 @@ class _$FeedFilteredImpl extends FeedFiltered {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_plans), filterCategory);
+    runtimeType,
+    const DeepCollectionEquality().hash(_plans),
+    filterCategory,
+  );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -1139,12 +1218,15 @@ class _$FeedFilteredImpl extends FeedFiltered {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1159,8 +1241,11 @@ class _$FeedFilteredImpl extends FeedFiltered {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1176,8 +1261,11 @@ class _$FeedFilteredImpl extends FeedFiltered {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1240,9 +1328,10 @@ class _$FeedFilteredImpl extends FeedFiltered {
 }
 
 abstract class FeedFiltered extends FeedState {
-  const factory FeedFiltered(
-      {required final List<PlanEntity> plans,
-      required final String filterCategory}) = _$FeedFilteredImpl;
+  const factory FeedFiltered({
+    required final List<PlanEntity> plans,
+    required final String filterCategory,
+  }) = _$FeedFilteredImpl;
   const FeedFiltered._() : super._();
 
   List<PlanEntity> get plans;
@@ -1258,8 +1347,9 @@ abstract class FeedFiltered extends FeedState {
 /// @nodoc
 abstract class _$$FeedEmptyImplCopyWith<$Res> {
   factory _$$FeedEmptyImplCopyWith(
-          _$FeedEmptyImpl value, $Res Function(_$FeedEmptyImpl) then) =
-      __$$FeedEmptyImplCopyWithImpl<$Res>;
+    _$FeedEmptyImpl value,
+    $Res Function(_$FeedEmptyImpl) then,
+  ) = __$$FeedEmptyImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1267,8 +1357,9 @@ class __$$FeedEmptyImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedEmptyImpl>
     implements _$$FeedEmptyImplCopyWith<$Res> {
   __$$FeedEmptyImplCopyWithImpl(
-      _$FeedEmptyImpl _value, $Res Function(_$FeedEmptyImpl) _then)
-      : super(_value, _then);
+    _$FeedEmptyImpl _value,
+    $Res Function(_$FeedEmptyImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -1300,12 +1391,15 @@ class _$FeedEmptyImpl extends FeedEmpty {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1320,8 +1414,11 @@ class _$FeedEmptyImpl extends FeedEmpty {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1337,8 +1434,11 @@ class _$FeedEmptyImpl extends FeedEmpty {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1408,8 +1508,9 @@ abstract class FeedEmpty extends FeedState {
 /// @nodoc
 abstract class _$$FeedErrorImplCopyWith<$Res> {
   factory _$$FeedErrorImplCopyWith(
-          _$FeedErrorImpl value, $Res Function(_$FeedErrorImpl) then) =
-      __$$FeedErrorImplCopyWithImpl<$Res>;
+    _$FeedErrorImpl value,
+    $Res Function(_$FeedErrorImpl) then,
+  ) = __$$FeedErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message, List<PlanEntity>? plans});
 }
@@ -1419,27 +1520,27 @@ class __$$FeedErrorImplCopyWithImpl<$Res>
     extends _$FeedStateCopyWithImpl<$Res, _$FeedErrorImpl>
     implements _$$FeedErrorImplCopyWith<$Res> {
   __$$FeedErrorImplCopyWithImpl(
-      _$FeedErrorImpl _value, $Res Function(_$FeedErrorImpl) _then)
-      : super(_value, _then);
+    _$FeedErrorImpl _value,
+    $Res Function(_$FeedErrorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? plans = freezed,
-  }) {
-    return _then(_$FeedErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      plans: freezed == plans
-          ? _value._plans
-          : plans // ignore: cast_nullable_to_non_nullable
-              as List<PlanEntity>?,
-    ));
+  $Res call({Object? message = null, Object? plans = freezed}) {
+    return _then(
+      _$FeedErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        plans: freezed == plans
+            ? _value._plans
+            : plans // ignore: cast_nullable_to_non_nullable
+                  as List<PlanEntity>?,
+      ),
+    );
   }
 }
 
@@ -1447,8 +1548,8 @@ class __$$FeedErrorImplCopyWithImpl<$Res>
 
 class _$FeedErrorImpl extends FeedError {
   const _$FeedErrorImpl({required this.message, final List<PlanEntity>? plans})
-      : _plans = plans,
-        super._();
+    : _plans = plans,
+      super._();
 
   @override
   final String message;
@@ -1478,7 +1579,10 @@ class _$FeedErrorImpl extends FeedError {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, message, const DeepCollectionEquality().hash(_plans));
+    runtimeType,
+    message,
+    const DeepCollectionEquality().hash(_plans),
+  );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -1495,12 +1599,15 @@ class _$FeedErrorImpl extends FeedError {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-        paginating,
+    paginating,
     required TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )
+    loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-        filtered,
+    filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1515,8 +1622,11 @@ class _$FeedErrorImpl extends FeedError {
     TResult? Function(List<PlanEntity> plans)? refreshing,
     TResult? Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult? Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1532,8 +1642,11 @@ class _$FeedErrorImpl extends FeedError {
     TResult Function(List<PlanEntity> plans)? refreshing,
     TResult Function(List<PlanEntity> plans, bool hasReachedEnd)? paginating,
     TResult Function(
-            List<PlanEntity> plans, bool hasReachedEnd, String? lastDocumentId)?
-        loaded,
+      List<PlanEntity> plans,
+      bool hasReachedEnd,
+      String? lastDocumentId,
+    )?
+    loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1596,9 +1709,10 @@ class _$FeedErrorImpl extends FeedError {
 }
 
 abstract class FeedError extends FeedState {
-  const factory FeedError(
-      {required final String message,
-      final List<PlanEntity>? plans}) = _$FeedErrorImpl;
+  const factory FeedError({
+    required final String message,
+    final List<PlanEntity>? plans,
+  }) = _$FeedErrorImpl;
   const FeedError._() : super._();
 
   String get message;

@@ -11,8 +11,9 @@ class FirebaseMetricsStorage implements StorageInterface {
   @override
   Future<void> saveMetric(final String city, final bool wasEnabled) async {
     try {
-      final DocumentReference<Map<String, dynamic>> docRef =
-          _firestore.collection('cityMetrics').doc(city);
+      final DocumentReference<Map<String, dynamic>> docRef = _firestore
+          .collection('cityMetrics')
+          .doc(city);
       await docRef.set(<String, dynamic>{
         'totalAttempts': FieldValue.increment(1),
         'successfulSelections': FieldValue.increment(wasEnabled ? 1 : 0),

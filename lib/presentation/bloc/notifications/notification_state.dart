@@ -1,11 +1,6 @@
 part of 'notification_bloc.dart';
 
-enum NotificationStatus {
-  initial,
-  loading,
-  success,
-  error,
-}
+enum NotificationStatus { initial, loading, success, error }
 
 class NotificationState extends Equatable {
   final NotificationStatus status;

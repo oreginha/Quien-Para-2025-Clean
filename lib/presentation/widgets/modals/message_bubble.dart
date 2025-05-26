@@ -16,11 +16,14 @@ class MessageBubble extends StatelessWidget {
     required this.isMine,
     this.showTime = true,
   });
-  
+
   // Obtener los datos del mensaje independientemente del tipo
-  String get messageContent => message is MessageEntity ? message.content : message.content;
-  DateTime get messageTimestamp => message is MessageEntity ? message.timestamp : message.timestamp;
-  String get messageSenderId => message is MessageEntity ? message.senderId : message.senderId;
+  String get messageContent =>
+      message is MessageEntity ? message.content : message.content;
+  DateTime get messageTimestamp =>
+      message is MessageEntity ? message.timestamp : message.timestamp;
+  String get messageSenderId =>
+      message is MessageEntity ? message.senderId : message.senderId;
 
   @override
   Widget build(BuildContext context) {
@@ -30,39 +33,35 @@ class MessageBubble extends StatelessWidget {
 
     // Determinar colores según el tema y si es un mensaje propio o recibido
     final Color bubbleColor = isMine
-        ? AppColors.brandYellow // Mensaje propio - color amarillo de marca
+        ? AppColors
+              .brandYellow // Mensaje propio - color amarillo de marca
         : isDarkMode
-            ? const Color(0xFF2D3748) // Mensaje recibido en modo oscuro
-            : Colors.white; // Mensaje recibido en modo claro
+        ? const Color(0xFF2D3748) // Mensaje recibido en modo oscuro
+        : Colors.white; // Mensaje recibido en modo claro
 
     final Color textColor = isMine
         ? const Color(
-            0xFF1E293B) // Texto en mensajes propios (oscuro en el amarillo)
+            0xFF1E293B,
+          ) // Texto en mensajes propios (oscuro en el amarillo)
         : isDarkMode
-            ? Colors.white // Texto en mensajes recibidos en modo oscuro
-            : Colors.black87; // Texto en mensajes recibidos en modo claro
+        ? Colors
+              .white // Texto en mensajes recibidos en modo oscuro
+        : Colors.black87; // Texto en mensajes recibidos en modo claro
 
     final Color timeColor = isMine
         ? Color(0xFF1E293B).withValues(
             red: 30,
             green: 41,
             blue: 59,
-            alpha: 179) // Color de hora en mensajes propios
+            alpha: 179,
+          ) // Color de hora en mensajes propios
         : isDarkMode
-            ? Colors
-                .grey[400]! // Color de hora en mensajes recibidos (modo oscuro)
-            : Colors
-                .grey[600]!; // Color de hora en mensajes recibidos (modo claro)
+        ? Colors.grey[400]! // Color de hora en mensajes recibidos (modo oscuro)
+        : Colors.grey[600]!; // Color de hora en mensajes recibidos (modo claro)
 
-    final timeStyle = TextStyle(
-      color: timeColor,
-      fontSize: 12,
-    );
+    final timeStyle = TextStyle(color: timeColor, fontSize: 12);
 
-    final contentStyle = TextStyle(
-      color: textColor,
-      fontSize: 16,
-    );
+    final contentStyle = TextStyle(color: textColor, fontSize: 16);
 
     return Align(
       alignment: isMine ? Alignment.centerRight : Alignment.centerLeft,
@@ -82,7 +81,11 @@ class MessageBubble extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(
-                  red: 0, green: 0, blue: 0, alpha: isDarkMode ? 77 : 26),
+                red: 0,
+                green: 0,
+                blue: 0,
+                alpha: isDarkMode ? 77 : 26,
+              ),
               blurRadius: 3,
               offset: const Offset(0, 2),
             ),
@@ -111,7 +114,9 @@ class MessageBubble extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      _getFormattedTime(messageTimestamp), // Usar la propiedad auxiliar
+                      _getFormattedTime(
+                        messageTimestamp,
+                      ), // Usar la propiedad auxiliar
                       style: timeStyle,
                     ),
                     if (isMine) ...[
@@ -119,8 +124,12 @@ class MessageBubble extends StatelessWidget {
                       Icon(
                         // Verificar si el mensaje tiene la propiedad isRead (ChatMessageModel) o read (MessageEntity)
                         message is MessageEntity
-                            ? message.read ? Icons.done_all : Icons.done
-                            : (message.isRead ?? false) ? Icons.done_all : Icons.done,
+                            ? message.read
+                                  ? Icons.done_all
+                                  : Icons.done
+                            : (message.isRead ?? false)
+                            ? Icons.done_all
+                            : Icons.done,
                         size: 14,
                         color: timeColor,
                       ),

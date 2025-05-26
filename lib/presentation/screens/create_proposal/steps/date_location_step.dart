@@ -39,14 +39,14 @@ class DateLocationStep extends StatefulWidget {
     'Rawson',
     'Santa Rosa',
     'Río Gallegos',
-    'Ushuaia'
+    'Ushuaia',
   ];
 
   static const List<String> enabledCities = <String>[
     'Ciudad Autónoma de Buenos Aires',
     'La Plata',
     'Rosario',
-    'Córdoba'
+    'Córdoba',
   ];
 
   const DateLocationStep({
@@ -189,19 +189,18 @@ class _DateLocationStepState extends State<DateLocationStep> {
                 itemCount: _filteredCities.length,
                 itemBuilder: (final BuildContext context, final int index) {
                   final String city = _filteredCities[index];
-                  final bool isEnabled =
-                      DateLocationStep.enabledCities.contains(city);
+                  final bool isEnabled = DateLocationStep.enabledCities
+                      .contains(city);
                   return ListTile(
                     title: Text(
                       city,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withValues(alpha: isEnabled ? 0.9 : 0.5),
-                            fontWeight:
-                                isEnabled ? FontWeight.bold : FontWeight.normal,
-                          ),
+                        color: Theme.of(context).colorScheme.onSurface
+                            .withValues(alpha: isEnabled ? 0.9 : 0.5),
+                        fontWeight: isEnabled
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
                     ),
                     trailing: isEnabled
                         ? null
@@ -216,17 +215,15 @@ class _DateLocationStepState extends State<DateLocationStep> {
                         }
 
                         context.read<PlanBloc>().add(
-                              PlanEvent.updateField(
-                                field: 'location',
-                                value: city,
-                              ),
-                            );
+                          PlanEvent.updateField(field: 'location', value: city),
+                        );
                         _hideSuggestions();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content:
-                                Text('La ciudad $city aún no está disponible'),
+                            content: Text(
+                              'La ciudad $city aún no está disponible',
+                            ),
                             backgroundColor: Colors.red,
                           ),
                         );
@@ -245,7 +242,10 @@ class _DateLocationStepState extends State<DateLocationStep> {
   }
 
   Widget _buildDateTypeOption(
-      final String label, final String value, final bool isSelected) {
+    final String label,
+    final String value,
+    final bool isSelected,
+  ) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
@@ -262,8 +262,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
               // Si cambiamos a "any", limpiamos la fecha
               if (value == 'any') {
                 context.read<PlanBloc>().add(
-                      const PlanEvent.updateField(field: 'date', value: null),
-                    );
+                  const PlanEvent.updateField(field: 'date', value: null),
+                );
               }
 
               // Log para debug
@@ -272,9 +272,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
                 print('Condiciones actualizadas: $updatedConditions');
               }
 
-              context
-                  .read<PlanBloc>()
-                  .add(PlanEvent.updateSelectedOptions(updatedConditions));
+              context.read<PlanBloc>().add(
+                PlanEvent.updateSelectedOptions(updatedConditions),
+              );
             }
           });
         },
@@ -307,7 +307,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
   }
 
   Widget _buildSpecificDateSelector(
-      final BuildContext context, final PlanState state) {
+    final BuildContext context,
+    final PlanState state,
+  ) {
     final PlanEntity? plan = state is PlanLoaded ? state.plan : null;
 
     return GestureDetector(
@@ -344,18 +346,17 @@ class _DateLocationStepState extends State<DateLocationStep> {
           // Actualizar fecha en el BLoC
           if (mounted) {
             context.read<PlanBloc>().add(
-                  PlanEvent.updateField(field: 'date', value: pickedDate),
-                );
+              PlanEvent.updateField(field: 'date', value: pickedDate),
+            );
           }
         }
       },
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Theme.of(context)
-              .colorScheme
-              .primary
-              .withAlpha((0.15 * 255).toInt()),
+          color: Theme.of(
+            context,
+          ).colorScheme.primary.withAlpha((0.15 * 255).toInt()),
           borderRadius: BorderRadius.circular(AppRadius.l),
           border: Border.all(
             color: Theme.of(context).colorScheme.primary,
@@ -419,8 +420,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
               if (mounted) {
                 // Primero actualizar el campo principal de fecha
                 context.read<PlanBloc>().add(
-                      PlanEvent.updateField(field: 'date', value: pickedDate),
-                    );
+                  PlanEvent.updateField(field: 'date', value: pickedDate),
+                );
 
                 // Luego actualizar las condiciones con el tipo y la fecha de inicio
                 final PlanState state = context.read<PlanBloc>().state;
@@ -435,9 +436,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
                     print('Condiciones actualizadas: $updatedConditions');
                   }
 
-                  context
-                      .read<PlanBloc>()
-                      .add(PlanEvent.updateSelectedOptions(updatedConditions));
+                  context.read<PlanBloc>().add(
+                    PlanEvent.updateSelectedOptions(updatedConditions),
+                  );
                 }
               }
             }
@@ -445,10 +446,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Theme.of(context)
-                  .colorScheme
-                  .primary
-                  .withAlpha((0.15 * 255).toInt()),
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withAlpha((0.15 * 255).toInt()),
               borderRadius: BorderRadius.circular(AppRadius.l),
               border: Border.all(
                 color: Theme.of(context).colorScheme.primary,
@@ -529,9 +529,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
                     print('Condiciones actualizadas: $updatedConditions');
                   }
 
-                  context
-                      .read<PlanBloc>()
-                      .add(PlanEvent.updateSelectedOptions(updatedConditions));
+                  context.read<PlanBloc>().add(
+                    PlanEvent.updateSelectedOptions(updatedConditions),
+                  );
                 }
               }
             }
@@ -539,10 +539,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Theme.of(context)
-                  .colorScheme
-                  .primary
-                  .withAlpha((0.15 * 255).toInt()),
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withAlpha((0.15 * 255).toInt()),
               borderRadius: BorderRadius.circular(AppRadius.l),
               border: Border.all(
                 color: Theme.of(context).colorScheme.primary,
@@ -579,10 +578,7 @@ class _DateLocationStepState extends State<DateLocationStep> {
       decoration: BoxDecoration(
         color: Colors.yellow.withAlpha(38), // 0.15 * 255
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: Colors.yellow,
-          width: 2,
-        ),
+        border: Border.all(color: Colors.yellow, width: 2),
       ),
       child: Row(
         children: <Widget>[
@@ -675,12 +671,12 @@ class _DateLocationStepState extends State<DateLocationStep> {
               ),
             ),
             child: LayoutBuilder(
-              builder: (final BuildContext context,
-                  final BoxConstraints constraints) {
+              builder: (final BuildContext context, final BoxConstraints constraints) {
                 return SingleChildScrollView(
                   child: ConstrainedBox(
-                    constraints:
-                        BoxConstraints(minHeight: constraints.maxHeight),
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
                     child: IntrinsicHeight(
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
@@ -691,9 +687,7 @@ class _DateLocationStepState extends State<DateLocationStep> {
                             // Selector de Tipo de Fecha
                             Text(
                               'Tipo de Fecha',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
+                              style: Theme.of(context).textTheme.titleMedium
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: Theme.of(context)
@@ -706,15 +700,22 @@ class _DateLocationStepState extends State<DateLocationStep> {
                             Row(
                               children: <Widget>[
                                 _buildDateTypeOption(
-                                    'Fecha Específica',
-                                    'specific',
-                                    _dateSelectionType == 'specific'),
+                                  'Fecha Específica',
+                                  'specific',
+                                  _dateSelectionType == 'specific',
+                                ),
                                 const SizedBox(width: 8),
-                                _buildDateTypeOption('Rango de Fechas', 'range',
-                                    _dateSelectionType == 'range'),
+                                _buildDateTypeOption(
+                                  'Rango de Fechas',
+                                  'range',
+                                  _dateSelectionType == 'range',
+                                ),
                                 const SizedBox(width: 8),
-                                _buildDateTypeOption('Cualquier Día', 'any',
-                                    _dateSelectionType == 'any'),
+                                _buildDateTypeOption(
+                                  'Cualquier Día',
+                                  'any',
+                                  _dateSelectionType == 'any',
+                                ),
                               ],
                             ),
                             const SizedBox(height: 16),
@@ -730,9 +731,7 @@ class _DateLocationStepState extends State<DateLocationStep> {
                             const SizedBox(height: 24),
                             Text(
                               'Ciudad',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
+                              style: Theme.of(context).textTheme.titleMedium
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: Theme.of(context)
@@ -745,11 +744,13 @@ class _DateLocationStepState extends State<DateLocationStep> {
                             CompositedTransformTarget(
                               link: _layerLink,
                               child: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                ),
                                 decoration: BoxDecoration(
-                                  color:
-                                      Colors.white.withAlpha(26), // 0.1 * 255
+                                  color: Colors.white.withAlpha(
+                                    26,
+                                  ), // 0.1 * 255
                                   borderRadius: BorderRadius.circular(12),
                                   border: Border.all(
                                     color: _cityController.text.isNotEmpty
@@ -761,29 +762,30 @@ class _DateLocationStepState extends State<DateLocationStep> {
                                 child: TextField(
                                   controller: _cityController,
                                   style: TextStyle(
-                                      color: Colors.white
-                                          .withAlpha(230)), // 0.9 * 255
+                                    color: Colors.white.withAlpha(230),
+                                  ), // 0.9 * 255
                                   decoration: InputDecoration(
                                     hintText: 'Buscar ciudad...',
                                     hintStyle: TextStyle(
-                                        color: Colors.white
-                                            .withAlpha(128)), // 0.5 * 255
+                                      color: Colors.white.withAlpha(128),
+                                    ), // 0.5 * 255
                                     border: InputBorder.none,
                                     icon: Icon(
                                       Icons.location_on,
-                                      color: Colors.white
-                                          .withAlpha(179), // 0.7 * 255
+                                      color: Colors.white.withAlpha(
+                                        179,
+                                      ), // 0.7 * 255
                                     ),
                                   ),
                                   onTap: _showSuggestions,
                                   onChanged: (final String value) {
                                     // Actualizar el valor en el BLoC con cada cambio
                                     context.read<PlanBloc>().add(
-                                          PlanEvent.updateField(
-                                            field: 'location',
-                                            value: value,
-                                          ),
-                                        );
+                                      PlanEvent.updateField(
+                                        field: 'location',
+                                        value: value,
+                                      ),
+                                    );
                                   },
                                 ),
                               ),
@@ -797,19 +799,23 @@ class _DateLocationStepState extends State<DateLocationStep> {
                                     ? () {
                                         if (kDebugMode) {
                                           print(
-                                              'Continuando al siguiente paso con:');
+                                            'Continuando al siguiente paso con:',
+                                          );
                                           print(
-                                              'Ciudad: ${_cityController.text}');
+                                            'Ciudad: ${_cityController.text}',
+                                          );
                                           print(
-                                              'Tipo de fecha: $_dateSelectionType');
+                                            'Tipo de fecha: $_dateSelectionType',
+                                          );
                                           print('Fecha inicio: $_startDate');
                                           if (_dateSelectionType == 'range') {
                                             print('Fecha fin: $_endDate');
                                           }
                                         }
                                         widget.pageController.nextPage(
-                                          duration:
-                                              const Duration(milliseconds: 300),
+                                          duration: const Duration(
+                                            milliseconds: 300,
+                                          ),
                                           curve: Curves.easeInOut,
                                         );
                                       }

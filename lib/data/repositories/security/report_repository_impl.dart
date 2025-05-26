@@ -14,7 +14,8 @@ class ReportRepositoryImpl implements ReportRepository {
 
   @override
   Future<Either<Failure, ReportEntity>> createReport(
-      ReportEntity report) async {
+    ReportEntity report,
+  ) async {
     try {
       final reportData = {
         'reporterId': report.reporterId,
@@ -60,8 +61,9 @@ class ReportRepositoryImpl implements ReportRepository {
           .where('createdAt', isGreaterThan: Timestamp.fromDate(cutoffTime))
           .get();
 
-      final reports =
-          querySnapshot.docs.map((doc) => _mapDocumentToReport(doc)).toList();
+      final reports = querySnapshot.docs
+          .map((doc) => _mapDocumentToReport(doc))
+          .toList();
 
       return Right(reports);
     } catch (e) {
@@ -79,8 +81,9 @@ class ReportRepositoryImpl implements ReportRepository {
           .limit(50)
           .get();
 
-      final reports =
-          querySnapshot.docs.map((doc) => _mapDocumentToReport(doc)).toList();
+      final reports = querySnapshot.docs
+          .map((doc) => _mapDocumentToReport(doc))
+          .toList();
 
       return Right(reports);
     } catch (e) {
@@ -116,7 +119,8 @@ class ReportRepositoryImpl implements ReportRepository {
 
   @override
   Future<Either<Failure, List<ReportEntity>>> getReportsByUser(
-      String userId) async {
+    String userId,
+  ) async {
     try {
       final querySnapshot = await _firestore
           .collection('reports')
@@ -124,8 +128,9 @@ class ReportRepositoryImpl implements ReportRepository {
           .orderBy('createdAt', descending: true)
           .get();
 
-      final reports =
-          querySnapshot.docs.map((doc) => _mapDocumentToReport(doc)).toList();
+      final reports = querySnapshot.docs
+          .map((doc) => _mapDocumentToReport(doc))
+          .toList();
 
       return Right(reports);
     } catch (e) {

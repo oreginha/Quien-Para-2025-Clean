@@ -75,7 +75,7 @@ class MockSharedPreferences implements SharedPreferences {
   Future<void> reload() async {
     // No hace nada
   }
-  
+
   @override
   Future<bool> commit() async {
     // En una implementación real, esto guardaría los datos en el disco

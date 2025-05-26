@@ -11,7 +11,7 @@ abstract class SearchEvent extends Equatable {
 // Evento para inicializar la pantalla de búsqueda y cargar búsquedas recientes
 class InitializeSearch extends SearchEvent {
   const InitializeSearch();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -19,9 +19,9 @@ class InitializeSearch extends SearchEvent {
 // Evento cuando el usuario escribe en el campo de búsqueda (con debounce)
 class QueryChanged extends SearchEvent {
   final String query;
-  
+
   const QueryChanged({required this.query});
-  
+
   @override
   List<Object?> get props => [query];
 }
@@ -29,9 +29,9 @@ class QueryChanged extends SearchEvent {
 // Evento cuando el usuario envía la búsqueda
 class SubmitSearch extends SearchEvent {
   final String query;
-  
+
   const SubmitSearch({required this.query});
-  
+
   @override
   List<Object?> get props => [query];
 }
@@ -39,7 +39,7 @@ class SubmitSearch extends SearchEvent {
 // Evento para cargar más resultados de búsqueda (paginación)
 class LoadMoreResults extends SearchEvent {
   const LoadMoreResults();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -47,7 +47,7 @@ class LoadMoreResults extends SearchEvent {
 // Evento para limpiar consulta de búsqueda
 class ClearSearch extends SearchEvent {
   const ClearSearch();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -55,7 +55,7 @@ class ClearSearch extends SearchEvent {
 // Evento para limpiar todas las búsquedas recientes
 class ClearRecentSearches extends SearchEvent {
   const ClearRecentSearches();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -63,9 +63,9 @@ class ClearRecentSearches extends SearchEvent {
 // Evento cuando el usuario selecciona una búsqueda reciente
 class SelectRecentSearch extends SearchEvent {
   final String query;
-  
+
   const SelectRecentSearch({required this.query});
-  
+
   @override
   List<Object?> get props => [query];
 }
@@ -77,13 +77,13 @@ class ApplyLocationFilter extends SearchEvent {
   final double latitude;
   final double longitude;
   final double radiusKm;
-  
+
   const ApplyLocationFilter({
     required this.latitude,
     required this.longitude,
     required this.radiusKm,
   });
-  
+
   @override
   List<Object?> get props => [latitude, longitude, radiusKm];
 }
@@ -92,12 +92,9 @@ class ApplyLocationFilter extends SearchEvent {
 class ApplyDateFilter extends SearchEvent {
   final DateTime startDate;
   final DateTime endDate;
-  
-  const ApplyDateFilter({
-    required this.startDate,
-    required this.endDate,
-  });
-  
+
+  const ApplyDateFilter({required this.startDate, required this.endDate});
+
   @override
   List<Object?> get props => [startDate, endDate];
 }
@@ -105,9 +102,9 @@ class ApplyDateFilter extends SearchEvent {
 // Evento para aplicar filtro de categoría
 class ApplyCategoryFilter extends SearchEvent {
   final String category;
-  
+
   const ApplyCategoryFilter({required this.category});
-  
+
   @override
   List<Object?> get props => [category];
 }
@@ -115,7 +112,7 @@ class ApplyCategoryFilter extends SearchEvent {
 // Evento para limpiar todos los filtros
 class ClearFilters extends SearchEvent {
   const ClearFilters();
-  
+
   @override
   List<Object?> get props => [];
 }
@@ -129,7 +126,7 @@ class ApplyMultipleFilters extends SearchEvent {
   final double? radiusKm;
   final DateTime? startDate;
   final DateTime? endDate;
-  
+
   const ApplyMultipleFilters({
     this.query,
     this.category,
@@ -139,7 +136,7 @@ class ApplyMultipleFilters extends SearchEvent {
     this.startDate,
     this.endDate,
   });
-  
+
   @override
   List<Object?> get props => [
     query,
@@ -155,17 +152,12 @@ class ApplyMultipleFilters extends SearchEvent {
 // Evento para filtros rápidos (hoy, esta semana, etc.)
 class ApplyQuickDateFilter extends SearchEvent {
   final QuickDateFilter filter;
-  
+
   const ApplyQuickDateFilter({required this.filter});
-  
+
   @override
   List<Object?> get props => [filter];
 }
 
 // Enum para filtros rápidos de fecha
-enum QuickDateFilter {
-  today,
-  thisWeek,
-  thisMonth,
-  weekend,
-}
+enum QuickDateFilter { today, thisWeek, thisMonth, weekend }

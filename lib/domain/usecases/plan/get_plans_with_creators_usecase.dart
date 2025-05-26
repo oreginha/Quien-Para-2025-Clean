@@ -34,8 +34,10 @@ class GetPlansWithCreatorsUseCase {
   GetPlansWithCreatorsUseCase(this._planRepository, this._firestore);
 
   /// Obtiene un stream de planes con sus creadores, cargando datos de forma eficiente
-  Stream<List<PlanWithCreatorEntity>> execute(
-      {required String currentUserId, bool refresh = false}) {
+  Stream<List<PlanWithCreatorEntity>> execute({
+    required String currentUserId,
+    bool refresh = false,
+  }) {
     if (refresh) {
       _clearCache();
     }
@@ -64,9 +66,9 @@ class GetPlansWithCreatorsUseCase {
       // 1. Obtener planes usando paginación basada en cursor
       final Either<AppFailure, List<PlanEntity>> plansResult =
           await _planRepository.getAll(
-        limit: _pageSize,
-        lastDocumentId: _lastDocumentId,
-      );
+            limit: _pageSize,
+            lastDocumentId: _lastDocumentId,
+          );
 
       return plansResult.fold(
         (failure) {

@@ -36,20 +36,23 @@ class CreateConversationUseCase
     // Validar que hay al menos dos participantes
     if (params.participantIds.length < 2) {
       throw ArgumentError(
-          'Una conversación requiere al menos dos participantes');
+        'Una conversación requiere al menos dos participantes',
+      );
     }
 
     // Validar que los IDs de los participantes son únicos
     final uniqueParticipants = params.participantIds.toSet().toList();
     if (uniqueParticipants.length != params.participantIds.length) {
       throw ArgumentError(
-          'No puede haber participantes duplicados en una conversación');
+        'No puede haber participantes duplicados en una conversación',
+      );
     }
 
     final either = await _chatRepository.createConversation(
       participants: params.participantIds,
-      initialMessage:
-          params.initialMessage.isNotEmpty ? params.initialMessage : null,
+      initialMessage: params.initialMessage.isNotEmpty
+          ? params.initialMessage
+          : null,
     );
     return either.fold(
       (failure) => throw Exception(failure.message),

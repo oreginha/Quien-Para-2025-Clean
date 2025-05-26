@@ -51,10 +51,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       ),
       actions: [
         IconButton(
-          icon: Icon(
-            Icons.refresh,
-            color: AppColors.brandYellow,
-          ),
+          icon: Icon(Icons.refresh, color: AppColors.brandYellow),
           onPressed: () {
             setState(() {}); // Refresca la pantalla
           },
@@ -65,7 +62,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return NewResponsiveScaffold(
       screenName: AppRouter.notifications,
       appBar: notificationsAppBar,
-      body: userId.isEmpty ? _buildLoginRequired(isDarkMode) : _buildNotificationsList(userId, isDarkMode),
+      body: userId.isEmpty
+          ? _buildLoginRequired(isDarkMode)
+          : _buildNotificationsList(userId, isDarkMode),
       currentIndex: 4,
       webTitle: 'Notificaciones',
     );
@@ -92,7 +91,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             onPressed: () => context.go(AppRouter.login),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+              foregroundColor: isDarkMode
+                  ? Colors.black
+                  : AppColors.lightTextPrimary,
             ),
             child: const Text('Iniciar Sesión'),
           ),
@@ -130,7 +131,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           itemBuilder: (context, index) {
             final notification = notifications[index];
             final data = notification.data() as Map<String, dynamic>? ?? {};
-            
+
             return _NotificationCard(
               notificationId: notification.id,
               title: data['title'] as String? ?? 'Notificación',
@@ -158,9 +159,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           const SizedBox(height: AppSpacing.m),
           Text(
             'Cargando notificaciones...',
-            style: AppTypography.bodyMedium(isDarkMode).copyWith(
-              color: AppColors.getTextSecondary(isDarkMode),
-            ),
+            style: AppTypography.bodyMedium(
+              isDarkMode,
+            ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
           ),
         ],
       ),
@@ -172,11 +173,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 60,
-            color: AppColors.accentRed,
-          ),
+          Icon(Icons.error_outline, size: 60, color: AppColors.accentRed),
           const SizedBox(height: AppSpacing.m),
           Text(
             'Error al cargar notificaciones',
@@ -188,7 +185,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             onPressed: () => setState(() {}),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+              foregroundColor: isDarkMode
+                  ? Colors.black
+                  : AppColors.lightTextPrimary,
             ),
             child: const Text('Reintentar'),
           ),
@@ -205,7 +204,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           Container(
             padding: const EdgeInsets.all(AppSpacing.l),
             decoration: BoxDecoration(
-              color: AppColors.getSecondaryBackground(isDarkMode).withOpacity(0.3),
+              color: AppColors.getSecondaryBackground(
+                isDarkMode,
+              ).withOpacity(0.3),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -224,9 +225,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
             child: Text(
               'Cuando recibas notificaciones, aparecerán aquí.',
-              style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.bodyMedium(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               textAlign: TextAlign.center,
             ),
           ),
@@ -237,11 +238,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   String _formatDate(dynamic timestamp) {
     if (timestamp == null) return 'Ahora';
-    
+
     try {
-      final DateTime date = timestamp is Timestamp ? timestamp.toDate() : DateTime.parse(timestamp.toString());
+      final DateTime date = timestamp is Timestamp
+          ? timestamp.toDate()
+          : DateTime.parse(timestamp.toString());
       final Duration difference = DateTime.now().difference(date);
-      
+
       if (difference.inMinutes < 1) {
         return 'Ahora';
       } else if (difference.inHours < 1) {
@@ -258,11 +261,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   Future<void> _markAsRead(String notificationId, String userId) async {
     try {
-      await _firestore
-          .collection('notifications')
-          .doc(notificationId)
-          .update({'isRead': true});
-      
+      await _firestore.collection('notifications').doc(notificationId).update({
+        'isRead': true,
+      });
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -362,7 +364,9 @@ class _NotificationCard extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: CircleAvatar(
-                    backgroundColor: AppColors.getSecondaryBackground(isDarkMode),
+                    backgroundColor: AppColors.getSecondaryBackground(
+                      isDarkMode,
+                    ),
                     radius: 24,
                     child: Icon(
                       _getIconForType(type),
@@ -382,7 +386,9 @@ class _NotificationCard extends StatelessWidget {
                       Text(
                         title,
                         style: AppTypography.heading6(isDarkMode).copyWith(
-                          fontWeight: isRead ? FontWeight.normal : FontWeight.bold,
+                          fontWeight: isRead
+                              ? FontWeight.normal
+                              : FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: AppSpacing.xs),
@@ -400,17 +406,19 @@ class _NotificationCard extends StatelessWidget {
                         children: [
                           Text(
                             createdAt,
-                            style: AppTypography.labelSmall(isDarkMode).copyWith(
-                              color: AppColors.getTextSecondary(isDarkMode),
-                            ),
+                            style: AppTypography.labelSmall(isDarkMode)
+                                .copyWith(
+                                  color: AppColors.getTextSecondary(isDarkMode),
+                                ),
                           ),
                           if (!isRead)
                             Text(
                               'Sin leer',
-                              style: AppTypography.labelSmall(isDarkMode).copyWith(
-                                color: AppColors.brandYellow,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: AppTypography.labelSmall(isDarkMode)
+                                  .copyWith(
+                                    color: AppColors.brandYellow,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                         ],
                       ),

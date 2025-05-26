@@ -77,8 +77,9 @@ class _SuccessModalState extends State<SuccessModal> {
 
     // Solo inicializar el controlador de confeti si es necesario
     if (widget.type == SuccessModalType.confetti) {
-      _confettiController =
-          ConfettiController(duration: const Duration(seconds: 2));
+      _confettiController = ConfettiController(
+        duration: const Duration(seconds: 2),
+      );
       _confettiController.play();
     }
   }
@@ -115,11 +116,7 @@ class _SuccessModalState extends State<SuccessModal> {
                     color: widget.iconBackgroundColor,
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
-                    widget.icon,
-                    color: widget.iconColor,
-                    size: 48,
-                  ),
+                  child: Icon(widget.icon, color: widget.iconColor, size: 48),
                 ),
                 const SizedBox(height: 24),
 
@@ -138,10 +135,7 @@ class _SuccessModalState extends State<SuccessModal> {
                 // Mensaje
                 Text(
                   widget.message,
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 16,
-                  ),
+                  style: const TextStyle(color: Colors.white70, fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),

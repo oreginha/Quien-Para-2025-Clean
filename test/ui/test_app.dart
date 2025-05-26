@@ -9,10 +9,7 @@ import 'mock_theme_provider.dart';
 class TestApp extends StatelessWidget {
   final Widget child;
 
-  const TestApp({
-    super.key,
-    required this.child,
-  });
+  const TestApp({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +22,7 @@ class TestApp extends StatelessWidget {
       ),
       home: ChangeNotifierProvider<ThemeProvider>(
         create: (_) => MockThemeProvider(isDarkMode: false),
-        child: Scaffold(
-          body: child,
-        ),
+        child: Scaffold(body: child),
       ),
     );
   }

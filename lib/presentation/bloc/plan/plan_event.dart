@@ -24,13 +24,11 @@ class PlanEvent with _$PlanEvent {
     final Map<String, String> options,
   ) = _UpdateSelectedOptions;
 
-  const factory PlanEvent.updateSelectedThemes(
-    final List<String> themes,
-  ) = _UpdateSelectedThemes;
+  const factory PlanEvent.updateSelectedThemes(final List<String> themes) =
+      _UpdateSelectedThemes;
 
-  const factory PlanEvent.updateExtraConditions(
-    final String extraConditions,
-  ) = _UpdateExtraConditions;
+  const factory PlanEvent.updateExtraConditions(final String extraConditions) =
+      _UpdateExtraConditions;
 
   const factory PlanEvent.clear({@Default('') final String creatorId}) = _Clear;
 

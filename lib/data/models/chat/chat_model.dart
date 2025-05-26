@@ -23,13 +23,13 @@ class ChatModel with _$ChatModel {
   }) = _ChatModel;
 
   // Método de conversión a JSON para serialización
-  factory ChatModel.fromJson(Map<String, dynamic> json) => 
+  factory ChatModel.fromJson(Map<String, dynamic> json) =>
       _$ChatModelFromJson(_handleTimestampConversion(json));
 
   // Método de conversión desde Firestore
   factory ChatModel.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
-    
+
     return ChatModel(
       id: doc.id,
       participants: List<String>.from(data['participants'] ?? []),
@@ -50,9 +50,9 @@ class ChatModel with _$ChatModel {
     return {
       'participants': participants,
       'createdAt': Timestamp.fromDate(createdAt),
-      'lastMessageTimestamp': lastMessageTimestamp != null 
-        ? Timestamp.fromDate(lastMessageTimestamp!) 
-        : null,
+      'lastMessageTimestamp': lastMessageTimestamp != null
+          ? Timestamp.fromDate(lastMessageTimestamp!)
+          : null,
       'lastMessage': lastMessage,
       'lastMessageSenderId': lastMessageSenderId,
       'unreadCount': unreadCount,
@@ -66,11 +66,11 @@ class ChatModel with _$ChatModel {
   // Método auxiliar para conversión de timestamp
   static DateTime _convertTimestamp(dynamic timestampData) {
     if (timestampData == null) return DateTime.now();
-    
+
     if (timestampData is Timestamp) {
       return timestampData.toDate();
     }
-    
+
     try {
       return DateTime.parse(timestampData.toString());
     } catch (e) {
@@ -79,19 +79,23 @@ class ChatModel with _$ChatModel {
   }
 
   // Método para preprocesar JSON y manejar formatos de timestamp
-  static Map<String, dynamic> _handleTimestampConversion(Map<String, dynamic> json) {
+  static Map<String, dynamic> _handleTimestampConversion(
+    Map<String, dynamic> json,
+  ) {
     final newJson = Map<String, dynamic>.from(json);
-    
+
     final timestampFields = ['createdAt', 'lastMessageTimestamp'];
-    
+
     for (final field in timestampFields) {
       if (newJson[field] is Timestamp) {
-        newJson[field] = (newJson[field] as Timestamp).toDate().toIso8601String();
+        newJson[field] = (newJson[field] as Timestamp)
+            .toDate()
+            .toIso8601String();
       } else if (newJson[field] == null) {
         newJson[field] = DateTime.now().toIso8601String();
       }
     }
-    
+
     return newJson;
   }
 }

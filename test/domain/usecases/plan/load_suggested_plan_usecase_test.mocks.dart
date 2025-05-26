@@ -30,13 +30,8 @@ import 'package:quien_para/domain/repositories/plan/plan_repository.dart'
 // ignore_for_file: subtype_of_sealed_class
 
 class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
-  _FakeEither_0(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeEither_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 /// A class which mocks [PlanRepository].
@@ -49,106 +44,93 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
 
   @override
   _i4.Stream<_i2.Either<_i5.AppFailure, List<_i6.PlanWithCreatorEntity>>>
-      getPlansWithCreators() => (super.noSuchMethod(
-            Invocation.method(
-              #getPlansWithCreators,
-              [],
-            ),
-            returnValue: _i4.Stream<
-                _i2.Either<_i5.AppFailure,
-                    List<_i6.PlanWithCreatorEntity>>>.empty(),
-          ) as _i4.Stream<
-              _i2.Either<_i5.AppFailure, List<_i6.PlanWithCreatorEntity>>>);
+  getPlansWithCreators() =>
+      (super.noSuchMethod(
+            Invocation.method(#getPlansWithCreators, []),
+            returnValue:
+                _i4.Stream<
+                  _i2.Either<_i5.AppFailure, List<_i6.PlanWithCreatorEntity>>
+                >.empty(),
+          )
+          as _i4.Stream<
+            _i2.Either<_i5.AppFailure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>> matchPlan(String? planId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #matchPlan,
-          [planId],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
-            _FakeEither_0<_i5.AppFailure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #matchPlan,
-            [planId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
+            Invocation.method(#matchPlan, [planId]),
+            returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
+              _FakeEither_0<_i5.AppFailure, _i2.Unit>(
+                this,
+                Invocation.method(#matchPlan, [planId]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>> unlikePlan(String? planId) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #unlikePlan,
-          [planId],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
-            _FakeEither_0<_i5.AppFailure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #unlikePlan,
-            [planId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
+            Invocation.method(#unlikePlan, [planId]),
+            returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
+              _FakeEither_0<_i5.AppFailure, _i2.Unit>(
+                this,
+                Invocation.method(#unlikePlan, [planId]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> getPlansByUserId(
-          String? userId) =>
+    String? userId,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getPlansByUserId,
-          [userId],
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #getPlansByUserId,
-            [userId],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            Invocation.method(#getPlansByUserId, [userId]),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#getPlansByUserId, [userId]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>
-      getParticipatingPlans(String? userId) => (super.noSuchMethod(
-            Invocation.method(
-              #getParticipatingPlans,
-              [userId],
-            ),
-            returnValue: _i4
-                .Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-              this,
-              Invocation.method(
-                #getParticipatingPlans,
-                [userId],
-              ),
-            )),
-          ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+  getParticipatingPlans(String? userId) =>
+      (super.noSuchMethod(
+            Invocation.method(#getParticipatingPlans, [userId]),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#getParticipatingPlans, [userId]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Stream<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>
-      getOtherUserPlansStream({
-    required String? currentUserId,
-    int? limit = 20,
-  }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #getOtherUserPlansStream,
-              [],
-              {
-                #currentUserId: currentUserId,
-                #limit: limit,
-              },
-            ),
-            returnValue: _i4.Stream<
-                _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.empty(),
-          ) as _i4.Stream<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+  getOtherUserPlansStream({required String? currentUserId, int? limit = 20}) =>
+      (super.noSuchMethod(
+            Invocation.method(#getOtherUserPlansStream, [], {
+              #currentUserId: currentUserId,
+              #limit: limit,
+            }),
+            returnValue:
+                _i4.Stream<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.empty(),
+          )
+          as _i4.Stream<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>> refreshOtherUserPlans({
@@ -156,58 +138,46 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     int? limit = 20,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #refreshOtherUserPlans,
-          [],
-          {
-            #currentUserId: currentUserId,
-            #limit: limit,
-          },
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
-            _FakeEither_0<_i5.AppFailure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #refreshOtherUserPlans,
-            [],
-            {
+            Invocation.method(#refreshOtherUserPlans, [], {
               #currentUserId: currentUserId,
               #limit: limit,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
+            }),
+            returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
+              _FakeEither_0<_i5.AppFailure, _i2.Unit>(
+                this,
+                Invocation.method(#refreshOtherUserPlans, [], {
+                  #currentUserId: currentUserId,
+                  #limit: limit,
+                }),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
 
   @override
-  _i4.Future<
-      _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> getPlansByCategory(
-    String? category, {
-    int? limit,
-    String? lastDocumentId,
-  }) =>
+  _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>
+  getPlansByCategory(String? category, {int? limit, String? lastDocumentId}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getPlansByCategory,
-          [category],
-          {
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #getPlansByCategory,
-            [category],
-            {
-              #limit: limit,
-              #lastDocumentId: lastDocumentId,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            Invocation.method(
+              #getPlansByCategory,
+              [category],
+              {#limit: limit, #lastDocumentId: lastDocumentId},
+            ),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(
+                      #getPlansByCategory,
+                      [category],
+                      {#limit: limit, #lastDocumentId: lastDocumentId},
+                    ),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> getNearbyPlans({
@@ -217,32 +187,28 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     int? limit,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getNearbyPlans,
-          [],
-          {
-            #latitude: latitude,
-            #longitude: longitude,
-            #radiusKm: radiusKm,
-            #limit: limit,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #getNearbyPlans,
-            [],
-            {
+            Invocation.method(#getNearbyPlans, [], {
               #latitude: latitude,
               #longitude: longitude,
               #radiusKm: radiusKm,
               #limit: limit,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#getNearbyPlans, [], {
+                      #latitude: latitude,
+                      #longitude: longitude,
+                      #radiusKm: radiusKm,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> getPopularPlans({
@@ -250,123 +216,103 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     String? lastDocumentId,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getPopularPlans,
-          [],
-          {
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #getPopularPlans,
-            [],
-            {
+            Invocation.method(#getPopularPlans, [], {
               #limit: limit,
               #lastDocumentId: lastDocumentId,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#getPopularPlans, [], {
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
-  _i4.Future<
-      _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> getRecommendedPlans({
-    required String? userId,
-    int? limit,
-  }) =>
+  _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>
+  getRecommendedPlans({required String? userId, int? limit}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getRecommendedPlans,
-          [],
-          {
-            #userId: userId,
-            #limit: limit,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #getRecommendedPlans,
-            [],
-            {
+            Invocation.method(#getRecommendedPlans, [], {
               #userId: userId,
               #limit: limit,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#getRecommendedPlans, [], {
+                      #userId: userId,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
-  _i4.Future<
-      _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> searchPlansByText(
-    String? searchText, {
-    int? limit,
-    String? lastDocumentId,
-  }) =>
+  _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>
+  searchPlansByText(String? searchText, {int? limit, String? lastDocumentId}) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #searchPlansByText,
-          [searchText],
-          {
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #searchPlansByText,
-            [searchText],
-            {
-              #limit: limit,
-              #lastDocumentId: lastDocumentId,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            Invocation.method(
+              #searchPlansByText,
+              [searchText],
+              {#limit: limit, #lastDocumentId: lastDocumentId},
+            ),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(
+                      #searchPlansByText,
+                      [searchText],
+                      {#limit: limit, #lastDocumentId: lastDocumentId},
+                    ),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
-  _i4.Future<
-      _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>> searchPlans({
+  _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
+  searchPlans({
     required String? query,
     int? limit = 20,
     String? lastDocumentId,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #searchPlans,
-          [],
-          {
-            #query: query,
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-          },
-        ),
-        returnValue: _i4.Future<
-                _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>.value(
-            _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-          this,
-          Invocation.method(
-            #searchPlans,
-            [],
-            {
+            Invocation.method(#searchPlans, [], {
               #query: query,
               #limit: limit,
               #lastDocumentId: lastDocumentId,
-            },
-          ),
-        )),
-      ) as _i4
-          .Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#searchPlans, [], {
+                      #query: query,
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<String>>> getSearchSuggestions({
@@ -374,227 +320,196 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     int? limit = 5,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getSearchSuggestions,
-          [],
-          {
-            #query: query,
-            #limit: limit,
-          },
-        ),
-        returnValue: _i4.Future<_i2.Either<_i8.Failure, List<String>>>.value(
-            _FakeEither_0<_i8.Failure, List<String>>(
-          this,
-          Invocation.method(
-            #getSearchSuggestions,
-            [],
-            {
+            Invocation.method(#getSearchSuggestions, [], {
               #query: query,
               #limit: limit,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i8.Failure, List<String>>>);
+            }),
+            returnValue:
+                _i4.Future<_i2.Either<_i8.Failure, List<String>>>.value(
+                  _FakeEither_0<_i8.Failure, List<String>>(
+                    this,
+                    Invocation.method(#getSearchSuggestions, [], {
+                      #query: query,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i8.Failure, List<String>>>);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
-      filterPlansByLocation({
+  filterPlansByLocation({
     required double? latitude,
     required double? longitude,
     required double? radiusKm,
     int? limit = 20,
     String? lastDocumentId,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #filterPlansByLocation,
-              [],
-              {
-                #latitude: latitude,
-                #longitude: longitude,
-                #radiusKm: radiusKm,
-                #limit: limit,
-                #lastDocumentId: lastDocumentId,
-              },
-            ),
-            returnValue: _i4.Future<
-                    _i2.Either<_i8.Failure,
-                        List<_i6.PlanWithCreatorEntity>>>.value(
-                _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-              this,
-              Invocation.method(
-                #filterPlansByLocation,
-                [],
-                {
-                  #latitude: latitude,
-                  #longitude: longitude,
-                  #radiusKm: radiusKm,
-                  #limit: limit,
-                  #lastDocumentId: lastDocumentId,
-                },
-              ),
-            )),
-          ) as _i4.Future<
-              _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+      (super.noSuchMethod(
+            Invocation.method(#filterPlansByLocation, [], {
+              #latitude: latitude,
+              #longitude: longitude,
+              #radiusKm: radiusKm,
+              #limit: limit,
+              #lastDocumentId: lastDocumentId,
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#filterPlansByLocation, [], {
+                      #latitude: latitude,
+                      #longitude: longitude,
+                      #radiusKm: radiusKm,
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, Map<String, dynamic>>> getCityCoordinates(
-          String? cityName) =>
+    String? cityName,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getCityCoordinates,
-          [cityName],
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i8.Failure, Map<String, dynamic>>>.value(
-                _FakeEither_0<_i8.Failure, Map<String, dynamic>>(
-          this,
-          Invocation.method(
-            #getCityCoordinates,
-            [cityName],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i8.Failure, Map<String, dynamic>>>);
+            Invocation.method(#getCityCoordinates, [cityName]),
+            returnValue:
+                _i4.Future<_i2.Either<_i8.Failure, Map<String, dynamic>>>.value(
+                  _FakeEither_0<_i8.Failure, Map<String, dynamic>>(
+                    this,
+                    Invocation.method(#getCityCoordinates, [cityName]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i8.Failure, Map<String, dynamic>>>);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
-      filterPlansByDateRange({
+  filterPlansByDateRange({
     required DateTime? startDate,
     required DateTime? endDate,
     int? limit = 20,
     String? lastDocumentId,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #filterPlansByDateRange,
-              [],
-              {
-                #startDate: startDate,
-                #endDate: endDate,
-                #limit: limit,
-                #lastDocumentId: lastDocumentId,
-              },
-            ),
-            returnValue: _i4.Future<
-                    _i2.Either<_i8.Failure,
-                        List<_i6.PlanWithCreatorEntity>>>.value(
-                _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-              this,
-              Invocation.method(
-                #filterPlansByDateRange,
-                [],
-                {
-                  #startDate: startDate,
-                  #endDate: endDate,
-                  #limit: limit,
-                  #lastDocumentId: lastDocumentId,
-                },
-              ),
-            )),
-          ) as _i4.Future<
-              _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+      (super.noSuchMethod(
+            Invocation.method(#filterPlansByDateRange, [], {
+              #startDate: startDate,
+              #endDate: endDate,
+              #limit: limit,
+              #lastDocumentId: lastDocumentId,
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#filterPlansByDateRange, [], {
+                      #startDate: startDate,
+                      #endDate: endDate,
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
-      filterPlansByCategory({
+  filterPlansByCategory({
     required String? category,
     int? limit = 20,
     String? lastDocumentId,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #filterPlansByCategory,
-              [],
-              {
-                #category: category,
-                #limit: limit,
-                #lastDocumentId: lastDocumentId,
-              },
-            ),
-            returnValue: _i4.Future<
-                    _i2.Either<_i8.Failure,
-                        List<_i6.PlanWithCreatorEntity>>>.value(
-                _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-              this,
-              Invocation.method(
-                #filterPlansByCategory,
-                [],
-                {
-                  #category: category,
-                  #limit: limit,
-                  #lastDocumentId: lastDocumentId,
-                },
-              ),
-            )),
-          ) as _i4.Future<
-              _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+      (super.noSuchMethod(
+            Invocation.method(#filterPlansByCategory, [], {
+              #category: category,
+              #limit: limit,
+              #lastDocumentId: lastDocumentId,
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#filterPlansByCategory, [], {
+                      #category: category,
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
-      filterPlansByMultipleCategories({
+  filterPlansByMultipleCategories({
     required List<String>? categories,
     int? limit = 20,
     String? lastDocumentId,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #filterPlansByMultipleCategories,
-              [],
-              {
-                #categories: categories,
-                #limit: limit,
-                #lastDocumentId: lastDocumentId,
-              },
-            ),
-            returnValue: _i4.Future<
-                    _i2.Either<_i8.Failure,
-                        List<_i6.PlanWithCreatorEntity>>>.value(
-                _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-              this,
-              Invocation.method(
-                #filterPlansByMultipleCategories,
-                [],
-                {
-                  #categories: categories,
-                  #limit: limit,
-                  #lastDocumentId: lastDocumentId,
-                },
-              ),
-            )),
-          ) as _i4.Future<
-              _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+      (super.noSuchMethod(
+            Invocation.method(#filterPlansByMultipleCategories, [], {
+              #categories: categories,
+              #limit: limit,
+              #lastDocumentId: lastDocumentId,
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#filterPlansByMultipleCategories, [], {
+                      #categories: categories,
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
-      getPopularPlansByCategory({
-    required String? category,
-    int? limit = 10,
-  }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #getPopularPlansByCategory,
-              [],
-              {
-                #category: category,
-                #limit: limit,
-              },
-            ),
-            returnValue: _i4.Future<
-                    _i2.Either<_i8.Failure,
-                        List<_i6.PlanWithCreatorEntity>>>.value(
-                _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-              this,
-              Invocation.method(
-                #getPopularPlansByCategory,
-                [],
-                {
-                  #category: category,
-                  #limit: limit,
-                },
-              ),
-            )),
-          ) as _i4.Future<
-              _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+  getPopularPlansByCategory({required String? category, int? limit = 10}) =>
+      (super.noSuchMethod(
+            Invocation.method(#getPopularPlansByCategory, [], {
+              #category: category,
+              #limit: limit,
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#getPopularPlansByCategory, [], {
+                      #category: category,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<String>>> getSuggestedCategories({
@@ -602,31 +517,26 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     int? limit = 3,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getSuggestedCategories,
-          [],
-          {
-            #userId: userId,
-            #limit: limit,
-          },
-        ),
-        returnValue: _i4.Future<_i2.Either<_i8.Failure, List<String>>>.value(
-            _FakeEither_0<_i8.Failure, List<String>>(
-          this,
-          Invocation.method(
-            #getSuggestedCategories,
-            [],
-            {
+            Invocation.method(#getSuggestedCategories, [], {
               #userId: userId,
               #limit: limit,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i8.Failure, List<String>>>);
+            }),
+            returnValue:
+                _i4.Future<_i2.Either<_i8.Failure, List<String>>>.value(
+                  _FakeEither_0<_i8.Failure, List<String>>(
+                    this,
+                    Invocation.method(#getSuggestedCategories, [], {
+                      #userId: userId,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i8.Failure, List<String>>>);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>
-      searchPlansAdvanced({
+  searchPlansAdvanced({
     String? query,
     String? category,
     double? latitude,
@@ -637,45 +547,41 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     int? limit = 20,
     String? lastDocumentId,
   }) =>
-          (super.noSuchMethod(
-            Invocation.method(
-              #searchPlansAdvanced,
-              [],
-              {
-                #query: query,
-                #category: category,
-                #latitude: latitude,
-                #longitude: longitude,
-                #radiusKm: radiusKm,
-                #startDate: startDate,
-                #endDate: endDate,
-                #limit: limit,
-                #lastDocumentId: lastDocumentId,
-              },
-            ),
-            returnValue: _i4.Future<
-                    _i2.Either<_i8.Failure,
-                        List<_i6.PlanWithCreatorEntity>>>.value(
-                _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
-              this,
-              Invocation.method(
-                #searchPlansAdvanced,
-                [],
-                {
-                  #query: query,
-                  #category: category,
-                  #latitude: latitude,
-                  #longitude: longitude,
-                  #radiusKm: radiusKm,
-                  #startDate: startDate,
-                  #endDate: endDate,
-                  #limit: limit,
-                  #lastDocumentId: lastDocumentId,
-                },
-              ),
-            )),
-          ) as _i4.Future<
-              _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>>);
+      (super.noSuchMethod(
+            Invocation.method(#searchPlansAdvanced, [], {
+              #query: query,
+              #category: category,
+              #latitude: latitude,
+              #longitude: longitude,
+              #radiusKm: radiusKm,
+              #startDate: startDate,
+              #endDate: endDate,
+              #limit: limit,
+              #lastDocumentId: lastDocumentId,
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+                >.value(
+                  _FakeEither_0<_i8.Failure, List<_i6.PlanWithCreatorEntity>>(
+                    this,
+                    Invocation.method(#searchPlansAdvanced, [], {
+                      #query: query,
+                      #category: category,
+                      #latitude: latitude,
+                      #longitude: longitude,
+                      #radiusKm: radiusKm,
+                      #startDate: startDate,
+                      #endDate: endDate,
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<
+            _i2.Either<_i8.Failure, List<_i6.PlanWithCreatorEntity>>
+          >);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>> saveSearchToHistory({
@@ -683,27 +589,21 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     required String? query,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #saveSearchToHistory,
-          [],
-          {
-            #userId: userId,
-            #query: query,
-          },
-        ),
-        returnValue: _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>.value(
-            _FakeEither_0<_i8.Failure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #saveSearchToHistory,
-            [],
-            {
+            Invocation.method(#saveSearchToHistory, [], {
               #userId: userId,
               #query: query,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>);
+            }),
+            returnValue: _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>.value(
+              _FakeEither_0<_i8.Failure, _i2.Unit>(
+                this,
+                Invocation.method(#saveSearchToHistory, [], {
+                  #userId: userId,
+                  #query: query,
+                }),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>);
 
   @override
   _i4.Future<_i2.Either<_i8.Failure, List<String>>> getSearchHistory({
@@ -711,65 +611,51 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     int? limit = 10,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getSearchHistory,
-          [],
-          {
-            #userId: userId,
-            #limit: limit,
-          },
-        ),
-        returnValue: _i4.Future<_i2.Either<_i8.Failure, List<String>>>.value(
-            _FakeEither_0<_i8.Failure, List<String>>(
-          this,
-          Invocation.method(
-            #getSearchHistory,
-            [],
-            {
+            Invocation.method(#getSearchHistory, [], {
               #userId: userId,
               #limit: limit,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i8.Failure, List<String>>>);
+            }),
+            returnValue:
+                _i4.Future<_i2.Either<_i8.Failure, List<String>>>.value(
+                  _FakeEither_0<_i8.Failure, List<String>>(
+                    this,
+                    Invocation.method(#getSearchHistory, [], {
+                      #userId: userId,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i8.Failure, List<String>>>);
 
   @override
-  _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>> clearSearchHistory(
-          {required String? userId}) =>
+  _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>> clearSearchHistory({
+    required String? userId,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #clearSearchHistory,
-          [],
-          {#userId: userId},
-        ),
-        returnValue: _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>.value(
-            _FakeEither_0<_i8.Failure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #clearSearchHistory,
-            [],
-            {#userId: userId},
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>);
+            Invocation.method(#clearSearchHistory, [], {#userId: userId}),
+            returnValue: _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>.value(
+              _FakeEither_0<_i8.Failure, _i2.Unit>(
+                this,
+                Invocation.method(#clearSearchHistory, [], {#userId: userId}),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i8.Failure, _i2.Unit>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>> getById(String? id) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getById,
-          [id],
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>.value(
-                _FakeEither_0<_i5.AppFailure, _i7.PlanEntity?>(
-          this,
-          Invocation.method(
-            #getById,
-            [id],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>);
+            Invocation.method(#getById, [id]),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>.value(
+                  _FakeEither_0<_i5.AppFailure, _i7.PlanEntity?>(
+                    this,
+                    Invocation.method(#getById, [id]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> getAll({
@@ -778,85 +664,71 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     Map<String, dynamic>? filters,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #getAll,
-          [],
-          {
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-            #filters: filters,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #getAll,
-            [],
-            {
+            Invocation.method(#getAll, [], {
               #limit: limit,
               #lastDocumentId: lastDocumentId,
               #filters: filters,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            }),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#getAll, [], {
+                      #limit: limit,
+                      #lastDocumentId: lastDocumentId,
+                      #filters: filters,
+                    }),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>> create(
-          _i7.PlanEntity? entity) =>
+    _i7.PlanEntity? entity,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #create,
-          [entity],
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>.value(
-                _FakeEither_0<_i5.AppFailure, _i7.PlanEntity>(
-          this,
-          Invocation.method(
-            #create,
-            [entity],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>);
+            Invocation.method(#create, [entity]),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>.value(
+                  _FakeEither_0<_i5.AppFailure, _i7.PlanEntity>(
+                    this,
+                    Invocation.method(#create, [entity]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>> update(
-          _i7.PlanEntity? entity) =>
+    _i7.PlanEntity? entity,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #update,
-          [entity],
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>.value(
-                _FakeEither_0<_i5.AppFailure, _i7.PlanEntity>(
-          this,
-          Invocation.method(
-            #update,
-            [entity],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>);
+            Invocation.method(#update, [entity]),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>.value(
+                  _FakeEither_0<_i5.AppFailure, _i7.PlanEntity>(
+                    this,
+                    Invocation.method(#update, [entity]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>> delete(String? id) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #delete,
-          [id],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
-            _FakeEither_0<_i5.AppFailure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #delete,
-            [id],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
+            Invocation.method(#delete, [id]),
+            returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
+              _FakeEither_0<_i5.AppFailure, _i2.Unit>(
+                this,
+                Invocation.method(#delete, [id]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> search(
@@ -865,109 +737,91 @@ class MockPlanRepository extends _i1.Mock implements _i3.PlanRepository {
     String? lastDocumentId,
   }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #search,
-          [criteria],
-          {
-            #limit: limit,
-            #lastDocumentId: lastDocumentId,
-          },
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #search,
-            [criteria],
-            {
-              #limit: limit,
-              #lastDocumentId: lastDocumentId,
-            },
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            Invocation.method(
+              #search,
+              [criteria],
+              {#limit: limit, #lastDocumentId: lastDocumentId},
+            ),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(
+                      #search,
+                      [criteria],
+                      {#limit: limit, #lastDocumentId: lastDocumentId},
+                    ),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, bool>> exists(String? id) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #exists,
-          [id],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.AppFailure, bool>>.value(
-            _FakeEither_0<_i5.AppFailure, bool>(
-          this,
-          Invocation.method(
-            #exists,
-            [id],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, bool>>);
+            Invocation.method(#exists, [id]),
+            returnValue: _i4.Future<_i2.Either<_i5.AppFailure, bool>>.value(
+              _FakeEither_0<_i5.AppFailure, bool>(
+                this,
+                Invocation.method(#exists, [id]),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, bool>>);
 
   @override
-  _i4.Future<void> dispose() => (super.noSuchMethod(
-        Invocation.method(
-          #dispose,
-          [],
-        ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+  _i4.Future<void> dispose() =>
+      (super.noSuchMethod(
+            Invocation.method(#dispose, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>> invalidateCache() =>
       (super.noSuchMethod(
-        Invocation.method(
-          #invalidateCache,
-          [],
-        ),
-        returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
-            _FakeEither_0<_i5.AppFailure, _i2.Unit>(
-          this,
-          Invocation.method(
-            #invalidateCache,
-            [],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
+            Invocation.method(#invalidateCache, []),
+            returnValue: _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>.value(
+              _FakeEither_0<_i5.AppFailure, _i2.Unit>(
+                this,
+                Invocation.method(#invalidateCache, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i2.Unit>>);
 
   @override
   _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>> refresh(String? id) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #refresh,
-          [id],
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>.value(
-                _FakeEither_0<_i5.AppFailure, _i7.PlanEntity?>(
-          this,
-          Invocation.method(
-            #refresh,
-            [id],
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>);
+            Invocation.method(#refresh, [id]),
+            returnValue:
+                _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>.value(
+                  _FakeEither_0<_i5.AppFailure, _i7.PlanEntity?>(
+                    this,
+                    Invocation.method(#refresh, [id]),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, _i7.PlanEntity?>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> refreshAll(
-          {Map<String, dynamic>? filters}) =>
+  _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>> refreshAll({
+    Map<String, dynamic>? filters,
+  }) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #refreshAll,
-          [],
-          {#filters: filters},
-        ),
-        returnValue:
-            _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>.value(
-                _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
-          this,
-          Invocation.method(
-            #refreshAll,
-            [],
-            {#filters: filters},
-          ),
-        )),
-      ) as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
+            Invocation.method(#refreshAll, [], {#filters: filters}),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>
+                >.value(
+                  _FakeEither_0<_i5.AppFailure, List<_i7.PlanEntity>>(
+                    this,
+                    Invocation.method(#refreshAll, [], {#filters: filters}),
+                  ),
+                ),
+          )
+          as _i4.Future<_i2.Either<_i5.AppFailure, List<_i7.PlanEntity>>>);
 }

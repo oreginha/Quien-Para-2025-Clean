@@ -33,7 +33,7 @@ class MyPlanCard extends StatelessWidget {
     // Obtener el modo del tema
     final themeProvider = Provider.of<ThemeProvider>(context);
     final bool isDarkMode = themeProvider.isDarkMode;
-    
+
     // Formato de fecha
     String dateText = 'Fecha no disponible';
     if (date != null) {
@@ -43,13 +43,17 @@ class MyPlanCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
       decoration: BoxDecoration(
-        color: AppColors.getCardBackground(isDarkMode), // Usar color de tarjeta según el tema
-        borderRadius: BorderRadius.circular(AppRadius.card), // Usar constante de bordes
+        color: AppColors.getCardBackground(
+          isDarkMode,
+        ), // Usar color de tarjeta según el tema
+        borderRadius: BorderRadius.circular(
+          AppRadius.card,
+        ), // Usar constante de bordes
         boxShadow: [
           BoxShadow(
             color: isDarkMode
-              ? AppColors.darkShadow
-              : AppColors.lightShadow, // Sombra según el tema
+                ? AppColors.darkShadow
+                : AppColors.lightShadow, // Sombra según el tema
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -61,9 +65,7 @@ class MyPlanCard extends StatelessWidget {
             contentPadding: const EdgeInsets.all(16),
             onTap: () => context.push(
               '/myPlanDetail/$planId',
-              extra: <String, Object>{
-                'isCreator': true,
-              },
+              extra: <String, Object>{'isCreator': true},
             ),
             leading: _buildPlanImage(isDarkMode),
             title: Column(
@@ -72,7 +74,9 @@ class MyPlanCard extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
-                    color: AppColors.getTextPrimary(isDarkMode), // Color de texto según tema
+                    color: AppColors.getTextPrimary(
+                      isDarkMode,
+                    ), // Color de texto según tema
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
@@ -81,7 +85,9 @@ class MyPlanCard extends StatelessWidget {
                 Text(
                   dateText,
                   style: TextStyle(
-                    color: AppColors.getTextSecondary(isDarkMode), // Color secundario según tema
+                    color: AppColors.getTextSecondary(
+                      isDarkMode,
+                    ), // Color secundario según tema
                     fontSize: 12,
                   ),
                 ),
@@ -92,7 +98,9 @@ class MyPlanCard extends StatelessWidget {
               child: Text(
                 description,
                 style: TextStyle(
-                  color: AppColors.getTextSecondary(isDarkMode), // Color secundario según tema
+                  color: AppColors.getTextSecondary(
+                    isDarkMode,
+                  ), // Color secundario según tema
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -107,7 +115,6 @@ class MyPlanCard extends StatelessWidget {
 
   /// Construye la imagen del plan
   Widget _buildPlanImage(bool isDarkMode) {
-    
     return ClipRRect(
       borderRadius: BorderRadius.circular(AppRadius.s),
       child: Container(
@@ -116,7 +123,9 @@ class MyPlanCard extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: isDarkMode ? AppColors.darkShadow : AppColors.lightShadow, // Sombra según tema
+              color: isDarkMode
+                  ? AppColors.darkShadow
+                  : AppColors.lightShadow, // Sombra según tema
               blurRadius: 4,
               spreadRadius: 1,
             ),
@@ -131,20 +140,28 @@ class MyPlanCard extends StatelessWidget {
                 errorWidget: Container(
                   width: 60,
                   height: 60,
-                  color: isDarkMode ? AppColors.darkSecondaryBackground : AppColors.lightSecondaryBackground, // Fondo según tema
+                  color: isDarkMode
+                      ? AppColors.darkSecondaryBackground
+                      : AppColors.lightSecondaryBackground, // Fondo según tema
                   child: Icon(
                     Icons.image_not_supported,
-                    color: AppColors.getTextSecondary(isDarkMode), // Color secundario según tema
+                    color: AppColors.getTextSecondary(
+                      isDarkMode,
+                    ), // Color secundario según tema
                   ),
                 ),
               )
             : Container(
                 width: 60,
                 height: 60,
-                color: isDarkMode ? AppColors.darkSecondaryBackground : AppColors.lightSecondaryBackground, // Fondo según tema
+                color: isDarkMode
+                    ? AppColors.darkSecondaryBackground
+                    : AppColors.lightSecondaryBackground, // Fondo según tema
                 child: Icon(
                   Icons.image,
-                  color: AppColors.getTextSecondary(isDarkMode), // Color secundario según tema
+                  color: AppColors.getTextSecondary(
+                    isDarkMode,
+                  ), // Color secundario según tema
                 ),
               ),
       ),
@@ -154,7 +171,11 @@ class MyPlanCard extends StatelessWidget {
   /// Construye el botón de eliminar plan
   Widget _buildDeleteButton(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.delete_forever, color: AppColors.accentRed, size: 24), // Usar color definido en el sistema de temas
+      icon: Icon(
+        Icons.delete_forever,
+        color: AppColors.accentRed,
+        size: 24,
+      ), // Usar color definido en el sistema de temas
       onPressed: () => _showDeleteDialog(context),
     );
   }
@@ -162,7 +183,7 @@ class MyPlanCard extends StatelessWidget {
   /// Muestra el diálogo de confirmación para eliminar el plan
   void _showDeleteDialog(BuildContext context) {
     if (onDeletePlan == null) return;
-    
+
     // Obtener el modo del tema
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final bool isDarkMode = themeProvider.isDarkMode;
@@ -171,7 +192,9 @@ class MyPlanCard extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: AppColors.getCardBackground(isDarkMode), // Fondo de tarjeta según tema
+          backgroundColor: AppColors.getCardBackground(
+            isDarkMode,
+          ), // Fondo de tarjeta según tema
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.m),
           ),
@@ -197,7 +220,8 @@ class MyPlanCard extends StatelessWidget {
                 onDeletePlan!(planId, title);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.accentRed, // Usar color de acento definido en el sistema
+                backgroundColor: AppColors
+                    .accentRed, // Usar color de acento definido en el sistema
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppRadius.button),

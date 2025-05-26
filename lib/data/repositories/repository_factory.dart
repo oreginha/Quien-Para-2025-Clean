@@ -159,7 +159,8 @@ class RepositoryFactory {
   ///
   /// Útil para pruebas cuando se necesita reemplazar un repositorio con un mock.
   void registerRepository<E extends EntityBase, R extends RepositoryBase<E>>(
-      R repository) {
+    R repository,
+  ) {
     _repositories[E] = repository;
   }
 

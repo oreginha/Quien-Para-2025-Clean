@@ -121,7 +121,9 @@ class DILogger {
   static void endProcess(String processName, int timeMs) {
     if (_logLevel >= 3) {
       _logMessage(
-          '🏁 [DI] Completado: $processName en ${timeMs}ms', LogLevel.info);
+        '🏁 [DI] Completado: $processName en ${timeMs}ms',
+        LogLevel.info,
+      );
     }
   }
 
@@ -138,8 +140,10 @@ class DILogger {
       final friendlyType = _friendlyNames[type] ?? type;
       final friendlyImpl = _friendlyNames[implementation] ?? implementation;
 
-      _logMessage('🔧 [DI] Registrando $friendlyType con $friendlyImpl',
-          LogLevel.debug);
+      _logMessage(
+        '🔧 [DI] Registrando $friendlyType con $friendlyImpl',
+        LogLevel.debug,
+      );
     }
   }
 
@@ -149,8 +153,12 @@ class DILogger {
   }
 
   /// Log formateado con metadata
-  static void _logMessage(String message, LogLevel level,
-      [Object? error, StackTrace? stackTrace]) {
+  static void _logMessage(
+    String message,
+    LogLevel level, [
+    Object? error,
+    StackTrace? stackTrace,
+  ]) {
     // Almacena el mensaje en la historia con timestamp
     final timestamp = DateTime.now().toString();
     final historyMessage = '[$timestamp] [$level] $message';

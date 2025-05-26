@@ -40,15 +40,17 @@ class OptimizedImageProvider {
     _cacheDir = await getTemporaryDirectory();
 
     // Crear subdirectorio para caché de imágenes si no existe
-    final Directory imageCacheDir =
-        Directory(path.join(_cacheDir!.path, 'image_cache'));
+    final Directory imageCacheDir = Directory(
+      path.join(_cacheDir!.path, 'image_cache'),
+    );
     if (!await imageCacheDir.exists()) {
       await imageCacheDir.create(recursive: true);
     }
 
     if (kDebugMode) {
       print(
-          '📸 [OptimizedImageProvider] Directorio de caché: ${imageCacheDir.path}');
+        '📸 [OptimizedImageProvider] Directorio de caché: ${imageCacheDir.path}',
+      );
     }
   }
 
@@ -102,7 +104,8 @@ class OptimizedImageProvider {
     if (cacheToMemory && _memoryCache.containsKey(cacheKey)) {
       if (kDebugMode) {
         print(
-            '📸 [OptimizedImageProvider] Hit en caché de memoria para archivo: ${file.path}');
+          '📸 [OptimizedImageProvider] Hit en caché de memoria para archivo: ${file.path}',
+        );
       }
       return _memoryCache[cacheKey]!;
     }
@@ -139,8 +142,9 @@ class OptimizedImageProvider {
 
   /// Genera una clave de caché para una imagen
   String _generateCacheKey(String source, int? width, int? height) {
-    final String dimensionsKey =
-        width != null && height != null ? '_${width}x$height' : '';
+    final String dimensionsKey = width != null && height != null
+        ? '_${width}x$height'
+        : '';
 
     // Generar hash para URL o ruta de archivo
     final String hash = md5.convert(utf8.encode(source)).toString();
@@ -159,8 +163,9 @@ class OptimizedImageProvider {
   /// Limpia la caché de archivos
   Future<void> clearFileCache() async {
     if (_cacheDir != null) {
-      final Directory imageCacheDir =
-          Directory(path.join(_cacheDir!.path, 'image_cache'));
+      final Directory imageCacheDir = Directory(
+        path.join(_cacheDir!.path, 'image_cache'),
+      );
 
       if (await imageCacheDir.exists()) {
         await imageCacheDir.delete(recursive: true);
@@ -197,7 +202,9 @@ class ResizeNetworkImage extends ImageProvider<ResizeNetworkImage> {
 
   @override
   ImageStreamCompleter loadImage(
-      ResizeNetworkImage key, ImageDecoderCallback decode) {
+    ResizeNetworkImage key,
+    ImageDecoderCallback decode,
+  ) {
     final StreamController<ImageChunkEvent> chunkEvents =
         StreamController<ImageChunkEvent>();
 
@@ -221,8 +228,11 @@ class ResizeNetworkImage extends ImageProvider<ResizeNetworkImage> {
       if (fileCacheEnabled) {
         final Directory cacheDir = await getTemporaryDirectory();
         if (cacheDir != null) {
-          final String cachePath =
-              path.join(cacheDir.path, 'image_cache', cacheKey);
+          final String cachePath = path.join(
+            cacheDir.path,
+            'image_cache',
+            cacheKey,
+          );
           final File cacheFile = File(cachePath);
 
           if (await cacheFile.exists()) {
@@ -256,10 +266,12 @@ class ResizeNetworkImage extends ImageProvider<ResizeNetworkImage> {
       final Uint8List bytes = await consolidateHttpClientResponseBytes(
         response,
         onBytesReceived: (int cumulative, int? total) {
-          chunkEvents.add(ImageChunkEvent(
-            cumulativeBytesLoaded: cumulative,
-            expectedTotalBytes: total,
-          ));
+          chunkEvents.add(
+            ImageChunkEvent(
+              cumulativeBytesLoaded: cumulative,
+              expectedTotalBytes: total,
+            ),
+          );
         },
       );
 
@@ -322,11 +334,7 @@ class ResizeFileImage extends ImageProvider<ResizeFileImage> {
   final int? width;
   final int? height;
 
-  ResizeFileImage(
-    this.file, {
-    this.width,
-    this.height,
-  });
+  ResizeFileImage(this.file, {this.width, this.height});
 
   @override
   Future<ResizeFileImage> obtainKey(ImageConfiguration configuration) {
@@ -335,7 +343,9 @@ class ResizeFileImage extends ImageProvider<ResizeFileImage> {
 
   @override
   ImageStreamCompleter loadImage(
-      ResizeFileImage key, ImageDecoderCallback decode) {
+    ResizeFileImage key,
+    ImageDecoderCallback decode,
+  ) {
     return MultiFrameImageStreamCompleter(
       codec: _loadAsync(key, decode),
       scale: 1.0,

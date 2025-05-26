@@ -10,16 +10,15 @@ class EnhancedRejectApplicationUseCase {
   final ApplicationRepositoryInterface _repository;
   final SendApplicationNotificationUseCase _notificationUseCase;
 
-  EnhancedRejectApplicationUseCase(
-    this._repository,
-    this._notificationUseCase,
-  );
+  EnhancedRejectApplicationUseCase(this._repository, this._notificationUseCase);
 
   /// Rechaza una aplicación y envía la notificación correspondiente
   Future<ApplicationEntity> call(String applicationId) async {
     // Actualizar el estado de la aplicación
-    final either =
-        await _repository.updateApplicationStatus(applicationId, 'rejected');
+    final either = await _repository.updateApplicationStatus(
+      applicationId,
+      'rejected',
+    );
     final application = either.fold(
       (failure) => throw Exception(failure.message),
       (app) => app,

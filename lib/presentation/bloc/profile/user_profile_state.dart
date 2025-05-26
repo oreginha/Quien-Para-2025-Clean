@@ -55,15 +55,15 @@ class UserProfileState extends Equatable {
 
   @override
   List<Object?> get props => <Object?>[
-        name,
-        age,
-        gender,
-        location,
-        interests,
-        photos,
-        bio,
-        orientation,
-        status,
-        errorMessage,
-      ];
+    name,
+    age,
+    gender,
+    location,
+    interests,
+    photos,
+    bio,
+    orientation,
+    status,
+    errorMessage,
+  ];
 }

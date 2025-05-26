@@ -33,9 +33,7 @@ class CustomTimePicker extends StatelessWidget {
               // Manejo del tiempo seleccionado
             }
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: buttonColor,
-          ),
+          style: ElevatedButton.styleFrom(backgroundColor: buttonColor),
           child: const Text('Seleccionar hora'),
         ),
       ],

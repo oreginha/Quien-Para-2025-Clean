@@ -17,7 +17,8 @@ class FirestoreWebFix {
   /// La implementación interna usa un StreamController que evita el problema del error
   /// del wrapper en la web.
   static Stream<QuerySnapshot<T>> safeQueryStream<T>(
-      Stream<QuerySnapshot<T>> originalStream) {
+    Stream<QuerySnapshot<T>> originalStream,
+  ) {
     if (!kIsWeb) {
       // Si no estamos en web, simplemente devolvemos el stream original
       return originalStream;
@@ -36,7 +37,8 @@ class FirestoreWebFix {
     try {
       if (kDebugMode) {
         print(
-            'FirestoreWebFix: Aplicando wrapper de seguridad para stream de Firestore');
+          'FirestoreWebFix: Aplicando wrapper de seguridad para stream de Firestore',
+        );
       }
 
       // Retraso mínimo para asegurar que el stream se inicialice correctamente
@@ -92,7 +94,8 @@ class FirestoreWebFix {
 
   /// Transforma un stream de DocumentSnapshot para hacerlo seguro en entorno web
   static Stream<DocumentSnapshot<T>> safeDocumentStream<T>(
-      Stream<DocumentSnapshot<T>> originalStream) {
+    Stream<DocumentSnapshot<T>> originalStream,
+  ) {
     if (!kIsWeb) {
       return originalStream;
     }
@@ -108,7 +111,8 @@ class FirestoreWebFix {
     try {
       if (kDebugMode) {
         print(
-            'FirestoreWebFix: Aplicando wrapper de seguridad para document stream');
+          'FirestoreWebFix: Aplicando wrapper de seguridad para document stream',
+        );
       }
 
       Future.delayed(const Duration(milliseconds: 20), () {

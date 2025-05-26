@@ -56,7 +56,8 @@ class MapperFactory {
       mapper = UserMapper() as T;
     } else {
       throw UnsupportedError(
-          'No hay mapper disponible para el tipo ${E.toString()}');
+        'No hay mapper disponible para el tipo ${E.toString()}',
+      );
     }
 
     // Guardar en caché para futuras solicitudes
@@ -76,8 +77,12 @@ class MapperFactory {
   ///
   /// Método de conveniencia para obtener el mapper de notificaciones sin necesidad de usar genéricos.
   NotificationMapper getNotificationMapper() {
-    return getMapper<NotificationMapper, NotificationEntity, NotificationModel,
-        Map<String, dynamic>>();
+    return getMapper<
+      NotificationMapper,
+      NotificationEntity,
+      NotificationModel,
+      Map<String, dynamic>
+    >();
   }
 
   /// Obtiene específicamente un mapper de usuarios
@@ -91,7 +96,8 @@ class MapperFactory {
   ///
   /// Útil para pruebas cuando se necesita reemplazar un mapper con un mock.
   void registerMapper<E extends EntityBase>(
-      EntityMapper<E, dynamic, dynamic> mapper) {
+    EntityMapper<E, dynamic, dynamic> mapper,
+  ) {
     _mappers[E] = mapper as EntityMapper<EntityBase, dynamic, dynamic>;
   }
 

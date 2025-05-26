@@ -30,11 +30,7 @@ class ProfileErrorWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              icon,
-              color: AppColors.lightTextPrimary,
-              size: 80,
-            ),
+            Icon(icon, color: AppColors.lightTextPrimary, size: 80),
             const SizedBox(height: 20),
             Text(
               title,

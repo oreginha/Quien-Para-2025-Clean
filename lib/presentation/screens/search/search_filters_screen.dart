@@ -71,8 +71,9 @@ class _SearchFiltersView extends StatelessWidget {
             ),
             body: Center(
               child: CircularProgressIndicator(
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(AppColors.brandYellow),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  AppColors.brandYellow,
+                ),
               ),
             ),
           );
@@ -123,13 +124,16 @@ class _SearchFiltersView extends StatelessWidget {
   }
 
   Widget _buildSearchBar(
-      BuildContext context, bool isDarkMode, SearchFiltersState state) {
+    BuildContext context,
+    bool isDarkMode,
+    SearchFiltersState state,
+  ) {
     return TextField(
       decoration: InputDecoration(
         hintText: 'Buscar planes',
-        hintStyle: AppTypography.bodyMedium(isDarkMode).copyWith(
-          color: AppColors.getTextSecondary(isDarkMode),
-        ),
+        hintStyle: AppTypography.bodyMedium(
+          isDarkMode,
+        ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
         prefixIcon: Icon(
           Icons.search,
           color: AppColors.getTextSecondary(isDarkMode),
@@ -146,30 +150,27 @@ class _SearchFiltersView extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.button),
-          borderSide: BorderSide(
-            color: AppColors.brandYellow,
-            width: 2,
-          ),
+          borderSide: BorderSide(color: AppColors.brandYellow, width: 2),
         ),
       ),
       style: AppTypography.bodyMedium(isDarkMode),
       onChanged: (value) {
         context.read<SearchFiltersBloc>().add(
-              SearchFiltersEvent.updateSearchQuery(value),
-            );
+          SearchFiltersEvent.updateSearchQuery(value),
+        );
       },
     );
   }
 
   Widget _buildDistanceSection(
-      BuildContext context, bool isDarkMode, SearchFiltersState state) {
+    BuildContext context,
+    bool isDarkMode,
+    SearchFiltersState state,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Distancia',
-          style: AppTypography.heading6(isDarkMode),
-        ),
+        Text('Distancia', style: AppTypography.heading6(isDarkMode)),
         const SizedBox(height: AppSpacing.s),
         Row(
           children: [
@@ -191,8 +192,8 @@ class _SearchFiltersView extends StatelessWidget {
                   max: 1000,
                   onChanged: (value) {
                     context.read<SearchFiltersBloc>().add(
-                          SearchFiltersEvent.distanceChanged(value),
-                        );
+                      SearchFiltersEvent.distanceChanged(value),
+                    );
                   },
                 ),
               ),
@@ -209,14 +210,14 @@ class _SearchFiltersView extends StatelessWidget {
   }
 
   Widget _buildCategoriesSection(
-      BuildContext context, bool isDarkMode, SearchFiltersState state) {
+    BuildContext context,
+    bool isDarkMode,
+    SearchFiltersState state,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Categorías',
-          style: AppTypography.heading6(isDarkMode),
-        ),
+        Text('Categorías', style: AppTypography.heading6(isDarkMode)),
         const SizedBox(height: AppSpacing.m),
         Wrap(
           spacing: AppSpacing.s,
@@ -242,9 +243,10 @@ class _SearchFiltersView extends StatelessWidget {
               ),
               onSelected: (selected) {
                 context.read<SearchFiltersBloc>().add(
-                      SearchFiltersEvent.updateCategoryFilter(
-                          selected ? category : ''),
-                    );
+                  SearchFiltersEvent.updateCategoryFilter(
+                    selected ? category : '',
+                  ),
+                );
               },
             );
           }).toList(),

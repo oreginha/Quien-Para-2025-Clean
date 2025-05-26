@@ -209,21 +209,18 @@ class ThemeShowcaseScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Tarjeta con Imagen',
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context).textTheme.titleLarge
+                              ?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Texto sobre imagen con overlay',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                color: Colors.white,
-                              ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(color: Colors.white),
                         ),
                       ],
                     ),
@@ -275,8 +272,9 @@ class ThemeShowcaseScreen extends StatelessWidget {
                     Expanded(
                       child: _buildColorItem(
                         context,
-                        color:
-                            isDarkMode ? const Color(0xFF16202A) : Colors.white,
+                        color: isDarkMode
+                            ? const Color(0xFF16202A)
+                            : Colors.white,
                         name: 'Surface',
                         hex: isDarkMode ? '#16202A' : '#FFFFFF',
                       ),
@@ -330,8 +328,8 @@ class ThemeShowcaseScreen extends StatelessWidget {
           child: Text(
             title,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ),
         ...children,
@@ -347,8 +345,9 @@ class ThemeShowcaseScreen extends StatelessWidget {
     required String name,
     required String hex,
   }) {
-    final textColor =
-        color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
+    final textColor = color.computeLuminance() > 0.5
+        ? Colors.black
+        : Colors.white;
 
     return Container(
       height: 100,
@@ -363,10 +362,7 @@ class ThemeShowcaseScreen extends StatelessWidget {
         children: [
           Text(
             name,
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(

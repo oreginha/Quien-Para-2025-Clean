@@ -50,10 +50,9 @@ class _ImagePreviewWidgetState extends State<ImagePreviewWidget> {
   }
 
   void _adjustImage(double brightness, double contrast) {
-    _imagePreviewBloc.add(ImagePreviewEvent.adjustImage(
-      brightness: brightness,
-      contrast: contrast,
-    ));
+    _imagePreviewBloc.add(
+      ImagePreviewEvent.adjustImage(brightness: brightness, contrast: contrast),
+    );
   }
 
   void _saveChanges() {
@@ -110,22 +109,26 @@ class _ImagePreviewWidgetState extends State<ImagePreviewWidget> {
     required ValueChanged<double> onChangeEnd,
   }) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(children: [
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
           Icon(icon, color: Colors.white70, size: 24),
           const SizedBox(width: 8),
           Expanded(
-              child: Slider(
-            value: value,
-            min: min,
-            max: max,
-            onChanged: onChanged,
-            onChangeEnd: onChangeEnd,
-            activeColor: AppColors.lightTextPrimary,
-            inactiveColor: Colors.white70,
-            label: label,
-          ))
-        ]));
+            child: Slider(
+              value: value,
+              min: min,
+              max: max,
+              onChanged: onChanged,
+              onChangeEnd: onChangeEnd,
+              activeColor: AppColors.lightTextPrimary,
+              inactiveColor: Colors.white70,
+              label: label,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -142,243 +145,265 @@ class _ImagePreviewWidgetState extends State<ImagePreviewWidget> {
     final bool isSmallScreen = screenHeight < 700;
 
     return BlocProvider(
-        create: (context) => _imagePreviewBloc,
-        child: BlocBuilder<ImagePreviewBloc, ImagePreviewState>(
-            builder: (context, state) {
-          return LayoutBuilder(builder: (context, constraints) {
-            // Calcular máximos para asegurar que todo quepa
-            final double maxDialogHeight = screenHeight * 0.85;
-            final double maxPreviewHeight =
-                isSmallScreen ? maxDialogHeight * 0.35 : maxDialogHeight * 0.45;
-            final double maxControlsHeight = widget.showEditControls
-                ? (isSmallScreen
-                    ? maxDialogHeight * 0.45
-                    : maxDialogHeight * 0.35)
-                : 0;
+      create: (context) => _imagePreviewBloc,
+      child: BlocBuilder<ImagePreviewBloc, ImagePreviewState>(
+        builder: (context, state) {
+          return LayoutBuilder(
+            builder: (context, constraints) {
+              // Calcular máximos para asegurar que todo quepa
+              final double maxDialogHeight = screenHeight * 0.85;
+              final double maxPreviewHeight = isSmallScreen
+                  ? maxDialogHeight * 0.35
+                  : maxDialogHeight * 0.45;
+              final double maxControlsHeight = widget.showEditControls
+                  ? (isSmallScreen
+                        ? maxDialogHeight * 0.45
+                        : maxDialogHeight * 0.35)
+                  : 0;
 
-            return Container(
-              constraints: BoxConstraints(
-                maxHeight: maxDialogHeight,
-                maxWidth: screenWidth * 0.9,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.lightCardBackground,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: SingleChildScrollView(
+              return Container(
+                constraints: BoxConstraints(
+                  maxHeight: maxDialogHeight,
+                  maxWidth: screenWidth * 0.9,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.lightCardBackground,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: SingleChildScrollView(
                   child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  // Header with title
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Editar imagen',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.close, color: Colors.white),
-                          onPressed: () => context.closeScreen(),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Image preview area
-                  SizedBox(
-                    height: maxPreviewHeight,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              if (widget.showEditControls) {
-                                _cropImage();
-                              }
-                            },
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxHeight: maxPreviewHeight - 32, // padding
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.white24),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Transform.rotate(
-                                  angle: state.rotation * 3.14159 / 180,
-                                  child: Image.file(
-                                    state.currentImage,
-                                    fit: BoxFit.contain,
-                                    height: maxPreviewHeight - 32,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (_isLoading)
-                          Container(
-                            color: Colors.black54,
-                            child: const Center(
-                              child: CircularProgressIndicator(
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(Colors.white),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-
-                  if (widget.showEditControls) ...[
-                    // Control section with limited height and scrollable content if needed
-                    Container(
-                      constraints: BoxConstraints(
-                        maxHeight: maxControlsHeight,
-                      ),
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      // Header with title
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // Edit controls
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    _buildEditButton(
-                                      icon: Icons.rotate_right,
-                                      label: 'Rotar',
-                                      onPressed: _rotateImage,
-                                    ),
-                                    const SizedBox(width: 16),
-                                    _buildEditButton(
-                                      icon: Icons.crop,
-                                      label: 'Recortar',
-                                      onPressed: _cropImage,
-                                    ),
-                                    const SizedBox(width: 16),
-                                    _buildEditButton(
-                                      icon: Icons.filter_b_and_w,
-                                      label: 'B/N',
-                                      isActive: _currentFilter == 'grayscale',
-                                      onPressed: () =>
-                                          _applyFilter('grayscale'),
-                                    ),
-                                    const SizedBox(width: 16),
-                                    _buildEditButton(
-                                      icon: Icons.filter_vintage,
-                                      label: 'Sepia',
-                                      isActive: _currentFilter == 'sepia',
-                                      onPressed: () => _applyFilter('sepia'),
-                                    ),
-                                  ],
-                                ),
+                            const Text(
+                              'Editar imagen',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-
-                            const SizedBox(height: 8),
-
-                            // Adjustment sliders
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  const Padding(
-                                    padding: EdgeInsets.only(bottom: 4.0),
-                                    child: Text(
-                                      'Ajustes',
-                                      style: TextStyle(
-                                          color: Colors.white70, fontSize: 14),
-                                    ),
-                                  ),
-                                  _buildSliderRow(
-                                    icon: Icons.brightness_6,
-                                    label: 'Brillo',
-                                    value: state.brightness,
-                                    min: -1.0,
-                                    max: 1.0,
-                                    onChanged: (value) {
-                                      _adjustImage(value, state.contrast);
-                                    },
-                                    onChangeEnd: (value) {},
-                                  ),
-                                  _buildSliderRow(
-                                    icon: Icons.contrast,
-                                    label: 'Contraste',
-                                    value: state.contrast,
-                                    min: 0.5,
-                                    max: 2.0,
-                                    onChanged: (value) {
-                                      _adjustImage(state.brightness, value);
-                                    },
-                                    onChangeEnd: (value) {},
-                                  ),
-                                ],
+                            IconButton(
+                              icon: const Icon(
+                                Icons.close,
+                                color: Colors.white,
                               ),
+                              onPressed: () => context.closeScreen(),
                             ),
                           ],
                         ),
                       ),
-                    ),
 
-                    // Action buttons - always visible at bottom
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Expanded(
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: Colors.white70,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 12),
+                      // Image preview area
+                      SizedBox(
+                        height: maxPreviewHeight,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
                               ),
-                              onPressed: () => context.closeScreen(),
-                              child: const Text('Cancelar'),
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.lightTextPrimary,
-                                foregroundColor: Colors.white,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 12),
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (widget.showEditControls) {
+                                    _cropImage();
+                                  }
+                                },
+                                child: Container(
+                                  constraints: BoxConstraints(
+                                    maxHeight: maxPreviewHeight - 32, // padding
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Colors.white24),
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Transform.rotate(
+                                      angle: state.rotation * 3.14159 / 180,
+                                      child: Image.file(
+                                        state.currentImage,
+                                        fit: BoxFit.contain,
+                                        height: maxPreviewHeight - 32,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              onPressed: _saveChanges,
-                              child: const Text('Guardar'),
                             ),
-                          ),
-                        ],
+                            if (_isLoading)
+                              Container(
+                                color: Colors.black54,
+                                child: const Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ],
-              )),
-            );
-          });
-        }));
+
+                      if (widget.showEditControls) ...[
+                        // Control section with limited height and scrollable content if needed
+                        Container(
+                          constraints: BoxConstraints(
+                            maxHeight: maxControlsHeight,
+                          ),
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                // Edit controls
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        _buildEditButton(
+                                          icon: Icons.rotate_right,
+                                          label: 'Rotar',
+                                          onPressed: _rotateImage,
+                                        ),
+                                        const SizedBox(width: 16),
+                                        _buildEditButton(
+                                          icon: Icons.crop,
+                                          label: 'Recortar',
+                                          onPressed: _cropImage,
+                                        ),
+                                        const SizedBox(width: 16),
+                                        _buildEditButton(
+                                          icon: Icons.filter_b_and_w,
+                                          label: 'B/N',
+                                          isActive:
+                                              _currentFilter == 'grayscale',
+                                          onPressed: () =>
+                                              _applyFilter('grayscale'),
+                                        ),
+                                        const SizedBox(width: 16),
+                                        _buildEditButton(
+                                          icon: Icons.filter_vintage,
+                                          label: 'Sepia',
+                                          isActive: _currentFilter == 'sepia',
+                                          onPressed: () =>
+                                              _applyFilter('sepia'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+
+                                const SizedBox(height: 8),
+
+                                // Adjustment sliders
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 24,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      const Padding(
+                                        padding: EdgeInsets.only(bottom: 4.0),
+                                        child: Text(
+                                          'Ajustes',
+                                          style: TextStyle(
+                                            color: Colors.white70,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ),
+                                      _buildSliderRow(
+                                        icon: Icons.brightness_6,
+                                        label: 'Brillo',
+                                        value: state.brightness,
+                                        min: -1.0,
+                                        max: 1.0,
+                                        onChanged: (value) {
+                                          _adjustImage(value, state.contrast);
+                                        },
+                                        onChangeEnd: (value) {},
+                                      ),
+                                      _buildSliderRow(
+                                        icon: Icons.contrast,
+                                        label: 'Contraste',
+                                        value: state.contrast,
+                                        min: 0.5,
+                                        max: 2.0,
+                                        onChanged: (value) {
+                                          _adjustImage(state.brightness, value);
+                                        },
+                                        onChangeEnd: (value) {},
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // Action buttons - always visible at bottom
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.white70,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 12,
+                                    ),
+                                  ),
+                                  onPressed: () => context.closeScreen(),
+                                  child: const Text('Cancelar'),
+                                ),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.lightTextPrimary,
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 12,
+                                    ),
+                                  ),
+                                  onPressed: _saveChanges,
+                                  child: const Text('Guardar'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+      ),
+    );
   }
 }

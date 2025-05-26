@@ -63,11 +63,10 @@ class BlocLoadingStateHandler<T> extends StatelessWidget {
 
   /// Construye el widget para el estado de carga
   Widget _buildLoadingWidget() {
-    Widget content = loadingWidget ??
+    Widget content =
+        loadingWidget ??
         Center(
-          child: CircularProgressIndicator(
-            color: AppColors.lightTextPrimary,
-          ),
+          child: CircularProgressIndicator(color: AppColors.lightTextPrimary),
         );
 
     return _applyContainer(content);
@@ -90,7 +89,8 @@ class BlocLoadingStateHandler<T> extends StatelessWidget {
 
   /// Construye el widget para el estado de error
   Widget _buildErrorWidget(String message) {
-    Widget content = errorWidget ??
+    Widget content =
+        errorWidget ??
         Center(
           child: EmptyStateWidget(
             icon: Icons.error_outline,
@@ -104,7 +104,8 @@ class BlocLoadingStateHandler<T> extends StatelessWidget {
 
   /// Construye el widget para el estado vacío
   Widget _buildEmptyWidget() {
-    Widget content = emptyWidget ??
+    Widget content =
+        emptyWidget ??
         Center(
           child: EmptyStateWidget(
             icon: emptyIcon,
@@ -122,9 +123,7 @@ class BlocLoadingStateHandler<T> extends StatelessWidget {
       return Container(
         width: double.infinity,
         constraints: const BoxConstraints(minHeight: 100),
-        decoration: BoxDecoration(
-          color: darkPrimaryBackground,
-        ),
+        decoration: BoxDecoration(color: darkPrimaryBackground),
         child: child,
       );
     }

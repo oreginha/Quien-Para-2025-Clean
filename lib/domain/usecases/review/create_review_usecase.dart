@@ -16,17 +16,20 @@ class CreateReviewUseCase {
 
     if (params.comment.trim().length < 10) {
       return Left(
-          ValidationFailure('El comentario debe tener al menos 10 caracteres'));
+        ValidationFailure('El comentario debe tener al menos 10 caracteres'),
+      );
     }
 
     if (params.comment.trim().length > 500) {
       return Left(
-          ValidationFailure('El comentario no puede exceder 500 caracteres'));
+        ValidationFailure('El comentario no puede exceder 500 caracteres'),
+      );
     }
 
     if (params.reviewerId == params.reviewedUserId) {
       return Left(
-          ValidationFailure('No puedes escribir una reseña de ti mismo'));
+        ValidationFailure('No puedes escribir una reseña de ti mismo'),
+      );
     }
 
     // Verificar si el usuario puede escribir esta reseña
@@ -41,8 +44,11 @@ class CreateReviewUseCase {
     }
 
     if (!(canReview as Right).value) {
-      return Left(ValidationFailure(
-          'No puedes escribir una reseña para este usuario/plan'));
+      return Left(
+        ValidationFailure(
+          'No puedes escribir una reseña para este usuario/plan',
+        ),
+      );
     }
 
     // Crear la entidad de reseña

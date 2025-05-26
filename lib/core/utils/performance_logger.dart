@@ -12,7 +12,8 @@ class PerformanceLogger {
     if (kDebugMode) {
       if (_activeStopwatches.containsKey(tag)) {
         print(
-            '⚠️ [Performance] Advertencia: Ya existe una medición activa para $tag');
+          '⚠️ [Performance] Advertencia: Ya existe una medición activa para $tag',
+        );
         _activeStopwatches[tag]?.reset();
       } else {
         _activeStopwatches[tag] = Stopwatch()..start();
@@ -27,14 +28,17 @@ class PerformanceLogger {
       if (stopwatch != null) {
         stopwatch.stop();
         print(
-            '[Performance] $tag ejecutado en ${stopwatch.elapsedMilliseconds}ms');
+          '[Performance] $tag ejecutado en ${stopwatch.elapsedMilliseconds}ms',
+        );
         if (stopwatch.elapsedMilliseconds > 16) {
           print(
-              '⚠️ [Performance] ADVERTENCIA: $tag está tomando más de 16ms (${stopwatch.elapsedMilliseconds}ms)');
+            '⚠️ [Performance] ADVERTENCIA: $tag está tomando más de 16ms (${stopwatch.elapsedMilliseconds}ms)',
+          );
         }
       } else {
         print(
-            '⚠️ [Performance] Error: No se encontró medición activa para $tag');
+          '⚠️ [Performance] Error: No se encontró medición activa para $tag',
+        );
       }
     }
   }
@@ -45,26 +49,32 @@ class PerformanceLogger {
     stopwatch.stop();
     if (kDebugMode) {
       print(
-          '[Performance] $tag ejecutado en ${stopwatch.elapsedMilliseconds}ms');
+        '[Performance] $tag ejecutado en ${stopwatch.elapsedMilliseconds}ms',
+      );
       if (stopwatch.elapsedMilliseconds > 16) {
         print(
-            '⚠️ [Performance] ADVERTENCIA: $tag está tomando más de 16ms (${stopwatch.elapsedMilliseconds}ms)');
+          '⚠️ [Performance] ADVERTENCIA: $tag está tomando más de 16ms (${stopwatch.elapsedMilliseconds}ms)',
+        );
       }
     }
   }
 
   static Future<T> logAsyncOperation<T>(
-      final String tag, final Future<T> Function() operation) async {
+    final String tag,
+    final Future<T> Function() operation,
+  ) async {
     final Stopwatch stopwatch = Stopwatch()..start();
     try {
       final T result = await operation();
       stopwatch.stop();
       if (kDebugMode) {
         print(
-            '[Performance] $tag ejecutado en ${stopwatch.elapsedMilliseconds}ms');
+          '[Performance] $tag ejecutado en ${stopwatch.elapsedMilliseconds}ms',
+        );
         if (stopwatch.elapsedMilliseconds > 100) {
           print(
-              '⚠️ [Performance] ADVERTENCIA: Operación asíncrona $tag está tomando demasiado tiempo (${stopwatch.elapsedMilliseconds}ms)');
+            '⚠️ [Performance] ADVERTENCIA: Operación asíncrona $tag está tomando demasiado tiempo (${stopwatch.elapsedMilliseconds}ms)',
+          );
         }
       }
       return result;
@@ -72,7 +82,8 @@ class PerformanceLogger {
       stopwatch.stop();
       if (kDebugMode) {
         print(
-            '❌ [Performance] ERROR en $tag: $e (${stopwatch.elapsedMilliseconds}ms)');
+          '❌ [Performance] ERROR en $tag: $e (${stopwatch.elapsedMilliseconds}ms)',
+        );
       }
       rethrow;
     }

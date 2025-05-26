@@ -32,8 +32,10 @@ class RedirectHandler {
     // Si no, intentar obtenerlo del Provider
     try {
       if (context.mounted) {
-        final AuthCubit authCubit =
-            Provider.of<AuthCubit>(context, listen: false);
+        final AuthCubit authCubit = Provider.of<AuthCubit>(
+          context,
+          listen: false,
+        );
         // Si lo obtenemos correctamente, guardarlo para futuras referencias
         if (authCubit != null) {
           _authCubit = authCubit;
@@ -68,7 +70,8 @@ class RedirectHandler {
         now.difference(_lastRedirectTime!).inMilliseconds < 500) {
       if (kDebugMode) {
         print(
-            '⚠️ [Router] Posible bucle de redirección detectado, cancelando redirección a $currentPath');
+          '⚠️ [Router] Posible bucle de redirección detectado, cancelando redirección a $currentPath',
+        );
       }
       return true;
     }
@@ -76,8 +79,11 @@ class RedirectHandler {
   }
 
   // Método principal que maneja la redirección basada en el estado actual
-  String? handleRedirect(BuildContext context, String currentPath,
-      {bool skipSpecialPaths = true}) {
+  String? handleRedirect(
+    BuildContext context,
+    String currentPath, {
+    bool skipSpecialPaths = true,
+  }) {
     // No redirigir desde rutas especiales
     if (skipSpecialPaths && currentPath == '/theme-showcase') {
       return null;
@@ -100,7 +106,8 @@ class RedirectHandler {
     // Log del estado de autenticación
     if (kDebugMode) {
       print(
-          '📡 [Router] Evaluando redirección - Ruta: $currentPath, Estado auth: ${authState.status}');
+        '📡 [Router] Evaluando redirección - Ruta: $currentPath, Estado auth: ${authState.status}',
+      );
     }
 
     // Determinar redirección basada en el estado
@@ -131,7 +138,10 @@ class RedirectHandler {
 
       case AuthStatus.authenticated:
         return _handleAuthenticatedState(
-            authState, currentPath, isInitialOrLoginRoute);
+          authState,
+          currentPath,
+          isInitialOrLoginRoute,
+        );
 
       case AuthStatus.unauthenticated:
       case AuthStatus.error:
@@ -170,7 +180,10 @@ class RedirectHandler {
   }
 
   String? _handleAuthenticatedState(
-      AuthState authState, String currentPath, bool isInitialOrLoginRoute) {
+    AuthState authState,
+    String currentPath,
+    bool isInitialOrLoginRoute,
+  ) {
     // Verificar si el usuario tiene perfil completo
     if (!authState.hasUserProfile) {
       // Si no tiene perfil, enviar a onboarding
@@ -186,7 +199,8 @@ class RedirectHandler {
         // Redirigir a home desde login/root/onboarding
         if (kDebugMode) {
           print(
-              '📡 [Router] Redirigiendo a propuestas (usuario con perfil completo)');
+            '📡 [Router] Redirigiendo a propuestas (usuario con perfil completo)',
+          );
         }
         return '/proposalsScreen';
       }

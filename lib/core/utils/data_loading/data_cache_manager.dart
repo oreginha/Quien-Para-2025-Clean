@@ -20,10 +20,10 @@ class DataCacheManager<T> {
     Duration? defaultExpirationTime,
     int maxCacheSize = 0,
     CacheEvictionPolicy evictionPolicy = CacheEvictionPolicy.leastRecentlyUsed,
-  })  : _defaultExpirationTime =
-            defaultExpirationTime ?? const Duration(minutes: 5),
-        _maxCacheSize = maxCacheSize,
-        _evictionPolicy = evictionPolicy;
+  }) : _defaultExpirationTime =
+           defaultExpirationTime ?? const Duration(minutes: 5),
+       _maxCacheSize = maxCacheSize,
+       _evictionPolicy = evictionPolicy;
 
   /// Agrega o actualiza un elemento en el caché
   void put(String key, T? item) {
@@ -34,10 +34,7 @@ class DataCacheManager<T> {
       _evictItems(1); // Eliminar al menos un elemento
     }
 
-    _cache[key] = CachedItem<T>(
-      item,
-      expirationTime: _defaultExpirationTime,
-    );
+    _cache[key] = CachedItem<T>(item, expirationTime: _defaultExpirationTime);
   }
 
   /// Obtiene un elemento del caché
@@ -132,8 +129,10 @@ class DataCacheManager<T> {
       ..sort((a, b) => a.value.timestamp.compareTo(b.value.timestamp));
 
     // Tomar las primeras 'count' entradas
-    final keysToRemove =
-        sortedEntries.take(count).map((entry) => entry.key).toList();
+    final keysToRemove = sortedEntries
+        .take(count)
+        .map((entry) => entry.key)
+        .toList();
 
     // Eliminar del caché
     for (final key in keysToRemove) {
@@ -176,5 +175,5 @@ enum CacheEvictionPolicy {
   firstInFirstOut,
 
   /// Expulsa los elementos menos frecuentemente usados
-  leastFrequentlyUsed
+  leastFrequentlyUsed,
 }

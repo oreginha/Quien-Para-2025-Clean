@@ -38,8 +38,9 @@ void main() {
   });
 
   test('getMetrics should return empty map for non-existent city', () async {
-    final Map<String, int> metrics =
-        await storage.getMetrics('Non Existent City');
+    final Map<String, int> metrics = await storage.getMetrics(
+      'Non Existent City',
+    );
     expect(metrics, isEmpty);
   });
 

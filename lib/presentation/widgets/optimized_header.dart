@@ -33,8 +33,7 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight +
-      50); // Aumentar altura preferida para evitar desbordamiento de 19 píxeles
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 50); // Aumentar altura preferida para evitar desbordamiento de 19 píxeles
 
   @override
   Widget build(final BuildContext context) {
@@ -43,13 +42,15 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
       children: <Widget>[
         // Espacio superior para mejorar posición vertical
         const SizedBox(
-            height: 4), // Reducido de 8 a 4 para ahorrar espacio vertical
-
+          height: 4,
+        ), // Reducido de 8 a 4 para ahorrar espacio vertical
         // Barra superior con logo/botón atrás
         if (showLogo || onBackPressed != null || showBackButton)
           Padding(
             padding: const EdgeInsets.symmetric(
-                horizontal: 16.0, vertical: 2.0), // Reducido de 4.0 a 2.0
+              horizontal: 16.0,
+              vertical: 2.0,
+            ), // Reducido de 4.0 a 2.0
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -58,8 +59,7 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                   IconButton(
                     icon: const Icon(Icons.arrow_back_ios),
                     color: AppColors.lightTextPrimary,
-                    onPressed:
-                        onBackPressed ?? () => context.closeScreen(),
+                    onPressed: onBackPressed ?? () => context.closeScreen(),
                     padding: const EdgeInsets.all(4.0),
                     constraints: const BoxConstraints(),
                     iconSize: 24, // Aumentar tamaño del icono
@@ -77,19 +77,21 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                     child: Image.asset(
                       'lib/assets/images/logo1.png',
                       fit: BoxFit.contain,
-                      errorBuilder: (final BuildContext context,
-                              final Object error,
-                              final StackTrace? stackTrace) =>
-                          Center(
-                        child: Text(
-                          "Q",
-                          style: TextStyle(
-                            color: AppColors.lightTextPrimary,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20, // Aumentar tamaño de texto
+                      errorBuilder:
+                          (
+                            final BuildContext context,
+                            final Object error,
+                            final StackTrace? stackTrace,
+                          ) => Center(
+                            child: Text(
+                              "Q",
+                              style: TextStyle(
+                                color: AppColors.lightTextPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20, // Aumentar tamaño de texto
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
                     ),
                   ),
               ],
@@ -103,8 +105,9 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
             child: LinearProgressIndicator(
               value: progress > 0 ? progress : (currentStep / totalSteps),
               backgroundColor: AppColors.getSecondaryBackground(false),
-              valueColor:
-                  AlwaysStoppedAnimation<Color>(AppColors.lightTextPrimary),
+              valueColor: AlwaysStoppedAnimation<Color>(
+                AppColors.lightTextPrimary,
+              ),
               minHeight: 4,
             ),
           ),
@@ -112,20 +115,26 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
         // Título con icono (compacto)
         Padding(
           padding: const EdgeInsets.fromLTRB(
-              16, 4, 16, 4), // Reducido de 8 a 4 para ahorrar espacio vertical
+            16,
+            4,
+            16,
+            4,
+          ), // Reducido de 8 a 4 para ahorrar espacio vertical
           child: Row(
             children: <Widget>[
               // Icono (SVG, asset o icono de material)
               if (icon != null)
                 Padding(
-                  padding:
-                      const EdgeInsets.only(right: 16.0), // Aumentar padding
+                  padding: const EdgeInsets.only(
+                    right: 16.0,
+                  ), // Aumentar padding
                   child: icon!,
                 )
               else if (iconAssetPath != null)
                 Padding(
-                  padding:
-                      const EdgeInsets.only(right: 16.0), // Aumentar padding
+                  padding: const EdgeInsets.only(
+                    right: 16.0,
+                  ), // Aumentar padding
                   child: iconAssetPath!.endsWith('.svg')
                       ? SvgPicture.asset(
                           iconAssetPath!,
@@ -140,19 +149,24 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                           iconAssetPath!,
                           height: 28, // Aumentar tamaño
                           width: 28, // Aumentar tamaño
-                          errorBuilder: (final BuildContext context,
-                                  final Object error,
-                                  final StackTrace? stackTrace) =>
-                              Icon(Icons.image_not_supported,
-                                  size: 28,
-                                  color: AppColors.getSecondaryBackground(false)), // Aumentar tamaño
+                          errorBuilder:
+                              (
+                                final BuildContext context,
+                                final Object error,
+                                final StackTrace? stackTrace,
+                              ) => Icon(
+                                Icons.image_not_supported,
+                                size: 28,
+                                color: AppColors.getSecondaryBackground(false),
+                              ), // Aumentar tamaño
                         ),
                 )
               // Si no hay icono específico, usar uno predeterminado según la pantalla
               else
                 Padding(
-                  padding:
-                      const EdgeInsets.only(right: 16.0), // Aumentar padding
+                  padding: const EdgeInsets.only(
+                    right: 16.0,
+                  ), // Aumentar padding
                   child: Icon(
                     Icons.arrow_circle_right_outlined,
                     size: 28, // Aumentar tamaño
@@ -168,9 +182,10 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                     Text(
                       title,
                       style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.lightTextPrimary), // Aumentar tamaño de fuente
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.lightTextPrimary,
+                      ), // Aumentar tamaño de fuente
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -178,8 +193,9 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                       Text(
                         subtitle!,
                         style: TextStyle(
-                            fontSize: 16,
-                            color: AppColors.lightTextSecondary), // Aumentar tamaño
+                          fontSize: 16,
+                          color: AppColors.lightTextSecondary,
+                        ), // Aumentar tamaño
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -203,11 +219,9 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
         // Línea divisoria sutil
         Padding(
           padding: const EdgeInsets.only(
-              top: 4.0), // Reducido de 8.0 a 4.0 para ahorrar espacio vertical
-          child: Container(
-            height: 1,
-            color: AppTheme.of(context).border,
-          ),
+            top: 4.0,
+          ), // Reducido de 8.0 a 4.0 para ahorrar espacio vertical
+          child: Container(height: 1, color: AppTheme.of(context).border),
         ),
       ],
     );

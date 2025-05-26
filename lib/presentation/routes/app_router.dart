@@ -39,7 +39,7 @@ enum PageTransitionType {
   slide, // Transición deslizante desde la derecha
   slideUp, // Transición deslizante desde abajo
   scale, // Transición con escalado
-  none // Sin transición
+  none, // Sin transición
 }
 
 /// Router principal de la aplicación utilizando GoRouter
@@ -139,17 +139,17 @@ class AppRouter {
       // Redirección basada en el estado de autenticación
       redirect: (context, state) {
         final String currentPath = state.fullPath ?? '';
-        return _redirectHandler.handleRedirect(context, currentPath,
-            skipSpecialPaths: true);
+        return _redirectHandler.handleRedirect(
+          context,
+          currentPath,
+          skipSpecialPaths: true,
+        );
       },
 
       // Rutas de la aplicación
       routes: [
         // Root / Auth Wrapper
-        GoRoute(
-          path: root,
-          builder: (context, state) => const AuthWrapper(),
-        ),
+        GoRoute(path: root, builder: (context, state) => const AuthWrapper()),
 
         // Home
         GoRoute(
@@ -159,16 +159,13 @@ class AppRouter {
             child: const HomeScreen(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              return FadeTransition(opacity: animation, child: child);
-            },
+                  return FadeTransition(opacity: animation, child: child);
+                },
           ),
         ),
 
         // Login
-        GoRoute(
-          path: login,
-          builder: (context, state) => const LoginScreen(),
-        ),
+        GoRoute(path: login, builder: (context, state) => const LoginScreen()),
 
         // Profile
         GoRoute(
@@ -263,10 +260,7 @@ class AppRouter {
             final bool isCreator = extra['isCreator'] as bool? ?? false;
 
             if (isCreator) {
-              return MyPlanDetailScreen(
-                planId: planId,
-                isCreator: isCreator,
-              );
+              return MyPlanDetailScreen(planId: planId, isCreator: isCreator);
             } else {
               // No usar ChatBloc ya que no está disponible
               return DetallesPropuestaOtros(
@@ -284,10 +278,7 @@ class AppRouter {
             final String planId = state.pathParameters['planId'] ?? '';
             final extra = state.extra as Map<String, dynamic>? ?? {};
             final bool isCreator = extra['isCreator'] as bool? ?? false;
-            return MyPlanDetailScreen(
-              planId: planId,
-              isCreator: isCreator,
-            );
+            return MyPlanDetailScreen(planId: planId, isCreator: isCreator);
           },
         ),
 
@@ -300,10 +291,7 @@ class AppRouter {
             final bool isCreator = extra['isCreator'] as bool? ?? false;
 
             // No usar ChatBloc ya que no está disponible
-            return DetallesPropuestaOtros(
-              planId: planId,
-              isCreator: isCreator,
-            );
+            return DetallesPropuestaOtros(planId: planId, isCreator: isCreator);
           },
         ),
 
@@ -523,8 +511,10 @@ class AppRouter {
 
   // Simular el método generateRoute para mantener compatibilidad con código legacy
   Route<dynamic> generateRoute(RouteSettings settings) {
-    logger.w('Advertencia: Usando el método legacy generateRoute. '
-        'Considera migrar a los métodos de GoRouter.');
+    logger.w(
+      'Advertencia: Usando el método legacy generateRoute. '
+      'Considera migrar a los métodos de GoRouter.',
+    );
 
     // Redirigir al router principal
     final String screenName = settings.name ?? '/';
@@ -640,8 +630,10 @@ class UnknownRouteScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 Text(
                   'Error: $errorMessage',
-                  style:
-                      const TextStyle(fontSize: 14, color: AppColors.success),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: AppColors.success,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -651,8 +643,10 @@ class UnknownRouteScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.brandYellow,
                   foregroundColor: Colors.black,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
                 ),
                 child: const Text('Ir a la pantalla principal'),
               ),
@@ -716,23 +710,29 @@ extension RouterExtension on BuildContext {
       GoRouter.of(this).replace(path, extra: extra);
 
   // Métodos para navegación con parámetros nombrados
-  void appPushNamed(String name,
-          {Map<String, String>? params,
-          Map<String, dynamic>? queryParams,
-          Object? extra}) =>
-      GoRouter.of(this).pushNamed(name,
-          pathParameters: params ?? {},
-          queryParameters: queryParams ?? {},
-          extra: extra);
+  void appPushNamed(
+    String name, {
+    Map<String, String>? params,
+    Map<String, dynamic>? queryParams,
+    Object? extra,
+  }) => GoRouter.of(this).pushNamed(
+    name,
+    pathParameters: params ?? {},
+    queryParameters: queryParams ?? {},
+    extra: extra,
+  );
 
-  void appGoNamed(String name,
-          {Map<String, String>? params,
-          Map<String, dynamic>? queryParams,
-          Object? extra}) =>
-      GoRouter.of(this).goNamed(name,
-          pathParameters: params ?? {},
-          queryParameters: queryParams ?? {},
-          extra: extra);
+  void appGoNamed(
+    String name, {
+    Map<String, String>? params,
+    Map<String, dynamic>? queryParams,
+    Object? extra,
+  }) => GoRouter.of(this).goNamed(
+    name,
+    pathParameters: params ?? {},
+    queryParameters: queryParams ?? {},
+    extra: extra,
+  );
 
   // Método para extraer extra params de manera segura
   T? getExtraAs<T>() {

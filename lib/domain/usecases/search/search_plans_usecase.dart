@@ -33,7 +33,8 @@ class SearchPlansUseCase {
       // Validar entrada
       if (query.trim().isEmpty) {
         return const Left(
-            ValidationFailure('La consulta de búsqueda no puede estar vacía'));
+          ValidationFailure('La consulta de búsqueda no puede estar vacía'),
+        );
       }
 
       // Limpiar y normalizar la consulta
@@ -49,7 +50,8 @@ class SearchPlansUseCase {
       return result;
     } catch (e) {
       return Left(
-          ServerFailure(null, 'Error al buscar planes: ${e.toString()}'));
+        ServerFailure(null, 'Error al buscar planes: ${e.toString()}'),
+      );
     }
   }
 
@@ -79,7 +81,8 @@ class SearchPlansUseCase {
       return result;
     } catch (e) {
       return Left(
-          ServerFailure(null, 'Error al obtener sugerencias: ${e.toString()}'));
+        ServerFailure(null, 'Error al obtener sugerencias: ${e.toString()}'),
+      );
     }
   }
 }

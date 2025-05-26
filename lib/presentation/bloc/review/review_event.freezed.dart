@@ -12,44 +12,54 @@ part of 'review_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ReviewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -58,33 +68,37 @@ mixin _$ReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -93,9 +107,13 @@ mixin _$ReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -105,31 +123,35 @@ mixin _$ReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -138,9 +160,13 @@ mixin _$ReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -150,13 +176,12 @@ mixin _$ReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CreateReviewEvent value) createReview,
@@ -164,20 +189,20 @@ mixin _$ReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -185,15 +210,14 @@ mixin _$ReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CreateReviewEvent value)? createReview,
@@ -218,12 +242,11 @@ mixin _$ReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateReviewEvent value)? createReview,
@@ -252,15 +275,15 @@ mixin _$ReviewEvent {
     TResult Function(ResetStateEvent value)? resetState,
     TResult Function(ClearErrorEvent value)? clearError,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ReviewEventCopyWith<$Res> {
   factory $ReviewEventCopyWith(
-          ReviewEvent value, $Res Function(ReviewEvent) then) =
-      _$ReviewEventCopyWithImpl<$Res, ReviewEvent>;
+    ReviewEvent value,
+    $Res Function(ReviewEvent) then,
+  ) = _$ReviewEventCopyWithImpl<$Res, ReviewEvent>;
 }
 
 /// @nodoc
@@ -279,29 +302,32 @@ class _$ReviewEventCopyWithImpl<$Res, $Val extends ReviewEvent>
 
 /// @nodoc
 abstract class _$$CreateReviewEventImplCopyWith<$Res> {
-  factory _$$CreateReviewEventImplCopyWith(_$CreateReviewEventImpl value,
-          $Res Function(_$CreateReviewEventImpl) then) =
-      __$$CreateReviewEventImplCopyWithImpl<$Res>;
+  factory _$$CreateReviewEventImplCopyWith(
+    _$CreateReviewEventImpl value,
+    $Res Function(_$CreateReviewEventImpl) then,
+  ) = __$$CreateReviewEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String reviewerId,
-      String reviewedUserId,
-      String planId,
-      double rating,
-      String comment,
-      ReviewType type,
-      String? planTitle,
-      DateTime? planDate,
-      String? reviewerRole});
+  $Res call({
+    String reviewerId,
+    String reviewedUserId,
+    String planId,
+    double rating,
+    String comment,
+    ReviewType type,
+    String? planTitle,
+    DateTime? planDate,
+    String? reviewerRole,
+  });
 }
 
 /// @nodoc
 class __$$CreateReviewEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$CreateReviewEventImpl>
     implements _$$CreateReviewEventImplCopyWith<$Res> {
-  __$$CreateReviewEventImplCopyWithImpl(_$CreateReviewEventImpl _value,
-      $Res Function(_$CreateReviewEventImpl) _then)
-      : super(_value, _then);
+  __$$CreateReviewEventImplCopyWithImpl(
+    _$CreateReviewEventImpl _value,
+    $Res Function(_$CreateReviewEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -318,60 +344,63 @@ class __$$CreateReviewEventImplCopyWithImpl<$Res>
     Object? planDate = freezed,
     Object? reviewerRole = freezed,
   }) {
-    return _then(_$CreateReviewEventImpl(
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewedUserId: null == reviewedUserId
-          ? _value.reviewedUserId
-          : reviewedUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      rating: null == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
-              as double,
-      comment: null == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReviewType,
-      planTitle: freezed == planTitle
-          ? _value.planTitle
-          : planTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      planDate: freezed == planDate
-          ? _value.planDate
-          : planDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      reviewerRole: freezed == reviewerRole
-          ? _value.reviewerRole
-          : reviewerRole // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$CreateReviewEventImpl(
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reviewedUserId: null == reviewedUserId
+            ? _value.reviewedUserId
+            : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                  as double,
+        comment: null == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReviewType,
+        planTitle: freezed == planTitle
+            ? _value.planTitle
+            : planTitle // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        planDate: freezed == planDate
+            ? _value.planDate
+            : planDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        reviewerRole: freezed == reviewerRole
+            ? _value.reviewerRole
+            : reviewerRole // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CreateReviewEventImpl implements CreateReviewEvent {
-  const _$CreateReviewEventImpl(
-      {required this.reviewerId,
-      required this.reviewedUserId,
-      required this.planId,
-      required this.rating,
-      required this.comment,
-      required this.type,
-      this.planTitle,
-      this.planDate,
-      this.reviewerRole});
+  const _$CreateReviewEventImpl({
+    required this.reviewerId,
+    required this.reviewedUserId,
+    required this.planId,
+    required this.rating,
+    required this.comment,
+    required this.type,
+    this.planTitle,
+    this.planDate,
+    this.reviewerRole,
+  });
 
   @override
   final String reviewerId;
@@ -419,8 +448,18 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reviewerId, reviewedUserId,
-      planId, rating, comment, type, planTitle, planDate, reviewerRole);
+  int get hashCode => Object.hash(
+    runtimeType,
+    reviewerId,
+    reviewedUserId,
+    planId,
+    rating,
+    comment,
+    type,
+    planTitle,
+    planDate,
+    reviewerRole,
+  );
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -429,43 +468,54 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
   @pragma('vm:prefer-inline')
   _$$CreateReviewEventImplCopyWith<_$CreateReviewEventImpl> get copyWith =>
       __$$CreateReviewEventImplCopyWithImpl<_$CreateReviewEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -474,37 +524,51 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
   }) {
-    return createReview(reviewerId, reviewedUserId, planId, rating, comment,
-        type, planTitle, planDate, reviewerRole);
+    return createReview(
+      reviewerId,
+      reviewedUserId,
+      planId,
+      rating,
+      comment,
+      type,
+      planTitle,
+      planDate,
+      reviewerRole,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -513,9 +577,13 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -525,35 +593,49 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
   }) {
-    return createReview?.call(reviewerId, reviewedUserId, planId, rating,
-        comment, type, planTitle, planDate, reviewerRole);
+    return createReview?.call(
+      reviewerId,
+      reviewedUserId,
+      planId,
+      rating,
+      comment,
+      type,
+      planTitle,
+      planDate,
+      reviewerRole,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -562,9 +644,13 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -574,15 +660,24 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
     required TResult orElse(),
   }) {
     if (createReview != null) {
-      return createReview(reviewerId, reviewedUserId, planId, rating, comment,
-          type, planTitle, planDate, reviewerRole);
+      return createReview(
+        reviewerId,
+        reviewedUserId,
+        planId,
+        rating,
+        comment,
+        type,
+        planTitle,
+        planDate,
+        reviewerRole,
+      );
     }
     return orElse();
   }
@@ -595,20 +690,20 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -616,10 +711,10 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -652,7 +747,7 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -698,16 +793,17 @@ class _$CreateReviewEventImpl implements CreateReviewEvent {
 }
 
 abstract class CreateReviewEvent implements ReviewEvent {
-  const factory CreateReviewEvent(
-      {required final String reviewerId,
-      required final String reviewedUserId,
-      required final String planId,
-      required final double rating,
-      required final String comment,
-      required final ReviewType type,
-      final String? planTitle,
-      final DateTime? planDate,
-      final String? reviewerRole}) = _$CreateReviewEventImpl;
+  const factory CreateReviewEvent({
+    required final String reviewerId,
+    required final String reviewedUserId,
+    required final String planId,
+    required final double rating,
+    required final String comment,
+    required final ReviewType type,
+    final String? planTitle,
+    final DateTime? planDate,
+    final String? reviewerRole,
+  }) = _$CreateReviewEventImpl;
 
   String get reviewerId;
   String get reviewedUserId;
@@ -728,9 +824,10 @@ abstract class CreateReviewEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$GetUserReviewsEventImplCopyWith<$Res> {
-  factory _$$GetUserReviewsEventImplCopyWith(_$GetUserReviewsEventImpl value,
-          $Res Function(_$GetUserReviewsEventImpl) then) =
-      __$$GetUserReviewsEventImplCopyWithImpl<$Res>;
+  factory _$$GetUserReviewsEventImplCopyWith(
+    _$GetUserReviewsEventImpl value,
+    $Res Function(_$GetUserReviewsEventImpl) then,
+  ) = __$$GetUserReviewsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String userId, ReviewType? type, int? limit, bool? refresh});
 }
@@ -739,9 +836,10 @@ abstract class _$$GetUserReviewsEventImplCopyWith<$Res> {
 class __$$GetUserReviewsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetUserReviewsEventImpl>
     implements _$$GetUserReviewsEventImplCopyWith<$Res> {
-  __$$GetUserReviewsEventImplCopyWithImpl(_$GetUserReviewsEventImpl _value,
-      $Res Function(_$GetUserReviewsEventImpl) _then)
-      : super(_value, _then);
+  __$$GetUserReviewsEventImplCopyWithImpl(
+    _$GetUserReviewsEventImpl _value,
+    $Res Function(_$GetUserReviewsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -753,32 +851,38 @@ class __$$GetUserReviewsEventImplCopyWithImpl<$Res>
     Object? limit = freezed,
     Object? refresh = freezed,
   }) {
-    return _then(_$GetUserReviewsEventImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReviewType?,
-      limit: freezed == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int?,
-      refresh: freezed == refresh
-          ? _value.refresh
-          : refresh // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$GetUserReviewsEventImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: freezed == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReviewType?,
+        limit: freezed == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        refresh: freezed == refresh
+            ? _value.refresh
+            : refresh // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
-  const _$GetUserReviewsEventImpl(
-      {required this.userId, this.type, this.limit, this.refresh});
+  const _$GetUserReviewsEventImpl({
+    required this.userId,
+    this.type,
+    this.limit,
+    this.refresh,
+  });
 
   @override
   final String userId;
@@ -815,43 +919,54 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
   @pragma('vm:prefer-inline')
   _$$GetUserReviewsEventImplCopyWith<_$GetUserReviewsEventImpl> get copyWith =>
       __$$GetUserReviewsEventImplCopyWithImpl<_$GetUserReviewsEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -860,9 +975,9 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -874,22 +989,27 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -898,9 +1018,13 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -910,7 +1034,7 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -922,22 +1046,27 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -946,9 +1075,13 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -958,7 +1091,7 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -978,20 +1111,20 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -999,10 +1132,10 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -1035,7 +1168,7 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -1081,11 +1214,12 @@ class _$GetUserReviewsEventImpl implements GetUserReviewsEvent {
 }
 
 abstract class GetUserReviewsEvent implements ReviewEvent {
-  const factory GetUserReviewsEvent(
-      {required final String userId,
-      final ReviewType? type,
-      final int? limit,
-      final bool? refresh}) = _$GetUserReviewsEventImpl;
+  const factory GetUserReviewsEvent({
+    required final String userId,
+    final ReviewType? type,
+    final int? limit,
+    final bool? refresh,
+  }) = _$GetUserReviewsEventImpl;
 
   String get userId;
   ReviewType? get type;
@@ -1101,9 +1235,10 @@ abstract class GetUserReviewsEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$GetPlanReviewsEventImplCopyWith<$Res> {
-  factory _$$GetPlanReviewsEventImplCopyWith(_$GetPlanReviewsEventImpl value,
-          $Res Function(_$GetPlanReviewsEventImpl) then) =
-      __$$GetPlanReviewsEventImplCopyWithImpl<$Res>;
+  factory _$$GetPlanReviewsEventImplCopyWith(
+    _$GetPlanReviewsEventImpl value,
+    $Res Function(_$GetPlanReviewsEventImpl) then,
+  ) = __$$GetPlanReviewsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId, int? limit, bool? refresh});
 }
@@ -1112,9 +1247,10 @@ abstract class _$$GetPlanReviewsEventImplCopyWith<$Res> {
 class __$$GetPlanReviewsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetPlanReviewsEventImpl>
     implements _$$GetPlanReviewsEventImplCopyWith<$Res> {
-  __$$GetPlanReviewsEventImplCopyWithImpl(_$GetPlanReviewsEventImpl _value,
-      $Res Function(_$GetPlanReviewsEventImpl) _then)
-      : super(_value, _then);
+  __$$GetPlanReviewsEventImplCopyWithImpl(
+    _$GetPlanReviewsEventImpl _value,
+    $Res Function(_$GetPlanReviewsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1125,28 +1261,33 @@ class __$$GetPlanReviewsEventImplCopyWithImpl<$Res>
     Object? limit = freezed,
     Object? refresh = freezed,
   }) {
-    return _then(_$GetPlanReviewsEventImpl(
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      limit: freezed == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int?,
-      refresh: freezed == refresh
-          ? _value.refresh
-          : refresh // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$GetPlanReviewsEventImpl(
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        limit: freezed == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        refresh: freezed == refresh
+            ? _value.refresh
+            : refresh // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
-  const _$GetPlanReviewsEventImpl(
-      {required this.planId, this.limit, this.refresh});
+  const _$GetPlanReviewsEventImpl({
+    required this.planId,
+    this.limit,
+    this.refresh,
+  });
 
   @override
   final String planId;
@@ -1180,43 +1321,54 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
   @pragma('vm:prefer-inline')
   _$$GetPlanReviewsEventImplCopyWith<_$GetPlanReviewsEventImpl> get copyWith =>
       __$$GetPlanReviewsEventImplCopyWithImpl<_$GetPlanReviewsEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -1225,9 +1377,9 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -1239,22 +1391,27 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -1263,9 +1420,13 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -1275,7 +1436,7 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -1287,22 +1448,27 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -1311,9 +1477,13 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -1323,7 +1493,7 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -1343,20 +1513,20 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -1364,10 +1534,10 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -1400,7 +1570,7 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -1446,10 +1616,11 @@ class _$GetPlanReviewsEventImpl implements GetPlanReviewsEvent {
 }
 
 abstract class GetPlanReviewsEvent implements ReviewEvent {
-  const factory GetPlanReviewsEvent(
-      {required final String planId,
-      final int? limit,
-      final bool? refresh}) = _$GetPlanReviewsEventImpl;
+  const factory GetPlanReviewsEvent({
+    required final String planId,
+    final int? limit,
+    final bool? refresh,
+  }) = _$GetPlanReviewsEventImpl;
 
   String get planId;
   int? get limit;
@@ -1465,9 +1636,9 @@ abstract class GetPlanReviewsEvent implements ReviewEvent {
 /// @nodoc
 abstract class _$$GetReviewsByUserEventImplCopyWith<$Res> {
   factory _$$GetReviewsByUserEventImplCopyWith(
-          _$GetReviewsByUserEventImpl value,
-          $Res Function(_$GetReviewsByUserEventImpl) then) =
-      __$$GetReviewsByUserEventImplCopyWithImpl<$Res>;
+    _$GetReviewsByUserEventImpl value,
+    $Res Function(_$GetReviewsByUserEventImpl) then,
+  ) = __$$GetReviewsByUserEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewerId, int? limit, bool? refresh});
 }
@@ -1476,9 +1647,10 @@ abstract class _$$GetReviewsByUserEventImplCopyWith<$Res> {
 class __$$GetReviewsByUserEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetReviewsByUserEventImpl>
     implements _$$GetReviewsByUserEventImplCopyWith<$Res> {
-  __$$GetReviewsByUserEventImplCopyWithImpl(_$GetReviewsByUserEventImpl _value,
-      $Res Function(_$GetReviewsByUserEventImpl) _then)
-      : super(_value, _then);
+  __$$GetReviewsByUserEventImplCopyWithImpl(
+    _$GetReviewsByUserEventImpl _value,
+    $Res Function(_$GetReviewsByUserEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1489,28 +1661,33 @@ class __$$GetReviewsByUserEventImplCopyWithImpl<$Res>
     Object? limit = freezed,
     Object? refresh = freezed,
   }) {
-    return _then(_$GetReviewsByUserEventImpl(
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      limit: freezed == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int?,
-      refresh: freezed == refresh
-          ? _value.refresh
-          : refresh // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$GetReviewsByUserEventImpl(
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        limit: freezed == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        refresh: freezed == refresh
+            ? _value.refresh
+            : refresh // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
-  const _$GetReviewsByUserEventImpl(
-      {required this.reviewerId, this.limit, this.refresh});
+  const _$GetReviewsByUserEventImpl({
+    required this.reviewerId,
+    this.limit,
+    this.refresh,
+  });
 
   @override
   final String reviewerId;
@@ -1544,44 +1721,56 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$GetReviewsByUserEventImplCopyWith<_$GetReviewsByUserEventImpl>
-      get copyWith => __$$GetReviewsByUserEventImplCopyWithImpl<
-          _$GetReviewsByUserEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$GetReviewsByUserEventImplCopyWithImpl<_$GetReviewsByUserEventImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -1590,9 +1779,9 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -1604,22 +1793,27 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -1628,9 +1822,13 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -1640,7 +1838,7 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -1652,22 +1850,27 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -1676,9 +1879,13 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -1688,7 +1895,7 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -1708,20 +1915,20 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -1729,10 +1936,10 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -1765,7 +1972,7 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -1811,10 +2018,11 @@ class _$GetReviewsByUserEventImpl implements GetReviewsByUserEvent {
 }
 
 abstract class GetReviewsByUserEvent implements ReviewEvent {
-  const factory GetReviewsByUserEvent(
-      {required final String reviewerId,
-      final int? limit,
-      final bool? refresh}) = _$GetReviewsByUserEventImpl;
+  const factory GetReviewsByUserEvent({
+    required final String reviewerId,
+    final int? limit,
+    final bool? refresh,
+  }) = _$GetReviewsByUserEventImpl;
 
   String get reviewerId;
   int? get limit;
@@ -1824,15 +2032,15 @@ abstract class GetReviewsByUserEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetReviewsByUserEventImplCopyWith<_$GetReviewsByUserEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LoadMoreUserReviewsEventImplCopyWith<$Res> {
   factory _$$LoadMoreUserReviewsEventImplCopyWith(
-          _$LoadMoreUserReviewsEventImpl value,
-          $Res Function(_$LoadMoreUserReviewsEventImpl) then) =
-      __$$LoadMoreUserReviewsEventImplCopyWithImpl<$Res>;
+    _$LoadMoreUserReviewsEventImpl value,
+    $Res Function(_$LoadMoreUserReviewsEventImpl) then,
+  ) = __$$LoadMoreUserReviewsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String userId, ReviewType? type});
 }
@@ -1842,28 +2050,27 @@ class __$$LoadMoreUserReviewsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$LoadMoreUserReviewsEventImpl>
     implements _$$LoadMoreUserReviewsEventImplCopyWith<$Res> {
   __$$LoadMoreUserReviewsEventImplCopyWithImpl(
-      _$LoadMoreUserReviewsEventImpl _value,
-      $Res Function(_$LoadMoreUserReviewsEventImpl) _then)
-      : super(_value, _then);
+    _$LoadMoreUserReviewsEventImpl _value,
+    $Res Function(_$LoadMoreUserReviewsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? userId = null,
-    Object? type = freezed,
-  }) {
-    return _then(_$LoadMoreUserReviewsEventImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReviewType?,
-    ));
+  $Res call({Object? userId = null, Object? type = freezed}) {
+    return _then(
+      _$LoadMoreUserReviewsEventImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: freezed == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReviewType?,
+      ),
+    );
   }
 }
 
@@ -1900,44 +2107,55 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$LoadMoreUserReviewsEventImplCopyWith<_$LoadMoreUserReviewsEventImpl>
-      get copyWith => __$$LoadMoreUserReviewsEventImplCopyWithImpl<
-          _$LoadMoreUserReviewsEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$LoadMoreUserReviewsEventImplCopyWithImpl<
+        _$LoadMoreUserReviewsEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -1946,9 +2164,9 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -1960,22 +2178,27 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -1984,9 +2207,13 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -1996,7 +2223,7 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -2008,22 +2235,27 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -2032,9 +2264,13 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -2044,7 +2280,7 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -2064,20 +2300,20 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -2085,10 +2321,10 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -2121,7 +2357,7 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -2167,9 +2403,10 @@ class _$LoadMoreUserReviewsEventImpl implements LoadMoreUserReviewsEvent {
 }
 
 abstract class LoadMoreUserReviewsEvent implements ReviewEvent {
-  const factory LoadMoreUserReviewsEvent(
-      {required final String userId,
-      final ReviewType? type}) = _$LoadMoreUserReviewsEventImpl;
+  const factory LoadMoreUserReviewsEvent({
+    required final String userId,
+    final ReviewType? type,
+  }) = _$LoadMoreUserReviewsEventImpl;
 
   String get userId;
   ReviewType? get type;
@@ -2178,15 +2415,15 @@ abstract class LoadMoreUserReviewsEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadMoreUserReviewsEventImplCopyWith<_$LoadMoreUserReviewsEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LoadMorePlanReviewsEventImplCopyWith<$Res> {
   factory _$$LoadMorePlanReviewsEventImplCopyWith(
-          _$LoadMorePlanReviewsEventImpl value,
-          $Res Function(_$LoadMorePlanReviewsEventImpl) then) =
-      __$$LoadMorePlanReviewsEventImplCopyWithImpl<$Res>;
+    _$LoadMorePlanReviewsEventImpl value,
+    $Res Function(_$LoadMorePlanReviewsEventImpl) then,
+  ) = __$$LoadMorePlanReviewsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId});
 }
@@ -2196,23 +2433,23 @@ class __$$LoadMorePlanReviewsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$LoadMorePlanReviewsEventImpl>
     implements _$$LoadMorePlanReviewsEventImplCopyWith<$Res> {
   __$$LoadMorePlanReviewsEventImplCopyWithImpl(
-      _$LoadMorePlanReviewsEventImpl _value,
-      $Res Function(_$LoadMorePlanReviewsEventImpl) _then)
-      : super(_value, _then);
+    _$LoadMorePlanReviewsEventImpl _value,
+    $Res Function(_$LoadMorePlanReviewsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? planId = null,
-  }) {
-    return _then(_$LoadMorePlanReviewsEventImpl(
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? planId = null}) {
+    return _then(
+      _$LoadMorePlanReviewsEventImpl(
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -2246,44 +2483,55 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$LoadMorePlanReviewsEventImplCopyWith<_$LoadMorePlanReviewsEventImpl>
-      get copyWith => __$$LoadMorePlanReviewsEventImplCopyWithImpl<
-          _$LoadMorePlanReviewsEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$LoadMorePlanReviewsEventImplCopyWithImpl<
+        _$LoadMorePlanReviewsEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -2292,9 +2540,9 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -2306,22 +2554,27 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -2330,9 +2583,13 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -2342,7 +2599,7 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -2354,22 +2611,27 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -2378,9 +2640,13 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -2390,7 +2656,7 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -2410,20 +2676,20 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -2431,10 +2697,10 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -2467,7 +2733,7 @@ class _$LoadMorePlanReviewsEventImpl implements LoadMorePlanReviewsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -2522,15 +2788,15 @@ abstract class LoadMorePlanReviewsEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadMorePlanReviewsEventImplCopyWith<_$LoadMorePlanReviewsEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LoadMoreReviewsByUserEventImplCopyWith<$Res> {
   factory _$$LoadMoreReviewsByUserEventImplCopyWith(
-          _$LoadMoreReviewsByUserEventImpl value,
-          $Res Function(_$LoadMoreReviewsByUserEventImpl) then) =
-      __$$LoadMoreReviewsByUserEventImplCopyWithImpl<$Res>;
+    _$LoadMoreReviewsByUserEventImpl value,
+    $Res Function(_$LoadMoreReviewsByUserEventImpl) then,
+  ) = __$$LoadMoreReviewsByUserEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewerId});
 }
@@ -2540,23 +2806,23 @@ class __$$LoadMoreReviewsByUserEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$LoadMoreReviewsByUserEventImpl>
     implements _$$LoadMoreReviewsByUserEventImplCopyWith<$Res> {
   __$$LoadMoreReviewsByUserEventImplCopyWithImpl(
-      _$LoadMoreReviewsByUserEventImpl _value,
-      $Res Function(_$LoadMoreReviewsByUserEventImpl) _then)
-      : super(_value, _then);
+    _$LoadMoreReviewsByUserEventImpl _value,
+    $Res Function(_$LoadMoreReviewsByUserEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewerId = null,
-  }) {
-    return _then(_$LoadMoreReviewsByUserEventImpl(
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewerId = null}) {
+    return _then(
+      _$LoadMoreReviewsByUserEventImpl(
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -2591,44 +2857,55 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$LoadMoreReviewsByUserEventImplCopyWith<_$LoadMoreReviewsByUserEventImpl>
-      get copyWith => __$$LoadMoreReviewsByUserEventImplCopyWithImpl<
-          _$LoadMoreReviewsByUserEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$LoadMoreReviewsByUserEventImplCopyWithImpl<
+        _$LoadMoreReviewsByUserEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -2637,9 +2914,9 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -2651,22 +2928,27 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -2675,9 +2957,13 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -2687,7 +2973,7 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -2699,22 +2985,27 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -2723,9 +3014,13 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -2735,7 +3030,7 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -2755,20 +3050,20 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -2776,10 +3071,10 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -2812,7 +3107,7 @@ class _$LoadMoreReviewsByUserEventImpl implements LoadMoreReviewsByUserEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -2867,14 +3162,15 @@ abstract class LoadMoreReviewsByUserEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadMoreReviewsByUserEventImplCopyWith<_$LoadMoreReviewsByUserEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateReviewEventImplCopyWith<$Res> {
-  factory _$$UpdateReviewEventImplCopyWith(_$UpdateReviewEventImpl value,
-          $Res Function(_$UpdateReviewEventImpl) then) =
-      __$$UpdateReviewEventImplCopyWithImpl<$Res>;
+  factory _$$UpdateReviewEventImplCopyWith(
+    _$UpdateReviewEventImpl value,
+    $Res Function(_$UpdateReviewEventImpl) then,
+  ) = __$$UpdateReviewEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ReviewEntity review});
 
@@ -2885,23 +3181,24 @@ abstract class _$$UpdateReviewEventImplCopyWith<$Res> {
 class __$$UpdateReviewEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$UpdateReviewEventImpl>
     implements _$$UpdateReviewEventImplCopyWith<$Res> {
-  __$$UpdateReviewEventImplCopyWithImpl(_$UpdateReviewEventImpl _value,
-      $Res Function(_$UpdateReviewEventImpl) _then)
-      : super(_value, _then);
+  __$$UpdateReviewEventImplCopyWithImpl(
+    _$UpdateReviewEventImpl _value,
+    $Res Function(_$UpdateReviewEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? review = null,
-  }) {
-    return _then(_$UpdateReviewEventImpl(
-      review: null == review
-          ? _value.review
-          : review // ignore: cast_nullable_to_non_nullable
-              as ReviewEntity,
-    ));
+  $Res call({Object? review = null}) {
+    return _then(
+      _$UpdateReviewEventImpl(
+        review: null == review
+            ? _value.review
+            : review // ignore: cast_nullable_to_non_nullable
+                  as ReviewEntity,
+      ),
+    );
   }
 
   /// Create a copy of ReviewEvent
@@ -2946,43 +3243,54 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
   @pragma('vm:prefer-inline')
   _$$UpdateReviewEventImplCopyWith<_$UpdateReviewEventImpl> get copyWith =>
       __$$UpdateReviewEventImplCopyWithImpl<_$UpdateReviewEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -2991,9 +3299,9 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -3005,22 +3313,27 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -3029,9 +3342,13 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -3041,7 +3358,7 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -3053,22 +3370,27 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -3077,9 +3399,13 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -3089,7 +3415,7 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -3109,20 +3435,20 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -3130,10 +3456,10 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -3166,7 +3492,7 @@ class _$UpdateReviewEventImpl implements UpdateReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -3226,9 +3552,10 @@ abstract class UpdateReviewEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$DeleteReviewEventImplCopyWith<$Res> {
-  factory _$$DeleteReviewEventImplCopyWith(_$DeleteReviewEventImpl value,
-          $Res Function(_$DeleteReviewEventImpl) then) =
-      __$$DeleteReviewEventImplCopyWithImpl<$Res>;
+  factory _$$DeleteReviewEventImplCopyWith(
+    _$DeleteReviewEventImpl value,
+    $Res Function(_$DeleteReviewEventImpl) then,
+  ) = __$$DeleteReviewEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewId});
 }
@@ -3237,23 +3564,24 @@ abstract class _$$DeleteReviewEventImplCopyWith<$Res> {
 class __$$DeleteReviewEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$DeleteReviewEventImpl>
     implements _$$DeleteReviewEventImplCopyWith<$Res> {
-  __$$DeleteReviewEventImplCopyWithImpl(_$DeleteReviewEventImpl _value,
-      $Res Function(_$DeleteReviewEventImpl) _then)
-      : super(_value, _then);
+  __$$DeleteReviewEventImplCopyWithImpl(
+    _$DeleteReviewEventImpl _value,
+    $Res Function(_$DeleteReviewEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewId = null,
-  }) {
-    return _then(_$DeleteReviewEventImpl(
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewId = null}) {
+    return _then(
+      _$DeleteReviewEventImpl(
+        reviewId: null == reviewId
+            ? _value.reviewId
+            : reviewId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -3289,43 +3617,54 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
   @pragma('vm:prefer-inline')
   _$$DeleteReviewEventImplCopyWith<_$DeleteReviewEventImpl> get copyWith =>
       __$$DeleteReviewEventImplCopyWithImpl<_$DeleteReviewEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -3334,9 +3673,9 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -3348,22 +3687,27 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -3372,9 +3716,13 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -3384,7 +3732,7 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -3396,22 +3744,27 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -3420,9 +3773,13 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -3432,7 +3789,7 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -3452,20 +3809,20 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -3473,10 +3830,10 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -3509,7 +3866,7 @@ class _$DeleteReviewEventImpl implements DeleteReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -3570,9 +3927,9 @@ abstract class DeleteReviewEvent implements ReviewEvent {
 /// @nodoc
 abstract class _$$MarkReviewAsHelpfulEventImplCopyWith<$Res> {
   factory _$$MarkReviewAsHelpfulEventImplCopyWith(
-          _$MarkReviewAsHelpfulEventImpl value,
-          $Res Function(_$MarkReviewAsHelpfulEventImpl) then) =
-      __$$MarkReviewAsHelpfulEventImplCopyWithImpl<$Res>;
+    _$MarkReviewAsHelpfulEventImpl value,
+    $Res Function(_$MarkReviewAsHelpfulEventImpl) then,
+  ) = __$$MarkReviewAsHelpfulEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewId, String userId});
 }
@@ -3582,36 +3939,37 @@ class __$$MarkReviewAsHelpfulEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$MarkReviewAsHelpfulEventImpl>
     implements _$$MarkReviewAsHelpfulEventImplCopyWith<$Res> {
   __$$MarkReviewAsHelpfulEventImplCopyWithImpl(
-      _$MarkReviewAsHelpfulEventImpl _value,
-      $Res Function(_$MarkReviewAsHelpfulEventImpl) _then)
-      : super(_value, _then);
+    _$MarkReviewAsHelpfulEventImpl _value,
+    $Res Function(_$MarkReviewAsHelpfulEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewId = null,
-    Object? userId = null,
-  }) {
-    return _then(_$MarkReviewAsHelpfulEventImpl(
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewId = null, Object? userId = null}) {
+    return _then(
+      _$MarkReviewAsHelpfulEventImpl(
+        reviewId: null == reviewId
+            ? _value.reviewId
+            : reviewId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
-  const _$MarkReviewAsHelpfulEventImpl(
-      {required this.reviewId, required this.userId});
+  const _$MarkReviewAsHelpfulEventImpl({
+    required this.reviewId,
+    required this.userId,
+  });
 
   @override
   final String reviewId;
@@ -3642,44 +4000,55 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$MarkReviewAsHelpfulEventImplCopyWith<_$MarkReviewAsHelpfulEventImpl>
-      get copyWith => __$$MarkReviewAsHelpfulEventImplCopyWithImpl<
-          _$MarkReviewAsHelpfulEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$MarkReviewAsHelpfulEventImplCopyWithImpl<
+        _$MarkReviewAsHelpfulEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -3688,9 +4057,9 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -3702,22 +4071,27 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -3726,9 +4100,13 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -3738,7 +4116,7 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -3750,22 +4128,27 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -3774,9 +4157,13 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -3786,7 +4173,7 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -3806,20 +4193,20 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -3827,10 +4214,10 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -3863,7 +4250,7 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -3909,9 +4296,10 @@ class _$MarkReviewAsHelpfulEventImpl implements MarkReviewAsHelpfulEvent {
 }
 
 abstract class MarkReviewAsHelpfulEvent implements ReviewEvent {
-  const factory MarkReviewAsHelpfulEvent(
-      {required final String reviewId,
-      required final String userId}) = _$MarkReviewAsHelpfulEventImpl;
+  const factory MarkReviewAsHelpfulEvent({
+    required final String reviewId,
+    required final String userId,
+  }) = _$MarkReviewAsHelpfulEventImpl;
 
   String get reviewId;
   String get userId;
@@ -3920,15 +4308,15 @@ abstract class MarkReviewAsHelpfulEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MarkReviewAsHelpfulEventImplCopyWith<_$MarkReviewAsHelpfulEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UnmarkReviewAsHelpfulEventImplCopyWith<$Res> {
   factory _$$UnmarkReviewAsHelpfulEventImplCopyWith(
-          _$UnmarkReviewAsHelpfulEventImpl value,
-          $Res Function(_$UnmarkReviewAsHelpfulEventImpl) then) =
-      __$$UnmarkReviewAsHelpfulEventImplCopyWithImpl<$Res>;
+    _$UnmarkReviewAsHelpfulEventImpl value,
+    $Res Function(_$UnmarkReviewAsHelpfulEventImpl) then,
+  ) = __$$UnmarkReviewAsHelpfulEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewId, String userId});
 }
@@ -3938,36 +4326,37 @@ class __$$UnmarkReviewAsHelpfulEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$UnmarkReviewAsHelpfulEventImpl>
     implements _$$UnmarkReviewAsHelpfulEventImplCopyWith<$Res> {
   __$$UnmarkReviewAsHelpfulEventImplCopyWithImpl(
-      _$UnmarkReviewAsHelpfulEventImpl _value,
-      $Res Function(_$UnmarkReviewAsHelpfulEventImpl) _then)
-      : super(_value, _then);
+    _$UnmarkReviewAsHelpfulEventImpl _value,
+    $Res Function(_$UnmarkReviewAsHelpfulEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewId = null,
-    Object? userId = null,
-  }) {
-    return _then(_$UnmarkReviewAsHelpfulEventImpl(
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewId = null, Object? userId = null}) {
+    return _then(
+      _$UnmarkReviewAsHelpfulEventImpl(
+        reviewId: null == reviewId
+            ? _value.reviewId
+            : reviewId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
-  const _$UnmarkReviewAsHelpfulEventImpl(
-      {required this.reviewId, required this.userId});
+  const _$UnmarkReviewAsHelpfulEventImpl({
+    required this.reviewId,
+    required this.userId,
+  });
 
   @override
   final String reviewId;
@@ -3998,44 +4387,55 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$UnmarkReviewAsHelpfulEventImplCopyWith<_$UnmarkReviewAsHelpfulEventImpl>
-      get copyWith => __$$UnmarkReviewAsHelpfulEventImplCopyWithImpl<
-          _$UnmarkReviewAsHelpfulEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$UnmarkReviewAsHelpfulEventImplCopyWithImpl<
+        _$UnmarkReviewAsHelpfulEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -4044,9 +4444,9 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -4058,22 +4458,27 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -4082,9 +4487,13 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -4094,7 +4503,7 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -4106,22 +4515,27 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -4130,9 +4544,13 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -4142,7 +4560,7 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -4162,20 +4580,20 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -4183,10 +4601,10 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -4219,7 +4637,7 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -4265,9 +4683,10 @@ class _$UnmarkReviewAsHelpfulEventImpl implements UnmarkReviewAsHelpfulEvent {
 }
 
 abstract class UnmarkReviewAsHelpfulEvent implements ReviewEvent {
-  const factory UnmarkReviewAsHelpfulEvent(
-      {required final String reviewId,
-      required final String userId}) = _$UnmarkReviewAsHelpfulEventImpl;
+  const factory UnmarkReviewAsHelpfulEvent({
+    required final String reviewId,
+    required final String userId,
+  }) = _$UnmarkReviewAsHelpfulEventImpl;
 
   String get reviewId;
   String get userId;
@@ -4276,14 +4695,15 @@ abstract class UnmarkReviewAsHelpfulEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnmarkReviewAsHelpfulEventImplCopyWith<_$UnmarkReviewAsHelpfulEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$GetUserRatingEventImplCopyWith<$Res> {
-  factory _$$GetUserRatingEventImplCopyWith(_$GetUserRatingEventImpl value,
-          $Res Function(_$GetUserRatingEventImpl) then) =
-      __$$GetUserRatingEventImplCopyWithImpl<$Res>;
+  factory _$$GetUserRatingEventImplCopyWith(
+    _$GetUserRatingEventImpl value,
+    $Res Function(_$GetUserRatingEventImpl) then,
+  ) = __$$GetUserRatingEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String userId});
 }
@@ -4292,23 +4712,24 @@ abstract class _$$GetUserRatingEventImplCopyWith<$Res> {
 class __$$GetUserRatingEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetUserRatingEventImpl>
     implements _$$GetUserRatingEventImplCopyWith<$Res> {
-  __$$GetUserRatingEventImplCopyWithImpl(_$GetUserRatingEventImpl _value,
-      $Res Function(_$GetUserRatingEventImpl) _then)
-      : super(_value, _then);
+  __$$GetUserRatingEventImplCopyWithImpl(
+    _$GetUserRatingEventImpl _value,
+    $Res Function(_$GetUserRatingEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? userId = null,
-  }) {
-    return _then(_$GetUserRatingEventImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? userId = null}) {
+    return _then(
+      _$GetUserRatingEventImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -4343,43 +4764,54 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
   @pragma('vm:prefer-inline')
   _$$GetUserRatingEventImplCopyWith<_$GetUserRatingEventImpl> get copyWith =>
       __$$GetUserRatingEventImplCopyWithImpl<_$GetUserRatingEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -4388,9 +4820,9 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -4402,22 +4834,27 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -4426,9 +4863,13 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -4438,7 +4879,7 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -4450,22 +4891,27 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -4474,9 +4920,13 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -4486,7 +4936,7 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -4506,20 +4956,20 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -4527,10 +4977,10 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -4563,7 +5013,7 @@ class _$GetUserRatingEventImpl implements GetUserRatingEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -4624,15 +5074,16 @@ abstract class GetUserRatingEvent implements ReviewEvent {
 /// @nodoc
 abstract class _$$CalculateUserRatingEventImplCopyWith<$Res> {
   factory _$$CalculateUserRatingEventImplCopyWith(
-          _$CalculateUserRatingEventImpl value,
-          $Res Function(_$CalculateUserRatingEventImpl) then) =
-      __$$CalculateUserRatingEventImplCopyWithImpl<$Res>;
+    _$CalculateUserRatingEventImpl value,
+    $Res Function(_$CalculateUserRatingEventImpl) then,
+  ) = __$$CalculateUserRatingEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String userId,
-      double? newRating,
-      ReviewType? reviewType,
-      bool? forceRecalculation});
+  $Res call({
+    String userId,
+    double? newRating,
+    ReviewType? reviewType,
+    bool? forceRecalculation,
+  });
 }
 
 /// @nodoc
@@ -4640,9 +5091,9 @@ class __$$CalculateUserRatingEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$CalculateUserRatingEventImpl>
     implements _$$CalculateUserRatingEventImplCopyWith<$Res> {
   __$$CalculateUserRatingEventImplCopyWithImpl(
-      _$CalculateUserRatingEventImpl _value,
-      $Res Function(_$CalculateUserRatingEventImpl) _then)
-      : super(_value, _then);
+    _$CalculateUserRatingEventImpl _value,
+    $Res Function(_$CalculateUserRatingEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -4654,35 +5105,38 @@ class __$$CalculateUserRatingEventImplCopyWithImpl<$Res>
     Object? reviewType = freezed,
     Object? forceRecalculation = freezed,
   }) {
-    return _then(_$CalculateUserRatingEventImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      newRating: freezed == newRating
-          ? _value.newRating
-          : newRating // ignore: cast_nullable_to_non_nullable
-              as double?,
-      reviewType: freezed == reviewType
-          ? _value.reviewType
-          : reviewType // ignore: cast_nullable_to_non_nullable
-              as ReviewType?,
-      forceRecalculation: freezed == forceRecalculation
-          ? _value.forceRecalculation
-          : forceRecalculation // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+    return _then(
+      _$CalculateUserRatingEventImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        newRating: freezed == newRating
+            ? _value.newRating
+            : newRating // ignore: cast_nullable_to_non_nullable
+                  as double?,
+        reviewType: freezed == reviewType
+            ? _value.reviewType
+            : reviewType // ignore: cast_nullable_to_non_nullable
+                  as ReviewType?,
+        forceRecalculation: freezed == forceRecalculation
+            ? _value.forceRecalculation
+            : forceRecalculation // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
-  const _$CalculateUserRatingEventImpl(
-      {required this.userId,
-      this.newRating,
-      this.reviewType,
-      this.forceRecalculation});
+  const _$CalculateUserRatingEventImpl({
+    required this.userId,
+    this.newRating,
+    this.reviewType,
+    this.forceRecalculation,
+  });
 
   @override
   final String userId;
@@ -4714,7 +5168,12 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, userId, newRating, reviewType, forceRecalculation);
+    runtimeType,
+    userId,
+    newRating,
+    reviewType,
+    forceRecalculation,
+  );
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -4722,44 +5181,55 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$CalculateUserRatingEventImplCopyWith<_$CalculateUserRatingEventImpl>
-      get copyWith => __$$CalculateUserRatingEventImplCopyWithImpl<
-          _$CalculateUserRatingEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$CalculateUserRatingEventImplCopyWithImpl<
+        _$CalculateUserRatingEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -4768,37 +5238,46 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
   }) {
     return calculateUserRating(
-        userId, newRating, reviewType, forceRecalculation);
+      userId,
+      newRating,
+      reviewType,
+      forceRecalculation,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -4807,9 +5286,13 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -4819,35 +5302,44 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
   }) {
     return calculateUserRating?.call(
-        userId, newRating, reviewType, forceRecalculation);
+      userId,
+      newRating,
+      reviewType,
+      forceRecalculation,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -4856,9 +5348,13 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -4868,7 +5364,7 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -4876,7 +5372,11 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
   }) {
     if (calculateUserRating != null) {
       return calculateUserRating(
-          userId, newRating, reviewType, forceRecalculation);
+        userId,
+        newRating,
+        reviewType,
+        forceRecalculation,
+      );
     }
     return orElse();
   }
@@ -4889,20 +5389,20 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -4910,10 +5410,10 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -4946,7 +5446,7 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -4992,11 +5492,12 @@ class _$CalculateUserRatingEventImpl implements CalculateUserRatingEvent {
 }
 
 abstract class CalculateUserRatingEvent implements ReviewEvent {
-  const factory CalculateUserRatingEvent(
-      {required final String userId,
-      final double? newRating,
-      final ReviewType? reviewType,
-      final bool? forceRecalculation}) = _$CalculateUserRatingEventImpl;
+  const factory CalculateUserRatingEvent({
+    required final String userId,
+    final double? newRating,
+    final ReviewType? reviewType,
+    final bool? forceRecalculation,
+  }) = _$CalculateUserRatingEventImpl;
 
   String get userId;
   double? get newRating;
@@ -5007,15 +5508,15 @@ abstract class CalculateUserRatingEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CalculateUserRatingEventImplCopyWith<_$CalculateUserRatingEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$GetTopRatedUsersEventImplCopyWith<$Res> {
   factory _$$GetTopRatedUsersEventImplCopyWith(
-          _$GetTopRatedUsersEventImpl value,
-          $Res Function(_$GetTopRatedUsersEventImpl) then) =
-      __$$GetTopRatedUsersEventImplCopyWithImpl<$Res>;
+    _$GetTopRatedUsersEventImpl value,
+    $Res Function(_$GetTopRatedUsersEventImpl) then,
+  ) = __$$GetTopRatedUsersEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ReviewType? type, int? limit});
 }
@@ -5024,28 +5525,28 @@ abstract class _$$GetTopRatedUsersEventImplCopyWith<$Res> {
 class __$$GetTopRatedUsersEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetTopRatedUsersEventImpl>
     implements _$$GetTopRatedUsersEventImplCopyWith<$Res> {
-  __$$GetTopRatedUsersEventImplCopyWithImpl(_$GetTopRatedUsersEventImpl _value,
-      $Res Function(_$GetTopRatedUsersEventImpl) _then)
-      : super(_value, _then);
+  __$$GetTopRatedUsersEventImplCopyWithImpl(
+    _$GetTopRatedUsersEventImpl _value,
+    $Res Function(_$GetTopRatedUsersEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = freezed,
-    Object? limit = freezed,
-  }) {
-    return _then(_$GetTopRatedUsersEventImpl(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ReviewType?,
-      limit: freezed == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+  $Res call({Object? type = freezed, Object? limit = freezed}) {
+    return _then(
+      _$GetTopRatedUsersEventImpl(
+        type: freezed == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as ReviewType?,
+        limit: freezed == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int?,
+      ),
+    );
   }
 }
 
@@ -5082,44 +5583,56 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$GetTopRatedUsersEventImplCopyWith<_$GetTopRatedUsersEventImpl>
-      get copyWith => __$$GetTopRatedUsersEventImplCopyWithImpl<
-          _$GetTopRatedUsersEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$GetTopRatedUsersEventImplCopyWithImpl<_$GetTopRatedUsersEventImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -5128,9 +5641,9 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -5142,22 +5655,27 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -5166,9 +5684,13 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -5178,7 +5700,7 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -5190,22 +5712,27 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -5214,9 +5741,13 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -5226,7 +5757,7 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -5246,20 +5777,20 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -5267,10 +5798,10 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -5303,7 +5834,7 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -5349,8 +5880,10 @@ class _$GetTopRatedUsersEventImpl implements GetTopRatedUsersEvent {
 }
 
 abstract class GetTopRatedUsersEvent implements ReviewEvent {
-  const factory GetTopRatedUsersEvent(
-      {final ReviewType? type, final int? limit}) = _$GetTopRatedUsersEventImpl;
+  const factory GetTopRatedUsersEvent({
+    final ReviewType? type,
+    final int? limit,
+  }) = _$GetTopRatedUsersEventImpl;
 
   ReviewType? get type;
   int? get limit;
@@ -5359,15 +5892,15 @@ abstract class GetTopRatedUsersEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTopRatedUsersEventImplCopyWith<_$GetTopRatedUsersEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$GetPendingReviewsEventImplCopyWith<$Res> {
   factory _$$GetPendingReviewsEventImplCopyWith(
-          _$GetPendingReviewsEventImpl value,
-          $Res Function(_$GetPendingReviewsEventImpl) then) =
-      __$$GetPendingReviewsEventImplCopyWithImpl<$Res>;
+    _$GetPendingReviewsEventImpl value,
+    $Res Function(_$GetPendingReviewsEventImpl) then,
+  ) = __$$GetPendingReviewsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int? limit, bool? refresh});
 }
@@ -5377,28 +5910,27 @@ class __$$GetPendingReviewsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetPendingReviewsEventImpl>
     implements _$$GetPendingReviewsEventImplCopyWith<$Res> {
   __$$GetPendingReviewsEventImplCopyWithImpl(
-      _$GetPendingReviewsEventImpl _value,
-      $Res Function(_$GetPendingReviewsEventImpl) _then)
-      : super(_value, _then);
+    _$GetPendingReviewsEventImpl _value,
+    $Res Function(_$GetPendingReviewsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? limit = freezed,
-    Object? refresh = freezed,
-  }) {
-    return _then(_$GetPendingReviewsEventImpl(
-      limit: freezed == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int?,
-      refresh: freezed == refresh
-          ? _value.refresh
-          : refresh // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+  $Res call({Object? limit = freezed, Object? refresh = freezed}) {
+    return _then(
+      _$GetPendingReviewsEventImpl(
+        limit: freezed == limit
+            ? _value.limit
+            : limit // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        refresh: freezed == refresh
+            ? _value.refresh
+            : refresh // ignore: cast_nullable_to_non_nullable
+                  as bool?,
+      ),
+    );
   }
 }
 
@@ -5435,44 +5967,56 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$GetPendingReviewsEventImplCopyWith<_$GetPendingReviewsEventImpl>
-      get copyWith => __$$GetPendingReviewsEventImplCopyWithImpl<
-          _$GetPendingReviewsEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$GetPendingReviewsEventImplCopyWithImpl<_$GetPendingReviewsEventImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -5481,9 +6025,9 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -5495,22 +6039,27 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -5519,9 +6068,13 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -5531,7 +6084,7 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -5543,22 +6096,27 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -5567,9 +6125,13 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -5579,7 +6141,7 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -5599,20 +6161,20 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -5620,10 +6182,10 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -5656,7 +6218,7 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -5702,8 +6264,10 @@ class _$GetPendingReviewsEventImpl implements GetPendingReviewsEvent {
 }
 
 abstract class GetPendingReviewsEvent implements ReviewEvent {
-  const factory GetPendingReviewsEvent(
-      {final int? limit, final bool? refresh}) = _$GetPendingReviewsEventImpl;
+  const factory GetPendingReviewsEvent({
+    final int? limit,
+    final bool? refresh,
+  }) = _$GetPendingReviewsEventImpl;
 
   int? get limit;
   bool? get refresh;
@@ -5712,14 +6276,15 @@ abstract class GetPendingReviewsEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPendingReviewsEventImplCopyWith<_$GetPendingReviewsEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ApproveReviewEventImplCopyWith<$Res> {
-  factory _$$ApproveReviewEventImplCopyWith(_$ApproveReviewEventImpl value,
-          $Res Function(_$ApproveReviewEventImpl) then) =
-      __$$ApproveReviewEventImplCopyWithImpl<$Res>;
+  factory _$$ApproveReviewEventImplCopyWith(
+    _$ApproveReviewEventImpl value,
+    $Res Function(_$ApproveReviewEventImpl) then,
+  ) = __$$ApproveReviewEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewId});
 }
@@ -5728,23 +6293,24 @@ abstract class _$$ApproveReviewEventImplCopyWith<$Res> {
 class __$$ApproveReviewEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$ApproveReviewEventImpl>
     implements _$$ApproveReviewEventImplCopyWith<$Res> {
-  __$$ApproveReviewEventImplCopyWithImpl(_$ApproveReviewEventImpl _value,
-      $Res Function(_$ApproveReviewEventImpl) _then)
-      : super(_value, _then);
+  __$$ApproveReviewEventImplCopyWithImpl(
+    _$ApproveReviewEventImpl _value,
+    $Res Function(_$ApproveReviewEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewId = null,
-  }) {
-    return _then(_$ApproveReviewEventImpl(
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewId = null}) {
+    return _then(
+      _$ApproveReviewEventImpl(
+        reviewId: null == reviewId
+            ? _value.reviewId
+            : reviewId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -5780,43 +6346,54 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
   @pragma('vm:prefer-inline')
   _$$ApproveReviewEventImplCopyWith<_$ApproveReviewEventImpl> get copyWith =>
       __$$ApproveReviewEventImplCopyWithImpl<_$ApproveReviewEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -5825,9 +6402,9 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -5839,22 +6416,27 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -5863,9 +6445,13 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -5875,7 +6461,7 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -5887,22 +6473,27 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -5911,9 +6502,13 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -5923,7 +6518,7 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -5943,20 +6538,20 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -5964,10 +6559,10 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -6000,7 +6595,7 @@ class _$ApproveReviewEventImpl implements ApproveReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -6060,9 +6655,10 @@ abstract class ApproveReviewEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$RejectReviewEventImplCopyWith<$Res> {
-  factory _$$RejectReviewEventImplCopyWith(_$RejectReviewEventImpl value,
-          $Res Function(_$RejectReviewEventImpl) then) =
-      __$$RejectReviewEventImplCopyWithImpl<$Res>;
+  factory _$$RejectReviewEventImplCopyWith(
+    _$RejectReviewEventImpl value,
+    $Res Function(_$RejectReviewEventImpl) then,
+  ) = __$$RejectReviewEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewId, String reason});
 }
@@ -6071,28 +6667,28 @@ abstract class _$$RejectReviewEventImplCopyWith<$Res> {
 class __$$RejectReviewEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$RejectReviewEventImpl>
     implements _$$RejectReviewEventImplCopyWith<$Res> {
-  __$$RejectReviewEventImplCopyWithImpl(_$RejectReviewEventImpl _value,
-      $Res Function(_$RejectReviewEventImpl) _then)
-      : super(_value, _then);
+  __$$RejectReviewEventImplCopyWithImpl(
+    _$RejectReviewEventImpl _value,
+    $Res Function(_$RejectReviewEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewId = null,
-    Object? reason = null,
-  }) {
-    return _then(_$RejectReviewEventImpl(
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reason: null == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewId = null, Object? reason = null}) {
+    return _then(
+      _$RejectReviewEventImpl(
+        reviewId: null == reviewId
+            ? _value.reviewId
+            : reviewId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reason: null == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -6131,43 +6727,54 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
   @pragma('vm:prefer-inline')
   _$$RejectReviewEventImplCopyWith<_$RejectReviewEventImpl> get copyWith =>
       __$$RejectReviewEventImplCopyWithImpl<_$RejectReviewEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -6176,9 +6783,9 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -6190,22 +6797,27 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -6214,9 +6826,13 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -6226,7 +6842,7 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -6238,22 +6854,27 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -6262,9 +6883,13 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -6274,7 +6899,7 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -6294,20 +6919,20 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -6315,10 +6940,10 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -6351,7 +6976,7 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -6397,9 +7022,10 @@ class _$RejectReviewEventImpl implements RejectReviewEvent {
 }
 
 abstract class RejectReviewEvent implements ReviewEvent {
-  const factory RejectReviewEvent(
-      {required final String reviewId,
-      required final String reason}) = _$RejectReviewEventImpl;
+  const factory RejectReviewEvent({
+    required final String reviewId,
+    required final String reason,
+  }) = _$RejectReviewEventImpl;
 
   String get reviewId;
   String get reason;
@@ -6413,9 +7039,10 @@ abstract class RejectReviewEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$FlagReviewEventImplCopyWith<$Res> {
-  factory _$$FlagReviewEventImplCopyWith(_$FlagReviewEventImpl value,
-          $Res Function(_$FlagReviewEventImpl) then) =
-      __$$FlagReviewEventImplCopyWithImpl<$Res>;
+  factory _$$FlagReviewEventImplCopyWith(
+    _$FlagReviewEventImpl value,
+    $Res Function(_$FlagReviewEventImpl) then,
+  ) = __$$FlagReviewEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String reviewId, String reason});
 }
@@ -6425,27 +7052,27 @@ class __$$FlagReviewEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$FlagReviewEventImpl>
     implements _$$FlagReviewEventImplCopyWith<$Res> {
   __$$FlagReviewEventImplCopyWithImpl(
-      _$FlagReviewEventImpl _value, $Res Function(_$FlagReviewEventImpl) _then)
-      : super(_value, _then);
+    _$FlagReviewEventImpl _value,
+    $Res Function(_$FlagReviewEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? reviewId = null,
-    Object? reason = null,
-  }) {
-    return _then(_$FlagReviewEventImpl(
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reason: null == reason
-          ? _value.reason
-          : reason // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? reviewId = null, Object? reason = null}) {
+    return _then(
+      _$FlagReviewEventImpl(
+        reviewId: null == reviewId
+            ? _value.reviewId
+            : reviewId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        reason: null == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -6484,43 +7111,54 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
   @pragma('vm:prefer-inline')
   _$$FlagReviewEventImplCopyWith<_$FlagReviewEventImpl> get copyWith =>
       __$$FlagReviewEventImplCopyWithImpl<_$FlagReviewEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -6529,9 +7167,9 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -6543,22 +7181,27 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -6567,9 +7210,13 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -6579,7 +7226,7 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -6591,22 +7238,27 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -6615,9 +7267,13 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -6627,7 +7283,7 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -6647,20 +7303,20 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -6668,10 +7324,10 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -6704,7 +7360,7 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -6750,9 +7406,10 @@ class _$FlagReviewEventImpl implements FlagReviewEvent {
 }
 
 abstract class FlagReviewEvent implements ReviewEvent {
-  const factory FlagReviewEvent(
-      {required final String reviewId,
-      required final String reason}) = _$FlagReviewEventImpl;
+  const factory FlagReviewEvent({
+    required final String reviewId,
+    required final String reason,
+  }) = _$FlagReviewEventImpl;
 
   String get reviewId;
   String get reason;
@@ -6767,18 +7424,19 @@ abstract class FlagReviewEvent implements ReviewEvent {
 /// @nodoc
 abstract class _$$GetReviewMetricsEventImplCopyWith<$Res> {
   factory _$$GetReviewMetricsEventImplCopyWith(
-          _$GetReviewMetricsEventImpl value,
-          $Res Function(_$GetReviewMetricsEventImpl) then) =
-      __$$GetReviewMetricsEventImplCopyWithImpl<$Res>;
+    _$GetReviewMetricsEventImpl value,
+    $Res Function(_$GetReviewMetricsEventImpl) then,
+  ) = __$$GetReviewMetricsEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$GetReviewMetricsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetReviewMetricsEventImpl>
     implements _$$GetReviewMetricsEventImplCopyWith<$Res> {
-  __$$GetReviewMetricsEventImplCopyWithImpl(_$GetReviewMetricsEventImpl _value,
-      $Res Function(_$GetReviewMetricsEventImpl) _then)
-      : super(_value, _then);
+  __$$GetReviewMetricsEventImplCopyWithImpl(
+    _$GetReviewMetricsEventImpl _value,
+    $Res Function(_$GetReviewMetricsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -6808,37 +7466,46 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -6847,9 +7514,9 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -6861,22 +7528,27 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -6885,9 +7557,13 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -6897,7 +7573,7 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -6909,22 +7585,27 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -6933,9 +7614,13 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -6945,7 +7630,7 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -6965,20 +7650,20 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -6986,10 +7671,10 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -7022,7 +7707,7 @@ class _$GetReviewMetricsEventImpl implements GetReviewMetricsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -7074,9 +7759,9 @@ abstract class GetReviewMetricsEvent implements ReviewEvent {
 /// @nodoc
 abstract class _$$GetRatingDistributionEventImplCopyWith<$Res> {
   factory _$$GetRatingDistributionEventImplCopyWith(
-          _$GetRatingDistributionEventImpl value,
-          $Res Function(_$GetRatingDistributionEventImpl) then) =
-      __$$GetRatingDistributionEventImplCopyWithImpl<$Res>;
+    _$GetRatingDistributionEventImpl value,
+    $Res Function(_$GetRatingDistributionEventImpl) then,
+  ) = __$$GetRatingDistributionEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -7084,9 +7769,9 @@ class __$$GetRatingDistributionEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetRatingDistributionEventImpl>
     implements _$$GetRatingDistributionEventImplCopyWith<$Res> {
   __$$GetRatingDistributionEventImplCopyWithImpl(
-      _$GetRatingDistributionEventImpl _value,
-      $Res Function(_$GetRatingDistributionEventImpl) _then)
-      : super(_value, _then);
+    _$GetRatingDistributionEventImpl _value,
+    $Res Function(_$GetRatingDistributionEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -7116,37 +7801,46 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -7155,9 +7849,9 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -7169,22 +7863,27 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -7193,9 +7892,13 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -7205,7 +7908,7 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -7217,22 +7920,27 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -7241,9 +7949,13 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -7253,7 +7965,7 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -7273,20 +7985,20 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -7294,10 +8006,10 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -7330,7 +8042,7 @@ class _$GetRatingDistributionEventImpl implements GetRatingDistributionEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -7381,9 +8093,10 @@ abstract class GetRatingDistributionEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$GetReviewTrendsEventImplCopyWith<$Res> {
-  factory _$$GetReviewTrendsEventImplCopyWith(_$GetReviewTrendsEventImpl value,
-          $Res Function(_$GetReviewTrendsEventImpl) then) =
-      __$$GetReviewTrendsEventImplCopyWithImpl<$Res>;
+  factory _$$GetReviewTrendsEventImplCopyWith(
+    _$GetReviewTrendsEventImpl value,
+    $Res Function(_$GetReviewTrendsEventImpl) then,
+  ) = __$$GetReviewTrendsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime startDate, DateTime endDate});
 }
@@ -7392,36 +8105,38 @@ abstract class _$$GetReviewTrendsEventImplCopyWith<$Res> {
 class __$$GetReviewTrendsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$GetReviewTrendsEventImpl>
     implements _$$GetReviewTrendsEventImplCopyWith<$Res> {
-  __$$GetReviewTrendsEventImplCopyWithImpl(_$GetReviewTrendsEventImpl _value,
-      $Res Function(_$GetReviewTrendsEventImpl) _then)
-      : super(_value, _then);
+  __$$GetReviewTrendsEventImplCopyWithImpl(
+    _$GetReviewTrendsEventImpl _value,
+    $Res Function(_$GetReviewTrendsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? startDate = null,
-    Object? endDate = null,
-  }) {
-    return _then(_$GetReviewTrendsEventImpl(
-      startDate: null == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endDate: null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+  $Res call({Object? startDate = null, Object? endDate = null}) {
+    return _then(
+      _$GetReviewTrendsEventImpl(
+        startDate: null == startDate
+            ? _value.startDate
+            : startDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        endDate: null == endDate
+            ? _value.endDate
+            : endDate // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
-  const _$GetReviewTrendsEventImpl(
-      {required this.startDate, required this.endDate});
+  const _$GetReviewTrendsEventImpl({
+    required this.startDate,
+    required this.endDate,
+  });
 
   @override
   final DateTime startDate;
@@ -7452,45 +8167,56 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$GetReviewTrendsEventImplCopyWith<_$GetReviewTrendsEventImpl>
-      get copyWith =>
-          __$$GetReviewTrendsEventImplCopyWithImpl<_$GetReviewTrendsEventImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$GetReviewTrendsEventImplCopyWithImpl<_$GetReviewTrendsEventImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -7499,9 +8225,9 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -7513,22 +8239,27 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -7537,9 +8268,13 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -7549,7 +8284,7 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -7561,22 +8296,27 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -7585,9 +8325,13 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -7597,7 +8341,7 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -7617,20 +8361,20 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -7638,10 +8382,10 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -7674,7 +8418,7 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -7720,9 +8464,10 @@ class _$GetReviewTrendsEventImpl implements GetReviewTrendsEvent {
 }
 
 abstract class GetReviewTrendsEvent implements ReviewEvent {
-  const factory GetReviewTrendsEvent(
-      {required final DateTime startDate,
-      required final DateTime endDate}) = _$GetReviewTrendsEventImpl;
+  const factory GetReviewTrendsEvent({
+    required final DateTime startDate,
+    required final DateTime endDate,
+  }) = _$GetReviewTrendsEventImpl;
 
   DateTime get startDate;
   DateTime get endDate;
@@ -7731,15 +8476,15 @@ abstract class GetReviewTrendsEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetReviewTrendsEventImplCopyWith<_$GetReviewTrendsEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CheckCanUserReviewPlanEventImplCopyWith<$Res> {
   factory _$$CheckCanUserReviewPlanEventImplCopyWith(
-          _$CheckCanUserReviewPlanEventImpl value,
-          $Res Function(_$CheckCanUserReviewPlanEventImpl) then) =
-      __$$CheckCanUserReviewPlanEventImplCopyWithImpl<$Res>;
+    _$CheckCanUserReviewPlanEventImpl value,
+    $Res Function(_$CheckCanUserReviewPlanEventImpl) then,
+  ) = __$$CheckCanUserReviewPlanEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String userId, String planId, String targetUserId});
 }
@@ -7749,9 +8494,9 @@ class __$$CheckCanUserReviewPlanEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$CheckCanUserReviewPlanEventImpl>
     implements _$$CheckCanUserReviewPlanEventImplCopyWith<$Res> {
   __$$CheckCanUserReviewPlanEventImplCopyWithImpl(
-      _$CheckCanUserReviewPlanEventImpl _value,
-      $Res Function(_$CheckCanUserReviewPlanEventImpl) _then)
-      : super(_value, _then);
+    _$CheckCanUserReviewPlanEventImpl _value,
+    $Res Function(_$CheckCanUserReviewPlanEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -7762,28 +8507,33 @@ class __$$CheckCanUserReviewPlanEventImplCopyWithImpl<$Res>
     Object? planId = null,
     Object? targetUserId = null,
   }) {
-    return _then(_$CheckCanUserReviewPlanEventImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      targetUserId: null == targetUserId
-          ? _value.targetUserId
-          : targetUserId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$CheckCanUserReviewPlanEventImpl(
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        targetUserId: null == targetUserId
+            ? _value.targetUserId
+            : targetUserId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
-  const _$CheckCanUserReviewPlanEventImpl(
-      {required this.userId, required this.planId, required this.targetUserId});
+  const _$CheckCanUserReviewPlanEventImpl({
+    required this.userId,
+    required this.planId,
+    required this.targetUserId,
+  });
 
   @override
   final String userId;
@@ -7817,44 +8567,55 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$CheckCanUserReviewPlanEventImplCopyWith<_$CheckCanUserReviewPlanEventImpl>
-      get copyWith => __$$CheckCanUserReviewPlanEventImplCopyWithImpl<
-          _$CheckCanUserReviewPlanEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$CheckCanUserReviewPlanEventImplCopyWithImpl<
+        _$CheckCanUserReviewPlanEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -7863,9 +8624,9 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -7877,22 +8638,27 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -7901,9 +8667,13 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -7913,7 +8683,7 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -7925,22 +8695,27 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -7949,9 +8724,13 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -7961,7 +8740,7 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -7981,20 +8760,20 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -8002,10 +8781,10 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -8038,7 +8817,7 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -8084,10 +8863,11 @@ class _$CheckCanUserReviewPlanEventImpl implements CheckCanUserReviewPlanEvent {
 }
 
 abstract class CheckCanUserReviewPlanEvent implements ReviewEvent {
-  const factory CheckCanUserReviewPlanEvent(
-      {required final String userId,
-      required final String planId,
-      required final String targetUserId}) = _$CheckCanUserReviewPlanEventImpl;
+  const factory CheckCanUserReviewPlanEvent({
+    required final String userId,
+    required final String planId,
+    required final String targetUserId,
+  }) = _$CheckCanUserReviewPlanEventImpl;
 
   String get userId;
   String get planId;
@@ -8097,15 +8877,15 @@ abstract class CheckCanUserReviewPlanEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckCanUserReviewPlanEventImplCopyWith<_$CheckCanUserReviewPlanEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CompareUserRatingsEventImplCopyWith<$Res> {
   factory _$$CompareUserRatingsEventImplCopyWith(
-          _$CompareUserRatingsEventImpl value,
-          $Res Function(_$CompareUserRatingsEventImpl) then) =
-      __$$CompareUserRatingsEventImplCopyWithImpl<$Res>;
+    _$CompareUserRatingsEventImpl value,
+    $Res Function(_$CompareUserRatingsEventImpl) then,
+  ) = __$$CompareUserRatingsEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<String> userIds});
 }
@@ -8115,23 +8895,23 @@ class __$$CompareUserRatingsEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$CompareUserRatingsEventImpl>
     implements _$$CompareUserRatingsEventImplCopyWith<$Res> {
   __$$CompareUserRatingsEventImplCopyWithImpl(
-      _$CompareUserRatingsEventImpl _value,
-      $Res Function(_$CompareUserRatingsEventImpl) _then)
-      : super(_value, _then);
+    _$CompareUserRatingsEventImpl _value,
+    $Res Function(_$CompareUserRatingsEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? userIds = null,
-  }) {
-    return _then(_$CompareUserRatingsEventImpl(
-      userIds: null == userIds
-          ? _value._userIds
-          : userIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? userIds = null}) {
+    return _then(
+      _$CompareUserRatingsEventImpl(
+        userIds: null == userIds
+            ? _value._userIds
+            : userIds // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
@@ -8139,7 +8919,7 @@ class __$$CompareUserRatingsEventImplCopyWithImpl<$Res>
 
 class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
   const _$CompareUserRatingsEventImpl({required final List<String> userIds})
-      : _userIds = userIds;
+    : _userIds = userIds;
 
   final List<String> _userIds;
   @override
@@ -8172,44 +8952,55 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$CompareUserRatingsEventImplCopyWith<_$CompareUserRatingsEventImpl>
-      get copyWith => __$$CompareUserRatingsEventImplCopyWithImpl<
-          _$CompareUserRatingsEventImpl>(this, _$identity);
+  get copyWith =>
+      __$$CompareUserRatingsEventImplCopyWithImpl<
+        _$CompareUserRatingsEventImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -8218,9 +9009,9 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -8232,22 +9023,27 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -8256,9 +9052,13 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -8268,7 +9068,7 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -8280,22 +9080,27 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -8304,9 +9109,13 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -8316,7 +9125,7 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -8336,20 +9145,20 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -8357,10 +9166,10 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -8393,7 +9202,7 @@ class _$CompareUserRatingsEventImpl implements CompareUserRatingsEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -8448,14 +9257,15 @@ abstract class CompareUserRatingsEvent implements ReviewEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompareUserRatingsEventImplCopyWith<_$CompareUserRatingsEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ResetStateEventImplCopyWith<$Res> {
-  factory _$$ResetStateEventImplCopyWith(_$ResetStateEventImpl value,
-          $Res Function(_$ResetStateEventImpl) then) =
-      __$$ResetStateEventImplCopyWithImpl<$Res>;
+  factory _$$ResetStateEventImplCopyWith(
+    _$ResetStateEventImpl value,
+    $Res Function(_$ResetStateEventImpl) then,
+  ) = __$$ResetStateEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -8463,8 +9273,9 @@ class __$$ResetStateEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$ResetStateEventImpl>
     implements _$$ResetStateEventImplCopyWith<$Res> {
   __$$ResetStateEventImplCopyWithImpl(
-      _$ResetStateEventImpl _value, $Res Function(_$ResetStateEventImpl) _then)
-      : super(_value, _then);
+    _$ResetStateEventImpl _value,
+    $Res Function(_$ResetStateEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -8493,37 +9304,46 @@ class _$ResetStateEventImpl implements ResetStateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -8532,9 +9352,9 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -8546,22 +9366,27 @@ class _$ResetStateEventImpl implements ResetStateEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -8570,9 +9395,13 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -8582,7 +9411,7 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -8594,22 +9423,27 @@ class _$ResetStateEventImpl implements ResetStateEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -8618,9 +9452,13 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -8630,7 +9468,7 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -8650,20 +9488,20 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -8671,10 +9509,10 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -8707,7 +9545,7 @@ class _$ResetStateEventImpl implements ResetStateEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,
@@ -8758,9 +9596,10 @@ abstract class ResetStateEvent implements ReviewEvent {
 
 /// @nodoc
 abstract class _$$ClearErrorEventImplCopyWith<$Res> {
-  factory _$$ClearErrorEventImplCopyWith(_$ClearErrorEventImpl value,
-          $Res Function(_$ClearErrorEventImpl) then) =
-      __$$ClearErrorEventImplCopyWithImpl<$Res>;
+  factory _$$ClearErrorEventImplCopyWith(
+    _$ClearErrorEventImpl value,
+    $Res Function(_$ClearErrorEventImpl) then,
+  ) = __$$ClearErrorEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -8768,8 +9607,9 @@ class __$$ClearErrorEventImplCopyWithImpl<$Res>
     extends _$ReviewEventCopyWithImpl<$Res, _$ClearErrorEventImpl>
     implements _$$ClearErrorEventImplCopyWith<$Res> {
   __$$ClearErrorEventImplCopyWithImpl(
-      _$ClearErrorEventImpl _value, $Res Function(_$ClearErrorEventImpl) _then)
-      : super(_value, _then);
+    _$ClearErrorEventImpl _value,
+    $Res Function(_$ClearErrorEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ReviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -8798,37 +9638,46 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )
+    createReview,
     required TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )
+    getUserReviews,
     required TResult Function(String planId, int? limit, bool? refresh)
-        getPlanReviews,
+    getPlanReviews,
     required TResult Function(String reviewerId, int? limit, bool? refresh)
-        getReviewsByUser,
+    getReviewsByUser,
     required TResult Function(String userId, ReviewType? type)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(String planId) loadMorePlanReviews,
     required TResult Function(String reviewerId) loadMoreReviewsByUser,
     required TResult Function(ReviewEntity review) updateReview,
     required TResult Function(String reviewId) deleteReview,
     required TResult Function(String reviewId, String userId)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(String reviewId, String userId)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(String userId) getUserRating,
-    required TResult Function(String userId, double? newRating,
-            ReviewType? reviewType, bool? forceRecalculation)
-        calculateUserRating,
+    required TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )
+    calculateUserRating,
     required TResult Function(ReviewType? type, int? limit) getTopRatedUsers,
     required TResult Function(int? limit, bool? refresh) getPendingReviews,
     required TResult Function(String reviewId) approveReview,
@@ -8837,9 +9686,9 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     required TResult Function() getReviewMetrics,
     required TResult Function() getRatingDistribution,
     required TResult Function(DateTime startDate, DateTime endDate)
-        getReviewTrends,
+    getReviewTrends,
     required TResult Function(String userId, String planId, String targetUserId)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(List<String> userIds) compareUserRatings,
     required TResult Function() resetState,
     required TResult Function() clearError,
@@ -8851,22 +9700,27 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult? Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult? Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult? Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult? Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult? Function(String planId)? loadMorePlanReviews,
     TResult? Function(String reviewerId)? loadMoreReviewsByUser,
@@ -8875,9 +9729,13 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     TResult? Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult? Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult? Function(String userId)? getUserRating,
-    TResult? Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult? Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult? Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult? Function(int? limit, bool? refresh)? getPendingReviews,
     TResult? Function(String reviewId)? approveReview,
@@ -8887,7 +9745,7 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     TResult? Function()? getRatingDistribution,
     TResult? Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult? Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(List<String> userIds)? compareUserRatings,
     TResult? Function()? resetState,
     TResult? Function()? clearError,
@@ -8899,22 +9757,27 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String reviewerId,
-            String reviewedUserId,
-            String planId,
-            double rating,
-            String comment,
-            ReviewType type,
-            String? planTitle,
-            DateTime? planDate,
-            String? reviewerRole)?
-        createReview,
+      String reviewerId,
+      String reviewedUserId,
+      String planId,
+      double rating,
+      String comment,
+      ReviewType type,
+      String? planTitle,
+      DateTime? planDate,
+      String? reviewerRole,
+    )?
+    createReview,
     TResult Function(
-            String userId, ReviewType? type, int? limit, bool? refresh)?
-        getUserReviews,
+      String userId,
+      ReviewType? type,
+      int? limit,
+      bool? refresh,
+    )?
+    getUserReviews,
     TResult Function(String planId, int? limit, bool? refresh)? getPlanReviews,
     TResult Function(String reviewerId, int? limit, bool? refresh)?
-        getReviewsByUser,
+    getReviewsByUser,
     TResult Function(String userId, ReviewType? type)? loadMoreUserReviews,
     TResult Function(String planId)? loadMorePlanReviews,
     TResult Function(String reviewerId)? loadMoreReviewsByUser,
@@ -8923,9 +9786,13 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     TResult Function(String reviewId, String userId)? markReviewAsHelpful,
     TResult Function(String reviewId, String userId)? unmarkReviewAsHelpful,
     TResult Function(String userId)? getUserRating,
-    TResult Function(String userId, double? newRating, ReviewType? reviewType,
-            bool? forceRecalculation)?
-        calculateUserRating,
+    TResult Function(
+      String userId,
+      double? newRating,
+      ReviewType? reviewType,
+      bool? forceRecalculation,
+    )?
+    calculateUserRating,
     TResult Function(ReviewType? type, int? limit)? getTopRatedUsers,
     TResult Function(int? limit, bool? refresh)? getPendingReviews,
     TResult Function(String reviewId)? approveReview,
@@ -8935,7 +9802,7 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     TResult Function()? getRatingDistribution,
     TResult Function(DateTime startDate, DateTime endDate)? getReviewTrends,
     TResult Function(String userId, String planId, String targetUserId)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult Function(List<String> userIds)? compareUserRatings,
     TResult Function()? resetState,
     TResult Function()? clearError,
@@ -8955,20 +9822,20 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     required TResult Function(GetPlanReviewsEvent value) getPlanReviews,
     required TResult Function(GetReviewsByUserEvent value) getReviewsByUser,
     required TResult Function(LoadMoreUserReviewsEvent value)
-        loadMoreUserReviews,
+    loadMoreUserReviews,
     required TResult Function(LoadMorePlanReviewsEvent value)
-        loadMorePlanReviews,
+    loadMorePlanReviews,
     required TResult Function(LoadMoreReviewsByUserEvent value)
-        loadMoreReviewsByUser,
+    loadMoreReviewsByUser,
     required TResult Function(UpdateReviewEvent value) updateReview,
     required TResult Function(DeleteReviewEvent value) deleteReview,
     required TResult Function(MarkReviewAsHelpfulEvent value)
-        markReviewAsHelpful,
+    markReviewAsHelpful,
     required TResult Function(UnmarkReviewAsHelpfulEvent value)
-        unmarkReviewAsHelpful,
+    unmarkReviewAsHelpful,
     required TResult Function(GetUserRatingEvent value) getUserRating,
     required TResult Function(CalculateUserRatingEvent value)
-        calculateUserRating,
+    calculateUserRating,
     required TResult Function(GetTopRatedUsersEvent value) getTopRatedUsers,
     required TResult Function(GetPendingReviewsEvent value) getPendingReviews,
     required TResult Function(ApproveReviewEvent value) approveReview,
@@ -8976,10 +9843,10 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     required TResult Function(FlagReviewEvent value) flagReview,
     required TResult Function(GetReviewMetricsEvent value) getReviewMetrics,
     required TResult Function(GetRatingDistributionEvent value)
-        getRatingDistribution,
+    getRatingDistribution,
     required TResult Function(GetReviewTrendsEvent value) getReviewTrends,
     required TResult Function(CheckCanUserReviewPlanEvent value)
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     required TResult Function(CompareUserRatingsEvent value) compareUserRatings,
     required TResult Function(ResetStateEvent value) resetState,
     required TResult Function(ClearErrorEvent value) clearError,
@@ -9012,7 +9879,7 @@ class _$ClearErrorEventImpl implements ClearErrorEvent {
     TResult? Function(GetRatingDistributionEvent value)? getRatingDistribution,
     TResult? Function(GetReviewTrendsEvent value)? getReviewTrends,
     TResult? Function(CheckCanUserReviewPlanEvent value)?
-        checkCanUserReviewPlan,
+    checkCanUserReviewPlan,
     TResult? Function(CompareUserRatingsEvent value)? compareUserRatings,
     TResult? Function(ResetStateEvent value)? resetState,
     TResult? Function(ClearErrorEvent value)? clearError,

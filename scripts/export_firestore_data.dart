@@ -6,8 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart'; // 👈 Necesario
 
 Future<void> exportFullFirestoreStructure() async {
-  final url =
-      Uri.parse('https://54ad-200-26-226-115.ngrok-free.app/export/full');
+  final url = Uri.parse(
+    'https://54ad-200-26-226-115.ngrok-free.app/export/full',
+  );
 
   try {
     final response = await http.get(url);
@@ -27,8 +28,9 @@ Future<void> exportFullFirestoreStructure() async {
 }
 
 Future<void> exportFirestoreCollection(String collectionName) async {
-  final url =
-      Uri.parse('https://54ad-200-26-226-115.ngrok-free.app/openai/call');
+  final url = Uri.parse(
+    'https://54ad-200-26-226-115.ngrok-free.app/openai/call',
+  );
 
   try {
     final response = await http.post(
@@ -37,10 +39,7 @@ Future<void> exportFirestoreCollection(String collectionName) async {
       body: jsonEncode({
         'tool_call_id': 'export_$collectionName',
         'name': 'firestore_list_documents',
-        'arguments': {
-          'collection': collectionName,
-          'limit': 100,
-        },
+        'arguments': {'collection': collectionName, 'limit': 100},
       }),
     );
 
@@ -69,8 +68,9 @@ Future<void> agregarDocumentoFirebase({
   required String collection,
   required Map<String, dynamic> data,
 }) async {
-  final url =
-      Uri.parse('https://54ad-200-26-226-115.ngrok-free.app/openai/call');
+  final url = Uri.parse(
+    'https://54ad-200-26-226-115.ngrok-free.app/openai/call',
+  );
 
   final response = await http.post(
     url,
@@ -78,10 +78,7 @@ Future<void> agregarDocumentoFirebase({
     body: jsonEncode({
       'tool_call_id': 'add_${DateTime.now().millisecondsSinceEpoch}',
       'name': 'firestore_add_document',
-      'arguments': {
-        'collection': collection,
-        'data': data,
-      }
+      'arguments': {'collection': collection, 'data': data},
     }),
   );
 

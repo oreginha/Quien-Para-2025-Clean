@@ -17,9 +17,7 @@ void showApplicationAcceptedModal({
     builder: (final BuildContext context) {
       return Dialog(
         backgroundColor: const Color(0xFF2D2F53),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -52,10 +50,7 @@ void showApplicationAcceptedModal({
                 planTitle.isNotEmpty
                     ? 'Tu aplicación para "$planTitle" ha sido aceptada. ¡Ya puedes participar en este plan!'
                     : 'Tu aplicación ha sido aceptada. ¡Ya puedes participar en este plan!',
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
-                ),
+                style: const TextStyle(color: Colors.white70, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -103,9 +98,7 @@ void showApplicationConfirmedModal({
     builder: (final BuildContext context) {
       return Dialog(
         backgroundColor: const Color(0xFF2D2F53),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -117,11 +110,7 @@ void showApplicationConfirmedModal({
                   color: Colors.blue,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.people,
-                  color: Colors.white,
-                  size: 48,
-                ),
+                child: const Icon(Icons.people, color: Colors.white, size: 48),
               ),
               const SizedBox(height: 24),
               const Text(
@@ -136,10 +125,7 @@ void showApplicationConfirmedModal({
               const SizedBox(height: 16),
               Text(
                 _buildConfirmationMessage(applicantName, planTitle),
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
-                ),
+                style: const TextStyle(color: Colors.white70, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -186,9 +172,7 @@ void showApplicationRejectedModal({
     builder: (final BuildContext context) {
       return Dialog(
         backgroundColor: const Color(0xFF2D2F53),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -200,11 +184,7 @@ void showApplicationRejectedModal({
                   color: Colors.orange,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.info,
-                  color: Colors.white,
-                  size: 48,
-                ),
+                child: const Icon(Icons.info, color: Colors.white, size: 48),
               ),
               const SizedBox(height: 24),
               const Text(
@@ -221,10 +201,7 @@ void showApplicationRejectedModal({
                 planTitle.isNotEmpty
                     ? 'Tu aplicación para "$planTitle" no ha sido aceptada. ¡No te desanimes, hay muchos otros planes disponibles!'
                     : 'Tu aplicación no ha sido aceptada. ¡No te desanimes, hay muchos otros planes disponibles!',
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
-                ),
+                style: const TextStyle(color: Colors.white70, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),

@@ -53,60 +53,70 @@ void main() {
   });
 
   group('getApplicationsForPlan', () {
-    test('should return Right with a list of ApplicationEntity when successful',
-        () async {
-      // Arrange
-      final mockCollectionRef = MockCollectionReference();
-      final mockQuery = MockQuery();
-      final mockQueryOrdered = MockQuery();
-      final mockQuerySnapshot = MockQuerySnapshot();
-      final mockDocs = [
-        MockQueryDocumentSnapshot(),
-        MockQueryDocumentSnapshot()
-      ];
-      const planId = 'test-plan-id';
-      final applications = [
-        ApplicationEntity(
-          id: 'app1',
-          planId: planId,
-          applicantId: 'user1',
-          status: 'pending',
-          appliedAt: DateTime(2023, 1, 1),
-        ),
-        ApplicationEntity(
-          id: 'app2',
-          planId: planId,
-          applicantId: 'user2',
-          status: 'accepted',
-          appliedAt: DateTime(2023, 1, 2),
-        ),
-      ];
+    test(
+      'should return Right with a list of ApplicationEntity when successful',
+      () async {
+        // Arrange
+        final mockCollectionRef = MockCollectionReference();
+        final mockQuery = MockQuery();
+        final mockQueryOrdered = MockQuery();
+        final mockQuerySnapshot = MockQuerySnapshot();
+        final mockDocs = [
+          MockQueryDocumentSnapshot(),
+          MockQueryDocumentSnapshot(),
+        ];
+        const planId = 'test-plan-id';
+        final applications = [
+          ApplicationEntity(
+            id: 'app1',
+            planId: planId,
+            applicantId: 'user1',
+            status: 'pending',
+            appliedAt: DateTime(2023, 1, 1),
+          ),
+          ApplicationEntity(
+            id: 'app2',
+            planId: planId,
+            applicantId: 'user2',
+            status: 'accepted',
+            appliedAt: DateTime(2023, 1, 2),
+          ),
+        ];
 
-      when(mockFirestore.collection('applications'))
-          .thenReturn(mockCollectionRef);
-      when(mockCollectionRef.where('planId', isEqualTo: planId))
-          .thenReturn(mockQuery);
-      when(mockQuery.orderBy('appliedAt', descending: true))
-          .thenReturn(mockQueryOrdered);
-      when(mockQueryOrdered.get())
-          .thenAnswer((_) => Future.value(mockQuerySnapshot));
-      when(mockQuerySnapshot.docs).thenReturn(mockDocs);
-      when(mockMapper.fromFirestore(mockDocs[0])).thenReturn(applications[0]);
-      when(mockMapper.fromFirestore(mockDocs[1])).thenReturn(applications[1]);
+        when(
+          mockFirestore.collection('applications'),
+        ).thenReturn(mockCollectionRef);
+        when(
+          mockCollectionRef.where('planId', isEqualTo: planId),
+        ).thenReturn(mockQuery);
+        when(
+          mockQuery.orderBy('appliedAt', descending: true),
+        ).thenReturn(mockQueryOrdered);
+        when(
+          mockQueryOrdered.get(),
+        ).thenAnswer((_) => Future.value(mockQuerySnapshot));
+        when(mockQuerySnapshot.docs).thenReturn(mockDocs);
+        when(mockMapper.fromFirestore(mockDocs[0])).thenReturn(applications[0]);
+        when(mockMapper.fromFirestore(mockDocs[1])).thenReturn(applications[1]);
 
-      // Act
-      final result = await applicationRepository.getApplicationsForPlan(planId);
+        // Act
+        final result = await applicationRepository.getApplicationsForPlan(
+          planId,
+        );
 
-      // Assert
-      expect(result,
-          equals(Right<AppFailure, List<ApplicationEntity>>(applications)));
-      verify(mockFirestore.collection('applications')).called(1);
-      verify(mockCollectionRef.where('planId', isEqualTo: planId)).called(1);
-      verify(mockQuery.orderBy('appliedAt', descending: true)).called(1);
-      verify(mockQueryOrdered.get()).called(1);
-      verify(mockMapper.fromFirestore(mockDocs[0])).called(1);
-      verify(mockMapper.fromFirestore(mockDocs[1])).called(1);
-    });
+        // Assert
+        expect(
+          result,
+          equals(Right<AppFailure, List<ApplicationEntity>>(applications)),
+        );
+        verify(mockFirestore.collection('applications')).called(1);
+        verify(mockCollectionRef.where('planId', isEqualTo: planId)).called(1);
+        verify(mockQuery.orderBy('appliedAt', descending: true)).called(1);
+        verify(mockQueryOrdered.get()).called(1);
+        verify(mockMapper.fromFirestore(mockDocs[0])).called(1);
+        verify(mockMapper.fromFirestore(mockDocs[1])).called(1);
+      },
+    );
 
     test('should return Left with AppFailure when an error occurs', () async {
       // Arrange
@@ -116,14 +126,18 @@ void main() {
       const planId = 'test-plan-id';
       const errorMessage = 'Error getting applications';
 
-      when(mockFirestore.collection('applications'))
-          .thenReturn(mockCollectionRef);
-      when(mockCollectionRef.where('planId', isEqualTo: planId))
-          .thenReturn(mockQuery);
-      when(mockQuery.orderBy('appliedAt', descending: true))
-          .thenReturn(mockQueryOrdered);
+      when(
+        mockFirestore.collection('applications'),
+      ).thenReturn(mockCollectionRef);
+      when(
+        mockCollectionRef.where('planId', isEqualTo: planId),
+      ).thenReturn(mockQuery);
+      when(
+        mockQuery.orderBy('appliedAt', descending: true),
+      ).thenReturn(mockQueryOrdered);
       when(mockQueryOrdered.get()).thenThrow(
-          FirebaseException(plugin: 'firestore', message: errorMessage));
+        FirebaseException(plugin: 'firestore', message: errorMessage),
+      );
 
       // Act
       final result = await applicationRepository.getApplicationsForPlan(planId);
@@ -148,51 +162,65 @@ void main() {
       const userId = 'user1';
       const planId = 'plan1';
 
-      when(mockFirestore.collection('applications'))
-          .thenReturn(mockCollectionRef);
-      when(mockCollectionRef.where('planId', isEqualTo: planId))
-          .thenReturn(mockQuery1);
-      when(mockQuery1.where('applicantId', isEqualTo: userId))
-          .thenReturn(mockQuery2);
+      when(
+        mockFirestore.collection('applications'),
+      ).thenReturn(mockCollectionRef);
+      when(
+        mockCollectionRef.where('planId', isEqualTo: planId),
+      ).thenReturn(mockQuery1);
+      when(
+        mockQuery1.where('applicantId', isEqualTo: userId),
+      ).thenReturn(mockQuery2);
       when(mockQuery2.limit(1)).thenReturn(mockQuery2);
       when(mockQuery2.get()).thenAnswer((_) => Future.value(mockQuerySnapshot));
       when(mockQuerySnapshot.docs).thenReturn(mockDocs);
 
       // Act
-      final result =
-          await applicationRepository.hasUserAppliedToPlan(userId, planId);
+      final result = await applicationRepository.hasUserAppliedToPlan(
+        userId,
+        planId,
+      );
 
       // Assert
       expect(result, equals(const Right<AppFailure, bool>(true)));
     });
 
-    test('should return Right(false) when user has not applied to plan',
-        () async {
-      // Arrange
-      final mockCollectionRef = MockCollectionReference();
-      final mockQuery1 = MockQuery();
-      final mockQuery2 = MockQuery();
-      final mockQuerySnapshot = MockQuerySnapshot();
-      const userId = 'user1';
-      const planId = 'plan1';
+    test(
+      'should return Right(false) when user has not applied to plan',
+      () async {
+        // Arrange
+        final mockCollectionRef = MockCollectionReference();
+        final mockQuery1 = MockQuery();
+        final mockQuery2 = MockQuery();
+        final mockQuerySnapshot = MockQuerySnapshot();
+        const userId = 'user1';
+        const planId = 'plan1';
 
-      when(mockFirestore.collection('applications'))
-          .thenReturn(mockCollectionRef);
-      when(mockCollectionRef.where('planId', isEqualTo: planId))
-          .thenReturn(mockQuery1);
-      when(mockQuery1.where('applicantId', isEqualTo: userId))
-          .thenReturn(mockQuery2);
-      when(mockQuery2.limit(1)).thenReturn(mockQuery2);
-      when(mockQuery2.get()).thenAnswer((_) => Future.value(mockQuerySnapshot));
-      when(mockQuerySnapshot.docs).thenReturn([]);
+        when(
+          mockFirestore.collection('applications'),
+        ).thenReturn(mockCollectionRef);
+        when(
+          mockCollectionRef.where('planId', isEqualTo: planId),
+        ).thenReturn(mockQuery1);
+        when(
+          mockQuery1.where('applicantId', isEqualTo: userId),
+        ).thenReturn(mockQuery2);
+        when(mockQuery2.limit(1)).thenReturn(mockQuery2);
+        when(
+          mockQuery2.get(),
+        ).thenAnswer((_) => Future.value(mockQuerySnapshot));
+        when(mockQuerySnapshot.docs).thenReturn([]);
 
-      // Act
-      final result =
-          await applicationRepository.hasUserAppliedToPlan(userId, planId);
+        // Act
+        final result = await applicationRepository.hasUserAppliedToPlan(
+          userId,
+          planId,
+        );
 
-      // Assert
-      expect(result, equals(const Right<AppFailure, bool>(false)));
-    });
+        // Assert
+        expect(result, equals(const Right<AppFailure, bool>(false)));
+      },
+    );
 
     test('should return Left with AppFailure when an error occurs', () async {
       // Arrange
@@ -203,19 +231,25 @@ void main() {
       const planId = 'plan1';
       const errorMessage = 'Error checking application';
 
-      when(mockFirestore.collection('applications'))
-          .thenReturn(mockCollectionRef);
-      when(mockCollectionRef.where('planId', isEqualTo: planId))
-          .thenReturn(mockQuery1);
-      when(mockQuery1.where('applicantId', isEqualTo: userId))
-          .thenReturn(mockQuery2);
+      when(
+        mockFirestore.collection('applications'),
+      ).thenReturn(mockCollectionRef);
+      when(
+        mockCollectionRef.where('planId', isEqualTo: planId),
+      ).thenReturn(mockQuery1);
+      when(
+        mockQuery1.where('applicantId', isEqualTo: userId),
+      ).thenReturn(mockQuery2);
       when(mockQuery2.limit(1)).thenReturn(mockQuery2);
       when(mockQuery2.get()).thenThrow(
-          FirebaseException(plugin: 'firestore', message: errorMessage));
+        FirebaseException(plugin: 'firestore', message: errorMessage),
+      );
 
       // Act
-      final result =
-          await applicationRepository.hasUserAppliedToPlan(userId, planId);
+      final result = await applicationRepository.hasUserAppliedToPlan(
+        userId,
+        planId,
+      );
 
       // Assert
       expect(result.isLeft(), true);

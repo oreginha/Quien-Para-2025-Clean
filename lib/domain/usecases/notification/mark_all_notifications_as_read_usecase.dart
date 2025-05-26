@@ -21,16 +21,19 @@ class MarkAllNotificationsAsReadUseCase
   @override
   Future<Either<AppFailure, Unit>> execute(String userId) async {
     _logger.d(
-        'MarkAllNotificationsAsReadUseCase: Marcando todas las notificaciones como leídas para: $userId');
+      'MarkAllNotificationsAsReadUseCase: Marcando todas las notificaciones como leídas para: $userId',
+    );
 
     // Validar parámetros
     if (userId.isEmpty) {
       _logger.w('MarkAllNotificationsAsReadUseCase: ID de usuario vacío');
-      return Left(ValidationFailure(
-        message: 'El ID del usuario no puede estar vacío',
-        field: 'userId',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID del usuario no puede estar vacío',
+          field: 'userId',
+          code: '',
+        ),
+      );
     }
 
     // Delegar al repositorio

@@ -12,7 +12,8 @@ part of 'notification_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 NotificationModel _$NotificationModelFromJson(Map<String, dynamic> json) {
   return _NotificationModel.fromJson(json);
@@ -45,20 +46,22 @@ mixin _$NotificationModel {
 /// @nodoc
 abstract class $NotificationModelCopyWith<$Res> {
   factory $NotificationModelCopyWith(
-          NotificationModel value, $Res Function(NotificationModel) then) =
-      _$NotificationModelCopyWithImpl<$Res, NotificationModel>;
+    NotificationModel value,
+    $Res Function(NotificationModel) then,
+  ) = _$NotificationModelCopyWithImpl<$Res, NotificationModel>;
   @useResult
-  $Res call(
-      {String id,
-      String userId,
-      String? planId,
-      String? applicationId,
-      String title,
-      String message,
-      bool read,
-      DateTime createdAt,
-      String type,
-      Map<String, dynamic>? data});
+  $Res call({
+    String id,
+    String userId,
+    String? planId,
+    String? applicationId,
+    String title,
+    String message,
+    bool read,
+    DateTime createdAt,
+    String type,
+    Map<String, dynamic>? data,
+  });
 }
 
 /// @nodoc
@@ -87,79 +90,85 @@ class _$NotificationModelCopyWithImpl<$Res, $Val extends NotificationModel>
     Object? type = null,
     Object? data = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: freezed == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationId: freezed == applicationId
-          ? _value.applicationId
-          : applicationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      read: null == read
-          ? _value.read
-          : read // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            planId: freezed == planId
+                ? _value.planId
+                : planId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            applicationId: freezed == applicationId
+                ? _value.applicationId
+                : applicationId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            title: null == title
+                ? _value.title
+                : title // ignore: cast_nullable_to_non_nullable
+                      as String,
+            message: null == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String,
+            read: null == read
+                ? _value.read
+                : read // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String,
+            data: freezed == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$NotificationModelImplCopyWith<$Res>
     implements $NotificationModelCopyWith<$Res> {
-  factory _$$NotificationModelImplCopyWith(_$NotificationModelImpl value,
-          $Res Function(_$NotificationModelImpl) then) =
-      __$$NotificationModelImplCopyWithImpl<$Res>;
+  factory _$$NotificationModelImplCopyWith(
+    _$NotificationModelImpl value,
+    $Res Function(_$NotificationModelImpl) then,
+  ) = __$$NotificationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String userId,
-      String? planId,
-      String? applicationId,
-      String title,
-      String message,
-      bool read,
-      DateTime createdAt,
-      String type,
-      Map<String, dynamic>? data});
+  $Res call({
+    String id,
+    String userId,
+    String? planId,
+    String? applicationId,
+    String title,
+    String message,
+    bool read,
+    DateTime createdAt,
+    String type,
+    Map<String, dynamic>? data,
+  });
 }
 
 /// @nodoc
 class __$$NotificationModelImplCopyWithImpl<$Res>
     extends _$NotificationModelCopyWithImpl<$Res, _$NotificationModelImpl>
     implements _$$NotificationModelImplCopyWith<$Res> {
-  __$$NotificationModelImplCopyWithImpl(_$NotificationModelImpl _value,
-      $Res Function(_$NotificationModelImpl) _then)
-      : super(_value, _then);
+  __$$NotificationModelImplCopyWithImpl(
+    _$NotificationModelImpl _value,
+    $Res Function(_$NotificationModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of NotificationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -177,67 +186,69 @@ class __$$NotificationModelImplCopyWithImpl<$Res>
     Object? type = null,
     Object? data = freezed,
   }) {
-    return _then(_$NotificationModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: freezed == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicationId: freezed == applicationId
-          ? _value.applicationId
-          : applicationId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      read: null == read
-          ? _value.read
-          : read // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      data: freezed == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ));
+    return _then(
+      _$NotificationModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        planId: freezed == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        applicationId: freezed == applicationId
+            ? _value.applicationId
+            : applicationId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        read: null == read
+            ? _value.read
+            : read // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String,
+        data: freezed == data
+            ? _value._data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$NotificationModelImpl extends _NotificationModel {
-  const _$NotificationModelImpl(
-      {required this.id,
-      required this.userId,
-      this.planId,
-      this.applicationId,
-      required this.title,
-      required this.message,
-      this.read = false,
-      required this.createdAt,
-      this.type = 'info',
-      final Map<String, dynamic>? data})
-      : _data = data,
-        super._();
+  const _$NotificationModelImpl({
+    required this.id,
+    required this.userId,
+    this.planId,
+    this.applicationId,
+    required this.title,
+    required this.message,
+    this.read = false,
+    required this.createdAt,
+    this.type = 'info',
+    final Map<String, dynamic>? data,
+  }) : _data = data,
+       super._();
 
   factory _$NotificationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationModelImplFromJson(json);
@@ -262,9 +273,9 @@ class _$NotificationModelImpl extends _NotificationModel {
   @override
   @JsonKey()
   final String type;
-// info, plan_update, application, chat, etc.
+  // info, plan_update, application, chat, etc.
   final Map<String, dynamic>? _data;
-// info, plan_update, application, chat, etc.
+  // info, plan_update, application, chat, etc.
   @override
   Map<String, dynamic>? get data {
     final value = _data;
@@ -301,17 +312,18 @@ class _$NotificationModelImpl extends _NotificationModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userId,
-      planId,
-      applicationId,
-      title,
-      message,
-      read,
-      createdAt,
-      type,
-      const DeepCollectionEquality().hash(_data));
+    runtimeType,
+    id,
+    userId,
+    planId,
+    applicationId,
+    title,
+    message,
+    read,
+    createdAt,
+    type,
+    const DeepCollectionEquality().hash(_data),
+  );
 
   /// Create a copy of NotificationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -320,28 +332,29 @@ class _$NotificationModelImpl extends _NotificationModel {
   @pragma('vm:prefer-inline')
   _$$NotificationModelImplCopyWith<_$NotificationModelImpl> get copyWith =>
       __$$NotificationModelImplCopyWithImpl<_$NotificationModelImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NotificationModelImplToJson(
-      this,
-    );
+    return _$$NotificationModelImplToJson(this);
   }
 }
 
 abstract class _NotificationModel extends NotificationModel {
-  const factory _NotificationModel(
-      {required final String id,
-      required final String userId,
-      final String? planId,
-      final String? applicationId,
-      required final String title,
-      required final String message,
-      final bool read,
-      required final DateTime createdAt,
-      final String type,
-      final Map<String, dynamic>? data}) = _$NotificationModelImpl;
+  const factory _NotificationModel({
+    required final String id,
+    required final String userId,
+    final String? planId,
+    final String? applicationId,
+    required final String title,
+    required final String message,
+    final bool read,
+    required final DateTime createdAt,
+    final String type,
+    final Map<String, dynamic>? data,
+  }) = _$NotificationModelImpl;
   const _NotificationModel._() : super._();
 
   factory _NotificationModel.fromJson(Map<String, dynamic> json) =

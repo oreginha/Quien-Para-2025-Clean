@@ -82,8 +82,10 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_metadataBox);
       _cacheHits = box.get('cache_hits', defaultValue: 0);
       _cacheMisses = box.get('cache_misses', defaultValue: 0);
-      _compressionSavingsBytes =
-          box.get('compression_savings_bytes', defaultValue: 0);
+      _compressionSavingsBytes = box.get(
+        'compression_savings_bytes',
+        defaultValue: 0,
+      );
     } catch (e) {
       // Si hay un error, reiniciar métricas
       _cacheHits = 0;
@@ -105,7 +107,10 @@ class CompressedPlanCache implements PlanCacheInterface {
       _metrics.recordMetric('cache', 'misses', _cacheMisses);
       _metrics.recordMetric('cache', 'hit_rate', hitRate * 100);
       _metrics.recordMetric(
-          'cache', 'compression_savings_kb', _compressionSavingsBytes / 1024);
+        'cache',
+        'compression_savings_kb',
+        _compressionSavingsBytes / 1024,
+      );
     } catch (e) {
       logger.e('Error guardando métricas de caché:', error: e);
     }
@@ -164,7 +169,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       }
 
       logger.d(
-          'Limpiadas ${keysToDelete.length ~/ 2} entradas expiradas del caché');
+        'Limpiadas ${keysToDelete.length ~/ 2} entradas expiradas del caché',
+      );
     } catch (e) {
       logger.e('Error limpiando caché expirado:', error: e);
     } finally {
@@ -174,8 +180,10 @@ class CompressedPlanCache implements PlanCacheInterface {
 
   /// Almacenar planes en caché con compresión
   @override
-  Future<void> cachePlans(List<PlanEntity> plans,
-      {bool isPriority = false}) async {
+  Future<void> cachePlans(
+    List<PlanEntity> plans, {
+    bool isPriority = false,
+  }) async {
     if (!isAvailable) {
       logger.w('Caché no disponible, saltando cachePlans');
       return;
@@ -187,8 +195,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_plansCacheBox);
 
       // Convertir a JSON para almacenamiento
-      final List<String> plansJson =
-          plans.map((PlanEntity plan) => jsonEncode(plan.toJson())).toList();
+      final List<String> plansJson = plans
+          .map((PlanEntity plan) => jsonEncode(plan.toJson()))
+          .toList();
 
       // Medir tamaño original
       final String originalData = jsonEncode(plansJson);
@@ -203,8 +212,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       _compressionSavingsBytes += (savedBytes > 0) ? savedBytes : 0;
 
       // Clave basada en prioridad
-      final String key =
-          isPriority ? '${_priorityPlansCachePrefix}all_plans' : 'all_plans';
+      final String key = isPriority
+          ? '${_priorityPlansCachePrefix}all_plans'
+          : 'all_plans';
 
       // Guardar datos comprimidos
       await box.put(key, compressedData);
@@ -216,7 +226,10 @@ class CompressedPlanCache implements PlanCacheInterface {
       _metrics.recordMetric('compression', 'original_size', originalSize);
       _metrics.recordMetric('compression', 'compressed_size', compressedSize);
       _metrics.recordMetric(
-          'compression', 'ratio', (compressedSize / originalSize) * 100);
+        'compression',
+        'ratio',
+        (compressedSize / originalSize) * 100,
+      );
 
       // Guardar métricas
       await _saveMetrics();
@@ -224,12 +237,14 @@ class CompressedPlanCache implements PlanCacheInterface {
       if (kDebugMode) {
         final compressionRatio = (compressedSize / originalSize) * 100;
         print(
-            'Compresión de planes: ${compressionRatio.toStringAsFixed(1)}% del original. '
-            'Ahorro: ${(savedBytes / 1024).toStringAsFixed(1)} KB');
+          'Compresión de planes: ${compressionRatio.toStringAsFixed(1)}% del original. '
+          'Ahorro: ${(savedBytes / 1024).toStringAsFixed(1)} KB',
+        );
       }
 
       logger.d(
-          'Cacheados ${plans.length} planes con${isPriority ? " prioridad" : ""}');
+        'Cacheados ${plans.length} planes con${isPriority ? " prioridad" : ""}',
+      );
     } catch (e) {
       logger.e('Error cacheando planes:', error: e);
     } finally {
@@ -239,8 +254,11 @@ class CompressedPlanCache implements PlanCacheInterface {
 
   /// Almacenar planes por categoría
   @override
-  Future<void> cacheCategoryPlans(String category, List<PlanEntity> plans,
-      {bool isPriority = false}) async {
+  Future<void> cacheCategoryPlans(
+    String category,
+    List<PlanEntity> plans, {
+    bool isPriority = false,
+  }) async {
     if (!isAvailable) {
       logger.w('Caché no disponible, saltando cacheCategoryPlans');
       return;
@@ -257,8 +275,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       }
 
       // Convertir a JSON para almacenamiento
-      final List<String> plansJson =
-          plans.map((PlanEntity plan) => jsonEncode(plan.toJson())).toList();
+      final List<String> plansJson = plans
+          .map((PlanEntity plan) => jsonEncode(plan.toJson()))
+          .toList();
 
       // Medir tamaño original
       final String originalData = jsonEncode(plansJson);
@@ -285,9 +304,15 @@ class CompressedPlanCache implements PlanCacheInterface {
 
       // Registrar métricas
       _metrics.recordMetric(
-          'compression', 'category_original_size', originalSize);
+        'compression',
+        'category_original_size',
+        originalSize,
+      );
       _metrics.recordMetric(
-          'compression', 'category_compressed_size', compressedSize);
+        'compression',
+        'category_compressed_size',
+        compressedSize,
+      );
 
       // Guardar métricas
       await _saveMetrics();
@@ -302,8 +327,10 @@ class CompressedPlanCache implements PlanCacheInterface {
 
   /// Obtener planes por categoría desde el caché
   @override
-  Future<List<PlanEntity>?> getCategoryPlans(String category,
-      {bool isPriority = false}) async {
+  Future<List<PlanEntity>?> getCategoryPlans(
+    String category, {
+    bool isPriority = false,
+  }) async {
     if (!isAvailable) {
       logger.w('Caché no disponible, retornando null desde getCategoryPlans');
       return null;
@@ -330,8 +357,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       // Verificar si el caché expiró
       final int timestamp = box.get(timeKey);
       final int now = DateTime.now().millisecondsSinceEpoch;
-      final Duration cacheDuration =
-          isPriority ? _priorityCacheDuration : _regularCacheDuration;
+      final Duration cacheDuration = isPriority
+          ? _priorityCacheDuration
+          : _regularCacheDuration;
 
       if (now - timestamp > cacheDuration.inMilliseconds) {
         _cacheMisses++;
@@ -343,8 +371,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       final String compressedData = box.get(key);
 
       // Descomprimir datos
-      final List<dynamic>? plansJson =
-          CompressionUtils.decompressToList(compressedData);
+      final List<dynamic>? plansJson = CompressionUtils.decompressToList(
+        compressedData,
+      );
 
       if (plansJson == null) {
         _cacheMisses++;
@@ -354,16 +383,19 @@ class CompressedPlanCache implements PlanCacheInterface {
 
       // Convertir JSON a PlanEntity
       final List<PlanEntity> plans = plansJson
-          .map((dynamic planJson) =>
-              PlanEntity.fromJson(jsonDecode(planJson as String)))
+          .map(
+            (dynamic planJson) =>
+                PlanEntity.fromJson(jsonDecode(planJson as String)),
+          )
           .toList();
 
       _cacheHits++;
       await _saveMetrics();
 
       logger.d(
-          'Recuperados ${plans.length} planes para categoría $category desde caché '
-          '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)');
+        'Recuperados ${plans.length} planes para categoría $category desde caché '
+        '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)',
+      );
       return plans;
     } catch (e) {
       logger.e('Error obteniendo planes por categoría desde caché:', error: e);
@@ -389,8 +421,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_plansCacheBox);
 
       // Clave basada en prioridad
-      final String key =
-          isPriority ? '${_priorityPlansCachePrefix}all_plans' : 'all_plans';
+      final String key = isPriority
+          ? '${_priorityPlansCachePrefix}all_plans'
+          : 'all_plans';
       final String timeKey = '${key}_timestamp';
 
       // Verificar si hay datos en caché
@@ -403,8 +436,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       // Verificar si el caché expiró
       final int timestamp = box.get(timeKey);
       final int now = DateTime.now().millisecondsSinceEpoch;
-      final Duration cacheDuration =
-          isPriority ? _priorityCacheDuration : _regularCacheDuration;
+      final Duration cacheDuration = isPriority
+          ? _priorityCacheDuration
+          : _regularCacheDuration;
 
       if (now - timestamp > cacheDuration.inMilliseconds) {
         _cacheMisses++;
@@ -416,8 +450,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       final String compressedData = box.get(key);
 
       // Descomprimir datos
-      final List<dynamic>? plansJson =
-          CompressionUtils.decompressToList(compressedData);
+      final List<dynamic>? plansJson = CompressionUtils.decompressToList(
+        compressedData,
+      );
 
       if (plansJson == null) {
         _cacheMisses++;
@@ -427,15 +462,19 @@ class CompressedPlanCache implements PlanCacheInterface {
 
       // Convertir JSON a PlanEntity
       final List<PlanEntity> plans = plansJson
-          .map((dynamic planJson) =>
-              PlanEntity.fromJson(jsonDecode(planJson as String)))
+          .map(
+            (dynamic planJson) =>
+                PlanEntity.fromJson(jsonDecode(planJson as String)),
+          )
           .toList();
 
       _cacheHits++;
       await _saveMetrics();
 
-      logger.d('Recuperados ${plans.length} planes desde caché '
-          '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)');
+      logger.d(
+        'Recuperados ${plans.length} planes desde caché '
+        '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)',
+      );
       return plans;
     } catch (e) {
       logger.e('Error obteniendo planes desde caché:', error: e);
@@ -450,7 +489,9 @@ class CompressedPlanCache implements PlanCacheInterface {
   /// Almacenar planes de otros usuarios en el caché
   @override
   Future<void> storeOtherUserPlans(
-      String currentUserId, List<PlanEntity> plans) async {
+    String currentUserId,
+    List<PlanEntity> plans,
+  ) async {
     if (!isAvailable) {
       logger.w('Caché no disponible, saltando storeOtherUserPlans');
       return;
@@ -462,8 +503,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_plansCacheBox);
 
       // Convertir a JSON para almacenamiento
-      final List<String> plansJson =
-          plans.map((PlanEntity plan) => jsonEncode(plan.toJson())).toList();
+      final List<String> plansJson = plans
+          .map((PlanEntity plan) => jsonEncode(plan.toJson()))
+          .toList();
 
       // Medir tamaño original
       final String originalData = jsonEncode(plansJson);
@@ -487,15 +529,22 @@ class CompressedPlanCache implements PlanCacheInterface {
 
       // Registrar métricas
       _metrics.recordMetric(
-          'compression', 'other_user_plans_original_size', originalSize);
+        'compression',
+        'other_user_plans_original_size',
+        originalSize,
+      );
       _metrics.recordMetric(
-          'compression', 'other_user_plans_compressed_size', compressedSize);
+        'compression',
+        'other_user_plans_compressed_size',
+        compressedSize,
+      );
 
       // Guardar métricas
       await _saveMetrics();
 
       logger.d(
-          'Cacheados ${plans.length} planes de otros usuarios para usuario: $currentUserId');
+        'Cacheados ${plans.length} planes de otros usuarios para usuario: $currentUserId',
+      );
     } catch (e) {
       logger.e('Error cacheando planes de otros usuarios:', error: e);
     } finally {
@@ -540,8 +589,9 @@ class CompressedPlanCache implements PlanCacheInterface {
       final String compressedData = box.get(key);
 
       // Descomprimir datos
-      final List<dynamic>? plansJson =
-          CompressionUtils.decompressToList(compressedData);
+      final List<dynamic>? plansJson = CompressionUtils.decompressToList(
+        compressedData,
+      );
 
       if (plansJson == null) {
         _cacheMisses++;
@@ -551,20 +601,25 @@ class CompressedPlanCache implements PlanCacheInterface {
 
       // Convertir JSON a PlanEntity
       final List<PlanEntity> plans = plansJson
-          .map((dynamic planJson) =>
-              PlanEntity.fromJson(jsonDecode(planJson as String)))
+          .map(
+            (dynamic planJson) =>
+                PlanEntity.fromJson(jsonDecode(planJson as String)),
+          )
           .toList();
 
       _cacheHits++;
       await _saveMetrics();
 
-      logger
-          .d('Recuperados ${plans.length} planes de otros usuarios desde caché '
-              '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)');
+      logger.d(
+        'Recuperados ${plans.length} planes de otros usuarios desde caché '
+        '(tasa de aciertos: ${(hitRate * 100).toStringAsFixed(1)}%)',
+      );
       return plans;
     } catch (e) {
-      logger.e('Error obteniendo planes de otros usuarios desde caché:',
-          error: e);
+      logger.e(
+        'Error obteniendo planes de otros usuarios desde caché:',
+        error: e,
+      );
       _cacheMisses++;
       await _saveMetrics();
       return null;
@@ -586,10 +641,12 @@ class CompressedPlanCache implements PlanCacheInterface {
       // Obtener todas las claves que contienen planes
       final List<String> planKeys = box.keys
           .cast<String>()
-          .where((key) =>
-              !key.contains('_timestamp') &&
-              !key.contains('_size_original') &&
-              !key.contains('_size_compressed'))
+          .where(
+            (key) =>
+                !key.contains('_timestamp') &&
+                !key.contains('_size_original') &&
+                !key.contains('_size_compressed'),
+          )
           .toList();
 
       for (final String key in planKeys) {
@@ -598,8 +655,9 @@ class CompressedPlanCache implements PlanCacheInterface {
         if (compressedData == null) continue;
 
         // Descomprimir para procesar
-        final List<dynamic>? plansJson =
-            CompressionUtils.decompressToList(compressedData);
+        final List<dynamic>? plansJson = CompressionUtils.decompressToList(
+          compressedData,
+        );
         if (plansJson == null) continue;
 
         // Filtrar el plan que queremos invalidar
@@ -619,8 +677,9 @@ class CompressedPlanCache implements PlanCacheInterface {
         if (planFound) {
           // Volver a comprimir los datos actualizados
           final String originalData = jsonEncode(updatedPlansJson);
-          final String updatedCompressedData =
-              CompressionUtils.compressList(updatedPlansJson);
+          final String updatedCompressedData = CompressionUtils.compressList(
+            updatedPlansJson,
+          );
 
           // Actualizar tamaños para métricas
           final int originalSize = originalData.length;
@@ -657,7 +716,10 @@ class CompressedPlanCache implements PlanCacheInterface {
       _metrics.recordMetric('cache', 'lifetime_hits', _cacheHits);
       _metrics.recordMetric('cache', 'lifetime_misses', _cacheMisses);
       _metrics.recordMetric(
-          'cache', 'lifetime_savings_kb', _compressionSavingsBytes / 1024);
+        'cache',
+        'lifetime_savings_kb',
+        _compressionSavingsBytes / 1024,
+      );
 
       // Reiniciar contadores
       _cacheHits = 0;
@@ -678,11 +740,7 @@ class CompressedPlanCache implements PlanCacheInterface {
   @override
   Future<Map<String, int>> getCacheSize() async {
     if (!isAvailable) {
-      return {
-        'raw_size': 0,
-        'compressed_size': 0,
-        'savings': 0,
-      };
+      return {'raw_size': 0, 'compressed_size': 0, 'savings': 0};
     }
 
     _metrics.startTimer('get_cache_size');
@@ -711,20 +769,25 @@ class CompressedPlanCache implements PlanCacheInterface {
 
       // Registrar métricas
       _metrics.recordMetric(
-          'cache', 'total_raw_size_kb', totalOriginalSize / 1024);
+        'cache',
+        'total_raw_size_kb',
+        totalOriginalSize / 1024,
+      );
       _metrics.recordMetric(
-          'cache', 'total_compressed_size_kb', totalCompressedSize / 1024);
-      _metrics.recordMetric('cache', 'total_savings_kb',
-          (totalOriginalSize - totalCompressedSize) / 1024);
+        'cache',
+        'total_compressed_size_kb',
+        totalCompressedSize / 1024,
+      );
+      _metrics.recordMetric(
+        'cache',
+        'total_savings_kb',
+        (totalOriginalSize - totalCompressedSize) / 1024,
+      );
 
       return results;
     } catch (e) {
       logger.e('Error calculando tamaño del caché:', error: e);
-      return {
-        'raw_size': 0,
-        'compressed_size': 0,
-        'savings': 0,
-      };
+      return {'raw_size': 0, 'compressed_size': 0, 'savings': 0};
     } finally {
       _metrics.stopTimer('get_cache_size');
     }
@@ -745,10 +808,12 @@ class CompressedPlanCache implements PlanCacheInterface {
 
 /// Función para no esperar a que se complete una operación asíncrona
 void unawaited(Future<void> future) {
-  future.then((_) {
-    // Operación completada correctamente
-  }).catchError((error) {
-    // Capturar errores para evitar excepciones no manejadas
-    debugPrint('Unhandled async error: $error');
-  });
+  future
+      .then((_) {
+        // Operación completada correctamente
+      })
+      .catchError((error) {
+        // Capturar errores para evitar excepciones no manejadas
+        debugPrint('Unhandled async error: $error');
+      });
 }

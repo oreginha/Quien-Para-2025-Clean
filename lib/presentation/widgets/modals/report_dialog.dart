@@ -78,11 +78,7 @@ class _ReportDialogState extends State<ReportDialog> {
         ),
         title: Row(
           children: [
-            Icon(
-              Icons.report_problem,
-              color: AppColors.accentRed,
-              size: 24,
-            ),
+            Icon(Icons.report_problem, color: AppColors.accentRed, size: 24),
             const SizedBox(width: AppSpacing.s),
             Expanded(
               child: Text(
@@ -116,9 +112,9 @@ class _ReportDialogState extends State<ReportDialog> {
                         const SizedBox(width: AppSpacing.s),
                         Text(
                           'Reportando a: ${widget.reportedUserName}',
-                          style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: AppTypography.bodyMedium(
+                            isDarkMode,
+                          ).copyWith(fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
@@ -128,18 +124,16 @@ class _ReportDialogState extends State<ReportDialog> {
 
                 Text(
                   'Selecciona el motivo del reporte:',
-                  style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: AppTypography.bodyLarge(
+                    isDarkMode,
+                  ).copyWith(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: AppSpacing.m),
 
                 // Lista de motivos
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppColors.getBorder(isDarkMode),
-                    ),
+                    border: Border.all(color: AppColors.getBorder(isDarkMode)),
                     borderRadius: BorderRadius.circular(AppRadius.inputField),
                   ),
                   child: Column(
@@ -162,12 +156,12 @@ class _ReportDialogState extends State<ReportDialog> {
                         child: RadioListTile<ReportReason>(
                           title: Text(
                             reason.displayName,
-                            style:
-                                AppTypography.bodyMedium(isDarkMode).copyWith(
-                              fontWeight: isSelected
-                                  ? FontWeight.w600
-                                  : FontWeight.normal,
-                            ),
+                            style: AppTypography.bodyMedium(isDarkMode)
+                                .copyWith(
+                                  fontWeight: isSelected
+                                      ? FontWeight.w600
+                                      : FontWeight.normal,
+                                ),
                           ),
                           value: reason,
                           groupValue: _selectedReason,
@@ -190,9 +184,9 @@ class _ReportDialogState extends State<ReportDialog> {
                 // Campo de descripción
                 Text(
                   'Descripción adicional:',
-                  style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: AppTypography.bodyLarge(
+                    isDarkMode,
+                  ).copyWith(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: AppSpacing.s),
                 TextField(
@@ -202,9 +196,9 @@ class _ReportDialogState extends State<ReportDialog> {
                   style: AppTypography.bodyMedium(isDarkMode),
                   decoration: InputDecoration(
                     hintText: 'Describe el problema con más detalle...',
-                    hintStyle: AppTypography.bodyMedium(isDarkMode).copyWith(
-                      color: AppColors.getTextSecondary(isDarkMode),
-                    ),
+                    hintStyle: AppTypography.bodyMedium(
+                      isDarkMode,
+                    ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(AppRadius.inputField),
                       borderSide: BorderSide(
@@ -246,9 +240,9 @@ class _ReportDialogState extends State<ReportDialog> {
             onPressed: _isSubmitting ? null : () => Navigator.of(context).pop(),
             child: Text(
               'Cancelar',
-              style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.bodyMedium(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
             ),
           ),
           ElevatedButton(
@@ -295,14 +289,14 @@ class _ReportDialogState extends State<ReportDialog> {
     if (!_canSubmit()) return;
 
     context.read<SecurityBloc>().add(
-          SecurityEvent.createReport(
-            reportedUserId: widget.reportedUserId,
-            reportedPlanId: widget.reportedPlanId,
-            type: widget.type,
-            reason: _selectedReason!,
-            description: _descriptionController.text.trim(),
-          ),
-        );
+      SecurityEvent.createReport(
+        reportedUserId: widget.reportedUserId,
+        reportedPlanId: widget.reportedPlanId,
+        type: widget.type,
+        reason: _selectedReason!,
+        description: _descriptionController.text.trim(),
+      ),
+    );
   }
 }
 

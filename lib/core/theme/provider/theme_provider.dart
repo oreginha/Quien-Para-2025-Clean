@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../custom_theme_config.dart';
 
-enum ThemeMode {
-  light,
-  dark,
-  system,
-}
+enum ThemeMode { light, dark, system }
 
 class ThemeProvider extends ChangeNotifier {
   static const String _themePreferenceKey = 'theme_mode';

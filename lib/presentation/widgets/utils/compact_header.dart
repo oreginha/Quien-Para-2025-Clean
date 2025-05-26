@@ -35,7 +35,8 @@ class CompactHeader extends StatelessWidget {
             value: progress,
             backgroundColor: Colors.grey[700],
             valueColor: AlwaysStoppedAnimation<Color>(
-                progressColor ?? AppColors.success),
+              progressColor ?? AppColors.success,
+            ),
             minHeight: 4,
           ),
           const SizedBox(height: 12),
@@ -50,17 +51,19 @@ class CompactHeader extends StatelessWidget {
                   iconAssetPath!,
                   width: 30,
                   height: 30,
-                  errorBuilder: (BuildContext context, Object error,
-                          StackTrace? stackTrace) =>
-                      Icon(icon ?? Icons.info_outline,
-                          color: iconColor ?? AppColors.brandYellow, size: 30),
+                  errorBuilder:
+                      (
+                        BuildContext context,
+                        Object error,
+                        StackTrace? stackTrace,
+                      ) => Icon(
+                        icon ?? Icons.info_outline,
+                        color: iconColor ?? AppColors.brandYellow,
+                        size: 30,
+                      ),
                 )
               else if (icon != null)
-                Icon(
-                  icon,
-                  color: iconColor ?? AppColors.brandYellow,
-                  size: 30,
-                ),
+                Icon(icon, color: iconColor ?? AppColors.brandYellow, size: 30),
 
               const SizedBox(width: 10),
 
@@ -72,16 +75,15 @@ class CompactHeader extends StatelessWidget {
                     Text(
                       title,
                       style: AppTypography.bodyMedium(
-                              Theme.of(context).brightness == Brightness.dark)
-                          .copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                        Theme.of(context).brightness == Brightness.dark,
+                      ).copyWith(fontWeight: FontWeight.bold),
                     ),
                     if (subtitle != null)
                       Text(
                         subtitle!,
                         style: AppTypography.bodySmall(
-                            Theme.of(context).brightness == Brightness.dark),
+                          Theme.of(context).brightness == Brightness.dark,
+                        ),
                         overflow: TextOverflow.ellipsis,
                       ),
                   ],

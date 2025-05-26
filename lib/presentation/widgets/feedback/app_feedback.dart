@@ -6,7 +6,6 @@ import 'package:quien_para/core/theme/app_typography.dart';
 import 'package:quien_para/presentation/routes/app_router.dart';
 import 'package:quien_para/core/theme/theme_constants.dart';
 
-
 /// Clase de utilidad para mostrar mensajes de retroalimentación consistentes
 class AppFeedback {
   /// Muestra un SnackBar con estilo de éxito
@@ -15,8 +14,9 @@ class AppFeedback {
       SnackBar(
         content: Text(
           message,
-          style:
-              AppTypography.bodyMedium(false).copyWith(color: AppColors.lightTextPrimary),
+          style: AppTypography.bodyMedium(
+            false,
+          ).copyWith(color: AppColors.lightTextPrimary),
         ),
         backgroundColor: AppColors.success,
         behavior: SnackBarBehavior.floating,
@@ -34,8 +34,9 @@ class AppFeedback {
       SnackBar(
         content: Text(
           message,
-          style:
-              AppTypography.bodyMedium(false).copyWith(color: AppColors.lightTextPrimary),
+          style: AppTypography.bodyMedium(
+            false,
+          ).copyWith(color: AppColors.lightTextPrimary),
         ),
         backgroundColor: AppColors.success,
         behavior: SnackBarBehavior.floating,
@@ -53,8 +54,9 @@ class AppFeedback {
       SnackBar(
         content: Text(
           message,
-          style:
-              AppTypography.bodyMedium(false).copyWith(color: AppColors.lightTextPrimary),
+          style: AppTypography.bodyMedium(
+            false,
+          ).copyWith(color: AppColors.lightTextPrimary),
         ),
         backgroundColor: AppColors.success,
         behavior: SnackBarBehavior.floating,
@@ -72,8 +74,9 @@ class AppFeedback {
       SnackBar(
         content: Text(
           message,
-          style:
-              AppTypography.bodyMedium(false).copyWith(color: AppColors.lightTextPrimary),
+          style: AppTypography.bodyMedium(
+            false,
+          ).copyWith(color: AppColors.lightTextPrimary),
         ),
         backgroundColor: AppColors.brandYellow,
         behavior: SnackBarBehavior.floating,
@@ -97,26 +100,22 @@ class AppFeedback {
     return showDialog<bool>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        backgroundColor: AppColors.getSecondaryBackground(Theme.of(context).brightness == Brightness.dark),
+        backgroundColor: AppColors.getSecondaryBackground(
+          Theme.of(context).brightness == Brightness.dark,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.l),
         ),
-        title: Text(
-          title,
-          style: AppTypography.heading2(false),
-        ),
-        content: Text(
-          message,
-          style: AppTypography.bodyMedium(false),
-        ),
+        title: Text(title, style: AppTypography.heading2(false)),
+        content: Text(message, style: AppTypography.bodyMedium(false)),
         actions: [
           TextButton(
             onPressed: () => context.closeScreen(false),
             child: Text(
               cancelText,
-              style: AppTypography.bodyMedium(false).copyWith(
-                color: AppColors.lightTextPrimary,
-              ),
+              style: AppTypography.bodyMedium(
+                false,
+              ).copyWith(color: AppColors.lightTextPrimary),
             ),
           ),
           TextButton(

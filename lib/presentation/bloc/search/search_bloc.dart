@@ -25,11 +25,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     required FilterPlansByLocationUseCase filterByLocationUseCase,
     required FilterPlansByDateUseCase filterByDateUseCase,
     required FilterPlansByCategoryUseCase filterByCategoryUseCase,
-  })  : _searchPlansUseCase = searchPlansUseCase,
-        _filterByLocationUseCase = filterByLocationUseCase,
-        _filterByDateUseCase = filterByDateUseCase,
-        _filterByCategoryUseCase = filterByCategoryUseCase,
-        super(const SearchState()) {
+  }) : _searchPlansUseCase = searchPlansUseCase,
+       _filterByLocationUseCase = filterByLocationUseCase,
+       _filterByDateUseCase = filterByDateUseCase,
+       _filterByCategoryUseCase = filterByCategoryUseCase,
+       super(const SearchState()) {
     on<InitializeSearch>(_onInitializeSearch);
     on<QueryChanged>(
       _onQueryChanged,
@@ -58,15 +58,19 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       // Cargar búsquedas recientes del storage local
       final recentSearches = await _loadRecentSearches();
 
-      emit(state.copyWith(
-        status: SearchStatus.initial,
-        recentSearches: recentSearches,
-      ));
+      emit(
+        state.copyWith(
+          status: SearchStatus.initial,
+          recentSearches: recentSearches,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(
-        status: SearchStatus.failure,
-        error: 'Error al inicializar búsqueda: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: SearchStatus.failure,
+          error: 'Error al inicializar búsqueda: $e',
+        ),
+      );
     }
   }
 
@@ -82,10 +86,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     // Si la query está vacía, solo mostrar búsquedas recientes
     if (query.isEmpty) {
       await _searchSubscription?.cancel();
-      emit(state.copyWith(
-        status: SearchStatus.initial,
-        results: [],
-      ));
+      emit(state.copyWith(status: SearchStatus.initial, results: []));
       return;
     }
 
@@ -109,30 +110,31 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       _lastDocumentId = null;
 
       // Ejecutar búsqueda
-      final result = await _searchPlansUseCase.execute(
-        query: query,
-        limit: 20,
-      );
+      final result = await _searchPlansUseCase.execute(query: query, limit: 20);
 
       result.fold(
         (failure) {
-          emit(state.copyWith(
-            status: SearchStatus.failure,
-            error: failure.message,
-          ));
+          emit(
+            state.copyWith(
+              status: SearchStatus.failure,
+              error: failure.message,
+            ),
+          );
         },
         (results) async {
           // Guardar query en búsquedas recientes
           await _saveSearchQuery(query);
 
           // Actualizar estado
-          emit(state.copyWith(
-            status: SearchStatus.success,
-            query: query,
-            results: results,
-            recentSearches: await _loadRecentSearches(),
-            hasReachedMax: results.length < 20,
-          ));
+          emit(
+            state.copyWith(
+              status: SearchStatus.success,
+              query: query,
+              results: results,
+              recentSearches: await _loadRecentSearches(),
+              hasReachedMax: results.length < 20,
+            ),
+          );
 
           // Guardar último documento para paginación
           if (results.isNotEmpty) {
@@ -141,10 +143,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
       );
     } catch (e) {
-      emit(state.copyWith(
-        status: SearchStatus.failure,
-        error: 'Error en la búsqueda: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: SearchStatus.failure,
+          error: 'Error en la búsqueda: $e',
+        ),
+      );
     }
   }
 
@@ -163,19 +167,23 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       result.fold(
         (failure) {
-          emit(state.copyWith(
-            error: 'Error al cargar más resultados: ${failure.message}',
-          ));
+          emit(
+            state.copyWith(
+              error: 'Error al cargar más resultados: ${failure.message}',
+            ),
+          );
         },
         (moreResults) {
           final updatedResults = List<PlanWithCreatorEntity>.from(state.results)
             ..addAll(moreResults);
 
-          emit(state.copyWith(
-            status: SearchStatus.success,
-            results: updatedResults,
-            hasReachedMax: moreResults.length < 20,
-          ));
+          emit(
+            state.copyWith(
+              status: SearchStatus.success,
+              results: updatedResults,
+              hasReachedMax: moreResults.length < 20,
+            ),
+          );
 
           // Actualizar último documento
           if (moreResults.isNotEmpty) {
@@ -184,23 +192,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
       );
     } catch (e) {
-      emit(state.copyWith(
-        error: 'Error al cargar más resultados: $e',
-      ));
+      emit(state.copyWith(error: 'Error al cargar más resultados: $e'));
     }
   }
 
-  void _onClearSearch(
-    ClearSearch event,
-    Emitter<SearchState> emit,
-  ) {
+  void _onClearSearch(ClearSearch event, Emitter<SearchState> emit) {
     _searchSubscription?.cancel();
     _lastDocumentId = null;
-    emit(state.copyWith(
-      status: SearchStatus.initial,
-      query: '',
-      results: [],
-    ));
+    emit(state.copyWith(status: SearchStatus.initial, query: '', results: []));
   }
 
   Future<void> _onClearRecentSearches(
@@ -211,13 +210,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('recent_searches');
 
-      emit(state.copyWith(
-        recentSearches: [],
-      ));
+      emit(state.copyWith(recentSearches: []));
     } catch (e) {
-      emit(state.copyWith(
-        error: 'Error al borrar búsquedas recientes: $e',
-      ));
+      emit(state.copyWith(error: 'Error al borrar búsquedas recientes: $e'));
     }
   }
 
@@ -248,23 +243,27 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       result.fold(
         (failure) {
-          emit(state.copyWith(
-            status: SearchStatus.failure,
-            error: failure.message,
-          ));
+          emit(
+            state.copyWith(
+              status: SearchStatus.failure,
+              error: failure.message,
+            ),
+          );
         },
         (results) {
-          emit(state.copyWith(
-            status: SearchStatus.success,
-            results: results,
-            hasReachedMax: results.length < 20,
-            activeFilters: state.activeFilters.copyWith(
-              hasLocationFilter: true,
-              latitude: event.latitude,
-              longitude: event.longitude,
-              radiusKm: event.radiusKm,
+          emit(
+            state.copyWith(
+              status: SearchStatus.success,
+              results: results,
+              hasReachedMax: results.length < 20,
+              activeFilters: state.activeFilters.copyWith(
+                hasLocationFilter: true,
+                latitude: event.latitude,
+                longitude: event.longitude,
+                radiusKm: event.radiusKm,
+              ),
             ),
-          ));
+          );
 
           if (results.isNotEmpty) {
             _lastDocumentId = results.last.plan.id;
@@ -272,10 +271,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
       );
     } catch (e) {
-      emit(state.copyWith(
-        status: SearchStatus.failure,
-        error: 'Error al aplicar filtro de ubicación: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: SearchStatus.failure,
+          error: 'Error al aplicar filtro de ubicación: $e',
+        ),
+      );
     }
   }
 
@@ -294,22 +295,26 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       result.fold(
         (failure) {
-          emit(state.copyWith(
-            status: SearchStatus.failure,
-            error: failure.message,
-          ));
+          emit(
+            state.copyWith(
+              status: SearchStatus.failure,
+              error: failure.message,
+            ),
+          );
         },
         (results) {
-          emit(state.copyWith(
-            status: SearchStatus.success,
-            results: results,
-            hasReachedMax: results.length < 20,
-            activeFilters: state.activeFilters.copyWith(
-              hasDateFilter: true,
-              startDate: event.startDate,
-              endDate: event.endDate,
+          emit(
+            state.copyWith(
+              status: SearchStatus.success,
+              results: results,
+              hasReachedMax: results.length < 20,
+              activeFilters: state.activeFilters.copyWith(
+                hasDateFilter: true,
+                startDate: event.startDate,
+                endDate: event.endDate,
+              ),
             ),
-          ));
+          );
 
           if (results.isNotEmpty) {
             _lastDocumentId = results.last.plan.id;
@@ -317,10 +322,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
       );
     } catch (e) {
-      emit(state.copyWith(
-        status: SearchStatus.failure,
-        error: 'Error al aplicar filtro de fecha: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: SearchStatus.failure,
+          error: 'Error al aplicar filtro de fecha: $e',
+        ),
+      );
     }
   }
 
@@ -338,21 +345,25 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       result.fold(
         (failure) {
-          emit(state.copyWith(
-            status: SearchStatus.failure,
-            error: failure.message,
-          ));
+          emit(
+            state.copyWith(
+              status: SearchStatus.failure,
+              error: failure.message,
+            ),
+          );
         },
         (results) {
-          emit(state.copyWith(
-            status: SearchStatus.success,
-            results: results,
-            hasReachedMax: results.length < 20,
-            activeFilters: state.activeFilters.copyWith(
-              hasCategoryFilter: true,
-              category: event.category,
+          emit(
+            state.copyWith(
+              status: SearchStatus.success,
+              results: results,
+              hasReachedMax: results.length < 20,
+              activeFilters: state.activeFilters.copyWith(
+                hasCategoryFilter: true,
+                category: event.category,
+              ),
             ),
-          ));
+          );
 
           if (results.isNotEmpty) {
             _lastDocumentId = results.last.plan.id;
@@ -360,23 +371,24 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
       );
     } catch (e) {
-      emit(state.copyWith(
-        status: SearchStatus.failure,
-        error: 'Error al aplicar filtro de categoría: $e',
-      ));
+      emit(
+        state.copyWith(
+          status: SearchStatus.failure,
+          error: 'Error al aplicar filtro de categoría: $e',
+        ),
+      );
     }
   }
 
-  void _onClearFilters(
-    ClearFilters event,
-    Emitter<SearchState> emit,
-  ) {
+  void _onClearFilters(ClearFilters event, Emitter<SearchState> emit) {
     _lastDocumentId = null;
-    emit(state.copyWith(
-      activeFilters: const SearchFilters(),
-      results: [],
-      status: SearchStatus.initial,
-    ));
+    emit(
+      state.copyWith(
+        activeFilters: const SearchFilters(),
+        results: [],
+        status: SearchStatus.initial,
+      ),
+    );
   }
 
   // ---- MÉTODOS AUXILIARES ----

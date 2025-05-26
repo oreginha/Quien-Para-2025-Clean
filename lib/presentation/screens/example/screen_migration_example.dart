@@ -73,10 +73,7 @@ class _MigrationExampleScreenState extends State<MigrationExampleScreen> {
 
     // PASO 1: Extraer el contenido original de la pantalla
     final Widget mobileContent = Scaffold(
-      appBar: AppBar(
-        title: const Text('Ejemplo de Migración'),
-        elevation: 0,
-      ),
+      appBar: AppBar(title: const Text('Ejemplo de Migración'), elevation: 0),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

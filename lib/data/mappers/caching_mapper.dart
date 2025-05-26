@@ -55,14 +55,18 @@ abstract class CachingEntityMapper<Entity extends EntityBase, Model, JsonType>
     final modelCache = _modelCacheMap;
 
     if (entityCache.length > _maxCacheSize) {
-      final keysToRemove = entityCache.keys.take(entityCache.length - _maxCacheSize ~/ 2).toList();
+      final keysToRemove = entityCache.keys
+          .take(entityCache.length - _maxCacheSize ~/ 2)
+          .toList();
       for (final key in keysToRemove) {
         entityCache.remove(key);
       }
     }
 
     if (modelCache.length > _maxCacheSize) {
-      final keysToRemove = modelCache.keys.take(modelCache.length - _maxCacheSize ~/ 2).toList();
+      final keysToRemove = modelCache.keys
+          .take(modelCache.length - _maxCacheSize ~/ 2)
+          .toList();
       for (final key in keysToRemove) {
         modelCache.remove(key);
       }
@@ -142,7 +146,7 @@ abstract class CachingEntityMapper<Entity extends EntityBase, Model, JsonType>
     return entity;
   }
 
-  /// Método abstracto que debe ser implementado por las subclases para 
+  /// Método abstracto que debe ser implementado por las subclases para
   /// realizar la conversión real de modelo a entidad
   Entity convertModelToEntity(Model model);
 

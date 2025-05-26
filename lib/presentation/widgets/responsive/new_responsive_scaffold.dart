@@ -49,8 +49,9 @@ class NewResponsiveScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Envolver el AppBar con PlatformAwareAppBar si existe
-    final wrappedAppBar =
-        appBar != null ? PlatformAwareAppBar(appBar: appBar!) : null;
+    final wrappedAppBar = appBar != null
+        ? PlatformAwareAppBar(appBar: appBar!)
+        : null;
 
     // Contenido móvil que se reutilizará tanto en móvil como en la versión web embebida
     final mobileContent = Scaffold(

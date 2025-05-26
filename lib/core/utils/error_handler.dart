@@ -21,8 +21,11 @@ class ErrorHandler {
   ErrorHandler({required Logger logger}) : _logger = logger;
 
   /// Maneja un error y devuelve un AppFailure apropiado
-  AppFailure handleError(String operation, dynamic error,
-      [StackTrace? stackTrace]) {
+  AppFailure handleError(
+    String operation,
+    dynamic error, [
+    StackTrace? stackTrace,
+  ]) {
     // Registrar el error
     _logError(operation, error, stackTrace);
 
@@ -57,7 +60,9 @@ class ErrorHandler {
 
   /// Maneja errores específicos de Firebase
   AppFailure _handleFirebaseException(
-      String operation, FirebaseException error) {
+    String operation,
+    FirebaseException error,
+  ) {
     // Mapear códigos de error de Firebase a mensajes amigables
     switch (error.code) {
       case 'permission-denied':
@@ -90,7 +95,9 @@ class ErrorHandler {
 
   /// Maneja errores específicos de Firebase Auth
   AppFailure _handleFirebaseAuthException(
-      String operation, FirebaseAuthException error) {
+    String operation,
+    FirebaseAuthException error,
+  ) {
     // Mapear códigos de error de Firebase Auth a mensajes amigables
     switch (error.code) {
       case 'user-not-found':
@@ -169,7 +176,9 @@ class ErrorHandler {
   ///
   /// Devuelve un Either con el resultado o un AppFailure en caso de error
   Future<Either<AppFailure, T>> executeWithTryCatch<T>(
-      String operation, Future<T> Function() action) async {
+    String operation,
+    Future<T> Function() action,
+  ) async {
     try {
       final result = await action();
       return right(result);
@@ -181,7 +190,9 @@ class ErrorHandler {
 
   /// Ejecuta una operación que ya devuelve un Either, manejando cualquier excepción adicional
   Future<Either<AppFailure, T>> executeSafe<T>(
-      String operation, Future<Either<AppFailure, T>> Function() action) async {
+    String operation,
+    Future<Either<AppFailure, T>> Function() action,
+  ) async {
     try {
       return await action();
     } catch (e, stackTrace) {
@@ -204,7 +215,9 @@ class NetworkException implements Exception {
 extension ErrorHandlingExtension<T> on Future<T> {
   /// Transforma este Future en un Either, manejando errores automáticamente
   Future<Either<AppFailure, T>> toEither(
-      ErrorHandler errorHandler, String operation) async {
+    ErrorHandler errorHandler,
+    String operation,
+  ) async {
     try {
       final result = await this;
       return right(result);

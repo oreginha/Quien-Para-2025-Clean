@@ -200,8 +200,9 @@ class AppButton extends StatelessWidget {
         return ButtonColors(
           background: AppColors.lightTextPrimary,
           foreground: Colors.black,
-          disabledBackground:
-              AppColors.lightTextPrimary.withAlpha((0.5 * 255).round()),
+          disabledBackground: AppColors.lightTextPrimary.withAlpha(
+            (0.5 * 255).round(),
+          ),
           disabledForeground: Colors.black54,
         );
       case AppButtonStyle.secondary:
@@ -209,8 +210,9 @@ class AppButton extends StatelessWidget {
           background: Colors.transparent,
           foreground: AppColors.lightTextPrimary,
           disabledBackground: Colors.transparent,
-          disabledForeground:
-              AppColors.lightTextPrimary.withAlpha((0.5 * 255).round()),
+          disabledForeground: AppColors.lightTextPrimary.withAlpha(
+            (0.5 * 255).round(),
+          ),
         );
       case AppButtonStyle.danger:
         return ButtonColors(
@@ -224,8 +226,9 @@ class AppButton extends StatelessWidget {
           background: Colors.transparent,
           foreground: AppColors.lightTextPrimary,
           disabledBackground: Colors.transparent,
-          disabledForeground:
-              AppColors.lightTextPrimary.withAlpha((0.5 * 255).round()),
+          disabledForeground: AppColors.lightTextPrimary.withAlpha(
+            (0.5 * 255).round(),
+          ),
         );
       case AppButtonStyle.action:
         return ButtonColors(
@@ -400,7 +403,8 @@ class AppBackButton extends StatelessWidget {
                 return AlertDialog(
                   title: const Text('¿Estás seguro?'),
                   content: const Text(
-                      'Si vuelves atrás, perderás los cambios no guardados.'),
+                    'Si vuelves atrás, perderás los cambios no guardados.',
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () => dialogContext.closeScreen(),
@@ -537,7 +541,8 @@ class BackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
-      onPressed: onPressed ??
+      onPressed:
+          onPressed ??
           () {
             Navigator.pop(context);
           },

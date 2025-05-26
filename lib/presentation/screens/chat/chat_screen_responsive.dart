@@ -83,10 +83,7 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
   void _initializeChat() {
     try {
       final simpleChatBloc = context.read<SimpleChatBloc>();
-      simpleChatBloc.add(LoadMessages(
-        widget.conversationId,
-        markAsRead: true,
-      ));
+      simpleChatBloc.add(LoadMessages(widget.conversationId, markAsRead: true));
     } catch (e) {
       // Si no hay SimpleChatBloc disponible, usar modo fallback
       setState(() {
@@ -197,20 +194,20 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
           .doc(widget.conversationId)
           .collection('messages')
           .add({
-        'content': messageText,
-        'senderId': _currentUserId,
-        'timestamp': FieldValue.serverTimestamp(),
-        'read': false,
-      });
+            'content': messageText,
+            'senderId': _currentUserId,
+            'timestamp': FieldValue.serverTimestamp(),
+            'read': false,
+          });
 
       // Actualizar último mensaje en la conversación
       await _firestore
           .collection('conversations')
           .doc(widget.conversationId)
           .update({
-        'lastMessage': messageText,
-        'lastMessageTimestamp': FieldValue.serverTimestamp(),
-      });
+            'lastMessage': messageText,
+            'lastMessageTimestamp': FieldValue.serverTimestamp(),
+          });
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -281,11 +278,13 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
           CircleAvatar(
             backgroundColor: AppColors.brandYellow,
             radius: 18,
-            backgroundImage: widget.otherUserPhoto != null && 
-                            widget.otherUserPhoto!.isNotEmpty
+            backgroundImage:
+                widget.otherUserPhoto != null &&
+                    widget.otherUserPhoto!.isNotEmpty
                 ? NetworkImage(widget.otherUserPhoto!)
                 : null,
-            child: widget.otherUserPhoto == null || widget.otherUserPhoto!.isEmpty
+            child:
+                widget.otherUserPhoto == null || widget.otherUserPhoto!.isEmpty
                 ? Text(
                     widget.receiverName.isNotEmpty
                         ? widget.receiverName[0].toUpperCase()
@@ -419,7 +418,10 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
     );
   }
 
-  Widget _buildChatUIFromFirestore(List<QueryDocumentSnapshot> messages, bool isDarkMode) {
+  Widget _buildChatUIFromFirestore(
+    List<QueryDocumentSnapshot> messages,
+    bool isDarkMode,
+  ) {
     return Column(
       children: [
         Expanded(
@@ -455,9 +457,9 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
             const SizedBox(height: spacing.AppSpacing.m),
             Text(
               'No hay mensajes aún. ¡Envía el primero!',
-              style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.bodyLarge(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               textAlign: TextAlign.center,
             ),
           ],
@@ -476,7 +478,8 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
         final message = messages[index];
         final bool isMine = message.senderId == _currentUserId;
 
-        final bool showDateDivider = index == messages.length - 1 ||
+        final bool showDateDivider =
+            index == messages.length - 1 ||
             !_isSameDay(message.timestamp, messages[index + 1].timestamp);
 
         return AnimatedOpacity(
@@ -487,11 +490,7 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
             children: [
               if (showDateDivider)
                 _buildDateDivider(message.timestamp, isDarkMode),
-              MessageBubble(
-                message: message,
-                isMine: isMine,
-                showTime: true,
-              ),
+              MessageBubble(message: message, isMine: isMine, showTime: true),
             ],
           ),
         );
@@ -499,7 +498,10 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
     );
   }
 
-  Widget _buildMessageListFromFirestore(List<QueryDocumentSnapshot> messages, bool isDarkMode) {
+  Widget _buildMessageListFromFirestore(
+    List<QueryDocumentSnapshot> messages,
+    bool isDarkMode,
+  ) {
     return ListView.builder(
       controller: _scrollController,
       reverse: true,
@@ -508,17 +510,24 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
       itemBuilder: (BuildContext context, int index) {
         final messageDoc = messages[index];
         final messageData = messageDoc.data() as Map<String, dynamic>;
-        
+
         final bool isMine = messageData['senderId'] == _currentUserId;
         final DateTime timestamp = messageData['timestamp'] is Timestamp
             ? (messageData['timestamp'] as Timestamp).toDate()
             : DateTime.now();
 
-        final bool showDateDivider = index == messages.length - 1 ||
-            !_isSameDay(timestamp, 
-                (messages[index + 1].data() as Map<String, dynamic>)['timestamp'] is Timestamp
-                    ? ((messages[index + 1].data() as Map<String, dynamic>)['timestamp'] as Timestamp).toDate()
-                    : DateTime.now());
+        final bool showDateDivider =
+            index == messages.length - 1 ||
+            !_isSameDay(
+              timestamp,
+              (messages[index + 1].data() as Map<String, dynamic>)['timestamp']
+                      is Timestamp
+                  ? ((messages[index + 1].data()
+                                as Map<String, dynamic>)['timestamp']
+                            as Timestamp)
+                        .toDate()
+                  : DateTime.now(),
+            );
 
         return AnimatedOpacity(
           duration: Duration(milliseconds: 300 + (index * 30).clamp(0, 500)),
@@ -535,18 +544,26 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
     );
   }
 
-  Widget _buildMessageBubbleFromData(Map<String, dynamic> messageData, bool isMine, bool isDarkMode) {
+  Widget _buildMessageBubbleFromData(
+    Map<String, dynamic> messageData,
+    bool isMine,
+    bool isDarkMode,
+  ) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: spacing.AppSpacing.xs),
       child: Row(
-        mainAxisAlignment: isMine ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isMine
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         children: [
           if (!isMine) ...[
             CircleAvatar(
               radius: 16,
               backgroundColor: AppColors.brandYellow,
               child: Text(
-                widget.receiverName.isNotEmpty ? widget.receiverName[0].toUpperCase() : '?',
+                widget.receiverName.isNotEmpty
+                    ? widget.receiverName[0].toUpperCase()
+                    : '?',
                 style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),
@@ -559,15 +576,15 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
                 vertical: spacing.AppSpacing.s,
               ),
               decoration: BoxDecoration(
-                color: isMine 
-                    ? AppColors.brandYellow 
+                color: isMine
+                    ? AppColors.brandYellow
                     : AppColors.getCardBackground(isDarkMode),
                 borderRadius: BorderRadius.circular(spacing.AppSpacing.m),
               ),
               child: Text(
                 messageData['content'] ?? '',
                 style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                  color: isMine 
+                  color: isMine
                       ? Colors.black
                       : AppColors.getTextPrimary(isDarkMode),
                 ),
@@ -605,12 +622,14 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: spacing.AppSpacing.s),
+            padding: const EdgeInsets.symmetric(
+              horizontal: spacing.AppSpacing.s,
+            ),
             child: Text(
               _getFormattedDate(date),
-              style: AppTypography.caption(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.caption(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
             ),
           ),
           Expanded(
@@ -657,9 +676,9 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
                 minLines: 1,
                 decoration: InputDecoration(
                   hintText: 'Escribe un mensaje...',
-                  hintStyle: AppTypography.bodyMedium(isDarkMode).copyWith(
-                    color: AppColors.getTextSecondary(isDarkMode),
-                  ),
+                  hintStyle: AppTypography.bodyMedium(
+                    isDarkMode,
+                  ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
                   border: InputBorder.none,
                 ),
               ),
@@ -677,11 +696,7 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(12),
                 ),
-                child: const Icon(
-                  Icons.send,
-                  color: Colors.white,
-                  size: 20,
-                ),
+                child: const Icon(Icons.send, color: Colors.white, size: 20),
               ),
             ),
           ),
@@ -704,9 +719,9 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
               leading: Icon(Icons.delete_outline, color: AppColors.accentRed),
               title: Text(
                 'Eliminar conversación',
-                style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                  color: AppColors.accentRed,
-                ),
+                style: AppTypography.bodyMedium(
+                  isDarkMode,
+                ).copyWith(color: AppColors.accentRed),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -714,8 +729,14 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
               },
             ),
             ListTile(
-              leading: Icon(Icons.block, color: AppColors.getTextSecondary(isDarkMode)),
-              title: Text('Bloquear usuario', style: AppTypography.bodyMedium(isDarkMode)),
+              leading: Icon(
+                Icons.block,
+                color: AppColors.getTextSecondary(isDarkMode),
+              ),
+              title: Text(
+                'Bloquear usuario',
+                style: AppTypography.bodyMedium(isDarkMode),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -724,8 +745,14 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
               },
             ),
             ListTile(
-              leading: Icon(Icons.report_outlined, color: AppColors.getTextSecondary(isDarkMode)),
-              title: Text('Reportar', style: AppTypography.bodyMedium(isDarkMode)),
+              leading: Icon(
+                Icons.report_outlined,
+                color: AppColors.getTextSecondary(isDarkMode),
+              ),
+              title: Text(
+                'Reportar',
+                style: AppTypography.bodyMedium(isDarkMode),
+              ),
               onTap: () {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -745,7 +772,10 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: AppColors.getCardBackground(isDarkMode),
-          title: Text('¿Eliminar conversación?', style: AppTypography.subtitle1(isDarkMode)),
+          title: Text(
+            '¿Eliminar conversación?',
+            style: AppTypography.subtitle1(isDarkMode),
+          ),
           content: Text(
             'Esta acción eliminará permanentemente todos los mensajes.',
             style: AppTypography.bodyMedium(isDarkMode),
@@ -753,14 +783,20 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancelar', style: TextStyle(color: AppColors.getTextSecondary(isDarkMode))),
+              child: Text(
+                'Cancelar',
+                style: TextStyle(color: AppColors.getTextSecondary(isDarkMode)),
+              ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-              child: Text('Eliminar', style: TextStyle(color: AppColors.accentRed)),
+              child: Text(
+                'Eliminar',
+                style: TextStyle(color: AppColors.accentRed),
+              ),
             ),
           ],
         );

@@ -104,8 +104,10 @@ class ErrorHandler {
   }
 
   /// Método para manejar errores específicos de Firebase
-  static AppException handleFirebaseError(dynamic error,
-      [StackTrace? stackTrace]) {
+  static AppException handleFirebaseError(
+    dynamic error, [
+    StackTrace? stackTrace,
+  ]) {
     String message;
     ErrorType type = ErrorType.unknown;
 
@@ -145,8 +147,11 @@ class ErrorHandler {
     }
 
     // Registrar el error para análisis
-    _logger.e('Error de Firebase: $message',
-        error: error, stackTrace: stackTrace);
+    _logger.e(
+      'Error de Firebase: $message',
+      error: error,
+      stackTrace: stackTrace,
+    );
 
     return AppException(
       message: message,

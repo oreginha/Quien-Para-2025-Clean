@@ -32,7 +32,9 @@ class MarkMessagesAsReadUseCase
   @override
   Future<Either<AppFailure, void>> call(MarkMessagesAsReadParams params) async {
     await _chatRepository.markMessagesAsRead(
-        params.conversationId, params.userId);
+      params.conversationId,
+      params.userId,
+    );
     return const Right(null);
   }
 }

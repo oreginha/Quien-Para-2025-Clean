@@ -26,12 +26,13 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   NotificationBloc({
     required INotificationRepository repository,
     required NotificationServiceInterface notificationService,
-  })  : _repository = repository,
-        _notificationService = notificationService,
-        _getNotificationsUseCase = GetNotificationsUseCase(repository),
-        _markNotificationAsReadUseCase =
-            MarkNotificationAsReadUseCase(repository),
-        super(const NotificationState(status: NotificationStatus.initial)) {
+  }) : _repository = repository,
+       _notificationService = notificationService,
+       _getNotificationsUseCase = GetNotificationsUseCase(repository),
+       _markNotificationAsReadUseCase = MarkNotificationAsReadUseCase(
+         repository,
+       ),
+       super(const NotificationState(status: NotificationStatus.initial)) {
     on<LoadNotificationsEvent>(_onLoadNotifications);
     on<MarkNotificationAsReadEvent>(_onMarkNotificationAsRead);
     on<InitializeNotificationsEvent>(_onInitializeNotifications);
@@ -40,8 +41,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     add(const InitializeNotificationsEvent());
 
     // Listen for real-time notification updates
-    _notificationSubscription =
-        _notificationService.onNotificationReceived.listen((notification) {
+    _notificationSubscription = _notificationService.onNotificationReceived.listen((
+      notification,
+    ) {
       // Cuando se recibe una notificación, recargar las notificaciones del usuario actual
       final userId = notification['userId'] as String?;
       if (userId != null) {
@@ -56,22 +58,24 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   ) async {
     emit(state.copyWith(status: NotificationStatus.loading));
 
-    final result =
-        await _getNotificationsUseCase.execute(GetNotificationsParams(
-      userId: event.userId,
-      includeRead: event.includeRead,
-      limit: event.limit,
-    ));
+    final result = await _getNotificationsUseCase.execute(
+      GetNotificationsParams(
+        userId: event.userId,
+        includeRead: event.includeRead,
+        limit: event.limit,
+      ),
+    );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: NotificationStatus.error,
-        failure: failure,
-      )),
-      (notifications) => emit(state.copyWith(
-        status: NotificationStatus.success,
-        notifications: notifications,
-      )),
+      (failure) => emit(
+        state.copyWith(status: NotificationStatus.error, failure: failure),
+      ),
+      (notifications) => emit(
+        state.copyWith(
+          status: NotificationStatus.success,
+          notifications: notifications,
+        ),
+      ),
     );
   }
 
@@ -79,14 +83,14 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     MarkNotificationAsReadEvent event,
     Emitter<NotificationState> emit,
   ) async {
-    final result =
-        await _markNotificationAsReadUseCase.execute(event.notificationId);
+    final result = await _markNotificationAsReadUseCase.execute(
+      event.notificationId,
+    );
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: NotificationStatus.error,
-        failure: failure,
-      )),
+      (failure) => emit(
+        state.copyWith(status: NotificationStatus.error, failure: failure),
+      ),
       (_) => add(LoadNotificationsEvent(userId: event.userId)),
     );
   }
@@ -98,10 +102,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     final result = await _repository.initialize();
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        status: NotificationStatus.error,
-        failure: failure,
-      )),
+      (failure) => emit(
+        state.copyWith(status: NotificationStatus.error, failure: failure),
+      ),
       (_) => null,
     );
   }

@@ -27,10 +27,10 @@ class CustomDropdown<T> extends StatelessWidget {
         border: const OutlineInputBorder(),
       ),
       items: items
-          .map((final item) => DropdownMenuItem<T>(
-                value: item,
-                child: Text(item.toString()),
-              ))
+          .map(
+            (final item) =>
+                DropdownMenuItem<T>(value: item, child: Text(item.toString())),
+          )
           .toList(),
       onChanged: onChanged,
       validator: validator,

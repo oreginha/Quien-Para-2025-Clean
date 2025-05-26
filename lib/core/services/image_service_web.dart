@@ -5,16 +5,16 @@ import 'package:quien_para/core/logger/logger.dart';
 import '../../domain/interfaces/image_service_interface.dart';
 
 /// Implementación del servicio de imágenes para la plataforma web
-/// 
+///
 /// Esta implementación proporciona adaptadores para las operaciones de imágenes en web,
 /// utilizando XFile internamente pero devolviendo objetos File para compatibilidad con la interfaz.
-/// 
+///
 /// Algunas operaciones pueden no estar completamente disponibles en web.
 class ImageServiceWeb implements ImageServiceInterface {
   final ImagePicker _picker = ImagePicker();
-  
+
   ImageServiceWeb();
-  
+
   /// Convierte un XFile a File (esto no funciona realmente en web, pero permite compilar)
   Future<File?> _convertXFileToFile(XFile? xFile) async {
     if (xFile == null) return null;

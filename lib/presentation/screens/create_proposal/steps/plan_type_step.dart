@@ -27,8 +27,9 @@ class PlanTypeStep extends StatelessWidget {
         if (state is! PlanLoaded) {
           return Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(AppColors
-                  .brandYellow), // Usando AppColors en lugar de ThemeUtils
+              valueColor: AlwaysStoppedAnimation<Color>(
+                AppColors.brandYellow,
+              ), // Usando AppColors en lugar de ThemeUtils
             ),
           );
         }
@@ -41,20 +42,23 @@ class PlanTypeStep extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                AppColors.getBackground(Theme.of(context).brightness ==
-                    Brightness.dark), // Reemplazo que respeta el modo
-                AppColors.getSecondaryBackground(Theme.of(context).brightness ==
-                    Brightness.dark), // Reemplazo que respeta el modo
+                AppColors.getBackground(
+                  Theme.of(context).brightness == Brightness.dark,
+                ), // Reemplazo que respeta el modo
+                AppColors.getSecondaryBackground(
+                  Theme.of(context).brightness == Brightness.dark,
+                ), // Reemplazo que respeta el modo
               ],
             ),
           ),
           child: LayoutBuilder(
-            builder:
-                (final BuildContext context, final BoxConstraints constraints) {
+            builder: (final BuildContext context, final BoxConstraints constraints) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
+                    horizontal: 20.0,
+                    vertical: 10.0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -63,47 +67,49 @@ class PlanTypeStep extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 2,
-                          crossAxisSpacing: 12,
-                          mainAxisSpacing: 12,
-                        ),
+                              crossAxisCount: 2,
+                              childAspectRatio: 2,
+                              crossAxisSpacing: 12,
+                              mainAxisSpacing: 12,
+                            ),
                         itemCount: PlanType.planTypes.length,
-                        itemBuilder:
-                            (final BuildContext context, final int index) {
-                          final String type =
-                              PlanType.planTypes.keys.elementAt(index);
+                        itemBuilder: (final BuildContext context, final int index) {
+                          final String type = PlanType.planTypes.keys.elementAt(
+                            index,
+                          );
                           final Map<String, dynamic> details =
                               PlanType.planTypes[type]!;
                           // Cambio: ahora solo un tipo puede estar seleccionado
                           final bool isSelected =
                               plan.selectedThemes.isNotEmpty &&
-                                  plan.selectedThemes.first == type;
+                              plan.selectedThemes.first == type;
 
                           return GestureDetector(
                             onTap: () {
                               // Actualizar temas seleccionados con BLoC
                               context.read<PlanBloc>().add(
-                                  PlanEvent.updateSelectedThemes(
-                                      <String>[type]));
+                                PlanEvent.updateSelectedThemes(<String>[type]),
+                              );
                             },
                             child: Container(
                               decoration: BoxDecoration(
                                 color: isSelected
-                                    ? AppColors.brandYellow
-                                        .withAlpha((0.15 * 255).toInt())
+                                    ? AppColors.brandYellow.withAlpha(
+                                        (0.15 * 255).toInt(),
+                                      )
                                     : AppColors.getBackground(
-                                            Theme.of(context).brightness ==
-                                                Brightness.dark)
-                                        .withAlpha(
-                                            120), // Reemplazo que respeta el modo
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark,
+                                      ).withAlpha(
+                                        120,
+                                      ), // Reemplazo que respeta el modo
                                 borderRadius: BorderRadius.circular(12),
                                 border: Border.all(
                                   color: isSelected
                                       ? AppColors
-                                          .brandYellow // Color de marca consistente
+                                            .brandYellow // Color de marca consistente
                                       : Colors
-                                          .transparent, // Colors.transparent se mantiene ya que es un valor constante universal
+                                            .transparent, // Colors.transparent se mantiene ya que es un valor constante universal
                                   width: 2,
                                 ),
                               ),
@@ -122,7 +128,8 @@ class PlanTypeStep extends StatelessWidget {
                                           ? AppColors.brandYellow
                                           : AppColors.getTextPrimary(
                                               Theme.of(context).brightness ==
-                                                  Brightness.dark),
+                                                  Brightness.dark,
+                                            ),
                                       fontSize: 14,
                                       fontWeight: isSelected
                                           ? FontWeight.bold
@@ -152,7 +159,7 @@ class PlanTypeStep extends StatelessWidget {
                                       'Recitales',
                                       'Festivales',
                                       'Teatro',
-                                      'Cine'
+                                      'Cine',
                                     ].contains(selectedType);
 
                                     // Si no necesita sugerencias, saltar directamente a detalles
@@ -176,10 +183,10 @@ class PlanTypeStep extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.brandYellow,
                               foregroundColor: AppColors.getBackground(
-                                  Theme.of(context).brightness ==
-                                      Brightness.dark),
-                              disabledBackgroundColor:
-                                  AppColors.brandYellow.withValues(alpha: 0.5),
+                                Theme.of(context).brightness == Brightness.dark,
+                              ),
+                              disabledBackgroundColor: AppColors.brandYellow
+                                  .withValues(alpha: 0.5),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),

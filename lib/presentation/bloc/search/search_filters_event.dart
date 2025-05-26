@@ -11,7 +11,9 @@ abstract class SearchFiltersEvent with _$SearchFiltersEvent {
   const factory SearchFiltersEvent.updateCategoryFilter(final String category) =
       _UpdateCategoryFilter;
   const factory SearchFiltersEvent.updateTagFilter(
-      final String tag, final bool selected) = _UpdateTagFilter;
+    final String tag,
+    final bool selected,
+  ) = _UpdateTagFilter;
   const factory SearchFiltersEvent.clearFilters() = _ClearFilters;
 
   // Eventos para manejar cambios en la distancia
@@ -20,11 +22,15 @@ abstract class SearchFiltersEvent with _$SearchFiltersEvent {
 
   // Eventos para manejar cambios en las condiciones
   const factory SearchFiltersEvent.conditionToggled(
-      final String condition, final bool value) = _ConditionToggled;
+    final String condition,
+    final bool value,
+  ) = _ConditionToggled;
 
   // Eventos para manejar cambios en los servicios adicionales
   const factory SearchFiltersEvent.additionalServiceToggled(
-      final String service, final bool value) = _AdditionalServiceToggled;
+    final String service,
+    final bool value,
+  ) = _AdditionalServiceToggled;
 
   // Eventos para acciones de botones
   const factory SearchFiltersEvent.resetFilters() = _ResetFilters;

@@ -84,53 +84,66 @@ void main() {
     );
 
     test(
-        'Flujo completo: GetPlanByIdUseCase utiliza correctamente el repositorio',
-        () async {
-      // Configurar repositorio para devolver un plan
-      when(mockPlanRepository.getById('test-plan-id'))
-          .thenAnswer((_) async => Right(testPlan));
+      'Flujo completo: GetPlanByIdUseCase utiliza correctamente el repositorio',
+      () async {
+        // Configurar repositorio para devolver un plan
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Right(testPlan));
 
-      // Ejecutar caso de uso
-      final result = await getPlanByIdUseCase.execute('test-plan-id');
+        // Ejecutar caso de uso
+        final result = await getPlanByIdUseCase.execute('test-plan-id');
 
-      // Verificar que el caso de uso retorna el plan correcto
-      expect(result.isRight(), true);
-      expect(result.fold((l) => null, (r) => r), testPlan);
+        // Verificar que el caso de uso retorna el plan correcto
+        expect(result.isRight(), true);
+        expect(result.fold((l) => null, (r) => r), testPlan);
 
-      // Verificar que el repositorio fue llamado correctamente
-      verify(mockPlanRepository.getById('test-plan-id')).called(1);
-    });
+        // Verificar que el repositorio fue llamado correctamente
+        verify(mockPlanRepository.getById('test-plan-id')).called(1);
+      },
+    );
 
-    test('Flujo de error: GetPlanByIdUseCase maneja correctamente los fallos',
-        () async {
-      // Configurar repositorio para devolver un error
-      final failure = AppFailure(message: 'Error de servidor', code: '500');
-      when(mockPlanRepository.getById('test-plan-id'))
-          .thenAnswer((_) async => Left(failure));
+    test(
+      'Flujo de error: GetPlanByIdUseCase maneja correctamente los fallos',
+      () async {
+        // Configurar repositorio para devolver un error
+        final failure = AppFailure(message: 'Error de servidor', code: '500');
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Left(failure));
 
-      // Ejecutar caso de uso
-      final result = await getPlanByIdUseCase.execute('test-plan-id');
+        // Ejecutar caso de uso
+        final result = await getPlanByIdUseCase.execute('test-plan-id');
 
-      // Verificar que el caso de uso retorna el error correcto
-      expect(result.isLeft(), true);
-      expect(result.fold((l) => l, (r) => null), failure);
-    });
+        // Verificar que el caso de uso retorna el error correcto
+        expect(result.isLeft(), true);
+        expect(result.fold((l) => l, (r) => null), failure);
+      },
+    );
 
     blocTest<PlanBloc, PlanState>(
       'PlanBloc interactúa correctamente con GetPlanByIdUseCase',
       build: () {
         // Configurar repositorio para devolver un plan
-        when(mockPlanRepository.getById('test-plan-id'))
-            .thenAnswer((_) async => Right(testPlan));
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Right(testPlan));
         return planBloc;
       },
-      act: (bloc) => bloc
-          .add(PlanEvent.loadExistingPlan(planData: {'id': 'test-plan-id'})),
+      act: (bloc) => bloc.add(
+        PlanEvent.loadExistingPlan(planData: {'id': 'test-plan-id'}),
+      ),
       expect: () => [
-        isA<PlanState>().having((state) => state.runtimeType.toString(),
-            'stateType', contains('_Loading')),
-        isA<PlanLoaded>()
-            .having((state) => state.plan, 'plan', equals(testPlan)),
+        isA<PlanState>().having(
+          (state) => state.runtimeType.toString(),
+          'stateType',
+          contains('_Loading'),
+        ),
+        isA<PlanLoaded>().having(
+          (state) => state.plan,
+          'plan',
+          equals(testPlan),
+        ),
       ],
       verify: (_) {
         // Verificar que el repositorio fue llamado correctamente
@@ -143,67 +156,83 @@ void main() {
       build: () {
         // Configurar repositorio para devolver un error
         final failure = AppFailure(message: 'Error de servidor', code: '500');
-        when(mockPlanRepository.getById('test-plan-id'))
-            .thenAnswer((_) async => Left(failure));
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Left(failure));
         return planBloc;
       },
-      act: (bloc) => bloc
-          .add(PlanEvent.loadExistingPlan(planData: {'id': 'test-plan-id'})),
+      act: (bloc) => bloc.add(
+        PlanEvent.loadExistingPlan(planData: {'id': 'test-plan-id'}),
+      ),
       expect: () => [
-        isA<PlanState>().having((state) => state.runtimeType.toString(),
-            'stateType', contains('_Loading')),
+        isA<PlanState>().having(
+          (state) => state.runtimeType.toString(),
+          'stateType',
+          contains('_Loading'),
+        ),
         isA<PlanError>().having(
-            (state) => state.message, 'message', contains('Error de servidor')),
+          (state) => state.message,
+          'message',
+          contains('Error de servidor'),
+        ),
       ],
     );
 
-    test('Flujo completo: SavePlanUseCase utiliza correctamente el repositorio',
-        () async {
-      // Configurar repositorio
-      when(mockPlanRepository.update(testPlan))
-          .thenAnswer((_) async => Right(testPlan));
-      when(mockPlanRepository.getById('test-plan-id'))
-          .thenAnswer((_) async => Right(testPlan));
+    test(
+      'Flujo completo: SavePlanUseCase utiliza correctamente el repositorio',
+      () async {
+        // Configurar repositorio
+        when(
+          mockPlanRepository.update(testPlan),
+        ).thenAnswer((_) async => Right(testPlan));
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Right(testPlan));
 
-      // Ejecutar caso de uso para un plan existente
-      final result = await savePlanUseCase.execute(testPlan);
+        // Ejecutar caso de uso para un plan existente
+        final result = await savePlanUseCase.execute(testPlan);
 
-      // Verificar que el caso de uso retorna correctamente
-      expect(result.isRight(), true);
+        // Verificar que el caso de uso retorna correctamente
+        expect(result.isRight(), true);
 
-      // Verificar que el repositorio fue llamado correctamente
-      verify(mockPlanRepository.update(testPlan)).called(1);
-    });
+        // Verificar que el repositorio fue llamado correctamente
+        verify(mockPlanRepository.update(testPlan)).called(1);
+      },
+    );
 
     test(
-        'Flujo completo para nuevo plan: SavePlanUseCase utiliza correctamente el repositorio',
-        () async {
-      // Crear plan sin id (nuevo)
-      final newPlan = testPlan.copyWith(id: '');
+      'Flujo completo para nuevo plan: SavePlanUseCase utiliza correctamente el repositorio',
+      () async {
+        // Crear plan sin id (nuevo)
+        final newPlan = testPlan.copyWith(id: '');
 
-      // Configurar repositorio
-      when(mockPlanRepository.create(newPlan))
-          .thenAnswer((_) async => Right(testPlan));
+        // Configurar repositorio
+        when(
+          mockPlanRepository.create(newPlan),
+        ).thenAnswer((_) async => Right(testPlan));
 
-      // Ejecutar caso de uso para un nuevo plan
-      final result = await savePlanUseCase.execute(newPlan);
+        // Ejecutar caso de uso para un nuevo plan
+        final result = await savePlanUseCase.execute(newPlan);
 
-      // Verificar que el caso de uso retorna correctamente
-      expect(result.isRight(), true);
-      expect(result.fold((l) => null, (r) => r), testPlan);
+        // Verificar que el caso de uso retorna correctamente
+        expect(result.isRight(), true);
+        expect(result.fold((l) => null, (r) => r), testPlan);
 
-      // Verificar que el repositorio fue llamado correctamente
-      verify(mockPlanRepository.create(newPlan)).called(1);
-    });
+        // Verificar que el repositorio fue llamado correctamente
+        verify(mockPlanRepository.create(newPlan)).called(1);
+      },
+    );
 
     blocTest<PlanBloc, PlanState>(
       'PlanBloc salva un plan correctamente utilizando SavePlanUseCase',
       build: () {
         // Configurar repositorio
-        when(mockPlanRepository.update(testPlan))
-            .thenAnswer((_) async => Right(testPlan));
-        when(mockPlanRepository.getById('test-plan-id'))
-            .thenAnswer((_) async => Right(testPlan));
+        when(
+          mockPlanRepository.update(testPlan),
+        ).thenAnswer((_) async => Right(testPlan));
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Right(testPlan));
 
         // Pre-cargar el bloc con el plan
         planBloc.emit(PlanState.loaded(plan: testPlan));
@@ -213,8 +242,11 @@ void main() {
       act: (bloc) => bloc.add(const PlanEvent.save()),
       expect: () => [
         isA<PlanSaving>(),
-        isA<PlanSaved>()
-            .having((state) => state.plan, 'plan', equals(testPlan)),
+        isA<PlanSaved>().having(
+          (state) => state.plan,
+          'plan',
+          equals(testPlan),
+        ),
       ],
       verify: (_) {
         // Verificar que el repositorio fue llamado correctamente
@@ -227,10 +259,12 @@ void main() {
       'PlanBloc interactúa correctamente con múltiples casos de uso',
       build: () {
         // Configurar repositorio
-        when(mockPlanRepository.getById('test-plan-id'))
-            .thenAnswer((_) async => Right(testPlan));
-        when(mockPlanRepository.update(any))
-            .thenAnswer((_) async => Right(testPlan));
+        when(
+          mockPlanRepository.getById('test-plan-id'),
+        ).thenAnswer((_) async => Right(testPlan));
+        when(
+          mockPlanRepository.update(any),
+        ).thenAnswer((_) async => Right(testPlan));
 
         return planBloc;
       },
@@ -251,12 +285,21 @@ void main() {
         bloc.add(const PlanEvent.save());
       },
       expect: () => [
-        isA<PlanState>().having((state) => state.runtimeType.toString(),
-            'stateType', contains('_Loading')),
-        isA<PlanLoaded>()
-            .having((state) => state.plan, 'plan', equals(testPlan)),
-        isA<PlanLoaded>()
-            .having((state) => state.plan.title, 'plan.title', 'Nuevo título'),
+        isA<PlanState>().having(
+          (state) => state.runtimeType.toString(),
+          'stateType',
+          contains('_Loading'),
+        ),
+        isA<PlanLoaded>().having(
+          (state) => state.plan,
+          'plan',
+          equals(testPlan),
+        ),
+        isA<PlanLoaded>().having(
+          (state) => state.plan.title,
+          'plan.title',
+          'Nuevo título',
+        ),
         isA<PlanSaving>(),
         isA<PlanSaved>(),
       ],
@@ -265,9 +308,9 @@ void main() {
         verify(mockPlanRepository.getById('test-plan-id')).called(1);
 
         // Capturar el argumento pasado a update
-        final captor = verify(mockPlanRepository.update(captureAny))
-            .captured
-            .first as PlanEntity;
+        final captor =
+            verify(mockPlanRepository.update(captureAny)).captured.first
+                as PlanEntity;
         expect(captor.title, 'Nuevo título');
       },
     );

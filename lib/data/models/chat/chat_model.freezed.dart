@@ -12,7 +12,8 @@ part of 'chat_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ChatModel _$ChatModelFromJson(Map<String, dynamic> json) {
   return _ChatModel.fromJson(json);
@@ -49,18 +50,19 @@ abstract class $ChatModelCopyWith<$Res> {
   factory $ChatModelCopyWith(ChatModel value, $Res Function(ChatModel) then) =
       _$ChatModelCopyWithImpl<$Res, ChatModel>;
   @useResult
-  $Res call(
-      {String id,
-      List<String> participants,
-      DateTime createdAt,
-      DateTime? lastMessageTimestamp,
-      String? lastMessage,
-      String? lastMessageSenderId,
-      int unreadCount,
-      bool isGroupChat,
-      String? name,
-      String? planId,
-      bool active});
+  $Res call({
+    String id,
+    List<String> participants,
+    DateTime createdAt,
+    DateTime? lastMessageTimestamp,
+    String? lastMessage,
+    String? lastMessageSenderId,
+    int unreadCount,
+    bool isGroupChat,
+    String? name,
+    String? planId,
+    bool active,
+  });
 }
 
 /// @nodoc
@@ -90,52 +92,55 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
     Object? planId = freezed,
     Object? active = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      participants: null == participants
-          ? _value.participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastMessageTimestamp: freezed == lastMessageTimestamp
-          ? _value.lastMessageTimestamp
-          : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastMessage: freezed == lastMessage
-          ? _value.lastMessage
-          : lastMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastMessageSenderId: freezed == lastMessageSenderId
-          ? _value.lastMessageSenderId
-          : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      unreadCount: null == unreadCount
-          ? _value.unreadCount
-          : unreadCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      isGroupChat: null == isGroupChat
-          ? _value.isGroupChat
-          : isGroupChat // ignore: cast_nullable_to_non_nullable
-              as bool,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      planId: freezed == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      active: null == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            participants: null == participants
+                ? _value.participants
+                : participants // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            lastMessageTimestamp: freezed == lastMessageTimestamp
+                ? _value.lastMessageTimestamp
+                : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            lastMessage: freezed == lastMessage
+                ? _value.lastMessage
+                : lastMessage // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            lastMessageSenderId: freezed == lastMessageSenderId
+                ? _value.lastMessageSenderId
+                : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            unreadCount: null == unreadCount
+                ? _value.unreadCount
+                : unreadCount // ignore: cast_nullable_to_non_nullable
+                      as int,
+            isGroupChat: null == isGroupChat
+                ? _value.isGroupChat
+                : isGroupChat // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            name: freezed == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            planId: freezed == planId
+                ? _value.planId
+                : planId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            active: null == active
+                ? _value.active
+                : active // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -143,22 +148,24 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
 abstract class _$$ChatModelImplCopyWith<$Res>
     implements $ChatModelCopyWith<$Res> {
   factory _$$ChatModelImplCopyWith(
-          _$ChatModelImpl value, $Res Function(_$ChatModelImpl) then) =
-      __$$ChatModelImplCopyWithImpl<$Res>;
+    _$ChatModelImpl value,
+    $Res Function(_$ChatModelImpl) then,
+  ) = __$$ChatModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      List<String> participants,
-      DateTime createdAt,
-      DateTime? lastMessageTimestamp,
-      String? lastMessage,
-      String? lastMessageSenderId,
-      int unreadCount,
-      bool isGroupChat,
-      String? name,
-      String? planId,
-      bool active});
+  $Res call({
+    String id,
+    List<String> participants,
+    DateTime createdAt,
+    DateTime? lastMessageTimestamp,
+    String? lastMessage,
+    String? lastMessageSenderId,
+    int unreadCount,
+    bool isGroupChat,
+    String? name,
+    String? planId,
+    bool active,
+  });
 }
 
 /// @nodoc
@@ -166,8 +173,9 @@ class __$$ChatModelImplCopyWithImpl<$Res>
     extends _$ChatModelCopyWithImpl<$Res, _$ChatModelImpl>
     implements _$$ChatModelImplCopyWith<$Res> {
   __$$ChatModelImplCopyWithImpl(
-      _$ChatModelImpl _value, $Res Function(_$ChatModelImpl) _then)
-      : super(_value, _then);
+    _$ChatModelImpl _value,
+    $Res Function(_$ChatModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ChatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -186,72 +194,74 @@ class __$$ChatModelImplCopyWithImpl<$Res>
     Object? planId = freezed,
     Object? active = null,
   }) {
-    return _then(_$ChatModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      participants: null == participants
-          ? _value._participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastMessageTimestamp: freezed == lastMessageTimestamp
-          ? _value.lastMessageTimestamp
-          : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      lastMessage: freezed == lastMessage
-          ? _value.lastMessage
-          : lastMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastMessageSenderId: freezed == lastMessageSenderId
-          ? _value.lastMessageSenderId
-          : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      unreadCount: null == unreadCount
-          ? _value.unreadCount
-          : unreadCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      isGroupChat: null == isGroupChat
-          ? _value.isGroupChat
-          : isGroupChat // ignore: cast_nullable_to_non_nullable
-              as bool,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      planId: freezed == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      active: null == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ChatModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        participants: null == participants
+            ? _value._participants
+            : participants // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        lastMessageTimestamp: freezed == lastMessageTimestamp
+            ? _value.lastMessageTimestamp
+            : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        lastMessage: freezed == lastMessage
+            ? _value.lastMessage
+            : lastMessage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        lastMessageSenderId: freezed == lastMessageSenderId
+            ? _value.lastMessageSenderId
+            : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        unreadCount: null == unreadCount
+            ? _value.unreadCount
+            : unreadCount // ignore: cast_nullable_to_non_nullable
+                  as int,
+        isGroupChat: null == isGroupChat
+            ? _value.isGroupChat
+            : isGroupChat // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        name: freezed == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        planId: freezed == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        active: null == active
+            ? _value.active
+            : active // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ChatModelImpl extends _ChatModel {
-  _$ChatModelImpl(
-      {this.id = '',
-      required final List<String> participants,
-      required this.createdAt,
-      this.lastMessageTimestamp,
-      this.lastMessage,
-      this.lastMessageSenderId,
-      this.unreadCount = 0,
-      this.isGroupChat = false,
-      this.name,
-      this.planId,
-      this.active = true})
-      : _participants = participants,
-        super._();
+  _$ChatModelImpl({
+    this.id = '',
+    required final List<String> participants,
+    required this.createdAt,
+    this.lastMessageTimestamp,
+    this.lastMessage,
+    this.lastMessageSenderId,
+    this.unreadCount = 0,
+    this.isGroupChat = false,
+    this.name,
+    this.planId,
+    this.active = true,
+  }) : _participants = participants,
+       super._();
 
   factory _$ChatModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChatModelImplFromJson(json);
@@ -283,10 +293,10 @@ class _$ChatModelImpl extends _ChatModel {
   final bool isGroupChat;
   @override
   final String? name;
-// Name for group chats
+  // Name for group chats
   @override
   final String? planId;
-// Optional plan association
+  // Optional plan association
   @override
   @JsonKey()
   final bool active;
@@ -302,8 +312,10 @@ class _$ChatModelImpl extends _ChatModel {
         (other.runtimeType == runtimeType &&
             other is _$ChatModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality()
-                .equals(other._participants, _participants) &&
+            const DeepCollectionEquality().equals(
+              other._participants,
+              _participants,
+            ) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.lastMessageTimestamp, lastMessageTimestamp) ||
@@ -324,18 +336,19 @@ class _$ChatModelImpl extends _ChatModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      const DeepCollectionEquality().hash(_participants),
-      createdAt,
-      lastMessageTimestamp,
-      lastMessage,
-      lastMessageSenderId,
-      unreadCount,
-      isGroupChat,
-      name,
-      planId,
-      active);
+    runtimeType,
+    id,
+    const DeepCollectionEquality().hash(_participants),
+    createdAt,
+    lastMessageTimestamp,
+    lastMessage,
+    lastMessageSenderId,
+    unreadCount,
+    isGroupChat,
+    name,
+    planId,
+    active,
+  );
 
   /// Create a copy of ChatModel
   /// with the given fields replaced by the non-null parameter values.
@@ -347,25 +360,24 @@ class _$ChatModelImpl extends _ChatModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChatModelImplToJson(
-      this,
-    );
+    return _$$ChatModelImplToJson(this);
   }
 }
 
 abstract class _ChatModel extends ChatModel {
-  factory _ChatModel(
-      {final String id,
-      required final List<String> participants,
-      required final DateTime createdAt,
-      final DateTime? lastMessageTimestamp,
-      final String? lastMessage,
-      final String? lastMessageSenderId,
-      final int unreadCount,
-      final bool isGroupChat,
-      final String? name,
-      final String? planId,
-      final bool active}) = _$ChatModelImpl;
+  factory _ChatModel({
+    final String id,
+    required final List<String> participants,
+    required final DateTime createdAt,
+    final DateTime? lastMessageTimestamp,
+    final String? lastMessage,
+    final String? lastMessageSenderId,
+    final int unreadCount,
+    final bool isGroupChat,
+    final String? name,
+    final String? planId,
+    final bool active,
+  }) = _$ChatModelImpl;
   _ChatModel._() : super._();
 
   factory _ChatModel.fromJson(Map<String, dynamic> json) =

@@ -63,7 +63,8 @@ class _MyApplicationsScreenContentState
     super.initState();
     if (kDebugMode) {
       print(
-          '📱🔍 MyApplicationsScreen.initState() - Inicializando con MyApplicationsCubit');
+        '📱🔍 MyApplicationsScreen.initState() - Inicializando con MyApplicationsCubit',
+      );
     }
   }
 
@@ -125,77 +126,76 @@ class _MyApplicationsScreenContentState
     // Definir el contenido principal
     final content =
         BlocBuilder<MyApplicationsCubit, LoadingState<MyApplicationsData>>(
-      builder: (context, state) {
-        // Estado de carga
-        if (state.isLoading) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: AppColors.brandYellow,
-            ),
-          );
-        }
+          builder: (context, state) {
+            // Estado de carga
+            if (state.isLoading) {
+              return Center(
+                child: CircularProgressIndicator(color: AppColors.brandYellow),
+              );
+            }
 
-        // Estado de error
-        if (state.isError) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.error_outline,
-                  color: AppColors.accentRed,
-                  size: 48,
+            // Estado de error
+            if (state.isError) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.error_outline,
+                      color: AppColors.accentRed,
+                      size: 48,
+                    ),
+                    const SizedBox(height: AppSpacing.m),
+                    Text(
+                      state.errorMessage ?? 'Error al cargar postulaciones',
+                      style: AppTypography.bodyLarge(isDarkMode),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: AppSpacing.l),
+                    ElevatedButton(
+                      onPressed: () => _cubit.loadApplications(),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.brandYellow,
+                        foregroundColor: isDarkMode
+                            ? Colors.black
+                            : AppColors.lightTextPrimary,
+                      ),
+                      child: const Text('Reintentar'),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: AppSpacing.m),
-                Text(
-                  state.errorMessage ?? 'Error al cargar postulaciones',
-                  style: AppTypography.bodyLarge(isDarkMode),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: AppSpacing.l),
-                ElevatedButton(
-                  onPressed: () => _cubit.loadApplications(),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.brandYellow,
-                    foregroundColor:
-                        isDarkMode ? Colors.black : AppColors.lightTextPrimary,
-                  ),
-                  child: const Text('Reintentar'),
-                ),
-              ],
-            ),
-          );
-        }
+              );
+            }
 
-        // Estado vacío
-        if (state.isEmpty ||
-            (state.isLoaded && state.data!.applications.isEmpty)) {
-          return Center(
-            child: Text(
-              'No tienes postulaciones activas',
-              style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
+            // Estado vacío
+            if (state.isEmpty ||
+                (state.isLoaded && state.data!.applications.isEmpty)) {
+              return Center(
+                child: Text(
+                  'No tienes postulaciones activas',
+                  style: AppTypography.bodyLarge(
+                    isDarkMode,
+                  ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
+                ),
+              );
+            }
+
+            // Estado cargado con datos
+            if (state.isLoaded) {
+              return _buildApplicationsList(state.data!, isDarkMode);
+            }
+
+            // Estado por defecto (no debería ocurrir)
+            return Center(
+              child: Text(
+                'Estado no reconocido',
+                style: AppTypography.bodyMedium(
+                  isDarkMode,
+                ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               ),
-            ),
-          );
-        }
-
-        // Estado cargado con datos
-        if (state.isLoaded) {
-          return _buildApplicationsList(state.data!, isDarkMode);
-        }
-
-        // Estado por defecto (no debería ocurrir)
-        return Center(
-          child: Text(
-            'Estado no reconocido',
-            style: AppTypography.bodyMedium(isDarkMode).copyWith(
-              color: AppColors.getTextSecondary(isDarkMode),
-            ),
-          ),
+            );
+          },
         );
-      },
-    );
 
     // Usar NewResponsiveScaffold para tener un diseño consistente
     return NewResponsiveScaffold(
@@ -214,7 +214,8 @@ class _MyApplicationsScreenContentState
       onRefresh: () async {
         if (kDebugMode) {
           print(
-              '📱 MyApplicationsScreen - Refresh manual mediante pull-to-refresh');
+            '📱 MyApplicationsScreen - Refresh manual mediante pull-to-refresh',
+          );
         }
 
         if (mounted) {
@@ -258,9 +259,9 @@ class _MyApplicationsScreenContentState
                         ),
                         child: Text(
                           _getStatusText(application.status),
-                          style: AppTypography.labelSmall(isDarkMode).copyWith(
-                            color: Colors.white,
-                          ),
+                          style: AppTypography.labelSmall(
+                            isDarkMode,
+                          ).copyWith(color: Colors.white),
                         ),
                       ),
                       const Spacer(),
@@ -277,12 +278,12 @@ class _MyApplicationsScreenContentState
                           ),
                           child: Text(
                             plan.category,
-                            style:
-                                AppTypography.labelSmall(isDarkMode).copyWith(
-                              color: isDarkMode
-                                  ? Colors.black
-                                  : AppColors.lightTextPrimary,
-                            ),
+                            style: AppTypography.labelSmall(isDarkMode)
+                                .copyWith(
+                                  color: isDarkMode
+                                      ? Colors.black
+                                      : AppColors.lightTextPrimary,
+                                ),
                           ),
                         ),
                       ],
@@ -345,20 +346,19 @@ class _MyApplicationsScreenContentState
                               context.go('/plan/${plan.id}');
                             }
                           },
-                          icon: Icon(
-                            Icons.visibility,
-                            size: AppIconSize.s,
-                          ),
+                          icon: Icon(Icons.visibility, size: AppIconSize.s),
                           label: const Text('Ver plan'),
                           style: OutlinedButton.styleFrom(
-                            foregroundColor:
-                                AppColors.getTextPrimary(isDarkMode),
+                            foregroundColor: AppColors.getTextPrimary(
+                              isDarkMode,
+                            ),
                             side: BorderSide(
                               color: AppColors.getBorder(isDarkMode),
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppRadius.button),
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.button,
+                              ),
                             ),
                           ),
                         ),
@@ -368,17 +368,15 @@ class _MyApplicationsScreenContentState
                         Expanded(
                           child: ElevatedButton.icon(
                             onPressed: () => _cancelApplication(application.id),
-                            icon: Icon(
-                              Icons.close,
-                              size: AppIconSize.s,
-                            ),
+                            icon: Icon(Icons.close, size: AppIconSize.s),
                             label: const Text('Cancelar'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.accentRed,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(AppRadius.button),
+                                borderRadius: BorderRadius.circular(
+                                  AppRadius.button,
+                                ),
                               ),
                             ),
                           ),

@@ -91,11 +91,12 @@ class ProfileReviewStep extends StatelessWidget {
                     color: Colors.white.withAlpha((0.9 * 255).round()),
                     borderRadius: BorderRadius.circular(AppRadius.button),
                     border: Border.all(
-                        color: isComplete
-                            ? AppColors.brandYellow
-                                .withAlpha((0.3 * 255).round())
-                            : AppColors.brandYellow
-                                .withAlpha((0.3 * 255).round())),
+                      color: isComplete
+                          ? AppColors.brandYellow.withAlpha((0.3 * 255).round())
+                          : AppColors.brandYellow.withAlpha(
+                              (0.3 * 255).round(),
+                            ),
+                    ),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
                         color: Colors.black.withAlpha((0.05 * 255).round()),
@@ -138,7 +139,9 @@ class ProfileReviewStep extends StatelessWidget {
                         ),
                         _buildDivider(),
                         _buildInterestsSection(
-                            state.interests, state.interests.isEmpty),
+                          state.interests,
+                          state.interests.isEmpty,
+                        ),
                         _buildDivider(),
                         _buildProfileItem(
                           'Fotos',
@@ -166,8 +169,9 @@ class ProfileReviewStep extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color:
-                          AppColors.brandYellow.withAlpha((0.1 * 255).round()),
+                      color: AppColors.brandYellow.withAlpha(
+                        (0.1 * 255).round(),
+                      ),
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: AppColors.brandYellow),
                     ),
@@ -218,7 +222,11 @@ class ProfileReviewStep extends StatelessWidget {
   }
 
   Widget _buildProfileItem(
-      String label, String value, IconData icon, bool hasError) {
+    String label,
+    String value,
+    IconData icon,
+    bool hasError,
+  ) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -294,18 +302,16 @@ class ProfileReviewStep extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color:
-                      hasError ? AppColors.brandYellow : AppColors.brandYellow,
+                  color: hasError
+                      ? AppColors.brandYellow
+                      : AppColors.brandYellow,
                 ),
               ),
               const SizedBox(height: 4),
               if (interests.isEmpty)
                 Text(
                   'No completado',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.brandYellow,
-                  ),
+                  style: TextStyle(fontSize: 14, color: AppColors.brandYellow),
                 )
               else
                 Wrap(
@@ -315,10 +321,13 @@ class ProfileReviewStep extends StatelessWidget {
                       .map(
                         (final String interest) => Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
-                            color: AppColors.brandYellow
-                                .withAlpha((0.1 * 255).round()),
+                            color: AppColors.brandYellow.withAlpha(
+                              (0.1 * 255).round(),
+                            ),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Text(
@@ -336,11 +345,7 @@ class ProfileReviewStep extends StatelessWidget {
           ),
         ),
         if (hasError)
-          Icon(
-            Icons.error_outline,
-            color: AppColors.brandYellow,
-            size: 20,
-          ),
+          Icon(Icons.error_outline, color: AppColors.brandYellow, size: 20),
       ],
     );
   }

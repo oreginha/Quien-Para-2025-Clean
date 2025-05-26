@@ -112,14 +112,14 @@ class _OptimizedProfileImageState extends State<OptimizedProfileImage>
     PerformanceLogger.logAsyncOperation('ProfileImage-Load', () async {
       try {
         // Obtener el proveedor de imágenes optimizado
-        final ImageProvider<Object> imageProvider =
-            OptimizedImageProvider().getOptimizedNetworkImage(
-          widget.imageUrl!,
-          width: _thumbnailSize,
-          height: _thumbnailSize,
-          cacheToFile: true,
-          cacheToMemory: true,
-        );
+        final ImageProvider<Object> imageProvider = OptimizedImageProvider()
+            .getOptimizedNetworkImage(
+              widget.imageUrl!,
+              width: _thumbnailSize,
+              height: _thumbnailSize,
+              cacheToFile: true,
+              cacheToMemory: true,
+            );
 
         // Precargar en caché
         final ImageConfiguration config = ImageConfiguration();
@@ -168,8 +168,9 @@ class _OptimizedProfileImageState extends State<OptimizedProfileImage>
               _isLoading = false;
               _hasError = true;
             });
-            completer
-                .completeError(TimeoutException('Tiempo de carga excedido'));
+            completer.completeError(
+              TimeoutException('Tiempo de carga excedido'),
+            );
           }
         });
 
@@ -197,16 +198,10 @@ class _OptimizedProfileImageState extends State<OptimizedProfileImage>
 
     // Aplicar Hero animation si está habilitado y hay tag
     if (widget.useHeroAnimation && widget.heroTag != null) {
-      return Hero(
-        tag: widget.heroTag!,
-        child: animatedContent,
-      );
+      return Hero(tag: widget.heroTag!, child: animatedContent);
     }
 
-    return GestureDetector(
-      onTap: widget.onTap,
-      child: animatedContent,
-    );
+    return GestureDetector(onTap: widget.onTap, child: animatedContent);
   }
 
   Widget _buildAvatarContent() {
@@ -259,7 +254,8 @@ class _OptimizedProfileImageState extends State<OptimizedProfileImage>
             child: CircularProgressIndicator(
               strokeWidth: 2.0,
               valueColor: AlwaysStoppedAnimation<Color>(
-                  widget.borderColor ?? AppColors.lightTextPrimary),
+                widget.borderColor ?? AppColors.lightTextPrimary,
+              ),
             ),
           ),
         );

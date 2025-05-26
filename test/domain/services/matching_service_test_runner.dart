@@ -106,13 +106,13 @@ void main() {
         },
       ];
 
-      final List<Map<String, dynamic>> result =
-          matchingService.filterCompatiblePlans(
-        plans: testPlans,
-        userInterests: <String>['deporte', 'fútbol'],
-        userLocation: 'Madrid',
-        minimumScore: 0.4,
-      );
+      final List<Map<String, dynamic>> result = matchingService
+          .filterCompatiblePlans(
+            plans: testPlans,
+            userInterests: <String>['deporte', 'fútbol'],
+            userLocation: 'Madrid',
+            minimumScore: 0.4,
+          );
 
       expect(result, isNotEmpty);
       expect(result[0]['id'], equals('1'));

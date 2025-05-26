@@ -16,8 +16,13 @@ import '../data/plan_repository_integration_test.dart'
     as plan_repo_integration_test;
 
 // Crear mocks necesarios
-@GenerateMocks(
-    [PlanRepository, GetPlanByIdUseCase, PlanBloc, FirebaseAuth, User])
+@GenerateMocks([
+  PlanRepository,
+  GetPlanByIdUseCase,
+  PlanBloc,
+  FirebaseAuth,
+  User,
+])
 void main() {
   // TODO: Estos tests no se pueden ejecutar porque los widgets referenciados
   // como PlanCard, etc. no existen o no están accesibles para el test.
@@ -65,8 +70,9 @@ void main() {
       );
 
       // Configuración del repositorio
-      when(mockPlanRepository.getById(any))
-          .thenAnswer((_) async => Right(testPlan));
+      when(
+        mockPlanRepository.getById(any),
+      ).thenAnswer((_) async => Right(testPlan));
     });
 
     // El testPlan ya está definido en setUp

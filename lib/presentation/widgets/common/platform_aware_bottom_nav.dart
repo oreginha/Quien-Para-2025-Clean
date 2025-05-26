@@ -34,9 +34,6 @@ class PlatformAwareBottomNav extends StatelessWidget {
     }
 
     // Mostrar la barra de navegación inferior
-    return BottomNavBar(
-      currentIndex: currentIndex,
-      onTap: onTap ?? (_) {},
-    );
+    return BottomNavBar(currentIndex: currentIndex, onTap: onTap ?? (_) {});
   }
 }

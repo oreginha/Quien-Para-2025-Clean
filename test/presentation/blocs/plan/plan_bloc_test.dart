@@ -61,68 +61,78 @@ void main() {
       expect(planBloc.state, const PlanState.initial());
     });
 
-    test('debería emitir PlanLoaded cuando se agrega CreatePlanEvent',
-        () async {
-      // Configurar el mock para devolver un plan exitosamente
-      final testPlan = PlanEntity.empty().copyWith(
-        id: 'test_id',
-        title: '',
-        description: '',
-        location: '',
-        category: '',
-        creatorId: 'test_creator_id',
-      );
+    test(
+      'debería emitir PlanLoaded cuando se agrega CreatePlanEvent',
+      () async {
+        // Configurar el mock para devolver un plan exitosamente
+        final testPlan = PlanEntity.empty().copyWith(
+          id: 'test_id',
+          title: '',
+          description: '',
+          location: '',
+          category: '',
+          creatorId: 'test_creator_id',
+        );
 
-      when(mockCreatePlanUseCase.execute(PlanEntity(
-        id: '',
-        title: '',
-        description: '',
-        location: '',
-        category: '',
-        tags: [],
-        imageUrl: '',
-        creatorId: 'test_creator_id',
-        conditions: {},
-        selectedThemes: [],
-        extraConditions: '',
-        likes: 0,
-      ))).thenAnswer((_) async => Right(testPlan));
+        when(
+          mockCreatePlanUseCase.execute(
+            PlanEntity(
+              id: '',
+              title: '',
+              description: '',
+              location: '',
+              category: '',
+              tags: [],
+              imageUrl: '',
+              creatorId: 'test_creator_id',
+              conditions: {},
+              selectedThemes: [],
+              extraConditions: '',
+              likes: 0,
+            ),
+          ),
+        ).thenAnswer((_) async => Right(testPlan));
 
-      final expectedStates = [
-        isA<PlanLoaded>().having(
-          (state) => state.plan,
-          'plan',
-          equals(testPlan),
-        ),
-      ];
+        final expectedStates = [
+          isA<PlanLoaded>().having(
+            (state) => state.plan,
+            'plan',
+            equals(testPlan),
+          ),
+        ];
 
-      expectLater(planBloc.stream, emitsInOrder(expectedStates));
+        expectLater(planBloc.stream, emitsInOrder(expectedStates));
 
-      planBloc.add(
-          const PlanEvent.create(creatorId: 'test_creator_id', planData: {}));
-    });
+        planBloc.add(
+          const PlanEvent.create(creatorId: 'test_creator_id', planData: {}),
+        );
+      },
+    );
 
     test(
-        'debería actualizar el campo del plan cuando se agrega UpdatePlanFieldEvent',
-        () {
-      const testTitle = 'Test Plan';
-      final expectedStates = [
-        isA<PlanLoaded>(),
-        isA<PlanLoaded>().having(
-          (state) => state.plan.title,
-          'plan title',
-          equals(testTitle),
-        ),
-      ];
+      'debería actualizar el campo del plan cuando se agrega UpdatePlanFieldEvent',
+      () {
+        const testTitle = 'Test Plan';
+        final expectedStates = [
+          isA<PlanLoaded>(),
+          isA<PlanLoaded>().having(
+            (state) => state.plan.title,
+            'plan title',
+            equals(testTitle),
+          ),
+        ];
 
-      expectLater(planBloc.stream, emitsInOrder(expectedStates));
+        expectLater(planBloc.stream, emitsInOrder(expectedStates));
 
-      when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
-          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')));
-      planBloc.add(const PlanEvent.create());
-      planBloc
-          .add(const PlanEvent.updateField(field: 'title', value: testTitle));
-    });
+        when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
+          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')),
+        );
+        planBloc.add(const PlanEvent.create());
+        planBloc.add(
+          const PlanEvent.updateField(field: 'title', value: testTitle),
+        );
+      },
+    );
 
     test('debería actualizar múltiples campos del plan correctamente', () {
       const testTitle = 'Test Plan';
@@ -130,59 +140,74 @@ void main() {
       const testLocation = 'Test Location';
 
       when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
-          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')));
+        (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')),
+      );
       planBloc.add(const PlanEvent.create());
 
       // Esperar a que se cree el plan
       expectLater(
         planBloc.stream,
-        emits(isA<PlanLoaded>().having(
-          (state) => state.plan.id,
-          'plan id',
-          isNotEmpty,
-        )),
+        emits(
+          isA<PlanLoaded>().having(
+            (state) => state.plan.id,
+            'plan id',
+            isNotEmpty,
+          ),
+        ),
       );
 
       // Actualizar título
-      planBloc
-          .add(const PlanEvent.updateField(field: 'title', value: testTitle));
+      planBloc.add(
+        const PlanEvent.updateField(field: 'title', value: testTitle),
+      );
 
       // Verificar que el título se actualizó
       expectLater(
         planBloc.stream,
-        emits(isA<PlanLoaded>().having(
-          (state) => state.plan.title,
-          'plan title',
-          equals(testTitle),
-        )),
+        emits(
+          isA<PlanLoaded>().having(
+            (state) => state.plan.title,
+            'plan title',
+            equals(testTitle),
+          ),
+        ),
       );
 
       // Actualizar descripción
-      planBloc.add(const PlanEvent.updateField(
-          field: 'description', value: testDescription));
+      planBloc.add(
+        const PlanEvent.updateField(
+          field: 'description',
+          value: testDescription,
+        ),
+      );
 
       // Verificar que la descripción se actualizó
       expectLater(
         planBloc.stream,
-        emits(isA<PlanLoaded>().having(
-          (state) => state.plan.description,
-          'plan description',
-          equals(testDescription),
-        )),
+        emits(
+          isA<PlanLoaded>().having(
+            (state) => state.plan.description,
+            'plan description',
+            equals(testDescription),
+          ),
+        ),
       );
 
       // Actualizar ubicación
       planBloc.add(
-          const PlanEvent.updateField(field: 'location', value: testLocation));
+        const PlanEvent.updateField(field: 'location', value: testLocation),
+      );
 
       // Verificar que la ubicación se actualizó
       expectLater(
         planBloc.stream,
-        emits(isA<PlanLoaded>().having(
-          (state) => state.plan.location,
-          'plan location',
-          equals(testLocation),
-        )),
+        emits(
+          isA<PlanLoaded>().having(
+            (state) => state.plan.location,
+            'plan location',
+            equals(testLocation),
+          ),
+        ),
       );
     });
 
@@ -243,14 +268,12 @@ void main() {
         final testConditions = {'condition1': 'value1', 'condition2': 'value2'};
 
         when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
-            (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')));
+          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')),
+        );
         planBloc.add(const PlanEvent.create());
 
         // Esperar a que se cree el plan
-        expectLater(
-          planBloc.stream,
-          emits(isA<PlanLoaded>()),
-        );
+        expectLater(planBloc.stream, emits(isA<PlanLoaded>()));
 
         // Actualizar condiciones
         planBloc.add(PlanEvent.updateSelectedOptions(testConditions));
@@ -258,11 +281,13 @@ void main() {
         // Verificar que las condiciones se actualizaron
         expectLater(
           planBloc.stream,
-          emits(isA<PlanLoaded>().having(
-            (state) => state.plan.conditions,
-            'plan conditions',
-            equals(testConditions),
-          )),
+          emits(
+            isA<PlanLoaded>().having(
+              (state) => state.plan.conditions,
+              'plan conditions',
+              equals(testConditions),
+            ),
+          ),
         );
       });
 
@@ -270,14 +295,12 @@ void main() {
         final testThemes = ['theme1', 'theme2', 'theme3'];
 
         when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
-            (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')));
+          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')),
+        );
         planBloc.add(const PlanEvent.create());
 
         // Esperar a que se cree el plan
-        expectLater(
-          planBloc.stream,
-          emits(isA<PlanLoaded>()),
-        );
+        expectLater(planBloc.stream, emits(isA<PlanLoaded>()));
 
         // Actualizar temas
         planBloc.add(PlanEvent.updateSelectedThemes(testThemes));
@@ -285,11 +308,13 @@ void main() {
         // Verificar que los temas se actualizaron
         expectLater(
           planBloc.stream,
-          emits(isA<PlanLoaded>().having(
-            (state) => state.plan.selectedThemes,
-            'plan themes',
-            equals(testThemes),
-          )),
+          emits(
+            isA<PlanLoaded>().having(
+              (state) => state.plan.selectedThemes,
+              'plan themes',
+              equals(testThemes),
+            ),
+          ),
         );
       });
 
@@ -298,40 +323,47 @@ void main() {
             'Estas son condiciones adicionales de prueba';
 
         when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
-            (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')));
+          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')),
+        );
         planBloc.add(const PlanEvent.create());
 
         // Esperar a que se cree el plan
-        expectLater(
-          planBloc.stream,
-          emits(isA<PlanLoaded>()),
-        );
+        expectLater(planBloc.stream, emits(isA<PlanLoaded>()));
 
         // Actualizar condiciones adicionales
-        planBloc
-            .add(const PlanEvent.updateExtraConditions(testExtraConditions));
+        planBloc.add(
+          const PlanEvent.updateExtraConditions(testExtraConditions),
+        );
 
         // Verificar que las condiciones adicionales se actualizaron
         expectLater(
           planBloc.stream,
-          emits(isA<PlanLoaded>().having(
-            (state) => state.plan.extraConditions,
-            'plan extra conditions',
-            equals(testExtraConditions),
-          )),
+          emits(
+            isA<PlanLoaded>().having(
+              (state) => state.plan.extraConditions,
+              'plan extra conditions',
+              equals(testExtraConditions),
+            ),
+          ),
         );
       });
 
       test('debería limpiar el plan correctamente', () {
         when(mockCreatePlanUseCase.execute(PlanEntity.empty())).thenAnswer(
-            (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')));
+          (_) async => Right(PlanEntity.empty().copyWith(id: 'test_id')),
+        );
         planBloc.add(const PlanEvent.create());
 
         // Actualizar algunos campos
         planBloc.add(
-            const PlanEvent.updateField(field: 'title', value: 'Test Title'));
-        planBloc.add(const PlanEvent.updateField(
-            field: 'description', value: 'Test Description'));
+          const PlanEvent.updateField(field: 'title', value: 'Test Title'),
+        );
+        planBloc.add(
+          const PlanEvent.updateField(
+            field: 'description',
+            value: 'Test Description',
+          ),
+        );
 
         // Limpiar el plan
         planBloc.add(const PlanEvent.clear());
@@ -339,11 +371,13 @@ void main() {
         // Verificar que se creó un nuevo plan con campos vacíos
         expectLater(
           planBloc.stream,
-          emits(isA<PlanLoaded>().having(
-            (state) => state.plan.title,
-            'plan title',
-            isEmpty,
-          )),
+          emits(
+            isA<PlanLoaded>().having(
+              (state) => state.plan.title,
+              'plan title',
+              isEmpty,
+            ),
+          ),
         );
       });
     });

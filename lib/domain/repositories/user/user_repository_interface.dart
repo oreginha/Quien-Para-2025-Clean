@@ -27,11 +27,15 @@ abstract class IUserRepository {
 
   /// Actualiza intereses del usuario
   Future<Either<AppFailure, Unit>> updateUserInterests(
-      String userId, List<String> interests);
+    String userId,
+    List<String> interests,
+  );
 
   /// Actualiza la ubicación del usuario
   Future<Either<AppFailure, Unit>> updateUserLocation(
-      String userId, String location);
+    String userId,
+    String location,
+  );
 
   /// Verifica si el usuario ha completado el onboarding
   Future<Either<AppFailure, bool>> hasCompletedOnboarding(String userId);

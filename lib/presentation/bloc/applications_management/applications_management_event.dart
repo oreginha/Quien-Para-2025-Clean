@@ -19,15 +19,18 @@ abstract class ApplicationsManagementEvent with _$ApplicationsManagementEvent {
 
   // Aceptar una aplicación
   const factory ApplicationsManagementEvent.acceptApplication(
-      String applicationId) = _AcceptApplication;
+    String applicationId,
+  ) = _AcceptApplication;
 
   // Rechazar una aplicación
   const factory ApplicationsManagementEvent.rejectApplication(
-      String applicationId) = _RejectApplication;
+    String applicationId,
+  ) = _RejectApplication;
 
   // Acción al filtrar aplicaciones
   const factory ApplicationsManagementEvent.filterApplications(
-      String filterType) = _FilterApplications;
+    String filterType,
+  ) = _FilterApplications;
 
   // Buscar aplicaciones
   const factory ApplicationsManagementEvent.searchApplications(String query) =

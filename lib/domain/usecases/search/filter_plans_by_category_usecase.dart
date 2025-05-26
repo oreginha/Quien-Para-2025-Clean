@@ -49,15 +49,19 @@ class FilterPlansByCategoryUseCase {
       // Validar entrada
       if (category.trim().isEmpty) {
         return const Left(
-            ValidationFailure('La categoría no puede estar vacía'));
+          ValidationFailure('La categoría no puede estar vacía'),
+        );
       }
 
       final cleanCategory = category.trim();
 
       // Verificar que la categoría sea válida
       if (!availableCategories.contains(cleanCategory)) {
-        return Left(ValidationFailure(
-            'Categoría inválida. Categorías disponibles: ${availableCategories.join(', ')}'));
+        return Left(
+          ValidationFailure(
+            'Categoría inválida. Categorías disponibles: ${availableCategories.join(', ')}',
+          ),
+        );
       }
 
       // Ejecutar filtro por categoría
@@ -69,8 +73,9 @@ class FilterPlansByCategoryUseCase {
 
       return result;
     } catch (e) {
-      return Left(ServerFailure(
-          null, 'Error al filtrar por categoría: ${e.toString()}'));
+      return Left(
+        ServerFailure(null, 'Error al filtrar por categoría: ${e.toString()}'),
+      );
     }
   }
 
@@ -90,12 +95,14 @@ class FilterPlansByCategoryUseCase {
       // Validar entrada
       if (categories.isEmpty) {
         return const Left(
-            ValidationFailure('Debe especificar al menos una categoría'));
+          ValidationFailure('Debe especificar al menos una categoría'),
+        );
       }
 
       if (categories.length > 5) {
         return const Left(
-            ValidationFailure('No se pueden especificar más de 5 categorías'));
+          ValidationFailure('No se pueden especificar más de 5 categorías'),
+        );
       }
 
       // Limpiar y validar categorías
@@ -103,8 +110,11 @@ class FilterPlansByCategoryUseCase {
 
       for (final category in cleanCategories) {
         if (!availableCategories.contains(category)) {
-          return Left(ValidationFailure(
-              'Categoría inválida: $category. Categorías disponibles: ${availableCategories.join(', ')}'));
+          return Left(
+            ValidationFailure(
+              'Categoría inválida: $category. Categorías disponibles: ${availableCategories.join(', ')}',
+            ),
+          );
         }
       }
 
@@ -117,8 +127,12 @@ class FilterPlansByCategoryUseCase {
 
       return result;
     } catch (e) {
-      return Left(ServerFailure(
-          null, 'Error al filtrar por múltiples categorías: ${e.toString()}'));
+      return Left(
+        ServerFailure(
+          null,
+          'Error al filtrar por múltiples categorías: ${e.toString()}',
+        ),
+      );
     }
   }
 
@@ -135,7 +149,8 @@ class FilterPlansByCategoryUseCase {
     try {
       if (category.trim().isEmpty) {
         return const Left(
-            ValidationFailure('La categoría no puede estar vacía'));
+          ValidationFailure('La categoría no puede estar vacía'),
+        );
       }
 
       final cleanCategory = category.trim();
@@ -152,8 +167,12 @@ class FilterPlansByCategoryUseCase {
 
       return result;
     } catch (e) {
-      return Left(ServerFailure(
-          null, 'Error al obtener planes populares: ${e.toString()}'));
+      return Left(
+        ServerFailure(
+          null,
+          'Error al obtener planes populares: ${e.toString()}',
+        ),
+      );
     }
   }
 
@@ -170,7 +189,8 @@ class FilterPlansByCategoryUseCase {
     try {
       if (userId.trim().isEmpty) {
         return const Left(
-            ValidationFailure('El ID del usuario no puede estar vacío'));
+          ValidationFailure('El ID del usuario no puede estar vacío'),
+        );
       }
 
       // Obtener categorías sugeridas del repositorio
@@ -181,8 +201,12 @@ class FilterPlansByCategoryUseCase {
 
       return result;
     } catch (e) {
-      return Left(ServerFailure(
-          null, 'Error al obtener categorías sugeridas: ${e.toString()}'));
+      return Left(
+        ServerFailure(
+          null,
+          'Error al obtener categorías sugeridas: ${e.toString()}',
+        ),
+      );
     }
   }
 

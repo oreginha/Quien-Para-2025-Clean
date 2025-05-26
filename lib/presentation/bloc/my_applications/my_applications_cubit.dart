@@ -25,11 +25,11 @@ class MyApplicationsData with _$MyApplicationsData {
 
   /// Estado inicial para la pantalla de mis aplicaciones
   factory MyApplicationsData.initial() => const MyApplicationsData(
-        applications: [],
-        plansCache: {},
-        selectedFilter: null,
-        isRefreshing: false,
-      );
+    applications: [],
+    plansCache: {},
+    selectedFilter: null,
+    isRefreshing: false,
+  );
 }
 
 /// Cubit para manejar la lógica de la pantalla de mis aplicaciones
@@ -41,12 +41,10 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
   final String? _userId;
   StreamSubscription? _applicationsSubscription;
 
-  MyApplicationsCubit({
-    required FirebaseFirestore firestore,
-    String? userId,
-  })  : _firestore = firestore,
-        _userId = userId ?? FirebaseAuth.instance.currentUser?.uid,
-        super() {
+  MyApplicationsCubit({required FirebaseFirestore firestore, String? userId})
+    : _firestore = firestore,
+      _userId = userId ?? FirebaseAuth.instance.currentUser?.uid,
+      super() {
     // Inicializar con estado vacío
     setLoaded(MyApplicationsData.initial());
     // Cargar aplicaciones
@@ -66,7 +64,8 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
 
       if (kDebugMode) {
         print(
-            '🔄 MyApplicationsCubit - Iniciando carga de aplicaciones para usuario: $_userId');
+          '🔄 MyApplicationsCubit - Iniciando carga de aplicaciones para usuario: $_userId',
+        );
       }
 
       // Cancelar suscripción anterior si existe
@@ -95,31 +94,31 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
           .orderBy('appliedAt', descending: true)
           .snapshots()
           .listen(
-        (snapshot) {
-          _handleApplicationsSnapshot(snapshot);
-        },
-        onError: (error) {
-          if (kDebugMode) {
-            print('Error en suscripción de aplicaciones: $error');
-          }
-          // Asegurarnos de salir del estado de carga incluso si hay un error
-          // Esto evita que la UI se quede bloqueada en estado de carga
-          if (state.isLoading) {
-            setError('Error al cargar aplicaciones: $error');
-          }
-        },
-        // Manejar el caso cuando el emisor está cerrado
-        onDone: () {
-          if (kDebugMode) {
-            print('Suscripción de aplicaciones cerrada');
-          }
-          // Si todavía estamos en estado de carga cuando la suscripción se cierra,
-          // forzar la salida del estado de carga para evitar bloqueos en la UI
-          if (state.isLoading) {
-            setEmpty();
-          }
-        },
-      );
+            (snapshot) {
+              _handleApplicationsSnapshot(snapshot);
+            },
+            onError: (error) {
+              if (kDebugMode) {
+                print('Error en suscripción de aplicaciones: $error');
+              }
+              // Asegurarnos de salir del estado de carga incluso si hay un error
+              // Esto evita que la UI se quede bloqueada en estado de carga
+              if (state.isLoading) {
+                setError('Error al cargar aplicaciones: $error');
+              }
+            },
+            // Manejar el caso cuando el emisor está cerrado
+            onDone: () {
+              if (kDebugMode) {
+                print('Suscripción de aplicaciones cerrada');
+              }
+              // Si todavía estamos en estado de carga cuando la suscripción se cierra,
+              // forzar la salida del estado de carga para evitar bloqueos en la UI
+              if (state.isLoading) {
+                setEmpty();
+              }
+            },
+          );
     } catch (error, stackTrace) {
       handleError('loadApplications', error, stackTrace);
       setError('Error al cargar aplicaciones: ${error.toString()}');
@@ -130,13 +129,18 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
   void _handleApplicationsSnapshot(QuerySnapshot snapshot) {
     try {
       final applications = snapshot.docs
-          .map((doc) => ApplicationEntity.fromMap(
-              doc.data() as Map<String, dynamic>, doc.id))
+          .map(
+            (doc) => ApplicationEntity.fromMap(
+              doc.data() as Map<String, dynamic>,
+              doc.id,
+            ),
+          )
           .toList();
 
       if (kDebugMode) {
         print(
-            '✅ MyApplicationsCubit - Aplicaciones cargadas: ${applications.length}');
+          '✅ MyApplicationsCubit - Aplicaciones cargadas: ${applications.length}',
+        );
       }
 
       // Garantizar que salimos del estado de carga, incluso si hay un error posterior
@@ -147,7 +151,8 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
           : {};
 
       // Verificar si es la primera carga o una recarga
-      final bool isInitialLoad = !currentState.isLoaded ||
+      final bool isInitialLoad =
+          !currentState.isLoaded ||
           (currentState.isLoaded && currentState.data!.applications.isEmpty);
 
       // IMPORTANTE: Siempre emitir un estado cargado, incluso si no hay aplicaciones
@@ -163,12 +168,14 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
         }
       } else {
         // Emitir estado cargado con las aplicaciones
-        setLoaded(MyApplicationsData.initial().copyWith(
-          applications: applications,
-          isRefreshing:
-              false, // Siempre false para asegurar que la UI refleje que la carga ha terminado
-          plansCache: currentCache,
-        ));
+        setLoaded(
+          MyApplicationsData.initial().copyWith(
+            applications: applications,
+            isRefreshing:
+                false, // Siempre false para asegurar que la UI refleje que la carga ha terminado
+            plansCache: currentCache,
+          ),
+        );
       }
 
       // Cargar detalles de planes - Esto debe ejecutarse independientemente del estado de las aplicaciones
@@ -194,13 +201,16 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
         if (currentState.isLoading) {
           if (kDebugMode) {
             print(
-                '⚠️ MyApplicationsCubit - Estado no cargado al intentar cargar planes');
+              '⚠️ MyApplicationsCubit - Estado no cargado al intentar cargar planes',
+            );
           }
           // Forzar un estado cargado con aplicaciones vacías para evitar bloqueo
-          setLoaded(MyApplicationsData.initial().copyWith(
-            applications: applications,
-            isRefreshing: false,
-          ));
+          setLoaded(
+            MyApplicationsData.initial().copyWith(
+              applications: applications,
+              isRefreshing: false,
+            ),
+          );
         }
         return;
       }
@@ -234,13 +244,16 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
         // Si por alguna razón estamos en estado de carga, forzar la salida
         if (kDebugMode) {
           print(
-              '⚠️ MyApplicationsCubit - Forzando salida de estado de carga en _loadPlansInfo');
+            '⚠️ MyApplicationsCubit - Forzando salida de estado de carga en _loadPlansInfo',
+          );
         }
-        setLoaded(MyApplicationsData.initial().copyWith(
-          applications: applications,
-          plansCache: plansCache,
-          isRefreshing: false,
-        ));
+        setLoaded(
+          MyApplicationsData.initial().copyWith(
+            applications: applications,
+            plansCache: plansCache,
+            isRefreshing: false,
+          ),
+        );
       }
     } catch (error, stackTrace) {
       handleError('loadPlansInfo', error, stackTrace);
@@ -253,13 +266,16 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
       if (state.isLoading) {
         if (kDebugMode) {
           print(
-              '⚠️ MyApplicationsCubit - Forzando salida de estado de carga después de error en planes');
+            '⚠️ MyApplicationsCubit - Forzando salida de estado de carga después de error en planes',
+          );
         }
         // Usar las aplicaciones que ya tenemos, sin los planes que fallaron
-        setLoaded(MyApplicationsData.initial().copyWith(
-          applications: applications,
-          isRefreshing: false,
-        ));
+        setLoaded(
+          MyApplicationsData.initial().copyWith(
+            applications: applications,
+            isRefreshing: false,
+          ),
+        );
       }
     }
   }

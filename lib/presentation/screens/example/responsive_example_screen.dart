@@ -21,9 +21,7 @@ class _ResponsiveExampleScreenState extends State<ResponsiveExampleScreen> {
     // Este es el contenido real de la pantalla (contenido "móvil")
     // En la versión web, este contenido se mostrará embebido en el WebScreenWrapper
     final Widget mobileContent = Scaffold(
-      appBar: AppBar(
-        title: const Text('Ejemplo Responsive'),
-      ),
+      appBar: AppBar(title: const Text('Ejemplo Responsive')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,10 +35,7 @@ class _ResponsiveExampleScreenState extends State<ResponsiveExampleScreen> {
               PlatformUtils.isWeb
                   ? 'Estás viendo la versión web embebida'
                   : 'Estás viendo la versión móvil',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 32),
             ElevatedButton(

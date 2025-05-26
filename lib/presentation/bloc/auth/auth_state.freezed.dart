@@ -12,7 +12,8 @@ part of 'auth_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AuthState {
@@ -33,11 +34,12 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call(
-      {AuthStatus status,
-      Map<String, dynamic>? user,
-      bool hasUserProfile,
-      String? errorMessage});
+  $Res call({
+    AuthStatus status,
+    Map<String, dynamic>? user,
+    bool hasUserProfile,
+    String? errorMessage,
+  });
 }
 
 /// @nodoc
@@ -60,24 +62,27 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? hasUserProfile = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      hasUserProfile: null == hasUserProfile
-          ? _value.hasUserProfile
-          : hasUserProfile // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as AuthStatus,
+            user: freezed == user
+                ? _value.user
+                : user // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>?,
+            hasUserProfile: null == hasUserProfile
+                ? _value.hasUserProfile
+                : hasUserProfile // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            errorMessage: freezed == errorMessage
+                ? _value.errorMessage
+                : errorMessage // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -85,15 +90,17 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 abstract class _$$AuthStateImplCopyWith<$Res>
     implements $AuthStateCopyWith<$Res> {
   factory _$$AuthStateImplCopyWith(
-          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
-      __$$AuthStateImplCopyWithImpl<$Res>;
+    _$AuthStateImpl value,
+    $Res Function(_$AuthStateImpl) then,
+  ) = __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {AuthStatus status,
-      Map<String, dynamic>? user,
-      bool hasUserProfile,
-      String? errorMessage});
+  $Res call({
+    AuthStatus status,
+    Map<String, dynamic>? user,
+    bool hasUserProfile,
+    String? errorMessage,
+  });
 }
 
 /// @nodoc
@@ -101,8 +108,9 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
     implements _$$AuthStateImplCopyWith<$Res> {
   __$$AuthStateImplCopyWithImpl(
-      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
-      : super(_value, _then);
+    _$AuthStateImpl _value,
+    $Res Function(_$AuthStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -114,36 +122,38 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? hasUserProfile = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$AuthStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      user: freezed == user
-          ? _value._user
-          : user // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      hasUserProfile: null == hasUserProfile
-          ? _value.hasUserProfile
-          : hasUserProfile // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$AuthStateImpl(
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as AuthStatus,
+        user: freezed == user
+            ? _value._user
+            : user // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>?,
+        hasUserProfile: null == hasUserProfile
+            ? _value.hasUserProfile
+            : hasUserProfile // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        errorMessage: freezed == errorMessage
+            ? _value.errorMessage
+            : errorMessage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl(
-      {this.status = AuthStatus.initial,
-      final Map<String, dynamic>? user,
-      this.hasUserProfile = false,
-      this.errorMessage})
-      : _user = user;
+  const _$AuthStateImpl({
+    this.status = AuthStatus.initial,
+    final Map<String, dynamic>? user,
+    this.hasUserProfile = false,
+    this.errorMessage,
+  }) : _user = user;
 
   @override
   @JsonKey()
@@ -183,8 +193,13 @@ class _$AuthStateImpl implements _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(_user), hasUserProfile, errorMessage);
+  int get hashCode => Object.hash(
+    runtimeType,
+    status,
+    const DeepCollectionEquality().hash(_user),
+    hasUserProfile,
+    errorMessage,
+  );
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -196,11 +211,12 @@ class _$AuthStateImpl implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState(
-      {final AuthStatus status,
-      final Map<String, dynamic>? user,
-      final bool hasUserProfile,
-      final String? errorMessage}) = _$AuthStateImpl;
+  const factory _AuthState({
+    final AuthStatus status,
+    final Map<String, dynamic>? user,
+    final bool hasUserProfile,
+    final String? errorMessage,
+  }) = _$AuthStateImpl;
 
   @override
   AuthStatus get status;

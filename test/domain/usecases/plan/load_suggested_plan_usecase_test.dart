@@ -16,8 +16,9 @@ void main() {
 
   setUp(() {
     mockPlanRepository = MockPlanRepository();
-    loadSuggestedPlanUseCase =
-        LoadSuggestedPlanUseCase(mockPlanRepository as PlanRepositoryImpl);
+    loadSuggestedPlanUseCase = LoadSuggestedPlanUseCase(
+      mockPlanRepository as PlanRepositoryImpl,
+    );
   });
 
   final testCreatorId = 'test-creator-id';
@@ -52,17 +53,19 @@ void main() {
       expect(result.date, equals(testTimestamp.toDate()));
       expect(result.category, equals('Suggested Category'));
       expect(
-          result.imageUrl, equals('https://example.com/suggested-image.jpg'));
-      expect(result.conditions,
-          equals({'condition1': 'value1', 'condition2': 'value2'}));
+        result.imageUrl,
+        equals('https://example.com/suggested-image.jpg'),
+      );
+      expect(
+        result.conditions,
+        equals({'condition1': 'value1', 'condition2': 'value2'}),
+      );
       expect(result.selectedThemes, equals(['theme1', 'theme2']));
     });
 
     test('should handle missing fields in suggested data', () async {
       // Datos incompletos
-      final incompleteData = {
-        'title': 'Only Title',
-      };
+      final incompleteData = {'title': 'Only Title'};
 
       // Ejecutar el caso de uso
       final result = await loadSuggestedPlanUseCase.execute(
@@ -86,9 +89,7 @@ void main() {
 
     test('should handle errors during conversion', () {
       // Datos malformados (fecha con formato incorrecto)
-      final malformedData = {
-        'date': 'not-a-timestamp',
-      };
+      final malformedData = {'date': 'not-a-timestamp'};
 
       // Verificar que se lanza una excepción
       expect(

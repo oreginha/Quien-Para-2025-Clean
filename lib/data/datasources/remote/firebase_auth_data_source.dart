@@ -15,9 +15,9 @@ class FirebaseAuthDataSource implements AuthDataSource {
     FirebaseAuth? auth,
     FirebaseFirestore? firestore,
     Logger? logger,
-  })  : _auth = auth ?? FirebaseAuth.instance,
-        _firestore = firestore ?? FirebaseFirestore.instance,
-        _logger = logger ?? Logger();
+  }) : _auth = auth ?? FirebaseAuth.instance,
+       _firestore = firestore ?? FirebaseFirestore.instance,
+       _logger = logger ?? Logger();
 
   @override
   Future<UserEntity?> getCurrentUser() async {
@@ -25,8 +25,10 @@ class FirebaseAuthDataSource implements AuthDataSource {
     if (firebaseUser == null) return null;
 
     try {
-      final doc =
-          await _firestore.collection('users').doc(firebaseUser.uid).get();
+      final doc = await _firestore
+          .collection('users')
+          .doc(firebaseUser.uid)
+          .get();
       if (!doc.exists) return null;
 
       final userData = doc.data() ?? {};
@@ -34,7 +36,8 @@ class FirebaseAuthDataSource implements AuthDataSource {
         id: firebaseUser.uid,
         email: firebaseUser.email,
         name: userData['name'] as String? ?? firebaseUser.displayName,
-        photoUrl: userData['photoUrls'] != null &&
+        photoUrl:
+            userData['photoUrls'] != null &&
                 (userData['photoUrls'] as List).isNotEmpty
             ? (userData['photoUrls'] as List).first as String?
             : firebaseUser.photoURL,
@@ -57,7 +60,8 @@ class FirebaseAuthDataSource implements AuthDataSource {
         id: userId,
         email: userData['email'] as String?,
         name: userData['name'] as String?,
-        photoUrl: userData['photoUrls'] != null &&
+        photoUrl:
+            userData['photoUrls'] != null &&
                 (userData['photoUrls'] as List).isNotEmpty
             ? (userData['photoUrls'] as List).first as String?
             : null,
@@ -71,7 +75,9 @@ class FirebaseAuthDataSource implements AuthDataSource {
 
   @override
   Future<UserEntity> signInWithEmailAndPassword(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     try {
       final UserCredential credential = await _auth.signInWithEmailAndPassword(
         email: email,
@@ -97,13 +103,13 @@ class FirebaseAuthDataSource implements AuthDataSource {
 
   @override
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name) async {
+    String email,
+    String password,
+    String name,
+  ) async {
     try {
-      final UserCredential credential =
-          await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final UserCredential credential = await _auth
+          .createUserWithEmailAndPassword(email: email, password: password);
 
       final User? user = credential.user;
       if (user == null) {
@@ -121,12 +127,7 @@ class FirebaseAuthDataSource implements AuthDataSource {
         'userId': user.uid,
       });
 
-      return UserEntity(
-        id: user.uid,
-        email: email,
-        name: name,
-        photoUrl: null,
-      );
+      return UserEntity(id: user.uid, email: email, name: name, photoUrl: null);
     } catch (e) {
       _logger.e('Error signing up: $e');
       throw Exception('Registration failed: $e');

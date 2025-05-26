@@ -7,10 +7,7 @@ class PlanWithCreatorEntity {
   final PlanEntity plan;
   final Map<String, dynamic>? creatorData;
 
-  PlanWithCreatorEntity({
-    required this.plan,
-    this.creatorData,
-  });
+  PlanWithCreatorEntity({required this.plan, this.creatorData});
 
   /// Factory para crear una lista de planes con creador desde un mapa
   static List<PlanWithCreatorEntity> fromPlansAndCreators(
@@ -19,10 +16,7 @@ class PlanWithCreatorEntity {
   ) {
     return plans.map((plan) {
       final creatorData = creatorsMap[plan.creatorId];
-      return PlanWithCreatorEntity(
-        plan: plan,
-        creatorData: creatorData,
-      );
+      return PlanWithCreatorEntity(plan: plan, creatorData: creatorData);
     }).toList();
   }
 

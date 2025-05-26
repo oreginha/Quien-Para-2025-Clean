@@ -28,8 +28,9 @@ class AppTypography {
     return TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w600,
-      color:
-          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
+      color: isDarkMode
+          ? AppColors.darkTextPrimary
+          : AppColors.lightTextPrimary,
     );
   }
 }

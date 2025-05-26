@@ -32,16 +32,15 @@ class ResponsiveOnboardingContainer extends StatelessWidget {
           child: scrollable
               ? SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  padding: padding.add(EdgeInsets.only(
-                    bottom:
-                        bottomActionsHeight + safeAreaBottom + paddingOffset,
-                  )),
+                  padding: padding.add(
+                    EdgeInsets.only(
+                      bottom:
+                          bottomActionsHeight + safeAreaBottom + paddingOffset,
+                    ),
+                  ),
                   child: child,
                 )
-              : Padding(
-                  padding: padding,
-                  child: child,
-                ),
+              : Padding(padding: padding, child: child),
         ),
 
         // Acciones inferiores (botones, etc.) si existen

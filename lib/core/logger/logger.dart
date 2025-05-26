@@ -21,33 +21,58 @@ class AppLogger {
     level: kDebugMode ? log_package.Level.trace : log_package.Level.warning,
   );
 
-  void v(final String message,
-      {final String? tag, final dynamic error, final StackTrace? stackTrace}) {
+  void v(
+    final String message, {
+    final String? tag,
+    final dynamic error,
+    final StackTrace? stackTrace,
+  }) {
     _log(log_package.Level.trace, message, tag, error, stackTrace);
   }
 
-  void d(final String message,
-      {final String? tag, final dynamic error, final StackTrace? stackTrace}) {
+  void d(
+    final String message, {
+    final String? tag,
+    final dynamic error,
+    final StackTrace? stackTrace,
+  }) {
     _log(log_package.Level.debug, message, tag, error, stackTrace);
   }
 
-  void i(final String message,
-      {final String? tag, final dynamic error, final StackTrace? stackTrace}) {
+  void i(
+    final String message, {
+    final String? tag,
+    final dynamic error,
+    final StackTrace? stackTrace,
+  }) {
     _log(log_package.Level.info, message, tag, error, stackTrace);
   }
 
-  void w(final String message,
-      {final String? tag, final dynamic error, final StackTrace? stackTrace}) {
+  void w(
+    final String message, {
+    final String? tag,
+    final dynamic error,
+    final StackTrace? stackTrace,
+  }) {
     _log(log_package.Level.warning, message, tag, error, stackTrace);
   }
 
-  void e(final String message,
-      {final String? tag, final dynamic error, final StackTrace? stackTrace}) {
+  void e(
+    final String message, {
+    final String? tag,
+    final dynamic error,
+    final StackTrace? stackTrace,
+  }) {
     _log(log_package.Level.error, message, tag, error, stackTrace);
   }
 
-  void _log(final log_package.Level level, final String message,
-      final String? tag, final dynamic error, final StackTrace? stackTrace) {
+  void _log(
+    final log_package.Level level,
+    final String message,
+    final String? tag,
+    final dynamic error,
+    final StackTrace? stackTrace,
+  ) {
     final String logMessage = tag != null ? '[$tag] $message' : message;
 
     switch (level) {

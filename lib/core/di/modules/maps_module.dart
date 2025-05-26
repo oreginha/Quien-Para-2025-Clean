@@ -18,7 +18,8 @@ class MapsModule implements DIModule {
   Future<void> register(GetIt sl) async {
     if (kDebugMode) {
       print(
-          '🗺️ Registrando módulo de mapas con implementación Clean Architecture');
+        '🗺️ Registrando módulo de mapas con implementación Clean Architecture',
+      );
     }
 
     // Repositorio

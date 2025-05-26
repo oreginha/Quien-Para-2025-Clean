@@ -124,11 +124,12 @@ class FixedNotificationServiceStub implements NotificationServiceInterface {
   }
 
   @override
-  Future<void> scheduleLocalNotification(
-      {required String id,
-      required String title,
-      required String body,
-      DateTime? scheduledTime}) {
+  Future<void> scheduleLocalNotification({
+    required String id,
+    required String title,
+    required String body,
+    DateTime? scheduledTime,
+  }) {
     // TODO: implement scheduleLocalNotification
     throw UnimplementedError();
   }
@@ -140,10 +141,11 @@ class FixedNotificationServiceStub implements NotificationServiceInterface {
   }
 
   @override
-  Future<void> showLocalNotification(
-      {required String title,
-      required String body,
-      Map<String, dynamic>? payload}) {
+  Future<void> showLocalNotification({
+    required String title,
+    required String body,
+    Map<String, dynamic>? payload,
+  }) {
     // TODO: implement showLocalNotification
     throw UnimplementedError();
   }

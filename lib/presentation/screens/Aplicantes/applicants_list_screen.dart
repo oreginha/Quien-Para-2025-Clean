@@ -9,10 +9,7 @@ import '../../routes/app_router.dart';
 class ApplicantsListScreen extends StatelessWidget {
   final String planId;
 
-  const ApplicantsListScreen({
-    super.key,
-    required this.planId,
-  });
+  const ApplicantsListScreen({super.key, required this.planId});
 
   @override
   Widget build(final BuildContext context) {
@@ -63,7 +60,8 @@ class ApplicantsListScreen extends StatelessWidget {
       screenName: AppRouter.applicantsList,
       appBar: AppBar(
         backgroundColor: AppColors.getBackground(
-            Theme.of(context).brightness == Brightness.dark),
+          Theme.of(context).brightness == Brightness.dark,
+        ),
         elevation: 0,
         title: Text(
           'Aplicantes',
@@ -85,13 +83,14 @@ class ApplicantsListScreen extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(16),
                   leading: CircleAvatar(
                     radius: 30,
-                    backgroundColor: Theme.of(context).brightness ==
-                            Brightness.dark
+                    backgroundColor:
+                        Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkSecondaryBackground
                         : AppColors
-                            .lightSecondaryBackground, // Reemplazado color directo por color del tema
-                    backgroundImage:
-                        NetworkImage(applicant['avatarUrl'] as String),
+                              .lightSecondaryBackground, // Reemplazado color directo por color del tema
+                    backgroundImage: NetworkImage(
+                      applicant['avatarUrl'] as String,
+                    ),
                     onBackgroundImageError:
                         (final Object e, final StackTrace? s) =>
                             const Icon(Icons.person),
@@ -107,11 +106,7 @@ class ApplicantsListScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      Icon(
-                        Icons.verified,
-                        color: Colors.blue[300],
-                        size: 20,
-                      ),
+                      Icon(Icons.verified, color: Colors.blue[300], size: 20),
                     ],
                   ),
                   subtitle: Column(
@@ -120,8 +115,11 @@ class ApplicantsListScreen extends StatelessWidget {
                       const SizedBox(height: 8),
                       Row(
                         children: <Widget>[
-                          Icon(Icons.location_on,
-                              color: Colors.grey[400], size: 16),
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.grey[400],
+                            size: 16,
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             applicant['distance'] as String,
@@ -143,10 +141,7 @@ class ApplicantsListScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
                     applicant['description'] as String,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                    ),
+                    style: const TextStyle(color: Colors.white70, fontSize: 14),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -155,8 +150,9 @@ class ApplicantsListScreen extends StatelessWidget {
                   child: Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: (applicant['interests'] as List<String>)
-                        .map((final String interest) {
+                    children: (applicant['interests'] as List<String>).map((
+                      final String interest,
+                    ) {
                       return Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
@@ -229,10 +225,7 @@ class ApplicantsListScreen extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
         foregroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       ),
     );
   }

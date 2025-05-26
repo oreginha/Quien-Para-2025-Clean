@@ -38,8 +38,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Coincidencia directa con categoría: $score1');
     }
-    assert(score1 > 0.7,
-        'La puntuación debería ser alta para coincidencia directa');
+    assert(
+      score1 > 0.7,
+      'La puntuación debería ser alta para coincidencia directa',
+    );
 
     // Caso 2: Coincidencia con la descripción
     final double score2 = _matchingService.calculateMatchScore(
@@ -53,8 +55,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Coincidencia con descripción: $score2');
     }
-    assert(score2 > 0.6,
-        'La puntuación debería ser alta si el interés aparece en la descripción');
+    assert(
+      score2 > 0.6,
+      'La puntuación debería ser alta si el interés aparece en la descripción',
+    );
 
     // Caso 3: Coincidencia con categoría relacionada
     final double score3 = _matchingService.calculateMatchScore(
@@ -68,8 +72,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Coincidencia con categoría relacionada: $score3');
     }
-    assert(score3 > 0.5,
-        'La puntuación debería ser media-alta para categorías relacionadas');
+    assert(
+      score3 > 0.5,
+      'La puntuación debería ser media-alta para categorías relacionadas',
+    );
 
     // Caso 4: Sin coincidencias
     final double score4 = _matchingService.calculateMatchScore(
@@ -83,8 +89,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Sin coincidencias de intereses: $score4');
     }
-    assert(score4 < 0.5,
-        'La puntuación debería ser baja sin coincidencias de intereses');
+    assert(
+      score4 < 0.5,
+      'La puntuación debería ser baja sin coincidencias de intereses',
+    );
   }
 
   /// Prueba el matching basado en ubicación
@@ -106,7 +114,9 @@ class MatchingServiceTest {
       print('Ubicación exacta: $score1');
     }
     assert(
-        score1 > 0.7, 'La puntuación debería ser alta para ubicación exacta');
+      score1 > 0.7,
+      'La puntuación debería ser alta para ubicación exacta',
+    );
 
     // Caso 2: Ubicación relacionada
     final double score2 = _matchingService.calculateMatchScore(
@@ -120,8 +130,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Ubicación relacionada: $score2');
     }
-    assert(score2 > 0.6,
-        'La puntuación debería ser alta para ubicación relacionada');
+    assert(
+      score2 > 0.6,
+      'La puntuación debería ser alta para ubicación relacionada',
+    );
 
     // Caso 3: Ubicación diferente
     final double score3 = _matchingService.calculateMatchScore(
@@ -135,8 +147,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Ubicación diferente: $score3');
     }
-    assert(score3 < 0.5,
-        'La puntuación debería ser baja para ubicación diferente');
+    assert(
+      score3 < 0.5,
+      'La puntuación debería ser baja para ubicación diferente',
+    );
   }
 
   /// Prueba el matching basado en disponibilidad
@@ -175,8 +189,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Plan en próxima semana: $score2');
     }
-    assert(score2 > 0.6,
-        'La puntuación debería ser media-alta para planes en la próxima semana');
+    assert(
+      score2 > 0.6,
+      'La puntuación debería ser media-alta para planes en la próxima semana',
+    );
 
     // Caso 3: Plan en fecha lejana
     final double score3 = _matchingService.calculateMatchScore(
@@ -191,8 +207,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Plan en fecha lejana: $score3');
     }
-    assert(score3 < 0.6,
-        'La puntuación debería ser media-baja para planes lejanos');
+    assert(
+      score3 < 0.6,
+      'La puntuación debería ser media-baja para planes lejanos',
+    );
   }
 
   /// Prueba el matching combinado (intereses, ubicación y disponibilidad)
@@ -216,8 +234,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Coincidencia perfecta: $score1');
     }
-    assert(score1 > 0.8,
-        'La puntuación debería ser muy alta para coincidencia perfecta');
+    assert(
+      score1 > 0.8,
+      'La puntuación debería ser muy alta para coincidencia perfecta',
+    );
 
     // Caso 2: Coincidencia media
     final double score2 = _matchingService.calculateMatchScore(
@@ -232,8 +252,10 @@ class MatchingServiceTest {
     if (kDebugMode) {
       print('Coincidencia media: $score2');
     }
-    assert(score2 > 0.5 && score2 < 0.8,
-        'La puntuación debería ser media para coincidencia parcial');
+    assert(
+      score2 > 0.5 && score2 < 0.8,
+      'La puntuación debería ser media para coincidencia parcial',
+    );
 
     // Caso 3: Coincidencia baja
     final double score3 = _matchingService.calculateMatchScore(
@@ -249,7 +271,9 @@ class MatchingServiceTest {
       print('Coincidencia baja: $score3');
     }
     assert(
-        score3 < 0.5, 'La puntuación debería ser baja para poca coincidencia');
+      score3 < 0.5,
+      'La puntuación debería ser baja para poca coincidencia',
+    );
   }
 
   /// Prueba el filtrado de planes compatibles
@@ -305,17 +329,18 @@ class MatchingServiceTest {
     ];
 
     // Caso 1: Usuario interesado en deporte en Madrid
-    final List<Map<String, dynamic>> result1 =
-        _matchingService.filterCompatiblePlans(
-      plans: testPlans,
-      userInterests: <String>['deporte', 'fútbol', 'ejercicio'],
-      userLocation: 'Madrid',
-      minimumScore: 0.4,
-    );
+    final List<Map<String, dynamic>> result1 = _matchingService
+        .filterCompatiblePlans(
+          plans: testPlans,
+          userInterests: <String>['deporte', 'fútbol', 'ejercicio'],
+          userLocation: 'Madrid',
+          minimumScore: 0.4,
+        );
 
     if (kDebugMode) {
       print(
-          'Planes compatibles para usuario deportista en Madrid: ${result1.length}');
+        'Planes compatibles para usuario deportista en Madrid: ${result1.length}',
+      );
     }
     for (final Map<String, dynamic> plan in result1) {
       if (kDebugMode) {
@@ -323,21 +348,24 @@ class MatchingServiceTest {
       }
     }
     assert(result1.isNotEmpty, 'Debería haber al menos un plan compatible');
-    assert(result1[0]['id'] == '1',
-        'El primer plan debería ser el partido de fútbol');
+    assert(
+      result1[0]['id'] == '1',
+      'El primer plan debería ser el partido de fútbol',
+    );
 
     // Caso 2: Usuario interesado en cultura en Madrid
-    final List<Map<String, dynamic>> result2 =
-        _matchingService.filterCompatiblePlans(
-      plans: testPlans,
-      userInterests: <String>['arte', 'museos', 'exposiciones'],
-      userLocation: 'Madrid',
-      minimumScore: 0.4,
-    );
+    final List<Map<String, dynamic>> result2 = _matchingService
+        .filterCompatiblePlans(
+          plans: testPlans,
+          userInterests: <String>['arte', 'museos', 'exposiciones'],
+          userLocation: 'Madrid',
+          minimumScore: 0.4,
+        );
 
     if (kDebugMode) {
       print(
-          '\nPlanes compatibles para usuario cultural en Madrid: ${result2.length}');
+        '\nPlanes compatibles para usuario cultural en Madrid: ${result2.length}',
+      );
     }
     for (final Map<String, dynamic> plan in result2) {
       if (kDebugMode) {
@@ -347,24 +375,27 @@ class MatchingServiceTest {
     assert(result2.isNotEmpty, 'Debería haber al menos un plan compatible');
 
     // Caso 3: Usuario sin intereses específicos
-    final List<Map<String, dynamic>> result3 =
-        _matchingService.filterCompatiblePlans(
-      plans: testPlans,
-      userInterests: <String>[],
-      userLocation: 'Madrid',
-      minimumScore: 0.3, // Umbral más bajo para usuarios sin intereses
-    );
+    final List<Map<String, dynamic>> result3 = _matchingService
+        .filterCompatiblePlans(
+          plans: testPlans,
+          userInterests: <String>[],
+          userLocation: 'Madrid',
+          minimumScore: 0.3, // Umbral más bajo para usuarios sin intereses
+        );
 
     if (kDebugMode) {
       print(
-          '\nPlanes compatibles para usuario sin intereses en Madrid: ${result3.length}');
+        '\nPlanes compatibles para usuario sin intereses en Madrid: ${result3.length}',
+      );
     }
     for (final Map<String, dynamic> plan in result3) {
       if (kDebugMode) {
         print('- ${plan['title']} (Score: ${plan['matchScore']})');
       }
     }
-    assert(result3.isNotEmpty,
-        'Debería haber planes compatibles basados solo en ubicación');
+    assert(
+      result3.isNotEmpty,
+      'Debería haber planes compatibles basados solo en ubicación',
+    );
   }
 }

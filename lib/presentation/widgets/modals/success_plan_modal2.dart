@@ -25,8 +25,9 @@ class _SuccessPlanModalState extends State<SuccessPlanModal> {
   @override
   void initState() {
     super.initState();
-    _confettiController =
-        ConfettiController(duration: const Duration(seconds: 2));
+    _confettiController = ConfettiController(
+      duration: const Duration(seconds: 2),
+    );
     _confettiController.play();
   }
 

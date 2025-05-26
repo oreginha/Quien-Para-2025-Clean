@@ -5,8 +5,10 @@ import 'search_filters_state.dart';
 
 class SearchFiltersBloc extends Bloc<SearchFiltersEvent, SearchFiltersState> {
   SearchFiltersBloc() : super(SearchFiltersState.initial()) {
-    on<SearchFiltersEvent>((final SearchFiltersEvent event,
-        final Emitter<SearchFiltersState> emit) {
+    on<SearchFiltersEvent>((
+      final SearchFiltersEvent event,
+      final Emitter<SearchFiltersState> emit,
+    ) {
       event.when(
         updateSearchQuery: (final String query) =>
             _onUpdateSearchQuery(query, emit),
@@ -30,17 +32,24 @@ class SearchFiltersBloc extends Bloc<SearchFiltersEvent, SearchFiltersState> {
   }
 
   void _onUpdateSearchQuery(
-      final String query, final Emitter<SearchFiltersState> emit) {
+    final String query,
+    final Emitter<SearchFiltersState> emit,
+  ) {
     emit(state.copyWith(searchQuery: query));
   }
 
   void _onUpdateCategoryFilter(
-      final String category, final Emitter<SearchFiltersState> emit) {
+    final String category,
+    final Emitter<SearchFiltersState> emit,
+  ) {
     emit(state.copyWith(selectedCategory: category));
   }
 
-  void _onUpdateTagFilter(final String tag, final bool selected,
-      final Emitter<SearchFiltersState> emit) {
+  void _onUpdateTagFilter(
+    final String tag,
+    final bool selected,
+    final Emitter<SearchFiltersState> emit,
+  ) {
     final List<String> updatedTags = List<String>.from(state.selectedTags);
     if (selected && !updatedTags.contains(tag)) {
       updatedTags.add(tag);
@@ -55,22 +64,32 @@ class SearchFiltersBloc extends Bloc<SearchFiltersEvent, SearchFiltersState> {
   }
 
   void _onDistanceChanged(
-      final double value, final Emitter<SearchFiltersState> emit) {
+    final double value,
+    final Emitter<SearchFiltersState> emit,
+  ) {
     emit(state.copyWith(distanceValue: value));
   }
 
-  void _onConditionToggled(final String condition, final bool value,
-      final Emitter<SearchFiltersState> emit) {
-    final Map<String, bool> updatedConditions =
-        Map<String, bool>.from(state.conditions);
+  void _onConditionToggled(
+    final String condition,
+    final bool value,
+    final Emitter<SearchFiltersState> emit,
+  ) {
+    final Map<String, bool> updatedConditions = Map<String, bool>.from(
+      state.conditions,
+    );
     updatedConditions[condition] = value;
     emit(state.copyWith(conditions: updatedConditions));
   }
 
-  void _onAdditionalServiceToggled(final String service, final bool value,
-      final Emitter<SearchFiltersState> emit) {
-    final Map<String, bool> updatedServices =
-        Map<String, bool>.from(state.additionalServices);
+  void _onAdditionalServiceToggled(
+    final String service,
+    final bool value,
+    final Emitter<SearchFiltersState> emit,
+  ) {
+    final Map<String, bool> updatedServices = Map<String, bool>.from(
+      state.additionalServices,
+    );
     updatedServices[service] = value;
     emit(state.copyWith(additionalServices: updatedServices));
   }

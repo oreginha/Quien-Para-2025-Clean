@@ -1,6 +1,7 @@
 // Implementación para dispositivos móviles (Android/iOS)
 import 'dart:io';
-import 'package:flutter/material.dart' show Color; // Importamos Color de Flutter
+import 'package:flutter/material.dart'
+    show Color; // Importamos Color de Flutter
 import 'package:image_picker/image_picker.dart';
 import 'package:quien_para/core/logger/logger.dart';
 import 'package:quien_para/core/services/stub_image_cropper.dart';
@@ -10,11 +11,9 @@ class ImageServiceMobile implements ImageServiceInterface {
   final ImagePicker _picker;
   final ImageCropper _cropper;
 
-  ImageServiceMobile({
-    ImagePicker? picker,
-    ImageCropper? cropper,
-  })  : _picker = picker ?? ImagePicker(),
-        _cropper = cropper ?? ImageCropper();
+  ImageServiceMobile({ImagePicker? picker, ImageCropper? cropper})
+    : _picker = picker ?? ImagePicker(),
+      _cropper = cropper ?? ImageCropper();
 
   @override
   Future<File?> pickImageFromGallery({
@@ -90,7 +89,7 @@ class ImageServiceMobile implements ImageServiceInterface {
           CropAspectRatioPreset.ratio3x2,
           CropAspectRatioPreset.original,
           CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9
+          CropAspectRatioPreset.ratio16x9,
         ],
         uiSettings: [
           AndroidUiSettings(
@@ -100,10 +99,7 @@ class ImageServiceMobile implements ImageServiceInterface {
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false,
           ),
-          IOSUiSettings(
-            title: 'Editar Imagen',
-            aspectRatioLockEnabled: false,
-          ),
+          IOSUiSettings(title: 'Editar Imagen', aspectRatioLockEnabled: false),
         ],
       );
 

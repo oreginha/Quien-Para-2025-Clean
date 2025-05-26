@@ -13,7 +13,8 @@ class GetPlanApplicationsUseCase {
 
   /// Obtiene todas las aplicaciones asociadas a un plan específico
   Future<Either<AppFailure, List<ApplicationEntity>>> call(
-      String planId) async {
+    String planId,
+  ) async {
     return await _repository.getApplicationsForPlan(planId);
   }
 }

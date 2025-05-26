@@ -38,9 +38,9 @@ class NotificationService implements NotificationServiceInterface {
     FirebaseMessaging? messaging,
     FirebaseFirestore? firestore,
     FirebaseAuth? auth,
-  })  : _messaging = messaging ?? FirebaseMessaging.instance,
-        _firestore = firestore ?? FirebaseFirestore.instance,
-        _auth = auth ?? FirebaseAuth.instance {
+  }) : _messaging = messaging ?? FirebaseMessaging.instance,
+       _firestore = firestore ?? FirebaseFirestore.instance,
+       _auth = auth ?? FirebaseAuth.instance {
     if (kDebugMode) {
       print('📱 NotificationService: Inicializado con implementación completa');
     }
@@ -51,11 +51,8 @@ class NotificationService implements NotificationServiceInterface {
   /// Esta versión no realiza operaciones reales, solo simula el comportamiento
   /// para propósitos de testing o cuando las funcionalidades no están disponibles.
   factory NotificationService.stub() {
-    return NotificationService(
-      messaging: null,
-      firestore: null,
-      auth: null,
-    ).._isStubMode = true;
+    return NotificationService(messaging: null, firestore: null, auth: null)
+      .._isStubMode = true;
   }
 
   bool _isStubMode = false;
@@ -116,17 +113,17 @@ class NotificationService implements NotificationServiceInterface {
       // Configuración para iOS
       final DarwinInitializationSettings initializationSettingsIOS =
           DarwinInitializationSettings(
-        requestAlertPermission: true,
-        requestBadgePermission: true,
-        requestSoundPermission: true,
-      );
+            requestAlertPermission: true,
+            requestBadgePermission: true,
+            requestSoundPermission: true,
+          );
 
       // Configuración unificada
       final InitializationSettings initializationSettings =
           InitializationSettings(
-        android: initializationSettingsAndroid,
-        iOS: initializationSettingsIOS,
-      );
+            android: initializationSettingsAndroid,
+            iOS: initializationSettingsIOS,
+          );
 
       // Inicializar el plugin
       await _localNotifications!.initialize(
@@ -140,7 +137,8 @@ class NotificationService implements NotificationServiceInterface {
     } catch (e) {
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Error inicializando notificaciones locales: $e');
+          '📱 NotificationService: Error inicializando notificaciones locales: $e',
+        );
       }
     }
   }
@@ -148,7 +146,8 @@ class NotificationService implements NotificationServiceInterface {
   void _onNotificationTapped(NotificationResponse response) {
     if (kDebugMode) {
       print(
-          '📱 NotificationService: Notificación tocada con payload: ${response.payload}');
+        '📱 NotificationService: Notificación tocada con payload: ${response.payload}',
+      );
     }
 
     // Emitir evento en el stream para que la app pueda manejarlo
@@ -175,11 +174,12 @@ class NotificationService implements NotificationServiceInterface {
 
       final bool granted =
           settings.authorizationStatus == AuthorizationStatus.authorized ||
-              settings.authorizationStatus == AuthorizationStatus.provisional;
+          settings.authorizationStatus == AuthorizationStatus.provisional;
 
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Permisos ${granted ? "concedidos" : "denegados"}');
+          '📱 NotificationService: Permisos ${granted ? "concedidos" : "denegados"}',
+        );
       }
 
       return granted;
@@ -229,12 +229,13 @@ class NotificationService implements NotificationServiceInterface {
       });
 
       // Verificar si la app fue abierta desde una notificación mientras estaba cerrada
-      final RemoteMessage? initialMessage =
-          await _messaging.getInitialMessage();
+      final RemoteMessage? initialMessage = await _messaging
+          .getInitialMessage();
       if (initialMessage != null) {
         if (kDebugMode) {
           print(
-              '📱 NotificationService: App abierta desde notificación inicial');
+            '📱 NotificationService: App abierta desde notificación inicial',
+          );
         }
 
         // Emitir al stream
@@ -258,13 +259,13 @@ class NotificationService implements NotificationServiceInterface {
     try {
       final AndroidNotificationDetails androidDetails =
           AndroidNotificationDetails(
-        'quien_para_channel',
-        'Notificaciones Quién Para',
-        channelDescription: 'Notificaciones de la app Quién Para',
-        importance: Importance.max,
-        priority: Priority.high,
-        showWhen: true,
-      );
+            'quien_para_channel',
+            'Notificaciones Quién Para',
+            channelDescription: 'Notificaciones de la app Quién Para',
+            importance: Importance.max,
+            priority: Priority.high,
+            showWhen: true,
+          );
 
       final DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
         presentAlert: true,
@@ -359,7 +360,8 @@ class NotificationService implements NotificationServiceInterface {
     if (_isStubMode) {
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Simulando envío de notificación: ${notification.title} (modo stub)');
+          '📱 NotificationService: Simulando envío de notificación: ${notification.title} (modo stub)',
+        );
       }
       return;
     }
@@ -372,8 +374,10 @@ class NotificationService implements NotificationServiceInterface {
       });
 
       // Obtener el token FCM del usuario destinatario
-      final userDoc =
-          await _firestore.collection('users').doc(notification.userId).get();
+      final userDoc = await _firestore
+          .collection('users')
+          .doc(notification.userId)
+          .get();
       final String? fcmToken = userDoc.data()?['fcmToken'] as String?;
 
       if (fcmToken != null) {
@@ -401,7 +405,8 @@ class NotificationService implements NotificationServiceInterface {
       } else {
         if (kDebugMode) {
           print(
-              '📱 NotificationService: Token FCM no encontrado para el usuario');
+            '📱 NotificationService: Token FCM no encontrado para el usuario',
+          );
         }
       }
 
@@ -450,7 +455,8 @@ class NotificationService implements NotificationServiceInterface {
     if (_isStubMode || _localNotifications == null) {
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Simulando mostrar notificación local: $title (modo stub)');
+          '📱 NotificationService: Simulando mostrar notificación local: $title (modo stub)',
+        );
       }
       return;
     }
@@ -458,13 +464,13 @@ class NotificationService implements NotificationServiceInterface {
     try {
       final AndroidNotificationDetails androidDetails =
           AndroidNotificationDetails(
-        'quien_para_channel',
-        'Notificaciones Quién Para',
-        channelDescription: 'Notificaciones de la app Quién Para',
-        importance: Importance.max,
-        priority: Priority.high,
-        showWhen: true,
-      );
+            'quien_para_channel',
+            'Notificaciones Quién Para',
+            channelDescription: 'Notificaciones de la app Quién Para',
+            importance: Importance.max,
+            priority: Priority.high,
+            showWhen: true,
+          );
 
       final DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
         presentAlert: true,
@@ -503,7 +509,8 @@ class NotificationService implements NotificationServiceInterface {
       await _localNotifications!.cancel(int.parse(notificationId));
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Notificación cancelada: $notificationId');
+          '📱 NotificationService: Notificación cancelada: $notificationId',
+        );
       }
     } catch (e) {
       if (kDebugMode) {
@@ -524,7 +531,8 @@ class NotificationService implements NotificationServiceInterface {
     } catch (e) {
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Error cancelando todas las notificaciones: $e');
+          '📱 NotificationService: Error cancelando todas las notificaciones: $e',
+        );
       }
     }
   }
@@ -555,7 +563,8 @@ class NotificationService implements NotificationServiceInterface {
     if (_isStubMode || _localNotifications == null) {
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Simulando programación de notificación (modo stub)');
+          '📱 NotificationService: Simulando programación de notificación (modo stub)',
+        );
       }
       return;
     }
@@ -634,13 +643,14 @@ class NotificationService implements NotificationServiceInterface {
       final settings = await _messaging.getNotificationSettings();
       final bool enabled =
           settings.authorizationStatus == AuthorizationStatus.authorized ||
-              settings.authorizationStatus == AuthorizationStatus.provisional;
+          settings.authorizationStatus == AuthorizationStatus.provisional;
 
       return enabled;
     } catch (e) {
       if (kDebugMode) {
         print(
-            '📱 NotificationService: Error verificando estado de notificaciones: $e');
+          '📱 NotificationService: Error verificando estado de notificaciones: $e',
+        );
       }
       return false;
     }

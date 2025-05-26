@@ -12,7 +12,8 @@ part of 'application_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ApplicationModel _$ApplicationModelFromJson(Map<String, dynamic> json) {
   return _ApplicationModel.fromJson(json);
@@ -51,22 +52,24 @@ mixin _$ApplicationModel {
 /// @nodoc
 abstract class $ApplicationModelCopyWith<$Res> {
   factory $ApplicationModelCopyWith(
-          ApplicationModel value, $Res Function(ApplicationModel) then) =
-      _$ApplicationModelCopyWithImpl<$Res, ApplicationModel>;
+    ApplicationModel value,
+    $Res Function(ApplicationModel) then,
+  ) = _$ApplicationModelCopyWithImpl<$Res, ApplicationModel>;
   @useResult
-  $Res call(
-      {String id,
-      String planId,
-      String applicantId,
-      String status,
-      DateTime appliedAt,
-      String? message,
-      DateTime? processedAt,
-      String? planTitle,
-      String? planImageUrl,
-      String? applicantName,
-      String? applicantPhotoUrl,
-      String? responsibleMessage});
+  $Res call({
+    String id,
+    String planId,
+    String applicantId,
+    String status,
+    DateTime appliedAt,
+    String? message,
+    DateTime? processedAt,
+    String? planTitle,
+    String? planImageUrl,
+    String? applicantName,
+    String? applicantPhotoUrl,
+    String? responsibleMessage,
+  });
 }
 
 /// @nodoc
@@ -97,89 +100,95 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
     Object? applicantPhotoUrl = freezed,
     Object? responsibleMessage = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      applicantId: null == applicantId
-          ? _value.applicantId
-          : applicantId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      appliedAt: null == appliedAt
-          ? _value.appliedAt
-          : appliedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      processedAt: freezed == processedAt
-          ? _value.processedAt
-          : processedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      planTitle: freezed == planTitle
-          ? _value.planTitle
-          : planTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      planImageUrl: freezed == planImageUrl
-          ? _value.planImageUrl
-          : planImageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicantName: freezed == applicantName
-          ? _value.applicantName
-          : applicantName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicantPhotoUrl: freezed == applicantPhotoUrl
-          ? _value.applicantPhotoUrl
-          : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responsibleMessage: freezed == responsibleMessage
-          ? _value.responsibleMessage
-          : responsibleMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            planId: null == planId
+                ? _value.planId
+                : planId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            applicantId: null == applicantId
+                ? _value.applicantId
+                : applicantId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
+            appliedAt: null == appliedAt
+                ? _value.appliedAt
+                : appliedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            message: freezed == message
+                ? _value.message
+                : message // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            processedAt: freezed == processedAt
+                ? _value.processedAt
+                : processedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime?,
+            planTitle: freezed == planTitle
+                ? _value.planTitle
+                : planTitle // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            planImageUrl: freezed == planImageUrl
+                ? _value.planImageUrl
+                : planImageUrl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            applicantName: freezed == applicantName
+                ? _value.applicantName
+                : applicantName // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            applicantPhotoUrl: freezed == applicantPhotoUrl
+                ? _value.applicantPhotoUrl
+                : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            responsibleMessage: freezed == responsibleMessage
+                ? _value.responsibleMessage
+                : responsibleMessage // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ApplicationModelImplCopyWith<$Res>
     implements $ApplicationModelCopyWith<$Res> {
-  factory _$$ApplicationModelImplCopyWith(_$ApplicationModelImpl value,
-          $Res Function(_$ApplicationModelImpl) then) =
-      __$$ApplicationModelImplCopyWithImpl<$Res>;
+  factory _$$ApplicationModelImplCopyWith(
+    _$ApplicationModelImpl value,
+    $Res Function(_$ApplicationModelImpl) then,
+  ) = __$$ApplicationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String planId,
-      String applicantId,
-      String status,
-      DateTime appliedAt,
-      String? message,
-      DateTime? processedAt,
-      String? planTitle,
-      String? planImageUrl,
-      String? applicantName,
-      String? applicantPhotoUrl,
-      String? responsibleMessage});
+  $Res call({
+    String id,
+    String planId,
+    String applicantId,
+    String status,
+    DateTime appliedAt,
+    String? message,
+    DateTime? processedAt,
+    String? planTitle,
+    String? planImageUrl,
+    String? applicantName,
+    String? applicantPhotoUrl,
+    String? responsibleMessage,
+  });
 }
 
 /// @nodoc
 class __$$ApplicationModelImplCopyWithImpl<$Res>
     extends _$ApplicationModelCopyWithImpl<$Res, _$ApplicationModelImpl>
     implements _$$ApplicationModelImplCopyWith<$Res> {
-  __$$ApplicationModelImplCopyWithImpl(_$ApplicationModelImpl _value,
-      $Res Function(_$ApplicationModelImpl) _then)
-      : super(_value, _then);
+  __$$ApplicationModelImplCopyWithImpl(
+    _$ApplicationModelImpl _value,
+    $Res Function(_$ApplicationModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ApplicationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -199,76 +208,78 @@ class __$$ApplicationModelImplCopyWithImpl<$Res>
     Object? applicantPhotoUrl = freezed,
     Object? responsibleMessage = freezed,
   }) {
-    return _then(_$ApplicationModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      planId: null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-      applicantId: null == applicantId
-          ? _value.applicantId
-          : applicantId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      appliedAt: null == appliedAt
-          ? _value.appliedAt
-          : appliedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-      processedAt: freezed == processedAt
-          ? _value.processedAt
-          : processedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      planTitle: freezed == planTitle
-          ? _value.planTitle
-          : planTitle // ignore: cast_nullable_to_non_nullable
-              as String?,
-      planImageUrl: freezed == planImageUrl
-          ? _value.planImageUrl
-          : planImageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicantName: freezed == applicantName
-          ? _value.applicantName
-          : applicantName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      applicantPhotoUrl: freezed == applicantPhotoUrl
-          ? _value.applicantPhotoUrl
-          : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      responsibleMessage: freezed == responsibleMessage
-          ? _value.responsibleMessage
-          : responsibleMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ApplicationModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        applicantId: null == applicantId
+            ? _value.applicantId
+            : applicantId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
+        appliedAt: null == appliedAt
+            ? _value.appliedAt
+            : appliedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        message: freezed == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        processedAt: freezed == processedAt
+            ? _value.processedAt
+            : processedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        planTitle: freezed == planTitle
+            ? _value.planTitle
+            : planTitle // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        planImageUrl: freezed == planImageUrl
+            ? _value.planImageUrl
+            : planImageUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        applicantName: freezed == applicantName
+            ? _value.applicantName
+            : applicantName // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        applicantPhotoUrl: freezed == applicantPhotoUrl
+            ? _value.applicantPhotoUrl
+            : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        responsibleMessage: freezed == responsibleMessage
+            ? _value.responsibleMessage
+            : responsibleMessage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$ApplicationModelImpl extends _ApplicationModel {
-  const _$ApplicationModelImpl(
-      {required this.id,
-      required this.planId,
-      required this.applicantId,
-      required this.status,
-      required this.appliedAt,
-      this.message,
-      this.processedAt,
-      this.planTitle,
-      this.planImageUrl,
-      this.applicantName,
-      this.applicantPhotoUrl,
-      this.responsibleMessage})
-      : super._();
+  const _$ApplicationModelImpl({
+    required this.id,
+    required this.planId,
+    required this.applicantId,
+    required this.status,
+    required this.appliedAt,
+    this.message,
+    this.processedAt,
+    this.planTitle,
+    this.planImageUrl,
+    this.applicantName,
+    this.applicantPhotoUrl,
+    this.responsibleMessage,
+  }) : super._();
 
   factory _$ApplicationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ApplicationModelImplFromJson(json);
@@ -281,7 +292,7 @@ class _$ApplicationModelImpl extends _ApplicationModel {
   final String applicantId;
   @override
   final String status;
-// pending, accepted, rejected, cancelled
+  // pending, accepted, rejected, cancelled
   @override
   final DateTime appliedAt;
   @override
@@ -290,16 +301,16 @@ class _$ApplicationModelImpl extends _ApplicationModel {
   final DateTime? processedAt;
   @override
   final String? planTitle;
-// Para mostrar info adicional en la UI
+  // Para mostrar info adicional en la UI
   @override
   final String? planImageUrl;
-// Para mostrar info adicional en la UI
+  // Para mostrar info adicional en la UI
   @override
   final String? applicantName;
-// Para mostrar info adicional en la UI
+  // Para mostrar info adicional en la UI
   @override
   final String? applicantPhotoUrl;
-// Para mostrar info adicional en la UI
+  // Para mostrar info adicional en la UI
   @override
   final String? responsibleMessage;
 
@@ -338,19 +349,20 @@ class _$ApplicationModelImpl extends _ApplicationModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      planId,
-      applicantId,
-      status,
-      appliedAt,
-      message,
-      processedAt,
-      planTitle,
-      planImageUrl,
-      applicantName,
-      applicantPhotoUrl,
-      responsibleMessage);
+    runtimeType,
+    id,
+    planId,
+    applicantId,
+    status,
+    appliedAt,
+    message,
+    processedAt,
+    planTitle,
+    planImageUrl,
+    applicantName,
+    applicantPhotoUrl,
+    responsibleMessage,
+  );
 
   /// Create a copy of ApplicationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -359,30 +371,31 @@ class _$ApplicationModelImpl extends _ApplicationModel {
   @pragma('vm:prefer-inline')
   _$$ApplicationModelImplCopyWith<_$ApplicationModelImpl> get copyWith =>
       __$$ApplicationModelImplCopyWithImpl<_$ApplicationModelImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ApplicationModelImplToJson(
-      this,
-    );
+    return _$$ApplicationModelImplToJson(this);
   }
 }
 
 abstract class _ApplicationModel extends ApplicationModel {
-  const factory _ApplicationModel(
-      {required final String id,
-      required final String planId,
-      required final String applicantId,
-      required final String status,
-      required final DateTime appliedAt,
-      final String? message,
-      final DateTime? processedAt,
-      final String? planTitle,
-      final String? planImageUrl,
-      final String? applicantName,
-      final String? applicantPhotoUrl,
-      final String? responsibleMessage}) = _$ApplicationModelImpl;
+  const factory _ApplicationModel({
+    required final String id,
+    required final String planId,
+    required final String applicantId,
+    required final String status,
+    required final DateTime appliedAt,
+    final String? message,
+    final DateTime? processedAt,
+    final String? planTitle,
+    final String? planImageUrl,
+    final String? applicantName,
+    final String? applicantPhotoUrl,
+    final String? responsibleMessage,
+  }) = _$ApplicationModelImpl;
   const _ApplicationModel._() : super._();
 
   factory _ApplicationModel.fromJson(Map<String, dynamic> json) =

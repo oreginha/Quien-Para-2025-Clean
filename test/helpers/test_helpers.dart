@@ -16,6 +16,6 @@ import 'package:quien_para/domain/repositories/notification/notification_reposit
   PlanRepository,
   ChatRepository,
   MatchingRepository,
-  NotificationRepository
+  NotificationRepository,
 ])
 void main() {}

@@ -28,9 +28,7 @@ class SuccessApplicationModal extends StatelessWidget {
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
-      decoration: const BoxDecoration(
-        color: Colors.transparent,
-      ),
+      decoration: const BoxDecoration(color: Colors.transparent),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -46,11 +44,7 @@ class SuccessApplicationModal extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 10),
-                  Icon(
-                    icon,
-                    size: 70,
-                    color: iconColor ?? Colors.yellow,
-                  ),
+                  Icon(icon, size: 70, color: iconColor ?? Colors.yellow),
                   const SizedBox(height: 20),
                   Text(
                     title,
@@ -64,18 +58,14 @@ class SuccessApplicationModal extends StatelessWidget {
                   const SizedBox(height: 15),
                   Text(
                     description,
-                    style: const TextStyle(
-                      color: Colors.white70,
-                      fontSize: 16,
-                    ),
+                    style: const TextStyle(color: Colors.white70, fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 30),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed:
-                          onButtonPressed ?? () => context.closeScreen(),
+                      onPressed: onButtonPressed ?? () => context.closeScreen(),
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.yellow,

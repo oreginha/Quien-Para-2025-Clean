@@ -23,13 +23,13 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     required GetReportsByUserUseCase getReportsByUserUseCase,
     required UpdateReportStatusUseCase updateReportStatusUseCase,
     FirebaseAuth? auth,
-  })  : _createReportUseCase = createReportUseCase,
-        _blockUserUseCase = blockUserUseCase,
-        _getPendingReportsUseCase = getPendingReportsUseCase,
-        _getReportsByUserUseCase = getReportsByUserUseCase,
-        _updateReportStatusUseCase = updateReportStatusUseCase,
-        _auth = auth ?? FirebaseAuth.instance,
-        super(const SecurityState.initial()) {
+  }) : _createReportUseCase = createReportUseCase,
+       _blockUserUseCase = blockUserUseCase,
+       _getPendingReportsUseCase = getPendingReportsUseCase,
+       _getReportsByUserUseCase = getReportsByUserUseCase,
+       _updateReportStatusUseCase = updateReportStatusUseCase,
+       _auth = auth ?? FirebaseAuth.instance,
+       super(const SecurityState.initial()) {
     on<CreateReportEvent>(_onCreateReport);
     on<BlockUserEvent>(_onBlockUser);
     on<LoadPendingReportsEvent>(_onLoadPendingReports);
@@ -60,7 +60,7 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     );
 
     final result = await _createReportUseCase(params);
-    
+
     result.fold(
       (failure) => emit(SecurityState.error(failure.message)),
       (report) => emit(SecurityState.reportCreated(report)),
@@ -87,7 +87,7 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     );
 
     final result = await _blockUserUseCase(params);
-    
+
     result.fold(
       (failure) => emit(SecurityState.error(failure.message)),
       (_) => emit(const SecurityState.userBlocked()),
@@ -101,7 +101,7 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     emit(const SecurityState.loading());
 
     final result = await _getPendingReportsUseCase();
-    
+
     result.fold(
       (failure) => emit(SecurityState.error(failure.message)),
       (reports) => emit(SecurityState.pendingReportsLoaded(reports)),
@@ -115,7 +115,7 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     emit(const SecurityState.loading());
 
     final result = await _getReportsByUserUseCase(event.userId);
-    
+
     result.fold(
       (failure) => emit(SecurityState.error(failure.message)),
       (reports) => emit(SecurityState.userReportsLoaded(reports)),
@@ -142,7 +142,7 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     );
 
     final result = await _updateReportStatusUseCase(params);
-    
+
     result.fold(
       (failure) => emit(SecurityState.error(failure.message)),
       (report) => emit(SecurityState.reportStatusUpdated(report)),

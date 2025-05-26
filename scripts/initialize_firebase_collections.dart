@@ -66,8 +66,9 @@ class FirebaseInitializer {
       await collectionRef.doc(exampleUser.id).set(exampleUser.toFirestore());
 
       // Crear subcolección de intereses
-      final interestsRef =
-          collectionRef.doc(exampleUser.id).collection('interests');
+      final interestsRef = collectionRef
+          .doc(exampleUser.id)
+          .collection('interests');
       for (final interest in exampleUser.interests) {
         await interestsRef.add({
           'name': interest,
@@ -132,8 +133,9 @@ class FirebaseInitializer {
       });
 
       // Crear subcolección de participantes
-      final participantsRef =
-          collectionRef.doc(planId).collection('participants');
+      final participantsRef = collectionRef
+          .doc(planId)
+          .collection('participants');
       await participantsRef.add({
         'userId': 'example_user_id',
         'joinedAt': FieldValue.serverTimestamp(),
@@ -172,8 +174,9 @@ class FirebaseInitializer {
       await collectionRef.doc(chatId).set({
         'participants': exampleChat.participants,
         'createdAt': Timestamp.fromDate(exampleChat.createdAt),
-        'lastMessageTimestamp':
-            Timestamp.fromDate(exampleChat.lastMessageTimestamp!),
+        'lastMessageTimestamp': Timestamp.fromDate(
+          exampleChat.lastMessageTimestamp!,
+        ),
         'lastMessage': exampleChat.lastMessage,
         'lastMessageSenderId': exampleChat.lastMessageSenderId,
         'unreadCount': exampleChat.unreadCount,
@@ -233,8 +236,9 @@ class FirebaseInitializer {
       });
 
       // Crear subcolección de mensajes
-      final messagesRef =
-          collectionRef.doc(applicationId).collection('messages');
+      final messagesRef = collectionRef
+          .doc(applicationId)
+          .collection('messages');
       await messagesRef.add({
         'senderId': 'another_user_id',
         'text': 'Estoy interesado en este plan',
@@ -316,8 +320,9 @@ class FirebaseInitializer {
 
       // Procesar cada colección principal
       for (final collectionName in knownCollections) {
-        final CollectionReference collection =
-            _firestore.collection(collectionName);
+        final CollectionReference collection = _firestore.collection(
+          collectionName,
+        );
         structure[collectionName] = {
           'schema': {},
           'subcollections': {},
@@ -341,8 +346,9 @@ class FirebaseInitializer {
             };
 
             // Añadir a la lista de documentos de muestra
-            (structure[collectionName]['sample_documents'] as List)
-                .add(sampleDoc);
+            (structure[collectionName]['sample_documents'] as List).add(
+              sampleDoc,
+            );
 
             // Detectar tipos de campos
             docData.forEach((key, value) {
@@ -372,10 +378,7 @@ class FirebaseInitializer {
 
                   for (final subDoc in subQuery.docs) {
                     final Map<String, dynamic> subDocData = subDoc.data();
-                    subSamples.add({
-                      'id': subDoc.id,
-                      'data': subDocData,
-                    });
+                    subSamples.add({'id': subDoc.id, 'data': subDocData});
 
                     // Detectar tipos de campos en la subcolección
                     subDocData.forEach((key, value) {
@@ -404,16 +407,18 @@ class FirebaseInitializer {
       }
 
       // Guardar como JSON en un archivo con fecha y hora
-      final String timestamp =
-          DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+      final String timestamp = DateFormat(
+        'yyyyMMdd_HHmmss',
+      ).format(DateTime.now());
       final String fileName = 'firebase_structure_$timestamp.json';
 
       // Guardar en directorio de documentos
       final Directory appDocDir = await getApplicationDocumentsDirectory();
       final String outputPath = '${appDocDir.path}/$fileName';
       final File outputFile = File(outputPath);
-      await outputFile
-          .writeAsString(JsonEncoder.withIndent('  ').convert(structure));
+      await outputFile.writeAsString(
+        JsonEncoder.withIndent('  ').convert(structure),
+      );
 
       // También guardar en directorio del proyecto
       final String projectOutputPath = 'firebase_export/$fileName';
@@ -421,8 +426,9 @@ class FirebaseInitializer {
       final String fullProjectPath =
           '${projectDir.absolute.path}/$projectOutputPath';
       final File projectOutputFile = File(fullProjectPath);
-      await projectOutputFile
-          .writeAsString(JsonEncoder.withIndent('  ').convert(structure));
+      await projectOutputFile.writeAsString(
+        JsonEncoder.withIndent('  ').convert(structure),
+      );
 
       print('Estructura exportada a: $outputPath');
       print('Copia guardada en: $fullProjectPath');

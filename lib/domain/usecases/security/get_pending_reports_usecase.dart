@@ -31,7 +31,8 @@ class UpdateReportStatusUseCase {
   const UpdateReportStatusUseCase(this._repository);
 
   Future<Either<Failure, ReportEntity>> call(
-      UpdateReportStatusParams params) async {
+    UpdateReportStatusParams params,
+  ) async {
     return await _repository.updateReportStatus(
       reportId: params.reportId,
       status: params.status,

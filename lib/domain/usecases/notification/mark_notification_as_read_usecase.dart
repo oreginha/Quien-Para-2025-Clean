@@ -20,16 +20,19 @@ class MarkNotificationAsReadUseCase implements UseCaseInterface<Unit, String> {
   @override
   Future<Either<AppFailure, Unit>> execute(String notificationId) async {
     _logger.d(
-        'MarkNotificationAsReadUseCase: Marcando notificación como leída: $notificationId');
+      'MarkNotificationAsReadUseCase: Marcando notificación como leída: $notificationId',
+    );
 
     // Validar parámetros
     if (notificationId.isEmpty) {
       _logger.w('MarkNotificationAsReadUseCase: ID de notificación vacío');
-      return Left(ValidationFailure(
-        message: 'El ID de la notificación no puede estar vacío',
-        field: 'notificationId',
-        code: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID de la notificación no puede estar vacío',
+          field: 'notificationId',
+          code: '',
+        ),
+      );
     }
 
     return _repository.markNotificationAsRead(notificationId);

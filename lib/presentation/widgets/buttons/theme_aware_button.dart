@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quien_para/core/theme/app_colors.dart';
 // Se eliminó importación no utilizada: '../../../core/theme/app_theme.dart'
 
-enum ButtonVariant {
-  primary,
-  secondary,
-  outline,
-  text,
-}
+enum ButtonVariant { primary, secondary, outline, text }
 
 class ThemeAwareButton extends StatelessWidget {
   final String text;
@@ -46,7 +41,8 @@ class ThemeAwareButton extends StatelessWidget {
       case ButtonVariant.primary:
         darkPrimaryBackground = AppColors.brandYellow;
         textColor = const Color(
-            0xFF1E293B); // Navy en botones amarillos para ambos temas
+          0xFF1E293B,
+        ); // Navy en botones amarillos para ambos temas
         borderColor = Colors.transparent;
         break;
 

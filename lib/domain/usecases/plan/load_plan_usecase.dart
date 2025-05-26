@@ -19,11 +19,13 @@ class LoadPlanUseCase {
 
     if (planId.isEmpty) {
       _logger.w('LoadPlanUseCase: ID de plan vacío');
-      return Left(ValidationFailure(
-        message: 'El ID del plan no puede estar vacío',
-        field: 'id',
-        code: 'EMPTY_PLAN_ID',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'El ID del plan no puede estar vacío',
+          field: 'id',
+          code: 'EMPTY_PLAN_ID',
+        ),
+      );
     }
 
     return _planRepository.getById(planId);
@@ -69,7 +71,9 @@ class InitPlanUseCase {
   /// en el proyecto real. Esta es una implementación de marcador
   /// que debe ser reemplazada con la lógica real.
   PlanEntity _createBasicPlan(
-      String creatorId, Map<String, dynamic> initialData) {
+    String creatorId,
+    Map<String, dynamic> initialData,
+  ) {
     // IMPLEMENTACIÓN PENDIENTE: Crear un objeto PlanEntity básico
     // con los datos proporcionados
 
@@ -82,7 +86,8 @@ class InitPlanUseCase {
     // );
 
     throw UnimplementedError(
-        'Implementación específica de _createBasicPlan debe ser proporcionada');
+      'Implementación específica de _createBasicPlan debe ser proporcionada',
+    );
   }
 }
 
@@ -116,7 +121,9 @@ class LoadSuggestedPlanUseCase {
   /// en el proyecto real. Esta es una implementación de marcador
   /// que debe ser reemplazada con la lógica real.
   PlanEntity _createPlanWithSuggestedData(
-      String creatorId, Map<String, dynamic> suggestedData) {
+    String creatorId,
+    Map<String, dynamic> suggestedData,
+  ) {
     // IMPLEMENTACIÓN PENDIENTE: Crear un objeto PlanEntity
     // con los datos sugeridos proporcionados
 
@@ -129,6 +136,7 @@ class LoadSuggestedPlanUseCase {
     // );
 
     throw UnimplementedError(
-        'Implementación específica de _createPlanWithSuggestedData debe ser proporcionada');
+      'Implementación específica de _createPlanWithSuggestedData debe ser proporcionada',
+    );
   }
 }

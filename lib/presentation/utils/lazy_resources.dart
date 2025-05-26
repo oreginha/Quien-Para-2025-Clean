@@ -54,10 +54,7 @@ class LazyNetworkImage extends StatelessWidget {
               _triggerMemoryCleanup();
               return Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: fit,
-                  ),
+                  image: DecorationImage(image: imageProvider, fit: fit),
                 ),
               );
             }
@@ -95,11 +92,7 @@ class LazyNetworkImage extends StatelessWidget {
           height: height,
           color: Colors.grey[200],
           child: Center(
-            child: Icon(
-              Icons.broken_image,
-              color: Colors.grey[400],
-              size: 24,
-            ),
+            child: Icon(Icons.broken_image, color: Colors.grey[400], size: 24),
           ),
         );
   }

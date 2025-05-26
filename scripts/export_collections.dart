@@ -36,8 +36,9 @@ Future<Map<String, dynamic>> exportCollectionsStructure() async {
 
     // Procesar cada colección principal
     for (final collectionName in knownCollections) {
-      final CollectionReference collection =
-          firestore.collection(collectionName);
+      final CollectionReference collection = firestore.collection(
+        collectionName,
+      );
       structure[collectionName] = {
         'schema': {},
         'subcollections': {},
@@ -62,8 +63,9 @@ Future<Map<String, dynamic>> exportCollectionsStructure() async {
             };
 
             // Añadir a la lista de documentos de muestra
-            (structure[collectionName]['sample_documents'] as List)
-                .add(sampleDoc);
+            (structure[collectionName]['sample_documents'] as List).add(
+              sampleDoc,
+            );
 
             // Detectar tipos de campos
             docData.forEach((key, value) {
@@ -93,10 +95,7 @@ Future<Map<String, dynamic>> exportCollectionsStructure() async {
 
                   for (final subDoc in subQuery.docs) {
                     final Map<String, dynamic> subDocData = subDoc.data();
-                    subSamples.add({
-                      'id': subDoc.id,
-                      'data': subDocData,
-                    });
+                    subSamples.add({'id': subDoc.id, 'data': subDocData});
 
                     // Detectar tipos de campos en la subcolección
                     subDocData.forEach((key, value) {
@@ -132,22 +131,25 @@ Future<Map<String, dynamic>> exportCollectionsStructure() async {
     }
 
     // Guardar como JSON en un archivo con fecha y hora
-    final String timestamp =
-        DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+    final String timestamp = DateFormat(
+      'yyyyMMdd_HHmmss',
+    ).format(DateTime.now());
     final String fileName = 'firebase_structure_$timestamp.json';
 
     // Guardar en directorio de documentos
     final Directory appDocDir = await getApplicationDocumentsDirectory();
     final String outputPath = '${appDocDir.path}/$fileName';
     final File outputFile = File(outputPath);
-    await outputFile
-        .writeAsString(JsonEncoder.withIndent('  ').convert(structure));
+    await outputFile.writeAsString(
+      JsonEncoder.withIndent('  ').convert(structure),
+    );
 
     // También guardar en directorio temporal para compatibilidad
     final String tempOutputPath = '${Directory.systemTemp.path}/$fileName';
     final File tempOutputFile = File(tempOutputPath);
-    await tempOutputFile
-        .writeAsString(JsonEncoder.withIndent('  ').convert(structure));
+    await tempOutputFile.writeAsString(
+      JsonEncoder.withIndent('  ').convert(structure),
+    );
 
     if (kDebugMode) {
       print('Estructura exportada a: $outputPath');
@@ -258,8 +260,10 @@ Future<void> createExampleCollectionsIfNotExist() async {
       final exampleDocData = entry.value;
 
       // Verificar si la colección está vacía
-      final snapshot =
-          await firestore.collection(collectionName).limit(1).get();
+      final snapshot = await firestore
+          .collection(collectionName)
+          .limit(1)
+          .get();
 
       if (snapshot.docs.isEmpty) {
         // Crear documento de ejemplo
@@ -270,8 +274,9 @@ Future<void> createExampleCollectionsIfNotExist() async {
 
         // Crear subcolecciones de ejemplo si es necesario
         if (collectionName == 'chats') {
-          final chatDoc =
-              await firestore.collection('chats').add(exampleDocData);
+          final chatDoc = await firestore
+              .collection('chats')
+              .add(exampleDocData);
           await chatDoc.collection('messages').add({
             'senderId': 'user123',
             'text': 'Hola, este es un mensaje de ejemplo',
@@ -279,8 +284,9 @@ Future<void> createExampleCollectionsIfNotExist() async {
             'read': false,
           });
         } else if (collectionName == 'applications') {
-          final appDoc =
-              await firestore.collection('applications').add(exampleDocData);
+          final appDoc = await firestore
+              .collection('applications')
+              .add(exampleDocData);
           await appDoc.collection('messages').add({
             'senderId': 'user123',
             'text': 'Mensaje relacionado con la aplicación',

@@ -8,11 +8,9 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
   final FirebaseFirestore _firestore;
   final Logger _logger;
 
-  FirebaseMatchingDataSource({
-    FirebaseFirestore? firestore,
-    Logger? logger,
-  })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _logger = logger ?? Logger();
+  FirebaseMatchingDataSource({FirebaseFirestore? firestore, Logger? logger})
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _logger = logger ?? Logger();
 
   @override
   Future<ApplicationEntity> acceptApplication(String applicationId) async {
@@ -23,8 +21,10 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
       });
 
       // Get the updated application
-      final docSnapshot =
-          await _firestore.collection('applications').doc(applicationId).get();
+      final docSnapshot = await _firestore
+          .collection('applications')
+          .doc(applicationId)
+          .get();
       return _mapDocToApplicationEntity(docSnapshot);
     } catch (e) {
       _logger.e('Error accepting application: $e');
@@ -99,17 +99,19 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
         final DateTime createdAtDate =
             (data['createdAt'] as Timestamp?)?.toDate() ?? DateTime.now();
 
-        similarPlans.add(ApplicationEntity(
-          id: doc.id,
-          planId: doc.id,
-          planTitle: data['title'] as String? ?? 'Unknown Plan',
-          applicantId: data['creatorId'] as String? ?? '',
-          applicantName: data['creatorName'] as String? ?? 'Unknown',
-          applicantPhotoUrl: data['creatorPhotoUrl'] as String?,
-          status: 'similar', // Mark as similar for UI distinction
-          message: data['description'] as String? ?? '',
-          appliedAt: createdAtDate, // Usar fecha no nula
-        ));
+        similarPlans.add(
+          ApplicationEntity(
+            id: doc.id,
+            planId: doc.id,
+            planTitle: data['title'] as String? ?? 'Unknown Plan',
+            applicantId: data['creatorId'] as String? ?? '',
+            applicantName: data['creatorName'] as String? ?? 'Unknown',
+            applicantPhotoUrl: data['creatorPhotoUrl'] as String?,
+            status: 'similar', // Mark as similar for UI distinction
+            message: data['description'] as String? ?? '',
+            appliedAt: createdAtDate, // Usar fecha no nula
+          ),
+        );
       }
 
       return similarPlans;
@@ -164,8 +166,10 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
       });
 
       // Get the updated application
-      final docSnapshot =
-          await _firestore.collection('applications').doc(applicationId).get();
+      final docSnapshot = await _firestore
+          .collection('applications')
+          .doc(applicationId)
+          .get();
       return _mapDocToApplicationEntity(docSnapshot);
     } catch (e) {
       _logger.e('Error rejecting application: $e');

@@ -11,11 +11,14 @@ class StreamSubscriptionManager {
   /// Agrega una nueva suscripción con una clave única
   ///
   /// Cancela cualquier suscripción existente con la misma clave
-  void add<T>(String key, Stream<T> stream,
-      {void Function(T)? onData,
-      Function? onError,
-      void Function()? onDone,
-      bool? cancelOnError}) {
+  void add<T>(
+    String key,
+    Stream<T> stream, {
+    void Function(T)? onData,
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+  }) {
     // Cancelar suscripción existente con la misma clave
     cancel(key);
 

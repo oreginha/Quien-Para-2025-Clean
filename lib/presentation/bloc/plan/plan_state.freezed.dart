@@ -12,7 +12,8 @@ part of 'plan_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$PlanState {
@@ -26,8 +27,7 @@ mixin _$PlanState {
     required TResult Function(List<PlanEntity> plans) plansLoaded,
     required TResult Function(PlanEntity plan) saved,
     required TResult Function(String message, PlanEntity? plan) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -38,8 +38,7 @@ mixin _$PlanState {
     TResult? Function(List<PlanEntity> plans)? plansLoaded,
     TResult? Function(PlanEntity plan)? saved,
     TResult? Function(String message, PlanEntity? plan)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -51,8 +50,7 @@ mixin _$PlanState {
     TResult Function(PlanEntity plan)? saved,
     TResult Function(String message, PlanEntity? plan)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PlanInitial value) initial,
@@ -63,8 +61,7 @@ mixin _$PlanState {
     required TResult Function(PlansLoaded value) plansLoaded,
     required TResult Function(PlanSaved value) saved,
     required TResult Function(PlanError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlanInitial value)? initial,
@@ -75,8 +72,7 @@ mixin _$PlanState {
     TResult? Function(PlansLoaded value)? plansLoaded,
     TResult? Function(PlanSaved value)? saved,
     TResult? Function(PlanError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlanInitial value)? initial,
@@ -88,8 +84,7 @@ mixin _$PlanState {
     TResult Function(PlanSaved value)? saved,
     TResult Function(PlanError value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -115,8 +110,9 @@ class _$PlanStateCopyWithImpl<$Res, $Val extends PlanState>
 /// @nodoc
 abstract class _$$PlanInitialImplCopyWith<$Res> {
   factory _$$PlanInitialImplCopyWith(
-          _$PlanInitialImpl value, $Res Function(_$PlanInitialImpl) then) =
-      __$$PlanInitialImplCopyWithImpl<$Res>;
+    _$PlanInitialImpl value,
+    $Res Function(_$PlanInitialImpl) then,
+  ) = __$$PlanInitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -124,8 +120,9 @@ class __$$PlanInitialImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlanInitialImpl>
     implements _$$PlanInitialImplCopyWith<$Res> {
   __$$PlanInitialImplCopyWithImpl(
-      _$PlanInitialImpl _value, $Res Function(_$PlanInitialImpl) _then)
-      : super(_value, _then);
+    _$PlanInitialImpl _value,
+    $Res Function(_$PlanInitialImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
@@ -257,8 +254,9 @@ abstract class PlanInitial extends PlanState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -266,8 +264,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
@@ -399,8 +398,9 @@ abstract class _Loading extends PlanState {
 /// @nodoc
 abstract class _$$PlanLoadedImplCopyWith<$Res> {
   factory _$$PlanLoadedImplCopyWith(
-          _$PlanLoadedImpl value, $Res Function(_$PlanLoadedImpl) then) =
-      __$$PlanLoadedImplCopyWithImpl<$Res>;
+    _$PlanLoadedImpl value,
+    $Res Function(_$PlanLoadedImpl) then,
+  ) = __$$PlanLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PlanEntity plan});
 }
@@ -410,22 +410,23 @@ class __$$PlanLoadedImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlanLoadedImpl>
     implements _$$PlanLoadedImplCopyWith<$Res> {
   __$$PlanLoadedImplCopyWithImpl(
-      _$PlanLoadedImpl _value, $Res Function(_$PlanLoadedImpl) _then)
-      : super(_value, _then);
+    _$PlanLoadedImpl _value,
+    $Res Function(_$PlanLoadedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plan = null,
-  }) {
-    return _then(_$PlanLoadedImpl(
-      plan: null == plan
-          ? _value.plan
-          : plan // ignore: cast_nullable_to_non_nullable
-              as PlanEntity,
-    ));
+  $Res call({Object? plan = null}) {
+    return _then(
+      _$PlanLoadedImpl(
+        plan: null == plan
+            ? _value.plan
+            : plan // ignore: cast_nullable_to_non_nullable
+                  as PlanEntity,
+      ),
+    );
   }
 }
 
@@ -576,8 +577,9 @@ abstract class PlanLoaded extends PlanState {
 /// @nodoc
 abstract class _$$PlanSavingImplCopyWith<$Res> {
   factory _$$PlanSavingImplCopyWith(
-          _$PlanSavingImpl value, $Res Function(_$PlanSavingImpl) then) =
-      __$$PlanSavingImplCopyWithImpl<$Res>;
+    _$PlanSavingImpl value,
+    $Res Function(_$PlanSavingImpl) then,
+  ) = __$$PlanSavingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PlanEntity? plan});
 }
@@ -587,22 +589,23 @@ class __$$PlanSavingImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlanSavingImpl>
     implements _$$PlanSavingImplCopyWith<$Res> {
   __$$PlanSavingImplCopyWithImpl(
-      _$PlanSavingImpl _value, $Res Function(_$PlanSavingImpl) _then)
-      : super(_value, _then);
+    _$PlanSavingImpl _value,
+    $Res Function(_$PlanSavingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plan = freezed,
-  }) {
-    return _then(_$PlanSavingImpl(
-      plan: freezed == plan
-          ? _value.plan
-          : plan // ignore: cast_nullable_to_non_nullable
-              as PlanEntity?,
-    ));
+  $Res call({Object? plan = freezed}) {
+    return _then(
+      _$PlanSavingImpl(
+        plan: freezed == plan
+            ? _value.plan
+            : plan // ignore: cast_nullable_to_non_nullable
+                  as PlanEntity?,
+      ),
+    );
   }
 }
 
@@ -753,8 +756,9 @@ abstract class PlanSaving extends PlanState {
 /// @nodoc
 abstract class _$$PlanUpdatingImplCopyWith<$Res> {
   factory _$$PlanUpdatingImplCopyWith(
-          _$PlanUpdatingImpl value, $Res Function(_$PlanUpdatingImpl) then) =
-      __$$PlanUpdatingImplCopyWithImpl<$Res>;
+    _$PlanUpdatingImpl value,
+    $Res Function(_$PlanUpdatingImpl) then,
+  ) = __$$PlanUpdatingImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PlanEntity? plan});
 }
@@ -764,22 +768,23 @@ class __$$PlanUpdatingImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlanUpdatingImpl>
     implements _$$PlanUpdatingImplCopyWith<$Res> {
   __$$PlanUpdatingImplCopyWithImpl(
-      _$PlanUpdatingImpl _value, $Res Function(_$PlanUpdatingImpl) _then)
-      : super(_value, _then);
+    _$PlanUpdatingImpl _value,
+    $Res Function(_$PlanUpdatingImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plan = freezed,
-  }) {
-    return _then(_$PlanUpdatingImpl(
-      plan: freezed == plan
-          ? _value.plan
-          : plan // ignore: cast_nullable_to_non_nullable
-              as PlanEntity?,
-    ));
+  $Res call({Object? plan = freezed}) {
+    return _then(
+      _$PlanUpdatingImpl(
+        plan: freezed == plan
+            ? _value.plan
+            : plan // ignore: cast_nullable_to_non_nullable
+                  as PlanEntity?,
+      ),
+    );
   }
 }
 
@@ -930,8 +935,9 @@ abstract class PlanUpdating extends PlanState {
 /// @nodoc
 abstract class _$$PlansLoadedImplCopyWith<$Res> {
   factory _$$PlansLoadedImplCopyWith(
-          _$PlansLoadedImpl value, $Res Function(_$PlansLoadedImpl) then) =
-      __$$PlansLoadedImplCopyWithImpl<$Res>;
+    _$PlansLoadedImpl value,
+    $Res Function(_$PlansLoadedImpl) then,
+  ) = __$$PlansLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<PlanEntity> plans});
 }
@@ -941,22 +947,23 @@ class __$$PlansLoadedImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlansLoadedImpl>
     implements _$$PlansLoadedImplCopyWith<$Res> {
   __$$PlansLoadedImplCopyWithImpl(
-      _$PlansLoadedImpl _value, $Res Function(_$PlansLoadedImpl) _then)
-      : super(_value, _then);
+    _$PlansLoadedImpl _value,
+    $Res Function(_$PlansLoadedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plans = null,
-  }) {
-    return _then(_$PlansLoadedImpl(
-      plans: null == plans
-          ? _value._plans
-          : plans // ignore: cast_nullable_to_non_nullable
-              as List<PlanEntity>,
-    ));
+  $Res call({Object? plans = null}) {
+    return _then(
+      _$PlansLoadedImpl(
+        plans: null == plans
+            ? _value._plans
+            : plans // ignore: cast_nullable_to_non_nullable
+                  as List<PlanEntity>,
+      ),
+    );
   }
 }
 
@@ -964,8 +971,8 @@ class __$$PlansLoadedImplCopyWithImpl<$Res>
 
 class _$PlansLoadedImpl extends PlansLoaded {
   const _$PlansLoadedImpl({required final List<PlanEntity> plans})
-      : _plans = plans,
-        super._();
+    : _plans = plans,
+      super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -1116,8 +1123,9 @@ abstract class PlansLoaded extends PlanState {
 /// @nodoc
 abstract class _$$PlanSavedImplCopyWith<$Res> {
   factory _$$PlanSavedImplCopyWith(
-          _$PlanSavedImpl value, $Res Function(_$PlanSavedImpl) then) =
-      __$$PlanSavedImplCopyWithImpl<$Res>;
+    _$PlanSavedImpl value,
+    $Res Function(_$PlanSavedImpl) then,
+  ) = __$$PlanSavedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PlanEntity plan});
 }
@@ -1127,22 +1135,23 @@ class __$$PlanSavedImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlanSavedImpl>
     implements _$$PlanSavedImplCopyWith<$Res> {
   __$$PlanSavedImplCopyWithImpl(
-      _$PlanSavedImpl _value, $Res Function(_$PlanSavedImpl) _then)
-      : super(_value, _then);
+    _$PlanSavedImpl _value,
+    $Res Function(_$PlanSavedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? plan = null,
-  }) {
-    return _then(_$PlanSavedImpl(
-      plan: null == plan
-          ? _value.plan
-          : plan // ignore: cast_nullable_to_non_nullable
-              as PlanEntity,
-    ));
+  $Res call({Object? plan = null}) {
+    return _then(
+      _$PlanSavedImpl(
+        plan: null == plan
+            ? _value.plan
+            : plan // ignore: cast_nullable_to_non_nullable
+                  as PlanEntity,
+      ),
+    );
   }
 }
 
@@ -1293,8 +1302,9 @@ abstract class PlanSaved extends PlanState {
 /// @nodoc
 abstract class _$$PlanErrorImplCopyWith<$Res> {
   factory _$$PlanErrorImplCopyWith(
-          _$PlanErrorImpl value, $Res Function(_$PlanErrorImpl) then) =
-      __$$PlanErrorImplCopyWithImpl<$Res>;
+    _$PlanErrorImpl value,
+    $Res Function(_$PlanErrorImpl) then,
+  ) = __$$PlanErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message, PlanEntity? plan});
 }
@@ -1304,27 +1314,27 @@ class __$$PlanErrorImplCopyWithImpl<$Res>
     extends _$PlanStateCopyWithImpl<$Res, _$PlanErrorImpl>
     implements _$$PlanErrorImplCopyWith<$Res> {
   __$$PlanErrorImplCopyWithImpl(
-      _$PlanErrorImpl _value, $Res Function(_$PlanErrorImpl) _then)
-      : super(_value, _then);
+    _$PlanErrorImpl _value,
+    $Res Function(_$PlanErrorImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PlanState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-    Object? plan = freezed,
-  }) {
-    return _then(_$PlanErrorImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      plan: freezed == plan
-          ? _value.plan
-          : plan // ignore: cast_nullable_to_non_nullable
-              as PlanEntity?,
-    ));
+  $Res call({Object? message = null, Object? plan = freezed}) {
+    return _then(
+      _$PlanErrorImpl(
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        plan: freezed == plan
+            ? _value.plan
+            : plan // ignore: cast_nullable_to_non_nullable
+                  as PlanEntity?,
+      ),
+    );
   }
 }
 
@@ -1463,9 +1473,10 @@ class _$PlanErrorImpl extends PlanError {
 }
 
 abstract class PlanError extends PlanState {
-  const factory PlanError(
-      {required final String message,
-      final PlanEntity? plan}) = _$PlanErrorImpl;
+  const factory PlanError({
+    required final String message,
+    final PlanEntity? plan,
+  }) = _$PlanErrorImpl;
   const PlanError._() : super._();
 
   String get message;

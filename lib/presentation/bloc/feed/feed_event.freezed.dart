@@ -12,7 +12,8 @@ part of 'feed_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$FeedEvent {
@@ -26,18 +27,18 @@ mixin _$FeedEvent {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchPlans,
@@ -48,18 +49,18 @@ mixin _$FeedEvent {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchPlans,
@@ -70,33 +71,32 @@ mixin _$FeedEvent {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchPlans value) fetchPlans,
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
     required TResult Function(CreatePlan value) createPlan,
     required TResult Function(DeletePlan value) deletePlan,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchPlans value)? fetchPlans,
@@ -108,8 +108,7 @@ mixin _$FeedEvent {
     TResult? Function(UnlikePlan value)? unlikePlan,
     TResult? Function(CreatePlan value)? createPlan,
     TResult? Function(DeletePlan value)? deletePlan,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchPlans value)? fetchPlans,
@@ -122,8 +121,7 @@ mixin _$FeedEvent {
     TResult Function(CreatePlan value)? createPlan,
     TResult Function(DeletePlan value)? deletePlan,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -149,8 +147,9 @@ class _$FeedEventCopyWithImpl<$Res, $Val extends FeedEvent>
 /// @nodoc
 abstract class _$$FetchPlansImplCopyWith<$Res> {
   factory _$$FetchPlansImplCopyWith(
-          _$FetchPlansImpl value, $Res Function(_$FetchPlansImpl) then) =
-      __$$FetchPlansImplCopyWithImpl<$Res>;
+    _$FetchPlansImpl value,
+    $Res Function(_$FetchPlansImpl) then,
+  ) = __$$FetchPlansImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -158,8 +157,9 @@ class __$$FetchPlansImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$FetchPlansImpl>
     implements _$$FetchPlansImplCopyWith<$Res> {
   __$$FetchPlansImplCopyWithImpl(
-      _$FetchPlansImpl _value, $Res Function(_$FetchPlansImpl) _then)
-      : super(_value, _then);
+    _$FetchPlansImpl _value,
+    $Res Function(_$FetchPlansImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -195,15 +195,16 @@ class _$FetchPlansImpl extends FetchPlans {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return fetchPlans();
@@ -220,15 +221,16 @@ class _$FetchPlansImpl extends FetchPlans {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return fetchPlans?.call();
@@ -245,15 +247,16 @@ class _$FetchPlansImpl extends FetchPlans {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -270,7 +273,7 @@ class _$FetchPlansImpl extends FetchPlans {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -325,8 +328,9 @@ abstract class FetchPlans extends FeedEvent {
 /// @nodoc
 abstract class _$$RefreshPlansImplCopyWith<$Res> {
   factory _$$RefreshPlansImplCopyWith(
-          _$RefreshPlansImpl value, $Res Function(_$RefreshPlansImpl) then) =
-      __$$RefreshPlansImplCopyWithImpl<$Res>;
+    _$RefreshPlansImpl value,
+    $Res Function(_$RefreshPlansImpl) then,
+  ) = __$$RefreshPlansImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -334,8 +338,9 @@ class __$$RefreshPlansImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$RefreshPlansImpl>
     implements _$$RefreshPlansImplCopyWith<$Res> {
   __$$RefreshPlansImplCopyWithImpl(
-      _$RefreshPlansImpl _value, $Res Function(_$RefreshPlansImpl) _then)
-      : super(_value, _then);
+    _$RefreshPlansImpl _value,
+    $Res Function(_$RefreshPlansImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -371,15 +376,16 @@ class _$RefreshPlansImpl extends RefreshPlans {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return refreshPlans();
@@ -396,15 +402,16 @@ class _$RefreshPlansImpl extends RefreshPlans {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return refreshPlans?.call();
@@ -421,15 +428,16 @@ class _$RefreshPlansImpl extends RefreshPlans {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -446,7 +454,7 @@ class _$RefreshPlansImpl extends RefreshPlans {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -501,8 +509,9 @@ abstract class RefreshPlans extends FeedEvent {
 /// @nodoc
 abstract class _$$LoadMorePlansImplCopyWith<$Res> {
   factory _$$LoadMorePlansImplCopyWith(
-          _$LoadMorePlansImpl value, $Res Function(_$LoadMorePlansImpl) then) =
-      __$$LoadMorePlansImplCopyWithImpl<$Res>;
+    _$LoadMorePlansImpl value,
+    $Res Function(_$LoadMorePlansImpl) then,
+  ) = __$$LoadMorePlansImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -510,8 +519,9 @@ class __$$LoadMorePlansImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$LoadMorePlansImpl>
     implements _$$LoadMorePlansImplCopyWith<$Res> {
   __$$LoadMorePlansImplCopyWithImpl(
-      _$LoadMorePlansImpl _value, $Res Function(_$LoadMorePlansImpl) _then)
-      : super(_value, _then);
+    _$LoadMorePlansImpl _value,
+    $Res Function(_$LoadMorePlansImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -547,15 +557,16 @@ class _$LoadMorePlansImpl extends LoadMorePlans {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return loadMorePlans();
@@ -572,15 +583,16 @@ class _$LoadMorePlansImpl extends LoadMorePlans {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return loadMorePlans?.call();
@@ -597,15 +609,16 @@ class _$LoadMorePlansImpl extends LoadMorePlans {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -622,7 +635,7 @@ class _$LoadMorePlansImpl extends LoadMorePlans {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -677,9 +690,9 @@ abstract class LoadMorePlans extends FeedEvent {
 /// @nodoc
 abstract class _$$FilterPlansByCategoryImplCopyWith<$Res> {
   factory _$$FilterPlansByCategoryImplCopyWith(
-          _$FilterPlansByCategoryImpl value,
-          $Res Function(_$FilterPlansByCategoryImpl) then) =
-      __$$FilterPlansByCategoryImplCopyWithImpl<$Res>;
+    _$FilterPlansByCategoryImpl value,
+    $Res Function(_$FilterPlansByCategoryImpl) then,
+  ) = __$$FilterPlansByCategoryImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String category});
 }
@@ -688,23 +701,24 @@ abstract class _$$FilterPlansByCategoryImplCopyWith<$Res> {
 class __$$FilterPlansByCategoryImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$FilterPlansByCategoryImpl>
     implements _$$FilterPlansByCategoryImplCopyWith<$Res> {
-  __$$FilterPlansByCategoryImplCopyWithImpl(_$FilterPlansByCategoryImpl _value,
-      $Res Function(_$FilterPlansByCategoryImpl) _then)
-      : super(_value, _then);
+  __$$FilterPlansByCategoryImplCopyWithImpl(
+    _$FilterPlansByCategoryImpl _value,
+    $Res Function(_$FilterPlansByCategoryImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? category = null,
-  }) {
-    return _then(_$FilterPlansByCategoryImpl(
-      null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? category = null}) {
+    return _then(
+      _$FilterPlansByCategoryImpl(
+        null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -739,8 +753,11 @@ class _$FilterPlansByCategoryImpl extends FilterPlansByCategory {
   @override
   @pragma('vm:prefer-inline')
   _$$FilterPlansByCategoryImplCopyWith<_$FilterPlansByCategoryImpl>
-      get copyWith => __$$FilterPlansByCategoryImplCopyWithImpl<
-          _$FilterPlansByCategoryImpl>(this, _$identity);
+  get copyWith =>
+      __$$FilterPlansByCategoryImplCopyWithImpl<_$FilterPlansByCategoryImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -753,15 +770,16 @@ class _$FilterPlansByCategoryImpl extends FilterPlansByCategory {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return filterPlansByCategory(category);
@@ -778,15 +796,16 @@ class _$FilterPlansByCategoryImpl extends FilterPlansByCategory {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return filterPlansByCategory?.call(category);
@@ -803,15 +822,16 @@ class _$FilterPlansByCategoryImpl extends FilterPlansByCategory {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -828,7 +848,7 @@ class _$FilterPlansByCategoryImpl extends FilterPlansByCategory {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -886,14 +906,15 @@ abstract class FilterPlansByCategory extends FeedEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterPlansByCategoryImplCopyWith<_$FilterPlansByCategoryImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ClearFiltersImplCopyWith<$Res> {
   factory _$$ClearFiltersImplCopyWith(
-          _$ClearFiltersImpl value, $Res Function(_$ClearFiltersImpl) then) =
-      __$$ClearFiltersImplCopyWithImpl<$Res>;
+    _$ClearFiltersImpl value,
+    $Res Function(_$ClearFiltersImpl) then,
+  ) = __$$ClearFiltersImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -901,8 +922,9 @@ class __$$ClearFiltersImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$ClearFiltersImpl>
     implements _$$ClearFiltersImplCopyWith<$Res> {
   __$$ClearFiltersImplCopyWithImpl(
-      _$ClearFiltersImpl _value, $Res Function(_$ClearFiltersImpl) _then)
-      : super(_value, _then);
+    _$ClearFiltersImpl _value,
+    $Res Function(_$ClearFiltersImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -938,15 +960,16 @@ class _$ClearFiltersImpl extends ClearFilters {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return clearFilters();
@@ -963,15 +986,16 @@ class _$ClearFiltersImpl extends ClearFilters {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return clearFilters?.call();
@@ -988,15 +1012,16 @@ class _$ClearFiltersImpl extends ClearFilters {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -1013,7 +1038,7 @@ class _$ClearFiltersImpl extends ClearFilters {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -1068,8 +1093,9 @@ abstract class ClearFilters extends FeedEvent {
 /// @nodoc
 abstract class _$$LikePlanImplCopyWith<$Res> {
   factory _$$LikePlanImplCopyWith(
-          _$LikePlanImpl value, $Res Function(_$LikePlanImpl) then) =
-      __$$LikePlanImplCopyWithImpl<$Res>;
+    _$LikePlanImpl value,
+    $Res Function(_$LikePlanImpl) then,
+  ) = __$$LikePlanImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId});
 }
@@ -1079,22 +1105,23 @@ class __$$LikePlanImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$LikePlanImpl>
     implements _$$LikePlanImplCopyWith<$Res> {
   __$$LikePlanImplCopyWithImpl(
-      _$LikePlanImpl _value, $Res Function(_$LikePlanImpl) _then)
-      : super(_value, _then);
+    _$LikePlanImpl _value,
+    $Res Function(_$LikePlanImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? planId = null,
-  }) {
-    return _then(_$LikePlanImpl(
-      null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? planId = null}) {
+    return _then(
+      _$LikePlanImpl(
+        null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1141,15 +1168,16 @@ class _$LikePlanImpl extends LikePlan {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return likePlan(planId);
@@ -1166,15 +1194,16 @@ class _$LikePlanImpl extends LikePlan {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return likePlan?.call(planId);
@@ -1191,15 +1220,16 @@ class _$LikePlanImpl extends LikePlan {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -1216,7 +1246,7 @@ class _$LikePlanImpl extends LikePlan {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -1279,8 +1309,9 @@ abstract class LikePlan extends FeedEvent {
 /// @nodoc
 abstract class _$$UnlikePlanImplCopyWith<$Res> {
   factory _$$UnlikePlanImplCopyWith(
-          _$UnlikePlanImpl value, $Res Function(_$UnlikePlanImpl) then) =
-      __$$UnlikePlanImplCopyWithImpl<$Res>;
+    _$UnlikePlanImpl value,
+    $Res Function(_$UnlikePlanImpl) then,
+  ) = __$$UnlikePlanImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId});
 }
@@ -1290,22 +1321,23 @@ class __$$UnlikePlanImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$UnlikePlanImpl>
     implements _$$UnlikePlanImplCopyWith<$Res> {
   __$$UnlikePlanImplCopyWithImpl(
-      _$UnlikePlanImpl _value, $Res Function(_$UnlikePlanImpl) _then)
-      : super(_value, _then);
+    _$UnlikePlanImpl _value,
+    $Res Function(_$UnlikePlanImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? planId = null,
-  }) {
-    return _then(_$UnlikePlanImpl(
-      null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? planId = null}) {
+    return _then(
+      _$UnlikePlanImpl(
+        null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1352,15 +1384,16 @@ class _$UnlikePlanImpl extends UnlikePlan {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return unlikePlan(planId);
@@ -1377,15 +1410,16 @@ class _$UnlikePlanImpl extends UnlikePlan {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return unlikePlan?.call(planId);
@@ -1402,15 +1436,16 @@ class _$UnlikePlanImpl extends UnlikePlan {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -1427,7 +1462,7 @@ class _$UnlikePlanImpl extends UnlikePlan {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -1490,18 +1525,20 @@ abstract class UnlikePlan extends FeedEvent {
 /// @nodoc
 abstract class _$$CreatePlanImplCopyWith<$Res> {
   factory _$$CreatePlanImplCopyWith(
-          _$CreatePlanImpl value, $Res Function(_$CreatePlanImpl) then) =
-      __$$CreatePlanImplCopyWithImpl<$Res>;
+    _$CreatePlanImpl value,
+    $Res Function(_$CreatePlanImpl) then,
+  ) = __$$CreatePlanImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String title,
-      String description,
-      String imageUrl,
-      String category,
-      String location,
-      DateTime? date,
-      Map<String, String> conditions,
-      List<String> selectedThemes});
+  $Res call({
+    String title,
+    String description,
+    String imageUrl,
+    String category,
+    String location,
+    DateTime? date,
+    Map<String, String> conditions,
+    List<String> selectedThemes,
+  });
 }
 
 /// @nodoc
@@ -1509,8 +1546,9 @@ class __$$CreatePlanImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$CreatePlanImpl>
     implements _$$CreatePlanImplCopyWith<$Res> {
   __$$CreatePlanImplCopyWithImpl(
-      _$CreatePlanImpl _value, $Res Function(_$CreatePlanImpl) _then)
-      : super(_value, _then);
+    _$CreatePlanImpl _value,
+    $Res Function(_$CreatePlanImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1526,58 +1564,60 @@ class __$$CreatePlanImplCopyWithImpl<$Res>
     Object? conditions = null,
     Object? selectedThemes = null,
   }) {
-    return _then(_$CreatePlanImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      conditions: null == conditions
-          ? _value._conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      selectedThemes: null == selectedThemes
-          ? _value._selectedThemes
-          : selectedThemes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _$CreatePlanImpl(
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                  as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                  as String,
+        imageUrl: null == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                  as String,
+        category: null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                  as String,
+        location: null == location
+            ? _value.location
+            : location // ignore: cast_nullable_to_non_nullable
+                  as String,
+        date: freezed == date
+            ? _value.date
+            : date // ignore: cast_nullable_to_non_nullable
+                  as DateTime?,
+        conditions: null == conditions
+            ? _value._conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                  as Map<String, String>,
+        selectedThemes: null == selectedThemes
+            ? _value._selectedThemes
+            : selectedThemes // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CreatePlanImpl extends CreatePlan {
-  const _$CreatePlanImpl(
-      {required this.title,
-      required this.description,
-      required this.imageUrl,
-      required this.category,
-      required this.location,
-      this.date,
-      required final Map<String, String> conditions,
-      required final List<String> selectedThemes})
-      : _conditions = conditions,
-        _selectedThemes = selectedThemes,
-        super._();
+  const _$CreatePlanImpl({
+    required this.title,
+    required this.description,
+    required this.imageUrl,
+    required this.category,
+    required this.location,
+    this.date,
+    required final Map<String, String> conditions,
+    required final List<String> selectedThemes,
+  }) : _conditions = conditions,
+       _selectedThemes = selectedThemes,
+       super._();
 
   @override
   final String title;
@@ -1627,23 +1667,28 @@ class _$CreatePlanImpl extends CreatePlan {
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.date, date) || other.date == date) &&
-            const DeepCollectionEquality()
-                .equals(other._conditions, _conditions) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedThemes, _selectedThemes));
+            const DeepCollectionEquality().equals(
+              other._conditions,
+              _conditions,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._selectedThemes,
+              _selectedThemes,
+            ));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      title,
-      description,
-      imageUrl,
-      category,
-      location,
-      date,
-      const DeepCollectionEquality().hash(_conditions),
-      const DeepCollectionEquality().hash(_selectedThemes));
+    runtimeType,
+    title,
+    description,
+    imageUrl,
+    category,
+    location,
+    date,
+    const DeepCollectionEquality().hash(_conditions),
+    const DeepCollectionEquality().hash(_selectedThemes),
+  );
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1664,19 +1709,28 @@ class _$CreatePlanImpl extends CreatePlan {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
-    return createPlan(title, description, imageUrl, category, location, date,
-        conditions, selectedThemes);
+    return createPlan(
+      title,
+      description,
+      imageUrl,
+      category,
+      location,
+      date,
+      conditions,
+      selectedThemes,
+    );
   }
 
   @override
@@ -1690,19 +1744,28 @@ class _$CreatePlanImpl extends CreatePlan {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
-    return createPlan?.call(title, description, imageUrl, category, location,
-        date, conditions, selectedThemes);
+    return createPlan?.call(
+      title,
+      description,
+      imageUrl,
+      category,
+      location,
+      date,
+      conditions,
+      selectedThemes,
+    );
   }
 
   @override
@@ -1716,21 +1779,30 @@ class _$CreatePlanImpl extends CreatePlan {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
     if (createPlan != null) {
-      return createPlan(title, description, imageUrl, category, location, date,
-          conditions, selectedThemes);
+      return createPlan(
+        title,
+        description,
+        imageUrl,
+        category,
+        location,
+        date,
+        conditions,
+        selectedThemes,
+      );
     }
     return orElse();
   }
@@ -1742,7 +1814,7 @@ class _$CreatePlanImpl extends CreatePlan {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,
@@ -1790,15 +1862,16 @@ class _$CreatePlanImpl extends CreatePlan {
 }
 
 abstract class CreatePlan extends FeedEvent {
-  const factory CreatePlan(
-      {required final String title,
-      required final String description,
-      required final String imageUrl,
-      required final String category,
-      required final String location,
-      final DateTime? date,
-      required final Map<String, String> conditions,
-      required final List<String> selectedThemes}) = _$CreatePlanImpl;
+  const factory CreatePlan({
+    required final String title,
+    required final String description,
+    required final String imageUrl,
+    required final String category,
+    required final String location,
+    final DateTime? date,
+    required final Map<String, String> conditions,
+    required final List<String> selectedThemes,
+  }) = _$CreatePlanImpl;
   const CreatePlan._() : super._();
 
   String get title;
@@ -1820,8 +1893,9 @@ abstract class CreatePlan extends FeedEvent {
 /// @nodoc
 abstract class _$$DeletePlanImplCopyWith<$Res> {
   factory _$$DeletePlanImplCopyWith(
-          _$DeletePlanImpl value, $Res Function(_$DeletePlanImpl) then) =
-      __$$DeletePlanImplCopyWithImpl<$Res>;
+    _$DeletePlanImpl value,
+    $Res Function(_$DeletePlanImpl) then,
+  ) = __$$DeletePlanImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String planId});
 }
@@ -1831,22 +1905,23 @@ class __$$DeletePlanImplCopyWithImpl<$Res>
     extends _$FeedEventCopyWithImpl<$Res, _$DeletePlanImpl>
     implements _$$DeletePlanImplCopyWith<$Res> {
   __$$DeletePlanImplCopyWithImpl(
-      _$DeletePlanImpl _value, $Res Function(_$DeletePlanImpl) _then)
-      : super(_value, _then);
+    _$DeletePlanImpl _value,
+    $Res Function(_$DeletePlanImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of FeedEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? planId = null,
-  }) {
-    return _then(_$DeletePlanImpl(
-      null == planId
-          ? _value.planId
-          : planId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? planId = null}) {
+    return _then(
+      _$DeletePlanImpl(
+        null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -1893,15 +1968,16 @@ class _$DeletePlanImpl extends DeletePlan {
     required TResult Function(String planId) likePlan,
     required TResult Function(String planId) unlikePlan,
     required TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )
+    createPlan,
     required TResult Function(String planId) deletePlan,
   }) {
     return deletePlan(planId);
@@ -1918,15 +1994,16 @@ class _$DeletePlanImpl extends DeletePlan {
     TResult? Function(String planId)? likePlan,
     TResult? Function(String planId)? unlikePlan,
     TResult? Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult? Function(String planId)? deletePlan,
   }) {
     return deletePlan?.call(planId);
@@ -1943,15 +2020,16 @@ class _$DeletePlanImpl extends DeletePlan {
     TResult Function(String planId)? likePlan,
     TResult Function(String planId)? unlikePlan,
     TResult Function(
-            String title,
-            String description,
-            String imageUrl,
-            String category,
-            String location,
-            DateTime? date,
-            Map<String, String> conditions,
-            List<String> selectedThemes)?
-        createPlan,
+      String title,
+      String description,
+      String imageUrl,
+      String category,
+      String location,
+      DateTime? date,
+      Map<String, String> conditions,
+      List<String> selectedThemes,
+    )?
+    createPlan,
     TResult Function(String planId)? deletePlan,
     required TResult orElse(),
   }) {
@@ -1968,7 +2046,7 @@ class _$DeletePlanImpl extends DeletePlan {
     required TResult Function(RefreshPlans value) refreshPlans,
     required TResult Function(LoadMorePlans value) loadMorePlans,
     required TResult Function(FilterPlansByCategory value)
-        filterPlansByCategory,
+    filterPlansByCategory,
     required TResult Function(ClearFilters value) clearFilters,
     required TResult Function(LikePlan value) likePlan,
     required TResult Function(UnlikePlan value) unlikePlan,

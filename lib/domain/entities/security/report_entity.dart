@@ -30,11 +30,7 @@ class ReportEntity with _$ReportEntity {
   // La función toJson es generada automáticamente por Freezed/JsonSerializable.
 }
 
-enum ReportType {
-  user,
-  plan,
-  content,
-}
+enum ReportType { user, plan, content }
 
 enum ReportReason {
   inappropriateContent,
@@ -46,12 +42,7 @@ enum ReportReason {
   other,
 }
 
-enum ReportStatus {
-  pending,
-  underReview,
-  resolved,
-  dismissed,
-}
+enum ReportStatus { pending, underReview, resolved, dismissed }
 
 extension ReportReasonExtension on ReportReason {
   String get displayName {

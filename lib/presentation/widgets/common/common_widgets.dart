@@ -17,37 +17,37 @@ final List<Map<String, dynamic>> steps = <Map<String, dynamic>>[
   <String, dynamic>{
     'icon': '👋',
     'title': 'Bienvenido',
-    'subtitle': 'Empecemos con tu nombre'
+    'subtitle': 'Empecemos con tu nombre',
   },
   <String, dynamic>{
     'icon': '🎂',
     'title': 'Tu edad',
-    'subtitle': 'Necesitamos saber que sos mayor de edad'
+    'subtitle': 'Necesitamos saber que sos mayor de edad',
   },
   <String, dynamic>{
     'icon': '👤',
     'title': 'Género',
-    'subtitle': 'Ayudanos a conocerte mejor'
+    'subtitle': 'Ayudanos a conocerte mejor',
   },
   <String, dynamic>{
     'icon': '📍',
     'title': 'Ubicación',
-    'subtitle': 'Para mostrarte planes cercanos'
+    'subtitle': 'Para mostrarte planes cercanos',
   },
   <String, dynamic>{
     'icon': '📸',
     'title': 'Fotos',
-    'subtitle': 'Muestra tu mejor versión'
+    'subtitle': 'Muestra tu mejor versión',
   },
   <String, dynamic>{
     'icon': '❤️',
     'title': 'Intereses',
-    'subtitle': 'Qué tipo de planes te gustan'
+    'subtitle': 'Qué tipo de planes te gustan',
   },
   <String, dynamic>{
     'icon': '✨',
     'title': 'Listo',
-    'subtitle': 'Revisá tu perfil antes de continuar'
+    'subtitle': 'Revisá tu perfil antes de continuar',
   },
 ];
 
@@ -61,8 +61,9 @@ class CommonWidgets {
         // ignore: always_specify_types
         boxShadow: [
           BoxShadow(
-            color: AppColors.getCardBackground(false)
-                .withAlpha((0.2 * 255).round()),
+            color: AppColors.getCardBackground(
+              false,
+            ).withAlpha((0.2 * 255).round()),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -117,29 +118,20 @@ class CommonWidgets {
         prefixIcon: prefixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.m),
-          borderSide: BorderSide(
-            color: AppColors.lightBorder,
-          ),
+          borderSide: BorderSide(color: AppColors.lightBorder),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.m),
-          borderSide: BorderSide(
-            color: AppColors.lightBorder,
-          ),
+          borderSide: BorderSide(color: AppColors.lightBorder),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.m),
-          borderSide: BorderSide(
-            color: AppColors.lightTextPrimary,
-            width: 2,
-          ),
+          borderSide: BorderSide(color: AppColors.lightTextPrimary, width: 2),
         ),
         filled: true,
         fillColor: AppColors.lightBackground.withAlpha((0.3 * 255).round()),
       ),
-      style: TextStyle(
-        color: AppColors.lightTextPrimary,
-      ),
+      style: TextStyle(color: AppColors.lightTextPrimary),
       onChanged: onChanged,
     );
   }
@@ -156,39 +148,27 @@ class CommonWidgets {
         hintStyle: TextStyle(
           color: AppColors.lightTextPrimary.withAlpha((0.5 * 255).round()),
         ),
-        prefixIcon: Icon(
-          Icons.search,
-          color: AppColors.lightTextPrimary,
-        ),
+        prefixIcon: Icon(Icons.search, color: AppColors.lightTextPrimary),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.m),
-          borderSide: BorderSide(
-            color: AppColors.lightBorder,
-          ),
+          borderSide: BorderSide(color: AppColors.lightBorder),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.m),
-          borderSide: BorderSide(
-            color: AppColors.lightBorder,
-          ),
+          borderSide: BorderSide(color: AppColors.lightBorder),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.m),
-          borderSide: BorderSide(
-            color: AppColors.lightTextPrimary,
-            width: 2,
-          ),
+          borderSide: BorderSide(color: AppColors.lightTextPrimary, width: 2),
         ),
         filled: true,
         fillColor: AppColors.lightBackground.withAlpha((0.3 * 255).round()),
       ),
-      style: TextStyle(
-        color: AppColors.lightTextPrimary,
-      ),
+      style: TextStyle(color: AppColors.lightTextPrimary),
       onChanged: (String value) {
         context.read<SearchFiltersBloc>().add(
-              SearchFiltersEvent.updateSearchQuery(value),
-            );
+          SearchFiltersEvent.updateSearchQuery(value),
+        );
       },
       controller: TextEditingController(text: searchQuery),
     );
@@ -231,9 +211,11 @@ class CommonWidgets {
             trackHeight: 8,
             thumbColor: thumbColor ?? AppColors.lightTextPrimary,
             activeTrackColor: activeTrackColor ?? AppColors.brandYellow,
-            inactiveTrackColor: inactiveTrackColor ??
+            inactiveTrackColor:
+                inactiveTrackColor ??
                 Colors.white.withAlpha((0.3 * 255).round()),
-            overlayColor: overlayColor ??
+            overlayColor:
+                overlayColor ??
                 AppColors.lightTextPrimary.withAlpha((0.2 * 255).round()),
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
           ),
@@ -338,8 +320,9 @@ class CommonWidgets {
     return Container(
       padding: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-        color:
-            AppColors.getCardBackground(false).withAlpha((0.1 * 255).round()),
+        color: AppColors.getCardBackground(
+          false,
+        ).withAlpha((0.1 * 255).round()),
         borderRadius: BorderRadius.circular(AppRadius.l),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -360,9 +343,9 @@ class CommonWidgets {
           ),
           Text(
             steps[step]['subtitle'] as String,
-            style: AppTypography.appBarTitle(false).copyWith(
-              color: ThemeUtils.lightSecondaryBackground,
-            ),
+            style: AppTypography.appBarTitle(
+              false,
+            ).copyWith(color: ThemeUtils.lightSecondaryBackground),
           ),
         ],
       ),
@@ -434,7 +417,8 @@ class StyledButton extends StatelessWidget {
       text: text,
       isLoading: isLoading,
       disabled: !isEnabled,
-      fullWidth: width !=
+      fullWidth:
+          width !=
           null, // Si se especificó un ancho, asumimos que quiere ocupar todo el espacio disponible
       style: AppButtonStyle.primary, // Estilo por defecto
     );

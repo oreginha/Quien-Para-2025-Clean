@@ -76,18 +76,18 @@ class UserEntity extends EntityBase {
 
   @override
   List<Object?> get props => [
-        id,
-        email,
-        name,
-        photoUrl,
-        age,
-        gender,
-        location,
-        interests,
-        photoUrls,
-        bio,
-        orientation,
-        createdAt,
-        updatedAt,
-      ];
+    id,
+    email,
+    name,
+    photoUrl,
+    age,
+    gender,
+    location,
+    interests,
+    photoUrls,
+    bio,
+    orientation,
+    createdAt,
+    updatedAt,
+  ];
 }

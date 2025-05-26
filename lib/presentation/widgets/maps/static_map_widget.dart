@@ -15,16 +15,16 @@ import 'package:provider/provider.dart';
 class StaticMapWidget extends StatefulWidget {
   /// Ubicación a mostrar
   final LocationEntity location;
-  
+
   /// Altura del mapa
   final double height;
-  
+
   /// Nivel de zoom
   final double zoom;
-  
+
   /// Si se debe mostrar la información de la ubicación
   final bool showLocationInfo;
-  
+
   /// Constructor
   const StaticMapWidget({
     super.key,
@@ -40,24 +40,25 @@ class StaticMapWidget extends StatefulWidget {
 
 class _StaticMapWidgetState extends State<StaticMapWidget> {
   /// Controlador para el mapa
-  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
-  
+  final Completer<GoogleMapController> _controller =
+      Completer<GoogleMapController>();
+
   /// Conjunto de marcadores para mostrar en el mapa
   late Set<Marker> _markers;
-  
+
   /// Posición inicial de la cámara
   late CameraPosition _initialPosition;
 
   @override
   void initState() {
     super.initState();
-    
+
     // Configurar la posición inicial de la cámara
     _initialPosition = CameraPosition(
       target: LatLng(widget.location.latitude, widget.location.longitude),
       zoom: widget.zoom,
     );
-    
+
     // Configurar el marcador
     _markers = {
       Marker(
@@ -75,7 +76,7 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDarkMode = themeProvider.isDarkMode;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -100,8 +101,8 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
               },
-              style: isDarkMode ? 
-                '''[
+              style: isDarkMode
+                  ? '''[
                   {
                     "elementType": "geometry",
                     "stylers": [{
@@ -149,17 +150,17 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
                     }]
                   }
                 ]'''
-                : null,
+                  : null,
             ),
           ),
         ),
-        
+
         // Información de la ubicación (opcional)
-        if (widget.showLocationInfo && 
-            (widget.location.name != null || 
-             widget.location.address != null || 
-             widget.location.city != null || 
-             widget.location.country != null)) ...[
+        if (widget.showLocationInfo &&
+            (widget.location.name != null ||
+                widget.location.address != null ||
+                widget.location.city != null ||
+                widget.location.country != null)) ...[
           const SizedBox(height: AppSpacing.xs),
           Container(
             padding: const EdgeInsets.all(AppSpacing.xs),
@@ -169,11 +170,7 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
             ),
             child: Row(
               children: [
-                Icon(
-                  Icons.location_on,
-                  color: AppColors.brandYellow,
-                  size: 16,
-                ),
+                Icon(Icons.location_on, color: AppColors.brandYellow, size: 16),
                 const SizedBox(width: AppSpacing.xs),
                 Expanded(
                   child: Column(
@@ -186,7 +183,7 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                      
+
                       if (widget.location.address != null)
                         Text(
                           widget.location.address!,
@@ -194,8 +191,9 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                      
-                      if (widget.location.city != null || widget.location.country != null)
+
+                      if (widget.location.city != null ||
+                          widget.location.country != null)
                         Text(
                           [
                             widget.location.city,

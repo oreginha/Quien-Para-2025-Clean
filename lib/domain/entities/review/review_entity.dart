@@ -19,7 +19,8 @@ class ReviewEntity with _$ReviewEntity {
     DateTime? responseDate,
     @Default(0) int helpfulCount,
     @Default([]) List<String> helpfulVotes,
-    @Default(false) bool isVerified, // Si el revisor realmente participó en el plan
+    @Default(false)
+    bool isVerified, // Si el revisor realmente participó en el plan
     Map<String, dynamic>? metadata,
   }) = _ReviewEntity;
 
@@ -50,10 +51,10 @@ class UserRatingEntity with _$UserRatingEntity {
 enum ReviewType {
   @JsonValue('organizer')
   organizer, // Review del organizador del plan
-  
-  @JsonValue('attendee') 
+
+  @JsonValue('attendee')
   attendee, // Review de un asistente al plan
-  
+
   @JsonValue('general')
   general, // Review general del usuario
 }
@@ -61,13 +62,13 @@ enum ReviewType {
 enum ReviewStatus {
   @JsonValue('pending')
   pending, // Pendiente de moderación
-  
+
   @JsonValue('approved')
   approved, // Aprobada y visible
-  
+
   @JsonValue('rejected')
   rejected, // Rechazada por moderación
-  
+
   @JsonValue('flagged')
   flagged, // Marcada para revisión adicional
 }
@@ -76,7 +77,7 @@ extension ReviewEntityExtensions on ReviewEntity {
   bool get isPositive => rating >= 4.0;
   bool get isNegative => rating <= 2.0;
   bool get isNeutral => rating > 2.0 && rating < 4.0;
-  
+
   String get ratingText {
     switch (rating.round()) {
       case 5:
@@ -93,13 +94,12 @@ extension ReviewEntityExtensions on ReviewEntity {
         return 'Sin calificación';
     }
   }
-  
-  bool get canBeEdited => 
-      DateTime.now().difference(createdAt).inDays <= 7 && 
+
+  bool get canBeEdited =>
+      DateTime.now().difference(createdAt).inDays <= 7 &&
       status == ReviewStatus.approved;
-  
-  bool get isRecent => 
-      DateTime.now().difference(createdAt).inDays <= 30;
+
+  bool get isRecent => DateTime.now().difference(createdAt).inDays <= 30;
 }
 
 extension UserRatingEntityExtensions on UserRatingEntity {
@@ -110,31 +110,32 @@ extension UserRatingEntityExtensions on UserRatingEntity {
     if (averageRating >= 3.0) return 'Regular';
     return 'Necesita mejorar';
   }
-  
+
   bool get isHighlyRated => averageRating >= 4.0 && totalReviews >= 5;
   bool get isNewUser => totalReviews < 3;
   bool get isExperiencedOrganizer => totalPlansOrganized >= 10;
   bool get isActiveAttendee => totalPlansAttended >= 20;
-  
+
   double get trustScore {
     // Algoritmo de confianza basado en varios factores
     double score = 0;
-    
+
     // Rating base (40% del score)
     score += (averageRating / 5.0) * 40;
-    
+
     // Cantidad de reviews (30% del score)
     double reviewScore = (totalReviews / 50.0).clamp(0.0, 1.0) * 30;
     score += reviewScore;
-    
+
     // Reliability score (20% del score)
     score += (reliabilityScore / 100.0) * 20;
-    
+
     // Actividad (10% del score)
-    double activityScore = ((totalPlansOrganized + totalPlansAttended) / 100.0)
-        .clamp(0.0, 1.0) * 10;
+    double activityScore =
+        ((totalPlansOrganized + totalPlansAttended) / 100.0).clamp(0.0, 1.0) *
+        10;
     score += activityScore;
-    
+
     return score.clamp(0.0, 100.0);
   }
 }

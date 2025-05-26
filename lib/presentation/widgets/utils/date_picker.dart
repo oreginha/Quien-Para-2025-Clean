@@ -4,7 +4,7 @@ import 'package:quien_para/core/theme/app_colors.dart';
 class CustomDatePicker extends StatelessWidget {
   final DateTime? selectedDate; // Fecha seleccionada
   final void Function(BuildContext context)
-      onSelectDate; // Acción para abrir el selector de fecha
+  onSelectDate; // Acción para abrir el selector de fecha
   final double? width; // Ancho opcional
   final double? height; // Alto opcional
   final Color? buttonColor; // Color del botón
@@ -34,10 +34,7 @@ class CustomDatePicker extends StatelessWidget {
               selectedDate != null
                   ? 'Fecha seleccionada: ${selectedDate!.toLocal().toString().split(' ')[0]}'
                   : noDateText ?? 'Sin fecha seleccionada',
-              style: TextStyle(
-                fontSize: 16,
-                color: textColor ?? Colors.black,
-              ),
+              style: TextStyle(fontSize: 16, color: textColor ?? Colors.black),
             ),
           ),
           SizedBox(

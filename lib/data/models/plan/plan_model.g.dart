@@ -17,11 +17,13 @@ _$PlanModelImpl _$$PlanModelImplFromJson(Map<String, dynamic> json) =>
       likes: (json['likes'] as num?)?.toInt() ?? 0,
       category: json['category'] as String? ?? '',
       location: json['location'] as String? ?? '',
-      conditions: (json['conditions'] as Map<String, dynamic>?)?.map(
+      conditions:
+          (json['conditions'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
           const {},
-      selectedThemes: (json['selectedThemes'] as List<dynamic>?)
+      selectedThemes:
+          (json['selectedThemes'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],

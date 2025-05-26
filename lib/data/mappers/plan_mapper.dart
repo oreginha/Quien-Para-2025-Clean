@@ -31,16 +31,18 @@ class PlanMapper
   /// Mantiene la caché en un tamaño razonable
   void _maintainCacheSize() {
     if (_entityCache.length > _maxCacheSize) {
-      final keysToRemove =
-          _entityCache.keys.take(_entityCache.length - _maxCacheSize);
+      final keysToRemove = _entityCache.keys.take(
+        _entityCache.length - _maxCacheSize,
+      );
       for (final key in keysToRemove) {
         _entityCache.remove(key);
       }
     }
 
     if (_modelCache.length > _maxCacheSize) {
-      final keysToRemove =
-          _modelCache.keys.take(_modelCache.length - _maxCacheSize);
+      final keysToRemove = _modelCache.keys.take(
+        _modelCache.length - _maxCacheSize,
+      );
       for (final key in keysToRemove) {
         _modelCache.remove(key);
       }
@@ -101,8 +103,9 @@ class PlanMapper
       conditions: model.conditions,
       selectedThemes: model.selectedThemes,
       likes: model.likes,
-      createdAt:
-          model.createdAt != null ? DateTime.parse(model.createdAt!) : null,
+      createdAt: model.createdAt != null
+          ? DateTime.parse(model.createdAt!)
+          : null,
       updatedAt: null, // No hay mapeo directo en el modelo
       payCondition: model.conditions['payCondition'],
       guestCount: int.tryParse(model.conditions['guestCount'] ?? ''),
@@ -279,19 +282,22 @@ class PlanMapper
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       location: json['location'] as String? ?? '',
-      date:
-          json['date'] != null ? DateTime.parse(json['date'] as String) : null,
+      date: json['date'] != null
+          ? DateTime.parse(json['date'] as String)
+          : null,
       category: json['category'] as String? ?? '',
       tags:
           (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const <String>[],
+          const <String>[],
       imageUrl: json['imageUrl'] as String? ?? '',
       creatorId: json['creatorId'] as String? ?? '',
-      conditions: (json['conditions'] as Map<String, dynamic>?)?.map(
+      conditions:
+          (json['conditions'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, v as String),
           ) ??
           const <String, String>{},
-      selectedThemes: (json['selectedThemes'] as List<dynamic>?)
+      selectedThemes:
+          (json['selectedThemes'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const <String>[],

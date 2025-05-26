@@ -17,15 +17,12 @@ class ApplyToPlanUseCase {
   final FirebaseAuth? auth;
 
   /// Constructor con dependencias opcionales para mayor flexibilidad
-  ApplyToPlanUseCase(
-    this.repository, {
-    this.notificationUseCase,
-    this.auth,
-  });
+  ApplyToPlanUseCase(this.repository, {this.notificationUseCase, this.auth});
 
   /// Método principal para aplicar a un plan
   Future<Either<AppFailure, ApplicationEntity>> call(
-      ApplicationEntity application) async {
+    ApplicationEntity application,
+  ) async {
     return await repository.applyToPlan(application);
   }
 

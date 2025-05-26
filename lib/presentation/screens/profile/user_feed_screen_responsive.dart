@@ -78,12 +78,17 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
 
         if (querySnapshot.docs.isNotEmpty) {
           _lastDocument = querySnapshot.docs.last;
-          context.read<PlanBloc>().add(PlanEvent.updateField(
+          context.read<PlanBloc>().add(
+            PlanEvent.updateField(
               field: 'loadMorePlans',
               value: querySnapshot.docs
-                  .map((final QueryDocumentSnapshot e) =>
-                      e.data() as Map<String, dynamic>)
-                  .toList()));
+                  .map(
+                    (final QueryDocumentSnapshot e) =>
+                        e.data() as Map<String, dynamic>,
+                  )
+                  .toList(),
+            ),
+          );
         }
 
         setState(() {
@@ -107,9 +112,7 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
       builder: (final BuildContext context, final AuthState state) {
         if (state.status == AuthStatus.unauthenticated) {
           return const Scaffold(
-            body: Center(
-              child: Text('No has iniciado sesión'),
-            ),
+            body: Center(child: Text('No has iniciado sesión')),
           );
         }
 
@@ -117,9 +120,7 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
           return Scaffold(
             backgroundColor: AppColors.getBackground(isDarkMode),
             body: Center(
-              child: CircularProgressIndicator(
-                color: AppColors.brandYellow,
-              ),
+              child: CircularProgressIndicator(color: AppColors.brandYellow),
             ),
           );
         }
@@ -142,8 +143,12 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
               child: RefreshIndicator(
                 color: AppColors.brandYellow,
                 onRefresh: () async {
-                  context.read<PlanBloc>().add(PlanEvent.updateField(
-                      field: 'loadUserPlans', value: userId));
+                  context.read<PlanBloc>().add(
+                    PlanEvent.updateField(
+                      field: 'loadUserPlans',
+                      value: userId,
+                    ),
+                  );
                 },
                 child: CustomScrollView(
                   controller: _scrollController,
@@ -197,8 +202,10 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
       backgroundColor: AppColors.getBackground(isDarkMode),
       elevation: 0,
       leading: IconButton(
-        icon:
-            Icon(Icons.arrow_back, color: AppColors.getTextPrimary(isDarkMode)),
+        icon: Icon(
+          Icons.arrow_back,
+          color: AppColors.getTextPrimary(isDarkMode),
+        ),
         onPressed: () {
           if (Navigator.canPop(context)) {
             Navigator.pop(context);
@@ -207,17 +214,11 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
           }
         },
       ),
-      title: Text(
-        'Mi Perfil',
-        style: AppTypography.appBarTitle(isDarkMode),
-      ),
+      title: Text('Mi Perfil', style: AppTypography.appBarTitle(isDarkMode)),
       centerTitle: true,
       actions: [
         IconButton(
-          icon: Icon(
-            Icons.edit,
-            color: AppColors.getTextPrimary(isDarkMode),
-          ),
+          icon: Icon(Icons.edit, color: AppColors.getTextPrimary(isDarkMode)),
           onPressed: () => context.push(AppRouter.editProfile),
         ),
       ],
@@ -263,11 +264,7 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                     ? NetworkImage(userPhotoUrl)
                     : null,
                 child: userPhotoUrl == null || userPhotoUrl.isEmpty
-                    ? Icon(
-                        Icons.person,
-                        size: 40,
-                        color: AppColors.brandYellow,
-                      )
+                    ? Icon(Icons.person, size: 40, color: AppColors.brandYellow)
                     : null,
               ),
               const SizedBox(width: AppSpacing.l),
@@ -291,9 +288,9 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                     const SizedBox(height: AppSpacing.xs),
                     Text(
                       'Miembro desde $formattedDate',
-                      style: AppTypography.bodySmall(isDarkMode).copyWith(
-                        color: AppColors.getTextSecondary(isDarkMode),
-                      ),
+                      style: AppTypography.bodySmall(
+                        isDarkMode,
+                      ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
                     ),
                   ],
                 ),
@@ -316,10 +313,7 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            'Mis Planes',
-            style: AppTypography.heading1(isDarkMode),
-          ),
+          Text('Mis Planes', style: AppTypography.heading1(isDarkMode)),
           TextButton(
             onPressed: () => context.push(AppRouter.proposalsScreen),
             child: Text(
@@ -336,28 +330,27 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
   }
 
   Widget _buildUserPlansList(
-      BuildContext context, String userId, bool isDarkMode) {
+    BuildContext context,
+    String userId,
+    bool isDarkMode,
+  ) {
     // Usando StreamBuilder en lugar de BlocBuilder para evitar el error de tipo
     // ya que PlanBloc no implementa StateStreamable<Map<String, dynamic>>
     return StreamBuilder<Map<String, dynamic>>(
       // Creamos un stream que escucha los cambios en el estado del PlanBloc
-      stream:
-          Stream.value(context.read<PlanBloc>().state as Map<String, dynamic>),
+      stream: Stream.value(
+        context.read<PlanBloc>().state as Map<String, dynamic>,
+      ),
       builder: (context, snapshot) {
         final Map<String, dynamic> state = snapshot.data ?? {};
 
         // Iniciar carga de planes si no hay datos
         if (state['userPlans'] == null) {
           context.read<PlanBloc>().add(
-                PlanEvent.updateField(
-                  field: 'loadUserPlans',
-                  value: userId,
-                ),
-              );
+            PlanEvent.updateField(field: 'loadUserPlans', value: userId),
+          );
           return const SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+            child: Center(child: CircularProgressIndicator()),
           );
         }
 
@@ -384,9 +377,9 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                     const SizedBox(height: AppSpacing.m),
                     Text(
                       'Aún no has creado ningún plan',
-                      style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                        color: AppColors.getTextSecondary(isDarkMode),
-                      ),
+                      style: AppTypography.bodyLarge(
+                        isDarkMode,
+                      ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: AppSpacing.m),
@@ -414,39 +407,36 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
 
         // Si hay planes, mostrarlos en una lista
         return SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              final plan = allPlans[index];
-              // Guardar referencia al último documento para paginación
-              if (index == 0 && _lastDocument == null) {
-                FirebaseFirestore.instance
-                    .collection('plans')
-                    .doc(plan['id'])
-                    .get()
-                    .then((doc) {
-                  _lastDocument = doc;
-                });
-              }
+          delegate: SliverChildBuilderDelegate((context, index) {
+            final plan = allPlans[index];
+            // Guardar referencia al último documento para paginación
+            if (index == 0 && _lastDocument == null) {
+              FirebaseFirestore.instance
+                  .collection('plans')
+                  .doc(plan['id'])
+                  .get()
+                  .then((doc) {
+                    _lastDocument = doc;
+                  });
+            }
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.m,
-                  vertical: AppSpacing.s,
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.m,
+                vertical: AppSpacing.s,
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  context.push('${AppRouter.myPlanDetail}/${plan['id']}');
+                },
+                child: PlanCard(
+                  planData: plan,
+                  planId: plan['id'],
+                  cardType: PlanCardType.myPlan,
                 ),
-                child: GestureDetector(
-                  onTap: () {
-                    context.push('${AppRouter.myPlanDetail}/${plan['id']}');
-                  },
-                  child: PlanCard(
-                    planData: plan,
-                    planId: plan['id'],
-                    cardType: PlanCardType.myPlan,
-                  ),
-                ),
-              );
-            },
-            childCount: allPlans.length,
-          ),
+              ),
+            );
+          }, childCount: allPlans.length),
         );
       },
     );

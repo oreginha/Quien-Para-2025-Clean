@@ -4,10 +4,7 @@ class City {
   final String name;
   final bool enabled;
 
-  const City({
-    required this.name,
-    this.enabled = false,
-  });
+  const City({required this.name, this.enabled = false});
 }
 
 class CitiesData {

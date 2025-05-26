@@ -35,10 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
   FcmTokenService? _fcmTokenService;
 
   /// Constructor con inicialización optimizada
-  AuthCubit(
-    this._authRepository,
-    this._prefs,
-  ) : super(const AuthState()) {
+  AuthCubit(this._authRepository, this._prefs) : super(const AuthState()) {
     // Inicializar de manera asíncrona para evitar bloquear el hilo principal
     _initializeAsync();
   }
@@ -77,8 +74,10 @@ class AuthCubit extends Cubit<AuthState> {
         if (isAuthenticated) {
           final userId = _authRepository.getCurrentUserId();
           if (kDebugMode) {
-            logger.d('[DEBUG] AuthStateListener: Usuario autenticado: '
-                '\u001b[33m\u001b[1m$userId\u001b[0m');
+            logger.d(
+              '[DEBUG] AuthStateListener: Usuario autenticado: '
+              '\u001b[33m\u001b[1m$userId\u001b[0m',
+            );
           }
           AuthDebugger.log('Auth listener: Usuario autenticado $userId');
           // El usuario está autenticado, verificar su perfil
@@ -100,18 +99,19 @@ class AuthCubit extends Cubit<AuthState> {
           _profileValidationCache.clear();
           _userDataCache.clear();
 
-          emit(const AuthState(
-            status: AuthStatus.unauthenticated,
-            hasUserProfile: false,
-          ));
+          emit(
+            const AuthState(
+              status: AuthStatus.unauthenticated,
+              hasUserProfile: false,
+            ),
+          );
         }
       },
       onError: (Object error) {
         AuthDebugger.logError('AuthCubit', 'Error en authStateChanges: $error');
-        emit(AuthState(
-          status: AuthStatus.error,
-          errorMessage: error.toString(),
-        ));
+        emit(
+          AuthState(status: AuthStatus.error, errorMessage: error.toString()),
+        );
       },
     );
   }
@@ -126,7 +126,8 @@ class AuthCubit extends Cubit<AuthState> {
     // Evitar múltiples llamadas simultáneas
     if (_isCheckingProfile) {
       logProfile(
-          'Ya hay una verificación en progreso, usando cache: ${_profileValidationCache[userId] ?? false}');
+        'Ya hay una verificación en progreso, usando cache: ${_profileValidationCache[userId] ?? false}',
+      );
       // Si ya hay una verificación en progreso, usar el valor en caché o esperar
       return _profileValidationCache[userId] ?? false;
     }
@@ -149,51 +150,55 @@ class AuthCubit extends Cubit<AuthState> {
     logProfile('Iniciando verificación de perfil para usuario: $userId');
 
     try {
-      return await PerformanceLogger.logAsyncOperation('Profile-Check-$userId',
-          () async {
-        final userData = await _authRepository.getCurrentUserData();
+      return await PerformanceLogger.logAsyncOperation(
+        'Profile-Check-$userId',
+        () async {
+          final userData = await _authRepository.getCurrentUserData();
 
-        if (userData == null) {
-          logProfile('Datos de usuario no existen para userId: $userId');
-          _profileValidationCache[userId] = false;
-          return false;
-        }
+          if (userData == null) {
+            logProfile('Datos de usuario no existen para userId: $userId');
+            _profileValidationCache[userId] = false;
+            return false;
+          }
 
-        // Validación rápida - si ya tenemos hasCompletedOnboarding = true
-        if (userData.containsKey('hasCompletedOnboarding') &&
-            userData['hasCompletedOnboarding'] == true) {
-          logProfile('Usuario tiene hasCompletedOnboarding = true');
-          _profileValidationCache[userId] = true;
+          // Validación rápida - si ya tenemos hasCompletedOnboarding = true
+          if (userData.containsKey('hasCompletedOnboarding') &&
+              userData['hasCompletedOnboarding'] == true) {
+            logProfile('Usuario tiene hasCompletedOnboarding = true');
+            _profileValidationCache[userId] = true;
+            _userDataCache[userId] = userData;
+            await _prefs.setBool(_hasCompletedOnboardingKey, true);
+            return true;
+          }
+
+          // Almacenar datos en caché
           _userDataCache[userId] = userData;
-          await _prefs.setBool(_hasCompletedOnboardingKey, true);
-          return true;
-        }
 
-        // Almacenar datos en caché
-        _userDataCache[userId] = userData;
+          // Realizar la validación del perfil
+          final bool isValid = _validateUserProfile(userData);
 
-        // Realizar la validación del perfil
-        final bool isValid = _validateUserProfile(userData);
+          // Almacenar resultado en caché
+          _profileValidationCache[userId] = isValid;
 
-        // Almacenar resultado en caché
-        _profileValidationCache[userId] = isValid;
+          // Si tiene perfil, guardar en SharedPreferences para acceso más rápido
+          if (isValid) {
+            await _prefs.setBool(_hasCompletedOnboardingKey, true);
+          }
 
-        // Si tiene perfil, guardar en SharedPreferences para acceso más rápido
-        if (isValid) {
-          await _prefs.setBool(_hasCompletedOnboardingKey, true);
-        }
+          logProfile('Resultado de validación de perfil: $isValid');
+          if (!isValid && kDebugMode) {
+            // Log de los campos disponibles para depuración
+            logger.d('Campos disponibles: ${userData.keys.join(', ')}');
+          }
 
-        logProfile('Resultado de validación de perfil: $isValid');
-        if (!isValid && kDebugMode) {
-          // Log de los campos disponibles para depuración
-          logger.d('Campos disponibles: ${userData.keys.join(', ')}');
-        }
-
-        return isValid;
-      });
+          return isValid;
+        },
+      );
     } catch (e) {
       AuthDebugger.logError(
-          'AuthCubit', 'Error comprobando perfil de usuario: $e');
+        'AuthCubit',
+        'Error comprobando perfil de usuario: $e',
+      );
       _profileValidationCache[userId] = false;
       return false;
     } finally {
@@ -216,7 +221,7 @@ class AuthCubit extends Cubit<AuthState> {
       'location',
       'interests',
       'photoUrls',
-      'bio'
+      'bio',
     ];
 
     // Verificar campos requeridos de manera eficiente
@@ -230,13 +235,16 @@ class AuthCubit extends Cubit<AuthState> {
     }
 
     // Validar tipos y valores mínimos
-    final bool interestsValid = userData['interests'] is List &&
+    final bool interestsValid =
+        userData['interests'] is List &&
         (userData['interests'] as List).isNotEmpty;
 
-    final bool photosValid = userData['photoUrls'] is List &&
+    final bool photosValid =
+        userData['photoUrls'] is List &&
         (userData['photoUrls'] as List).isNotEmpty;
 
-    final bool isValid = userData['name'].toString().isNotEmpty &&
+    final bool isValid =
+        userData['name'].toString().isNotEmpty &&
         (userData['age'] as num?) != null &&
         userData['gender'].toString().isNotEmpty &&
         userData['location'].toString().isNotEmpty &&
@@ -246,7 +254,8 @@ class AuthCubit extends Cubit<AuthState> {
 
     if (kDebugMode && !isValid) {
       logger.d(
-          'Perfil incompleto: alguno de los campos requeridos no cumple con los criterios');
+        'Perfil incompleto: alguno de los campos requeridos no cumple con los criterios',
+      );
     }
 
     return isValid;
@@ -271,12 +280,14 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState(status: AuthStatus.loading));
     try {
       // Obtenemos resultado del inicio de sesión con Email/Password
-      final userEntity =
-          await _authRepository.signInWithEmailAndPassword(email, password);
+      final userEntity = await _authRepository.signInWithEmailAndPassword(
+        email,
+        password,
+      );
 
       // Obtener datos de usuario completos
-      final Map<String, dynamic>? userData =
-          await _authRepository.getCurrentUserData();
+      final Map<String, dynamic>? userData = await _authRepository
+          .getCurrentUserData();
 
       if (userData != null) {
         final String userId = userEntity
@@ -284,21 +295,25 @@ class AuthCubit extends Cubit<AuthState> {
         _userDataCache[userId] = userData;
 
         // Forzar una verificación fresca del perfil (ignorando caché)
-        _profileValidationCache
-            .remove(userId); // Limpiar caché para forzar verificación
+        _profileValidationCache.remove(
+          userId,
+        ); // Limpiar caché para forzar verificación
         final bool hasProfile = await _checkUserProfile(userId);
         _profileValidationCache[userId] = hasProfile;
 
         if (kDebugMode) {
           logger.d(
-              'Login con Email exitoso - Usuario: $userId, Tiene perfil: $hasProfile');
+            'Login con Email exitoso - Usuario: $userId, Tiene perfil: $hasProfile',
+          );
         }
 
-        emit(AuthState(
-          status: AuthStatus.authenticated,
-          user: userData,
-          hasUserProfile: hasProfile,
-        ));
+        emit(
+          AuthState(
+            status: AuthStatus.authenticated,
+            user: userData,
+            hasUserProfile: hasProfile,
+          ),
+        );
 
         // Registro del token FCM en el servidor puede hacerse de forma asíncrona
         // usando una técnica de fire-and-forget para no bloquear la interfaz de usuario
@@ -324,10 +339,7 @@ class AuthCubit extends Cubit<AuthState> {
         logger.e('Error en signInWithEmailAndPassword: $e');
       }
 
-      emit(AuthState(
-        status: AuthStatus.error,
-        errorMessage: e.toString(),
-      ));
+      emit(AuthState(status: AuthStatus.error, errorMessage: e.toString()));
     }
   }
 
@@ -346,8 +358,9 @@ class AuthCubit extends Cubit<AuthState> {
       // Verificar si es una redirección iniciada (solo para web)
       if (kIsWeb && result['status'] == 'redirect_initiated') {
         if (kDebugMode) {
-          logger
-              .d('Redirección de autenticación iniciada, esperando resultado');
+          logger.d(
+            'Redirección de autenticación iniciada, esperando resultado',
+          );
         }
 
         // Mantener el estado de carga mientras se completa la redirección
@@ -358,16 +371,19 @@ class AuthCubit extends Cubit<AuthState> {
       if (result['status'] == 'cancelled') {
         if (kDebugMode) {
           logger.d(
-              'Autenticación cancelada por el usuario: ${result['message'] ?? 'Sin mensaje'}');
+            'Autenticación cancelada por el usuario: ${result['message'] ?? 'Sin mensaje'}',
+          );
         }
 
         // Volver al estado no autenticado
-        emit(AuthState(
-          status: AuthStatus.unauthenticated,
-          hasUserProfile: false,
-          errorMessage:
-              null, // No mostramos mensaje de error ya que fue una cancelación voluntaria
-        ));
+        emit(
+          AuthState(
+            status: AuthStatus.unauthenticated,
+            hasUserProfile: false,
+            errorMessage:
+                null, // No mostramos mensaje de error ya que fue una cancelación voluntaria
+          ),
+        );
         return;
       }
 
@@ -383,21 +399,25 @@ class AuthCubit extends Cubit<AuthState> {
         _userDataCache[userId] = userData;
 
         // Forzar una verificación fresca del perfil (ignorando caché)
-        _profileValidationCache
-            .remove(userId); // Limpiar caché para forzar verificación
+        _profileValidationCache.remove(
+          userId,
+        ); // Limpiar caché para forzar verificación
         final bool hasProfile = await _checkUserProfile(userId);
         _profileValidationCache[userId] = hasProfile;
 
         if (kDebugMode) {
           logger.d(
-              'Login con Google exitoso - Usuario: $userId, Tiene perfil: $hasProfile');
+            'Login con Google exitoso - Usuario: $userId, Tiene perfil: $hasProfile',
+          );
         }
 
-        emit(AuthState(
-          status: AuthStatus.authenticated,
-          user: userData,
-          hasUserProfile: hasProfile,
-        ));
+        emit(
+          AuthState(
+            status: AuthStatus.authenticated,
+            user: userData,
+            hasUserProfile: hasProfile,
+          ),
+        );
 
         // Registro del token FCM en el servidor puede hacerse de forma asíncrona
         // usando una técnica de fire-and-forget para no bloquear la interfaz de usuario
@@ -406,8 +426,9 @@ class AuthCubit extends Cubit<AuthState> {
             if (_fcmTokenService != null) {
               _fcmTokenService!.registerTokenForCurrentUser();
               if (kDebugMode) {
-                logger
-                    .d('Token FCM registrado tras inicio de sesión con Google');
+                logger.d(
+                  'Token FCM registrado tras inicio de sesión con Google',
+                );
               }
             }
           } catch (e) {
@@ -434,10 +455,11 @@ class AuthCubit extends Cubit<AuthState> {
           }
 
           // Forzar una verificación fresca del perfil
-          _profileValidationCache
-              .remove(userId); // Limpiar caché para forzar verificación
-          Map<String, dynamic>? userData =
-              await _authRepository.getCurrentUserData();
+          _profileValidationCache.remove(
+            userId,
+          ); // Limpiar caché para forzar verificación
+          Map<String, dynamic>? userData = await _authRepository
+              .getCurrentUserData();
 
           if (userData != null) {
             _userDataCache[userId] = userData;
@@ -446,14 +468,17 @@ class AuthCubit extends Cubit<AuthState> {
 
             if (kDebugMode) {
               logger.d(
-                  'Recuperación exitosa - Usuario: $userId, Tiene perfil: $hasProfile');
+                'Recuperación exitosa - Usuario: $userId, Tiene perfil: $hasProfile',
+              );
             }
 
-            emit(AuthState(
-              status: AuthStatus.authenticated,
-              user: userData,
-              hasUserProfile: hasProfile,
-            ));
+            emit(
+              AuthState(
+                status: AuthStatus.authenticated,
+                user: userData,
+                hasUserProfile: hasProfile,
+              ),
+            );
 
             // Registrar token FCM incluso en caso de error de login
             if (_fcmTokenService != null) {
@@ -467,10 +492,7 @@ class AuthCubit extends Cubit<AuthState> {
         }
       }
 
-      emit(AuthState(
-        status: AuthStatus.error,
-        errorMessage: e.toString(),
-      ));
+      emit(AuthState(status: AuthStatus.error, errorMessage: e.toString()));
     }
   }
 
@@ -504,18 +526,17 @@ class AuthCubit extends Cubit<AuthState> {
       _profileValidationCache.clear();
       _userDataCache.clear();
 
-      emit(const AuthState(
-        status: AuthStatus.unauthenticated,
-        hasUserProfile: false,
-      ));
+      emit(
+        const AuthState(
+          status: AuthStatus.unauthenticated,
+          hasUserProfile: false,
+        ),
+      );
     } catch (e) {
       if (kDebugMode) {
         logger.d('Error en logout: $e');
       }
-      emit(AuthState(
-        status: AuthStatus.error,
-        errorMessage: e.toString(),
-      ));
+      emit(AuthState(status: AuthStatus.error, errorMessage: e.toString()));
     }
   }
 
@@ -532,16 +553,16 @@ class AuthCubit extends Cubit<AuthState> {
 
       // Asegurar que el documento del usuario tenga hasCompletedOnboarding = true
       // Actualizar estado de completado de onboarding
-      final Map<String, dynamic> updateData = {
-        'hasCompletedOnboarding': true,
-      };
+      final Map<String, dynamic> updateData = {'hasCompletedOnboarding': true};
       await _authRepository.updateUserData(
-          userId, updateData); // Forzar actualización del caché de perfil
+        userId,
+        updateData,
+      ); // Forzar actualización del caché de perfil
       _profileValidationCache[userId] = true;
 
       // Obtener datos actualizados del usuario
-      Map<String, dynamic>? userData =
-          await _authRepository.getCurrentUserData();
+      Map<String, dynamic>? userData = await _authRepository
+          .getCurrentUserData();
       if (userData != null) {
         _userDataCache[userId] = userData;
       }
@@ -550,20 +571,19 @@ class AuthCubit extends Cubit<AuthState> {
         logger.d('Onboarding completado para el usuario: $userId');
       }
 
-      emit(AuthState(
-        status: AuthStatus.authenticated,
-        user: userData ?? state.user,
-        hasUserProfile: true, // Forzar a true después de completar onboarding
-        errorMessage: null,
-      ));
+      emit(
+        AuthState(
+          status: AuthStatus.authenticated,
+          user: userData ?? state.user,
+          hasUserProfile: true, // Forzar a true después de completar onboarding
+          errorMessage: null,
+        ),
+      );
     } catch (e) {
       if (kDebugMode) {
         logger.e('Error en completeOnboarding: $e');
       }
-      emit(AuthState(
-        status: AuthStatus.error,
-        errorMessage: e.toString(),
-      ));
+      emit(AuthState(status: AuthStatus.error, errorMessage: e.toString()));
     }
   }
 
@@ -592,18 +612,17 @@ class AuthCubit extends Cubit<AuthState> {
         _userDataCache.remove(userId);
       }
 
-      emit(const AuthState(
-        status: AuthStatus.unauthenticated,
-        hasUserProfile: false,
-      ));
+      emit(
+        const AuthState(
+          status: AuthStatus.unauthenticated,
+          hasUserProfile: false,
+        ),
+      );
     } catch (e) {
       if (kDebugMode) {
         logger.d('Error en deleteAccount: $e');
       }
-      emit(AuthState(
-        status: AuthStatus.error,
-        errorMessage: e.toString(),
-      ));
+      emit(AuthState(status: AuthStatus.error, errorMessage: e.toString()));
     }
   }
 
@@ -624,7 +643,8 @@ class AuthCubit extends Cubit<AuthState> {
     }
 
     AuthDebugger.log(
-        'checkAuthStatus: Iniciando verificación de autenticación');
+      'checkAuthStatus: Iniciando verificación de autenticación',
+    );
     _isProcessingAuth = true;
     emit(const AuthState(status: AuthStatus.loading));
 
@@ -635,48 +655,61 @@ class AuthCubit extends Cubit<AuthState> {
 
         if (!isAuth) {
           AuthDebugger.log('checkAuthStatus: No hay autenticación activa');
-          emit(const AuthState(
-            status: AuthStatus.unauthenticated,
-            hasUserProfile: false,
-          ));
+          emit(
+            const AuthState(
+              status: AuthStatus.unauthenticated,
+              hasUserProfile: false,
+            ),
+          );
           return;
         }
 
         final String? userId = _authRepository.getCurrentUserId();
         if (kDebugMode) {
-          logger.d('[DEBUG] checkAuthStatus: userId obtenido: '
-              '[33m[1m$userId[0m');
+          logger.d(
+            '[DEBUG] checkAuthStatus: userId obtenido: '
+            '[33m[1m$userId[0m',
+          );
         }
         // Si no hay usuario, marcar como no autenticado
         if (userId == null) {
           AuthDebugger.log(
-              'checkAuthStatus: No hay usuario, emitiendo unauthenticated');
-          emit(const AuthState(
-            status: AuthStatus.unauthenticated,
-            hasUserProfile: false,
-          ));
+            'checkAuthStatus: No hay usuario, emitiendo unauthenticated',
+          );
+          emit(
+            const AuthState(
+              status: AuthStatus.unauthenticated,
+              hasUserProfile: false,
+            ),
+          );
           return;
         }
 
         // Comprobar si el usuario tiene perfil (usando caché si está disponible)
         final bool hasProfile = await _checkUserProfile(userId);
         if (kDebugMode) {
-          logger.d('[DEBUG] checkAuthStatus: hasProfile: '
-              '[36m[1m$hasProfile[0m');
+          logger.d(
+            '[DEBUG] checkAuthStatus: hasProfile: '
+            '[36m[1m$hasProfile[0m',
+          );
         }
         // Obtener datos del usuario (usando caché si está disponible)
         final Map<String, dynamic>? userData = await _getCachedUserData(userId);
         if (kDebugMode) {
-          logger.d('[DEBUG] checkAuthStatus: userData: '
-              '[32m[1m${userData?.toString()}[0m');
+          logger.d(
+            '[DEBUG] checkAuthStatus: userData: '
+            '[32m[1m${userData?.toString()}[0m',
+          );
         }
         if (userData != null) {
           AuthDebugger.log('checkAuthStatus: Emitiendo authenticated');
-          emit(AuthState(
-            status: AuthStatus.authenticated,
-            user: userData,
-            hasUserProfile: hasProfile,
-          ));
+          emit(
+            AuthState(
+              status: AuthStatus.authenticated,
+              user: userData,
+              hasUserProfile: hasProfile,
+            ),
+          );
 
           // Asegurar que el token FCM esté registrado (solo en caso de autenticación exitosa)
           if (_fcmTokenService != null) {
@@ -689,11 +722,14 @@ class AuthCubit extends Cubit<AuthState> {
           }
         } else {
           AuthDebugger.log(
-              'checkAuthStatus: No hay datos de usuario, emitiendo unauthenticated');
-          emit(const AuthState(
-            status: AuthStatus.unauthenticated,
-            hasUserProfile: false,
-          ));
+            'checkAuthStatus: No hay datos de usuario, emitiendo unauthenticated',
+          );
+          emit(
+            const AuthState(
+              status: AuthStatus.unauthenticated,
+              hasUserProfile: false,
+            ),
+          );
         }
       });
     } catch (e) {
@@ -707,12 +743,14 @@ class AuthCubit extends Cubit<AuthState> {
             final userData = await _authRepository.getCurrentUserData();
             if (userData != null) {
               // Forzar el estado autenticado a pesar del error
-              emit(AuthState(
-                status: AuthStatus.authenticated,
-                user: userData,
-                hasUserProfile:
-                    true, // Asumimos que tiene perfil para recuperar
-              ));
+              emit(
+                AuthState(
+                  status: AuthStatus.authenticated,
+                  user: userData,
+                  hasUserProfile:
+                      true, // Asumimos que tiene perfil para recuperar
+                ),
+              );
               return;
             }
           } catch (_) {
@@ -721,10 +759,7 @@ class AuthCubit extends Cubit<AuthState> {
         }
       }
 
-      emit(AuthState(
-        status: AuthStatus.error,
-        errorMessage: e.toString(),
-      ));
+      emit(AuthState(status: AuthStatus.error, errorMessage: e.toString()));
     } finally {
       _isProcessingAuth = false;
     }
@@ -745,7 +780,9 @@ class AuthCubit extends Cubit<AuthState> {
       return userData;
     } catch (e) {
       AuthDebugger.logError(
-          'AuthCubit', 'Error obteniendo datos de usuario: $e');
+        'AuthCubit',
+        'Error obteniendo datos de usuario: $e',
+      );
       return null;
     }
   }

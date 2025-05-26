@@ -12,10 +12,7 @@ class GetPopularPlansParams {
   final int? limit;
   final String? lastDocumentId;
 
-  const GetPopularPlansParams({
-    this.limit,
-    this.lastDocumentId,
-  });
+  const GetPopularPlansParams({this.limit, this.lastDocumentId});
 }
 
 /// Caso de uso para obtener los planes más populares
@@ -31,7 +28,8 @@ class GetPopularPlansUseCase
 
   @override
   Future<Either<AppFailure, List<PlanEntity>>> execute(
-      GetPopularPlansParams params) async {
+    GetPopularPlansParams params,
+  ) async {
     _logger.d('GetPopularPlansUseCase: Obteniendo planes populares');
 
     try {
@@ -41,19 +39,23 @@ class GetPopularPlansUseCase
         lastDocumentId: params.lastDocumentId,
       );
     } catch (e) {
-      _logger.e('GetPopularPlansUseCase: Error al obtener planes populares',
-          error: e);
-      return Left(AppFailure(
-        message: 'Error al obtener planes populares',
-        code: 'error-get-popular-plans',
-      ));
+      _logger.e(
+        'GetPopularPlansUseCase: Error al obtener planes populares',
+        error: e,
+      );
+      return Left(
+        AppFailure(
+          message: 'Error al obtener planes populares',
+          code: 'error-get-popular-plans',
+        ),
+      );
     }
   }
 
   /// Método de conveniencia para usar el caso de uso como una función.
   Future<Either<AppFailure, List<PlanEntity>>> call(
-          GetPopularPlansParams params) =>
-      execute(params);
+    GetPopularPlansParams params,
+  ) => execute(params);
 
   /// Método de conveniencia para obtener planes populares sin parámetros adicionales
   Future<Either<AppFailure, List<PlanEntity>>> getPopularPlans({int? limit}) {

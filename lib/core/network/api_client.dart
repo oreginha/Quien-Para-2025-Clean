@@ -26,11 +26,13 @@ class ApiClient {
     dio.interceptors.add(ApiInterceptors(storageHelper));
 
     // Logging en modo debug
-    dio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      logPrint: (final Object obj) => logger.d(obj.toString()),
-    ));
+    dio.interceptors.add(
+      LogInterceptor(
+        requestBody: true,
+        responseBody: true,
+        logPrint: (final Object obj) => logger.d(obj.toString()),
+      ),
+    );
   }
 
   // Método GET

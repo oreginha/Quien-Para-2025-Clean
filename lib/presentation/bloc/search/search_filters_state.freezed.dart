@@ -12,7 +12,8 @@ part of 'search_filters_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SearchFiltersState {
@@ -38,20 +39,22 @@ mixin _$SearchFiltersState {
 /// @nodoc
 abstract class $SearchFiltersStateCopyWith<$Res> {
   factory $SearchFiltersStateCopyWith(
-          SearchFiltersState value, $Res Function(SearchFiltersState) then) =
-      _$SearchFiltersStateCopyWithImpl<$Res, SearchFiltersState>;
+    SearchFiltersState value,
+    $Res Function(SearchFiltersState) then,
+  ) = _$SearchFiltersStateCopyWithImpl<$Res, SearchFiltersState>;
   @useResult
-  $Res call(
-      {String searchQuery,
-      String selectedCategory,
-      List<String> selectedTags,
-      double distanceValue,
-      double minDistance,
-      double maxDistance,
-      Map<String, bool> conditions,
-      Map<String, bool> additionalServices,
-      bool isLoading,
-      String? errorMessage});
+  $Res call({
+    String searchQuery,
+    String selectedCategory,
+    List<String> selectedTags,
+    double distanceValue,
+    double minDistance,
+    double maxDistance,
+    Map<String, bool> conditions,
+    Map<String, bool> additionalServices,
+    bool isLoading,
+    String? errorMessage,
+  });
 }
 
 /// @nodoc
@@ -80,79 +83,85 @@ class _$SearchFiltersStateCopyWithImpl<$Res, $Val extends SearchFiltersState>
     Object? isLoading = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_value.copyWith(
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectedCategory: null == selectedCategory
-          ? _value.selectedCategory
-          : selectedCategory // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectedTags: null == selectedTags
-          ? _value.selectedTags
-          : selectedTags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      distanceValue: null == distanceValue
-          ? _value.distanceValue
-          : distanceValue // ignore: cast_nullable_to_non_nullable
-              as double,
-      minDistance: null == minDistance
-          ? _value.minDistance
-          : minDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      maxDistance: null == maxDistance
-          ? _value.maxDistance
-          : maxDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      conditions: null == conditions
-          ? _value.conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-      additionalServices: null == additionalServices
-          ? _value.additionalServices
-          : additionalServices // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            searchQuery: null == searchQuery
+                ? _value.searchQuery
+                : searchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+            selectedCategory: null == selectedCategory
+                ? _value.selectedCategory
+                : selectedCategory // ignore: cast_nullable_to_non_nullable
+                      as String,
+            selectedTags: null == selectedTags
+                ? _value.selectedTags
+                : selectedTags // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            distanceValue: null == distanceValue
+                ? _value.distanceValue
+                : distanceValue // ignore: cast_nullable_to_non_nullable
+                      as double,
+            minDistance: null == minDistance
+                ? _value.minDistance
+                : minDistance // ignore: cast_nullable_to_non_nullable
+                      as double,
+            maxDistance: null == maxDistance
+                ? _value.maxDistance
+                : maxDistance // ignore: cast_nullable_to_non_nullable
+                      as double,
+            conditions: null == conditions
+                ? _value.conditions
+                : conditions // ignore: cast_nullable_to_non_nullable
+                      as Map<String, bool>,
+            additionalServices: null == additionalServices
+                ? _value.additionalServices
+                : additionalServices // ignore: cast_nullable_to_non_nullable
+                      as Map<String, bool>,
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            errorMessage: freezed == errorMessage
+                ? _value.errorMessage
+                : errorMessage // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$SearchFiltersStateImplCopyWith<$Res>
     implements $SearchFiltersStateCopyWith<$Res> {
-  factory _$$SearchFiltersStateImplCopyWith(_$SearchFiltersStateImpl value,
-          $Res Function(_$SearchFiltersStateImpl) then) =
-      __$$SearchFiltersStateImplCopyWithImpl<$Res>;
+  factory _$$SearchFiltersStateImplCopyWith(
+    _$SearchFiltersStateImpl value,
+    $Res Function(_$SearchFiltersStateImpl) then,
+  ) = __$$SearchFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String searchQuery,
-      String selectedCategory,
-      List<String> selectedTags,
-      double distanceValue,
-      double minDistance,
-      double maxDistance,
-      Map<String, bool> conditions,
-      Map<String, bool> additionalServices,
-      bool isLoading,
-      String? errorMessage});
+  $Res call({
+    String searchQuery,
+    String selectedCategory,
+    List<String> selectedTags,
+    double distanceValue,
+    double minDistance,
+    double maxDistance,
+    Map<String, bool> conditions,
+    Map<String, bool> additionalServices,
+    bool isLoading,
+    String? errorMessage,
+  });
 }
 
 /// @nodoc
 class __$$SearchFiltersStateImplCopyWithImpl<$Res>
     extends _$SearchFiltersStateCopyWithImpl<$Res, _$SearchFiltersStateImpl>
     implements _$$SearchFiltersStateImplCopyWith<$Res> {
-  __$$SearchFiltersStateImplCopyWithImpl(_$SearchFiltersStateImpl _value,
-      $Res Function(_$SearchFiltersStateImpl) _then)
-      : super(_value, _then);
+  __$$SearchFiltersStateImplCopyWithImpl(
+    _$SearchFiltersStateImpl _value,
+    $Res Function(_$SearchFiltersStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SearchFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -170,68 +179,70 @@ class __$$SearchFiltersStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$SearchFiltersStateImpl(
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectedCategory: null == selectedCategory
-          ? _value.selectedCategory
-          : selectedCategory // ignore: cast_nullable_to_non_nullable
-              as String,
-      selectedTags: null == selectedTags
-          ? _value._selectedTags
-          : selectedTags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      distanceValue: null == distanceValue
-          ? _value.distanceValue
-          : distanceValue // ignore: cast_nullable_to_non_nullable
-              as double,
-      minDistance: null == minDistance
-          ? _value.minDistance
-          : minDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      maxDistance: null == maxDistance
-          ? _value.maxDistance
-          : maxDistance // ignore: cast_nullable_to_non_nullable
-              as double,
-      conditions: null == conditions
-          ? _value._conditions
-          : conditions // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-      additionalServices: null == additionalServices
-          ? _value._additionalServices
-          : additionalServices // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$SearchFiltersStateImpl(
+        searchQuery: null == searchQuery
+            ? _value.searchQuery
+            : searchQuery // ignore: cast_nullable_to_non_nullable
+                  as String,
+        selectedCategory: null == selectedCategory
+            ? _value.selectedCategory
+            : selectedCategory // ignore: cast_nullable_to_non_nullable
+                  as String,
+        selectedTags: null == selectedTags
+            ? _value._selectedTags
+            : selectedTags // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        distanceValue: null == distanceValue
+            ? _value.distanceValue
+            : distanceValue // ignore: cast_nullable_to_non_nullable
+                  as double,
+        minDistance: null == minDistance
+            ? _value.minDistance
+            : minDistance // ignore: cast_nullable_to_non_nullable
+                  as double,
+        maxDistance: null == maxDistance
+            ? _value.maxDistance
+            : maxDistance // ignore: cast_nullable_to_non_nullable
+                  as double,
+        conditions: null == conditions
+            ? _value._conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                  as Map<String, bool>,
+        additionalServices: null == additionalServices
+            ? _value._additionalServices
+            : additionalServices // ignore: cast_nullable_to_non_nullable
+                  as Map<String, bool>,
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        errorMessage: freezed == errorMessage
+            ? _value.errorMessage
+            : errorMessage // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SearchFiltersStateImpl implements _SearchFiltersState {
-  const _$SearchFiltersStateImpl(
-      {this.searchQuery = '',
-      this.selectedCategory = '',
-      final List<String> selectedTags = const <String>[],
-      this.distanceValue = 0.0,
-      this.minDistance = 0.0,
-      this.maxDistance = 100.0,
-      final Map<String, bool> conditions = const <String, bool>{},
-      final Map<String, bool> additionalServices = const <String, bool>{},
-      this.isLoading = false,
-      this.errorMessage})
-      : _selectedTags = selectedTags,
-        _conditions = conditions,
-        _additionalServices = additionalServices;
+  const _$SearchFiltersStateImpl({
+    this.searchQuery = '',
+    this.selectedCategory = '',
+    final List<String> selectedTags = const <String>[],
+    this.distanceValue = 0.0,
+    this.minDistance = 0.0,
+    this.maxDistance = 100.0,
+    final Map<String, bool> conditions = const <String, bool>{},
+    final Map<String, bool> additionalServices = const <String, bool>{},
+    this.isLoading = false,
+    this.errorMessage,
+  }) : _selectedTags = selectedTags,
+       _conditions = conditions,
+       _additionalServices = additionalServices;
 
   @override
   @JsonKey()
@@ -296,18 +307,24 @@ class _$SearchFiltersStateImpl implements _SearchFiltersState {
                 other.searchQuery == searchQuery) &&
             (identical(other.selectedCategory, selectedCategory) ||
                 other.selectedCategory == selectedCategory) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedTags, _selectedTags) &&
+            const DeepCollectionEquality().equals(
+              other._selectedTags,
+              _selectedTags,
+            ) &&
             (identical(other.distanceValue, distanceValue) ||
                 other.distanceValue == distanceValue) &&
             (identical(other.minDistance, minDistance) ||
                 other.minDistance == minDistance) &&
             (identical(other.maxDistance, maxDistance) ||
                 other.maxDistance == maxDistance) &&
-            const DeepCollectionEquality()
-                .equals(other._conditions, _conditions) &&
-            const DeepCollectionEquality()
-                .equals(other._additionalServices, _additionalServices) &&
+            const DeepCollectionEquality().equals(
+              other._conditions,
+              _conditions,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._additionalServices,
+              _additionalServices,
+            ) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -316,17 +333,18 @@ class _$SearchFiltersStateImpl implements _SearchFiltersState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      searchQuery,
-      selectedCategory,
-      const DeepCollectionEquality().hash(_selectedTags),
-      distanceValue,
-      minDistance,
-      maxDistance,
-      const DeepCollectionEquality().hash(_conditions),
-      const DeepCollectionEquality().hash(_additionalServices),
-      isLoading,
-      errorMessage);
+    runtimeType,
+    searchQuery,
+    selectedCategory,
+    const DeepCollectionEquality().hash(_selectedTags),
+    distanceValue,
+    minDistance,
+    maxDistance,
+    const DeepCollectionEquality().hash(_conditions),
+    const DeepCollectionEquality().hash(_additionalServices),
+    isLoading,
+    errorMessage,
+  );
 
   /// Create a copy of SearchFiltersState
   /// with the given fields replaced by the non-null parameter values.
@@ -335,21 +353,24 @@ class _$SearchFiltersStateImpl implements _SearchFiltersState {
   @pragma('vm:prefer-inline')
   _$$SearchFiltersStateImplCopyWith<_$SearchFiltersStateImpl> get copyWith =>
       __$$SearchFiltersStateImplCopyWithImpl<_$SearchFiltersStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SearchFiltersState implements SearchFiltersState {
-  const factory _SearchFiltersState(
-      {final String searchQuery,
-      final String selectedCategory,
-      final List<String> selectedTags,
-      final double distanceValue,
-      final double minDistance,
-      final double maxDistance,
-      final Map<String, bool> conditions,
-      final Map<String, bool> additionalServices,
-      final bool isLoading,
-      final String? errorMessage}) = _$SearchFiltersStateImpl;
+  const factory _SearchFiltersState({
+    final String searchQuery,
+    final String selectedCategory,
+    final List<String> selectedTags,
+    final double distanceValue,
+    final double minDistance,
+    final double maxDistance,
+    final Map<String, bool> conditions,
+    final Map<String, bool> additionalServices,
+    final bool isLoading,
+    final String? errorMessage,
+  }) = _$SearchFiltersStateImpl;
 
   @override
   String get searchQuery;

@@ -33,7 +33,8 @@ class AuthRedirectHandler {
         now.difference(_lastRedirectTime!).inMilliseconds < 500) {
       if (kDebugMode) {
         print(
-            '⚠️ [Router] Posible bucle de redirección detectado, cancelando redirección a $currentPath');
+          '⚠️ [Router] Posible bucle de redirección detectado, cancelando redirección a $currentPath',
+        );
       }
       return true;
     }
@@ -53,8 +54,10 @@ class AuthRedirectHandler {
     // Si no, intentar obtenerlo del Provider
     try {
       if (context.mounted) {
-        final AuthCubit authCubit =
-            Provider.of<AuthCubit>(context, listen: false);
+        final AuthCubit authCubit = Provider.of<AuthCubit>(
+          context,
+          listen: false,
+        );
         // Si lo obtenemos correctamente, guardarlo para futuras referencias
         _authCubit = authCubit;
         if (kDebugMode) {
@@ -92,7 +95,10 @@ class AuthRedirectHandler {
 
       case AuthStatus.authenticated:
         return _handleAuthenticatedStatus(
-            authState, currentPath, isInitialOrLoginRoute);
+          authState,
+          currentPath,
+          isInitialOrLoginRoute,
+        );
 
       case AuthStatus.unauthenticated:
       case AuthStatus.error:
@@ -133,7 +139,10 @@ class AuthRedirectHandler {
 
   // Manejar estado autenticado
   String? _handleAuthenticatedStatus(
-      AuthState authState, String currentPath, bool isInitialOrLoginRoute) {
+    AuthState authState,
+    String currentPath,
+    bool isInitialOrLoginRoute,
+  ) {
     // Usuario autenticado - verificar si tiene perfil
     if (!authState.hasUserProfile) {
       if (currentPath != AppRoutes.userOnboarding) {
@@ -148,7 +157,8 @@ class AuthRedirectHandler {
         // Estamos en login/root o en onboarding (pero ya tenemos perfil) - ir a home
         if (kDebugMode) {
           print(
-              '📡 [Router] Redirigiendo a home (usuario con perfil completo)');
+            '📡 [Router] Redirigiendo a home (usuario con perfil completo)',
+          );
         }
         return AppRoutes
             .proposalsScreen; // Ir a proposalsScreen en lugar de home

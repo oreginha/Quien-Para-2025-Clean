@@ -29,9 +29,7 @@ class PlanCardWidget extends StatelessWidget {
       ),
       child: ListTile(
         contentPadding: const EdgeInsets.all(16),
-        onTap: () => context.push(
-          "/otherProposalDetail/${plan['id']}",
-        ),
+        onTap: () => context.push("/otherProposalDetail/${plan['id']}"),
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: Image.network(
@@ -39,18 +37,22 @@ class PlanCardWidget extends StatelessWidget {
             width: 50,
             height: 50,
             fit: BoxFit.cover,
-            errorBuilder: (final BuildContext context, final Object error,
-                final StackTrace? stackTrace) {
-              return Container(
-                width: 50,
-                height: 50,
-                color: borderColor,
-                child: Icon(
-                  Icons.image_not_supported,
-                  color: textPrimary.withValues(alpha: 0.5),
-                ),
-              );
-            },
+            errorBuilder:
+                (
+                  final BuildContext context,
+                  final Object error,
+                  final StackTrace? stackTrace,
+                ) {
+                  return Container(
+                    width: 50,
+                    height: 50,
+                    color: borderColor,
+                    child: Icon(
+                      Icons.image_not_supported,
+                      color: textPrimary.withValues(alpha: 0.5),
+                    ),
+                  );
+                },
           ),
         ),
         title: Text(

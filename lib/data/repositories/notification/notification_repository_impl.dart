@@ -28,9 +28,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
   bool get _isCacheAvailable => _cache != null && _cache!.isAvailable;
 
   // Controladores de streams para notificaciones por usuario
-  final Map<String,
-          StreamController<Either<AppFailure, List<NotificationEntity>>>>
-      _notificationStreams = {};
+  final Map<
+    String,
+    StreamController<Either<AppFailure, List<NotificationEntity>>>
+  >
+  _notificationStreams = {};
 
   /// Constructor
   NotificationRepositoryImpl({
@@ -39,14 +41,15 @@ class NotificationRepositoryImpl implements INotificationRepository {
     Cache<NotificationEntity>? cache,
     NotificationMapper? mapper,
     String collection = 'notifications',
-  })  : _firestore = firestore,
-        _apiService = apiService,
-        _cache = cache,
-        _mapper = mapper ?? const NotificationMapper(),
-        _collection = collection {
+  }) : _firestore = firestore,
+       _apiService = apiService,
+       _cache = cache,
+       _mapper = mapper ?? const NotificationMapper(),
+       _collection = collection {
     _logger = app_logger.logger as Logger;
     _logger.d(
-        'NotificationRepositoryImpl initialized: Cache available: $_isCacheAvailable');
+      'NotificationRepositoryImpl initialized: Cache available: $_isCacheAvailable',
+    );
   }
 
   @override
@@ -55,8 +58,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
       // Aquí puedes inicializar lo que necesites
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error initializing notification repository:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error initializing notification repository:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
@@ -78,8 +84,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
       await _apiService.subscribeToTopic(topic);
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error subscribing to topic:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error subscribing to topic:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
@@ -90,8 +99,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
       await _apiService.unsubscribeFromTopic(topic);
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error unsubscribing from topic:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error unsubscribing from topic:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
@@ -122,20 +134,23 @@ class NotificationRepositoryImpl implements INotificationRepository {
       );
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error showing local notification:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error showing local notification:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
 
   @override
   Future<Either<AppFailure, Unit>> markNotificationAsRead(
-      String notificationId) async {
+    String notificationId,
+  ) async {
     try {
-      await _firestore
-          .collection(_collection)
-          .doc(notificationId)
-          .update({'read': true});
+      await _firestore.collection(_collection).doc(notificationId).update({
+        'read': true,
+      });
 
       if (_isCacheAvailable) {
         final cachedItems = await _cache!.getCachedItems();
@@ -150,8 +165,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error marking notification as read:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error marking notification as read:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
@@ -183,14 +201,18 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error marking all notifications as read:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error marking all notifications as read:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
 
   Future<Either<AppFailure, Unit>> deleteNotification(
-      String notificationId) async {
+    String notificationId,
+  ) async {
     try {
       await _firestore.collection(_collection).doc(notificationId).delete();
 
@@ -204,15 +226,19 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error deleting notification:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error deleting notification:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
 
   @override
   Future<Either<AppFailure, Unit>> createNotification(
-      NotificationEntity notification) async {
+    NotificationEntity notification,
+  ) async {
     try {
       final docRef = _firestore.collection(_collection).doc();
       final notificationWithId = notification.copyWith(id: docRef.id);
@@ -227,8 +253,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error creating notification:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error creating notification:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
@@ -267,14 +296,17 @@ class NotificationRepositoryImpl implements INotificationRepository {
         snapshot = await query.get();
       } catch (e) {
         _logger.e('Error al obtener notificaciones de Firestore: $e');
-        return Left(DatabaseFailure(
-          message: 'Error al obtener notificaciones',
-          code: 'get-notifications-failed',
-        ));
+        return Left(
+          DatabaseFailure(
+            message: 'Error al obtener notificaciones',
+            code: 'get-notifications-failed',
+          ),
+        );
       }
 
-      final List<NotificationEntity> notifications =
-          snapshot.docs.map((doc) => _mapper.fromFirestore(doc)).toList();
+      final List<NotificationEntity> notifications = snapshot.docs
+          .map((doc) => _mapper.fromFirestore(doc))
+          .toList();
 
       // Guardar en caché si incluye todas las notificaciones
       if (includeRead && _isCacheAvailable) {
@@ -290,10 +322,12 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
   @override
   Future<Either<AppFailure, int>> getUnreadNotificationCount(
-      String userId) async {
+    String userId,
+  ) async {
     try {
       _logger.d(
-          'Obteniendo conteo de notificaciones no leídas para: $userId'); // Intentar obtener de caché si está disponible
+        'Obteniendo conteo de notificaciones no leídas para: $userId',
+      ); // Intentar obtener de caché si está disponible
       if (_isCacheAvailable) {
         final cachedCount = await _cache!.getCachedCount(key: '$userId:unread');
         if (cachedCount != null) {
@@ -323,7 +357,8 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
   @override
   Future<Either<AppFailure, Unit>> cleanupOldNotifications(
-      int olderThanDays) async {
+    int olderThanDays,
+  ) async {
     try {
       _logger.d('Limpiando notificaciones antiguas (> $olderThanDays días)');
 
@@ -341,8 +376,9 @@ class NotificationRepositoryImpl implements INotificationRepository {
         return const Right(unit);
       }
 
-      _logger
-          .d('Eliminando ${querySnapshot.docs.length} notificaciones antiguas');
+      _logger.d(
+        'Eliminando ${querySnapshot.docs.length} notificaciones antiguas',
+      );
 
       // Usar batch para eliminar en grupo
       final batch = _firestore.batch();
@@ -357,23 +393,28 @@ class NotificationRepositoryImpl implements INotificationRepository {
         final cachedItems = await _cache!.getCachedItems();
         if (cachedItems != null) {
           cachedItems.removeWhere(
-              (notification) => notification.createdAt.isBefore(limitDate));
+            (notification) => notification.createdAt.isBefore(limitDate),
+          );
           await _cache!.cacheItems(cachedItems);
         }
       }
 
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error al limpiar notificaciones antiguas:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error al limpiar notificaciones antiguas:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
 
   @override
   Stream<Either<AppFailure, List<NotificationEntity>>> getNotificationsStream(
-      String userId,
-      {bool includeRead = false}) {
+    String userId, {
+    bool includeRead = false,
+  }) {
     try {
       _logger.d('Iniciando stream de notificaciones para usuario: $userId');
 
@@ -384,8 +425,10 @@ class NotificationRepositoryImpl implements INotificationRepository {
       }
 
       // Crear un nuevo stream controller
-      final controller = StreamController<
-          Either<AppFailure, List<NotificationEntity>>>.broadcast();
+      final controller =
+          StreamController<
+            Either<AppFailure, List<NotificationEntity>>
+          >.broadcast();
       _notificationStreams[userId] = controller;
 
       // Crear consulta Firestore
@@ -401,8 +444,9 @@ class NotificationRepositoryImpl implements INotificationRepository {
       // Suscribirse a los cambios
       final subscription = query.snapshots().listen(
         (snapshot) {
-          final List<NotificationEntity> notifications =
-              snapshot.docs.map((doc) => _mapper.fromFirestore(doc)).toList();
+          final List<NotificationEntity> notifications = snapshot.docs
+              .map((doc) => _mapper.fromFirestore(doc))
+              .toList();
 
           // Actualizar caché si es necesario
           if (_isCacheAvailable) {
@@ -413,10 +457,14 @@ class NotificationRepositoryImpl implements INotificationRepository {
           controller.add(Right(notifications));
         },
         onError: (error, stackTrace) {
-          _logger.e('Error en stream de notificaciones:',
-              error: error, stackTrace: stackTrace);
-          controller.add(Left(
-              failure_helper.FailureHelper.fromException(error, stackTrace)));
+          _logger.e(
+            'Error en stream de notificaciones:',
+            error: error,
+            stackTrace: stackTrace,
+          );
+          controller.add(
+            Left(failure_helper.FailureHelper.fromException(error, stackTrace)),
+          );
         },
       );
 
@@ -429,12 +477,17 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
       return controller.stream;
     } catch (e, stackTrace) {
-      _logger.e('Error al crear stream de notificaciones:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error al crear stream de notificaciones:',
+        error: e,
+        stackTrace: stackTrace,
+      );
 
       // Crear un stream con error
-      final controller = StreamController<
-          Either<AppFailure, List<NotificationEntity>>>.broadcast();
+      final controller =
+          StreamController<
+            Either<AppFailure, List<NotificationEntity>>
+          >.broadcast();
       controller.addError(e, stackTrace);
       controller.close();
       return controller.stream;
@@ -445,7 +498,8 @@ class NotificationRepositoryImpl implements INotificationRepository {
   Future<Either<AppFailure, Unit>> markAllAsRead(String userId) async {
     try {
       _logger.d(
-          'Marcando todas las notificaciones como leídas para usuario: $userId');
+        'Marcando todas las notificaciones como leídas para usuario: $userId',
+      );
 
       // Obtener todas las notificaciones no leídas del usuario
       final querySnapshot = await _firestore
@@ -460,17 +514,15 @@ class NotificationRepositoryImpl implements INotificationRepository {
       }
 
       _logger.d(
-          'Marcando ${querySnapshot.docs.length} notificaciones como leídas');
+        'Marcando ${querySnapshot.docs.length} notificaciones como leídas',
+      );
 
       // Usar batch para actualizar en grupo
       final batch = _firestore.batch();
       final timestamp = DateTime.now();
 
       for (final doc in querySnapshot.docs) {
-        batch.update(doc.reference, {
-          'read': true,
-          'readAt': timestamp,
-        });
+        batch.update(doc.reference, {'read': true, 'readAt': timestamp});
       }
 
       await batch.commit();
@@ -496,15 +548,19 @@ class NotificationRepositoryImpl implements INotificationRepository {
 
       return const Right(unit);
     } catch (e, stackTrace) {
-      _logger.e('Error al marcar todas las notificaciones como leídas:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error al marcar todas las notificaciones como leídas:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }
 
   @override
   Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForPlan(
-      String planId) async {
+    String planId,
+  ) async {
     try {
       _logger.d('Fetching notifications for plan: $planId');
 
@@ -523,8 +579,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
       _logger.d('Found ${notifications.length} notifications for plan $planId');
       return Right(notifications);
     } catch (e, stackTrace) {
-      _logger.e('Error fetching notifications for plan:',
-          error: e, stackTrace: stackTrace);
+      _logger.e(
+        'Error fetching notifications for plan:',
+        error: e,
+        stackTrace: stackTrace,
+      );
       return Left(failure_helper.FailureHelper.fromException(e, stackTrace));
     }
   }

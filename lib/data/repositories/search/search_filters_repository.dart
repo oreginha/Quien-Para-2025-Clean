@@ -31,9 +31,11 @@ class SearchFiltersRepository {
       return SearchFiltersState(
         distanceValue: filtersMap['distanceValue'] as double,
         conditions: Map<String, bool>.from(
-            filtersMap['conditions'] as Map<dynamic, dynamic>),
+          filtersMap['conditions'] as Map<dynamic, dynamic>,
+        ),
         additionalServices: Map<String, bool>.from(
-            filtersMap['additionalServices'] as Map<dynamic, dynamic>),
+          filtersMap['additionalServices'] as Map<dynamic, dynamic>,
+        ),
       );
     } catch (e) {
       return null;

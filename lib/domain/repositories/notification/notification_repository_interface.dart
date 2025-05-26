@@ -26,7 +26,8 @@ abstract class NotificationRepository
 
   /// Obtiene notificaciones relacionadas con un plan
   Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForPlan(
-      planId);
+    planId,
+  );
 
   /// Elimina notificaciones antiguas
   Future<Either<AppFailure, Unit>> cleanupOldNotifications(int olderThanDays);
@@ -42,7 +43,8 @@ abstract class NotificationRepository
 
   /// Marca una notificación como leída
   Future<Either<AppFailure, Unit>> markNotificationAsRead(
-      String notificationId);
+    String notificationId,
+  );
 
   /// Marca todas las notificaciones como leídas
   Future<Either<AppFailure, Unit>> markAllNotificationsAsRead();
@@ -52,5 +54,6 @@ abstract class NotificationRepository
 
   /// Crea una nueva notificación
   Future<Either<AppFailure, String>> createNotification(
-      NotificationEntity notification);
+    NotificationEntity notification,
+  );
 }

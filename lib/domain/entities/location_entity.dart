@@ -6,22 +6,22 @@ import 'package:equatable/equatable.dart';
 class LocationEntity extends Equatable {
   /// Latitud de la ubicación
   final double latitude;
-  
+
   /// Longitud de la ubicación
   final double longitude;
-  
+
   /// Nombre de la ubicación (opcional)
   final String? name;
-  
+
   /// Dirección completa (opcional)
   final String? address;
-  
+
   /// Código postal (opcional)
   final String? postalCode;
-  
+
   /// Ciudad (opcional)
   final String? city;
-  
+
   /// País (opcional)
   final String? country;
 
@@ -91,9 +91,10 @@ class LocationEntity extends Equatable {
     address,
     postalCode,
     city,
-    country
+    country,
   ];
-  
+
   @override
-  String toString() => 'LocationEntity(latitude: $latitude, longitude: $longitude, name: $name)';
+  String toString() =>
+      'LocationEntity(latitude: $latitude, longitude: $longitude, name: $name)';
 }

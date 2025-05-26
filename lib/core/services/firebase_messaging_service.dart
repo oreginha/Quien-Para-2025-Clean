@@ -50,18 +50,20 @@ class FirebaseMessagingService {
     // Usar microtask para diferir la inicialización y no bloquear el arranque de la app
     Future<void>.microtask(() async {
       try {
-        await PerformanceLogger.logAsyncOperation('FCM-Inicialización',
-            () async {
+        await PerformanceLogger.logAsyncOperation('FCM-Inicialización', () async {
           // Configurar manejador en segundo plano - necesario mantenerlo
           FirebaseMessaging.onBackgroundMessage(
-              _firebaseMessagingBackgroundHandler);
+            _firebaseMessagingBackgroundHandler,
+          );
 
           // Configurar puerto para comunicación entre isolates (si es necesario)
           if (!kIsWeb) {
             // Registrar puerto para comunicación entre isolates
             final ReceivePort port = ReceivePort();
             IsolateNameServer.registerPortWithName(
-                port.sendPort, _isolatePortName);
+              port.sendPort,
+              _isolatePortName,
+            );
           }
 
           // Usar un único listener para mensajes en primer plano
@@ -73,13 +75,13 @@ class FirebaseMessagingService {
 
           // Solicitar permisos (solo iOS y web) - operación potencialmente lenta
           // Mover al final para no bloquear otras inicializaciones
-          final NotificationSettings settings =
-              await _messaging.requestPermission(
-            alert: true,
-            badge: true,
-            sound: true,
-            provisional: false,
-          );
+          final NotificationSettings settings = await _messaging
+              .requestPermission(
+                alert: true,
+                badge: true,
+                sound: true,
+                provisional: false,
+              );
 
           // Reducir logs en modo debug para evitar sobrecarga
           if (kDebugMode) {
@@ -124,11 +126,14 @@ class FirebaseMessagingService {
     // No realizar operaciones de UI aquí
 
     // Comunicar resultados al hilo principal si es necesario
-    final SendPort? sendPort =
-        IsolateNameServer.lookupPortByName(_isolatePortName);
+    final SendPort? sendPort = IsolateNameServer.lookupPortByName(
+      _isolatePortName,
+    );
     if (sendPort != null) {
-      sendPort.send(
-          <String, Object?>{'messageId': message.messageId, 'processed': true});
+      sendPort.send(<String, Object?>{
+        'messageId': message.messageId,
+        'processed': true,
+      });
     }
   }
 
@@ -157,8 +162,8 @@ class FirebaseMessagingService {
       // la inicialización principal
       Future<void>.microtask(() async {
         try {
-          final RemoteMessage? initialMessage =
-              await _messaging.getInitialMessage();
+          final RemoteMessage? initialMessage = await _messaging
+              .getInitialMessage();
           if (initialMessage != null && !_messageStreamController.isClosed) {
             _messageStreamController.add(initialMessage);
           }

@@ -72,10 +72,12 @@ class ContactButton extends StatelessWidget {
 
       // Dos opciones de implementación:
       // Opción 1: Seguir usando el ChatBloc
-      chatBloc.add(CreateConversation(
-        participants: [currentUserId, userId],
-        initialMessage: 'Hola, me gustaría conectar contigo.',
-      ));
+      chatBloc.add(
+        CreateConversation(
+          participants: [currentUserId, userId],
+          initialMessage: 'Hola, me gustaría conectar contigo.',
+        ),
+      );
 
       // Opción 2: Usar directamente el repositorio (comentado por ahora)
       // Descomentar esta sección y comentar la de arriba para usar el repositorio directamente
@@ -104,10 +106,13 @@ class ContactButton extends StatelessWidget {
           context.closeToRoot();
 
           // Navegar al chat
-          context.push('/chat/${state.conversationId}', extra: <String, String>{
-            'receiverId': userId,
-            'receiverName': userName,
-          });
+          context.push(
+            '/chat/${state.conversationId}',
+            extra: <String, String>{
+              'receiverId': userId,
+              'receiverName': userName,
+            },
+          );
 
           // Cancelar suscripción
           subscription.cancel();
@@ -118,8 +123,8 @@ class ContactButton extends StatelessWidget {
           // Mostrar error
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-                content: Text(
-                    'Error: ${state.errorMessage}')), // Cambiado a errorMessage que es la propiedad correcta en BaseState
+              content: Text('Error: ${state.errorMessage}'),
+            ), // Cambiado a errorMessage que es la propiedad correcta en BaseState
           );
 
           // Cancelar suscripción
@@ -135,7 +140,8 @@ class ContactButton extends StatelessWidget {
           subscription.cancel();
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-                content: Text('Tiempo de espera agotado. Inténtalo de nuevo.')),
+              content: Text('Tiempo de espera agotado. Inténtalo de nuevo.'),
+            ),
           );
         }
       });

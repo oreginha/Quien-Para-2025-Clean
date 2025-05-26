@@ -17,9 +17,7 @@ void showSuccessModalPerfil({
     builder: (final BuildContext context) {
       return Dialog(
         backgroundColor: const Color(0xFF2D2F53),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -31,11 +29,7 @@ void showSuccessModalPerfil({
                   color: Colors.yellow,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.check,
-                  color: Colors.black,
-                  size: 48,
-                ),
+                child: const Icon(Icons.check, color: Colors.black, size: 48),
               ),
               const SizedBox(height: 24),
               Text(
@@ -50,10 +44,7 @@ void showSuccessModalPerfil({
               const SizedBox(height: 16),
               Text(
                 message,
-                style: const TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
-                ),
+                style: const TextStyle(color: Colors.white70, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),

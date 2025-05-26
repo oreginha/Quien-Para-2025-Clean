@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quien_para/presentation/bloc/auth/auth_state.dart';
 
 /// Versión simulada del AuthCubit para modo de emergencia
-/// 
-/// Esta versión no realiza ninguna operación real y siempre devuelve un estado 
+///
+/// Esta versión no realiza ninguna operación real y siempre devuelve un estado
 /// predeterminado para que la UI no se rompa
 class MockAuthCubit extends Cubit<AuthState> {
   MockAuthCubit() : super(const AuthState(status: AuthStatus.unauthenticated)) {

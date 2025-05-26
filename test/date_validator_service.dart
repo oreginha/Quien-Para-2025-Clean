@@ -25,23 +25,37 @@ void main() {
       const TimeOfDay invalidTime = TimeOfDay(hour: 23, minute: 30);
 
       expect(
-          DateValidatorService.isValidTime(
-              'Ciudad Autónoma de Buenos Aires', validTime),
-          true);
+        DateValidatorService.isValidTime(
+          'Ciudad Autónoma de Buenos Aires',
+          validTime,
+        ),
+        true,
+      );
 
       expect(
-          DateValidatorService.isValidTime(
-              'Ciudad Autónoma de Buenos Aires', invalidTime),
-          false);
+        DateValidatorService.isValidTime(
+          'Ciudad Autónoma de Buenos Aires',
+          invalidTime,
+        ),
+        false,
+      );
     });
 
     test('validateDateTime should return success for valid dates', () {
-      final DateTime validDate =
-          DateTime(2024, 2, 19, 14, 0); // Lunes a las 14:00
+      final DateTime validDate = DateTime(
+        2024,
+        2,
+        19,
+        14,
+        0,
+      ); // Lunes a las 14:00
       const TimeOfDay validTime = TimeOfDay(hour: 14, minute: 0);
 
       final ValidationResult result = DateValidatorService.validateDateTime(
-          validDate, validTime, 'Ciudad Autónoma de Buenos Aires');
+        validDate,
+        validTime,
+        'Ciudad Autónoma de Buenos Aires',
+      );
 
       expect(result.isValid, true);
       expect(result.message, 'Fecha y hora válidas');
@@ -49,12 +63,16 @@ void main() {
     });
 
     test('validateDateTime should return error for past dates', () {
-      final DateTime pastDate =
-          DateTime.now().subtract(const Duration(days: 1));
+      final DateTime pastDate = DateTime.now().subtract(
+        const Duration(days: 1),
+      );
       const TimeOfDay validTime = TimeOfDay(hour: 14, minute: 0);
 
       final ValidationResult result = DateValidatorService.validateDateTime(
-          pastDate, validTime, 'Ciudad Autónoma de Buenos Aires');
+        pastDate,
+        validTime,
+        'Ciudad Autónoma de Buenos Aires',
+      );
 
       expect(result.isValid, false);
       expect(result.message, null);

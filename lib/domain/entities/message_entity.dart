@@ -2,19 +2,19 @@
 class MessageEntity {
   /// Identificador único del mensaje
   final String id;
-  
+
   /// Identificador del remitente del mensaje
   final String senderId;
-  
+
   /// Contenido del mensaje
   final String content;
-  
+
   /// Momento en que se envió el mensaje
   final DateTime timestamp;
-  
+
   /// Indica si el mensaje ha sido leído
   final bool read;
-  
+
   /// Constructor
   MessageEntity({
     required this.id,
@@ -23,7 +23,7 @@ class MessageEntity {
     required this.timestamp,
     required this.read,
   });
-  
+
   /// Crear una copia de esta entidad con campos específicos modificados
   MessageEntity copyWith({
     String? id,

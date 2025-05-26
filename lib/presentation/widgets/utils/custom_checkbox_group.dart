@@ -45,9 +45,9 @@ class _CustomCheckboxGroupState extends State<CustomCheckboxGroup> {
           onSelected: (final _) => _toggleSelection(option),
           selectedColor: AppColors.brandYellow,
           backgroundColor: AppColors.darkSecondaryBackground,
-          labelStyle: AppTypography.bodyMedium(true).copyWith(
-            color: isSelected ? AppColors.brandYellow : Colors.white,
-          ),
+          labelStyle: AppTypography.bodyMedium(
+            true,
+          ).copyWith(color: isSelected ? AppColors.brandYellow : Colors.white),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
             side: BorderSide(

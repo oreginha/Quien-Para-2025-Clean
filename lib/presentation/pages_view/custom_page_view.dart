@@ -42,8 +42,9 @@ class _CustomPageViewState extends State<CustomPageView> {
   Widget build(final BuildContext context) {
     return PageView(
       controller: _pageController,
-      physics:
-          widget.disableSwipe ? const NeverScrollableScrollPhysics() : null,
+      physics: widget.disableSwipe
+          ? const NeverScrollableScrollPhysics()
+          : null,
       onPageChanged: widget.onPageChanged,
       children: widget.pages,
     );

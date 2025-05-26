@@ -28,7 +28,8 @@ Future<void> main() async {
     print('\n=== Proceso completado con éxito ===');
     print('Las colecciones han sido creadas en Firebase.');
     print(
-        'Se ha generado un archivo JSON con la estructura en la carpeta firebase_export.');
+      'Se ha generado un archivo JSON con la estructura en la carpeta firebase_export.',
+    );
   } catch (e) {
     print('\n=== ERROR ===');
     print('Ocurrió un error durante la inicialización: $e');

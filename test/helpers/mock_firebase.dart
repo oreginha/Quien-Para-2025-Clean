@@ -47,8 +47,9 @@ class MockDocumentReferenceImpl
   final Map<String, dynamic> _data = <String, dynamic>{'id': 'test_doc'};
 
   @override
-  Future<DocumentSnapshot<Map<String, dynamic>>> get(
-      [GetOptions? options]) async {
+  Future<DocumentSnapshot<Map<String, dynamic>>> get([
+    GetOptions? options,
+  ]) async {
     return Future.value(MockDocumentSnapshotImpl());
   }
 
@@ -121,7 +122,8 @@ class MockCollectionReferenceImpl
 
   @override
   Future<DocumentReference<Map<String, dynamic>>> add(
-      Map<String, dynamic> data) async {
+    Map<String, dynamic> data,
+  ) async {
     return MockDocumentReferenceImpl();
   }
 
@@ -173,36 +175,38 @@ class MockCollectionReferenceImpl
 
   // This is for newer versions of Firestore
   @override
-  AggregateQuery aggregate(AggregateField aggregateField,
-      [AggregateField? field2,
-      AggregateField? field3,
-      AggregateField? field4,
-      AggregateField? field5,
-      AggregateField? field6,
-      AggregateField? field7,
-      AggregateField? field8,
-      AggregateField? field9,
-      AggregateField? field10,
-      AggregateField? field11,
-      AggregateField? field12,
-      AggregateField? field13,
-      AggregateField? field14,
-      AggregateField? field15,
-      AggregateField? field16,
-      AggregateField? field17,
-      AggregateField? field18,
-      AggregateField? field19,
-      AggregateField? field20,
-      AggregateField? field21,
-      AggregateField? field22,
-      AggregateField? field23,
-      AggregateField? field24,
-      AggregateField? field25,
-      AggregateField? field26,
-      AggregateField? field27,
-      AggregateField? field28,
-      AggregateField? field29,
-      AggregateField? field30]) {
+  AggregateQuery aggregate(
+    AggregateField aggregateField, [
+    AggregateField? field2,
+    AggregateField? field3,
+    AggregateField? field4,
+    AggregateField? field5,
+    AggregateField? field6,
+    AggregateField? field7,
+    AggregateField? field8,
+    AggregateField? field9,
+    AggregateField? field10,
+    AggregateField? field11,
+    AggregateField? field12,
+    AggregateField? field13,
+    AggregateField? field14,
+    AggregateField? field15,
+    AggregateField? field16,
+    AggregateField? field17,
+    AggregateField? field18,
+    AggregateField? field19,
+    AggregateField? field20,
+    AggregateField? field21,
+    AggregateField? field22,
+    AggregateField? field23,
+    AggregateField? field24,
+    AggregateField? field25,
+    AggregateField? field26,
+    AggregateField? field27,
+    AggregateField? field28,
+    AggregateField? field29,
+    AggregateField? field30,
+  ]) {
     throw UnimplementedError();
   }
 
@@ -223,19 +227,22 @@ class MockCollectionReferenceImpl
 
   @override
   Query<Map<String, dynamic>> endAtDocument(
-      DocumentSnapshot<Object?> documentSnapshot) {
+    DocumentSnapshot<Object?> documentSnapshot,
+  ) {
     return this;
   }
 
   @override
   Query<Map<String, dynamic>> endBeforeDocument(
-      DocumentSnapshot<Object?> documentSnapshot) {
+    DocumentSnapshot<Object?> documentSnapshot,
+  ) {
     return this;
   }
 
   @override
-  Future<QuerySnapshot<Map<String, dynamic>>> getDocuments(
-      [GetOptions? options]) {
+  Future<QuerySnapshot<Map<String, dynamic>>> getDocuments([
+    GetOptions? options,
+  ]) {
     return get(options);
   }
 
@@ -256,13 +263,15 @@ class MockCollectionReferenceImpl
 
   @override
   Query<Map<String, dynamic>> startAfterDocument(
-      DocumentSnapshot<Object?> documentSnapshot) {
+    DocumentSnapshot<Object?> documentSnapshot,
+  ) {
     return this;
   }
 
   @override
   Query<Map<String, dynamic>> startAtDocument(
-      DocumentSnapshot<Object?> documentSnapshot) {
+    DocumentSnapshot<Object?> documentSnapshot,
+  ) {
     return this;
   }
 
@@ -285,8 +294,9 @@ class MockCollectionReferenceImpl
 
 class MockQuerySnapshot implements QuerySnapshot<Map<String, dynamic>> {
   @override
-  List<QueryDocumentSnapshot<Map<String, dynamic>>> get docs =>
-      [MockQueryDocumentSnapshot()];
+  List<QueryDocumentSnapshot<Map<String, dynamic>>> get docs => [
+    MockQueryDocumentSnapshot(),
+  ];
 
   @override
   List<DocumentChange<Map<String, dynamic>>> get docChanges => [];

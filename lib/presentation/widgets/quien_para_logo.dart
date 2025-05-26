@@ -39,11 +39,13 @@ class LogoPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = Color(0xFFFF6F61) // Naranja (#FF6F61)
+      ..color =
+          Color(0xFFFF6F61) // Naranja (#FF6F61)
       ..style = PaintingStyle.fill;
 
     final Paint paintBlue = Paint()
-      ..color = Color(0xFF4FC3F7) // Azul claro (#4FC3F7)
+      ..color =
+          Color(0xFF4FC3F7) // Azul claro (#4FC3F7)
       ..style = PaintingStyle.fill;
 
     final Paint paintWhite = Paint()
@@ -70,9 +72,15 @@ class LogoPainter extends CustomPainter {
 
     // Dibujar los puntos dentro del círculo
     canvas.drawCircle(
-        Offset(size.width * 0.3, size.height * 0.5), 8, paintWhite);
+      Offset(size.width * 0.3, size.height * 0.5),
+      8,
+      paintWhite,
+    );
     canvas.drawCircle(
-        Offset(size.width * 0.7, size.height * 0.5), 8, paintWhite);
+      Offset(size.width * 0.7, size.height * 0.5),
+      8,
+      paintWhite,
+    );
 
     // Dibujar la línea curva que conecta los puntos
     final Path path = Path();

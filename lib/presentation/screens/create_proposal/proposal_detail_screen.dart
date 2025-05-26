@@ -46,9 +46,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
 
         if (state is PlanLoaded) {
           if (state.plan.conditions.isEmpty) {
-            BlocProvider.of<PlanBloc>(context).add(
-              PlanEvent.updateSelectedOptions(widget.initialConditions!),
-            );
+            BlocProvider.of<PlanBloc>(
+              context,
+            ).add(PlanEvent.updateSelectedOptions(widget.initialConditions!));
           }
         }
       }
@@ -75,10 +75,12 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
       }
 
       if (planId != null && planId.isNotEmpty) {
-        final PlanRepository repository =
-            Provider.of<PlanRepository>(context, listen: false);
-        final Either<AppFailure, PlanEntity?> planEntity =
-            await repository.getById(planId);
+        final PlanRepository repository = Provider.of<PlanRepository>(
+          context,
+          listen: false,
+        );
+        final Either<AppFailure, PlanEntity?> planEntity = await repository
+            .getById(planId);
 
         planBloc.add(PlanEvent.updateField(field: 'plan', value: planEntity));
 
@@ -138,7 +140,8 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: const Text(
-                    'Error: Plan incompleto, vuelve a completar las condiciones'),
+                  'Error: Plan incompleto, vuelve a completar las condiciones',
+                ),
                 backgroundColor: AppColors.accentRed,
               ),
             );
@@ -149,8 +152,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             backgroundColor: AppColors.getBackground(isDarkMode),
             body: Center(
               child: CircularProgressIndicator(
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(AppColors.brandYellow),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  AppColors.brandYellow,
+                ),
               ),
             ),
           );
@@ -166,8 +170,10 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
               style: AppTypography.appBarTitle(isDarkMode),
             ),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back,
-                  color: AppColors.getTextPrimary(isDarkMode)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: AppColors.getTextPrimary(isDarkMode),
+              ),
               onPressed: () => Navigator.pop(context),
             ),
             actions: <Widget>[
@@ -197,11 +203,13 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(AppSpacing.s),
                         color: AppColors.accentRed.withAlpha(
-                            179), // Actualizado desde withOpacity(0.7)
+                          179,
+                        ), // Actualizado desde withOpacity(0.7)
                         child: Text(
                           'Error: $_errorMessage',
-                          style: AppTypography.bodyMedium(isDarkMode)
-                              .copyWith(color: Colors.white),
+                          style: AppTypography.bodyMedium(
+                            isDarkMode,
+                          ).copyWith(color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -244,8 +252,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                 Icons.calendar_today,
                                 'Fecha',
                                 plan.date != null
-                                    ? DateFormat('dd/MM/yyyy')
-                                        .format(plan.date!)
+                                    ? DateFormat(
+                                        'dd/MM/yyyy',
+                                      ).format(plan.date!)
                                     : 'No especificada',
                                 isDarkMode,
                               ),
@@ -266,16 +275,17 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                               'Condiciones',
                               isDarkMode,
                               children: <Widget>[
-                                ..._getMainConditions(plan.conditions)
-                                    .toList()
-                                    .map((final MapEntry<String, dynamic>
-                                            entry) =>
-                                        _buildDetailRow(
-                                          Icons.check_circle_outline,
-                                          entry.key,
-                                          entry.value.toString(),
-                                          isDarkMode,
-                                        )),
+                                ..._getMainConditions(
+                                  plan.conditions,
+                                ).toList().map(
+                                  (final MapEntry<String, dynamic> entry) =>
+                                      _buildDetailRow(
+                                        Icons.check_circle_outline,
+                                        entry.key,
+                                        entry.value.toString(),
+                                        isDarkMode,
+                                      ),
+                                ),
                               ],
                             ),
 
@@ -289,10 +299,11 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                   plan.conditions['extraConditions'].toString(),
                                   style: AppTypography.bodyMedium(isDarkMode)
                                       .copyWith(
-                                    color:
-                                        AppColors.getTextSecondary(isDarkMode),
-                                    height: 1.5,
-                                  ),
+                                        color: AppColors.getTextSecondary(
+                                          isDarkMode,
+                                        ),
+                                        height: 1.5,
+                                      ),
                                 ),
                               ],
                             ),
@@ -318,15 +329,19 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                               ? null
                               : () => Navigator.pop(context),
                           style: OutlinedButton.styleFrom(
-                            foregroundColor:
-                                AppColors.getTextPrimary(isDarkMode),
+                            foregroundColor: AppColors.getTextPrimary(
+                              isDarkMode,
+                            ),
                             side: BorderSide(
-                                color: AppColors.getTextPrimary(isDarkMode)),
+                              color: AppColors.getTextPrimary(isDarkMode),
+                            ),
                             padding: const EdgeInsets.symmetric(
-                                vertical: AppSpacing.m),
+                              vertical: AppSpacing.m,
+                            ),
                             shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppRadius.button),
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.button,
+                              ),
                             ),
                           ),
                           child: const Text('Editar'),
@@ -349,7 +364,8 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
 
                                     // Esperar a que se complete la operación
                                     await Future.delayed(
-                                        const Duration(seconds: 3));
+                                      const Duration(seconds: 3),
+                                    );
 
                                     if (!mounted) return;
 
@@ -361,7 +377,8 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                       _isSavingInProgress = false;
                                     });
                                     _showErrorSnackbar(
-                                        'Error al guardar el plan: ${e.toString()}');
+                                      'Error al guardar el plan: ${e.toString()}',
+                                    );
                                   }
                                 },
                           style: ElevatedButton.styleFrom(
@@ -370,13 +387,16 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                 ? Colors.black
                                 : AppColors.lightTextPrimary,
                             padding: const EdgeInsets.symmetric(
-                                vertical: AppSpacing.m),
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(AppRadius.button),
+                              vertical: AppSpacing.m,
                             ),
-                            disabledBackgroundColor:
-                                AppColors.getTextSecondary(isDarkMode),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.button,
+                              ),
+                            ),
+                            disabledBackgroundColor: AppColors.getTextSecondary(
+                              isDarkMode,
+                            ),
                           ),
                           child: _isSavingInProgress
                               ? SizedBox(
@@ -385,9 +405,10 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2,
                                     valueColor: AlwaysStoppedAnimation<Color>(
-                                        isDarkMode
-                                            ? Colors.black
-                                            : AppColors.lightTextPrimary),
+                                      isDarkMode
+                                          ? Colors.black
+                                          : AppColors.lightTextPrimary,
+                                    ),
                                   ),
                                 )
                               : const Text('Publicar Plan'),
@@ -425,9 +446,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             const SizedBox(height: AppSpacing.l),
             Text(
               'Cargando datos del plan...',
-              style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.bodyLarge(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
             ),
           ],
         ),
@@ -457,32 +478,41 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             Image.network(
               imageUrl,
               fit: BoxFit.cover,
-              errorBuilder: (final BuildContext context, final Object error,
-                  final StackTrace? stackTrace) {
-                return _buildPlaceholderImage(plan, isDarkMode);
-              },
-              loadingBuilder: (final BuildContext context, final Widget child,
-                  final ImageChunkEvent? loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Stack(
-                  fit: StackFit.expand,
-                  children: <Widget>[
-                    _buildPlaceholderImage(plan, isDarkMode),
-                    Center(
-                      child: CircularProgressIndicator(
-                        value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded /
-                                (loadingProgress.expectedTotalBytes ?? 1)
-                            : null,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            AppColors.brandYellow),
-                      ),
-                    ),
-                  ],
-                );
-              },
+              errorBuilder:
+                  (
+                    final BuildContext context,
+                    final Object error,
+                    final StackTrace? stackTrace,
+                  ) {
+                    return _buildPlaceholderImage(plan, isDarkMode);
+                  },
+              loadingBuilder:
+                  (
+                    final BuildContext context,
+                    final Widget child,
+                    final ImageChunkEvent? loadingProgress,
+                  ) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+                    return Stack(
+                      fit: StackFit.expand,
+                      children: <Widget>[
+                        _buildPlaceholderImage(plan, isDarkMode),
+                        Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                      (loadingProgress.expectedTotalBytes ?? 1)
+                                : null,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              AppColors.brandYellow,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
             )
           else
             _buildPlaceholderImage(plan, isDarkMode),
@@ -495,8 +525,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                 end: Alignment.bottomCenter,
                 colors: <Color>[
                   Colors.transparent,
-                  Colors.black
-                      .withAlpha(179), // Actualizado desde withOpacity(0.7)
+                  Colors.black.withAlpha(
+                    179,
+                  ), // Actualizado desde withOpacity(0.7)
                 ],
               ),
             ),
@@ -519,8 +550,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                 child: Text(
                   plan.category,
                   style: AppTypography.labelMedium(isDarkMode).copyWith(
-                    color:
-                        isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+                    color: isDarkMode
+                        ? Colors.black
+                        : AppColors.lightTextPrimary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -536,8 +568,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
     final Color color = Color(0xFF000000 + (colorValue & 0xFFFFFF));
 
     final String title = plan.title.isNotEmpty ? plan.title : 'Plan sin título';
-    final String category =
-        plan.category.isNotEmpty ? plan.category : 'Sin categoría';
+    final String category = plan.category.isNotEmpty
+        ? plan.category
+        : 'Sin categoría';
 
     return Container(
       color: color,
@@ -548,17 +581,18 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             Icon(
               _getCategoryIcon(plan.category),
               size: 64,
-              color: Colors.white
-                  .withAlpha(179), // Actualizado desde withOpacity(0.7)
+              color: Colors.white.withAlpha(
+                179,
+              ), // Actualizado desde withOpacity(0.7)
             ),
             const SizedBox(height: AppSpacing.m),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
               child: Text(
                 title,
-                style: AppTypography.heading4(isDarkMode).copyWith(
-                  color: Colors.white,
-                ),
+                style: AppTypography.heading4(
+                  isDarkMode,
+                ).copyWith(color: Colors.white),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -568,8 +602,9 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             Text(
               category,
               style: AppTypography.bodyLarge(isDarkMode).copyWith(
-                color: Colors.white
-                    .withAlpha(179), // Actualizado desde withOpacity(0.7)
+                color: Colors.white.withAlpha(
+                  179,
+                ), // Actualizado desde withOpacity(0.7)
               ),
             ),
           ],
@@ -608,9 +643,7 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext dialogContext) {
-        return SuccessPlanModal(
-          planTitle: title,
-        );
+        return SuccessPlanModal(planTitle: title);
       },
     );
   }
@@ -660,16 +693,19 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
     );
   }
 
-  Widget _buildSection(final String title, bool isDarkMode,
-      {required final List<Widget> children}) {
+  Widget _buildSection(
+    final String title,
+    bool isDarkMode, {
+    required final List<Widget> children,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           title,
-          style: AppTypography.heading5(isDarkMode).copyWith(
-            color: AppColors.brandYellow,
-          ),
+          style: AppTypography.heading5(
+            isDarkMode,
+          ).copyWith(color: AppColors.brandYellow),
         ),
         const SizedBox(height: AppSpacing.m),
         ...children,
@@ -678,8 +714,12 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
     );
   }
 
-  Widget _buildDetailRow(final IconData icon, final String label,
-      final String value, bool isDarkMode) {
+  Widget _buildDetailRow(
+    final IconData icon,
+    final String label,
+    final String value,
+    bool isDarkMode,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.m),
       child: Row(
@@ -692,14 +732,11 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
               children: <Widget>[
                 Text(
                   label,
-                  style: AppTypography.labelMedium(isDarkMode).copyWith(
-                    color: AppColors.getTextSecondary(isDarkMode),
-                  ),
+                  style: AppTypography.labelMedium(
+                    isDarkMode,
+                  ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
                 ),
-                Text(
-                  value,
-                  style: AppTypography.bodyLarge(isDarkMode),
-                ),
+                Text(value, style: AppTypography.bodyLarge(isDarkMode)),
               ],
             ),
           ),
@@ -709,13 +746,16 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
   }
 
   List<MapEntry<String, dynamic>> _getMainConditions(
-      final Map<String, dynamic> conditions) {
+    final Map<String, dynamic> conditions,
+  ) {
     return conditions.entries
-        .where((final MapEntry<String, dynamic> entry) =>
-            entry.key != 'extraConditions' &&
-            entry.key != 'dateSelectionType' &&
-            entry.key != 'startDate' &&
-            entry.key != 'endDate')
+        .where(
+          (final MapEntry<String, dynamic> entry) =>
+              entry.key != 'extraConditions' &&
+              entry.key != 'dateSelectionType' &&
+              entry.key != 'startDate' &&
+              entry.key != 'endDate',
+        )
         .toList();
   }
 

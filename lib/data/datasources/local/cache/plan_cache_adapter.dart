@@ -15,11 +15,11 @@ class PlanCacheAdapter implements PlanCacheInterface {
 
   /// Constructor
   PlanCacheAdapter()
-      : _cache = GenericCompressedCache<PlanEntity>(
-          cacheName: 'plans',
-          serializeCallback: (plan) => jsonEncode(plan.toJson()),
-          deserializeCallback: (json) => PlanEntity.fromJson(jsonDecode(json)),
-        ) {
+    : _cache = GenericCompressedCache<PlanEntity>(
+        cacheName: 'plans',
+        serializeCallback: (plan) => jsonEncode(plan.toJson()),
+        deserializeCallback: (json) => PlanEntity.fromJson(jsonDecode(json)),
+      ) {
     // Configurar opciones del caché
     _cache.setDefaultCacheDuration(const Duration(minutes: 15));
     _cache.setPriorityCacheDuration(const Duration(minutes: 30));
@@ -42,10 +42,16 @@ class PlanCacheAdapter implements PlanCacheInterface {
   }
 
   @override
-  Future<void> cacheCategoryPlans(String category, List<PlanEntity> plans,
-      {bool isPriority = false}) {
-    return _cache.cacheItems(plans,
-        isPriority: isPriority, collectionKey: 'category_$category');
+  Future<void> cacheCategoryPlans(
+    String category,
+    List<PlanEntity> plans, {
+    bool isPriority = false,
+  }) {
+    return _cache.cacheItems(
+      plans,
+      isPriority: isPriority,
+      collectionKey: 'category_$category',
+    );
   }
 
   @override
@@ -54,15 +60,21 @@ class PlanCacheAdapter implements PlanCacheInterface {
   }
 
   @override
-  Future<List<PlanEntity>?> getCategoryPlans(String category,
-      {bool isPriority = false}) {
+  Future<List<PlanEntity>?> getCategoryPlans(
+    String category, {
+    bool isPriority = false,
+  }) {
     return _cache.getCachedItems(
-        isPriority: isPriority, collectionKey: 'category_$category');
+      isPriority: isPriority,
+      collectionKey: 'category_$category',
+    );
   }
 
   @override
   Future<void> storeOtherUserPlans(
-      String currentUserId, List<PlanEntity> plans) {
+    String currentUserId,
+    List<PlanEntity> plans,
+  ) {
     return _cache.cacheItems(
       plans,
       collectionKey: 'other_user_$currentUserId',

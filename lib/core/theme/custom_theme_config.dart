@@ -9,8 +9,12 @@ class CustomThemeConfig {
   static const String _useCustomColorsKey = 'use_custom_colors';
 
   // Colores por defecto - usando valores directos para evitar dependencia circular
-  Color _brandYellow = const Color(0xFFFFC107); // Mismo valor que AppColors._defaultBrandYellow
-  Color _accentColor = const Color(0xFFE53E3E); // Mismo valor que AppColors._defaultAccentRed
+  Color _brandYellow = const Color(
+    0xFFFFC107,
+  ); // Mismo valor que AppColors._defaultBrandYellow
+  Color _accentColor = const Color(
+    0xFFE53E3E,
+  ); // Mismo valor que AppColors._defaultAccentRed
   bool _useCustomColors = false;
 
   // Singleton
@@ -56,26 +60,28 @@ class CustomThemeConfig {
   Future<void> setPrimaryColor(Color color) async {
     _brandYellow = color;
     await _saveColorPreference(
-        _brandYellowKey,
-        Color.fromARGB(
-          color.a.round(),
-          color.r.round(),
-          color.g.round(),
-          color.b.round(),
-        ));
+      _brandYellowKey,
+      Color.fromARGB(
+        color.a.round(),
+        color.r.round(),
+        color.g.round(),
+        color.b.round(),
+      ),
+    );
   }
 
   /// Establecer un nuevo color de acento personalizado
   Future<void> setAccentColor(Color color) async {
     _accentColor = color;
     await _saveColorPreference(
-        _accentColorKey,
-        Color.fromARGB(
-          color.a.round(),
-          color.r.round(),
-          color.g.round(),
-          color.b.round(),
-        ));
+      _accentColorKey,
+      Color.fromARGB(
+        color.a.round(),
+        color.r.round(),
+        color.g.round(),
+        color.b.round(),
+      ),
+    );
   }
 
   /// Activar o desactivar el uso de colores personalizados
@@ -94,11 +100,12 @@ class CustomThemeConfig {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setInt(
-          key,
-          (color.a.round() << 24) |
-              (color.r.round() << 16) |
-              (color.g.round() << 8) |
-              color.b.round());
+        key,
+        (color.a.round() << 24) |
+            (color.r.round() << 16) |
+            (color.g.round() << 8) |
+            color.b.round(),
+      );
     } catch (e) {
       debugPrint('Error guardando preferencia de color: $e');
     }

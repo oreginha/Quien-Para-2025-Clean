@@ -11,11 +11,11 @@ class FcmTokenService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late final NotificationServiceInterface _notificationService;
-  
+
   // Variables para control de estado
   bool _isProcessingToken = false;
   String? _cachedToken;
-  
+
   // Singleton pattern
   static final FcmTokenService _instance = FcmTokenService._internal();
   factory FcmTokenService(NotificationServiceInterface notificationService) {
@@ -34,9 +34,9 @@ class FcmTokenService {
       }
       return;
     }
-    
+
     _isProcessingToken = true;
-    
+
     // Ejecutar en segundo plano para no bloquear la UI
     Future<void>.microtask(() async {
       try {
@@ -50,9 +50,10 @@ class FcmTokenService {
         }
 
         // Usar token en caché si está disponible para respuesta inmediata
-        final String? token = _cachedToken ?? await _notificationService.getToken();
+        final String? token =
+            _cachedToken ?? await _notificationService.getToken();
         _cachedToken = token; // Guardar en caché para usos futuros
-        
+
         if (token == null || token.isEmpty) {
           if (kDebugMode) {
             print('No se pudo obtener token FCM');
@@ -124,10 +125,10 @@ class FcmTokenService {
       }
       return;
     }
-    
+
     // Usar token en caché si está disponible para respuesta inmediata
     final String? token = _cachedToken ?? await _notificationService.getToken();
-    
+
     // Si no hay token, no hay nada que hacer
     if (token == null || token.isEmpty) {
       if (kDebugMode) {
@@ -135,7 +136,7 @@ class FcmTokenService {
       }
       return;
     }
-    
+
     // Ejecutar en segundo plano para no bloquear la UI
     Future<void>.microtask(() async {
       try {
@@ -167,7 +168,7 @@ class FcmTokenService {
             }
           }
         }
-        
+
         // Limpiar caché de token
         _cachedToken = null;
       } catch (e) {
@@ -231,13 +232,13 @@ class FcmTokenService {
       }
     }
   }
-  
+
   /// Obtiene el token FCM actual (desde caché si está disponible)
   Future<String?> getToken() async {
     if (_cachedToken != null) {
       return _cachedToken;
     }
-    
+
     final String? token = await _notificationService.getToken();
     _cachedToken = token;
     return token;

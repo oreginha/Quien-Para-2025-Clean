@@ -27,8 +27,9 @@ class CalculateUserRatingUseCase {
 
       // Si se solicita recálculo completo, hacerlo
       if (params.forceRecalculation) {
-        final recalculatedResult =
-            await repository.recalculateUserRating(params.userId);
+        final recalculatedResult = await repository.recalculateUserRating(
+          params.userId,
+        );
 
         if (recalculatedResult.isLeft()) {
           return Left((recalculatedResult as Left).value);
@@ -36,17 +37,19 @@ class CalculateUserRatingUseCase {
 
         final newRating = (recalculatedResult as Right).value;
 
-        return Right(UserRatingCalculationResult(
-          previousRating: currentRating,
-          newRating: newRating,
-          changeInRating: currentRating != null
-              ? newRating.averageRating - currentRating.averageRating
-              : newRating.averageRating,
-          isImprovement: currentRating != null
-              ? newRating.averageRating > currentRating.averageRating
-              : true,
-          recalculated: true,
-        ));
+        return Right(
+          UserRatingCalculationResult(
+            previousRating: currentRating,
+            newRating: newRating,
+            changeInRating: currentRating != null
+                ? newRating.averageRating - currentRating.averageRating
+                : newRating.averageRating,
+            isImprovement: currentRating != null
+                ? newRating.averageRating > currentRating.averageRating
+                : true,
+            recalculated: true,
+          ),
+        );
       }
 
       // Si hay nueva calificación, actualizar incrementalmente
@@ -58,8 +61,9 @@ class CalculateUserRatingUseCase {
         );
 
         // Obtener el rating actualizado
-        final updatedRatingResult =
-            await repository.getUserRating(params.userId);
+        final updatedRatingResult = await repository.getUserRating(
+          params.userId,
+        );
 
         if (updatedRatingResult.isLeft()) {
           return Left((updatedRatingResult as Left).value);
@@ -67,28 +71,32 @@ class CalculateUserRatingUseCase {
 
         final updatedRating = (updatedRatingResult as Right).value;
 
-        return Right(UserRatingCalculationResult(
-          previousRating: currentRating,
-          newRating: updatedRating,
-          changeInRating: currentRating != null
-              ? updatedRating.averageRating - currentRating.averageRating
-              : updatedRating.averageRating,
-          isImprovement: currentRating != null
-              ? updatedRating.averageRating > currentRating.averageRating
-              : true,
-          recalculated: false,
-        ));
+        return Right(
+          UserRatingCalculationResult(
+            previousRating: currentRating,
+            newRating: updatedRating,
+            changeInRating: currentRating != null
+                ? updatedRating.averageRating - currentRating.averageRating
+                : updatedRating.averageRating,
+            isImprovement: currentRating != null
+                ? updatedRating.averageRating > currentRating.averageRating
+                : true,
+            recalculated: false,
+          ),
+        );
       }
 
       // Solo devolver rating actual sin cambios
       if (currentRating != null) {
-        return Right(UserRatingCalculationResult(
-          previousRating: null,
-          newRating: currentRating,
-          changeInRating: 0.0,
-          isImprovement: false,
-          recalculated: false,
-        ));
+        return Right(
+          UserRatingCalculationResult(
+            previousRating: null,
+            newRating: currentRating,
+            changeInRating: 0.0,
+            isImprovement: false,
+            recalculated: false,
+          ),
+        );
       }
 
       return Left(NotFoundFailure('Rating de usuario no encontrado'));
@@ -99,7 +107,8 @@ class CalculateUserRatingUseCase {
 
   /// Método de conveniencia para obtener solo el rating actual
   Future<Either<Failure, UserRatingEntity>> getCurrentRating(
-      String userId) async {
+    String userId,
+  ) async {
     if (userId.isEmpty) {
       return Left(ValidationFailure('ID de usuario requerido'));
     }
@@ -127,17 +136,20 @@ class CalculateUserRatingUseCase {
 
         if (ratingResult.isRight()) {
           final rating = (ratingResult as Right).value;
-          comparisons.add(UserRatingComparison(
-            userId: userId,
-            rating: rating,
-            rank: 0, // Se calculará después
-          ));
+          comparisons.add(
+            UserRatingComparison(
+              userId: userId,
+              rating: rating,
+              rank: 0, // Se calculará después
+            ),
+          );
         }
       }
 
       // Ordenar por rating y asignar ranks
       comparisons.sort(
-          (a, b) => b.rating.averageRating.compareTo(a.rating.averageRating));
+        (a, b) => b.rating.averageRating.compareTo(a.rating.averageRating),
+      );
 
       for (int i = 0; i < comparisons.length; i++) {
         comparisons[i] = comparisons[i].copyWith(rank: i + 1);

@@ -87,7 +87,8 @@ class _SelectiveBuilderState<B extends StateStreamable<S>, S, T>
         // Solo escuchamos para actualizar _selectedValue,
         // la reconstrucción ocurre con el setState en el listener
         setState(
-            () {}); // Forzar la reconstrucción cuando cambie el valor seleccionado
+          () {},
+        ); // Forzar la reconstrucción cuando cambie el valor seleccionado
       },
       child: Builder(
         builder: (context) => widget.builder(context, _selectedValue),

@@ -17,8 +17,9 @@ class CreateReportUseCase {
     }
 
     if (params.description.trim().length < 10) {
-      return Left(ValidationFailure(
-          'La descripción debe tener al menos 10 caracteres'));
+      return Left(
+        ValidationFailure('La descripción debe tener al menos 10 caracteres'),
+      );
     }
 
     // Verificar si ya existe un reporte similar reciente
@@ -28,30 +29,28 @@ class CreateReportUseCase {
       hours: 24,
     );
 
-    return existingReports.fold(
-      (failure) => Left(failure),
-      (reports) async {
-        if (reports.isNotEmpty) {
-          return Left(ValidationFailure(
-              'Ya has reportado a este usuario recientemente'));
-        }
-
-        // Crear el reporte
-        final report = ReportEntity(
-          id: DateTime.now().millisecondsSinceEpoch.toString(),
-          reporterId: params.reporterId,
-          reportedUserId: params.reportedUserId,
-          reportedPlanId: params.reportedPlanId,
-          type: params.type,
-          reason: params.reason,
-          description: params.description,
-          createdAt: DateTime.now(),
-          evidence: params.evidence,
+    return existingReports.fold((failure) => Left(failure), (reports) async {
+      if (reports.isNotEmpty) {
+        return Left(
+          ValidationFailure('Ya has reportado a este usuario recientemente'),
         );
+      }
 
-        return await _repository.createReport(report);
-      },
-    );
+      // Crear el reporte
+      final report = ReportEntity(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        reporterId: params.reporterId,
+        reportedUserId: params.reportedUserId,
+        reportedPlanId: params.reportedPlanId,
+        type: params.type,
+        reason: params.reason,
+        description: params.description,
+        createdAt: DateTime.now(),
+        evidence: params.evidence,
+      );
+
+      return await _repository.createReport(report);
+    });
   }
 }
 

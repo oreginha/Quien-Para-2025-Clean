@@ -53,10 +53,7 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
       backgroundColor: AppColors.getBackground(isDarkMode),
       elevation: 0,
       centerTitle: true,
-      title: Text(
-        'Mensajes',
-        style: AppTypography.appBarTitle(isDarkMode),
-      ),
+      title: Text('Mensajes', style: AppTypography.appBarTitle(isDarkMode)),
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back,
@@ -72,15 +69,13 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
       ),
       actions: [
         IconButton(
-          icon: Icon(
-            Icons.add_comment,
-            color: AppColors.brandYellow,
-          ),
+          icon: Icon(Icons.add_comment, color: AppColors.brandYellow),
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content:
-                    const Text('Función de nueva conversación próximamente'),
+                content: const Text(
+                  'Función de nueva conversación próximamente',
+                ),
                 backgroundColor: AppColors.brandYellow,
                 behavior: SnackBarBehavior.floating,
               ),
@@ -122,8 +117,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
             onPressed: () => context.go(AppRouter.login),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor:
-                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+              foregroundColor: isDarkMode
+                  ? Colors.black
+                  : AppColors.lightTextPrimary,
             ),
             child: const Text('Iniciar Sesión'),
           ),
@@ -163,9 +159,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
           const SizedBox(height: AppSpacing.m),
           Text(
             'Cargando conversaciones...',
-            style: AppTypography.bodyMedium(isDarkMode).copyWith(
-              color: AppColors.getTextSecondary(isDarkMode),
-            ),
+            style: AppTypography.bodyMedium(
+              isDarkMode,
+            ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
           ),
         ],
       ),
@@ -177,11 +173,7 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 60,
-            color: AppColors.accentRed,
-          ),
+          Icon(Icons.error_outline, size: 60, color: AppColors.accentRed),
           const SizedBox(height: AppSpacing.m),
           Text(
             'Error al cargar conversaciones',
@@ -193,9 +185,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
             child: Text(
               error,
-              style: AppTypography.bodySmall(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.bodySmall(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               textAlign: TextAlign.center,
             ),
           ),
@@ -204,8 +196,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
             onPressed: _loadConversations,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor:
-                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+              foregroundColor: isDarkMode
+                  ? Colors.black
+                  : AppColors.lightTextPrimary,
             ),
             child: const Text('Reintentar'),
           ),
@@ -222,8 +215,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
           Container(
             padding: const EdgeInsets.all(AppSpacing.l),
             decoration: BoxDecoration(
-              color:
-                  AppColors.getSecondaryBackground(isDarkMode).withOpacity(0.3),
+              color: AppColors.getSecondaryBackground(
+                isDarkMode,
+              ).withOpacity(0.3),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -242,9 +236,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
             child: Text(
               'Cuando inicies una conversación, aparecerá aquí.',
-              style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                color: AppColors.getTextSecondary(isDarkMode),
-              ),
+              style: AppTypography.bodyMedium(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
               textAlign: TextAlign.center,
             ),
           ),
@@ -254,7 +248,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
   }
 
   Widget _buildConversationsList(
-      List<Map<String, dynamic>> conversations, bool isDarkMode) {
+    List<Map<String, dynamic>> conversations,
+    bool isDarkMode,
+  ) {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.s),
       itemCount: conversations.length,
@@ -270,8 +266,9 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
           otherParticipantPhoto:
               conversation['otherParticipantPhoto'] as String?,
           lastMessage: conversation['lastMessage'] as String? ?? '',
-          lastMessageTimestamp:
-              _parseTimestamp(conversation['lastMessageTimestamp']),
+          lastMessageTimestamp: _parseTimestamp(
+            conversation['lastMessageTimestamp'],
+          ),
           unreadCount: conversation['unreadCount'] as int? ?? 0,
           isDarkMode: isDarkMode,
           onTap: () => _openConversation(
@@ -309,11 +306,14 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
     String otherUserName,
     String? otherUserPhoto,
   ) {
-    context.push('/chat/$conversationId', extra: {
-      'receiverId': otherUserId,
-      'receiverName': otherUserName,
-      'otherUserPhoto': otherUserPhoto,
-    });
+    context.push(
+      '/chat/$conversationId',
+      extra: {
+        'receiverId': otherUserId,
+        'receiverName': otherUserName,
+        'otherUserPhoto': otherUserPhoto,
+      },
+    );
   }
 }
 
@@ -388,13 +388,16 @@ class _ConversationCard extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                       radius: 24,
-                      backgroundColor:
-                          AppColors.getSecondaryBackground(isDarkMode),
-                      backgroundImage: otherParticipantPhoto != null &&
+                      backgroundColor: AppColors.getSecondaryBackground(
+                        isDarkMode,
+                      ),
+                      backgroundImage:
+                          otherParticipantPhoto != null &&
                               otherParticipantPhoto!.isNotEmpty
                           ? NetworkImage(otherParticipantPhoto!)
                           : null,
-                      child: otherParticipantPhoto == null ||
+                      child:
+                          otherParticipantPhoto == null ||
                               otherParticipantPhoto!.isEmpty
                           ? Text(
                               otherParticipantName.isNotEmpty
@@ -421,14 +424,15 @@ class _ConversationCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               otherParticipantName,
-                              style:
-                                  AppTypography.heading6(isDarkMode).copyWith(
-                                color: unreadCount > 0
-                                    ? AppColors.brandYellow
-                                    : null,
-                                fontWeight:
-                                    unreadCount > 0 ? FontWeight.bold : null,
-                              ),
+                              style: AppTypography.heading6(isDarkMode)
+                                  .copyWith(
+                                    color: unreadCount > 0
+                                        ? AppColors.brandYellow
+                                        : null,
+                                    fontWeight: unreadCount > 0
+                                        ? FontWeight.bold
+                                        : null,
+                                  ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -438,10 +442,12 @@ class _ConversationCard extends StatelessWidget {
                           if (formattedTime.isNotEmpty)
                             Text(
                               formattedTime,
-                              style:
-                                  AppTypography.bodySmall(isDarkMode).copyWith(
-                                color: AppColors.getTextSecondary(isDarkMode),
-                              ),
+                              style: AppTypography.bodySmall(isDarkMode)
+                                  .copyWith(
+                                    color: AppColors.getTextSecondary(
+                                      isDarkMode,
+                                    ),
+                                  ),
                             ),
                         ],
                       ),
@@ -456,15 +462,17 @@ class _ConversationCard extends StatelessWidget {
                               lastMessage.isNotEmpty
                                   ? lastMessage
                                   : 'No hay mensajes',
-                              style:
-                                  AppTypography.bodyMedium(isDarkMode).copyWith(
-                                color: unreadCount > 0
-                                    ? AppColors.getTextPrimary(isDarkMode)
-                                    : AppColors.getTextSecondary(isDarkMode),
-                                fontWeight: unreadCount > 0
-                                    ? FontWeight.w500
-                                    : FontWeight.normal,
-                              ),
+                              style: AppTypography.bodyMedium(isDarkMode)
+                                  .copyWith(
+                                    color: unreadCount > 0
+                                        ? AppColors.getTextPrimary(isDarkMode)
+                                        : AppColors.getTextSecondary(
+                                            isDarkMode,
+                                          ),
+                                    fontWeight: unreadCount > 0
+                                        ? FontWeight.w500
+                                        : FontWeight.normal,
+                                  ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -479,18 +487,19 @@ class _ConversationCard extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.brandYellow,
-                                borderRadius:
-                                    BorderRadius.circular(AppRadius.full),
+                                borderRadius: BorderRadius.circular(
+                                  AppRadius.full,
+                                ),
                               ),
                               child: Text(
                                 unreadCount.toString(),
                                 style: AppTypography.labelSmall(isDarkMode)
                                     .copyWith(
-                                  color: isDarkMode
-                                      ? Colors.black
-                                      : AppColors.lightTextPrimary,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                      color: isDarkMode
+                                          ? Colors.black
+                                          : AppColors.lightTextPrimary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                             ),
                           ],

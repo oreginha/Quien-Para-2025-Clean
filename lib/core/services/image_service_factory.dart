@@ -13,7 +13,7 @@ class ImageServiceFactory {
       // En web, usar la implementación compatible con web
       return ImageServiceWeb();
     } else {
-      // En móvil, usar la implementación completa 
+      // En móvil, usar la implementación completa
       return ImageServiceMobile();
     }
   }

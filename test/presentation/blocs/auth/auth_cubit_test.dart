@@ -18,34 +18,47 @@ class MockAuthRepository extends Mock implements AuthRepository {
   @override
   Future<UserEntity> signInWithEmailAndPassword(String email, String password) {
     return super.noSuchMethod(
-      Invocation.method(#signInWithEmailAndPassword, [email, password]),
-      returnValue: Future.value(UserEntity(id: 'user123', name: 'Test User')),
-    ) as Future<UserEntity>;
+          Invocation.method(#signInWithEmailAndPassword, [email, password]),
+          returnValue: Future.value(
+            UserEntity(id: 'user123', name: 'Test User'),
+          ),
+        )
+        as Future<UserEntity>;
   }
 
   @override
   Future<UserEntity> signUpWithEmailAndPassword(
-      String email, String password, String name) {
+    String email,
+    String password,
+    String name,
+  ) {
     return super.noSuchMethod(
-      Invocation.method(#signUpWithEmailAndPassword, [email, password, name]),
-      returnValue: Future.value(UserEntity(id: 'user123', name: name)),
-    ) as Future<UserEntity>;
+          Invocation.method(#signUpWithEmailAndPassword, [
+            email,
+            password,
+            name,
+          ]),
+          returnValue: Future.value(UserEntity(id: 'user123', name: name)),
+        )
+        as Future<UserEntity>;
   }
 
   @override
   Future<void> signOut() {
     return super.noSuchMethod(
-      Invocation.method(#signOut, []),
-      returnValue: Future<void>.value(),
-    ) as Future<void>;
+          Invocation.method(#signOut, []),
+          returnValue: Future<void>.value(),
+        )
+        as Future<void>;
   }
 
   @override
   String? getCurrentUserId() {
     return super.noSuchMethod(
-      Invocation.method(#getCurrentUserId, []),
-      returnValue: 'user123',
-    ) as String?;
+          Invocation.method(#getCurrentUserId, []),
+          returnValue: 'user123',
+        )
+        as String?;
   }
 
   // Este método ahora está implementado vía when() en el constructor
@@ -53,13 +66,14 @@ class MockAuthRepository extends Mock implements AuthRepository {
   @override
   Future<Map<String, dynamic>?> getCurrentUserData() {
     return super.noSuchMethod(
-      Invocation.method(#getCurrentUserData, []),
-      returnValue: Future.value({
-        'id': 'user123',
-        'email': 'test@example.com',
-        'displayName': 'Test User',
-      }),
-    ) as Future<Map<String, dynamic>?>;
+          Invocation.method(#getCurrentUserData, []),
+          returnValue: Future.value({
+            'id': 'user123',
+            'email': 'test@example.com',
+            'displayName': 'Test User',
+          }),
+        )
+        as Future<Map<String, dynamic>?>;
   }
 
   // Stream real para evitar problemas de null
@@ -78,52 +92,58 @@ class MockAuthRepository extends Mock implements AuthRepository {
 
   @override
   Future<UserEntity?> getCurrentUser() async => UserEntity(
-      id: 'user123',
-      name: 'Test User',
-      email: 'test@example.com',
-      photoUrl: 'https://example.com/photo.jpg');
+    id: 'user123',
+    name: 'Test User',
+    email: 'test@example.com',
+    photoUrl: 'https://example.com/photo.jpg',
+  );
 
   @override
   Future<UserEntity?> getUserById(String userId) {
     return super.noSuchMethod(
-      Invocation.method(#getUserById, [userId]),
-      returnValue: Future.value(UserEntity(id: userId, name: 'Test User')),
-    ) as Future<UserEntity?>;
+          Invocation.method(#getUserById, [userId]),
+          returnValue: Future.value(UserEntity(id: userId, name: 'Test User')),
+        )
+        as Future<UserEntity?>;
   }
 
   @override
   Future<Map<String, dynamic>> signInWithGoogle() {
     return super.noSuchMethod(
-      Invocation.method(#signInWithGoogle, []),
-      returnValue: Future.value({
-        'user': UserEntity(id: 'google123', name: 'Google User'),
-        'isNewUser': false
-      }),
-    ) as Future<Map<String, dynamic>>;
+          Invocation.method(#signInWithGoogle, []),
+          returnValue: Future.value({
+            'user': UserEntity(id: 'google123', name: 'Google User'),
+            'isNewUser': false,
+          }),
+        )
+        as Future<Map<String, dynamic>>;
   }
 
   @override
   Future<void> deleteAccount() {
     return super.noSuchMethod(
-      Invocation.method(#deleteAccount, []),
-      returnValue: Future<void>.value(),
-    ) as Future<void>;
+          Invocation.method(#deleteAccount, []),
+          returnValue: Future<void>.value(),
+        )
+        as Future<void>;
   }
 
   @override
   Future<void> updateUser(UserEntity user) {
     return super.noSuchMethod(
-      Invocation.method(#updateUser, [user]),
-      returnValue: Future<void>.value(),
-    ) as Future<void>;
+          Invocation.method(#updateUser, [user]),
+          returnValue: Future<void>.value(),
+        )
+        as Future<void>;
   }
 
   @override
   Future<void> updateUserData(String userId, Map<String, dynamic> data) {
     return super.noSuchMethod(
-      Invocation.method(#updateUserData, [userId, data]),
-      returnValue: Future<void>.value(),
-    ) as Future<void>;
+          Invocation.method(#updateUserData, [userId, data]),
+          returnValue: Future<void>.value(),
+        )
+        as Future<void>;
   }
 }
 
@@ -154,21 +174,27 @@ void main() {
     group('signIn con email y password (solo para testing)', () {
       test('emits loading y success cuando signIn es exitoso', () async {
         // Implementar método signIn en AuthCubit de forma temporal para el test
-        when(mockAuthRepository.signInWithEmailAndPassword(
-          'test@example.com',
-          'password123',
-        )).thenAnswer((_) async => UserEntity(
-              id: 'user123',
-              name: 'Test User',
-              photoUrl: 'https://example.com/photo.jpg',
-            ));
+        when(
+          mockAuthRepository.signInWithEmailAndPassword(
+            'test@example.com',
+            'password123',
+          ),
+        ).thenAnswer(
+          (_) async => UserEntity(
+            id: 'user123',
+            name: 'Test User',
+            photoUrl: 'https://example.com/photo.jpg',
+          ),
+        );
 
-        when(mockAuthRepository.getCurrentUserData()).thenAnswer((_) async => {
-              'id': 'user123',
-              'email': 'test@example.com',
-              'displayName': 'Test User',
-              'hasCompletedOnboarding': true,
-            });
+        when(mockAuthRepository.getCurrentUserData()).thenAnswer(
+          (_) async => {
+            'id': 'user123',
+            'email': 'test@example.com',
+            'displayName': 'Test User',
+            'hasCompletedOnboarding': true,
+          },
+        );
 
         // Llamar explícitamente al método de inicio de sesión
         // Esto es necesario en Clean Architecture para separar claramente
@@ -184,10 +210,12 @@ void main() {
       });
 
       test('emits loading y error cuando signIn falla', () async {
-        when(mockAuthRepository.signInWithEmailAndPassword(
-          'test@example.com',
-          'wrongpassword',
-        )).thenThrow(Exception('Invalid credentials'));
+        when(
+          mockAuthRepository.signInWithEmailAndPassword(
+            'test@example.com',
+            'wrongpassword',
+          ),
+        ).thenThrow(Exception('Invalid credentials'));
 
         // Verifica el estado final
         expect(authCubit.state.status, equals(AuthStatus.error));
@@ -206,8 +234,9 @@ void main() {
       });
 
       test('emits error cuando signOut falla', () async {
-        when(mockAuthRepository.signOut())
-            .thenThrow(Exception('Error de cierre de sesión'));
+        when(
+          mockAuthRepository.signOut(),
+        ).thenThrow(Exception('Error de cierre de sesión'));
         when(mockAuthRepository.getCurrentUserId()).thenReturn('user123');
 
         await authCubit.logout();

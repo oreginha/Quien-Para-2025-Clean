@@ -15,10 +15,7 @@ class FindCompatiblePlansUseCase {
   final PlanRepository _planRepository;
   final MatchingService _matchingService;
 
-  FindCompatiblePlansUseCase(
-    this._planRepository,
-    this._matchingService,
-  );
+  FindCompatiblePlansUseCase(this._planRepository, this._matchingService);
 
   /// Encuentra planes compatibles para un usuario
   ///
@@ -42,28 +39,30 @@ class FindCompatiblePlansUseCase {
       final List<Map<String, dynamic>> plansData = plansResult.fold(
         (failure) => [], // En caso de fallo, retornar lista vacía
         (plans) => plans
-            .map((plan) => <String, dynamic>{
-                  'id': plan.id,
-                  'title': plan.title,
-                  'description': plan.description,
-                  'category': plan.category,
-                  'location': plan.location,
-                  'date': plan.date?.toIso8601String(),
-                  'imageUrl': plan.imageUrl,
-                  'creatorId': plan.creatorId,
-                  'tags': plan.tags,
-                })
+            .map(
+              (plan) => <String, dynamic>{
+                'id': plan.id,
+                'title': plan.title,
+                'description': plan.description,
+                'category': plan.category,
+                'location': plan.location,
+                'date': plan.date?.toIso8601String(),
+                'imageUrl': plan.imageUrl,
+                'creatorId': plan.creatorId,
+                'tags': plan.tags,
+              },
+            )
             .toList(),
       );
 
       // Filtrar planes compatibles usando el servicio de matching
-      final List<Map<String, dynamic>> compatiblePlans =
-          _matchingService.filterCompatiblePlans(
-        plans: plansData,
-        userInterests: userInterests,
-        userLocation: userLocation,
-        minimumScore: minimumScore,
-      );
+      final List<Map<String, dynamic>> compatiblePlans = _matchingService
+          .filterCompatiblePlans(
+            plans: plansData,
+            userInterests: userInterests,
+            userLocation: userLocation,
+            minimumScore: minimumScore,
+          );
 
       // Limitar el número de resultados
       return compatiblePlans.take(limit).toList();

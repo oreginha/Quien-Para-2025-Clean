@@ -110,8 +110,9 @@ void main() {
     test('should return Left with AppFailure when an error occurs', () {
       // Arrange
       const errorMessage = 'Auth error';
-      when(mockAuth.currentUser).thenThrow(
-          FirebaseAuthException(code: 'error', message: errorMessage));
+      when(
+        mockAuth.currentUser,
+      ).thenThrow(FirebaseAuthException(code: 'error', message: errorMessage));
 
       // Act
       final result = userRepository.getCurrentUserId();
@@ -183,18 +184,20 @@ void main() {
       verify(mockDocRef.get()).called(1);
     });
 
-    test('should return Right with null when user is not authenticated',
-        () async {
-      // Arrange
-      when(mockAuth.currentUser).thenReturn(null);
+    test(
+      'should return Right with null when user is not authenticated',
+      () async {
+        // Arrange
+        when(mockAuth.currentUser).thenReturn(null);
 
-      // Act
-      final result = await userRepository.getUserProfile();
+        // Act
+        final result = await userRepository.getUserProfile();
 
-      // Assert
-      expect(result, equals(const Right<AppFailure, UserEntity?>(null)));
-      verify(mockAuth.currentUser).called(1);
-    });
+        // Assert
+        expect(result, equals(const Right<AppFailure, UserEntity?>(null)));
+        verify(mockAuth.currentUser).called(1);
+      },
+    );
 
     test('should return Left with AppFailure when an error occurs', () async {
       // Arrange
@@ -209,7 +212,8 @@ void main() {
       when(mockFirestore.collection('users')).thenReturn(mockCollectionRef);
       when(mockCollectionRef.doc(userId)).thenReturn(mockDocRef);
       when(mockDocRef.get()).thenThrow(
-          FirebaseException(plugin: 'firestore', message: errorMessage));
+        FirebaseException(plugin: 'firestore', message: errorMessage),
+      );
 
       // Act
       final result = await userRepository.getUserProfile();

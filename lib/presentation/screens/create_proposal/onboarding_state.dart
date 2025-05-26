@@ -83,8 +83,9 @@ class PlanOnboardingState {
       description: json['description'] as String,
       location: json['location'] as String,
       type: json['type'] as String,
-      date:
-          json['date'] != null ? DateTime.parse(json['date'] as String) : null,
+      date: json['date'] != null
+          ? DateTime.parse(json['date'] as String)
+          : null,
       time: json['time'] != null
           ? TimeOfDay.fromDateTime(DateTime.parse('2024-01-01 ${json['time']}'))
           : null,
@@ -106,7 +107,7 @@ class OnboardingState {
   final DateTime? selectedDate;
   final TimeOfDay? selectedTime;
   final Map<String, String>
-      selectedOptions; // Nuevo campo para múltiples opciones
+  selectedOptions; // Nuevo campo para múltiples opciones
   final String extraConditions; // Nuevo campo para condiciones adicionales
   final String title;
   final List<PlanEntity> createdPlans;
@@ -167,8 +168,9 @@ class OnboardingState {
       'selectedOptions': selectedOptions,
       'extraConditions': extraConditions,
       'title': title,
-      'createdPlans':
-          createdPlans.map((final PlanEntity plan) => plan.toJson()).toList(),
+      'createdPlans': createdPlans
+          .map((final PlanEntity plan) => plan.toJson())
+          .toList(),
       'creatorId': creatorId,
       'imageUrl': imageUrl,
     };
@@ -177,7 +179,8 @@ class OnboardingState {
   factory OnboardingState.fromJson(final Map<String, dynamic> json) {
     return OnboardingState(
       selectedThemes: List<String>.from(
-          json['selectedThemes'] as List<dynamic>? ?? <String>[]),
+        json['selectedThemes'] as List<dynamic>? ?? <String>[],
+      ),
       description: (json['description'] as String?) ?? '',
       location: (json['location'] as String?) ?? '',
       selectedDate: json['selectedDate'] != null
@@ -185,16 +188,18 @@ class OnboardingState {
           : null,
       selectedTime: json['selectedTime'] != null
           ? TimeOfDay.fromDateTime(
-              DateTime.parse('2024-01-01 ${json['selectedTime'] as String}'))
+              DateTime.parse('2024-01-01 ${json['selectedTime'] as String}'),
+            )
           : null,
       selectedOptions: Map<String, String>.from(
-          json['selectedOptions'] as Map<String, dynamic>? ??
-              <String, dynamic>{}),
+        json['selectedOptions'] as Map<String, dynamic>? ?? <String, dynamic>{},
+      ),
       extraConditions: (json['extraConditions'] as String?) ?? '',
       title: (json['title'] as String?) ?? '',
       createdPlans: ((json['createdPlans'] as List<dynamic>?) ?? <String>[])
           .map(
-              (final plan) => PlanEntity.fromJson(plan as Map<String, dynamic>))
+            (final plan) => PlanEntity.fromJson(plan as Map<String, dynamic>),
+          )
           .toList(),
       creatorId: (json['creatorId'] as String?) ?? '',
       imageUrl: json['imageUrl'] as String?,
@@ -203,7 +208,8 @@ class OnboardingState {
   factory OnboardingState.fromJsonMap(final Map<String, dynamic> json) {
     return OnboardingState(
       selectedThemes: List<String>.from(
-          json['selectedThemes'] as List<dynamic>? ?? <String>[]),
+        json['selectedThemes'] as List<dynamic>? ?? <String>[],
+      ),
       description: (json['description'] as String?) ?? '',
       location: (json['location'] as String?) ?? '',
       selectedDate: json['selectedDate'] != null
@@ -211,16 +217,18 @@ class OnboardingState {
           : null,
       selectedTime: json['selectedTime'] != null
           ? TimeOfDay.fromDateTime(
-              DateTime.parse('2024-01-01 ${json['selectedTime'] as String}'))
+              DateTime.parse('2024-01-01 ${json['selectedTime'] as String}'),
+            )
           : null,
       selectedOptions: Map<String, String>.from(
-          json['selectedOptions'] as Map<String, dynamic>? ??
-              <String, dynamic>{}),
+        json['selectedOptions'] as Map<String, dynamic>? ?? <String, dynamic>{},
+      ),
       extraConditions: (json['extraConditions'] as String?) ?? '',
       title: (json['title'] as String?) ?? '',
       createdPlans: ((json['createdPlans'] as List<dynamic>?) ?? <String>[])
           .map(
-              (final plan) => PlanEntity.fromJson(plan as Map<String, dynamic>))
+            (final plan) => PlanEntity.fromJson(plan as Map<String, dynamic>),
+          )
           .toList(),
       creatorId: (json['creatorId'] as String?) ?? '',
       imageUrl: json['imageUrl'] as String?,

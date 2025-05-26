@@ -20,14 +20,16 @@ abstract class NotificationRepository
 
   /// Marca una notificación como leída
   Future<Either<AppFailure, NotificationEntity>> markAsRead(
-      String notificationId);
+    String notificationId,
+  );
 
   /// Marca todas las notificaciones de un usuario como leídas
   Future<Either<AppFailure, Unit>> markAllAsRead(String userId);
 
   /// Obtiene notificaciones relacionadas con un plan
   Future<Either<AppFailure, List<NotificationEntity>>> getNotificationsForPlan(
-      String planId);
+    String planId,
+  );
 
   /// Elimina notificaciones antiguas
   Future<Either<AppFailure, Unit>> cleanupOldNotifications(int olderThanDays);

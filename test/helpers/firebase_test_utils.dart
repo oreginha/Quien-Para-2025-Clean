@@ -15,36 +15,34 @@ class FirebaseTestUtils {
     final List<MethodCall> methodCalls = <MethodCall>[];
 
     // Configurar el mock para Firebase
-    const MethodChannel channel =
-        MethodChannel('plugins.flutter.io/firebase_core');
+    const MethodChannel channel = MethodChannel(
+      'plugins.flutter.io/firebase_core',
+    );
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(
-      channel,
-      (MethodCall methodCall) async {
-        methodCalls.add(methodCall);
-        switch (methodCall.method) {
-          case 'Firebase#initializeApp':
-            return {
-              'name': '[DEFAULT]',
-              'options': {
+        .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
+          methodCalls.add(methodCall);
+          switch (methodCall.method) {
+            case 'Firebase#initializeApp':
+              return {
+                'name': '[DEFAULT]',
+                'options': {
+                  'apiKey': 'test-api-key',
+                  'appId': 'test-app-id',
+                  'messagingSenderId': 'test-messaging-sender-id',
+                  'projectId': 'test-project-id',
+                },
+              };
+            case 'Firebase#options':
+              return {
                 'apiKey': 'test-api-key',
                 'appId': 'test-app-id',
                 'messagingSenderId': 'test-messaging-sender-id',
                 'projectId': 'test-project-id',
-              },
-            };
-          case 'Firebase#options':
-            return {
-              'apiKey': 'test-api-key',
-              'appId': 'test-app-id',
-              'messagingSenderId': 'test-messaging-sender-id',
-              'projectId': 'test-project-id',
-            };
-          default:
-            return null;
-        }
-      },
-    );
+              };
+            default:
+              return null;
+          }
+        });
 
     // Configurar la implementación de la plataforma Firebase
     TestFirebaseCoreHostApi.setup();

@@ -25,12 +25,13 @@ class PlanApiService {
       planData['createdAt'] = FieldValue.serverTimestamp();
 
       // Crear documento en Firestore
-      final DocumentReference<Map<String, dynamic>> docRef =
-          await _firestore.collection('plans').add(planData);
+      final DocumentReference<Map<String, dynamic>> docRef = await _firestore
+          .collection('plans')
+          .add(planData);
 
       // Obtener el documento creado
-      final DocumentSnapshot<Map<String, dynamic>> docSnapshot =
-          await docRef.get();
+      final DocumentSnapshot<Map<String, dynamic>> docSnapshot = await docRef
+          .get();
       final PlanEntity createdPlan = PlanEntity.fromJson(<String, dynamic>{
         ...docSnapshot.data() as Map<String, dynamic>,
         'id': docRef.id,
@@ -98,8 +99,10 @@ class PlanApiService {
       if (userId == null) throw Exception('Usuario no autenticado');
 
       // Obtener el documento del plan
-      final DocumentSnapshot<Map<String, dynamic>> planDoc =
-          await _firestore.collection('plans').doc(planId).get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
+          .collection('plans')
+          .doc(planId)
+          .get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');
@@ -109,9 +112,7 @@ class PlanApiService {
       // podrías tener una colección de "likes" para manejar esto mejor)
       final int currentLikes = (planDoc.data()!['likes'] as int?) ?? 0;
 
-      await planDoc.reference.update({
-        'likes': currentLikes + 1,
-      });
+      await planDoc.reference.update({'likes': currentLikes + 1});
 
       logger.d('Like añadido al plan: $planId');
     } catch (e) {
@@ -127,8 +128,10 @@ class PlanApiService {
       if (userId == null) throw Exception('Usuario no autenticado');
 
       // Obtener el documento del plan
-      final DocumentSnapshot<Map<String, dynamic>> planDoc =
-          await _firestore.collection('plans').doc(planId).get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
+          .collection('plans')
+          .doc(planId)
+          .get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');
@@ -137,9 +140,7 @@ class PlanApiService {
       // Actualizar likes
       final int currentLikes = (planDoc.data()!['likes'] as int?) ?? 0;
       if (currentLikes > 0) {
-        await planDoc.reference.update({
-          'likes': currentLikes - 1,
-        });
+        await planDoc.reference.update({'likes': currentLikes - 1});
       }
 
       logger.d('Like removido del plan: $planId');
@@ -156,8 +157,10 @@ class PlanApiService {
       if (userId == null) throw Exception('Usuario no autenticado');
 
       // Verificar que el usuario es el creador (opcional pero recomendado)
-      final DocumentSnapshot<Map<String, dynamic>> planDoc =
-          await _firestore.collection('plans').doc(planId).get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
+          .collection('plans')
+          .doc(planId)
+          .get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');

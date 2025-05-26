@@ -45,14 +45,20 @@ class MyApplicationCard extends StatelessWidget {
     // Obtener el modo del tema
     final themeProvider = Provider.of<ThemeProvider>(context);
     final bool isDarkMode = themeProvider.isDarkMode;
-    
+
     return Card(
-      color: AppColors.getCardBackground(isDarkMode), // Usar color de tarjeta según tema
+      color: AppColors.getCardBackground(
+        isDarkMode,
+      ), // Usar color de tarjeta según tema
       elevation: AppElevation.card, // Usar elevación consistente
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppRadius.card), // Usar radio de borde constante
+        borderRadius: BorderRadius.circular(
+          AppRadius.card,
+        ), // Usar radio de borde constante
       ),
-      shadowColor: isDarkMode ? AppColors.darkShadow : AppColors.lightShadow, // Sombra según tema
+      shadowColor: isDarkMode
+          ? AppColors.darkShadow
+          : AppColors.lightShadow, // Sombra según tema
       margin: const EdgeInsets.only(bottom: AppSpacing.m),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,16 +97,16 @@ class MyApplicationCard extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: PlanCardUtils.getStatusBackgroundColor(
-                      applicationStatus ?? 'pending'),
+                    applicationStatus ?? 'pending',
+                  ),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.white, width: 1),
                 ),
                 child: Text(
                   PlanCardUtils.getStatusText(applicationStatus ?? 'pending'),
-                  style: AppTypography.bodyMedium(false).copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTypography.bodyMedium(
+                    false,
+                  ).copyWith(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -109,10 +115,9 @@ class MyApplicationCard extends StatelessWidget {
             appliedAt != null
                 ? 'Aplicaste el ${DateFormat('dd/MM/yyyy').format(appliedAt!)}'
                 : 'Fecha de aplicación desconocida',
-            style: AppTypography.bodyMedium(false).copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
-            ),
+            style: AppTypography.bodyMedium(
+              false,
+            ).copyWith(color: Colors.white, fontWeight: FontWeight.w500),
           ),
         ],
       ),
@@ -221,8 +226,11 @@ class MyApplicationCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.message_outlined,
-                          size: 16, color: AppColors.brandYellow),
+                      Icon(
+                        Icons.message_outlined,
+                        size: 16,
+                        color: AppColors.brandYellow,
+                      ),
                       const SizedBox(width: 6),
                       const Text(
                         'Tu mensaje:',
@@ -237,10 +245,7 @@ class MyApplicationCard extends StatelessWidget {
                   SizedBox(height: AppSpacing.s),
                   Text(
                     applicationMessage!,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black87,
-                    ),
+                    style: const TextStyle(fontSize: 14, color: Colors.black87),
                   ),
                 ],
               ),
@@ -321,9 +326,7 @@ class MyApplicationCard extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Row(
           children: [
             Icon(Icons.cancel, color: Colors.red),
@@ -332,7 +335,8 @@ class MyApplicationCard extends StatelessWidget {
           ],
         ),
         content: const Text(
-            '¿Estás seguro que deseas cancelar tu postulación a este plan?'),
+          '¿Estás seguro que deseas cancelar tu postulación a este plan?',
+        ),
         actions: [
           TextButton(
             child: const Text('No'),

@@ -50,10 +50,7 @@ class FeedbackMessage {
           Icon(icon, color: textColor),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(
-              message,
-              style: TextStyle(color: textColor),
-            ),
+            child: Text(message, style: TextStyle(color: textColor)),
           ),
         ],
       ),
@@ -160,9 +157,7 @@ class FeedbackMessage {
     final result = await showDialog<bool>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Row(
           children: [
             Icon(
@@ -181,8 +176,9 @@ class FeedbackMessage {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  isDangerous ? Colors.red : AppColors.lightTextPrimary,
+              backgroundColor: isDangerous
+                  ? Colors.red
+                  : AppColors.lightTextPrimary,
               foregroundColor: Colors.white,
             ),
             child: Text(confirmLabel),

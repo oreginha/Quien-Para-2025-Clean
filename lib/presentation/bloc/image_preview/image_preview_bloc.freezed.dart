@@ -12,7 +12,8 @@ part of 'image_preview_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ImagePreviewEvent {
@@ -24,8 +25,7 @@ mixin _$ImagePreviewEvent {
     required TResult Function(String filterName) applyFilter,
     required TResult Function(double brightness, double contrast) adjustImage,
     required TResult Function() resetFilter,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(File imageFile)? initialize,
@@ -34,8 +34,7 @@ mixin _$ImagePreviewEvent {
     TResult? Function(String filterName)? applyFilter,
     TResult? Function(double brightness, double contrast)? adjustImage,
     TResult? Function()? resetFilter,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(File imageFile)? initialize,
@@ -45,8 +44,7 @@ mixin _$ImagePreviewEvent {
     TResult Function(double brightness, double contrast)? adjustImage,
     TResult Function()? resetFilter,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
@@ -55,8 +53,7 @@ mixin _$ImagePreviewEvent {
     required TResult Function(_ApplyFilter value) applyFilter,
     required TResult Function(_AdjustImage value) adjustImage,
     required TResult Function(_ResetFilter value) resetFilter,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
@@ -65,8 +62,7 @@ mixin _$ImagePreviewEvent {
     TResult? Function(_ApplyFilter value)? applyFilter,
     TResult? Function(_AdjustImage value)? adjustImage,
     TResult? Function(_ResetFilter value)? resetFilter,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
@@ -76,15 +72,15 @@ mixin _$ImagePreviewEvent {
     TResult Function(_AdjustImage value)? adjustImage,
     TResult Function(_ResetFilter value)? resetFilter,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ImagePreviewEventCopyWith<$Res> {
   factory $ImagePreviewEventCopyWith(
-          ImagePreviewEvent value, $Res Function(ImagePreviewEvent) then) =
-      _$ImagePreviewEventCopyWithImpl<$Res, ImagePreviewEvent>;
+    ImagePreviewEvent value,
+    $Res Function(ImagePreviewEvent) then,
+  ) = _$ImagePreviewEventCopyWithImpl<$Res, ImagePreviewEvent>;
 }
 
 /// @nodoc
@@ -104,8 +100,9 @@ class _$ImagePreviewEventCopyWithImpl<$Res, $Val extends ImagePreviewEvent>
 /// @nodoc
 abstract class _$$InitializeImplCopyWith<$Res> {
   factory _$$InitializeImplCopyWith(
-          _$InitializeImpl value, $Res Function(_$InitializeImpl) then) =
-      __$$InitializeImplCopyWithImpl<$Res>;
+    _$InitializeImpl value,
+    $Res Function(_$InitializeImpl) then,
+  ) = __$$InitializeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({File imageFile});
 }
@@ -115,22 +112,23 @@ class __$$InitializeImplCopyWithImpl<$Res>
     extends _$ImagePreviewEventCopyWithImpl<$Res, _$InitializeImpl>
     implements _$$InitializeImplCopyWith<$Res> {
   __$$InitializeImplCopyWithImpl(
-      _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
-      : super(_value, _then);
+    _$InitializeImpl _value,
+    $Res Function(_$InitializeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? imageFile = null,
-  }) {
-    return _then(_$InitializeImpl(
-      null == imageFile
-          ? _value.imageFile
-          : imageFile // ignore: cast_nullable_to_non_nullable
-              as File,
-    ));
+  $Res call({Object? imageFile = null}) {
+    return _then(
+      _$InitializeImpl(
+        null == imageFile
+            ? _value.imageFile
+            : imageFile // ignore: cast_nullable_to_non_nullable
+                  as File,
+      ),
+    );
   }
 }
 
@@ -269,8 +267,9 @@ abstract class _Initialize implements ImagePreviewEvent {
 /// @nodoc
 abstract class _$$RotateImageImplCopyWith<$Res> {
   factory _$$RotateImageImplCopyWith(
-          _$RotateImageImpl value, $Res Function(_$RotateImageImpl) then) =
-      __$$RotateImageImplCopyWithImpl<$Res>;
+    _$RotateImageImpl value,
+    $Res Function(_$RotateImageImpl) then,
+  ) = __$$RotateImageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -278,8 +277,9 @@ class __$$RotateImageImplCopyWithImpl<$Res>
     extends _$ImagePreviewEventCopyWithImpl<$Res, _$RotateImageImpl>
     implements _$$RotateImageImplCopyWith<$Res> {
   __$$RotateImageImplCopyWithImpl(
-      _$RotateImageImpl _value, $Res Function(_$RotateImageImpl) _then)
-      : super(_value, _then);
+    _$RotateImageImpl _value,
+    $Res Function(_$RotateImageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -398,8 +398,9 @@ abstract class _RotateImage implements ImagePreviewEvent {
 /// @nodoc
 abstract class _$$CropImageImplCopyWith<$Res> {
   factory _$$CropImageImplCopyWith(
-          _$CropImageImpl value, $Res Function(_$CropImageImpl) then) =
-      __$$CropImageImplCopyWithImpl<$Res>;
+    _$CropImageImpl value,
+    $Res Function(_$CropImageImpl) then,
+  ) = __$$CropImageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -407,8 +408,9 @@ class __$$CropImageImplCopyWithImpl<$Res>
     extends _$ImagePreviewEventCopyWithImpl<$Res, _$CropImageImpl>
     implements _$$CropImageImplCopyWith<$Res> {
   __$$CropImageImplCopyWithImpl(
-      _$CropImageImpl _value, $Res Function(_$CropImageImpl) _then)
-      : super(_value, _then);
+    _$CropImageImpl _value,
+    $Res Function(_$CropImageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -527,8 +529,9 @@ abstract class _CropImage implements ImagePreviewEvent {
 /// @nodoc
 abstract class _$$ApplyFilterImplCopyWith<$Res> {
   factory _$$ApplyFilterImplCopyWith(
-          _$ApplyFilterImpl value, $Res Function(_$ApplyFilterImpl) then) =
-      __$$ApplyFilterImplCopyWithImpl<$Res>;
+    _$ApplyFilterImpl value,
+    $Res Function(_$ApplyFilterImpl) then,
+  ) = __$$ApplyFilterImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String filterName});
 }
@@ -538,22 +541,23 @@ class __$$ApplyFilterImplCopyWithImpl<$Res>
     extends _$ImagePreviewEventCopyWithImpl<$Res, _$ApplyFilterImpl>
     implements _$$ApplyFilterImplCopyWith<$Res> {
   __$$ApplyFilterImplCopyWithImpl(
-      _$ApplyFilterImpl _value, $Res Function(_$ApplyFilterImpl) _then)
-      : super(_value, _then);
+    _$ApplyFilterImpl _value,
+    $Res Function(_$ApplyFilterImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? filterName = null,
-  }) {
-    return _then(_$ApplyFilterImpl(
-      null == filterName
-          ? _value.filterName
-          : filterName // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? filterName = null}) {
+    return _then(
+      _$ApplyFilterImpl(
+        null == filterName
+            ? _value.filterName
+            : filterName // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -692,8 +696,9 @@ abstract class _ApplyFilter implements ImagePreviewEvent {
 /// @nodoc
 abstract class _$$AdjustImageImplCopyWith<$Res> {
   factory _$$AdjustImageImplCopyWith(
-          _$AdjustImageImpl value, $Res Function(_$AdjustImageImpl) then) =
-      __$$AdjustImageImplCopyWithImpl<$Res>;
+    _$AdjustImageImpl value,
+    $Res Function(_$AdjustImageImpl) then,
+  ) = __$$AdjustImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({double brightness, double contrast});
 }
@@ -703,27 +708,27 @@ class __$$AdjustImageImplCopyWithImpl<$Res>
     extends _$ImagePreviewEventCopyWithImpl<$Res, _$AdjustImageImpl>
     implements _$$AdjustImageImplCopyWith<$Res> {
   __$$AdjustImageImplCopyWithImpl(
-      _$AdjustImageImpl _value, $Res Function(_$AdjustImageImpl) _then)
-      : super(_value, _then);
+    _$AdjustImageImpl _value,
+    $Res Function(_$AdjustImageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? brightness = null,
-    Object? contrast = null,
-  }) {
-    return _then(_$AdjustImageImpl(
-      brightness: null == brightness
-          ? _value.brightness
-          : brightness // ignore: cast_nullable_to_non_nullable
-              as double,
-      contrast: null == contrast
-          ? _value.contrast
-          : contrast // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
+  $Res call({Object? brightness = null, Object? contrast = null}) {
+    return _then(
+      _$AdjustImageImpl(
+        brightness: null == brightness
+            ? _value.brightness
+            : brightness // ignore: cast_nullable_to_non_nullable
+                  as double,
+        contrast: null == contrast
+            ? _value.contrast
+            : contrast // ignore: cast_nullable_to_non_nullable
+                  as double,
+      ),
+    );
   }
 }
 
@@ -852,9 +857,10 @@ class _$AdjustImageImpl implements _AdjustImage {
 }
 
 abstract class _AdjustImage implements ImagePreviewEvent {
-  const factory _AdjustImage(
-      {required final double brightness,
-      required final double contrast}) = _$AdjustImageImpl;
+  const factory _AdjustImage({
+    required final double brightness,
+    required final double contrast,
+  }) = _$AdjustImageImpl;
 
   double get brightness;
   double get contrast;
@@ -869,8 +875,9 @@ abstract class _AdjustImage implements ImagePreviewEvent {
 /// @nodoc
 abstract class _$$ResetFilterImplCopyWith<$Res> {
   factory _$$ResetFilterImplCopyWith(
-          _$ResetFilterImpl value, $Res Function(_$ResetFilterImpl) then) =
-      __$$ResetFilterImplCopyWithImpl<$Res>;
+    _$ResetFilterImpl value,
+    $Res Function(_$ResetFilterImpl) then,
+  ) = __$$ResetFilterImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -878,8 +885,9 @@ class __$$ResetFilterImplCopyWithImpl<$Res>
     extends _$ImagePreviewEventCopyWithImpl<$Res, _$ResetFilterImpl>
     implements _$$ResetFilterImplCopyWith<$Res> {
   __$$ResetFilterImplCopyWithImpl(
-      _$ResetFilterImpl _value, $Res Function(_$ResetFilterImpl) _then)
-      : super(_value, _then);
+    _$ResetFilterImpl _value,
+    $Res Function(_$ResetFilterImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1017,19 +1025,21 @@ mixin _$ImagePreviewState {
 /// @nodoc
 abstract class $ImagePreviewStateCopyWith<$Res> {
   factory $ImagePreviewStateCopyWith(
-          ImagePreviewState value, $Res Function(ImagePreviewState) then) =
-      _$ImagePreviewStateCopyWithImpl<$Res, ImagePreviewState>;
+    ImagePreviewState value,
+    $Res Function(ImagePreviewState) then,
+  ) = _$ImagePreviewStateCopyWithImpl<$Res, ImagePreviewState>;
   @useResult
-  $Res call(
-      {File currentImage,
-      File originalImage,
-      double rotation,
-      String currentFilter,
-      double brightness,
-      double contrast,
-      bool isLoading,
-      bool hasChanges,
-      String? error});
+  $Res call({
+    File currentImage,
+    File originalImage,
+    double rotation,
+    String currentFilter,
+    double brightness,
+    double contrast,
+    bool isLoading,
+    bool hasChanges,
+    String? error,
+  });
 }
 
 /// @nodoc
@@ -1057,74 +1067,80 @@ class _$ImagePreviewStateCopyWithImpl<$Res, $Val extends ImagePreviewState>
     Object? hasChanges = null,
     Object? error = freezed,
   }) {
-    return _then(_value.copyWith(
-      currentImage: null == currentImage
-          ? _value.currentImage
-          : currentImage // ignore: cast_nullable_to_non_nullable
-              as File,
-      originalImage: null == originalImage
-          ? _value.originalImage
-          : originalImage // ignore: cast_nullable_to_non_nullable
-              as File,
-      rotation: null == rotation
-          ? _value.rotation
-          : rotation // ignore: cast_nullable_to_non_nullable
-              as double,
-      currentFilter: null == currentFilter
-          ? _value.currentFilter
-          : currentFilter // ignore: cast_nullable_to_non_nullable
-              as String,
-      brightness: null == brightness
-          ? _value.brightness
-          : brightness // ignore: cast_nullable_to_non_nullable
-              as double,
-      contrast: null == contrast
-          ? _value.contrast
-          : contrast // ignore: cast_nullable_to_non_nullable
-              as double,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasChanges: null == hasChanges
-          ? _value.hasChanges
-          : hasChanges // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            currentImage: null == currentImage
+                ? _value.currentImage
+                : currentImage // ignore: cast_nullable_to_non_nullable
+                      as File,
+            originalImage: null == originalImage
+                ? _value.originalImage
+                : originalImage // ignore: cast_nullable_to_non_nullable
+                      as File,
+            rotation: null == rotation
+                ? _value.rotation
+                : rotation // ignore: cast_nullable_to_non_nullable
+                      as double,
+            currentFilter: null == currentFilter
+                ? _value.currentFilter
+                : currentFilter // ignore: cast_nullable_to_non_nullable
+                      as String,
+            brightness: null == brightness
+                ? _value.brightness
+                : brightness // ignore: cast_nullable_to_non_nullable
+                      as double,
+            contrast: null == contrast
+                ? _value.contrast
+                : contrast // ignore: cast_nullable_to_non_nullable
+                      as double,
+            isLoading: null == isLoading
+                ? _value.isLoading
+                : isLoading // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            hasChanges: null == hasChanges
+                ? _value.hasChanges
+                : hasChanges // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            error: freezed == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                      as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ImagePreviewStateImplCopyWith<$Res>
     implements $ImagePreviewStateCopyWith<$Res> {
-  factory _$$ImagePreviewStateImplCopyWith(_$ImagePreviewStateImpl value,
-          $Res Function(_$ImagePreviewStateImpl) then) =
-      __$$ImagePreviewStateImplCopyWithImpl<$Res>;
+  factory _$$ImagePreviewStateImplCopyWith(
+    _$ImagePreviewStateImpl value,
+    $Res Function(_$ImagePreviewStateImpl) then,
+  ) = __$$ImagePreviewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {File currentImage,
-      File originalImage,
-      double rotation,
-      String currentFilter,
-      double brightness,
-      double contrast,
-      bool isLoading,
-      bool hasChanges,
-      String? error});
+  $Res call({
+    File currentImage,
+    File originalImage,
+    double rotation,
+    String currentFilter,
+    double brightness,
+    double contrast,
+    bool isLoading,
+    bool hasChanges,
+    String? error,
+  });
 }
 
 /// @nodoc
 class __$$ImagePreviewStateImplCopyWithImpl<$Res>
     extends _$ImagePreviewStateCopyWithImpl<$Res, _$ImagePreviewStateImpl>
     implements _$$ImagePreviewStateImplCopyWith<$Res> {
-  __$$ImagePreviewStateImplCopyWithImpl(_$ImagePreviewStateImpl _value,
-      $Res Function(_$ImagePreviewStateImpl) _then)
-      : super(_value, _then);
+  __$$ImagePreviewStateImplCopyWithImpl(
+    _$ImagePreviewStateImpl _value,
+    $Res Function(_$ImagePreviewStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImagePreviewState
   /// with the given fields replaced by the non-null parameter values.
@@ -1141,60 +1157,63 @@ class __$$ImagePreviewStateImplCopyWithImpl<$Res>
     Object? hasChanges = null,
     Object? error = freezed,
   }) {
-    return _then(_$ImagePreviewStateImpl(
-      currentImage: null == currentImage
-          ? _value.currentImage
-          : currentImage // ignore: cast_nullable_to_non_nullable
-              as File,
-      originalImage: null == originalImage
-          ? _value.originalImage
-          : originalImage // ignore: cast_nullable_to_non_nullable
-              as File,
-      rotation: null == rotation
-          ? _value.rotation
-          : rotation // ignore: cast_nullable_to_non_nullable
-              as double,
-      currentFilter: null == currentFilter
-          ? _value.currentFilter
-          : currentFilter // ignore: cast_nullable_to_non_nullable
-              as String,
-      brightness: null == brightness
-          ? _value.brightness
-          : brightness // ignore: cast_nullable_to_non_nullable
-              as double,
-      contrast: null == contrast
-          ? _value.contrast
-          : contrast // ignore: cast_nullable_to_non_nullable
-              as double,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hasChanges: null == hasChanges
-          ? _value.hasChanges
-          : hasChanges // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ImagePreviewStateImpl(
+        currentImage: null == currentImage
+            ? _value.currentImage
+            : currentImage // ignore: cast_nullable_to_non_nullable
+                  as File,
+        originalImage: null == originalImage
+            ? _value.originalImage
+            : originalImage // ignore: cast_nullable_to_non_nullable
+                  as File,
+        rotation: null == rotation
+            ? _value.rotation
+            : rotation // ignore: cast_nullable_to_non_nullable
+                  as double,
+        currentFilter: null == currentFilter
+            ? _value.currentFilter
+            : currentFilter // ignore: cast_nullable_to_non_nullable
+                  as String,
+        brightness: null == brightness
+            ? _value.brightness
+            : brightness // ignore: cast_nullable_to_non_nullable
+                  as double,
+        contrast: null == contrast
+            ? _value.contrast
+            : contrast // ignore: cast_nullable_to_non_nullable
+                  as double,
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        hasChanges: null == hasChanges
+            ? _value.hasChanges
+            : hasChanges // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ImagePreviewStateImpl implements _ImagePreviewState {
-  const _$ImagePreviewStateImpl(
-      {required this.currentImage,
-      required this.originalImage,
-      this.rotation = 0.0,
-      this.currentFilter = '',
-      this.brightness = 0.0,
-      this.contrast = 1.0,
-      this.isLoading = false,
-      this.hasChanges = false,
-      this.error});
+  const _$ImagePreviewStateImpl({
+    required this.currentImage,
+    required this.originalImage,
+    this.rotation = 0.0,
+    this.currentFilter = '',
+    this.brightness = 0.0,
+    this.contrast = 1.0,
+    this.isLoading = false,
+    this.hasChanges = false,
+    this.error,
+  });
 
   @override
   final File currentImage;
@@ -1252,16 +1271,17 @@ class _$ImagePreviewStateImpl implements _ImagePreviewState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      currentImage,
-      originalImage,
-      rotation,
-      currentFilter,
-      brightness,
-      contrast,
-      isLoading,
-      hasChanges,
-      error);
+    runtimeType,
+    currentImage,
+    originalImage,
+    rotation,
+    currentFilter,
+    brightness,
+    contrast,
+    isLoading,
+    hasChanges,
+    error,
+  );
 
   /// Create a copy of ImagePreviewState
   /// with the given fields replaced by the non-null parameter values.
@@ -1270,20 +1290,23 @@ class _$ImagePreviewStateImpl implements _ImagePreviewState {
   @pragma('vm:prefer-inline')
   _$$ImagePreviewStateImplCopyWith<_$ImagePreviewStateImpl> get copyWith =>
       __$$ImagePreviewStateImplCopyWithImpl<_$ImagePreviewStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _ImagePreviewState implements ImagePreviewState {
-  const factory _ImagePreviewState(
-      {required final File currentImage,
-      required final File originalImage,
-      final double rotation,
-      final String currentFilter,
-      final double brightness,
-      final double contrast,
-      final bool isLoading,
-      final bool hasChanges,
-      final String? error}) = _$ImagePreviewStateImpl;
+  const factory _ImagePreviewState({
+    required final File currentImage,
+    required final File originalImage,
+    final double rotation,
+    final String currentFilter,
+    final double brightness,
+    final double contrast,
+    final bool isLoading,
+    final bool hasChanges,
+    final String? error,
+  }) = _$ImagePreviewStateImpl;
 
   @override
   File get currentImage;

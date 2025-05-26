@@ -77,15 +77,15 @@ class LoadingStateHandler<T> extends StatelessWidget {
     // Determinar qué widget mostrar según el estado
     if (isLoading && (data == null || isEmpty)) {
       // Estado de carga
-      content = loadingWidget ??
+      content =
+          loadingWidget ??
           Center(
-            child: CircularProgressIndicator(
-              color: AppColors.lightTextPrimary,
-            ),
+            child: CircularProgressIndicator(color: AppColors.lightTextPrimary),
           );
     } else if (errorMessage != null && (data == null || isEmpty)) {
       // Estado de error
-      content = errorWidget ??
+      content =
+          errorWidget ??
           Center(
             child: EmptyStateWidget(
               icon: Icons.error_outline,
@@ -95,7 +95,8 @@ class LoadingStateHandler<T> extends StatelessWidget {
           );
     } else if (isEmpty) {
       // Estado vacío
-      content = emptyWidget ??
+      content =
+          emptyWidget ??
           Center(
             child: EmptyStateWidget(
               icon: emptyIcon,
@@ -124,9 +125,7 @@ class LoadingStateHandler<T> extends StatelessWidget {
         // Eliminar height: double.infinity para evitar constraints infinitos
         // y usar constraints que se adapten al contenido
         constraints: const BoxConstraints(minHeight: 100),
-        decoration: BoxDecoration(
-          color: darkPrimaryBackground,
-        ),
+        decoration: BoxDecoration(color: darkPrimaryBackground),
         child: content,
       );
     }

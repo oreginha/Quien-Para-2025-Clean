@@ -40,7 +40,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<void> subscribeToTopic(String topic) async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: subscribeToTopic() llamado - sin operación');
+        'EmptyNotificationService: subscribeToTopic() llamado - sin operación',
+      );
     }
     return;
   }
@@ -49,7 +50,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<void> unsubscribeFromTopic(String topic) async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: unsubscribeFromTopic() llamado - sin operación');
+        'EmptyNotificationService: unsubscribeFromTopic() llamado - sin operación',
+      );
     }
     return;
   }
@@ -70,7 +72,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   }) async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: showLocalNotification() llamado - sin operación');
+        'EmptyNotificationService: showLocalNotification() llamado - sin operación',
+      );
     }
     return;
   }
@@ -79,9 +82,11 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<void> sendNotification(NotificationEntity notification) async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: sendNotification() llamado - sin operación');
+        'EmptyNotificationService: sendNotification() llamado - sin operación',
+      );
       print(
-          'Notification details: ${notification.title} - ${notification.message}');
+        'Notification details: ${notification.title} - ${notification.message}',
+      );
     }
     return;
   }
@@ -90,7 +95,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<void> setupNotificationHandlers() async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: setupNotificationHandlers() - sin operación');
+        'EmptyNotificationService: setupNotificationHandlers() - sin operación',
+      );
     }
     return;
   }
@@ -99,7 +105,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<bool> requestNotificationPermissions() async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: requestNotificationPermissions() - sin operación');
+        'EmptyNotificationService: requestNotificationPermissions() - sin operación',
+      );
     }
     // Simular que los permisos fueron concedidos
     return true;
@@ -117,7 +124,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<void> cancelAllNotifications() async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: cancelAllNotifications() - sin operación');
+        'EmptyNotificationService: cancelAllNotifications() - sin operación',
+      );
     }
     return;
   }
@@ -131,7 +139,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   }) async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: sendApplicationNotification() - sin operación');
+        'EmptyNotificationService: sendApplicationNotification() - sin operación',
+      );
     }
     return;
   }
@@ -140,7 +149,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   void registerNotificationListener(Function(NotificationEntity) listener) {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: registerNotificationListener() - sin operación');
+        'EmptyNotificationService: registerNotificationListener() - sin operación',
+      );
     }
     _listeners.add(listener);
   }
@@ -149,7 +159,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   void removeNotificationListener(Function(NotificationEntity) listener) {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: removeNotificationListener() - sin operación');
+        'EmptyNotificationService: removeNotificationListener() - sin operación',
+      );
     }
     _listeners.remove(listener);
   }
@@ -163,7 +174,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   }) async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: scheduleLocalNotification() - sin operación');
+        'EmptyNotificationService: scheduleLocalNotification() - sin operación',
+      );
     }
     return;
   }
@@ -172,7 +184,8 @@ class EmptyNotificationService implements NotificationServiceInterface {
   Future<bool> areNotificationsEnabled() async {
     if (kDebugMode) {
       print(
-          'EmptyNotificationService: areNotificationsEnabled() - sin operación');
+        'EmptyNotificationService: areNotificationsEnabled() - sin operación',
+      );
     }
     // Simular que las notificaciones están deshabilitadas
     return false;

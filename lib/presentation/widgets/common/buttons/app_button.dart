@@ -181,8 +181,7 @@ class AppButton extends StatelessWidget {
         elevation: style == AppButtonStyle.text ? 0 : 2,
         padding: padding ?? dimensions.padding,
         shape: RoundedRectangleBorder(
-          borderRadius:
-              borderRadius ?? BorderRadius.circular(AppRadius.l),
+          borderRadius: borderRadius ?? BorderRadius.circular(AppRadius.l),
           side: style == AppButtonStyle.secondary
               ? BorderSide(color: const Color(0xFFFFC107)) // brandYellow
               : BorderSide.none,
@@ -208,7 +207,8 @@ class AppButton extends StatelessWidget {
     // Usar colores personalizados si se especifican
     if (darkPrimaryBackground != null || textColor != null) {
       bg = darkPrimaryBackground ?? AppColors.lightTextPrimary;
-      text = textColor ??
+      text =
+          textColor ??
           (style == AppButtonStyle.primary ? Colors.black : Colors.white);
       disabledBg = bg.withAlpha(128);
       disabledText = text.withAlpha(128);
@@ -226,33 +226,38 @@ class AppButton extends StatelessWidget {
         return ButtonColors(
           darkPrimaryBackground: const Color(0xFFFFC107), // brandYellow
           textColor: const Color(0xFF1E293B), // darkTextPrimary
-          disabledBackgroundColor:
-              AppColors.lightTextPrimary.withAlpha((255 * 0.4).round()),
-          disabledTextColor:
-              AppColors.lightTextPrimary.withAlpha((255 * 0.6).round()),
+          disabledBackgroundColor: AppColors.lightTextPrimary.withAlpha(
+            (255 * 0.4).round(),
+          ),
+          disabledTextColor: AppColors.lightTextPrimary.withAlpha(
+            (255 * 0.6).round(),
+          ),
         );
       case AppButtonStyle.secondary:
         return ButtonColors(
           darkPrimaryBackground: Colors.transparent,
           textColor: const Color(0xFFFFC107), // brandYellow
           disabledBackgroundColor: Colors.transparent,
-          disabledTextColor:
-              AppColors.brandYellow.withAlpha((255 * 0.4).round()),
+          disabledTextColor: AppColors.brandYellow.withAlpha(
+            (255 * 0.4).round(),
+          ),
         );
       case AppButtonStyle.action:
         return ButtonColors(
           darkPrimaryBackground: const Color(0xFFFFC107), // brandYellow
           textColor: Colors.white,
-          disabledBackgroundColor:
-              AppColors.brandYellow.withAlpha((255 * 0.4).round()),
+          disabledBackgroundColor: AppColors.brandYellow.withAlpha(
+            (255 * 0.4).round(),
+          ),
           disabledTextColor: Colors.white.withAlpha(153),
         );
       case AppButtonStyle.danger:
         return ButtonColors(
           darkPrimaryBackground: AppColors.success,
           textColor: Colors.white,
-          disabledBackgroundColor:
-              AppColors.brandYellow.withAlpha((255 * 0.4).round()),
+          disabledBackgroundColor: AppColors.brandYellow.withAlpha(
+            (255 * 0.4).round(),
+          ),
           disabledTextColor: Colors.white.withAlpha(153),
         );
       case AppButtonStyle.text:
@@ -260,8 +265,9 @@ class AppButton extends StatelessWidget {
           darkPrimaryBackground: Colors.transparent,
           textColor: const Color(0xFFFFC107), // brandYellow
           disabledBackgroundColor: Colors.transparent,
-          disabledTextColor:
-              AppColors.brandYellow.withAlpha((255 * 0.4).round()),
+          disabledTextColor: AppColors.brandYellow.withAlpha(
+            (255 * 0.4).round(),
+          ),
         );
     }
   }

@@ -69,8 +69,8 @@ class UserFriendlyErrorHandler {
     final errorMessage = error is Exception
         ? getMessageForException(error)
         : error is Failure
-            ? getMessageForFailure(error)
-            : error.toString();
+        ? getMessageForFailure(error)
+        : error.toString();
 
     return AnimatedOpacity(
       opacity: 1.0,
@@ -79,11 +79,7 @@ class UserFriendlyErrorHandler {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              _getIconForError(error),
-              size: 48,
-              color: AppColors.accentRed,
-            ),
+            Icon(_getIconForError(error), size: 48, color: AppColors.accentRed),
             const SizedBox(height: AppSpacing.m),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
@@ -120,29 +116,21 @@ class UserFriendlyErrorHandler {
     final errorMessage = error is Exception
         ? getMessageForException(error)
         : error is Failure
-            ? getMessageForFailure(error)
-            : error.toString();
+        ? getMessageForFailure(error)
+        : error.toString();
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Row(
           children: [
-            Icon(
-              _getIconForError(error),
-              color: Colors.white,
-              size: 20,
-            ),
+            Icon(_getIconForError(error), color: Colors.white, size: 20),
             const SizedBox(width: 8),
-            Expanded(
-              child: Text(errorMessage),
-            ),
+            Expanded(child: Text(errorMessage)),
           ],
         ),
         backgroundColor: AppColors.accentRed,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         duration: const Duration(seconds: 4),
         action: SnackBarAction(
           label: 'OK',

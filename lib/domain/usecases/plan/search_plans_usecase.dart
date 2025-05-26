@@ -20,8 +20,11 @@ class SearchPlansParams {
   });
 
   /// Constructor para búsqueda por texto
-  factory SearchPlansParams.byText(String searchText,
-      {int? limit, String? lastDocumentId}) {
+  factory SearchPlansParams.byText(
+    String searchText, {
+    int? limit,
+    String? lastDocumentId,
+  }) {
     return SearchPlansParams(
       criteria: {'searchText': searchText},
       limit: limit,
@@ -30,8 +33,11 @@ class SearchPlansParams {
   }
 
   /// Constructor para búsqueda por categoría
-  factory SearchPlansParams.byCategory(String category,
-      {int? limit, String? lastDocumentId}) {
+  factory SearchPlansParams.byCategory(
+    String category, {
+    int? limit,
+    String? lastDocumentId,
+  }) {
     return SearchPlansParams(
       criteria: {'category': category},
       limit: limit,
@@ -40,8 +46,11 @@ class SearchPlansParams {
   }
 
   /// Constructor para búsqueda por creador
-  factory SearchPlansParams.byCreator(String creatorId,
-      {int? limit, String? lastDocumentId}) {
+  factory SearchPlansParams.byCreator(
+    String creatorId, {
+    int? limit,
+    String? lastDocumentId,
+  }) {
     return SearchPlansParams(
       criteria: {'creatorId': creatorId},
       limit: limit,
@@ -50,13 +59,14 @@ class SearchPlansParams {
   }
 
   /// Constructor para búsqueda por fecha
-  factory SearchPlansParams.byDateRange(DateTime minDate, DateTime maxDate,
-      {int? limit, String? lastDocumentId}) {
+  factory SearchPlansParams.byDateRange(
+    DateTime minDate,
+    DateTime maxDate, {
+    int? limit,
+    String? lastDocumentId,
+  }) {
     return SearchPlansParams(
-      criteria: {
-        'minDate': minDate,
-        'maxDate': maxDate,
-      },
+      criteria: {'minDate': minDate, 'maxDate': maxDate},
       limit: limit,
       lastDocumentId: lastDocumentId,
     );
@@ -76,18 +86,22 @@ class SearchPlansUseCase
 
   @override
   Future<Either<AppFailure, List<PlanEntity>>> execute(
-      SearchPlansParams params) async {
+    SearchPlansParams params,
+  ) async {
     _logger.d(
-        'SearchPlansUseCase: Buscando planes con criterios: ${params.criteria}');
+      'SearchPlansUseCase: Buscando planes con criterios: ${params.criteria}',
+    );
 
     // Validar parámetros
     if (params.criteria.isEmpty) {
       _logger.w('SearchPlansUseCase: Criterios de búsqueda vacíos');
-      return Left(ValidationFailure(
-        message: 'Los criterios de búsqueda no pueden estar vacíos',
-        code: '',
-        field: '',
-      ));
+      return Left(
+        ValidationFailure(
+          message: 'Los criterios de búsqueda no pueden estar vacíos',
+          code: '',
+          field: '',
+        ),
+      );
     }
 
     // Delegar al repositorio
@@ -103,22 +117,32 @@ class SearchPlansUseCase
       execute(params);
 
   /// Método de conveniencia para buscar planes por texto
-  Future<Either<AppFailure, List<PlanEntity>>> searchByText(String searchText,
-      {int? limit, String? lastDocumentId}) {
-    return execute(SearchPlansParams.byText(
-      searchText,
-      limit: limit,
-      lastDocumentId: lastDocumentId,
-    ));
+  Future<Either<AppFailure, List<PlanEntity>>> searchByText(
+    String searchText, {
+    int? limit,
+    String? lastDocumentId,
+  }) {
+    return execute(
+      SearchPlansParams.byText(
+        searchText,
+        limit: limit,
+        lastDocumentId: lastDocumentId,
+      ),
+    );
   }
 
   /// Método de conveniencia para buscar planes por categoría
-  Future<Either<AppFailure, List<PlanEntity>>> searchByCategory(String category,
-      {int? limit, String? lastDocumentId}) {
-    return execute(SearchPlansParams.byCategory(
-      category,
-      limit: limit,
-      lastDocumentId: lastDocumentId,
-    ));
+  Future<Either<AppFailure, List<PlanEntity>>> searchByCategory(
+    String category, {
+    int? limit,
+    String? lastDocumentId,
+  }) {
+    return execute(
+      SearchPlansParams.byCategory(
+        category,
+        limit: limit,
+        lastDocumentId: lastDocumentId,
+      ),
+    );
   }
 }

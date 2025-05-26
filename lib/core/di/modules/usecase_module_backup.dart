@@ -74,10 +74,12 @@ class UseCaseModule implements DIModule {
   void _ensureRepositoriesExist(GetIt sl) {
     // PlanRepository
     if (!sl.isRegistered<PlanRepository>()) {
-      final cache =
-          sl.isRegistered<UserCache>() ? sl<UserCache>() : UserCache();
-      final mapper =
-          sl.isRegistered<UserMapper>() ? sl<UserMapper>() : const UserMapper();
+      final cache = sl.isRegistered<UserCache>()
+          ? sl<UserCache>()
+          : UserCache();
+      final mapper = sl.isRegistered<UserMapper>()
+          ? sl<UserMapper>()
+          : const UserMapper();
       final apiService = sl.isRegistered<PlanApiService>()
           ? sl<PlanApiService>()
           : PlanApiService();
@@ -139,8 +141,10 @@ class UseCaseModule implements DIModule {
     _safeRegister<MatchPlanUseCase>(sl, () => MatchPlanUseCase(repo));
 
     // Caso especial que requiere FirebaseFirestore
-    _safeRegister<GetPlansWithCreatorsUseCase>(sl,
-        () => GetPlansWithCreatorsUseCase(repo, FirebaseFirestore.instance));
+    _safeRegister<GetPlansWithCreatorsUseCase>(
+      sl,
+      () => GetPlansWithCreatorsUseCase(repo, FirebaseFirestore.instance),
+    );
   }
 
   /// Registra casos de uso de aplicaciones
@@ -149,28 +153,36 @@ class UseCaseModule implements DIModule {
 
     // Registrar cada caso de uso individualmente, verificando primero si ya existe
     _safeRegister<ApplyToPlanUseCase>(
-        sl, () => ApplyToPlanUseCase(repo as ApplicationRepositoryInterface));
+      sl,
+      () => ApplyToPlanUseCase(repo as ApplicationRepositoryInterface),
+    );
     _safeRegister<GetPlanApplicationsUseCase>(
-        sl,
-        () =>
-            GetPlanApplicationsUseCase(repo as ApplicationRepositoryInterface));
+      sl,
+      () => GetPlanApplicationsUseCase(repo as ApplicationRepositoryInterface),
+    );
     _safeRegister<GetUserApplicationsUseCase>(
-        sl,
-        () =>
-            GetUserApplicationsUseCase(repo as ApplicationRepositoryInterface));
+      sl,
+      () => GetUserApplicationsUseCase(repo as ApplicationRepositoryInterface),
+    );
     _safeRegister<UpdateApplicationStatusUseCase>(
-        sl,
-        () => UpdateApplicationStatusUseCase(
-            repo as ApplicationRepositoryInterface));
-    _safeRegister<CancelApplicationUseCase>(sl,
-        () => CancelApplicationUseCase(repo as ApplicationRepositoryInterface));
+      sl,
+      () => UpdateApplicationStatusUseCase(
+        repo as ApplicationRepositoryInterface,
+      ),
+    );
+    _safeRegister<CancelApplicationUseCase>(
+      sl,
+      () => CancelApplicationUseCase(repo as ApplicationRepositoryInterface),
+    );
 
     // Notificaciones si están disponibles
     if (sl.isRegistered<NotificationServiceInterface>()) {
       _safeRegister<SendApplicationNotificationUseCase>(
-          sl,
-          () => SendApplicationNotificationUseCase(
-              sl<NotificationServiceInterface>()));
+        sl,
+        () => SendApplicationNotificationUseCase(
+          sl<NotificationServiceInterface>(),
+        ),
+      );
     }
   }
 
@@ -181,7 +193,9 @@ class UseCaseModule implements DIModule {
 
       // Solo registramos el caso de uso más esencial para notificaciones
       _safeRegister<CreateNotificationUseCase>(
-          sl, () => CreateNotificationUseCase(repo));
+        sl,
+        () => CreateNotificationUseCase(repo),
+      );
     }
   }
 
