@@ -42,10 +42,10 @@ class ServerFailure extends Failure {
   final int? statusCode;
 
   const ServerFailure([this.statusCode, String? message])
-    : super(
-        message ??
-            'Error del servidor${statusCode != null ? " (Código: $statusCode)" : ""}',
-      );
+      : super(
+          message ??
+              'Error del servidor${statusCode != null ? " (Código: $statusCode)" : ""}',
+        );
 
   @override
   List<Object?> get props => [message, statusCode];

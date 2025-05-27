@@ -85,40 +85,39 @@ class _$NotificationModelCopyWithImpl<$Res, $Val extends NotificationModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            body: null == body
-                ? _value.body
-                : body // ignore: cast_nullable_to_non_nullable
-                      as String,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            read: null == read
-                ? _value.read
-                : read // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            type: freezed == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            data: freezed == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                as String,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                as String,
+        body: null == body
+            ? _value.body
+            : body // ignore: cast_nullable_to_non_nullable
+                as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        read: null == read
+            ? _value.read
+            : read // ignore: cast_nullable_to_non_nullable
+                as bool,
+        type: freezed == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as String?,
+        data: freezed == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+      ) as $Val,
     );
   }
 }
@@ -172,35 +171,35 @@ class __$$NotificationModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         userId: null == userId
             ? _value.userId
             : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         title: null == title
             ? _value.title
             : title // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         body: null == body
             ? _value.body
             : body // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         read: null == read
             ? _value.read
             : read // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         type: freezed == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         data: freezed == data
             ? _value._data
             : data // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
       ),
     );
   }
@@ -272,16 +271,16 @@ class _$NotificationModelImpl implements _NotificationModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    title,
-    body,
-    createdAt,
-    read,
-    type,
-    const DeepCollectionEquality().hash(_data),
-  );
+        runtimeType,
+        id,
+        userId,
+        title,
+        body,
+        createdAt,
+        read,
+        type,
+        const DeepCollectionEquality().hash(_data),
+      );
 
   /// Create a copy of NotificationModel
   /// with the given fields replaced by the non-null parameter values.

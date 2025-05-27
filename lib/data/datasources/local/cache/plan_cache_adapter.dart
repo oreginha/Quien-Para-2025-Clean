@@ -15,11 +15,11 @@ class PlanCacheAdapter implements PlanCacheInterface {
 
   /// Constructor
   PlanCacheAdapter()
-    : _cache = GenericCompressedCache<PlanEntity>(
-        cacheName: 'plans',
-        serializeCallback: (plan) => jsonEncode(plan.toJson()),
-        deserializeCallback: (json) => PlanEntity.fromJson(jsonDecode(json)),
-      ) {
+      : _cache = GenericCompressedCache<PlanEntity>(
+          cacheName: 'plans',
+          serializeCallback: (plan) => jsonEncode(plan.toJson()),
+          deserializeCallback: (json) => PlanEntity.fromJson(jsonDecode(json)),
+        ) {
     // Configurar opciones del caché
     _cache.setDefaultCacheDuration(const Duration(minutes: 15));
     _cache.setPriorityCacheDuration(const Duration(minutes: 30));

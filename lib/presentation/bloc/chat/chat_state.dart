@@ -21,29 +21,28 @@ class MessagesLoaded extends ChatState {
 
   // Eliminado 'const' porque realiza operaciones no constantes
   MessagesLoaded(this.messagesModels)
-    : super(
-        messages: messagesModels
-            .map(
-              (msg) => MessageEntity(
-                id: msg.id,
-                content: msg.content,
-                timestamp: msg.timestamp,
-                senderId: msg.senderId,
-                read: msg
-                    .isRead, // Cambiado a isRead que es la propiedad correcta en ChatMessageModel
-              ),
-            )
-            .toList(),
-        // Extraer chatId de forma segura
-        activeConversationId: messagesModels.isNotEmpty
-            ? messagesModels.first.chatId
-            : null,
-      );
+      : super(
+          messages: messagesModels
+              .map(
+                (msg) => MessageEntity(
+                  id: msg.id,
+                  content: msg.content,
+                  timestamp: msg.timestamp,
+                  senderId: msg.senderId,
+                  read: msg
+                      .isRead, // Cambiado a isRead que es la propiedad correcta en ChatMessageModel
+                ),
+              )
+              .toList(),
+          // Extraer chatId de forma segura
+          activeConversationId:
+              messagesModels.isNotEmpty ? messagesModels.first.chatId : null,
+        );
 }
 
 class ConversationsLoaded extends ChatState {
   const ConversationsLoaded(List<ConversationEntity> loadedConversations)
-    : super(conversations: loadedConversations);
+      : super(conversations: loadedConversations);
 }
 
 class ConversationCreated extends ChatState {
@@ -103,19 +102,19 @@ class ChatState extends Equatable {
     required String conversationId,
     List<ConversationEntity>? existingConversations,
   }) : this(
-         messages: loadedMessages,
-         activeConversationId: conversationId,
-         conversations: existingConversations,
-       );
+          messages: loadedMessages,
+          activeConversationId: conversationId,
+          conversations: existingConversations,
+        );
 
   /// Estado cuando se ha creado una nueva conversación
   const ChatState.conversationCreated({
     required String newConversationId,
     List<ConversationEntity>? existingConversations,
   }) : this(
-         createdConversationId: newConversationId,
-         conversations: existingConversations,
-       );
+          createdConversationId: newConversationId,
+          conversations: existingConversations,
+        );
 
   /// Estado de error
   const ChatState.error(String message) : this(errorMessage: message);
@@ -142,13 +141,13 @@ class ChatState extends Equatable {
 
   @override
   List<Object?> get props => [
-    isLoading,
-    errorMessage,
-    conversations,
-    messages,
-    activeConversationId,
-    createdConversationId,
-  ];
+        isLoading,
+        errorMessage,
+        conversations,
+        messages,
+        activeConversationId,
+        createdConversationId,
+      ];
 
   @override
   String toString() {

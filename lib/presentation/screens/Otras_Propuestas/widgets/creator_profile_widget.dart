@@ -21,10 +21,8 @@ class CreatorProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-      future: FirebaseFirestore.instance
-          .collection('users')
-          .doc(creatorId)
-          .get(),
+      future:
+          FirebaseFirestore.instance.collection('users').doc(creatorId).get(),
       builder: (context, creatorSnapshot) {
         if (creatorSnapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -38,9 +36,8 @@ class CreatorProfileWidget extends StatelessWidget {
             (creatorData['name'] as String?) ?? 'Usuario';
         final List<dynamic> photoUrls =
             creatorData['photoUrls'] as List<dynamic>? ?? [];
-        final String photoUrl = photoUrls.isNotEmpty
-            ? photoUrls[0] as String
-            : '';
+        final String photoUrl =
+            photoUrls.isNotEmpty ? photoUrls[0] as String : '';
         final int age = (creatorData['age'] as int?) ?? 0;
 
         return Container(
@@ -78,9 +75,8 @@ class CreatorProfileWidget extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 28,
                   backgroundColor: AppColors.getCardBackground(isDarkMode),
-                  backgroundImage: photoUrl.isNotEmpty
-                      ? NetworkImage(photoUrl)
-                      : null,
+                  backgroundImage:
+                      photoUrl.isNotEmpty ? NetworkImage(photoUrl) : null,
                   child: photoUrl.isEmpty
                       ? Text(
                           creatorName.isNotEmpty
@@ -113,9 +109,9 @@ class CreatorProfileWidget extends StatelessWidget {
                       Text(
                         '$age años',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: (isDarkMode ? Colors.white : Colors.black)
-                              .withAlpha((0.87 * 255).round()),
-                        ),
+                              color: (isDarkMode ? Colors.white : Colors.black)
+                                  .withAlpha((0.87 * 255).round()),
+                            ),
                       ),
                     ],
                     // Nivel y valoración del usuario
@@ -136,7 +132,9 @@ class CreatorProfileWidget extends StatelessWidget {
                             ),
                             child: Text(
                               creatorData['level'] as String,
-                              style: Theme.of(context).textTheme.bodyMedium
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
                                   ?.copyWith(
                                     color: AppColors.brandYellow,
                                     fontWeight: FontWeight.bold,
@@ -169,7 +167,9 @@ class CreatorProfileWidget extends StatelessWidget {
                                 Text(
                                   (creatorData['rating'] as num)
                                       .toStringAsFixed(1),
-                                  style: Theme.of(context).textTheme.bodyMedium
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
                                       ?.copyWith(
                                         color: AppColors.brandYellow,
                                         fontWeight: FontWeight.bold,

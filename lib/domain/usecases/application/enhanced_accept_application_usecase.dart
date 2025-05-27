@@ -17,13 +17,13 @@ class EnhancedAcceptApplicationUseCase {
   final ApplicationChatService _chatService;
 
   EnhancedAcceptApplicationUseCase(this._repository, this._notificationUseCase)
-    : _chatService = ApplicationChatService();
+      : _chatService = ApplicationChatService();
 
   /// Acepta una aplicación, envía la notificación correspondiente y crea un chat
   Future<ApplicationEntity> call(String applicationId) async {
     // Actualizar el estado de la aplicación
-    final Either<AppFailure, ApplicationEntity> result = await _repository
-        .updateApplicationStatus(applicationId, 'accepted');
+    final Either<AppFailure, ApplicationEntity> result =
+        await _repository.updateApplicationStatus(applicationId, 'accepted');
 
     return result.fold(
       (failure) =>
@@ -37,8 +37,8 @@ class EnhancedAcceptApplicationUseCase {
 
         // Si la aplicación fue aceptada, crear un chat entre los usuarios
         try {
-          final String? chatId = await _chatService
-              .createChatForAcceptedApplication(application);
+          final String? chatId =
+              await _chatService.createChatForAcceptedApplication(application);
           if (chatId != null && kDebugMode) {
             if (kDebugMode) {
               print('Chat creado con éxito: $chatId');

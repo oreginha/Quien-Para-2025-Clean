@@ -74,12 +74,10 @@ class UseCaseModule implements DIModule {
   void _ensureRepositoriesExist(GetIt sl) {
     // PlanRepository
     if (!sl.isRegistered<PlanRepository>()) {
-      final cache = sl.isRegistered<UserCache>()
-          ? sl<UserCache>()
-          : UserCache();
-      final mapper = sl.isRegistered<UserMapper>()
-          ? sl<UserMapper>()
-          : const UserMapper();
+      final cache =
+          sl.isRegistered<UserCache>() ? sl<UserCache>() : UserCache();
+      final mapper =
+          sl.isRegistered<UserMapper>() ? sl<UserMapper>() : const UserMapper();
       final apiService = sl.isRegistered<PlanApiService>()
           ? sl<PlanApiService>()
           : PlanApiService();

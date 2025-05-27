@@ -85,48 +85,47 @@ class _$SearchFiltersStateCopyWithImpl<$Res, $Val extends SearchFiltersState>
   }) {
     return _then(
       _value.copyWith(
-            searchQuery: null == searchQuery
-                ? _value.searchQuery
-                : searchQuery // ignore: cast_nullable_to_non_nullable
-                      as String,
-            selectedCategory: null == selectedCategory
-                ? _value.selectedCategory
-                : selectedCategory // ignore: cast_nullable_to_non_nullable
-                      as String,
-            selectedTags: null == selectedTags
-                ? _value.selectedTags
-                : selectedTags // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            distanceValue: null == distanceValue
-                ? _value.distanceValue
-                : distanceValue // ignore: cast_nullable_to_non_nullable
-                      as double,
-            minDistance: null == minDistance
-                ? _value.minDistance
-                : minDistance // ignore: cast_nullable_to_non_nullable
-                      as double,
-            maxDistance: null == maxDistance
-                ? _value.maxDistance
-                : maxDistance // ignore: cast_nullable_to_non_nullable
-                      as double,
-            conditions: null == conditions
-                ? _value.conditions
-                : conditions // ignore: cast_nullable_to_non_nullable
-                      as Map<String, bool>,
-            additionalServices: null == additionalServices
-                ? _value.additionalServices
-                : additionalServices // ignore: cast_nullable_to_non_nullable
-                      as Map<String, bool>,
-            isLoading: null == isLoading
-                ? _value.isLoading
-                : isLoading // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            errorMessage: freezed == errorMessage
-                ? _value.errorMessage
-                : errorMessage // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
+        searchQuery: null == searchQuery
+            ? _value.searchQuery
+            : searchQuery // ignore: cast_nullable_to_non_nullable
+                as String,
+        selectedCategory: null == selectedCategory
+            ? _value.selectedCategory
+            : selectedCategory // ignore: cast_nullable_to_non_nullable
+                as String,
+        selectedTags: null == selectedTags
+            ? _value.selectedTags
+            : selectedTags // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        distanceValue: null == distanceValue
+            ? _value.distanceValue
+            : distanceValue // ignore: cast_nullable_to_non_nullable
+                as double,
+        minDistance: null == minDistance
+            ? _value.minDistance
+            : minDistance // ignore: cast_nullable_to_non_nullable
+                as double,
+        maxDistance: null == maxDistance
+            ? _value.maxDistance
+            : maxDistance // ignore: cast_nullable_to_non_nullable
+                as double,
+        conditions: null == conditions
+            ? _value.conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                as Map<String, bool>,
+        additionalServices: null == additionalServices
+            ? _value.additionalServices
+            : additionalServices // ignore: cast_nullable_to_non_nullable
+                as Map<String, bool>,
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                as bool,
+        errorMessage: freezed == errorMessage
+            ? _value.errorMessage
+            : errorMessage // ignore: cast_nullable_to_non_nullable
+                as String?,
+      ) as $Val,
     );
   }
 }
@@ -184,43 +183,43 @@ class __$$SearchFiltersStateImplCopyWithImpl<$Res>
         searchQuery: null == searchQuery
             ? _value.searchQuery
             : searchQuery // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         selectedCategory: null == selectedCategory
             ? _value.selectedCategory
             : selectedCategory // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         selectedTags: null == selectedTags
             ? _value._selectedTags
             : selectedTags // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         distanceValue: null == distanceValue
             ? _value.distanceValue
             : distanceValue // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         minDistance: null == minDistance
             ? _value.minDistance
             : minDistance // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         maxDistance: null == maxDistance
             ? _value.maxDistance
             : maxDistance // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         conditions: null == conditions
             ? _value._conditions
             : conditions // ignore: cast_nullable_to_non_nullable
-                  as Map<String, bool>,
+                as Map<String, bool>,
         additionalServices: null == additionalServices
             ? _value._additionalServices
             : additionalServices // ignore: cast_nullable_to_non_nullable
-                  as Map<String, bool>,
+                as Map<String, bool>,
         isLoading: null == isLoading
             ? _value.isLoading
             : isLoading // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         errorMessage: freezed == errorMessage
             ? _value.errorMessage
             : errorMessage // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -240,9 +239,9 @@ class _$SearchFiltersStateImpl implements _SearchFiltersState {
     final Map<String, bool> additionalServices = const <String, bool>{},
     this.isLoading = false,
     this.errorMessage,
-  }) : _selectedTags = selectedTags,
-       _conditions = conditions,
-       _additionalServices = additionalServices;
+  })  : _selectedTags = selectedTags,
+        _conditions = conditions,
+        _additionalServices = additionalServices;
 
   @override
   @JsonKey()
@@ -333,18 +332,18 @@ class _$SearchFiltersStateImpl implements _SearchFiltersState {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    searchQuery,
-    selectedCategory,
-    const DeepCollectionEquality().hash(_selectedTags),
-    distanceValue,
-    minDistance,
-    maxDistance,
-    const DeepCollectionEquality().hash(_conditions),
-    const DeepCollectionEquality().hash(_additionalServices),
-    isLoading,
-    errorMessage,
-  );
+        runtimeType,
+        searchQuery,
+        selectedCategory,
+        const DeepCollectionEquality().hash(_selectedTags),
+        distanceValue,
+        minDistance,
+        maxDistance,
+        const DeepCollectionEquality().hash(_conditions),
+        const DeepCollectionEquality().hash(_additionalServices),
+        isLoading,
+        errorMessage,
+      );
 
   /// Create a copy of SearchFiltersState
   /// with the given fields replaced by the non-null parameter values.

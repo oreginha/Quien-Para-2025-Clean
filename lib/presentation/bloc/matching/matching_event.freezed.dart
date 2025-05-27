@@ -26,7 +26,8 @@ mixin _$MatchingEvent {
     required TResult Function(String applicationId) rejectApplication,
     required TResult Function(String applicationId) cancelApplication,
     required TResult Function() refreshApplications,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String planId, String? message)? applyToPlan,
@@ -36,7 +37,8 @@ mixin _$MatchingEvent {
     TResult? Function(String applicationId)? rejectApplication,
     TResult? Function(String applicationId)? cancelApplication,
     TResult? Function()? refreshApplications,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String planId, String? message)? applyToPlan,
@@ -47,7 +49,8 @@ mixin _$MatchingEvent {
     TResult Function(String applicationId)? cancelApplication,
     TResult Function()? refreshApplications,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ApplyToPlan value) applyToPlan,
@@ -57,7 +60,8 @@ mixin _$MatchingEvent {
     required TResult Function(_RejectApplication value) rejectApplication,
     required TResult Function(_CancelApplication value) cancelApplication,
     required TResult Function(_RefreshApplications value) refreshApplications,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ApplyToPlan value)? applyToPlan,
@@ -67,7 +71,8 @@ mixin _$MatchingEvent {
     TResult? Function(_RejectApplication value)? rejectApplication,
     TResult? Function(_CancelApplication value)? cancelApplication,
     TResult? Function(_RefreshApplications value)? refreshApplications,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ApplyToPlan value)? applyToPlan,
@@ -78,7 +83,8 @@ mixin _$MatchingEvent {
     TResult Function(_CancelApplication value)? cancelApplication,
     TResult Function(_RefreshApplications value)? refreshApplications,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -132,11 +138,11 @@ class __$$ApplyToPlanImplCopyWithImpl<$Res>
         null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         freezed == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -313,7 +319,7 @@ class __$$LoadUserApplicationsImplCopyWithImpl<$Res>
         userId: freezed == userId
             ? _value.userId
             : userId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -349,11 +355,11 @@ class _$LoadUserApplicationsImpl implements _LoadUserApplications {
   @override
   @pragma('vm:prefer-inline')
   _$$LoadUserApplicationsImplCopyWith<_$LoadUserApplicationsImpl>
-  get copyWith =>
-      __$$LoadUserApplicationsImplCopyWithImpl<_$LoadUserApplicationsImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$LoadUserApplicationsImplCopyWithImpl<_$LoadUserApplicationsImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -458,7 +464,7 @@ abstract class _LoadUserApplications implements MatchingEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadUserApplicationsImplCopyWith<_$LoadUserApplicationsImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -490,7 +496,7 @@ class __$$LoadPlanApplicationsImplCopyWithImpl<$Res>
         null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -526,11 +532,11 @@ class _$LoadPlanApplicationsImpl implements _LoadPlanApplications {
   @override
   @pragma('vm:prefer-inline')
   _$$LoadPlanApplicationsImplCopyWith<_$LoadPlanApplicationsImpl>
-  get copyWith =>
-      __$$LoadPlanApplicationsImplCopyWithImpl<_$LoadPlanApplicationsImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$LoadPlanApplicationsImplCopyWithImpl<_$LoadPlanApplicationsImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -635,7 +641,7 @@ abstract class _LoadPlanApplications implements MatchingEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadPlanApplicationsImplCopyWith<_$LoadPlanApplicationsImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -667,7 +673,7 @@ class __$$AcceptApplicationImplCopyWithImpl<$Res>
         null == applicationId
             ? _value.applicationId
             : applicationId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -844,7 +850,7 @@ class __$$RejectApplicationImplCopyWithImpl<$Res>
         null == applicationId
             ? _value.applicationId
             : applicationId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1021,7 +1027,7 @@ class __$$CancelApplicationImplCopyWithImpl<$Res>
         null == applicationId
             ? _value.applicationId
             : applicationId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }

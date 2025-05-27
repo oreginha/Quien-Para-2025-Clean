@@ -25,7 +25,8 @@ mixin _$ImagePreviewEvent {
     required TResult Function(String filterName) applyFilter,
     required TResult Function(double brightness, double contrast) adjustImage,
     required TResult Function() resetFilter,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(File imageFile)? initialize,
@@ -34,7 +35,8 @@ mixin _$ImagePreviewEvent {
     TResult? Function(String filterName)? applyFilter,
     TResult? Function(double brightness, double contrast)? adjustImage,
     TResult? Function()? resetFilter,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(File imageFile)? initialize,
@@ -44,7 +46,8 @@ mixin _$ImagePreviewEvent {
     TResult Function(double brightness, double contrast)? adjustImage,
     TResult Function()? resetFilter,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
@@ -53,7 +56,8 @@ mixin _$ImagePreviewEvent {
     required TResult Function(_ApplyFilter value) applyFilter,
     required TResult Function(_AdjustImage value) adjustImage,
     required TResult Function(_ResetFilter value) resetFilter,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
@@ -62,7 +66,8 @@ mixin _$ImagePreviewEvent {
     TResult? Function(_ApplyFilter value)? applyFilter,
     TResult? Function(_AdjustImage value)? adjustImage,
     TResult? Function(_ResetFilter value)? resetFilter,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
@@ -72,7 +77,8 @@ mixin _$ImagePreviewEvent {
     TResult Function(_AdjustImage value)? adjustImage,
     TResult Function(_ResetFilter value)? resetFilter,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -126,7 +132,7 @@ class __$$InitializeImplCopyWithImpl<$Res>
         null == imageFile
             ? _value.imageFile
             : imageFile // ignore: cast_nullable_to_non_nullable
-                  as File,
+                as File,
       ),
     );
   }
@@ -555,7 +561,7 @@ class __$$ApplyFilterImplCopyWithImpl<$Res>
         null == filterName
             ? _value.filterName
             : filterName // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -722,11 +728,11 @@ class __$$AdjustImageImplCopyWithImpl<$Res>
         brightness: null == brightness
             ? _value.brightness
             : brightness // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         contrast: null == contrast
             ? _value.contrast
             : contrast // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
       ),
     );
   }
@@ -1069,44 +1075,43 @@ class _$ImagePreviewStateCopyWithImpl<$Res, $Val extends ImagePreviewState>
   }) {
     return _then(
       _value.copyWith(
-            currentImage: null == currentImage
-                ? _value.currentImage
-                : currentImage // ignore: cast_nullable_to_non_nullable
-                      as File,
-            originalImage: null == originalImage
-                ? _value.originalImage
-                : originalImage // ignore: cast_nullable_to_non_nullable
-                      as File,
-            rotation: null == rotation
-                ? _value.rotation
-                : rotation // ignore: cast_nullable_to_non_nullable
-                      as double,
-            currentFilter: null == currentFilter
-                ? _value.currentFilter
-                : currentFilter // ignore: cast_nullable_to_non_nullable
-                      as String,
-            brightness: null == brightness
-                ? _value.brightness
-                : brightness // ignore: cast_nullable_to_non_nullable
-                      as double,
-            contrast: null == contrast
-                ? _value.contrast
-                : contrast // ignore: cast_nullable_to_non_nullable
-                      as double,
-            isLoading: null == isLoading
-                ? _value.isLoading
-                : isLoading // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            hasChanges: null == hasChanges
-                ? _value.hasChanges
-                : hasChanges // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            error: freezed == error
-                ? _value.error
-                : error // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
+        currentImage: null == currentImage
+            ? _value.currentImage
+            : currentImage // ignore: cast_nullable_to_non_nullable
+                as File,
+        originalImage: null == originalImage
+            ? _value.originalImage
+            : originalImage // ignore: cast_nullable_to_non_nullable
+                as File,
+        rotation: null == rotation
+            ? _value.rotation
+            : rotation // ignore: cast_nullable_to_non_nullable
+                as double,
+        currentFilter: null == currentFilter
+            ? _value.currentFilter
+            : currentFilter // ignore: cast_nullable_to_non_nullable
+                as String,
+        brightness: null == brightness
+            ? _value.brightness
+            : brightness // ignore: cast_nullable_to_non_nullable
+                as double,
+        contrast: null == contrast
+            ? _value.contrast
+            : contrast // ignore: cast_nullable_to_non_nullable
+                as double,
+        isLoading: null == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                as bool,
+        hasChanges: null == hasChanges
+            ? _value.hasChanges
+            : hasChanges // ignore: cast_nullable_to_non_nullable
+                as bool,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                as String?,
+      ) as $Val,
     );
   }
 }
@@ -1162,39 +1167,39 @@ class __$$ImagePreviewStateImplCopyWithImpl<$Res>
         currentImage: null == currentImage
             ? _value.currentImage
             : currentImage // ignore: cast_nullable_to_non_nullable
-                  as File,
+                as File,
         originalImage: null == originalImage
             ? _value.originalImage
             : originalImage // ignore: cast_nullable_to_non_nullable
-                  as File,
+                as File,
         rotation: null == rotation
             ? _value.rotation
             : rotation // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         currentFilter: null == currentFilter
             ? _value.currentFilter
             : currentFilter // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         brightness: null == brightness
             ? _value.brightness
             : brightness // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         contrast: null == contrast
             ? _value.contrast
             : contrast // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         isLoading: null == isLoading
             ? _value.isLoading
             : isLoading // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         hasChanges: null == hasChanges
             ? _value.hasChanges
             : hasChanges // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         error: freezed == error
             ? _value.error
             : error // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -1271,17 +1276,17 @@ class _$ImagePreviewStateImpl implements _ImagePreviewState {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    currentImage,
-    originalImage,
-    rotation,
-    currentFilter,
-    brightness,
-    contrast,
-    isLoading,
-    hasChanges,
-    error,
-  );
+        runtimeType,
+        currentImage,
+        originalImage,
+        rotation,
+        currentFilter,
+        brightness,
+        contrast,
+        isLoading,
+        hasChanges,
+        error,
+      );
 
   /// Create a copy of ImagePreviewState
   /// with the given fields replaced by the non-null parameter values.

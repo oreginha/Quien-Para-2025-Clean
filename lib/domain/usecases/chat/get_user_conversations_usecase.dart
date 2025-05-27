@@ -22,9 +22,7 @@ class GetUserConversationsUseCase {
   GetUserConversationsUseCase(this._chatRepository);
 
   Stream<List<ConversationEntity>> execute(GetUserConversationsParams params) {
-    return _chatRepository
-        .getConversations(params.userId)
-        .map(
+    return _chatRepository.getConversations(params.userId).map(
           (either) => either.fold(
             (failure) => <ConversationEntity>[],
             (convs) => convs,

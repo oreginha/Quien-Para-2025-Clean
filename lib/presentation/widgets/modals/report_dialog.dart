@@ -156,12 +156,12 @@ class _ReportDialogState extends State<ReportDialog> {
                         child: RadioListTile<ReportReason>(
                           title: Text(
                             reason.displayName,
-                            style: AppTypography.bodyMedium(isDarkMode)
-                                .copyWith(
-                                  fontWeight: isSelected
-                                      ? FontWeight.w600
-                                      : FontWeight.normal,
-                                ),
+                            style:
+                                AppTypography.bodyMedium(isDarkMode).copyWith(
+                              fontWeight: isSelected
+                                  ? FontWeight.w600
+                                  : FontWeight.normal,
+                            ),
                           ),
                           value: reason,
                           groupValue: _selectedReason,
@@ -289,14 +289,14 @@ class _ReportDialogState extends State<ReportDialog> {
     if (!_canSubmit()) return;
 
     context.read<SecurityBloc>().add(
-      SecurityEvent.createReport(
-        reportedUserId: widget.reportedUserId,
-        reportedPlanId: widget.reportedPlanId,
-        type: widget.type,
-        reason: _selectedReason!,
-        description: _descriptionController.text.trim(),
-      ),
-    );
+          SecurityEvent.createReport(
+            reportedUserId: widget.reportedUserId,
+            reportedPlanId: widget.reportedPlanId,
+            type: widget.type,
+            reason: _selectedReason!,
+            description: _descriptionController.text.trim(),
+          ),
+        );
   }
 }
 

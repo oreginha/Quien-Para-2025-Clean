@@ -91,9 +91,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             onPressed: () => context.go(AppRouter.login),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode
-                  ? Colors.black
-                  : AppColors.lightTextPrimary,
+              foregroundColor:
+                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
             ),
             child: const Text('Iniciar Sesión'),
           ),
@@ -185,9 +184,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             onPressed: () => setState(() {}),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode
-                  ? Colors.black
-                  : AppColors.lightTextPrimary,
+              foregroundColor:
+                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
             ),
             child: const Text('Reintentar'),
           ),
@@ -386,9 +384,8 @@ class _NotificationCard extends StatelessWidget {
                       Text(
                         title,
                         style: AppTypography.heading6(isDarkMode).copyWith(
-                          fontWeight: isRead
-                              ? FontWeight.normal
-                              : FontWeight.bold,
+                          fontWeight:
+                              isRead ? FontWeight.normal : FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: AppSpacing.xs),
@@ -406,19 +403,19 @@ class _NotificationCard extends StatelessWidget {
                         children: [
                           Text(
                             createdAt,
-                            style: AppTypography.labelSmall(isDarkMode)
-                                .copyWith(
-                                  color: AppColors.getTextSecondary(isDarkMode),
-                                ),
+                            style:
+                                AppTypography.labelSmall(isDarkMode).copyWith(
+                              color: AppColors.getTextSecondary(isDarkMode),
+                            ),
                           ),
                           if (!isRead)
                             Text(
                               'Sin leer',
-                              style: AppTypography.labelSmall(isDarkMode)
-                                  .copyWith(
-                                    color: AppColors.brandYellow,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              style:
+                                  AppTypography.labelSmall(isDarkMode).copyWith(
+                                color: AppColors.brandYellow,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                         ],
                       ),

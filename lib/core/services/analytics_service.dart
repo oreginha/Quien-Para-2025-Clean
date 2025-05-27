@@ -48,14 +48,13 @@ final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 Future<void> trackCitySelection(final String city, final bool isEnabled) async {
   try {
     // Obtenemos la referencia del documento de la ciudad
-    final DocumentReference<Map<String, dynamic>> cityRef = _firestore
-        .collection('cityMetrics')
-        .doc(city);
+    final DocumentReference<Map<String, dynamic>> cityRef =
+        _firestore.collection('cityMetrics').doc(city);
 
     // Realizamos una transacción para garantizar la precisión del contador
     await _firestore.runTransaction((final Transaction transaction) async {
-      final DocumentSnapshot<Map<String, dynamic>> cityDoc = await transaction
-          .get(cityRef);
+      final DocumentSnapshot<Map<String, dynamic>> cityDoc =
+          await transaction.get(cityRef);
 
       if (!cityDoc.exists) {
         // Si el documento no existe, lo creamos con valores iniciales

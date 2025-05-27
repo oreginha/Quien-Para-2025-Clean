@@ -52,7 +52,8 @@ class PlanTypeStep extends StatelessWidget {
             ),
           ),
           child: LayoutBuilder(
-            builder: (final BuildContext context, final BoxConstraints constraints) {
+            builder:
+                (final BuildContext context, final BoxConstraints constraints) {
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -67,13 +68,14 @@ class PlanTypeStep extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 2,
-                              crossAxisSpacing: 12,
-                              mainAxisSpacing: 12,
-                            ),
+                          crossAxisCount: 2,
+                          childAspectRatio: 2,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                        ),
                         itemCount: PlanType.planTypes.length,
-                        itemBuilder: (final BuildContext context, final int index) {
+                        itemBuilder:
+                            (final BuildContext context, final int index) {
                           final String type = PlanType.planTypes.keys.elementAt(
                             index,
                           );
@@ -82,14 +84,15 @@ class PlanTypeStep extends StatelessWidget {
                           // Cambio: ahora solo un tipo puede estar seleccionado
                           final bool isSelected =
                               plan.selectedThemes.isNotEmpty &&
-                              plan.selectedThemes.first == type;
+                                  plan.selectedThemes.first == type;
 
                           return GestureDetector(
                             onTap: () {
                               // Actualizar temas seleccionados con BLoC
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateSelectedThemes(<String>[type]),
-                              );
+                                    PlanEvent.updateSelectedThemes(
+                                        <String>[type]),
+                                  );
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -107,9 +110,9 @@ class PlanTypeStep extends StatelessWidget {
                                 border: Border.all(
                                   color: isSelected
                                       ? AppColors
-                                            .brandYellow // Color de marca consistente
+                                          .brandYellow // Color de marca consistente
                                       : Colors
-                                            .transparent, // Colors.transparent se mantiene ya que es un valor constante universal
+                                          .transparent, // Colors.transparent se mantiene ya que es un valor constante universal
                                   width: 2,
                                 ),
                               ),
@@ -185,8 +188,8 @@ class PlanTypeStep extends StatelessWidget {
                               foregroundColor: AppColors.getBackground(
                                 Theme.of(context).brightness == Brightness.dark,
                               ),
-                              disabledBackgroundColor: AppColors.brandYellow
-                                  .withValues(alpha: 0.5),
+                              disabledBackgroundColor:
+                                  AppColors.brandYellow.withValues(alpha: 0.5),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),

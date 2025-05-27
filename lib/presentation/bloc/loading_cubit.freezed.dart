@@ -23,14 +23,16 @@ mixin _$LoadingState<T> {
     required TResult Function(T data) loaded,
     required TResult Function(String message) error,
     required TResult Function() empty,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(T data)? loaded,
     TResult? Function(String message)? error,
     TResult? Function()? empty,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
@@ -38,21 +40,24 @@ mixin _$LoadingState<T> {
     TResult Function(String message)? error,
     TResult Function()? empty,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState<T> value) loading,
     required TResult Function(_LoadedState<T> value) loaded,
     required TResult Function(_ErrorState<T> value) error,
     required TResult Function(_EmptyState<T> value) empty,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState<T> value)? loading,
     TResult? Function(_LoadedState<T> value)? loaded,
     TResult? Function(_ErrorState<T> value)? error,
     TResult? Function(_EmptyState<T> value)? empty,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState<T> value)? loading,
@@ -60,7 +65,8 @@ mixin _$LoadingState<T> {
     TResult Function(_ErrorState<T> value)? error,
     TResult Function(_EmptyState<T> value)? empty,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -241,7 +247,7 @@ class __$$LoadedStateImplCopyWithImpl<T, $Res>
         freezed == data
             ? _value.data
             : data // ignore: cast_nullable_to_non_nullable
-                  as T,
+                as T,
       ),
     );
   }
@@ -409,7 +415,7 @@ class __$$ErrorStateImplCopyWithImpl<T, $Res>
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }

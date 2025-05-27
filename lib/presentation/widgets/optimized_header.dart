@@ -33,7 +33,8 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 50); // Aumentar altura preferida para evitar desbordamiento de 19 píxeles
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight +
+      50); // Aumentar altura preferida para evitar desbordamiento de 19 píxeles
 
   @override
   Widget build(final BuildContext context) {
@@ -77,21 +78,21 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                     child: Image.asset(
                       'lib/assets/images/logo1.png',
                       fit: BoxFit.contain,
-                      errorBuilder:
-                          (
-                            final BuildContext context,
-                            final Object error,
-                            final StackTrace? stackTrace,
-                          ) => Center(
-                            child: Text(
-                              "Q",
-                              style: TextStyle(
-                                color: AppColors.lightTextPrimary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20, // Aumentar tamaño de texto
-                              ),
-                            ),
+                      errorBuilder: (
+                        final BuildContext context,
+                        final Object error,
+                        final StackTrace? stackTrace,
+                      ) =>
+                          Center(
+                        child: Text(
+                          "Q",
+                          style: TextStyle(
+                            color: AppColors.lightTextPrimary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20, // Aumentar tamaño de texto
                           ),
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -149,16 +150,16 @@ class OptimizedHeader extends StatelessWidget implements PreferredSizeWidget {
                           iconAssetPath!,
                           height: 28, // Aumentar tamaño
                           width: 28, // Aumentar tamaño
-                          errorBuilder:
-                              (
-                                final BuildContext context,
-                                final Object error,
-                                final StackTrace? stackTrace,
-                              ) => Icon(
-                                Icons.image_not_supported,
-                                size: 28,
-                                color: AppColors.getSecondaryBackground(false),
-                              ), // Aumentar tamaño
+                          errorBuilder: (
+                            final BuildContext context,
+                            final Object error,
+                            final StackTrace? stackTrace,
+                          ) =>
+                              Icon(
+                            Icons.image_not_supported,
+                            size: 28,
+                            color: AppColors.getSecondaryBackground(false),
+                          ), // Aumentar tamaño
                         ),
                 )
               // Si no hay icono específico, usar uno predeterminado según la pantalla

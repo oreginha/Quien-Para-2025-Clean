@@ -39,13 +39,11 @@ class LogoPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color =
-          Color(0xFFFF6F61) // Naranja (#FF6F61)
+      ..color = Color(0xFFFF6F61) // Naranja (#FF6F61)
       ..style = PaintingStyle.fill;
 
     final Paint paintBlue = Paint()
-      ..color =
-          Color(0xFF4FC3F7) // Azul claro (#4FC3F7)
+      ..color = Color(0xFF4FC3F7) // Azul claro (#4FC3F7)
       ..style = PaintingStyle.fill;
 
     final Paint paintWhite = Paint()

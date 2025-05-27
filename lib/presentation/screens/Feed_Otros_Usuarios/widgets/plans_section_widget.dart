@@ -28,72 +28,71 @@ class PlansSectionWidget extends StatelessWidget {
           .collection('plans')
           .where('userId', isEqualTo: userId)
           .snapshots(),
-      builder:
-          (
-            final BuildContext context,
-            final AsyncSnapshot<QuerySnapshot<Object?>> snapshot,
-          ) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(
-                  'Error al cargar los planes',
-                  style: TextStyle(color: textPrimary),
-                ),
-              );
-            }
+      builder: (
+        final BuildContext context,
+        final AsyncSnapshot<QuerySnapshot<Object?>> snapshot,
+      ) {
+        if (snapshot.hasError) {
+          return Center(
+            child: Text(
+              'Error al cargar los planes',
+              style: TextStyle(color: textPrimary),
+            ),
+          );
+        }
 
-            if (!snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(color: brandYellow),
-              );
-            }
+        if (!snapshot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(color: brandYellow),
+          );
+        }
 
-            final List<DocumentSnapshot> plans = snapshot.data!.docs;
+        final List<DocumentSnapshot> plans = snapshot.data!.docs;
 
-            if (plans.isEmpty) {
-              return Padding(
-                padding: const EdgeInsets.all(16),
-                child: Center(
-                  child: Text(
-                    'Este usuario no tiene planes publicados',
-                    style: TextStyle(color: textPrimary),
-                  ),
-                ),
-              );
-            }
-
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: Text(
-                      'Planes publicados',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: textPrimary,
-                      ),
-                    ),
-                  ),
-                  ...plans.map((final DocumentSnapshot document) {
-                    final Map<String, dynamic> plan =
-                        document.data() as Map<String, dynamic>;
-                    plan['id'] = document.id;
-                    return PlanCardWidget(
-                      plan: plan,
-                      secondaryBackground: secondaryBackground,
-                      textPrimary: textPrimary,
-                      borderColor: borderColor,
-                    );
-                  }),
-                  const SizedBox(height: 24),
-                ],
+        if (plans.isEmpty) {
+          return Padding(
+            padding: const EdgeInsets.all(16),
+            child: Center(
+              child: Text(
+                'Este usuario no tiene planes publicados',
+                style: TextStyle(color: textPrimary),
               ),
-            );
-          },
+            ),
+          );
+        }
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Text(
+                  'Planes publicados',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: textPrimary,
+                  ),
+                ),
+              ),
+              ...plans.map((final DocumentSnapshot document) {
+                final Map<String, dynamic> plan =
+                    document.data() as Map<String, dynamic>;
+                plan['id'] = document.id;
+                return PlanCardWidget(
+                  plan: plan,
+                  secondaryBackground: secondaryBackground,
+                  textPrimary: textPrimary,
+                  borderColor: borderColor,
+                );
+              }),
+              const SizedBox(height: 24),
+            ],
+          ),
+        );
+      },
     );
   }
 }

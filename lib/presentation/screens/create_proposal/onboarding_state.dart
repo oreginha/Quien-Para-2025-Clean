@@ -83,9 +83,8 @@ class PlanOnboardingState {
       description: json['description'] as String,
       location: json['location'] as String,
       type: json['type'] as String,
-      date: json['date'] != null
-          ? DateTime.parse(json['date'] as String)
-          : null,
+      date:
+          json['date'] != null ? DateTime.parse(json['date'] as String) : null,
       time: json['time'] != null
           ? TimeOfDay.fromDateTime(DateTime.parse('2024-01-01 ${json['time']}'))
           : null,
@@ -107,7 +106,7 @@ class OnboardingState {
   final DateTime? selectedDate;
   final TimeOfDay? selectedTime;
   final Map<String, String>
-  selectedOptions; // Nuevo campo para múltiples opciones
+      selectedOptions; // Nuevo campo para múltiples opciones
   final String extraConditions; // Nuevo campo para condiciones adicionales
   final String title;
   final List<PlanEntity> createdPlans;
@@ -168,9 +167,8 @@ class OnboardingState {
       'selectedOptions': selectedOptions,
       'extraConditions': extraConditions,
       'title': title,
-      'createdPlans': createdPlans
-          .map((final PlanEntity plan) => plan.toJson())
-          .toList(),
+      'createdPlans':
+          createdPlans.map((final PlanEntity plan) => plan.toJson()).toList(),
       'creatorId': creatorId,
       'imageUrl': imageUrl,
     };

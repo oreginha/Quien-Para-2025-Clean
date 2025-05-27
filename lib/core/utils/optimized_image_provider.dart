@@ -142,9 +142,8 @@ class OptimizedImageProvider {
 
   /// Genera una clave de caché para una imagen
   String _generateCacheKey(String source, int? width, int? height) {
-    final String dimensionsKey = width != null && height != null
-        ? '_${width}x$height'
-        : '';
+    final String dimensionsKey =
+        width != null && height != null ? '_${width}x$height' : '';
 
     // Generar hash para URL o ruta de archivo
     final String hash = md5.convert(utf8.encode(source)).toString();

@@ -98,11 +98,11 @@ extension ReviewStateExtensions on ReviewState {
 
   /// Todas las reseñas cargadas actualmente
   List<ReviewEntity> get allReviews => [
-    ...userReviews,
-    ...planReviews,
-    ...reviewsByUser,
-    ...pendingReviews,
-  ];
+        ...userReviews,
+        ...planReviews,
+        ...reviewsByUser,
+        ...pendingReviews,
+      ];
 
   /// Reseñas agrupadas por rating
   Map<int, List<ReviewEntity>> get userReviewsByRating {

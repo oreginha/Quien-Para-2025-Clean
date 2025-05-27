@@ -66,9 +66,8 @@ class FirebaseInitializer {
       await collectionRef.doc(exampleUser.id).set(exampleUser.toFirestore());
 
       // Crear subcolección de intereses
-      final interestsRef = collectionRef
-          .doc(exampleUser.id)
-          .collection('interests');
+      final interestsRef =
+          collectionRef.doc(exampleUser.id).collection('interests');
       for (final interest in exampleUser.interests) {
         await interestsRef.add({
           'name': interest,
@@ -133,9 +132,8 @@ class FirebaseInitializer {
       });
 
       // Crear subcolección de participantes
-      final participantsRef = collectionRef
-          .doc(planId)
-          .collection('participants');
+      final participantsRef =
+          collectionRef.doc(planId).collection('participants');
       await participantsRef.add({
         'userId': 'example_user_id',
         'joinedAt': FieldValue.serverTimestamp(),
@@ -236,9 +234,8 @@ class FirebaseInitializer {
       });
 
       // Crear subcolección de mensajes
-      final messagesRef = collectionRef
-          .doc(applicationId)
-          .collection('messages');
+      final messagesRef =
+          collectionRef.doc(applicationId).collection('messages');
       await messagesRef.add({
         'senderId': 'another_user_id',
         'text': 'Estoy interesado en este plan',

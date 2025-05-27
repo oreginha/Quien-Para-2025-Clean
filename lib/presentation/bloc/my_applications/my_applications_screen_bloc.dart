@@ -51,21 +51,18 @@ class _MyApplicationsContent extends StatelessWidget {
         children: [
           _buildFilterChips(context),
           Expanded(
-            child:
-                BlocBuilder<
-                  MyApplicationsCubit,
-                  LoadingState<MyApplicationsData>
-                >(
-                  builder: (context, state) {
-                    return BlocLoadingStateHandler<MyApplicationsData>(
-                      state: state,
-                      onRefresh: () => cubit.loadApplications(),
-                      emptyMessage: 'No has enviado ninguna aplicación todavía',
-                      emptyIcon: Icons.inbox_outlined,
-                      builder: (data) => _buildApplicationsList(context, data),
-                    );
-                  },
-                ),
+            child: BlocBuilder<MyApplicationsCubit,
+                LoadingState<MyApplicationsData>>(
+              builder: (context, state) {
+                return BlocLoadingStateHandler<MyApplicationsData>(
+                  state: state,
+                  onRefresh: () => cubit.loadApplications(),
+                  emptyMessage: 'No has enviado ninguna aplicación todavía',
+                  emptyIcon: Icons.inbox_outlined,
+                  builder: (data) => _buildApplicationsList(context, data),
+                );
+              },
+            ),
           ),
         ],
       ),

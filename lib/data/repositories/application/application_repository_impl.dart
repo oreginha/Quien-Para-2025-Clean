@@ -23,9 +23,9 @@ class ApplicationRepositoryImpl
     required FirebaseFirestore firestore,
     required ApplicationMapper mapper,
     Logger? logger,
-  }) : _firestore = firestore,
-       _mapper = mapper,
-       _logger = logger ?? Logger();
+  })  : _firestore = firestore,
+        _mapper = mapper,
+        _logger = logger ?? Logger();
 
   @override
   Future<Either<AppFailure, List<ApplicationEntity>>> getApplicationsForPlan(
@@ -42,9 +42,8 @@ class ApplicationRepositoryImpl
           .orderBy('appliedAt', descending: true)
           .get();
 
-      final applications = snapshot.docs
-          .map((doc) => _mapper.fromFirestore(doc))
-          .toList();
+      final applications =
+          snapshot.docs.map((doc) => _mapper.fromFirestore(doc)).toList();
 
       return Right(applications);
     } catch (e) {
@@ -74,9 +73,8 @@ class ApplicationRepositoryImpl
           .orderBy('appliedAt', descending: true)
           .get();
 
-      final applications = snapshot.docs
-          .map((doc) => _mapper.fromFirestore(doc))
-          .toList();
+      final applications =
+          snapshot.docs.map((doc) => _mapper.fromFirestore(doc)).toList();
 
       return Right(applications);
     } catch (e) {
@@ -121,9 +119,8 @@ class ApplicationRepositoryImpl
       final Map<String, dynamic> data = _mapper.toFirestore(application);
 
       // Crear el documento en Firestore
-      final DocumentReference docRef = await _firestore
-          .collection('applications')
-          .add(data);
+      final DocumentReference docRef =
+          await _firestore.collection('applications').add(data);
 
       // Obtener el documento recién creado
       final DocumentSnapshot doc = await docRef.get();
@@ -215,10 +212,8 @@ class ApplicationRepositoryImpl
         '📝 [ApplicationRepositoryImpl] Obteniendo aplicación por ID: $applicationId',
       );
 
-      final DocumentSnapshot<Map<String, dynamic>> doc = await _firestore
-          .collection('applications')
-          .doc(applicationId)
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> doc =
+          await _firestore.collection('applications').doc(applicationId).get();
 
       if (!doc.exists) {
         return Left(

@@ -108,68 +108,67 @@ class _$ReviewEntityCopyWithImpl<$Res, $Val extends ReviewEntity>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reviewerId: null == reviewerId
-                ? _value.reviewerId
-                : reviewerId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reviewedUserId: null == reviewedUserId
-                ? _value.reviewedUserId
-                : reviewedUserId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            planId: null == planId
-                ? _value.planId
-                : planId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            rating: null == rating
-                ? _value.rating
-                : rating // ignore: cast_nullable_to_non_nullable
-                      as double,
-            comment: null == comment
-                ? _value.comment
-                : comment // ignore: cast_nullable_to_non_nullable
-                      as String,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as ReviewType,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as ReviewStatus,
-            response: freezed == response
-                ? _value.response
-                : response // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            responseDate: freezed == responseDate
-                ? _value.responseDate
-                : responseDate // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            helpfulCount: null == helpfulCount
-                ? _value.helpfulCount
-                : helpfulCount // ignore: cast_nullable_to_non_nullable
-                      as int,
-            helpfulVotes: null == helpfulVotes
-                ? _value.helpfulVotes
-                : helpfulVotes // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            isVerified: null == isVerified
-                ? _value.isVerified
-                : isVerified // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            metadata: freezed == metadata
-                ? _value.metadata
-                : metadata // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                as String,
+        reviewedUserId: null == reviewedUserId
+            ? _value.reviewedUserId
+            : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                as String,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                as double,
+        comment: null == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as ReviewType,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                as ReviewStatus,
+        response: freezed == response
+            ? _value.response
+            : response // ignore: cast_nullable_to_non_nullable
+                as String?,
+        responseDate: freezed == responseDate
+            ? _value.responseDate
+            : responseDate // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+        helpfulCount: null == helpfulCount
+            ? _value.helpfulCount
+            : helpfulCount // ignore: cast_nullable_to_non_nullable
+                as int,
+        helpfulVotes: null == helpfulVotes
+            ? _value.helpfulVotes
+            : helpfulVotes // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        isVerified: null == isVerified
+            ? _value.isVerified
+            : isVerified // ignore: cast_nullable_to_non_nullable
+                as bool,
+        metadata: freezed == metadata
+            ? _value.metadata
+            : metadata // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+      ) as $Val,
     );
   }
 }
@@ -237,63 +236,63 @@ class __$$ReviewEntityImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reviewerId: null == reviewerId
             ? _value.reviewerId
             : reviewerId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reviewedUserId: null == reviewedUserId
             ? _value.reviewedUserId
             : reviewedUserId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         planId: null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         rating: null == rating
             ? _value.rating
             : rating // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         comment: null == comment
             ? _value.comment
             : comment // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as ReviewType,
+                as ReviewType,
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
-                  as ReviewStatus,
+                as ReviewStatus,
         response: freezed == response
             ? _value.response
             : response // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         responseDate: freezed == responseDate
             ? _value.responseDate
             : responseDate // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
         helpfulCount: null == helpfulCount
             ? _value.helpfulCount
             : helpfulCount // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         helpfulVotes: null == helpfulVotes
             ? _value._helpfulVotes
             : helpfulVotes // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         isVerified: null == isVerified
             ? _value.isVerified
             : isVerified // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         metadata: freezed == metadata
             ? _value._metadata
             : metadata // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
       ),
     );
   }
@@ -318,8 +317,8 @@ class _$ReviewEntityImpl implements _ReviewEntity {
     final List<String> helpfulVotes = const [],
     this.isVerified = false,
     final Map<String, dynamic>? metadata,
-  }) : _helpfulVotes = helpfulVotes,
-       _metadata = metadata;
+  })  : _helpfulVotes = helpfulVotes,
+        _metadata = metadata;
 
   factory _$ReviewEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewEntityImplFromJson(json);
@@ -415,23 +414,23 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    reviewerId,
-    reviewedUserId,
-    planId,
-    rating,
-    comment,
-    createdAt,
-    type,
-    status,
-    response,
-    responseDate,
-    helpfulCount,
-    const DeepCollectionEquality().hash(_helpfulVotes),
-    isVerified,
-    const DeepCollectionEquality().hash(_metadata),
-  );
+        runtimeType,
+        id,
+        reviewerId,
+        reviewedUserId,
+        planId,
+        rating,
+        comment,
+        createdAt,
+        type,
+        status,
+        response,
+        responseDate,
+        helpfulCount,
+        const DeepCollectionEquality().hash(_helpfulVotes),
+        isVerified,
+        const DeepCollectionEquality().hash(_metadata),
+      );
 
   /// Create a copy of ReviewEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -589,52 +588,51 @@ class _$UserRatingEntityCopyWithImpl<$Res, $Val extends UserRatingEntity>
   }) {
     return _then(
       _value.copyWith(
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            averageRating: null == averageRating
-                ? _value.averageRating
-                : averageRating // ignore: cast_nullable_to_non_nullable
-                      as double,
-            totalReviews: null == totalReviews
-                ? _value.totalReviews
-                : totalReviews // ignore: cast_nullable_to_non_nullable
-                      as int,
-            lastUpdated: null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            totalPlansOrganized: null == totalPlansOrganized
-                ? _value.totalPlansOrganized
-                : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
-                      as int,
-            totalPlansAttended: null == totalPlansAttended
-                ? _value.totalPlansAttended
-                : totalPlansAttended // ignore: cast_nullable_to_non_nullable
-                      as int,
-            reliabilityScore: null == reliabilityScore
-                ? _value.reliabilityScore
-                : reliabilityScore // ignore: cast_nullable_to_non_nullable
-                      as int,
-            ratingDistribution: freezed == ratingDistribution
-                ? _value.ratingDistribution
-                : ratingDistribution // ignore: cast_nullable_to_non_nullable
-                      as Map<String, int>?,
-            categoryRatings: freezed == categoryRatings
-                ? _value.categoryRatings
-                : categoryRatings // ignore: cast_nullable_to_non_nullable
-                      as Map<String, double>?,
-            topPositiveComments: freezed == topPositiveComments
-                ? _value.topPositiveComments
-                : topPositiveComments // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
-            commonConcerns: freezed == commonConcerns
-                ? _value.commonConcerns
-                : commonConcerns // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
-          )
-          as $Val,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                as String,
+        averageRating: null == averageRating
+            ? _value.averageRating
+            : averageRating // ignore: cast_nullable_to_non_nullable
+                as double,
+        totalReviews: null == totalReviews
+            ? _value.totalReviews
+            : totalReviews // ignore: cast_nullable_to_non_nullable
+                as int,
+        lastUpdated: null == lastUpdated
+            ? _value.lastUpdated
+            : lastUpdated // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        totalPlansOrganized: null == totalPlansOrganized
+            ? _value.totalPlansOrganized
+            : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
+                as int,
+        totalPlansAttended: null == totalPlansAttended
+            ? _value.totalPlansAttended
+            : totalPlansAttended // ignore: cast_nullable_to_non_nullable
+                as int,
+        reliabilityScore: null == reliabilityScore
+            ? _value.reliabilityScore
+            : reliabilityScore // ignore: cast_nullable_to_non_nullable
+                as int,
+        ratingDistribution: freezed == ratingDistribution
+            ? _value.ratingDistribution
+            : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                as Map<String, int>?,
+        categoryRatings: freezed == categoryRatings
+            ? _value.categoryRatings
+            : categoryRatings // ignore: cast_nullable_to_non_nullable
+                as Map<String, double>?,
+        topPositiveComments: freezed == topPositiveComments
+            ? _value.topPositiveComments
+            : topPositiveComments // ignore: cast_nullable_to_non_nullable
+                as List<String>?,
+        commonConcerns: freezed == commonConcerns
+            ? _value.commonConcerns
+            : commonConcerns // ignore: cast_nullable_to_non_nullable
+                as List<String>?,
+      ) as $Val,
     );
   }
 }
@@ -694,47 +692,47 @@ class __$$UserRatingEntityImplCopyWithImpl<$Res>
         userId: null == userId
             ? _value.userId
             : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         averageRating: null == averageRating
             ? _value.averageRating
             : averageRating // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         totalReviews: null == totalReviews
             ? _value.totalReviews
             : totalReviews // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         lastUpdated: null == lastUpdated
             ? _value.lastUpdated
             : lastUpdated // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         totalPlansOrganized: null == totalPlansOrganized
             ? _value.totalPlansOrganized
             : totalPlansOrganized // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         totalPlansAttended: null == totalPlansAttended
             ? _value.totalPlansAttended
             : totalPlansAttended // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         reliabilityScore: null == reliabilityScore
             ? _value.reliabilityScore
             : reliabilityScore // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         ratingDistribution: freezed == ratingDistribution
             ? _value._ratingDistribution
             : ratingDistribution // ignore: cast_nullable_to_non_nullable
-                  as Map<String, int>?,
+                as Map<String, int>?,
         categoryRatings: freezed == categoryRatings
             ? _value._categoryRatings
             : categoryRatings // ignore: cast_nullable_to_non_nullable
-                  as Map<String, double>?,
+                as Map<String, double>?,
         topPositiveComments: freezed == topPositiveComments
             ? _value._topPositiveComments
             : topPositiveComments // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
+                as List<String>?,
         commonConcerns: freezed == commonConcerns
             ? _value._commonConcerns
             : commonConcerns // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
+                as List<String>?,
       ),
     );
   }
@@ -755,10 +753,10 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
     final Map<String, double>? categoryRatings,
     final List<String>? topPositiveComments,
     final List<String>? commonConcerns,
-  }) : _ratingDistribution = ratingDistribution,
-       _categoryRatings = categoryRatings,
-       _topPositiveComments = topPositiveComments,
-       _commonConcerns = commonConcerns;
+  })  : _ratingDistribution = ratingDistribution,
+        _categoryRatings = categoryRatings,
+        _topPositiveComments = topPositiveComments,
+        _commonConcerns = commonConcerns;
 
   factory _$UserRatingEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserRatingEntityImplFromJson(json);
@@ -873,19 +871,19 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    userId,
-    averageRating,
-    totalReviews,
-    lastUpdated,
-    totalPlansOrganized,
-    totalPlansAttended,
-    reliabilityScore,
-    const DeepCollectionEquality().hash(_ratingDistribution),
-    const DeepCollectionEquality().hash(_categoryRatings),
-    const DeepCollectionEquality().hash(_topPositiveComments),
-    const DeepCollectionEquality().hash(_commonConcerns),
-  );
+        runtimeType,
+        userId,
+        averageRating,
+        totalReviews,
+        lastUpdated,
+        totalPlansOrganized,
+        totalPlansAttended,
+        reliabilityScore,
+        const DeepCollectionEquality().hash(_ratingDistribution),
+        const DeepCollectionEquality().hash(_categoryRatings),
+        const DeepCollectionEquality().hash(_topPositiveComments),
+        const DeepCollectionEquality().hash(_commonConcerns),
+      );
 
   /// Create a copy of UserRatingEntity
   /// with the given fields replaced by the non-null parameter values.

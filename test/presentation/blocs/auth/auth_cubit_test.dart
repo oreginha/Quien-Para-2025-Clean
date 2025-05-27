@@ -18,12 +18,11 @@ class MockAuthRepository extends Mock implements AuthRepository {
   @override
   Future<UserEntity> signInWithEmailAndPassword(String email, String password) {
     return super.noSuchMethod(
-          Invocation.method(#signInWithEmailAndPassword, [email, password]),
-          returnValue: Future.value(
-            UserEntity(id: 'user123', name: 'Test User'),
-          ),
-        )
-        as Future<UserEntity>;
+      Invocation.method(#signInWithEmailAndPassword, [email, password]),
+      returnValue: Future.value(
+        UserEntity(id: 'user123', name: 'Test User'),
+      ),
+    ) as Future<UserEntity>;
   }
 
   @override
@@ -33,32 +32,29 @@ class MockAuthRepository extends Mock implements AuthRepository {
     String name,
   ) {
     return super.noSuchMethod(
-          Invocation.method(#signUpWithEmailAndPassword, [
-            email,
-            password,
-            name,
-          ]),
-          returnValue: Future.value(UserEntity(id: 'user123', name: name)),
-        )
-        as Future<UserEntity>;
+      Invocation.method(#signUpWithEmailAndPassword, [
+        email,
+        password,
+        name,
+      ]),
+      returnValue: Future.value(UserEntity(id: 'user123', name: name)),
+    ) as Future<UserEntity>;
   }
 
   @override
   Future<void> signOut() {
     return super.noSuchMethod(
-          Invocation.method(#signOut, []),
-          returnValue: Future<void>.value(),
-        )
-        as Future<void>;
+      Invocation.method(#signOut, []),
+      returnValue: Future<void>.value(),
+    ) as Future<void>;
   }
 
   @override
   String? getCurrentUserId() {
     return super.noSuchMethod(
-          Invocation.method(#getCurrentUserId, []),
-          returnValue: 'user123',
-        )
-        as String?;
+      Invocation.method(#getCurrentUserId, []),
+      returnValue: 'user123',
+    ) as String?;
   }
 
   // Este método ahora está implementado vía when() en el constructor
@@ -66,14 +62,13 @@ class MockAuthRepository extends Mock implements AuthRepository {
   @override
   Future<Map<String, dynamic>?> getCurrentUserData() {
     return super.noSuchMethod(
-          Invocation.method(#getCurrentUserData, []),
-          returnValue: Future.value({
-            'id': 'user123',
-            'email': 'test@example.com',
-            'displayName': 'Test User',
-          }),
-        )
-        as Future<Map<String, dynamic>?>;
+      Invocation.method(#getCurrentUserData, []),
+      returnValue: Future.value({
+        'id': 'user123',
+        'email': 'test@example.com',
+        'displayName': 'Test User',
+      }),
+    ) as Future<Map<String, dynamic>?>;
   }
 
   // Stream real para evitar problemas de null
@@ -92,58 +87,53 @@ class MockAuthRepository extends Mock implements AuthRepository {
 
   @override
   Future<UserEntity?> getCurrentUser() async => UserEntity(
-    id: 'user123',
-    name: 'Test User',
-    email: 'test@example.com',
-    photoUrl: 'https://example.com/photo.jpg',
-  );
+        id: 'user123',
+        name: 'Test User',
+        email: 'test@example.com',
+        photoUrl: 'https://example.com/photo.jpg',
+      );
 
   @override
   Future<UserEntity?> getUserById(String userId) {
     return super.noSuchMethod(
-          Invocation.method(#getUserById, [userId]),
-          returnValue: Future.value(UserEntity(id: userId, name: 'Test User')),
-        )
-        as Future<UserEntity?>;
+      Invocation.method(#getUserById, [userId]),
+      returnValue: Future.value(UserEntity(id: userId, name: 'Test User')),
+    ) as Future<UserEntity?>;
   }
 
   @override
   Future<Map<String, dynamic>> signInWithGoogle() {
     return super.noSuchMethod(
-          Invocation.method(#signInWithGoogle, []),
-          returnValue: Future.value({
-            'user': UserEntity(id: 'google123', name: 'Google User'),
-            'isNewUser': false,
-          }),
-        )
-        as Future<Map<String, dynamic>>;
+      Invocation.method(#signInWithGoogle, []),
+      returnValue: Future.value({
+        'user': UserEntity(id: 'google123', name: 'Google User'),
+        'isNewUser': false,
+      }),
+    ) as Future<Map<String, dynamic>>;
   }
 
   @override
   Future<void> deleteAccount() {
     return super.noSuchMethod(
-          Invocation.method(#deleteAccount, []),
-          returnValue: Future<void>.value(),
-        )
-        as Future<void>;
+      Invocation.method(#deleteAccount, []),
+      returnValue: Future<void>.value(),
+    ) as Future<void>;
   }
 
   @override
   Future<void> updateUser(UserEntity user) {
     return super.noSuchMethod(
-          Invocation.method(#updateUser, [user]),
-          returnValue: Future<void>.value(),
-        )
-        as Future<void>;
+      Invocation.method(#updateUser, [user]),
+      returnValue: Future<void>.value(),
+    ) as Future<void>;
   }
 
   @override
   Future<void> updateUserData(String userId, Map<String, dynamic> data) {
     return super.noSuchMethod(
-          Invocation.method(#updateUserData, [userId, data]),
-          returnValue: Future<void>.value(),
-        )
-        as Future<void>;
+      Invocation.method(#updateUserData, [userId, data]),
+      returnValue: Future<void>.value(),
+    ) as Future<void>;
   }
 }
 

@@ -55,10 +55,8 @@ class SearchRepositoryImpl implements SearchRepository {
 
     // Apply pagination
     if (lastDocumentId != null && lastDocumentId.isNotEmpty) {
-      final lastDoc = await _firestore
-          .collection('plans')
-          .doc(lastDocumentId)
-          .get();
+      final lastDoc =
+          await _firestore.collection('plans').doc(lastDocumentId).get();
       if (lastDoc.exists) {
         plansQuery = plansQuery.startAfterDocument(lastDoc);
       }
@@ -89,10 +87,8 @@ class SearchRepositoryImpl implements SearchRepository {
       if (creatorId == null) continue;
 
       // Get creator user info
-      final creatorDoc = await _firestore
-          .collection('users')
-          .doc(creatorId)
-          .get();
+      final creatorDoc =
+          await _firestore.collection('users').doc(creatorId).get();
 
       if (creatorDoc.exists && creatorDoc.data() != null) {
         final creator = creatorDoc.data()!;
@@ -195,9 +191,8 @@ class SearchRepositoryImpl implements SearchRepository {
       });
 
       // Check count and delete oldest if over limit
-      final allQueries = await recentSearchRef
-          .orderBy('timestamp', descending: true)
-          .get();
+      final allQueries =
+          await recentSearchRef.orderBy('timestamp', descending: true).get();
 
       if (allQueries.docs.length > 10) {
         // Keep max 10 recent searches

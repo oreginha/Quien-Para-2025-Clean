@@ -79,16 +79,16 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
         if (querySnapshot.docs.isNotEmpty) {
           _lastDocument = querySnapshot.docs.last;
           context.read<PlanBloc>().add(
-            PlanEvent.updateField(
-              field: 'loadMorePlans',
-              value: querySnapshot.docs
-                  .map(
-                    (final QueryDocumentSnapshot e) =>
-                        e.data() as Map<String, dynamic>,
-                  )
-                  .toList(),
-            ),
-          );
+                PlanEvent.updateField(
+                  field: 'loadMorePlans',
+                  value: querySnapshot.docs
+                      .map(
+                        (final QueryDocumentSnapshot e) =>
+                            e.data() as Map<String, dynamic>,
+                      )
+                      .toList(),
+                ),
+              );
         }
 
         setState(() {
@@ -144,11 +144,11 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                 color: AppColors.brandYellow,
                 onRefresh: () async {
                   context.read<PlanBloc>().add(
-                    PlanEvent.updateField(
-                      field: 'loadUserPlans',
-                      value: userId,
-                    ),
-                  );
+                        PlanEvent.updateField(
+                          field: 'loadUserPlans',
+                          value: userId,
+                        ),
+                      );
                 },
                 child: CustomScrollView(
                   controller: _scrollController,
@@ -347,8 +347,8 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
         // Iniciar carga de planes si no hay datos
         if (state['userPlans'] == null) {
           context.read<PlanBloc>().add(
-            PlanEvent.updateField(field: 'loadUserPlans', value: userId),
-          );
+                PlanEvent.updateField(field: 'loadUserPlans', value: userId),
+              );
           return const SliverToBoxAdapter(
             child: Center(child: CircularProgressIndicator()),
           );
@@ -416,8 +416,8 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                   .doc(plan['id'])
                   .get()
                   .then((doc) {
-                    _lastDocument = doc;
-                  });
+                _lastDocument = doc;
+              });
             }
 
             return Padding(

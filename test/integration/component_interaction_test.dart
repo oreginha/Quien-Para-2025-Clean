@@ -308,9 +308,9 @@ void main() {
         verify(mockPlanRepository.getById('test-plan-id')).called(1);
 
         // Capturar el argumento pasado a update
-        final captor =
-            verify(mockPlanRepository.update(captureAny)).captured.first
-                as PlanEntity;
+        final captor = verify(mockPlanRepository.update(captureAny))
+            .captured
+            .first as PlanEntity;
         expect(captor.title, 'Nuevo título');
       },
     );

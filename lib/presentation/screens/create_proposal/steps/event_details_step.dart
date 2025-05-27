@@ -124,8 +124,8 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
     // Actualizar en el BLoC
     if (_selectedImageUrl != null && _selectedImageUrl!.isNotEmpty) {
       context.read<PlanBloc>().add(
-        PlanEvent.updateField(field: 'imageUrl', value: _selectedImageUrl),
-      );
+            PlanEvent.updateField(field: 'imageUrl', value: _selectedImageUrl),
+          );
     }
   }
 
@@ -146,9 +146,7 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
       _hasImageError = false;
     });
 
-    NetworkImage(url)
-        .resolve(const ImageConfiguration())
-        .addListener(
+    NetworkImage(url).resolve(const ImageConfiguration()).addListener(
           ImageStreamListener(
             (final info, final synchronousCall) {
               if (mounted) {
@@ -227,11 +225,11 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
                                 print('Actualizando título: $value');
                               }
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'title',
-                                  value: value,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'title',
+                                      value: value,
+                                    ),
+                                  );
                             },
                             maxLines: 1,
                           ),
@@ -247,11 +245,11 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
                                 print('Actualizando descripción: $value');
                               }
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'description',
-                                  value: value,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'description',
+                                      value: value,
+                                    ),
+                                  );
                             },
                             maxLines: 3,
                           ),
@@ -267,11 +265,11 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
                                 print('Actualizando ubicación: $value');
                               }
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'location',
-                                  value: value,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'location',
+                                      value: value,
+                                    ),
+                                  );
                             },
                             maxLines: 1,
                           ),
@@ -379,17 +377,17 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
                     ),
                   )
                 : _selectedImageUrl != null &&
-                      _selectedImageUrl!.isNotEmpty &&
-                      !_hasImageError &&
-                      !_selectedImageUrl!.startsWith('data:image/')
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      _selectedImageUrl!,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      errorBuilder:
-                          (final context, final error, final stackTrace) {
+                        _selectedImageUrl!.isNotEmpty &&
+                        !_hasImageError &&
+                        !_selectedImageUrl!.startsWith('data:image/')
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          _selectedImageUrl!,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          errorBuilder:
+                              (final context, final error, final stackTrace) {
                             if (kDebugMode) {
                               print(
                                 'Error al cargar imagen en selector: $error',
@@ -397,12 +395,13 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
                             }
                             return _buildImagePlaceholder(true);
                           },
-                    ),
-                  )
-                : _buildImagePlaceholder(
-                    _hasImageError ||
-                        (_selectedImageUrl?.startsWith('data:image/') ?? false),
-                  ),
+                        ),
+                      )
+                    : _buildImagePlaceholder(
+                        _hasImageError ||
+                            (_selectedImageUrl?.startsWith('data:image/') ??
+                                false),
+                      ),
           ),
         ),
       ],
@@ -415,8 +414,8 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
     String message = isDataUrl
         ? 'No se permiten imágenes en formato base64'
         : hasError
-        ? 'Error al cargar imagen'
-        : 'Agregar una imagen';
+            ? 'Error al cargar imagen'
+            : 'Agregar una imagen';
 
     return Center(
       child: Column(
@@ -426,8 +425,8 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
             isDataUrl
                 ? Icons.warning_amber_rounded
                 : hasError
-                ? Icons.broken_image
-                : Icons.add_photo_alternate,
+                    ? Icons.broken_image
+                    : Icons.add_photo_alternate,
             size: 48,
             color: isDataUrl || hasError
                 ? Colors.amber.withAlpha((0.7 * 255).round())
@@ -466,9 +465,8 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
 
   void _showImagePicker(final BuildContext context, final PlanEntity plan) {
     // Determinar categoría para mostrar imágenes relevantes
-    final category = plan.selectedThemes.isNotEmpty
-        ? plan.selectedThemes.first
-        : '';
+    final category =
+        plan.selectedThemes.isNotEmpty ? plan.selectedThemes.first : '';
 
     // Obtener imágenes según la categoría
     List<String> imageOptions = _getImagesByCategory(category);
@@ -530,11 +528,11 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
 
                         // Actualizar el modelo de datos
                         context.read<PlanBloc>().add(
-                          PlanEvent.updateField(
-                            field: 'imageUrl',
-                            value: imageUrl,
-                          ),
-                        );
+                              PlanEvent.updateField(
+                                field: 'imageUrl',
+                                value: imageUrl,
+                              ),
+                            );
                         Navigator.pop(context);
                       },
                       child: Container(
@@ -554,19 +552,19 @@ class _EventDetailsStepState extends State<EventDetailsStep> {
                             fit: BoxFit.cover,
                             errorBuilder:
                                 (final context, final error, final stackTrace) {
-                                  if (kDebugMode) {
-                                    print('Error al cargar miniatura: $error');
-                                  }
-                                  return Container(
-                                    color: Colors.grey[800],
-                                    child: Icon(
-                                      Icons.error,
-                                      color: Colors.white.withAlpha(
-                                        (0.7 * 255).round(),
-                                      ),
-                                    ),
-                                  );
-                                },
+                              if (kDebugMode) {
+                                print('Error al cargar miniatura: $error');
+                              }
+                              return Container(
+                                color: Colors.grey[800],
+                                child: Icon(
+                                  Icons.error,
+                                  color: Colors.white.withAlpha(
+                                    (0.7 * 255).round(),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),

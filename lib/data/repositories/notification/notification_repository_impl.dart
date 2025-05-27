@@ -28,11 +28,9 @@ class NotificationRepositoryImpl implements INotificationRepository {
   bool get _isCacheAvailable => _cache != null && _cache!.isAvailable;
 
   // Controladores de streams para notificaciones por usuario
-  final Map<
-    String,
-    StreamController<Either<AppFailure, List<NotificationEntity>>>
-  >
-  _notificationStreams = {};
+  final Map<String,
+          StreamController<Either<AppFailure, List<NotificationEntity>>>>
+      _notificationStreams = {};
 
   /// Constructor
   NotificationRepositoryImpl({
@@ -41,11 +39,11 @@ class NotificationRepositoryImpl implements INotificationRepository {
     Cache<NotificationEntity>? cache,
     NotificationMapper? mapper,
     String collection = 'notifications',
-  }) : _firestore = firestore,
-       _apiService = apiService,
-       _cache = cache,
-       _mapper = mapper ?? const NotificationMapper(),
-       _collection = collection {
+  })  : _firestore = firestore,
+        _apiService = apiService,
+        _cache = cache,
+        _mapper = mapper ?? const NotificationMapper(),
+        _collection = collection {
     _logger = app_logger.logger as Logger;
     _logger.d(
       'NotificationRepositoryImpl initialized: Cache available: $_isCacheAvailable',
@@ -304,9 +302,8 @@ class NotificationRepositoryImpl implements INotificationRepository {
         );
       }
 
-      final List<NotificationEntity> notifications = snapshot.docs
-          .map((doc) => _mapper.fromFirestore(doc))
-          .toList();
+      final List<NotificationEntity> notifications =
+          snapshot.docs.map((doc) => _mapper.fromFirestore(doc)).toList();
 
       // Guardar en caché si incluye todas las notificaciones
       if (includeRead && _isCacheAvailable) {
@@ -425,10 +422,8 @@ class NotificationRepositoryImpl implements INotificationRepository {
       }
 
       // Crear un nuevo stream controller
-      final controller =
-          StreamController<
-            Either<AppFailure, List<NotificationEntity>>
-          >.broadcast();
+      final controller = StreamController<
+          Either<AppFailure, List<NotificationEntity>>>.broadcast();
       _notificationStreams[userId] = controller;
 
       // Crear consulta Firestore
@@ -444,9 +439,8 @@ class NotificationRepositoryImpl implements INotificationRepository {
       // Suscribirse a los cambios
       final subscription = query.snapshots().listen(
         (snapshot) {
-          final List<NotificationEntity> notifications = snapshot.docs
-              .map((doc) => _mapper.fromFirestore(doc))
-              .toList();
+          final List<NotificationEntity> notifications =
+              snapshot.docs.map((doc) => _mapper.fromFirestore(doc)).toList();
 
           // Actualizar caché si es necesario
           if (_isCacheAvailable) {
@@ -484,10 +478,8 @@ class NotificationRepositoryImpl implements INotificationRepository {
       );
 
       // Crear un stream con error
-      final controller =
-          StreamController<
-            Either<AppFailure, List<NotificationEntity>>
-          >.broadcast();
+      final controller = StreamController<
+          Either<AppFailure, List<NotificationEntity>>>.broadcast();
       controller.addError(e, stackTrace);
       controller.close();
       return controller.stream;

@@ -186,15 +186,15 @@ class RateLimitTracker {
 
 class RequestCancelledException extends NetworkException {
   RequestCancelledException(super.message, {final String? code, super.data})
-    : super(code: code ?? 'REQUEST_CANCELLED');
+      : super(code: code ?? 'REQUEST_CANCELLED');
 }
 
 class RateLimitException extends NetworkException {
   RateLimitException(super.message, {final String? code, super.data})
-    : super(code: code ?? 'RATE_LIMIT_EXCEEDED');
+      : super(code: code ?? 'RATE_LIMIT_EXCEEDED');
 }
 
 class ConflictException extends DataException {
   ConflictException(super.message, {final String? code, super.data})
-    : super(code: code ?? 'CONFLICT');
+      : super(code: code ?? 'CONFLICT');
 }

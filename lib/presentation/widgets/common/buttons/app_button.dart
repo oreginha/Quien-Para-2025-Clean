@@ -207,8 +207,7 @@ class AppButton extends StatelessWidget {
     // Usar colores personalizados si se especifican
     if (darkPrimaryBackground != null || textColor != null) {
       bg = darkPrimaryBackground ?? AppColors.lightTextPrimary;
-      text =
-          textColor ??
+      text = textColor ??
           (style == AppButtonStyle.primary ? Colors.black : Colors.white);
       disabledBg = bg.withAlpha(128);
       disabledText = text.withAlpha(128);

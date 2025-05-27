@@ -218,9 +218,8 @@ class NotificationCache implements Cache<NotificationEntity> {
       // Aquí necesitamos obtener todas las notificaciones, quitar la específica y volver a guardar
       final notifications = await getCachedItems();
       if (notifications != null) {
-        final updatedNotifications = notifications
-            .where((n) => n.id != notificationId)
-            .toList();
+        final updatedNotifications =
+            notifications.where((n) => n.id != notificationId).toList();
         await cacheItems(updatedNotifications);
         logger.d(
           'Caché de notificación específica invalidada: $notificationId',

@@ -27,7 +27,8 @@ mixin _$SecurityState {
     required TResult Function(List<ReportEntity> reports) userReportsLoaded,
     required TResult Function(ReportEntity report) reportStatusUpdated,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -38,7 +39,8 @@ mixin _$SecurityState {
     TResult? Function(List<ReportEntity> reports)? userReportsLoaded,
     TResult? Function(ReportEntity report)? reportStatusUpdated,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -50,7 +52,8 @@ mixin _$SecurityState {
     TResult Function(ReportEntity report)? reportStatusUpdated,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SecurityInitial value) initial,
@@ -61,7 +64,8 @@ mixin _$SecurityState {
     required TResult Function(UserReportsLoaded value) userReportsLoaded,
     required TResult Function(ReportStatusUpdated value) reportStatusUpdated,
     required TResult Function(SecurityError value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SecurityInitial value)? initial,
@@ -72,7 +76,8 @@ mixin _$SecurityState {
     TResult? Function(UserReportsLoaded value)? userReportsLoaded,
     TResult? Function(ReportStatusUpdated value)? reportStatusUpdated,
     TResult? Function(SecurityError value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SecurityInitial value)? initial,
@@ -84,7 +89,8 @@ mixin _$SecurityState {
     TResult Function(ReportStatusUpdated value)? reportStatusUpdated,
     TResult Function(SecurityError value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -426,7 +432,7 @@ class __$$ReportCreatedImplCopyWithImpl<$Res>
         null == report
             ? _value.report
             : report // ignore: cast_nullable_to_non_nullable
-                  as ReportEntity,
+                as ReportEntity,
       ),
     );
   }
@@ -757,7 +763,7 @@ class __$$PendingReportsLoadedImplCopyWithImpl<$Res>
         null == reports
             ? _value._reports
             : reports // ignore: cast_nullable_to_non_nullable
-                  as List<ReportEntity>,
+                as List<ReportEntity>,
       ),
     );
   }
@@ -767,7 +773,7 @@ class __$$PendingReportsLoadedImplCopyWithImpl<$Res>
 
 class _$PendingReportsLoadedImpl implements PendingReportsLoaded {
   const _$PendingReportsLoadedImpl(final List<ReportEntity> reports)
-    : _reports = reports;
+      : _reports = reports;
 
   final List<ReportEntity> _reports;
   @override
@@ -800,11 +806,11 @@ class _$PendingReportsLoadedImpl implements PendingReportsLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$PendingReportsLoadedImplCopyWith<_$PendingReportsLoadedImpl>
-  get copyWith =>
-      __$$PendingReportsLoadedImplCopyWithImpl<_$PendingReportsLoadedImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$PendingReportsLoadedImplCopyWithImpl<_$PendingReportsLoadedImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -915,7 +921,7 @@ abstract class PendingReportsLoaded implements SecurityState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PendingReportsLoadedImplCopyWith<_$PendingReportsLoadedImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -947,7 +953,7 @@ class __$$UserReportsLoadedImplCopyWithImpl<$Res>
         null == reports
             ? _value._reports
             : reports // ignore: cast_nullable_to_non_nullable
-                  as List<ReportEntity>,
+                as List<ReportEntity>,
       ),
     );
   }
@@ -957,7 +963,7 @@ class __$$UserReportsLoadedImplCopyWithImpl<$Res>
 
 class _$UserReportsLoadedImpl implements UserReportsLoaded {
   const _$UserReportsLoadedImpl(final List<ReportEntity> reports)
-    : _reports = reports;
+      : _reports = reports;
 
   final List<ReportEntity> _reports;
   @override
@@ -1138,7 +1144,7 @@ class __$$ReportStatusUpdatedImplCopyWithImpl<$Res>
         null == report
             ? _value.report
             : report // ignore: cast_nullable_to_non_nullable
-                  as ReportEntity,
+                as ReportEntity,
       ),
     );
   }
@@ -1330,7 +1336,7 @@ class __$$SecurityErrorImplCopyWithImpl<$Res>
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }

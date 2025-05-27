@@ -541,8 +541,7 @@ class BackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
-      onPressed:
-          onPressed ??
+      onPressed: onPressed ??
           () {
             Navigator.pop(context);
           },

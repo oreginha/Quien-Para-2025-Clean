@@ -232,7 +232,8 @@ void main() {
     });
 
     // Prueba del conjunto de widgets en un escenario realista
-    testWidgets('Múltiples PlanCards se muestran correctamente en un ListView', (
+    testWidgets('Múltiples PlanCards se muestran correctamente en un ListView',
+        (
       WidgetTester tester,
     ) async {
       // Crear una lista de planes

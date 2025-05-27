@@ -126,11 +126,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       if (userId == null) throw Exception('No user authenticated');
 
       final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final Reference ref = _storage
-          .ref()
-          .child('user_photos')
-          .child(userId)
-          .child(fileName);
+      final Reference ref =
+          _storage.ref().child('user_photos').child(userId).child(fileName);
 
       final SettableMetadata metadata = SettableMetadata(
         contentType: 'image/jpeg',
@@ -292,17 +289,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           backgroundImage: profileImage != null
                               ? FileImage(profileImage!)
                               : (currentPhotoUrl != null
-                                    ? NetworkImage(currentPhotoUrl!)
-                                          as ImageProvider
-                                    : null),
+                                  ? NetworkImage(currentPhotoUrl!)
+                                      as ImageProvider
+                                  : null),
                           child:
                               (profileImage == null && currentPhotoUrl == null)
-                              ? Icon(
-                                  Icons.person,
-                                  size: 65,
-                                  color: AppColors.brandYellow,
-                                )
-                              : null,
+                                  ? Icon(
+                                      Icons.person,
+                                      size: 65,
+                                      color: AppColors.brandYellow,
+                                    )
+                                  : null,
                         ),
                       ),
                     ),
@@ -416,12 +413,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       labelStyle: TextStyle(
                         color: isSelected
                             ? (isDarkMode
-                                  ? Colors.black
-                                  : AppColors.lightTextPrimary)
+                                ? Colors.black
+                                : AppColors.lightTextPrimary)
                             : AppColors.getTextPrimary(isDarkMode),
-                        fontWeight: isSelected
-                            ? FontWeight.bold
-                            : FontWeight.normal,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
                       ),
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.xs,
@@ -436,9 +432,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.brandYellow,
-                    foregroundColor: isDarkMode
-                        ? Colors.black
-                        : AppColors.lightTextPrimary,
+                    foregroundColor:
+                        isDarkMode ? Colors.black : AppColors.lightTextPrimary,
                     minimumSize: const Size(200, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(AppRadius.button),

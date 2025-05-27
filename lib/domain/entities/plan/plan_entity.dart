@@ -49,24 +49,24 @@ class PlanEntity extends EntityBase {
 
   /// Constructor de fábrica para crear una instancia vacía
   factory PlanEntity.empty() => const PlanEntity(
-    id: '',
-    title: '',
-    description: '',
-    location: '',
-    date: null,
-    category: '',
-    tags: <String>[],
-    imageUrl: '',
-    creatorId: '',
-    conditions: <String, String>{},
-    selectedThemes: <String>[],
-    likes: 0,
-    createdAt: null,
-    updatedAt: null,
-    payCondition: null,
-    guestCount: null,
-    extraConditions: '',
-  );
+        id: '',
+        title: '',
+        description: '',
+        location: '',
+        date: null,
+        category: '',
+        tags: <String>[],
+        imageUrl: '',
+        creatorId: '',
+        conditions: <String, String>{},
+        selectedThemes: <String>[],
+        likes: 0,
+        createdAt: null,
+        updatedAt: null,
+        payCondition: null,
+        guestCount: null,
+        extraConditions: '',
+      );
 
   /// Constructor para crear una entidad a partir de JSON
   /// Delega la creación al PlanMapper
@@ -122,9 +122,8 @@ class PlanEntity extends EntityBase {
       likes: likes ?? this.likes,
       createdAt: clearCreatedAt ? null : (createdAt ?? this.createdAt),
       updatedAt: clearUpdatedAt ? null : (updatedAt ?? this.updatedAt),
-      payCondition: clearPayCondition
-          ? null
-          : (payCondition ?? this.payCondition),
+      payCondition:
+          clearPayCondition ? null : (payCondition ?? this.payCondition),
       guestCount: clearGuestCount ? null : (guestCount ?? this.guestCount),
       extraConditions: extraConditions ?? this.extraConditions,
     );
@@ -165,24 +164,24 @@ class PlanEntity extends EntityBase {
 
   @override
   List<Object?> get props => [
-    id,
-    title,
-    description,
-    location,
-    date,
-    category,
-    tags,
-    imageUrl,
-    creatorId,
-    conditions,
-    selectedThemes,
-    likes,
-    createdAt,
-    updatedAt,
-    payCondition,
-    guestCount,
-    extraConditions,
-  ];
+        id,
+        title,
+        description,
+        location,
+        date,
+        category,
+        tags,
+        imageUrl,
+        creatorId,
+        conditions,
+        selectedThemes,
+        likes,
+        createdAt,
+        updatedAt,
+        payCondition,
+        guestCount,
+        extraConditions,
+      ];
 
   @override
   String toString() {

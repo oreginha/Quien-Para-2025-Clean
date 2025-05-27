@@ -51,16 +51,16 @@ class CompactHeader extends StatelessWidget {
                   iconAssetPath!,
                   width: 30,
                   height: 30,
-                  errorBuilder:
-                      (
-                        BuildContext context,
-                        Object error,
-                        StackTrace? stackTrace,
-                      ) => Icon(
-                        icon ?? Icons.info_outline,
-                        color: iconColor ?? AppColors.brandYellow,
-                        size: 30,
-                      ),
+                  errorBuilder: (
+                    BuildContext context,
+                    Object error,
+                    StackTrace? stackTrace,
+                  ) =>
+                      Icon(
+                    icon ?? Icons.info_outline,
+                    color: iconColor ?? AppColors.brandYellow,
+                    size: 30,
+                  ),
                 )
               else if (icon != null)
                 Icon(icon, color: iconColor ?? AppColors.brandYellow, size: 30),

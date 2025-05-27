@@ -46,11 +46,11 @@ class ResourcePool<T> {
     Future<void> Function(T resource)? cleanup,
     int maxSize = 5,
     Duration idleTimeout = const Duration(minutes: 5),
-  }) : _factory = factory,
-       _validator = validator,
-       _cleanup = cleanup,
-       _maxSize = maxSize,
-       _idleTimeout = idleTimeout {
+  })  : _factory = factory,
+        _validator = validator,
+        _cleanup = cleanup,
+        _maxSize = maxSize,
+        _idleTimeout = idleTimeout {
     // Iniciar timer de limpieza
     _cleanupTimer = Timer.periodic(
       _idleTimeout,

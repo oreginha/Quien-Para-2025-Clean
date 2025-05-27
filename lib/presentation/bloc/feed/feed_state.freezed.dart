@@ -23,18 +23,18 @@ mixin _$FeedState {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -45,12 +45,12 @@ mixin _$FeedState {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -61,13 +61,13 @@ mixin _$FeedState {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FeedInitial value) initial,
@@ -78,7 +78,8 @@ mixin _$FeedState {
     required TResult Function(FeedFiltered value) filtered,
     required TResult Function(FeedEmpty value) empty,
     required TResult Function(FeedError value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FeedInitial value)? initial,
@@ -89,7 +90,8 @@ mixin _$FeedState {
     TResult? Function(FeedFiltered value)? filtered,
     TResult? Function(FeedEmpty value)? empty,
     TResult? Function(FeedError value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FeedInitial value)? initial,
@@ -101,7 +103,8 @@ mixin _$FeedState {
     TResult Function(FeedEmpty value)? empty,
     TResult Function(FeedError value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -171,15 +174,14 @@ class _$FeedInitialImpl extends FeedInitial {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -197,8 +199,7 @@ class _$FeedInitialImpl extends FeedInitial {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -217,8 +218,7 @@ class _$FeedInitialImpl extends FeedInitial {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -332,15 +332,14 @@ class _$FeedLoadingImpl extends FeedLoading {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -358,8 +357,7 @@ class _$FeedLoadingImpl extends FeedLoading {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -378,8 +376,7 @@ class _$FeedLoadingImpl extends FeedLoading {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -475,7 +472,7 @@ class __$$FeedRefreshingImplCopyWithImpl<$Res>
         plans: null == plans
             ? _value._plans
             : plans // ignore: cast_nullable_to_non_nullable
-                  as List<PlanEntity>,
+                as List<PlanEntity>,
       ),
     );
   }
@@ -485,8 +482,8 @@ class __$$FeedRefreshingImplCopyWithImpl<$Res>
 
 class _$FeedRefreshingImpl extends FeedRefreshing {
   const _$FeedRefreshingImpl({required final List<PlanEntity> plans})
-    : _plans = plans,
-      super._();
+      : _plans = plans,
+        super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -531,15 +528,14 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -557,8 +553,7 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -577,8 +572,7 @@ class _$FeedRefreshingImpl extends FeedRefreshing {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -683,11 +677,11 @@ class __$$FeedPaginatingImplCopyWithImpl<$Res>
         plans: null == plans
             ? _value._plans
             : plans // ignore: cast_nullable_to_non_nullable
-                  as List<PlanEntity>,
+                as List<PlanEntity>,
         hasReachedEnd: null == hasReachedEnd
             ? _value.hasReachedEnd
             : hasReachedEnd // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
       ),
     );
   }
@@ -699,8 +693,8 @@ class _$FeedPaginatingImpl extends FeedPaginating {
   const _$FeedPaginatingImpl({
     required final List<PlanEntity> plans,
     required this.hasReachedEnd,
-  }) : _plans = plans,
-       super._();
+  })  : _plans = plans,
+        super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -730,10 +724,10 @@ class _$FeedPaginatingImpl extends FeedPaginating {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_plans),
-    hasReachedEnd,
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_plans),
+        hasReachedEnd,
+      );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -753,15 +747,14 @@ class _$FeedPaginatingImpl extends FeedPaginating {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -779,8 +772,7 @@ class _$FeedPaginatingImpl extends FeedPaginating {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -799,8 +791,7 @@ class _$FeedPaginatingImpl extends FeedPaginating {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -916,15 +907,15 @@ class __$$FeedLoadedImplCopyWithImpl<$Res>
         plans: null == plans
             ? _value._plans
             : plans // ignore: cast_nullable_to_non_nullable
-                  as List<PlanEntity>,
+                as List<PlanEntity>,
         hasReachedEnd: null == hasReachedEnd
             ? _value.hasReachedEnd
             : hasReachedEnd // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         lastDocumentId: freezed == lastDocumentId
             ? _value.lastDocumentId
             : lastDocumentId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -937,8 +928,8 @@ class _$FeedLoadedImpl extends FeedLoaded {
     required final List<PlanEntity> plans,
     this.hasReachedEnd = false,
     this.lastDocumentId,
-  }) : _plans = plans,
-       super._();
+  })  : _plans = plans,
+        super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -973,11 +964,11 @@ class _$FeedLoadedImpl extends FeedLoaded {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_plans),
-    hasReachedEnd,
-    lastDocumentId,
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_plans),
+        hasReachedEnd,
+        lastDocumentId,
+      );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -994,15 +985,14 @@ class _$FeedLoadedImpl extends FeedLoaded {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1020,8 +1010,7 @@ class _$FeedLoadedImpl extends FeedLoaded {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1040,8 +1029,7 @@ class _$FeedLoadedImpl extends FeedLoaded {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1151,11 +1139,11 @@ class __$$FeedFilteredImplCopyWithImpl<$Res>
         plans: null == plans
             ? _value._plans
             : plans // ignore: cast_nullable_to_non_nullable
-                  as List<PlanEntity>,
+                as List<PlanEntity>,
         filterCategory: null == filterCategory
             ? _value.filterCategory
             : filterCategory // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1167,8 +1155,8 @@ class _$FeedFilteredImpl extends FeedFiltered {
   const _$FeedFilteredImpl({
     required final List<PlanEntity> plans,
     required this.filterCategory,
-  }) : _plans = plans,
-       super._();
+  })  : _plans = plans,
+        super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -1198,10 +1186,10 @@ class _$FeedFilteredImpl extends FeedFiltered {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_plans),
-    filterCategory,
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_plans),
+        filterCategory,
+      );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -1218,15 +1206,14 @@ class _$FeedFilteredImpl extends FeedFiltered {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1244,8 +1231,7 @@ class _$FeedFilteredImpl extends FeedFiltered {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1264,8 +1250,7 @@ class _$FeedFilteredImpl extends FeedFiltered {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1391,15 +1376,14 @@ class _$FeedEmptyImpl extends FeedEmpty {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1417,8 +1401,7 @@ class _$FeedEmptyImpl extends FeedEmpty {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1437,8 +1420,7 @@ class _$FeedEmptyImpl extends FeedEmpty {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,
@@ -1534,11 +1516,11 @@ class __$$FeedErrorImplCopyWithImpl<$Res>
         message: null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         plans: freezed == plans
             ? _value._plans
             : plans // ignore: cast_nullable_to_non_nullable
-                  as List<PlanEntity>?,
+                as List<PlanEntity>?,
       ),
     );
   }
@@ -1548,8 +1530,8 @@ class __$$FeedErrorImplCopyWithImpl<$Res>
 
 class _$FeedErrorImpl extends FeedError {
   const _$FeedErrorImpl({required this.message, final List<PlanEntity>? plans})
-    : _plans = plans,
-      super._();
+      : _plans = plans,
+        super._();
 
   @override
   final String message;
@@ -1579,10 +1561,10 @@ class _$FeedErrorImpl extends FeedError {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    message,
-    const DeepCollectionEquality().hash(_plans),
-  );
+        runtimeType,
+        message,
+        const DeepCollectionEquality().hash(_plans),
+      );
 
   /// Create a copy of FeedState
   /// with the given fields replaced by the non-null parameter values.
@@ -1599,15 +1581,14 @@ class _$FeedErrorImpl extends FeedError {
     required TResult Function() loading,
     required TResult Function(List<PlanEntity> plans) refreshing,
     required TResult Function(List<PlanEntity> plans, bool hasReachedEnd)
-    paginating,
+        paginating,
     required TResult Function(
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(List<PlanEntity> plans, String filterCategory)
-    filtered,
+        filtered,
     required TResult Function() empty,
     required TResult Function(String message, List<PlanEntity>? plans) error,
   }) {
@@ -1625,8 +1606,7 @@ class _$FeedErrorImpl extends FeedError {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult? Function()? empty,
     TResult? Function(String message, List<PlanEntity>? plans)? error,
@@ -1645,8 +1625,7 @@ class _$FeedErrorImpl extends FeedError {
       List<PlanEntity> plans,
       bool hasReachedEnd,
       String? lastDocumentId,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(List<PlanEntity> plans, String filterCategory)? filtered,
     TResult Function()? empty,
     TResult Function(String message, List<PlanEntity>? plans)? error,

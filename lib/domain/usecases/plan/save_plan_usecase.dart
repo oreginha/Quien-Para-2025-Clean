@@ -25,10 +25,10 @@ class SavePlanUseCase implements UseCaseInterface<PlanEntity, PlanEntity> {
     this._planRepository, {
     CreatePlanUseCase? createPlanUseCase,
     UpdatePlanUseCase? updatePlanUseCase,
-  }) : _createPlanUseCase =
-           createPlanUseCase ?? CreatePlanUseCase(_planRepository),
-       _updatePlanUseCase =
-           updatePlanUseCase ?? UpdatePlanUseCase(_planRepository);
+  })  : _createPlanUseCase =
+            createPlanUseCase ?? CreatePlanUseCase(_planRepository),
+        _updatePlanUseCase =
+            updatePlanUseCase ?? UpdatePlanUseCase(_planRepository);
 
   @override
   Future<Either<AppFailure, PlanEntity>> execute(PlanEntity plan) async {

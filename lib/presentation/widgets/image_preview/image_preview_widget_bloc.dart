@@ -201,15 +201,15 @@ class _ImagePreviewContent extends StatelessWidget {
                 icon: Icons.rotate_right,
                 label: 'Rotar',
                 onPressed: () => context.read<ImagePreviewBloc>().add(
-                  const ImagePreviewEvent.rotateImage(),
-                ),
+                      const ImagePreviewEvent.rotateImage(),
+                    ),
               ),
               _buildEditButton(
                 icon: Icons.crop,
                 label: 'Recortar',
                 onPressed: () => context.read<ImagePreviewBloc>().add(
-                  const ImagePreviewEvent.cropImage(),
-                ),
+                      const ImagePreviewEvent.cropImage(),
+                    ),
               ),
               _buildEditButton(
                 icon: Icons.tune,
@@ -225,8 +225,8 @@ class _ImagePreviewContent extends StatelessWidget {
                 icon: Icons.refresh,
                 label: 'Reiniciar',
                 onPressed: () => context.read<ImagePreviewBloc>().add(
-                  const ImagePreviewEvent.resetFilter(),
-                ),
+                      const ImagePreviewEvent.resetFilter(),
+                    ),
               ),
             ],
           ),
@@ -315,9 +315,8 @@ void _showFiltersDialog(BuildContext context) {
                 title: Text(
                   filterName,
                   style: TextStyle(
-                    color: isSelected
-                        ? AppColors.lightTextPrimary
-                        : Colors.white,
+                    color:
+                        isSelected ? AppColors.lightTextPrimary : Colors.white,
                   ),
                 ),
                 leading: index == 0

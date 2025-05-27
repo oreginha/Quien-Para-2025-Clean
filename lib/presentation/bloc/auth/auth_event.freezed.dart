@@ -24,7 +24,8 @@ mixin _$AuthEvent {
     required TResult Function() signOut,
     required TResult Function() deleteAccount,
     required TResult Function() completeOnboarding,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkAuthStatus,
@@ -32,7 +33,8 @@ mixin _$AuthEvent {
     TResult? Function()? signOut,
     TResult? Function()? deleteAccount,
     TResult? Function()? completeOnboarding,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkAuthStatus,
@@ -41,7 +43,8 @@ mixin _$AuthEvent {
     TResult Function()? deleteAccount,
     TResult Function()? completeOnboarding,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckAuthStatus value) checkAuthStatus,
@@ -49,7 +52,8 @@ mixin _$AuthEvent {
     required TResult Function(SignOut value) signOut,
     required TResult Function(DeleteAccount value) deleteAccount,
     required TResult Function(CompleteOnboarding value) completeOnboarding,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckAuthStatus value)? checkAuthStatus,
@@ -57,7 +61,8 @@ mixin _$AuthEvent {
     TResult? Function(SignOut value)? signOut,
     TResult? Function(DeleteAccount value)? deleteAccount,
     TResult? Function(CompleteOnboarding value)? completeOnboarding,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckAuthStatus value)? checkAuthStatus,
@@ -66,7 +71,8 @@ mixin _$AuthEvent {
     TResult Function(DeleteAccount value)? deleteAccount,
     TResult Function(CompleteOnboarding value)? completeOnboarding,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

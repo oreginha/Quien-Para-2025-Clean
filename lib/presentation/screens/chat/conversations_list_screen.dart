@@ -117,9 +117,8 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
             onPressed: () => context.go(AppRouter.login),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode
-                  ? Colors.black
-                  : AppColors.lightTextPrimary,
+              foregroundColor:
+                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
             ),
             child: const Text('Iniciar Sesión'),
           ),
@@ -196,9 +195,8 @@ class _ConversationsListScreenState extends State<ConversationsListScreen> {
             onPressed: _loadConversations,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode
-                  ? Colors.black
-                  : AppColors.lightTextPrimary,
+              foregroundColor:
+                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
             ),
             child: const Text('Reintentar'),
           ),
@@ -391,13 +389,11 @@ class _ConversationCard extends StatelessWidget {
                       backgroundColor: AppColors.getSecondaryBackground(
                         isDarkMode,
                       ),
-                      backgroundImage:
-                          otherParticipantPhoto != null &&
+                      backgroundImage: otherParticipantPhoto != null &&
                               otherParticipantPhoto!.isNotEmpty
                           ? NetworkImage(otherParticipantPhoto!)
                           : null,
-                      child:
-                          otherParticipantPhoto == null ||
+                      child: otherParticipantPhoto == null ||
                               otherParticipantPhoto!.isEmpty
                           ? Text(
                               otherParticipantName.isNotEmpty
@@ -424,15 +420,14 @@ class _ConversationCard extends StatelessWidget {
                           Expanded(
                             child: Text(
                               otherParticipantName,
-                              style: AppTypography.heading6(isDarkMode)
-                                  .copyWith(
-                                    color: unreadCount > 0
-                                        ? AppColors.brandYellow
-                                        : null,
-                                    fontWeight: unreadCount > 0
-                                        ? FontWeight.bold
-                                        : null,
-                                  ),
+                              style:
+                                  AppTypography.heading6(isDarkMode).copyWith(
+                                color: unreadCount > 0
+                                    ? AppColors.brandYellow
+                                    : null,
+                                fontWeight:
+                                    unreadCount > 0 ? FontWeight.bold : null,
+                              ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -442,12 +437,12 @@ class _ConversationCard extends StatelessWidget {
                           if (formattedTime.isNotEmpty)
                             Text(
                               formattedTime,
-                              style: AppTypography.bodySmall(isDarkMode)
-                                  .copyWith(
-                                    color: AppColors.getTextSecondary(
-                                      isDarkMode,
-                                    ),
-                                  ),
+                              style:
+                                  AppTypography.bodySmall(isDarkMode).copyWith(
+                                color: AppColors.getTextSecondary(
+                                  isDarkMode,
+                                ),
+                              ),
                             ),
                         ],
                       ),
@@ -462,17 +457,17 @@ class _ConversationCard extends StatelessWidget {
                               lastMessage.isNotEmpty
                                   ? lastMessage
                                   : 'No hay mensajes',
-                              style: AppTypography.bodyMedium(isDarkMode)
-                                  .copyWith(
-                                    color: unreadCount > 0
-                                        ? AppColors.getTextPrimary(isDarkMode)
-                                        : AppColors.getTextSecondary(
-                                            isDarkMode,
-                                          ),
-                                    fontWeight: unreadCount > 0
-                                        ? FontWeight.w500
-                                        : FontWeight.normal,
-                                  ),
+                              style:
+                                  AppTypography.bodyMedium(isDarkMode).copyWith(
+                                color: unreadCount > 0
+                                    ? AppColors.getTextPrimary(isDarkMode)
+                                    : AppColors.getTextSecondary(
+                                        isDarkMode,
+                                      ),
+                                fontWeight: unreadCount > 0
+                                    ? FontWeight.w500
+                                    : FontWeight.normal,
+                              ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -495,11 +490,11 @@ class _ConversationCard extends StatelessWidget {
                                 unreadCount.toString(),
                                 style: AppTypography.labelSmall(isDarkMode)
                                     .copyWith(
-                                      color: isDarkMode
-                                          ? Colors.black
-                                          : AppColors.lightTextPrimary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  color: isDarkMode
+                                      ? Colors.black
+                                      : AppColors.lightTextPrimary,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],

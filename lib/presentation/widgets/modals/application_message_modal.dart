@@ -112,11 +112,11 @@ class _ApplicationMessageModalState extends State<ApplicationMessageModal> {
                       final String message = _messageController.text.trim();
                       Navigator.pop(context);
                       context.read<MatchingBloc>().add(
-                        MatchingEvent.applyToPlan(
-                          widget.planId,
-                          message.isNotEmpty ? message : null,
-                        ),
-                      );
+                            MatchingEvent.applyToPlan(
+                              widget.planId,
+                              message.isNotEmpty ? message : null,
+                            ),
+                          );
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,

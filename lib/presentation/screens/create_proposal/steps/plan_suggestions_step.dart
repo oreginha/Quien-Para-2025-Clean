@@ -84,9 +84,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
 
       final List<String> firestoreCategories = selectedThemes
           .expand(
-            (theme) =>
-                PlanType.planTypes[theme]!['firestoreCategories']
-                    as List<String>,
+            (theme) => PlanType.planTypes[theme]!['firestoreCategories']
+                as List<String>,
           )
           .toList();
 
@@ -153,9 +152,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
 
       // Filtrado local para búsqueda más flexible
       final filteredDocs = snapshot.docs.where((doc) {
-        final nombreEvento = (doc['nombre_evento'] ?? '')
-            .toString()
-            .toLowerCase();
+        final nombreEvento =
+            (doc['nombre_evento'] ?? '').toString().toLowerCase();
         return nombreEvento.contains(queryLower);
       }).toList();
 
@@ -336,56 +334,54 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                             height: 200,
                                             width: double.infinity,
                                             fit: BoxFit.cover,
-                                            loadingBuilder:
-                                                (
-                                                  context,
-                                                  child,
-                                                  loadingProgress,
-                                                ) {
-                                                  if (loadingProgress == null) {
-                                                    if (kDebugMode) {
-                                                      print(
-                                                        '✅ Imagen cargada correctamente: ${planData['image_url_png']}',
-                                                      );
-                                                    }
-                                                    return child;
-                                                  }
-                                                  return Container(
-                                                    height: 200,
-                                                    color: Colors.grey[800],
-                                                    child: Center(
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                            color: ThemeUtils
-                                                                .brandYellow,
-                                                          ),
-                                                    ),
+                                            loadingBuilder: (
+                                              context,
+                                              child,
+                                              loadingProgress,
+                                            ) {
+                                              if (loadingProgress == null) {
+                                                if (kDebugMode) {
+                                                  print(
+                                                    '✅ Imagen cargada correctamente: ${planData['image_url_png']}',
                                                   );
-                                                },
+                                                }
+                                                return child;
+                                              }
+                                              return Container(
+                                                height: 200,
+                                                color: Colors.grey[800],
+                                                child: Center(
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color:
+                                                        ThemeUtils.brandYellow,
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                             errorBuilder:
                                                 (context, error, stackTrace) {
-                                                  if (kDebugMode) {
-                                                    print(
-                                                      '❌ Error cargando imagen:',
-                                                    );
-                                                    print(
-                                                      'URL: ${planData['image_url_png']}',
-                                                    );
-                                                    print('Error: $error');
-                                                  }
-                                                  return Container(
-                                                    height: 200,
-                                                    color: Colors.grey[800],
-                                                    child: Icon(
-                                                      Icons.error_outline,
-                                                      size: 50,
-                                                      color: Colors.white
-                                                          .withAlpha(
-                                                            (0.3 * 255).toInt(),
-                                                          ),
-                                                    ),
-                                                  );
-                                                },
+                                              if (kDebugMode) {
+                                                print(
+                                                  '❌ Error cargando imagen:',
+                                                );
+                                                print(
+                                                  'URL: ${planData['image_url_png']}',
+                                                );
+                                                print('Error: $error');
+                                              }
+                                              return Container(
+                                                height: 200,
+                                                color: Colors.grey[800],
+                                                child: Icon(
+                                                  Icons.error_outline,
+                                                  size: 50,
+                                                  color: Colors.white.withAlpha(
+                                                    (0.3 * 255).toInt(),
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                           ),
                                         ],
                                       ),
@@ -426,12 +422,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                                   print(
                                                     'Datos del plan seleccionado:',
                                                   );
-                                                  final data =
-                                                      planData.data()
-                                                          as Map<
-                                                            String,
-                                                            dynamic
-                                                          >;
+                                                  final data = planData.data()
+                                                      as Map<String, dynamic>;
                                                   data.forEach((key, value) {
                                                     if (kDebugMode) {
                                                       print('$key: $value');
@@ -444,7 +436,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
 
                                                 // Actualizar plan con BLoC
                                                 widget.state.add(
-                                                  PlanEvent.updateFromSuggestedPlan(
+                                                  PlanEvent
+                                                      .updateFromSuggestedPlan(
                                                     planData.data()
                                                         as Map<String, dynamic>,
                                                   ),
@@ -470,8 +463,8 @@ class _PlanSuggestionsStepState extends State<PlanSuggestionsStep> {
                                                 foregroundColor: Colors.black,
                                                 padding:
                                                     const EdgeInsets.symmetric(
-                                                      vertical: 12,
-                                                    ),
+                                                  vertical: 12,
+                                                ),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(8),

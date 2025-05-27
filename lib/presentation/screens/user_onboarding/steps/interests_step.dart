@@ -39,10 +39,8 @@ class _InterestsStepState extends State<InterestsStep> {
   void initState() {
     super.initState();
     // Get initial interests from state
-    final List<String> userInterests = context
-        .read<UserProfileBloc>()
-        .state
-        .interests;
+    final List<String> userInterests =
+        context.read<UserProfileBloc>().state.interests;
     selectedInterests = Set.from(userInterests);
     _updateContinueButton();
   }
@@ -64,8 +62,8 @@ class _InterestsStepState extends State<InterestsStep> {
 
     // Update the bloc
     context.read<UserProfileBloc>().add(
-      UpdateInterestsEvent(selectedInterests.toList()),
-    );
+          UpdateInterestsEvent(selectedInterests.toList()),
+        );
 
     _updateContinueButton();
   }

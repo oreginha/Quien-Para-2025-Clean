@@ -191,9 +191,8 @@ class _OnboardingPlanFlowResponsiveState
 
     // AppBar para la pantalla (aunque en web será ocultado por NewResponsiveScaffold)
     final appBar = AppBar(
-      backgroundColor: isDarkMode
-          ? AppColors.darkBackground
-          : AppColors.lightBackground,
+      backgroundColor:
+          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
       elevation: 0,
       leading: IconButton(
         icon: Icon(Icons.close, color: AppColors.getTextPrimary(isDarkMode)),
@@ -346,31 +345,32 @@ class _OnboardingPlanFlowResponsiveState
                       PlanTypeStep(
                         pageController: _pageController,
                         planTypes: PlanType.planTypes.keys.toList(),
-                        selectedType: state is PlanLoaded
-                            ? state.plan.category
-                            : null,
+                        selectedType:
+                            state is PlanLoaded ? state.plan.category : null,
                         onSelect: (final type) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(field: 'type', value: type),
-                          );
+                                PlanEvent.updateField(
+                                    field: 'type', value: type),
+                              );
                           _updateStepValidation(0, true);
                           _nextPage();
                         },
                       ),
                       DateLocationStep(
                         pageController: _pageController,
-                        selectedCity: state is PlanLoaded
-                            ? state.plan.location
-                            : null,
+                        selectedCity:
+                            state is PlanLoaded ? state.plan.location : null,
                         onDateSelect: (final date) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(field: 'date', value: date),
-                          );
+                                PlanEvent.updateField(
+                                    field: 'date', value: date),
+                              );
                         },
                         onCitySelect: (final city) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(field: 'city', value: city),
-                          );
+                                PlanEvent.updateField(
+                                    field: 'city', value: city),
+                              );
                           _updateStepValidation(1, true);
                         },
                         onNext: () {
@@ -395,32 +395,31 @@ class _OnboardingPlanFlowResponsiveState
                       EventDetailsStep(
                         pageController: _pageController,
                         title: state is PlanLoaded ? state.plan.title : '',
-                        description: state is PlanLoaded
-                            ? state.plan.description
-                            : '',
-                        location: state is PlanLoaded
-                            ? state.plan.location
-                            : '',
+                        description:
+                            state is PlanLoaded ? state.plan.description : '',
+                        location:
+                            state is PlanLoaded ? state.plan.location : '',
                         onTitleChange: (final value) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(field: 'title', value: value),
-                          );
+                                PlanEvent.updateField(
+                                    field: 'title', value: value),
+                              );
                         },
                         onDescriptionChange: (final value) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(
-                              field: 'description',
-                              value: value,
-                            ),
-                          );
+                                PlanEvent.updateField(
+                                  field: 'description',
+                                  value: value,
+                                ),
+                              );
                         },
                         onLocationChange: (final value) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(
-                              field: 'location',
-                              value: value,
-                            ),
-                          );
+                                PlanEvent.updateField(
+                                  field: 'location',
+                                  value: value,
+                                ),
+                              );
                         },
                         onNext: () {
                           if (state is PlanLoaded &&
@@ -433,9 +432,8 @@ class _OnboardingPlanFlowResponsiveState
                       ),
                       InvitationConditionsStep(
                         pageController: _pageController,
-                        guestCount: state is PlanLoaded
-                            ? state.plan.guestCount
-                            : null,
+                        guestCount:
+                            state is PlanLoaded ? state.plan.guestCount : null,
                         payCondition: state is PlanLoaded
                             ? state.plan.payCondition
                             : null,
@@ -444,24 +442,25 @@ class _OnboardingPlanFlowResponsiveState
                             : '',
                         onGuestCountSelect: (final count) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(
-                              field: 'guestCount',
-                              value: count,
-                            ),
-                          );
+                                PlanEvent.updateField(
+                                  field: 'guestCount',
+                                  value: count,
+                                ),
+                              );
                         },
                         onPayConditionSelect: (final condition) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateField(
-                              field: 'payCondition',
-                              value: condition,
-                            ),
-                          );
+                                PlanEvent.updateField(
+                                  field: 'payCondition',
+                                  value: condition,
+                                ),
+                              );
                         },
                         onExtraConditionsChange: (final value) {
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateExtraConditions(value.toString()),
-                          );
+                                PlanEvent.updateExtraConditions(
+                                    value.toString()),
+                              );
                         },
                         onSubmit: () {
                           if (state is PlanLoaded &&
@@ -469,8 +468,8 @@ class _OnboardingPlanFlowResponsiveState
                               state.plan.payCondition != null) {
                             _updateStepValidation(4, true);
                             context.read<PlanBloc>().add(
-                              const PlanEvent.save(),
-                            );
+                                  const PlanEvent.save(),
+                                );
                           }
                         },
                       ),

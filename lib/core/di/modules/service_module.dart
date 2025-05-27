@@ -245,8 +245,8 @@ class ServiceModule implements DIModule {
     // Image Service
     if (!sl.isRegistered<ImageServiceInterface>()) {
       sl.registerLazySingleton<ImageServiceInterface>(
-        () =>
-            ImageServiceFactory.create(), // Usa el factory para seleccionar la implementación adecuada según la plataforma
+        () => ImageServiceFactory
+            .create(), // Usa el factory para seleccionar la implementación adecuada según la plataforma
       );
     }
 
@@ -447,10 +447,8 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
     }
 
     try {
-      final docSnapshot = await _firestore
-          .collection('users')
-          .doc(user.uid)
-          .get();
+      final docSnapshot =
+          await _firestore.collection('users').doc(user.uid).get();
       if (!docSnapshot.exists) {
         // Si el documento no existe, devolver datos básicos del usuario de Firebase
         return UserEntity(
@@ -480,10 +478,8 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserEntity?> getUserById(String userId) async {
     try {
-      final docSnapshot = await _firestore
-          .collection('users')
-          .doc(userId)
-          .get();
+      final docSnapshot =
+          await _firestore.collection('users').doc(userId).get();
       if (!docSnapshot.exists) {
         return null;
       }
@@ -642,10 +638,8 @@ class _LegacyAuthRepositoryImpl implements AuthRepository {
       final User? user = userCredential.user;
       if (user != null) {
         // Verificar si existe un documento en Firestore
-        final docSnapshot = await _firestore
-            .collection('users')
-            .doc(user.uid)
-            .get();
+        final docSnapshot =
+            await _firestore.collection('users').doc(user.uid).get();
 
         if (docSnapshot.exists) {
           final userData = docSnapshot.data()!;

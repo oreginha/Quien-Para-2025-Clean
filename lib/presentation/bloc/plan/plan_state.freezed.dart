@@ -27,7 +27,8 @@ mixin _$PlanState {
     required TResult Function(List<PlanEntity> plans) plansLoaded,
     required TResult Function(PlanEntity plan) saved,
     required TResult Function(String message, PlanEntity? plan) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -38,7 +39,8 @@ mixin _$PlanState {
     TResult? Function(List<PlanEntity> plans)? plansLoaded,
     TResult? Function(PlanEntity plan)? saved,
     TResult? Function(String message, PlanEntity? plan)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -50,7 +52,8 @@ mixin _$PlanState {
     TResult Function(PlanEntity plan)? saved,
     TResult Function(String message, PlanEntity? plan)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PlanInitial value) initial,
@@ -61,7 +64,8 @@ mixin _$PlanState {
     required TResult Function(PlansLoaded value) plansLoaded,
     required TResult Function(PlanSaved value) saved,
     required TResult Function(PlanError value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PlanInitial value)? initial,
@@ -72,7 +76,8 @@ mixin _$PlanState {
     TResult? Function(PlansLoaded value)? plansLoaded,
     TResult? Function(PlanSaved value)? saved,
     TResult? Function(PlanError value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PlanInitial value)? initial,
@@ -84,7 +89,8 @@ mixin _$PlanState {
     TResult Function(PlanSaved value)? saved,
     TResult Function(PlanError value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -424,7 +430,7 @@ class __$$PlanLoadedImplCopyWithImpl<$Res>
         plan: null == plan
             ? _value.plan
             : plan // ignore: cast_nullable_to_non_nullable
-                  as PlanEntity,
+                as PlanEntity,
       ),
     );
   }
@@ -603,7 +609,7 @@ class __$$PlanSavingImplCopyWithImpl<$Res>
         plan: freezed == plan
             ? _value.plan
             : plan // ignore: cast_nullable_to_non_nullable
-                  as PlanEntity?,
+                as PlanEntity?,
       ),
     );
   }
@@ -782,7 +788,7 @@ class __$$PlanUpdatingImplCopyWithImpl<$Res>
         plan: freezed == plan
             ? _value.plan
             : plan // ignore: cast_nullable_to_non_nullable
-                  as PlanEntity?,
+                as PlanEntity?,
       ),
     );
   }
@@ -961,7 +967,7 @@ class __$$PlansLoadedImplCopyWithImpl<$Res>
         plans: null == plans
             ? _value._plans
             : plans // ignore: cast_nullable_to_non_nullable
-                  as List<PlanEntity>,
+                as List<PlanEntity>,
       ),
     );
   }
@@ -971,8 +977,8 @@ class __$$PlansLoadedImplCopyWithImpl<$Res>
 
 class _$PlansLoadedImpl extends PlansLoaded {
   const _$PlansLoadedImpl({required final List<PlanEntity> plans})
-    : _plans = plans,
-      super._();
+      : _plans = plans,
+        super._();
 
   final List<PlanEntity> _plans;
   @override
@@ -1149,7 +1155,7 @@ class __$$PlanSavedImplCopyWithImpl<$Res>
         plan: null == plan
             ? _value.plan
             : plan // ignore: cast_nullable_to_non_nullable
-                  as PlanEntity,
+                as PlanEntity,
       ),
     );
   }
@@ -1328,11 +1334,11 @@ class __$$PlanErrorImplCopyWithImpl<$Res>
         message: null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         plan: freezed == plan
             ? _value.plan
             : plan // ignore: cast_nullable_to_non_nullable
-                  as PlanEntity?,
+                as PlanEntity?,
       ),
     );
   }

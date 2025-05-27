@@ -31,12 +31,12 @@ class UserRepositoryImpl implements IUserRepository {
     required UserCache cache,
     required UserMapper mapper,
     Logger? logger,
-  }) : _firestore = firestore,
-       _storage = storage,
-       _auth = auth,
-       _cache = cache,
-       _mapper = mapper,
-       _logger = logger ?? Logger();
+  })  : _firestore = firestore,
+        _storage = storage,
+        _auth = auth,
+        _cache = cache,
+        _mapper = mapper,
+        _logger = logger ?? Logger();
 
   @override
   Either<AppFailure, String?> getCurrentUserId() {
@@ -104,11 +104,8 @@ class UserRepositoryImpl implements IUserRepository {
     for (File photo in photos) {
       try {
         final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-        final Reference ref = _storage
-            .ref()
-            .child('user_photos')
-            .child(userId)
-            .child(fileName);
+        final Reference ref =
+            _storage.ref().child('user_photos').child(userId).child(fileName);
 
         // Metadata con información adicional
         final SettableMetadata metadata = SettableMetadata(

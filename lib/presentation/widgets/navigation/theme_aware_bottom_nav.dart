@@ -93,9 +93,8 @@ class ThemeAwareBottomNav extends StatelessWidget {
                         style: TextStyle(
                           color: isSelected ? activeColor : inactiveIconColor,
                           fontSize: 12,
-                          fontWeight: isSelected
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                          fontWeight:
+                              isSelected ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
                       // Punto indicador para ítem activo (para modo claro)

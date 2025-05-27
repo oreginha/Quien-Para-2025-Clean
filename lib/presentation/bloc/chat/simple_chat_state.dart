@@ -33,12 +33,12 @@ class SimpleChatState extends Equatable {
 
   @override
   List<Object?> get props => [
-    isLoading,
-    errorMessage,
-    conversations,
-    messages,
-    currentConversationId,
-  ];
+        isLoading,
+        errorMessage,
+        conversations,
+        messages,
+        currentConversationId,
+      ];
 
   // Getters de conveniencia para compatibilidad
   bool get hasError => errorMessage != null;

@@ -98,60 +98,59 @@ class _$PlanModelCopyWithImpl<$Res, $Val extends PlanModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: null == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String,
-            imageUrl: null == imageUrl
-                ? _value.imageUrl
-                : imageUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
-            creatorId: null == creatorId
-                ? _value.creatorId
-                : creatorId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            date: null == date
-                ? _value.date
-                : date // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            likes: null == likes
-                ? _value.likes
-                : likes // ignore: cast_nullable_to_non_nullable
-                      as int,
-            category: null == category
-                ? _value.category
-                : category // ignore: cast_nullable_to_non_nullable
-                      as String,
-            location: null == location
-                ? _value.location
-                : location // ignore: cast_nullable_to_non_nullable
-                      as String,
-            conditions: null == conditions
-                ? _value.conditions
-                : conditions // ignore: cast_nullable_to_non_nullable
-                      as Map<String, String>,
-            selectedThemes: null == selectedThemes
-                ? _value.selectedThemes
-                : selectedThemes // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            esVisible: null == esVisible
-                ? _value.esVisible
-                : esVisible // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                as String,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                as String,
+        imageUrl: null == imageUrl
+            ? _value.imageUrl
+            : imageUrl // ignore: cast_nullable_to_non_nullable
+                as String,
+        creatorId: null == creatorId
+            ? _value.creatorId
+            : creatorId // ignore: cast_nullable_to_non_nullable
+                as String,
+        date: null == date
+            ? _value.date
+            : date // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        likes: null == likes
+            ? _value.likes
+            : likes // ignore: cast_nullable_to_non_nullable
+                as int,
+        category: null == category
+            ? _value.category
+            : category // ignore: cast_nullable_to_non_nullable
+                as String,
+        location: null == location
+            ? _value.location
+            : location // ignore: cast_nullable_to_non_nullable
+                as String,
+        conditions: null == conditions
+            ? _value.conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                as Map<String, String>,
+        selectedThemes: null == selectedThemes
+            ? _value.selectedThemes
+            : selectedThemes // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        createdAt: freezed == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as String?,
+        esVisible: null == esVisible
+            ? _value.esVisible
+            : esVisible // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ) as $Val,
     );
   }
 }
@@ -215,55 +214,55 @@ class __$$PlanModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         title: null == title
             ? _value.title
             : title // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         description: null == description
             ? _value.description
             : description // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         imageUrl: null == imageUrl
             ? _value.imageUrl
             : imageUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         creatorId: null == creatorId
             ? _value.creatorId
             : creatorId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         date: null == date
             ? _value.date
             : date // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         likes: null == likes
             ? _value.likes
             : likes // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         category: null == category
             ? _value.category
             : category // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         location: null == location
             ? _value.location
             : location // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         conditions: null == conditions
             ? _value._conditions
             : conditions // ignore: cast_nullable_to_non_nullable
-                  as Map<String, String>,
+                as Map<String, String>,
         selectedThemes: null == selectedThemes
             ? _value._selectedThemes
             : selectedThemes // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         esVisible: null == esVisible
             ? _value.esVisible
             : esVisible // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
       ),
     );
   }
@@ -286,9 +285,9 @@ class _$PlanModelImpl extends _PlanModel {
     final List<String> selectedThemes = const [],
     this.createdAt,
     this.esVisible = true,
-  }) : _conditions = conditions,
-       _selectedThemes = selectedThemes,
-       super._();
+  })  : _conditions = conditions,
+        _selectedThemes = selectedThemes,
+        super._();
 
   factory _$PlanModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PlanModelImplFromJson(json);
@@ -380,21 +379,21 @@ class _$PlanModelImpl extends _PlanModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    title,
-    description,
-    imageUrl,
-    creatorId,
-    date,
-    likes,
-    category,
-    location,
-    const DeepCollectionEquality().hash(_conditions),
-    const DeepCollectionEquality().hash(_selectedThemes),
-    createdAt,
-    esVisible,
-  );
+        runtimeType,
+        id,
+        title,
+        description,
+        imageUrl,
+        creatorId,
+        date,
+        likes,
+        category,
+        location,
+        const DeepCollectionEquality().hash(_conditions),
+        const DeepCollectionEquality().hash(_selectedThemes),
+        createdAt,
+        esVisible,
+      );
 
   /// Create a copy of PlanModel
   /// with the given fields replaced by the non-null parameter values.

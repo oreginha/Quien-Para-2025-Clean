@@ -167,8 +167,8 @@ class CommonWidgets {
       style: TextStyle(color: AppColors.lightTextPrimary),
       onChanged: (String value) {
         context.read<SearchFiltersBloc>().add(
-          SearchFiltersEvent.updateSearchQuery(value),
-        );
+              SearchFiltersEvent.updateSearchQuery(value),
+            );
       },
       controller: TextEditingController(text: searchQuery),
     );
@@ -211,11 +211,9 @@ class CommonWidgets {
             trackHeight: 8,
             thumbColor: thumbColor ?? AppColors.lightTextPrimary,
             activeTrackColor: activeTrackColor ?? AppColors.brandYellow,
-            inactiveTrackColor:
-                inactiveTrackColor ??
+            inactiveTrackColor: inactiveTrackColor ??
                 Colors.white.withAlpha((0.3 * 255).round()),
-            overlayColor:
-                overlayColor ??
+            overlayColor: overlayColor ??
                 AppColors.lightTextPrimary.withAlpha((0.2 * 255).round()),
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
           ),
@@ -417,8 +415,7 @@ class StyledButton extends StatelessWidget {
       text: text,
       isLoading: isLoading,
       disabled: !isEnabled,
-      fullWidth:
-          width !=
+      fullWidth: width !=
           null, // Si se especificó un ancho, asumimos que quiere ocupar todo el espacio disponible
       style: AppButtonStyle.primary, // Estilo por defecto
     );

@@ -85,12 +85,12 @@ class MockAuthCubitImpl extends AuthCubit {
   }
 
   MockAuthCubitImpl._()
-    : super(
-        // Pasar el repositorio mock
-        MockAuthRepository(),
-        // Pasar la instancia ya inicializada de SharedPreferences
-        _sharedPrefs,
-      ) {
+      : super(
+          // Pasar el repositorio mock
+          MockAuthRepository(),
+          // Pasar la instancia ya inicializada de SharedPreferences
+          _sharedPrefs,
+        ) {
     if (kDebugMode) {
       print('🔴 [EMERGENCIA] MockAuthCubitImpl inicializado');
     }

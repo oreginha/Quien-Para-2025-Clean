@@ -235,16 +235,13 @@ class AuthCubit extends Cubit<AuthState> {
     }
 
     // Validar tipos y valores mínimos
-    final bool interestsValid =
-        userData['interests'] is List &&
+    final bool interestsValid = userData['interests'] is List &&
         (userData['interests'] as List).isNotEmpty;
 
-    final bool photosValid =
-        userData['photoUrls'] is List &&
+    final bool photosValid = userData['photoUrls'] is List &&
         (userData['photoUrls'] as List).isNotEmpty;
 
-    final bool isValid =
-        userData['name'].toString().isNotEmpty &&
+    final bool isValid = userData['name'].toString().isNotEmpty &&
         (userData['age'] as num?) != null &&
         userData['gender'].toString().isNotEmpty &&
         userData['location'].toString().isNotEmpty &&
@@ -286,8 +283,8 @@ class AuthCubit extends Cubit<AuthState> {
       );
 
       // Obtener datos de usuario completos
-      final Map<String, dynamic>? userData = await _authRepository
-          .getCurrentUserData();
+      final Map<String, dynamic>? userData =
+          await _authRepository.getCurrentUserData();
 
       if (userData != null) {
         final String userId = userEntity
@@ -458,8 +455,8 @@ class AuthCubit extends Cubit<AuthState> {
           _profileValidationCache.remove(
             userId,
           ); // Limpiar caché para forzar verificación
-          Map<String, dynamic>? userData = await _authRepository
-              .getCurrentUserData();
+          Map<String, dynamic>? userData =
+              await _authRepository.getCurrentUserData();
 
           if (userData != null) {
             _userDataCache[userId] = userData;
@@ -561,8 +558,8 @@ class AuthCubit extends Cubit<AuthState> {
       _profileValidationCache[userId] = true;
 
       // Obtener datos actualizados del usuario
-      Map<String, dynamic>? userData = await _authRepository
-          .getCurrentUserData();
+      Map<String, dynamic>? userData =
+          await _authRepository.getCurrentUserData();
       if (userData != null) {
         _userDataCache[userId] = userData;
       }

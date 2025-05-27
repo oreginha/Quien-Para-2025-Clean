@@ -67,24 +67,23 @@ class _$MyApplicationsDataCopyWithImpl<$Res, $Val extends MyApplicationsData>
   }) {
     return _then(
       _value.copyWith(
-            applications: null == applications
-                ? _value.applications
-                : applications // ignore: cast_nullable_to_non_nullable
-                      as List<ApplicationEntity>,
-            plansCache: null == plansCache
-                ? _value.plansCache
-                : plansCache // ignore: cast_nullable_to_non_nullable
-                      as Map<String, PlanEntity?>,
-            selectedFilter: freezed == selectedFilter
-                ? _value.selectedFilter
-                : selectedFilter // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isRefreshing: null == isRefreshing
-                ? _value.isRefreshing
-                : isRefreshing // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
+        applications: null == applications
+            ? _value.applications
+            : applications // ignore: cast_nullable_to_non_nullable
+                as List<ApplicationEntity>,
+        plansCache: null == plansCache
+            ? _value.plansCache
+            : plansCache // ignore: cast_nullable_to_non_nullable
+                as Map<String, PlanEntity?>,
+        selectedFilter: freezed == selectedFilter
+            ? _value.selectedFilter
+            : selectedFilter // ignore: cast_nullable_to_non_nullable
+                as String?,
+        isRefreshing: null == isRefreshing
+            ? _value.isRefreshing
+            : isRefreshing // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ) as $Val,
     );
   }
 }
@@ -130,19 +129,19 @@ class __$$MyApplicationsDataImplCopyWithImpl<$Res>
         applications: null == applications
             ? _value._applications
             : applications // ignore: cast_nullable_to_non_nullable
-                  as List<ApplicationEntity>,
+                as List<ApplicationEntity>,
         plansCache: null == plansCache
             ? _value._plansCache
             : plansCache // ignore: cast_nullable_to_non_nullable
-                  as Map<String, PlanEntity?>,
+                as Map<String, PlanEntity?>,
         selectedFilter: freezed == selectedFilter
             ? _value.selectedFilter
             : selectedFilter // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         isRefreshing: null == isRefreshing
             ? _value.isRefreshing
             : isRefreshing // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
       ),
     );
   }
@@ -158,8 +157,8 @@ class _$MyApplicationsDataImpl
     required final Map<String, PlanEntity?> plansCache,
     required this.selectedFilter,
     required this.isRefreshing,
-  }) : _applications = applications,
-       _plansCache = plansCache;
+  })  : _applications = applications,
+        _plansCache = plansCache;
 
   final List<ApplicationEntity> _applications;
   @override
@@ -219,12 +218,12 @@ class _$MyApplicationsDataImpl
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_applications),
-    const DeepCollectionEquality().hash(_plansCache),
-    selectedFilter,
-    isRefreshing,
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_applications),
+        const DeepCollectionEquality().hash(_plansCache),
+        selectedFilter,
+        isRefreshing,
+      );
 
   /// Create a copy of MyApplicationsData
   /// with the given fields replaced by the non-null parameter values.

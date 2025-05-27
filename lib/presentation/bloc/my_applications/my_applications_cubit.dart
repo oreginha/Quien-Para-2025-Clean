@@ -25,11 +25,11 @@ class MyApplicationsData with _$MyApplicationsData {
 
   /// Estado inicial para la pantalla de mis aplicaciones
   factory MyApplicationsData.initial() => const MyApplicationsData(
-    applications: [],
-    plansCache: {},
-    selectedFilter: null,
-    isRefreshing: false,
-  );
+        applications: [],
+        plansCache: {},
+        selectedFilter: null,
+        isRefreshing: false,
+      );
 }
 
 /// Cubit para manejar la lógica de la pantalla de mis aplicaciones
@@ -42,9 +42,9 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
   StreamSubscription? _applicationsSubscription;
 
   MyApplicationsCubit({required FirebaseFirestore firestore, String? userId})
-    : _firestore = firestore,
-      _userId = userId ?? FirebaseAuth.instance.currentUser?.uid,
-      super() {
+      : _firestore = firestore,
+        _userId = userId ?? FirebaseAuth.instance.currentUser?.uid,
+        super() {
     // Inicializar con estado vacío
     setLoaded(MyApplicationsData.initial());
     // Cargar aplicaciones
@@ -94,31 +94,31 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
           .orderBy('appliedAt', descending: true)
           .snapshots()
           .listen(
-            (snapshot) {
-              _handleApplicationsSnapshot(snapshot);
-            },
-            onError: (error) {
-              if (kDebugMode) {
-                print('Error en suscripción de aplicaciones: $error');
-              }
-              // Asegurarnos de salir del estado de carga incluso si hay un error
-              // Esto evita que la UI se quede bloqueada en estado de carga
-              if (state.isLoading) {
-                setError('Error al cargar aplicaciones: $error');
-              }
-            },
-            // Manejar el caso cuando el emisor está cerrado
-            onDone: () {
-              if (kDebugMode) {
-                print('Suscripción de aplicaciones cerrada');
-              }
-              // Si todavía estamos en estado de carga cuando la suscripción se cierra,
-              // forzar la salida del estado de carga para evitar bloqueos en la UI
-              if (state.isLoading) {
-                setEmpty();
-              }
-            },
-          );
+        (snapshot) {
+          _handleApplicationsSnapshot(snapshot);
+        },
+        onError: (error) {
+          if (kDebugMode) {
+            print('Error en suscripción de aplicaciones: $error');
+          }
+          // Asegurarnos de salir del estado de carga incluso si hay un error
+          // Esto evita que la UI se quede bloqueada en estado de carga
+          if (state.isLoading) {
+            setError('Error al cargar aplicaciones: $error');
+          }
+        },
+        // Manejar el caso cuando el emisor está cerrado
+        onDone: () {
+          if (kDebugMode) {
+            print('Suscripción de aplicaciones cerrada');
+          }
+          // Si todavía estamos en estado de carga cuando la suscripción se cierra,
+          // forzar la salida del estado de carga para evitar bloqueos en la UI
+          if (state.isLoading) {
+            setEmpty();
+          }
+        },
+      );
     } catch (error, stackTrace) {
       handleError('loadApplications', error, stackTrace);
       setError('Error al cargar aplicaciones: ${error.toString()}');
@@ -151,8 +151,7 @@ class MyApplicationsCubit extends LoadingCubit<MyApplicationsData> {
           : {};
 
       // Verificar si es la primera carga o una recarga
-      final bool isInitialLoad =
-          !currentState.isLoaded ||
+      final bool isInitialLoad = !currentState.isLoaded ||
           (currentState.isLoaded && currentState.data!.applications.isEmpty);
 
       // IMPORTANTE: Siempre emitir un estado cargado, incluso si no hay aplicaciones

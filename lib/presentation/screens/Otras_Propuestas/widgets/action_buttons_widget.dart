@@ -97,7 +97,9 @@ class ActionButtonsWidget extends StatelessWidget {
                           Expanded(
                             child: Text(
                               'Ya te has postulado a este plan. El creador te notificará cuando acepte o rechace tu solicitud.',
-                              style: Theme.of(context).textTheme.bodyMedium
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
                                   ?.copyWith(
                                     color: isDarkMode
                                         ? Colors.white
@@ -169,12 +171,12 @@ class ActionButtonsWidget extends StatelessWidget {
                         Center(
                           child: Text(
                             '${applicationsSnapshot.data?.docs.length ?? 0} personas ya se han postulado',
-                            style: Theme.of(context).textTheme.bodySmall
-                                ?.copyWith(
-                                  color: isDarkMode
-                                      ? Colors.white70
-                                      : Colors.black54,
-                                ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: isDarkMode
+                                          ? Colors.white70
+                                          : Colors.black54,
+                                    ),
                           ),
                         ),
                       ],

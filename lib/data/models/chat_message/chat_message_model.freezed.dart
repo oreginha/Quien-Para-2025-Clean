@@ -88,44 +88,43 @@ class _$ChatMessageModelCopyWithImpl<$Res, $Val extends ChatMessageModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            chatId: null == chatId
-                ? _value.chatId
-                : chatId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            senderId: null == senderId
-                ? _value.senderId
-                : senderId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            content: null == content
-                ? _value.content
-                : content // ignore: cast_nullable_to_non_nullable
-                      as String,
-            timestamp: null == timestamp
-                ? _value.timestamp
-                : timestamp // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            isRead: null == isRead
-                ? _value.isRead
-                : isRead // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as MessageType,
-            mediaUrl: freezed == mediaUrl
-                ? _value.mediaUrl
-                : mediaUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isSystemMessage: null == isSystemMessage
-                ? _value.isSystemMessage
-                : isSystemMessage // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        chatId: null == chatId
+            ? _value.chatId
+            : chatId // ignore: cast_nullable_to_non_nullable
+                as String,
+        senderId: null == senderId
+            ? _value.senderId
+            : senderId // ignore: cast_nullable_to_non_nullable
+                as String,
+        content: null == content
+            ? _value.content
+            : content // ignore: cast_nullable_to_non_nullable
+                as String,
+        timestamp: null == timestamp
+            ? _value.timestamp
+            : timestamp // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        isRead: null == isRead
+            ? _value.isRead
+            : isRead // ignore: cast_nullable_to_non_nullable
+                as bool,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as MessageType,
+        mediaUrl: freezed == mediaUrl
+            ? _value.mediaUrl
+            : mediaUrl // ignore: cast_nullable_to_non_nullable
+                as String?,
+        isSystemMessage: null == isSystemMessage
+            ? _value.isSystemMessage
+            : isSystemMessage // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ) as $Val,
     );
   }
 }
@@ -181,39 +180,39 @@ class __$$ChatMessageModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         chatId: null == chatId
             ? _value.chatId
             : chatId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         senderId: null == senderId
             ? _value.senderId
             : senderId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         content: null == content
             ? _value.content
             : content // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         timestamp: null == timestamp
             ? _value.timestamp
             : timestamp // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         isRead: null == isRead
             ? _value.isRead
             : isRead // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as MessageType,
+                as MessageType,
         mediaUrl: freezed == mediaUrl
             ? _value.mediaUrl
             : mediaUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         isSystemMessage: null == isSystemMessage
             ? _value.isSystemMessage
             : isSystemMessage // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
       ),
     );
   }
@@ -288,17 +287,17 @@ class _$ChatMessageModelImpl extends _ChatMessageModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    chatId,
-    senderId,
-    content,
-    timestamp,
-    isRead,
-    type,
-    mediaUrl,
-    isSystemMessage,
-  );
+        runtimeType,
+        id,
+        chatId,
+        senderId,
+        content,
+        timestamp,
+        isRead,
+        type,
+        mediaUrl,
+        isSystemMessage,
+      );
 
   /// Create a copy of ChatMessageModel
   /// with the given fields replaced by the non-null parameter values.

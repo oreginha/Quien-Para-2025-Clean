@@ -36,11 +36,10 @@ class _RatingStarsWidgetState extends State<RatingStarsWidget> {
             index < widget.rating.floor()
                 ? Icons.star
                 : index < widget.rating
-                ? Icons.star_half
-                : Icons.star_border,
-            color: index < widget.rating
-                ? widget.color
-                : widget.backgroundColor,
+                    ? Icons.star_half
+                    : Icons.star_border,
+            color:
+                index < widget.rating ? widget.color : widget.backgroundColor,
             size: widget.size,
           ),
         );

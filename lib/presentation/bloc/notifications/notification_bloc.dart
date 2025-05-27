@@ -26,13 +26,13 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   NotificationBloc({
     required INotificationRepository repository,
     required NotificationServiceInterface notificationService,
-  }) : _repository = repository,
-       _notificationService = notificationService,
-       _getNotificationsUseCase = GetNotificationsUseCase(repository),
-       _markNotificationAsReadUseCase = MarkNotificationAsReadUseCase(
-         repository,
-       ),
-       super(const NotificationState(status: NotificationStatus.initial)) {
+  })  : _repository = repository,
+        _notificationService = notificationService,
+        _getNotificationsUseCase = GetNotificationsUseCase(repository),
+        _markNotificationAsReadUseCase = MarkNotificationAsReadUseCase(
+          repository,
+        ),
+        super(const NotificationState(status: NotificationStatus.initial)) {
     on<LoadNotificationsEvent>(_onLoadNotifications);
     on<MarkNotificationAsReadEvent>(_onMarkNotificationAsRead);
     on<InitializeNotificationsEvent>(_onInitializeNotifications);
@@ -41,7 +41,8 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     add(const InitializeNotificationsEvent());
 
     // Listen for real-time notification updates
-    _notificationSubscription = _notificationService.onNotificationReceived.listen((
+    _notificationSubscription =
+        _notificationService.onNotificationReceived.listen((
       notification,
     ) {
       // Cuando se recibe una notificación, recargar las notificaciones del usuario actual

@@ -130,11 +130,12 @@ class ApplicationStatusWidget extends StatelessWidget {
               Text(
                 'Mensaje del aplicante:',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.lightTextPrimary.withAlpha(
-                    (255 * AppTheme.of(context).mediumEmphasisOpacity).round(),
-                  ),
-                  fontWeight: FontWeight.bold,
-                ),
+                      color: AppColors.lightTextPrimary.withAlpha(
+                        (255 * AppTheme.of(context).mediumEmphasisOpacity)
+                            .round(),
+                      ),
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               const SizedBox(height: AppSpacing.xs),
               Container(
@@ -146,9 +147,9 @@ class ApplicationStatusWidget extends StatelessWidget {
                 child: Text(
                   application.message!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.lightTextPrimary,
-                    fontStyle: FontStyle.italic,
-                  ),
+                        color: AppColors.lightTextPrimary,
+                        fontStyle: FontStyle.italic,
+                      ),
                 ),
               ),
             ],
@@ -167,8 +168,8 @@ class ApplicationStatusWidget extends StatelessWidget {
                     Text(
                       'Aplicado el ${_formatDate(application.appliedAt)}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(context).dividerColor,
-                      ),
+                            color: Theme.of(context).dividerColor,
+                          ),
                     ),
                   ],
                 ),
@@ -176,8 +177,8 @@ class ApplicationStatusWidget extends StatelessWidget {
                   Text(
                     'Procesado el ${_formatDate(application.processedAt!)}',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: Theme.of(context).dividerColor,
-                    ),
+                          color: Theme.of(context).dividerColor,
+                        ),
                   ),
                 ],
               ],
@@ -252,13 +253,13 @@ class ApplicationStatusWidget extends StatelessWidget {
     // Intentar usar el ApplicationsManagementBloc si está disponible
     try {
       context.read<ApplicationsManagementBloc>().add(
-        ApplicationsManagementEvent.acceptApplication(application.id),
-      );
+            ApplicationsManagementEvent.acceptApplication(application.id),
+          );
     } catch (e) {
       // Si no está disponible, usar el MatchingBloc como fallback
       context.read<MatchingBloc>().add(
-        MatchingEvent.acceptApplication(application.id),
-      );
+            MatchingEvent.acceptApplication(application.id),
+          );
     }
   }
 
@@ -266,13 +267,13 @@ class ApplicationStatusWidget extends StatelessWidget {
     // Intentar usar el ApplicationsManagementBloc si está disponible
     try {
       context.read<ApplicationsManagementBloc>().add(
-        ApplicationsManagementEvent.rejectApplication(application.id),
-      );
+            ApplicationsManagementEvent.rejectApplication(application.id),
+          );
     } catch (e) {
       // Si no está disponible, usar el MatchingBloc como fallback
       context.read<MatchingBloc>().add(
-        MatchingEvent.rejectApplication(application.id),
-      );
+            MatchingEvent.rejectApplication(application.id),
+          );
     }
   }
 
@@ -280,8 +281,8 @@ class ApplicationStatusWidget extends StatelessWidget {
     // Para cancelar siempre usar el MatchingBloc, ya que esta funcionalidad
     // es específica del usuario que hace la aplicación, no del gestor
     context.read<MatchingBloc>().add(
-      MatchingEvent.cancelApplication(application.id),
-    );
+          MatchingEvent.cancelApplication(application.id),
+        );
   }
 
   void _showAcceptConfirmation(BuildContext context) {
@@ -314,8 +315,8 @@ class ApplicationStatusWidget extends StatelessWidget {
                     child: Text(
                       'Se le notificará al usuario y se creará un chat para que puedan coordinar.',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: ThemeUtils.background,
-                      ),
+                            color: ThemeUtils.background,
+                          ),
                     ),
                   ),
                 ],
@@ -379,8 +380,8 @@ class ApplicationStatusWidget extends StatelessWidget {
                     child: Text(
                       'Se le notificará al usuario que su solicitud ha sido rechazada.',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: ThemeUtils.background,
-                      ),
+                            color: ThemeUtils.background,
+                          ),
                     ),
                   ),
                 ],

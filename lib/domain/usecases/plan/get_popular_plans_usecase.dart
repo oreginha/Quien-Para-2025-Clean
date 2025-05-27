@@ -55,7 +55,8 @@ class GetPopularPlansUseCase
   /// Método de conveniencia para usar el caso de uso como una función.
   Future<Either<AppFailure, List<PlanEntity>>> call(
     GetPopularPlansParams params,
-  ) => execute(params);
+  ) =>
+      execute(params);
 
   /// Método de conveniencia para obtener planes populares sin parámetros adicionales
   Future<Either<AppFailure, List<PlanEntity>>> getPopularPlans({int? limit}) {

@@ -61,10 +61,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
     required String cacheName,
     String Function(T)? serializeCallback,
     T Function(String)? deserializeCallback,
-  }) : _cacheBoxName = 'compressed_${cacheName}_cache',
-       _metadataBoxName = 'compressed_${cacheName}_metadata',
-       _serializeCallback = serializeCallback,
-       _deserializeCallback = deserializeCallback;
+  })  : _cacheBoxName = 'compressed_${cacheName}_cache',
+        _metadataBoxName = 'compressed_${cacheName}_metadata',
+        _serializeCallback = serializeCallback,
+        _deserializeCallback = deserializeCallback;
 
   @override
   bool get isAvailable => _initialized;
@@ -784,12 +784,10 @@ class GenericCompressedCache<T> implements GenericCacheInterface<T> {
 
 /// Función para no esperar a que se complete una operación asíncrona
 void unawaited(Future<void> future) {
-  future
-      .then((_) {
-        // Operación completada correctamente
-      })
-      .catchError((error) {
-        // Capturar errores para evitar excepciones no manejadas
-        debugPrint('Unhandled async error: $error');
-      });
+  future.then((_) {
+    // Operación completada correctamente
+  }).catchError((error) {
+    // Capturar errores para evitar excepciones no manejadas
+    debugPrint('Unhandled async error: $error');
+  });
 }

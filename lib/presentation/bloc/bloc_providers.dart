@@ -28,23 +28,23 @@ class BlocProviders {
         create: (context) {
           try {
             return SecurityBloc(
-              createReportUseCase: ProgressiveInjection.sl
-                  .get<CreateReportUseCase>(
-                    instanceName: 'CreateReportUseCase',
-                  ),
+              createReportUseCase:
+                  ProgressiveInjection.sl.get<CreateReportUseCase>(
+                instanceName: 'CreateReportUseCase',
+              ),
               blockUserUseCase: _createMockBlockUserUseCase(),
-              getPendingReportsUseCase: ProgressiveInjection.sl
-                  .get<GetPendingReportsUseCase>(
-                    instanceName: 'GetPendingReportsUseCase',
-                  ),
-              getReportsByUserUseCase: ProgressiveInjection.sl
-                  .get<GetReportsByUserUseCase>(
-                    instanceName: 'GetReportsByUserUseCase',
-                  ),
-              updateReportStatusUseCase: ProgressiveInjection.sl
-                  .get<UpdateReportStatusUseCase>(
-                    instanceName: 'UpdateReportStatusUseCase',
-                  ),
+              getPendingReportsUseCase:
+                  ProgressiveInjection.sl.get<GetPendingReportsUseCase>(
+                instanceName: 'GetPendingReportsUseCase',
+              ),
+              getReportsByUserUseCase:
+                  ProgressiveInjection.sl.get<GetReportsByUserUseCase>(
+                instanceName: 'GetReportsByUserUseCase',
+              ),
+              updateReportStatusUseCase:
+                  ProgressiveInjection.sl.get<UpdateReportStatusUseCase>(
+                instanceName: 'UpdateReportStatusUseCase',
+              ),
             );
           } catch (e) {
             debugPrint('⚠️ Error inicializando SecurityBloc: $e');

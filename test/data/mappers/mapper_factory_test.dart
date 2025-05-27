@@ -53,13 +53,8 @@ void main() {
     test('should throw UnsupportedError for unsupported entity type', () {
       // Act & Assert
       expect(
-        () => mapperFactory
-            .getMapper<
-              EntityMapper<PlanEntity, void, void>,
-              PlanEntity,
-              void,
-              void
-            >(),
+        () => mapperFactory.getMapper<EntityMapper<PlanEntity, void, void>,
+            PlanEntity, void, void>(),
         throwsA(isA<UnsupportedError>()),
       );
     });

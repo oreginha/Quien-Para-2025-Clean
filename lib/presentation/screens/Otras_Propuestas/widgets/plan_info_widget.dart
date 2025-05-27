@@ -51,8 +51,8 @@ class PlanInfoWidget extends StatelessWidget {
                       ? '${plan.date!.day}/${plan.date!.month}/${plan.date!.year}'
                       : 'Fecha no disponible',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: isDarkMode ? Colors.white : Colors.black,
-                  ),
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -81,8 +81,8 @@ class PlanInfoWidget extends StatelessWidget {
                       ? plan.location
                       : 'Ubicación no especificada',
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: isDarkMode ? Colors.white : Colors.black,
-                  ),
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,

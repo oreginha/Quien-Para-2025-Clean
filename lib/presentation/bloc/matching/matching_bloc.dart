@@ -83,13 +83,13 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
         // en lugar de accederlo directamente desde Firebase
 
         // Crear la entidad de aplicación con userId obtenido a través del caso de uso
-        final ApplicationEntity application = await _applyToPlanUseCase
-            .createApplicationEntity(
-              planId: planId,
-              message: message,
-              status: 'pending',
-              appliedAt: DateTime.now(),
-            );
+        final ApplicationEntity application =
+            await _applyToPlanUseCase.createApplicationEntity(
+          planId: planId,
+          message: message,
+          status: 'pending',
+          appliedAt: DateTime.now(),
+        );
 
         // Delegar al caso de uso
         final Either<AppFailure, ApplicationEntity> result =
@@ -128,8 +128,8 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
       loadingState: const MatchingState.loading(),
       operation: 'cargar aplicaciones de usuario',
       execute: () async {
-        final String userIdToUse = await _getUserApplicationsUseCase
-            .getCurrentUserId(userId);
+        final String userIdToUse =
+            await _getUserApplicationsUseCase.getCurrentUserId(userId);
         if (userIdToUse.isEmpty) {
           throw Exception('Usuario no autenticado');
         }
@@ -281,8 +281,8 @@ class MatchingBloc extends BaseBloc<MatchingEvent, MatchingState> {
           // 1. Obtener el ID del usuario actual usando el caso de uso
           // Este enfoque sigue los principios de Clean Architecture al encapsular la lógica
           // de autenticación dentro del caso de uso
-          final String userId = await _getUserApplicationsUseCase
-              .getCurrentUserId(null);
+          final String userId =
+              await _getUserApplicationsUseCase.getCurrentUserId(null);
 
           // 2. Crear una aplicación temporal con el ID para mostrar en el estado
           final ApplicationEntity tempApplication = ApplicationEntity(

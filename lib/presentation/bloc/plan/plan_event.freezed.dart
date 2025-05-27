@@ -20,20 +20,21 @@ mixin _$PlanEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String creatorId, Map<String, dynamic> planData)? create,
@@ -47,7 +48,8 @@ mixin _$PlanEvent {
     TResult? Function(Map<String, dynamic> planData)? updateFromSuggestedPlan,
     TResult? Function(Map<String, dynamic> planData)? loadExistingPlan,
     TResult? Function(String currentUserId)? loadOtherUsersPlans,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String creatorId, Map<String, dynamic> planData)? create,
@@ -62,7 +64,8 @@ mixin _$PlanEvent {
     TResult Function(Map<String, dynamic> planData)? loadExistingPlan,
     TResult Function(String currentUserId)? loadOtherUsersPlans,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Create value) create,
@@ -70,16 +73,17 @@ mixin _$PlanEvent {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Create value)? create,
@@ -93,7 +97,8 @@ mixin _$PlanEvent {
     TResult? Function(_UpdateFromSuggestedPlan value)? updateFromSuggestedPlan,
     TResult? Function(_LoadExistingPlan value)? loadExistingPlan,
     TResult? Function(_LoadOtherUsersPlans value)? loadOtherUsersPlans,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Create value)? create,
@@ -108,7 +113,8 @@ mixin _$PlanEvent {
     TResult Function(_LoadExistingPlan value)? loadExistingPlan,
     TResult Function(_LoadOtherUsersPlans value)? loadOtherUsersPlans,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -160,11 +166,11 @@ class __$$CreateImplCopyWithImpl<$Res>
         creatorId: null == creatorId
             ? _value.creatorId
             : creatorId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         planData: null == planData
             ? _value._planData
             : planData // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
       ),
     );
   }
@@ -176,8 +182,8 @@ class _$CreateImpl extends _Create {
   const _$CreateImpl({
     this.creatorId = '',
     final Map<String, dynamic> planData = const {},
-  }) : _planData = planData,
-       super._();
+  })  : _planData = planData,
+        super._();
 
   @override
   @JsonKey()
@@ -208,10 +214,10 @@ class _$CreateImpl extends _Create {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    creatorId,
-    const DeepCollectionEquality().hash(_planData),
-  );
+        runtimeType,
+        creatorId,
+        const DeepCollectionEquality().hash(_planData),
+      );
 
   /// Create a copy of PlanEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -225,17 +231,17 @@ class _$CreateImpl extends _Create {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -290,13 +296,13 @@ class _$CreateImpl extends _Create {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -374,7 +380,7 @@ class __$$SaveImplCopyWithImpl<$Res>
     extends _$PlanEventCopyWithImpl<$Res, _$SaveImpl>
     implements _$$SaveImplCopyWith<$Res> {
   __$$SaveImplCopyWithImpl(_$SaveImpl _value, $Res Function(_$SaveImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of PlanEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -403,17 +409,17 @@ class _$SaveImpl extends _Save {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -468,13 +474,13 @@ class _$SaveImpl extends _Save {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -571,17 +577,17 @@ class _$UpdateImpl extends _Update {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -636,13 +642,13 @@ class _$UpdateImpl extends _Update {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -724,11 +730,11 @@ class __$$UpdateFieldImplCopyWithImpl<$Res>
         field: null == field
             ? _value.field
             : field // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         value: freezed == value
             ? _value.value
             : value // ignore: cast_nullable_to_non_nullable
-                  as dynamic,
+                as dynamic,
       ),
     );
   }
@@ -738,7 +744,7 @@ class __$$UpdateFieldImplCopyWithImpl<$Res>
 
 class _$UpdateFieldImpl extends _UpdateField {
   const _$UpdateFieldImpl({required this.field, required this.value})
-    : super._();
+      : super._();
 
   @override
   final String field;
@@ -761,10 +767,10 @@ class _$UpdateFieldImpl extends _UpdateField {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    field,
-    const DeepCollectionEquality().hash(value),
-  );
+        runtimeType,
+        field,
+        const DeepCollectionEquality().hash(value),
+      );
 
   /// Create a copy of PlanEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -778,17 +784,17 @@ class _$UpdateFieldImpl extends _UpdateField {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -843,13 +849,13 @@ class _$UpdateFieldImpl extends _UpdateField {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -943,7 +949,7 @@ class __$$UpdateSelectedOptionsImplCopyWithImpl<$Res>
         null == options
             ? _value._options
             : options // ignore: cast_nullable_to_non_nullable
-                  as Map<String, String>,
+                as Map<String, String>,
       ),
     );
   }
@@ -953,8 +959,8 @@ class __$$UpdateSelectedOptionsImplCopyWithImpl<$Res>
 
 class _$UpdateSelectedOptionsImpl extends _UpdateSelectedOptions {
   const _$UpdateSelectedOptionsImpl(final Map<String, String> options)
-    : _options = options,
-      super._();
+      : _options = options,
+        super._();
 
   final Map<String, String> _options;
   @override
@@ -987,27 +993,27 @@ class _$UpdateSelectedOptionsImpl extends _UpdateSelectedOptions {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateSelectedOptionsImplCopyWith<_$UpdateSelectedOptionsImpl>
-  get copyWith =>
-      __$$UpdateSelectedOptionsImplCopyWithImpl<_$UpdateSelectedOptionsImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$UpdateSelectedOptionsImplCopyWithImpl<
+              _$UpdateSelectedOptionsImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -1062,13 +1068,13 @@ class _$UpdateSelectedOptionsImpl extends _UpdateSelectedOptions {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -1127,7 +1133,7 @@ abstract class _UpdateSelectedOptions extends PlanEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateSelectedOptionsImplCopyWith<_$UpdateSelectedOptionsImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1159,7 +1165,7 @@ class __$$UpdateSelectedThemesImplCopyWithImpl<$Res>
         null == themes
             ? _value._themes
             : themes // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
       ),
     );
   }
@@ -1169,8 +1175,8 @@ class __$$UpdateSelectedThemesImplCopyWithImpl<$Res>
 
 class _$UpdateSelectedThemesImpl extends _UpdateSelectedThemes {
   const _$UpdateSelectedThemesImpl(final List<String> themes)
-    : _themes = themes,
-      super._();
+      : _themes = themes,
+        super._();
 
   final List<String> _themes;
   @override
@@ -1203,27 +1209,27 @@ class _$UpdateSelectedThemesImpl extends _UpdateSelectedThemes {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateSelectedThemesImplCopyWith<_$UpdateSelectedThemesImpl>
-  get copyWith =>
-      __$$UpdateSelectedThemesImplCopyWithImpl<_$UpdateSelectedThemesImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith =>
+          __$$UpdateSelectedThemesImplCopyWithImpl<_$UpdateSelectedThemesImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -1278,13 +1284,13 @@ class _$UpdateSelectedThemesImpl extends _UpdateSelectedThemes {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -1343,7 +1349,7 @@ abstract class _UpdateSelectedThemes extends PlanEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateSelectedThemesImplCopyWith<_$UpdateSelectedThemesImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1375,7 +1381,7 @@ class __$$UpdateExtraConditionsImplCopyWithImpl<$Res>
         null == extraConditions
             ? _value.extraConditions
             : extraConditions // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1412,27 +1418,27 @@ class _$UpdateExtraConditionsImpl extends _UpdateExtraConditions {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateExtraConditionsImplCopyWith<_$UpdateExtraConditionsImpl>
-  get copyWith =>
-      __$$UpdateExtraConditionsImplCopyWithImpl<_$UpdateExtraConditionsImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$UpdateExtraConditionsImplCopyWithImpl<
+              _$UpdateExtraConditionsImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -1487,13 +1493,13 @@ class _$UpdateExtraConditionsImpl extends _UpdateExtraConditions {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -1552,7 +1558,7 @@ abstract class _UpdateExtraConditions extends PlanEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateExtraConditionsImplCopyWith<_$UpdateExtraConditionsImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1584,7 +1590,7 @@ class __$$ClearImplCopyWithImpl<$Res>
         creatorId: null == creatorId
             ? _value.creatorId
             : creatorId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1628,17 +1634,17 @@ class _$ClearImpl extends _Clear {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -1693,13 +1699,13 @@ class _$ClearImpl extends _Clear {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -1789,7 +1795,7 @@ class __$$UpdateFromSuggestedPlanImplCopyWithImpl<$Res>
         null == planData
             ? _value._planData
             : planData // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
       ),
     );
   }
@@ -1799,8 +1805,8 @@ class __$$UpdateFromSuggestedPlanImplCopyWithImpl<$Res>
 
 class _$UpdateFromSuggestedPlanImpl extends _UpdateFromSuggestedPlan {
   const _$UpdateFromSuggestedPlanImpl(final Map<String, dynamic> planData)
-    : _planData = planData,
-      super._();
+      : _planData = planData,
+        super._();
 
   final Map<String, dynamic> _planData;
   @override
@@ -1833,26 +1839,24 @@ class _$UpdateFromSuggestedPlanImpl extends _UpdateFromSuggestedPlan {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateFromSuggestedPlanImplCopyWith<_$UpdateFromSuggestedPlanImpl>
-  get copyWith =>
-      __$$UpdateFromSuggestedPlanImplCopyWithImpl<
-        _$UpdateFromSuggestedPlanImpl
-      >(this, _$identity);
+      get copyWith => __$$UpdateFromSuggestedPlanImplCopyWithImpl<
+          _$UpdateFromSuggestedPlanImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -1907,13 +1911,13 @@ class _$UpdateFromSuggestedPlanImpl extends _UpdateFromSuggestedPlan {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -1972,7 +1976,7 @@ abstract class _UpdateFromSuggestedPlan extends PlanEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateFromSuggestedPlanImplCopyWith<_$UpdateFromSuggestedPlanImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2004,7 +2008,7 @@ class __$$LoadExistingPlanImplCopyWithImpl<$Res>
         planData: null == planData
             ? _value._planData
             : planData // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
       ),
     );
   }
@@ -2014,8 +2018,8 @@ class __$$LoadExistingPlanImplCopyWithImpl<$Res>
 
 class _$LoadExistingPlanImpl extends _LoadExistingPlan {
   const _$LoadExistingPlanImpl({required final Map<String, dynamic> planData})
-    : _planData = planData,
-      super._();
+      : _planData = planData,
+        super._();
 
   final Map<String, dynamic> _planData;
   @override
@@ -2057,17 +2061,17 @@ class _$LoadExistingPlanImpl extends _LoadExistingPlan {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -2122,13 +2126,13 @@ class _$LoadExistingPlanImpl extends _LoadExistingPlan {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {
@@ -2220,7 +2224,7 @@ class __$$LoadOtherUsersPlansImplCopyWithImpl<$Res>
         currentUserId: null == currentUserId
             ? _value.currentUserId
             : currentUserId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -2266,17 +2270,17 @@ class _$LoadOtherUsersPlansImpl extends _LoadOtherUsersPlans {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String creatorId, Map<String, dynamic> planData)
-    create,
+        create,
     required TResult Function() save,
     required TResult Function() update,
     required TResult Function(String field, dynamic value) updateField,
     required TResult Function(Map<String, String> options)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(List<String> themes) updateSelectedThemes,
     required TResult Function(String extraConditions) updateExtraConditions,
     required TResult Function(String creatorId) clear,
     required TResult Function(Map<String, dynamic> planData)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(Map<String, dynamic> planData) loadExistingPlan,
     required TResult Function(String currentUserId) loadOtherUsersPlans,
   }) {
@@ -2331,13 +2335,13 @@ class _$LoadOtherUsersPlansImpl extends _LoadOtherUsersPlans {
     required TResult Function(_Update value) update,
     required TResult Function(_UpdateField value) updateField,
     required TResult Function(_UpdateSelectedOptions value)
-    updateSelectedOptions,
+        updateSelectedOptions,
     required TResult Function(_UpdateSelectedThemes value) updateSelectedThemes,
     required TResult Function(_UpdateExtraConditions value)
-    updateExtraConditions,
+        updateExtraConditions,
     required TResult Function(_Clear value) clear,
     required TResult Function(_UpdateFromSuggestedPlan value)
-    updateFromSuggestedPlan,
+        updateFromSuggestedPlan,
     required TResult Function(_LoadExistingPlan value) loadExistingPlan,
     required TResult Function(_LoadOtherUsersPlans value) loadOtherUsersPlans,
   }) {

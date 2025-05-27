@@ -12,8 +12,8 @@ class ImageServiceMobile implements ImageServiceInterface {
   final ImageCropper _cropper;
 
   ImageServiceMobile({ImagePicker? picker, ImageCropper? cropper})
-    : _picker = picker ?? ImagePicker(),
-      _cropper = cropper ?? ImageCropper();
+      : _picker = picker ?? ImagePicker(),
+        _cropper = cropper ?? ImageCropper();
 
   @override
   Future<File?> pickImageFromGallery({

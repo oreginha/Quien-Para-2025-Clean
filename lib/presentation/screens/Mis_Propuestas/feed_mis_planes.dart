@@ -425,8 +425,8 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                               ElevatedButton.icon(
                                 onPressed: () {
                                   context.read<PlanBloc>().add(
-                                    const PlanEvent.clear(),
-                                  );
+                                        const PlanEvent.clear(),
+                                      );
                                   context.push(AppRouter.createProposal);
                                 },
                                 icon: const Icon(Icons.add),
@@ -486,8 +486,8 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                       ElevatedButton.icon(
                                         onPressed: () {
                                           context.read<PlanBloc>().add(
-                                            const PlanEvent.clear(),
-                                          );
+                                                const PlanEvent.clear(),
+                                              );
                                           context.push(
                                             AppRouter.createProposal,
                                           );
@@ -511,11 +511,11 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                 padding: const EdgeInsets.all(16),
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 16,
-                                      mainAxisSpacing: 16,
-                                      childAspectRatio: 0.75,
-                                    ),
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 16,
+                                  mainAxisSpacing: 16,
+                                  childAspectRatio: 0.75,
+                                ),
                                 itemCount: filteredPlans.length,
                                 itemBuilder: (final context, final index) {
                                   final planDoc = filteredPlans[index];
@@ -555,15 +555,14 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                                       plan.imageUrl,
                                                     ),
                                                     fit: BoxFit.cover,
-                                                    onError:
-                                                        (
-                                                          exception,
-                                                          stackTrace,
-                                                        ) {
-                                                          logger.e(
-                                                            'Error loading image: $exception',
-                                                          );
-                                                        },
+                                                    onError: (
+                                                      exception,
+                                                      stackTrace,
+                                                    ) {
+                                                      logger.e(
+                                                        'Error loading image: $exception',
+                                                      );
+                                                    },
                                                   ),
                                                 ),
                                                 child: Stack(
@@ -578,81 +577,78 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                                       child: Image.network(
                                                         plan.imageUrl,
                                                         fit: BoxFit.cover,
-                                                        errorBuilder:
-                                                            (
-                                                              context,
-                                                              error,
-                                                              stackTrace,
-                                                            ) {
-                                                              logger.e(
-                                                                'Image error: $error',
-                                                              );
-                                                              return Container(
-                                                                color: Colors
-                                                                    .grey[800],
-                                                                child: const Center(
-                                                                  child: Column(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      Icon(
-                                                                        Icons
-                                                                            .broken_image,
-                                                                        color: Colors
-                                                                            .white70,
-                                                                        size:
-                                                                            40,
-                                                                      ),
-                                                                      SizedBox(
-                                                                        height:
-                                                                            8,
-                                                                      ),
-                                                                      Text(
-                                                                        'No se pudo cargar la imagen',
-                                                                        style: TextStyle(
-                                                                          color:
-                                                                              Colors.white70,
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                        errorBuilder: (
+                                                          context,
+                                                          error,
+                                                          stackTrace,
+                                                        ) {
+                                                          logger.e(
+                                                            'Image error: $error',
+                                                          );
+                                                          return Container(
+                                                            color: Colors
+                                                                .grey[800],
+                                                            child: const Center(
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .broken_image,
+                                                                    color: Colors
+                                                                        .white70,
+                                                                    size: 40,
                                                                   ),
-                                                                ),
-                                                              );
-                                                            },
-                                                        loadingBuilder:
-                                                            (
-                                                              context,
-                                                              child,
-                                                              loadingProgress,
-                                                            ) {
-                                                              if (loadingProgress ==
-                                                                  null) {
-                                                                return child;
-                                                              }
-                                                              return Container(
-                                                                color: Colors
-                                                                    .grey[800],
-                                                                child: Center(
-                                                                  child: CircularProgressIndicator(
-                                                                    value:
-                                                                        loadingProgress.expectedTotalBytes !=
-                                                                            null
-                                                                        ? loadingProgress.cumulativeBytesLoaded /
-                                                                              (loadingProgress.expectedTotalBytes ??
-                                                                                  1)
-                                                                        : null,
-                                                                    valueColor:
-                                                                        const AlwaysStoppedAnimation<
-                                                                          Color
-                                                                        >(
-                                                                          Colors
-                                                                              .yellow,
-                                                                        ),
+                                                                  SizedBox(
+                                                                    height: 8,
                                                                   ),
+                                                                  Text(
+                                                                    'No se pudo cargar la imagen',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white70,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                        loadingBuilder: (
+                                                          context,
+                                                          child,
+                                                          loadingProgress,
+                                                        ) {
+                                                          if (loadingProgress ==
+                                                              null) {
+                                                            return child;
+                                                          }
+                                                          return Container(
+                                                            color: Colors
+                                                                .grey[800],
+                                                            child: Center(
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                value: loadingProgress
+                                                                            .expectedTotalBytes !=
+                                                                        null
+                                                                    ? loadingProgress
+                                                                            .cumulativeBytesLoaded /
+                                                                        (loadingProgress.expectedTotalBytes ??
+                                                                            1)
+                                                                    : null,
+                                                                valueColor:
+                                                                    const AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  Colors.yellow,
                                                                 ),
-                                                              );
-                                                            },
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
                                                       ),
                                                     ),
                                                   ],
@@ -679,8 +675,8 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                                     style: TextStyle(
                                                       color: Colors.white
                                                           .withAlpha(
-                                                            (0.7 * 255).round(),
-                                                          ),
+                                                        (0.7 * 255).round(),
+                                                      ),
                                                     ),
                                                   ),
                                                   const SizedBox(height: 16),
@@ -718,77 +714,92 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                                           onPressed: () {
                                                             showDialog(
                                                               context: context,
-                                                              builder:
-                                                                  (
-                                                                    final BuildContext
+                                                              builder: (
+                                                                final BuildContext
                                                                     context,
-                                                                  ) {
-                                                                    return AlertDialog(
-                                                                      backgroundColor:
-                                                                          const Color(
-                                                                            0xFF1A1B2E,
-                                                                          ),
-                                                                      title: const Text(
-                                                                        'Eliminar Plan',
-                                                                        style: TextStyle(
+                                                              ) {
+                                                                return AlertDialog(
+                                                                  backgroundColor:
+                                                                      const Color(
+                                                                    0xFF1A1B2E,
+                                                                  ),
+                                                                  title:
+                                                                      const Text(
+                                                                    'Eliminar Plan',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                  content: Text(
+                                                                    '¿Estás seguro que deseas eliminar "${plan.title}"?',
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.of(
+                                                                        context,
+                                                                      ).pop(),
+                                                                      child:
+                                                                          const Text(
+                                                                        'Cancelar',
+                                                                        style:
+                                                                            TextStyle(
                                                                           color:
                                                                               Colors.white,
                                                                         ),
                                                                       ),
-                                                                      content: Text(
-                                                                        '¿Estás seguro que deseas eliminar "${plan.title}"?',
-                                                                        style: const TextStyle(
-                                                                          color:
-                                                                              Colors.white,
-                                                                        ),
-                                                                      ),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () => Navigator.of(
-                                                                            context,
-                                                                          ).pop(),
-                                                                          child: const Text(
-                                                                            'Cancelar',
-                                                                            style: TextStyle(
-                                                                              color: Colors.white,
+                                                                    ),
+                                                                    ElevatedButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        FirebaseFirestore
+                                                                            .instance
+                                                                            .collection(
+                                                                              'plans',
+                                                                            )
+                                                                            .doc(
+                                                                              plans[index].id,
+                                                                            )
+                                                                            .delete();
+                                                                        Navigator
+                                                                            .of(
+                                                                          context,
+                                                                        ).pop();
+                                                                        ScaffoldMessenger
+                                                                            .of(
+                                                                          context,
+                                                                        ).showSnackBar(
+                                                                          SnackBar(
+                                                                            content:
+                                                                                Text(
+                                                                              'El plan "${plan.title}" ha sido eliminado',
                                                                             ),
-                                                                          ),
-                                                                        ),
-                                                                        ElevatedButton(
-                                                                          onPressed: () {
-                                                                            FirebaseFirestore.instance
-                                                                                .collection(
-                                                                                  'plans',
-                                                                                )
-                                                                                .doc(
-                                                                                  plans[index].id,
-                                                                                )
-                                                                                .delete();
-                                                                            Navigator.of(
-                                                                              context,
-                                                                            ).pop();
-                                                                            ScaffoldMessenger.of(
-                                                                              context,
-                                                                            ).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  'El plan "${plan.title}" ha sido eliminado',
-                                                                                ),
-                                                                                backgroundColor: Colors.red,
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                          style: ElevatedButton.styleFrom(
                                                                             backgroundColor:
                                                                                 Colors.red,
                                                                           ),
-                                                                          child: const Text(
-                                                                            'Eliminar',
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
+                                                                        );
+                                                                      },
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        backgroundColor:
+                                                                            Colors.red,
+                                                                      ),
+                                                                      child:
+                                                                          const Text(
+                                                                        'Eliminar',
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
                                                             );
                                                           },
                                                           icon: const Icon(
@@ -797,14 +808,13 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                                           label: const Text(
                                                             'Eliminar',
                                                           ),
-                                                          style:
-                                                              ElevatedButton.styleFrom(
-                                                                backgroundColor:
-                                                                    Colors.red,
-                                                                foregroundColor:
-                                                                    Colors
-                                                                        .white,
-                                                              ),
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            backgroundColor:
+                                                                Colors.red,
+                                                            foregroundColor:
+                                                                Colors.white,
+                                                          ),
                                                         ),
                                                         ElevatedButton.icon(
                                                           onPressed: () {
@@ -824,15 +834,13 @@ class _FeedMisPlanesState extends State<FeedMisPlanes> {
                                                           label: const Text(
                                                             'Ver más',
                                                           ),
-                                                          style:
-                                                              ElevatedButton.styleFrom(
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .yellow,
-                                                                foregroundColor:
-                                                                    Colors
-                                                                        .black,
-                                                              ),
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            backgroundColor:
+                                                                Colors.yellow,
+                                                            foregroundColor:
+                                                                Colors.black,
+                                                          ),
                                                         ),
                                                       ],
                                                     ),

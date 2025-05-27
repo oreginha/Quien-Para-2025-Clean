@@ -67,10 +67,10 @@ class ThemeUtils {
 
   /// Acceso a estilos de texto
   static TextStyle get bodyMedium => const TextStyle(
-    fontSize: 14,
-    height: 1.5,
-    color: AppColors.lightTextPrimary,
-  );
+        fontSize: 14,
+        height: 1.5,
+        color: AppColors.lightTextPrimary,
+      );
 
   /// Acceso a originalBlueColor para corregir el error en interests_step.dart
   static Color get originalBlueColor => const Color(0xFF3B82F6);

@@ -50,10 +50,8 @@ class _LocationInputStepState extends State<LocationInputStep> {
   @override
   void initState() {
     super.initState();
-    final String? initialLocation = context
-        .read<UserProfileBloc>()
-        .state
-        .location;
+    final String? initialLocation =
+        context.read<UserProfileBloc>().state.location;
     _locationController.text = initialLocation ?? '';
     _updateContinueButton(_locationController.text);
   }
@@ -102,8 +100,8 @@ class _LocationInputStepState extends State<LocationInputStep> {
 
       // Actualizar en el bloc
       context.read<UserProfileBloc>().add(
-        UpdateLocationEvent(_locationController.text),
-      );
+            UpdateLocationEvent(_locationController.text),
+          );
       _updateContinueButton(_locationController.text);
     }
   }
@@ -255,8 +253,8 @@ class _LocationInputStepState extends State<LocationInputStep> {
                     _errorText = null;
                   });
                   context.read<UserProfileBloc>().add(
-                    UpdateLocationEvent(location),
-                  );
+                        UpdateLocationEvent(location),
+                      );
                   _updateContinueButton(location);
                 },
                 child: AnimatedContainer(
@@ -287,9 +285,8 @@ class _LocationInputStepState extends State<LocationInputStep> {
                       color: isSelected
                           ? AppColors.lightTextPrimary
                           : AppColors.lightTextPrimary,
-                      fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
                       fontSize: 14,
                     ),
                   ),

@@ -33,7 +33,7 @@ class AppFirebaseException extends AppException {
   final String code;
 
   AppFirebaseException(this.code, [String? message])
-    : super(message ?? 'Error de Firebase: $code');
+      : super(message ?? 'Error de Firebase: $code');
 }
 
 /// Excepción para errores de caché
@@ -46,10 +46,10 @@ class ServerException extends AppException {
   final int? statusCode;
 
   ServerException([this.statusCode, String? message])
-    : super(
-        message ??
-            'Error del servidor${statusCode != null ? " (Código: $statusCode)" : ""}',
-      );
+      : super(
+          message ??
+              'Error del servidor${statusCode != null ? " (Código: $statusCode)" : ""}',
+        );
 }
 
 /// Excepción para operaciones no permitidas

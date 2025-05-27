@@ -21,8 +21,8 @@ class NetworkHelper {
   /// Verifica si hay conexión a internet
   Future<bool> isConnected() async {
     try {
-      final List<ConnectivityResult> result = await _connectivity
-          .checkConnectivity();
+      final List<ConnectivityResult> result =
+          await _connectivity.checkConnectivity();
       return result.isNotEmpty && !result.contains(ConnectivityResult.none);
     } catch (e) {
       if (kDebugMode) {
@@ -49,12 +49,12 @@ class NetworkHelper {
     // Escuchar cambios en la conectividad
     final StreamSubscription<List<ConnectivityResult>> subscription =
         connectivityStream.listen((List<ConnectivityResult> result) {
-          if (result.isNotEmpty &&
-              !result.contains(ConnectivityResult.none) &&
-              !completer.isCompleted) {
-            completer.complete(true);
-          }
-        });
+      if (result.isNotEmpty &&
+          !result.contains(ConnectivityResult.none) &&
+          !completer.isCompleted) {
+        completer.complete(true);
+      }
+    });
 
     // Esperar a que se resuelva el completer
     final bool result = await completer.future;
@@ -80,8 +80,7 @@ class NetworkHelper {
         attempts++;
 
         // Si es error de red y no hemos superado el máximo de reintentos
-        final bool isNetworkError =
-            e.toString().contains('SocketException') ||
+        final bool isNetworkError = e.toString().contains('SocketException') ||
             e.toString().contains('Connection') ||
             e.toString().contains('network');
 

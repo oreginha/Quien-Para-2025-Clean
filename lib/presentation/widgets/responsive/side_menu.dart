@@ -114,12 +114,10 @@ class _SideMenuState extends State<SideMenu> {
         ? AppColors.darkBottomNavBackground
         : AppColors.lightBottomNavBackground;
     final Color activeIconColor = AppColors.brandYellow;
-    final Color inactiveIconColor = isDarkMode
-        ? AppColors.darkTextSecondary
-        : AppColors.lightTextSecondary;
-    final Color textColor = isDarkMode
-        ? AppColors.darkTextPrimary
-        : AppColors.lightTextPrimary;
+    final Color inactiveIconColor =
+        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final Color textColor =
+        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
 
     return Container(
       width: 250,
@@ -148,15 +146,13 @@ class _SideMenuState extends State<SideMenu> {
                     _titles[index],
                     style: TextStyle(
                       color: isSelected ? activeIconColor : textColor,
-                      fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
                   ),
                   selected: isSelected,
-                  selectedTileColor: isDarkMode
-                      ? Colors.black12
-                      : Colors.white10,
+                  selectedTileColor:
+                      isDarkMode ? Colors.black12 : Colors.white10,
                   onTap: () => _handleNavigation(context, index),
                 );
               },
@@ -232,9 +228,9 @@ class _SideMenuState extends State<SideMenu> {
           Text(
             '¿Quién Para?',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: textColor,
-            ),
+                  fontWeight: FontWeight.bold,
+                  color: textColor,
+                ),
           ),
           const SizedBox(height: 4),
           GestureDetector(

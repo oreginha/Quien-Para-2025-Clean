@@ -24,10 +24,8 @@ class GetNotificationsStreamParams {
 /// de notificaciones para obtener un stream de notificaciones para un usuario.
 class GetNotificationsStreamUseCase
     implements
-        StreamUseCaseInterface<
-          List<NotificationEntity>,
-          GetNotificationsStreamParams
-        > {
+        StreamUseCaseInterface<List<NotificationEntity>,
+            GetNotificationsStreamParams> {
   final NotificationRepository _notificationRepository;
   final Logger _logger = Logger();
 
@@ -65,11 +63,12 @@ class GetNotificationsStreamUseCase
   /// Método de conveniencia para usar el caso de uso como una función.
   Stream<Either<AppFailure, List<NotificationEntity>>> call(
     GetNotificationsStreamParams params,
-  ) => execute(params);
+  ) =>
+      execute(params);
 
   /// Método de conveniencia para obtener un stream de todas las notificaciones
   Stream<Either<AppFailure, List<NotificationEntity>>>
-  getAllNotificationsStream(String userId) {
+      getAllNotificationsStream(String userId) {
     return execute(
       GetNotificationsStreamParams(userId: userId, includeRead: true),
     );
@@ -77,7 +76,7 @@ class GetNotificationsStreamUseCase
 
   /// Método de conveniencia para obtener un stream de notificaciones sin leer
   Stream<Either<AppFailure, List<NotificationEntity>>>
-  getUnreadNotificationsStream(String userId) {
+      getUnreadNotificationsStream(String userId) {
     return execute(
       GetNotificationsStreamParams(userId: userId, includeRead: false),
     );

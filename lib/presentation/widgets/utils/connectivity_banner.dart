@@ -46,8 +46,8 @@ class _ConnectivityBannerState extends State<ConnectivityBanner>
   }
 
   Future<void> _checkInitialConnectivity() async {
-    final List<ConnectivityResult> result = await Connectivity()
-        .checkConnectivity();
+    final List<ConnectivityResult> result =
+        await Connectivity().checkConnectivity();
     _updateConnectivity(result);
     _isInitialized = true;
   }

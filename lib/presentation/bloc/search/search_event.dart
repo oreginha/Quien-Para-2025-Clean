@@ -139,14 +139,14 @@ class ApplyMultipleFilters extends SearchEvent {
 
   @override
   List<Object?> get props => [
-    query,
-    category,
-    latitude,
-    longitude,
-    radiusKm,
-    startDate,
-    endDate,
-  ];
+        query,
+        category,
+        latitude,
+        longitude,
+        radiusKm,
+        startDate,
+        endDate,
+      ];
 }
 
 // Evento para filtros rápidos (hoy, esta semana, etc.)

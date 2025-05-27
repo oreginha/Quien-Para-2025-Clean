@@ -27,13 +27,11 @@ class OnboardingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isActive = isEnabled && !isLoading;
 
-    final Color darkPrimaryBackground = isPrimary
-        ? AppColors.lightTextPrimary
-        : AppColors.lightBackground;
+    final Color darkPrimaryBackground =
+        isPrimary ? AppColors.lightTextPrimary : AppColors.lightBackground;
 
-    final Color textColor = isPrimary
-        ? AppColors.lightTextPrimary
-        : AppColors.lightTextPrimary;
+    final Color textColor =
+        isPrimary ? AppColors.lightTextPrimary : AppColors.lightTextPrimary;
 
     final double horizontalPadding = isSmall ? 16.0 : 24.0;
     final double verticalPadding = isSmall ? 10.0 : 16.0;

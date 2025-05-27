@@ -28,10 +28,10 @@ class FirestoreServiceImpl implements FirestoreInterface {
           .map(
             (final QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
                 <String, String>{
-                  'title': doc['nombre_evento'] as String,
-                  'category': doc['categoria'] as String,
-                  'imageUrl': doc['image_url_png'] as String,
-                },
+              'title': doc['nombre_evento'] as String,
+              'category': doc['categoria'] as String,
+              'imageUrl': doc['image_url_png'] as String,
+            },
           )
           .toList();
     } catch (e) {
@@ -51,8 +51,7 @@ class FirestoreServiceImpl implements FirestoreInterface {
         'events',
         queryBuilder: (collectionRef) => collectionRef
             .orderBy('nombre_evento')
-            .startAt(<Object?>[query])
-            .endAt(<Object?>['$query\uf8ff']),
+            .startAt(<Object?>[query]).endAt(<Object?>['$query\uf8ff']),
       );
 
       return docs

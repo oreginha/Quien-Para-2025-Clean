@@ -260,10 +260,8 @@ Future<void> createExampleCollectionsIfNotExist() async {
       final exampleDocData = entry.value;
 
       // Verificar si la colección está vacía
-      final snapshot = await firestore
-          .collection(collectionName)
-          .limit(1)
-          .get();
+      final snapshot =
+          await firestore.collection(collectionName).limit(1).get();
 
       if (snapshot.docs.isEmpty) {
         // Crear documento de ejemplo
@@ -274,9 +272,8 @@ Future<void> createExampleCollectionsIfNotExist() async {
 
         // Crear subcolecciones de ejemplo si es necesario
         if (collectionName == 'chats') {
-          final chatDoc = await firestore
-              .collection('chats')
-              .add(exampleDocData);
+          final chatDoc =
+              await firestore.collection('chats').add(exampleDocData);
           await chatDoc.collection('messages').add({
             'senderId': 'user123',
             'text': 'Hola, este es un mensaje de ejemplo',
@@ -284,9 +281,8 @@ Future<void> createExampleCollectionsIfNotExist() async {
             'read': false,
           });
         } else if (collectionName == 'applications') {
-          final appDoc = await firestore
-              .collection('applications')
-              .add(exampleDocData);
+          final appDoc =
+              await firestore.collection('applications').add(exampleDocData);
           await appDoc.collection('messages').add({
             'senderId': 'user123',
             'text': 'Mensaje relacionado con la aplicación',

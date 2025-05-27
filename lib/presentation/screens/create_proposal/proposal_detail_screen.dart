@@ -79,8 +79,8 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
           context,
           listen: false,
         );
-        final Either<AppFailure, PlanEntity?> planEntity = await repository
-            .getById(planId);
+        final Either<AppFailure, PlanEntity?> planEntity =
+            await repository.getById(planId);
 
         planBloc.add(PlanEvent.updateField(field: 'plan', value: planEntity));
 
@@ -278,14 +278,14 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                 ..._getMainConditions(
                                   plan.conditions,
                                 ).toList().map(
-                                  (final MapEntry<String, dynamic> entry) =>
-                                      _buildDetailRow(
+                                      (final MapEntry<String, dynamic> entry) =>
+                                          _buildDetailRow(
                                         Icons.check_circle_outline,
                                         entry.key,
                                         entry.value.toString(),
                                         isDarkMode,
                                       ),
-                                ),
+                                    ),
                               ],
                             ),
 
@@ -299,11 +299,11 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                                   plan.conditions['extraConditions'].toString(),
                                   style: AppTypography.bodyMedium(isDarkMode)
                                       .copyWith(
-                                        color: AppColors.getTextSecondary(
-                                          isDarkMode,
-                                        ),
-                                        height: 1.5,
-                                      ),
+                                    color: AppColors.getTextSecondary(
+                                      isDarkMode,
+                                    ),
+                                    height: 1.5,
+                                  ),
                                 ),
                               ],
                             ),
@@ -478,41 +478,39 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
             Image.network(
               imageUrl,
               fit: BoxFit.cover,
-              errorBuilder:
-                  (
-                    final BuildContext context,
-                    final Object error,
-                    final StackTrace? stackTrace,
-                  ) {
-                    return _buildPlaceholderImage(plan, isDarkMode);
-                  },
-              loadingBuilder:
-                  (
-                    final BuildContext context,
-                    final Widget child,
-                    final ImageChunkEvent? loadingProgress,
-                  ) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-                    return Stack(
-                      fit: StackFit.expand,
-                      children: <Widget>[
-                        _buildPlaceholderImage(plan, isDarkMode),
-                        Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                      (loadingProgress.expectedTotalBytes ?? 1)
-                                : null,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              AppColors.brandYellow,
-                            ),
-                          ),
+              errorBuilder: (
+                final BuildContext context,
+                final Object error,
+                final StackTrace? stackTrace,
+              ) {
+                return _buildPlaceholderImage(plan, isDarkMode);
+              },
+              loadingBuilder: (
+                final BuildContext context,
+                final Widget child,
+                final ImageChunkEvent? loadingProgress,
+              ) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Stack(
+                  fit: StackFit.expand,
+                  children: <Widget>[
+                    _buildPlaceholderImage(plan, isDarkMode),
+                    Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                (loadingProgress.expectedTotalBytes ?? 1)
+                            : null,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          AppColors.brandYellow,
                         ),
-                      ],
-                    );
-                  },
+                      ),
+                    ),
+                  ],
+                );
+              },
             )
           else
             _buildPlaceholderImage(plan, isDarkMode),
@@ -550,9 +548,8 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
                 child: Text(
                   plan.category,
                   style: AppTypography.labelMedium(isDarkMode).copyWith(
-                    color: isDarkMode
-                        ? Colors.black
-                        : AppColors.lightTextPrimary,
+                    color:
+                        isDarkMode ? Colors.black : AppColors.lightTextPrimary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -568,9 +565,8 @@ class _ProposalDetailScreenState extends State<ProposalDetailScreen> {
     final Color color = Color(0xFF000000 + (colorValue & 0xFFFFFF));
 
     final String title = plan.title.isNotEmpty ? plan.title : 'Plan sin título';
-    final String category = plan.category.isNotEmpty
-        ? plan.category
-        : 'Sin categoría';
+    final String category =
+        plan.category.isNotEmpty ? plan.category : 'Sin categoría';
 
     return Container(
       color: color,

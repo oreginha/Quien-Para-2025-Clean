@@ -55,13 +55,11 @@ class MyPlanDetailScreen extends StatelessWidget {
     // Definir el AppBar que se usará tanto en móvil como en web
     final appBar = AppBar(
       title: const Text('Detalle del Plan'),
-      backgroundColor: isDarkMode
-          ? AppColors.darkBackground
-          : AppColors.lightBackground,
+      backgroundColor:
+          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
       iconTheme: IconThemeData(
-        color: isDarkMode
-            ? AppColors.darkTextPrimary
-            : AppColors.lightTextPrimary,
+        color:
+            isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
       ),
       actions: [
         IconButton(
@@ -128,287 +126,279 @@ Widget _buildMainContent(
   final bool isCreator,
 ) {
   return StreamBuilder<DocumentSnapshot>(
-    stream: FirebaseFirestore.instance
-        .collection('plans')
-        .doc(planId)
-        .snapshots(),
-    builder:
-        (
-          final BuildContext context,
-          final AsyncSnapshot<DocumentSnapshot<Object?>> planSnapshot,
-        ) {
-          if (planSnapshot.hasError) {
-            return NewResponsiveScaffold(
-              screenName: 'Error',
-              body: const Center(child: Text('Error al cargar el plan')),
-              currentIndex: -1,
-              webTitle: 'Error',
-            );
-          }
+    stream:
+        FirebaseFirestore.instance.collection('plans').doc(planId).snapshots(),
+    builder: (
+      final BuildContext context,
+      final AsyncSnapshot<DocumentSnapshot<Object?>> planSnapshot,
+    ) {
+      if (planSnapshot.hasError) {
+        return NewResponsiveScaffold(
+          screenName: 'Error',
+          body: const Center(child: Text('Error al cargar el plan')),
+          currentIndex: -1,
+          webTitle: 'Error',
+        );
+      }
 
-          if (!planSnapshot.hasData) {
-            return NewResponsiveScaffold(
-              screenName: 'Cargando',
-              body: const Center(child: CircularProgressIndicator()),
-              currentIndex: -1,
-              webTitle: 'Cargando',
-            );
-          }
+      if (!planSnapshot.hasData) {
+        return NewResponsiveScaffold(
+          screenName: 'Cargando',
+          body: const Center(child: CircularProgressIndicator()),
+          currentIndex: -1,
+          webTitle: 'Cargando',
+        );
+      }
 
-          // Obtener el modo del tema
-          final themeProvider = Provider.of<ThemeProvider>(context);
-          final isDarkMode = themeProvider.isDarkMode;
+      // Obtener el modo del tema
+      final themeProvider = Provider.of<ThemeProvider>(context);
+      final isDarkMode = themeProvider.isDarkMode;
 
-          if (!planSnapshot.hasData || !planSnapshot.data!.exists) {
-            return NewResponsiveScaffold(
-              screenName: 'Error',
-              appBar: AppBar(
-                backgroundColor: AppColors.getBackground(isDarkMode),
-                elevation: 0,
-                title: Text(
-                  'Detalle del plan',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              ),
-              body: const Center(
-                child: Text(
-                  'El plan no existe o ha sido eliminado',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              currentIndex: -1,
-              webTitle: 'Error',
-            );
-          }
-
-          // Safely extract the data with null checking
-          final documentData = planSnapshot.data!.data();
-          if (documentData == null) {
-            return NewResponsiveScaffold(
-              screenName: 'Error',
-              appBar: AppBar(
-                backgroundColor: AppColors.getBackground(isDarkMode),
-                elevation: 0,
-                title: Text(
-                  'Detalle del plan',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              ),
-              body: const Center(
-                child: Text(
-                  'No se encontraron datos para este plan',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              currentIndex: -1,
-              webTitle: 'Error',
-            );
-          }
-
-          final Map<String, dynamic> planData =
-              documentData as Map<String, dynamic>;
-
-          return NewResponsiveScaffold(
-            screenName: AppRouter.myPlanDetail,
-            appBar: AppBar(
-              backgroundColor: AppColors.getBackground(isDarkMode),
-              elevation: 0,
-              title: Text(
-                planData['title'] as String? ?? 'Detalle del plan',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              actions: isCreator
-                  ? <Widget>[
-                      IconButton(
-                        icon: const Icon(Icons.edit, color: Colors.white),
-                        onPressed: () {
-                          context.push(
-                            AppRouter.createProposal,
-                            extra: <String, dynamic>{
-                              'planId': planId,
-                              'isEditing': true,
-                              'planData': planData,
-                            },
-                          );
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.white),
-                        onPressed: () =>
-                            _showDeleteConfirmation(context, planId),
-                      ),
-                    ]
-                  : null,
+      if (!planSnapshot.hasData || !planSnapshot.data!.exists) {
+        return NewResponsiveScaffold(
+          screenName: 'Error',
+          appBar: AppBar(
+            backgroundColor: AppColors.getBackground(isDarkMode),
+            elevation: 0,
+            title: Text(
+              'Detalle del plan',
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
-            body: Stack(
-              children: <Widget>[
-                SingleChildScrollView(
-                  padding: const EdgeInsets.only(bottom: 100),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      // Imagen del plan
-                      if ((planData['imageUrl'] as String?)?.isNotEmpty ??
-                          false)
-                        Container(
-                          height: 250,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                planData['imageUrl'] as String,
-                              ),
-                              fit: BoxFit.cover,
-                            ),
+          ),
+          body: const Center(
+            child: Text(
+              'El plan no existe o ha sido eliminado',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          currentIndex: -1,
+          webTitle: 'Error',
+        );
+      }
+
+      // Safely extract the data with null checking
+      final documentData = planSnapshot.data!.data();
+      if (documentData == null) {
+        return NewResponsiveScaffold(
+          screenName: 'Error',
+          appBar: AppBar(
+            backgroundColor: AppColors.getBackground(isDarkMode),
+            elevation: 0,
+            title: Text(
+              'Detalle del plan',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+          body: const Center(
+            child: Text(
+              'No se encontraron datos para este plan',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          currentIndex: -1,
+          webTitle: 'Error',
+        );
+      }
+
+      final Map<String, dynamic> planData =
+          documentData as Map<String, dynamic>;
+
+      return NewResponsiveScaffold(
+        screenName: AppRouter.myPlanDetail,
+        appBar: AppBar(
+          backgroundColor: AppColors.getBackground(isDarkMode),
+          elevation: 0,
+          title: Text(
+            planData['title'] as String? ?? 'Detalle del plan',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          actions: isCreator
+              ? <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.edit, color: Colors.white),
+                    onPressed: () {
+                      context.push(
+                        AppRouter.createProposal,
+                        extra: <String, dynamic>{
+                          'planId': planId,
+                          'isEditing': true,
+                          'planData': planData,
+                        },
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.delete, color: Colors.white),
+                    onPressed: () => _showDeleteConfirmation(context, planId),
+                  ),
+                ]
+              : null,
+        ),
+        body: Stack(
+          children: <Widget>[
+            SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 100),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // Imagen del plan
+                  if ((planData['imageUrl'] as String?)?.isNotEmpty ?? false)
+                    Container(
+                      height: 250,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            planData['imageUrl'] as String,
                           ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        // Creador del plan
+                        FutureBuilder<DocumentSnapshot>(
+                          future: FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(planData['creatorId'] as String)
+                              .get(),
+                          builder: (
+                            final BuildContext context,
+                            final AsyncSnapshot<DocumentSnapshot<Object?>>
+                                creatorSnapshot,
+                          ) {
+                            if (!creatorSnapshot.hasData) {
+                              return const SizedBox.shrink();
+                            }
+
+                            final Map<String, dynamic> creatorData =
+                                creatorSnapshot.data!.data()
+                                    as Map<String, dynamic>;
+                            return _buildCreatorInfo(creatorData);
+                          },
                         ),
 
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        const SizedBox(height: 16),
+
+                        // Descripción
+                        Text(
+                          planData['description'] as String? ?? '',
+                          style: TextStyle(
+                            color: Colors.white.withAlpha(
+                              (0.7 * 255).round(),
+                            ),
+                            fontSize: 16,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+
+                        // Detalles del evento
+                        _buildSection(
+                          'Detalles del Evento',
                           children: <Widget>[
-                            // Creador del plan
-                            FutureBuilder<DocumentSnapshot>(
-                              future: FirebaseFirestore.instance
-                                  .collection('users')
-                                  .doc(planData['creatorId'] as String)
-                                  .get(),
-                              builder:
-                                  (
-                                    final BuildContext context,
-                                    final AsyncSnapshot<
-                                      DocumentSnapshot<Object?>
-                                    >
-                                    creatorSnapshot,
-                                  ) {
-                                    if (!creatorSnapshot.hasData) {
-                                      return const SizedBox.shrink();
-                                    }
-
-                                    final Map<String, dynamic> creatorData =
-                                        creatorSnapshot.data!.data()
-                                            as Map<String, dynamic>;
-                                    return _buildCreatorInfo(creatorData);
-                                  },
+                            _buildDetailRow(
+                              Icons.category,
+                              'Categoría',
+                              planData['category'] as String? ??
+                                  'No especificada',
                             ),
-
-                            const SizedBox(height: 16),
-
-                            // Descripción
-                            Text(
-                              planData['description'] as String? ?? '',
-                              style: TextStyle(
-                                color: Colors.white.withAlpha(
-                                  (0.7 * 255).round(),
-                                ),
-                                fontSize: 16,
+                            _buildDetailRow(
+                              Icons.calendar_today,
+                              'Fecha',
+                              planData['date'] != null
+                                  ? _formatDate(planData['date'])
+                                  : 'No especificada',
+                            ),
+                            _buildDetailRow(
+                              Icons.location_on,
+                              'Ubicación',
+                              planData['location'] as String? ??
+                                  'No especificada',
+                            ),
+                            if (planData['payCondition'] != null)
+                              _buildDetailRow(
+                                Icons.attach_money,
+                                'Condición de Pago',
+                                planData['payCondition'] as String,
                               ),
-                            ),
-                            const SizedBox(height: 24),
+                            if (planData['guestCount'] != null)
+                              _buildDetailRow(
+                                Icons.group,
+                                'Número de Invitados',
+                                '${planData['guestCount']}',
+                              ),
+                          ],
+                        ),
 
-                            // Detalles del evento
-                            _buildSection(
-                              'Detalles del Evento',
-                              children: <Widget>[
-                                _buildDetailRow(
-                                  Icons.category,
-                                  'Categoría',
-                                  planData['category'] as String? ??
-                                      'No especificada',
-                                ),
-                                _buildDetailRow(
-                                  Icons.calendar_today,
-                                  'Fecha',
-                                  planData['date'] != null
-                                      ? _formatDate(planData['date'])
-                                      : 'No especificada',
-                                ),
-                                _buildDetailRow(
-                                  Icons.location_on,
-                                  'Ubicación',
-                                  planData['location'] as String? ??
-                                      'No especificada',
-                                ),
-                                if (planData['payCondition'] != null)
-                                  _buildDetailRow(
-                                    Icons.attach_money,
-                                    'Condición de Pago',
-                                    planData['payCondition'] as String,
-                                  ),
-                                if (planData['guestCount'] != null)
-                                  _buildDetailRow(
-                                    Icons.group,
-                                    'Número de Invitados',
-                                    '${planData['guestCount']}',
-                                  ),
-                              ],
-                            ),
-
-                            // Condiciones
-                            if (getMainConditions(planData).isNotEmpty)
-                              _buildSection(
-                                'Condiciones',
-                                children: <Widget>[
-                                  ...getMainConditions(planData).toList().map(
+                        // Condiciones
+                        if (getMainConditions(planData).isNotEmpty)
+                          _buildSection(
+                            'Condiciones',
+                            children: <Widget>[
+                              ...getMainConditions(planData).toList().map(
                                     (final MapEntry<String, dynamic> entry) =>
                                         _buildDetailRow(
-                                          Icons.check_circle_outline,
-                                          entry.key,
-                                          entry.value.toString(),
-                                        ),
-                                  ),
-                                ],
-                              ),
-
-                            // Condiciones adicionales
-                            if (hasExtraConditions(planData))
-                              _buildSection(
-                                'Condiciones adicionales',
-                                children: <Widget>[
-                                  Text(
-                                    getConditionValue(
-                                      planData,
-                                      'extraConditions',
-                                      '',
-                                    ),
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      height: 1.5,
+                                      Icons.check_circle_outline,
+                                      entry.key,
+                                      entry.value.toString(),
                                     ),
                                   ),
-                                ],
-                              ),
+                            ],
+                          ),
 
-                            // Postulantes
-                            _buildSection(
-                              'Postulantes',
-                              children: <Widget>[
-                                BlocBuilder<MatchingBloc, MatchingState>(
-                                  builder: (context, state) {
-                                    return state.when(
-                                      initial: () => const Center(
-                                        child: Text(
-                                          'Cargando aplicaciones...',
-                                          style: TextStyle(
-                                            color: Colors.white70,
-                                          ),
-                                        ),
+                        // Condiciones adicionales
+                        if (hasExtraConditions(planData))
+                          _buildSection(
+                            'Condiciones adicionales',
+                            children: <Widget>[
+                              Text(
+                                getConditionValue(
+                                  planData,
+                                  'extraConditions',
+                                  '',
+                                ),
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                        // Postulantes
+                        _buildSection(
+                          'Postulantes',
+                          children: <Widget>[
+                            BlocBuilder<MatchingBloc, MatchingState>(
+                              builder: (context, state) {
+                                return state.when(
+                                  initial: () => const Center(
+                                    child: Text(
+                                      'Cargando aplicaciones...',
+                                      style: TextStyle(
+                                        color: Colors.white70,
                                       ),
-                                      loading: () => const Center(
-                                        child: CircularProgressIndicator(),
+                                    ),
+                                  ),
+                                  loading: () => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  userApplicationsLoaded: (applications) =>
+                                      const Center(
+                                    child: Text(
+                                      'No hay aplicaciones disponibles',
+                                      style: TextStyle(
+                                        color: Colors.white70,
                                       ),
-                                      userApplicationsLoaded: (applications) =>
-                                          const Center(
-                                            child: Text(
-                                              'No hay aplicaciones disponibles',
-                                              style: TextStyle(
-                                                color: Colors.white70,
-                                              ),
-                                            ),
-                                          ),
-                                      planApplicationsLoaded: (applications) =>
-                                          applications.isEmpty
+                                    ),
+                                  ),
+                                  planApplicationsLoaded: (applications) =>
+                                      applications.isEmpty
                                           ? const Center(
                                               child: Text(
                                                 'No hay aplicaciones para este plan',
@@ -423,49 +413,47 @@ Widget _buildMainContent(
                                               isCreator,
                                               planId,
                                             ),
-                                      applicationActionSuccess:
-                                          (_, application) =>
-                                              _buildApplicantsList(
-                                                context,
-                                                context
-                                                    .read<MatchingBloc>()
-                                                    .state
-                                                    .maybeWhen(
-                                                      planApplicationsLoaded:
-                                                          (apps) => apps,
-                                                      orElse: () =>
-                                                          <ApplicationEntity>[],
-                                                    ),
-                                                isCreator,
-                                                planId,
-                                              ),
-                                      error: (message) => Center(
-                                        child: Text(
-                                          'Error: $message',
-                                          style: TextStyle(
-                                            color: Colors.red[300],
-                                          ),
+                                  applicationActionSuccess: (_, application) =>
+                                      _buildApplicantsList(
+                                    context,
+                                    context
+                                        .read<MatchingBloc>()
+                                        .state
+                                        .maybeWhen(
+                                          planApplicationsLoaded: (apps) =>
+                                              apps,
+                                          orElse: () => <ApplicationEntity>[],
                                         ),
+                                    isCreator,
+                                    planId,
+                                  ),
+                                  error: (message) => Center(
+                                    child: Text(
+                                      'Error: $message',
+                                      style: TextStyle(
+                                        color: Colors.red[300],
                                       ),
-                                    );
-                                  },
-                                ),
-                              ],
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                // Botones de acción según el rol
-                if (!isCreator) _buildActionButtons(context, planId),
-              ],
+                ],
+              ),
             ),
-            currentIndex: -1, // No es una pantalla en la barra de navegación
-            webTitle: planData['title'] as String? ?? 'Detalle del plan',
-          );
-        },
+            // Botones de acción según el rol
+            if (!isCreator) _buildActionButtons(context, planId),
+          ],
+        ),
+        currentIndex: -1, // No es una pantalla en la barra de navegación
+        webTitle: planData['title'] as String? ?? 'Detalle del plan',
+      );
+    },
   );
 }
 
@@ -479,13 +467,11 @@ Widget _buildCreatorInfo(final Map<String, dynamic> creatorData) {
         ),
         child: CircleAvatar(
           radius: 25,
-          backgroundImage:
-              creatorData['photoUrls'] != null &&
+          backgroundImage: creatorData['photoUrls'] != null &&
                   ((creatorData['photoUrls'] as List).isNotEmpty)
               ? NetworkImage((creatorData['photoUrls'] as List)[0] as String)
               : null,
-          child:
-              creatorData['photoUrls'] == null ||
+          child: creatorData['photoUrls'] == null ||
                   (creatorData['photoUrls'] as List).isEmpty
               ? const Icon(Icons.person)
               : null,
@@ -547,7 +533,8 @@ Widget _buildApplicantsList(
       ...applications.map(
         (
           final ApplicationEntity application,
-        ) => FutureBuilder<DocumentSnapshot>(
+        ) =>
+            FutureBuilder<DocumentSnapshot>(
           future: FirebaseFirestore.instance
               .collection('users')
               .doc(application.applicantId)
@@ -563,22 +550,19 @@ Widget _buildApplicantsList(
             }
 
             final String name = userData['name'] as String? ?? 'Usuario';
-            final String age = userData['age'] != null
-                ? userData['age'].toString()
-                : '';
+            final String age =
+                userData['age'] != null ? userData['age'].toString() : '';
             final List<dynamic> photoUrls =
                 userData['photoUrls'] as List<dynamic>? ?? [];
-            final String photoUrl = photoUrls.isNotEmpty
-                ? photoUrls[0] as String
-                : '';
+            final String photoUrl =
+                photoUrls.isNotEmpty ? photoUrls[0] as String : '';
 
             return Padding(
               padding: const EdgeInsets.only(bottom: 12),
               child: ListTile(
                 leading: CircleAvatar(
-                  backgroundImage: photoUrl.isNotEmpty
-                      ? NetworkImage(photoUrl)
-                      : null,
+                  backgroundImage:
+                      photoUrl.isNotEmpty ? NetworkImage(photoUrl) : null,
                   child: photoUrl.isEmpty ? Text(name[0].toUpperCase()) : null,
                 ),
                 title: Text(
@@ -605,8 +589,8 @@ Widget _buildApplicantsList(
                         onPressed: () {
                           // Usar el MatchingBloc para aceptar la postulación
                           context.read<MatchingBloc>().add(
-                            MatchingEvent.acceptApplication(application.id),
-                          );
+                                MatchingEvent.acceptApplication(application.id),
+                              );
                         },
                       ),
                       IconButton(
@@ -617,8 +601,8 @@ Widget _buildApplicantsList(
                         onPressed: () {
                           // Usar el MatchingBloc para rechazar la postulación
                           context.read<MatchingBloc>().add(
-                            MatchingEvent.rejectApplication(application.id),
-                          );
+                                MatchingEvent.rejectApplication(application.id),
+                              );
                         },
                       ),
                     ],
@@ -769,8 +753,8 @@ Widget _buildActionButtons(final BuildContext context, final String planId) {
                           Navigator.pop(context); // Cierra el diálogo
                           // Usar el MatchingBloc para enviar la postulación
                           context.read<MatchingBloc>().add(
-                            MatchingEvent.applyToPlan(planId),
-                          );
+                                MatchingEvent.applyToPlan(planId),
+                              );
                         },
                         child: Text(
                           'Postularme',

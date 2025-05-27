@@ -116,9 +116,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ? AppColors.darkBottomNavBackground
         : AppColors.lightBottomNavBackground;
     final Color activeIconColor = AppColors.brandYellow;
-    final Color inactiveIconColor = isDarkMode
-        ? AppColors.darkTextSecondary
-        : AppColors.lightTextSecondary;
+    final Color inactiveIconColor =
+        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Container(
       decoration: BoxDecoration(
@@ -190,9 +189,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
     final isDarkMode = themeProvider.isDarkMode;
 
     final Color activeColor = AppColors.brandYellow;
-    final Color inactiveColor = isDarkMode
-        ? AppColors.darkTextSecondary
-        : AppColors.lightTextSecondary;
+    final Color inactiveColor =
+        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     // Determinar el widget del icono según el estado
     Widget iconWidget;

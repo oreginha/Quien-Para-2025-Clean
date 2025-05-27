@@ -210,9 +210,8 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
           status: ReviewStatus.success,
           reviewsByUser: reviews,
           hasMoreReviewsByUser: reviews.length == (event.limit ?? 20),
-          lastReviewsByUserDocumentId: reviews.isNotEmpty
-              ? reviews.last.id
-              : null,
+          lastReviewsByUserDocumentId:
+              reviews.isNotEmpty ? reviews.last.id : null,
           lastRefreshTime: DateTime.now(),
         ),
       ),
@@ -372,17 +371,14 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
       ),
       (_) {
         // Remover la reseña de las listas locales
-        final updatedUserReviews = state.userReviews
-            .where((r) => r.id != event.reviewId)
-            .toList();
+        final updatedUserReviews =
+            state.userReviews.where((r) => r.id != event.reviewId).toList();
 
-        final updatedPlanReviews = state.planReviews
-            .where((r) => r.id != event.reviewId)
-            .toList();
+        final updatedPlanReviews =
+            state.planReviews.where((r) => r.id != event.reviewId).toList();
 
-        final updatedReviewsByUser = state.reviewsByUser
-            .where((r) => r.id != event.reviewId)
-            .toList();
+        final updatedReviewsByUser =
+            state.reviewsByUser.where((r) => r.id != event.reviewId).toList();
 
         emit(
           state.copyWith(
@@ -435,9 +431,8 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
         state.copyWith(status: ReviewStatus.error, error: failure.message),
       ),
       (_) {
-        final updatedHelpfulIds = state.helpfulReviewIds
-            .where((id) => id != event.reviewId)
-            .toList();
+        final updatedHelpfulIds =
+            state.helpfulReviewIds.where((id) => id != event.reviewId).toList();
 
         emit(state.copyWith(helpfulReviewIds: updatedHelpfulIds));
       },
@@ -536,9 +531,8 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
           status: ReviewStatus.success,
           pendingReviews: reviews,
           hasMorePendingReviews: reviews.length == (event.limit ?? 20),
-          lastPendingReviewDocumentId: reviews.isNotEmpty
-              ? reviews.last.id
-              : null,
+          lastPendingReviewDocumentId:
+              reviews.isNotEmpty ? reviews.last.id : null,
         ),
       ),
     );
@@ -557,9 +551,8 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
         state.copyWith(status: ReviewStatus.error, error: failure.message),
       ),
       (_) {
-        final updatedPendingReviews = state.pendingReviews
-            .where((r) => r.id != event.reviewId)
-            .toList();
+        final updatedPendingReviews =
+            state.pendingReviews.where((r) => r.id != event.reviewId).toList();
 
         emit(
           state.copyWith(
@@ -588,9 +581,8 @@ class ReviewBloc extends Bloc<ReviewEvent, ReviewState> {
         state.copyWith(status: ReviewStatus.error, error: failure.message),
       ),
       (_) {
-        final updatedPendingReviews = state.pendingReviews
-            .where((r) => r.id != event.reviewId)
-            .toList();
+        final updatedPendingReviews =
+            state.pendingReviews.where((r) => r.id != event.reviewId).toList();
 
         emit(
           state.copyWith(

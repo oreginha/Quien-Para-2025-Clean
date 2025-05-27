@@ -64,9 +64,8 @@ abstract class CachingEntityMapper<Entity extends EntityBase, Model, JsonType>
     }
 
     if (modelCache.length > _maxCacheSize) {
-      final keysToRemove = modelCache.keys
-          .take(modelCache.length - _maxCacheSize ~/ 2)
-          .toList();
+      final keysToRemove =
+          modelCache.keys.take(modelCache.length - _maxCacheSize ~/ 2).toList();
       for (final key in keysToRemove) {
         modelCache.remove(key);
       }

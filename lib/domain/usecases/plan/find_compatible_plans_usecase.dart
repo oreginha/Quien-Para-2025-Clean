@@ -56,13 +56,13 @@ class FindCompatiblePlansUseCase {
       );
 
       // Filtrar planes compatibles usando el servicio de matching
-      final List<Map<String, dynamic>> compatiblePlans = _matchingService
-          .filterCompatiblePlans(
-            plans: plansData,
-            userInterests: userInterests,
-            userLocation: userLocation,
-            minimumScore: minimumScore,
-          );
+      final List<Map<String, dynamic>> compatiblePlans =
+          _matchingService.filterCompatiblePlans(
+        plans: plansData,
+        userInterests: userInterests,
+        userLocation: userLocation,
+        minimumScore: minimumScore,
+      );
 
       // Limitar el número de resultados
       return compatiblePlans.take(limit).toList();

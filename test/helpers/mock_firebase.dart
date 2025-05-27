@@ -295,8 +295,8 @@ class MockCollectionReferenceImpl
 class MockQuerySnapshot implements QuerySnapshot<Map<String, dynamic>> {
   @override
   List<QueryDocumentSnapshot<Map<String, dynamic>>> get docs => [
-    MockQueryDocumentSnapshot(),
-  ];
+        MockQueryDocumentSnapshot(),
+      ];
 
   @override
   List<DocumentChange<Map<String, dynamic>>> get docChanges => [];

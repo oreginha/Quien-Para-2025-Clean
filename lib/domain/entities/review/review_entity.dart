@@ -133,7 +133,7 @@ extension UserRatingEntityExtensions on UserRatingEntity {
     // Actividad (10% del score)
     double activityScore =
         ((totalPlansOrganized + totalPlansAttended) / 100.0).clamp(0.0, 1.0) *
-        10;
+            10;
     score += activityScore;
 
     return score.clamp(0.0, 100.0);

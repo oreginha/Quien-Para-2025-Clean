@@ -91,7 +91,7 @@ class AppTheme {
         elevation: AppElevation.bottomNav,
         type: BottomNavigationBarType.fixed,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.lightCardBackground,
         elevation: AppElevation.card,
         margin: const EdgeInsets.symmetric(
@@ -200,7 +200,7 @@ class AppTheme {
         elevation: AppElevation.bottomNav,
         type: BottomNavigationBarType.fixed,
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: AppColors.darkCardBackground,
         elevation: AppElevation.card,
         margin: const EdgeInsets.symmetric(
@@ -265,15 +265,15 @@ class AppTheme {
 
   // Gradiente de fondo
   LinearGradient get backgroundGradient => LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
-      isDarkMode
-          ? AppColors.darkSecondaryBackground
-          : AppColors.lightSecondaryBackground,
-    ],
-  );
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
+          isDarkMode
+              ? AppColors.darkSecondaryBackground
+              : AppColors.lightSecondaryBackground,
+        ],
+      );
 
   // Método para obtener color con alpha
   Color getColorWithAlpha(Color color, double opacity) {

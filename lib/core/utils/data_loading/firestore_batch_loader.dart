@@ -34,22 +34,20 @@ class FirestoreBatchLoader<T> {
     int maxBatchSize = 10,
     Duration? batchDelay,
     Duration? cacheExpiration,
-  }) : _collection = collection,
-       _converter = converter,
-       _firestore = firestore ?? FirebaseFirestore.instance,
-       _cacheManager =
-           cacheManager ??
-           DataCacheManager<T>(
-             defaultExpirationTime:
-                 cacheExpiration ?? const Duration(minutes: 5),
-             maxCacheSize: 100,
-           ),
-       _batchLoader =
-           batchLoader ??
-           BatchLoader(
-             batchDelay: batchDelay ?? const Duration(milliseconds: 300),
-           ),
-       _maxBatchSize = maxBatchSize;
+  })  : _collection = collection,
+        _converter = converter,
+        _firestore = firestore ?? FirebaseFirestore.instance,
+        _cacheManager = cacheManager ??
+            DataCacheManager<T>(
+              defaultExpirationTime:
+                  cacheExpiration ?? const Duration(minutes: 5),
+              maxCacheSize: 100,
+            ),
+        _batchLoader = batchLoader ??
+            BatchLoader(
+              batchDelay: batchDelay ?? const Duration(milliseconds: 300),
+            ),
+        _maxBatchSize = maxBatchSize;
 
   /// Carga documentos en lotes usando 'whereIn' para reducir solicitudes
   Future<void> loadDocuments(
@@ -62,9 +60,8 @@ class FirestoreBatchLoader<T> {
     if (ids.isEmpty) return;
 
     // Filtrar IDs que no están en caché o necesitan actualización
-    final List<String> idsToLoad = forceRefresh
-        ? ids
-        : _cacheManager.getMissingKeys(ids);
+    final List<String> idsToLoad =
+        forceRefresh ? ids : _cacheManager.getMissingKeys(ids);
 
     // Si no hay nada que cargar, retornar los datos de caché
     if (idsToLoad.isEmpty) {
@@ -121,9 +118,8 @@ class FirestoreBatchLoader<T> {
             }
 
             // Marcar documentos no encontrados como nulos en caché
-            final List<String> notFoundIds = currentBatch
-                .where((id) => !loadedIds.contains(id))
-                .toList();
+            final List<String> notFoundIds =
+                currentBatch.where((id) => !loadedIds.contains(id)).toList();
 
             for (final id in notFoundIds) {
               _cacheManager.put(id, null);

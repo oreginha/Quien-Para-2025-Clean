@@ -9,8 +9,8 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
   final Logger _logger;
 
   FirebaseMatchingDataSource({FirebaseFirestore? firestore, Logger? logger})
-    : _firestore = firestore ?? FirebaseFirestore.instance,
-      _logger = logger ?? Logger();
+      : _firestore = firestore ?? FirebaseFirestore.instance,
+        _logger = logger ?? Logger();
 
   @override
   Future<ApplicationEntity> acceptApplication(String applicationId) async {
@@ -21,10 +21,8 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
       });
 
       // Get the updated application
-      final docSnapshot = await _firestore
-          .collection('applications')
-          .doc(applicationId)
-          .get();
+      final docSnapshot =
+          await _firestore.collection('applications').doc(applicationId).get();
       return _mapDocToApplicationEntity(docSnapshot);
     } catch (e) {
       _logger.e('Error accepting application: $e');
@@ -166,10 +164,8 @@ class FirebaseMatchingDataSource implements MatchingDataSource {
       });
 
       // Get the updated application
-      final docSnapshot = await _firestore
-          .collection('applications')
-          .doc(applicationId)
-          .get();
+      final docSnapshot =
+          await _firestore.collection('applications').doc(applicationId).get();
       return _mapDocToApplicationEntity(docSnapshot);
     } catch (e) {
       _logger.e('Error rejecting application: $e');

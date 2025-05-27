@@ -20,9 +20,9 @@ class PersistenceService implements PersistenceInterface {
     required final SharedPreferences prefs,
     required final FirebaseFirestore firestore,
     required final Connectivity connectivity,
-  }) : _prefs = prefs,
-       _firestore = firestore,
-       _connectivity = connectivity {
+  })  : _prefs = prefs,
+        _firestore = firestore,
+        _connectivity = connectivity {
     _startSyncMonitoring();
   }
 
@@ -76,12 +76,12 @@ class PersistenceService implements PersistenceInterface {
             .collection('cityMetrics')
             .doc(metric['city'].toString())
             .set({
-              'totalAttempts': FieldValue.increment(1),
-              'successfulSelections': FieldValue.increment(
-                (metric['wasEnabled'] as bool) ? 1 : 0,
-              ),
-              'lastUpdated': FieldValue.serverTimestamp(),
-            }, SetOptions(merge: true));
+          'totalAttempts': FieldValue.increment(1),
+          'successfulSelections': FieldValue.increment(
+            (metric['wasEnabled'] as bool) ? 1 : 0,
+          ),
+          'lastUpdated': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
       }
 
       await _prefs.setString(_metricsKey, json.encode([]));

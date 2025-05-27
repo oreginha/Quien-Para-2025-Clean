@@ -80,5 +80,6 @@ class GetNearbyPlansUseCase
   /// Método de conveniencia para usar el caso de uso como una función.
   Future<Either<AppFailure, List<PlanEntity>>> call(
     GetNearbyPlansParams params,
-  ) => execute(params);
+  ) =>
+      execute(params);
 }

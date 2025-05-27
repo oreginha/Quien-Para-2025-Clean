@@ -61,9 +61,8 @@ class CrashReporter {
         if (logs.length < 50) return;
 
         // Conservar solo los últimos 50 registros
-        final String newContent = logs
-            .sublist(logs.length - 50)
-            .join('\n\n===== ERROR LOG =====\n');
+        final String newContent =
+            logs.sublist(logs.length - 50).join('\n\n===== ERROR LOG =====\n');
         await logFile.writeAsString(newContent);
 
         if (kDebugMode) {
@@ -90,8 +89,7 @@ class CrashReporter {
           stackTrace?.toString() ?? 'No stack trace disponible';
 
       // Formato del log
-      final String logEntry =
-          '\n===== ERROR LOG =====\n'
+      final String logEntry = '\n===== ERROR LOG =====\n'
           'FECHA: $timestamp\n'
           'ERROR: $errorString\n'
           'STACK TRACE:\n$stackString\n';

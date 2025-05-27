@@ -22,50 +22,54 @@ mixin _$MatchingState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -73,9 +77,10 @@ mixin _$MatchingState {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -85,7 +90,8 @@ mixin _$MatchingState {
     TResult Function(_ApplicationActionSuccess value)? applicationActionSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -156,11 +162,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -172,11 +178,11 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -188,11 +194,11 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -208,11 +214,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -226,7 +232,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -300,11 +306,11 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -316,11 +322,11 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -332,11 +338,11 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -352,11 +358,11 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -370,7 +376,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -427,7 +433,7 @@ class __$$UserApplicationsLoadedImplCopyWithImpl<$Res>
         null == applications
             ? _value._applications
             : applications // ignore: cast_nullable_to_non_nullable
-                  as List<ApplicationEntity>,
+                as List<ApplicationEntity>,
       ),
     );
   }
@@ -437,7 +443,7 @@ class __$$UserApplicationsLoadedImplCopyWithImpl<$Res>
 
 class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
   const _$UserApplicationsLoadedImpl(final List<ApplicationEntity> applications)
-    : _applications = applications;
+      : _applications = applications;
 
   final List<ApplicationEntity> _applications;
   @override
@@ -465,9 +471,9 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_applications),
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_applications),
+      );
 
   /// Create a copy of MatchingState
   /// with the given fields replaced by the non-null parameter values.
@@ -475,11 +481,11 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$UserApplicationsLoadedImplCopyWith<_$UserApplicationsLoadedImpl>
-  get copyWith =>
-      __$$UserApplicationsLoadedImplCopyWithImpl<_$UserApplicationsLoadedImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$UserApplicationsLoadedImplCopyWithImpl<
+              _$UserApplicationsLoadedImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -487,11 +493,11 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
   }) {
     return userApplicationsLoaded(applications);
@@ -503,11 +509,11 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
   }) {
     return userApplicationsLoaded?.call(applications);
@@ -519,11 +525,11 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -539,11 +545,11 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
   }) {
     return userApplicationsLoaded(this);
@@ -557,7 +563,7 @@ class _$UserApplicationsLoadedImpl implements _UserApplicationsLoaded {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return userApplicationsLoaded?.call(this);
@@ -592,7 +598,7 @@ abstract class _UserApplicationsLoaded implements MatchingState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserApplicationsLoadedImplCopyWith<_$UserApplicationsLoadedImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -624,7 +630,7 @@ class __$$PlanApplicationsLoadedImplCopyWithImpl<$Res>
         null == applications
             ? _value._applications
             : applications // ignore: cast_nullable_to_non_nullable
-                  as List<ApplicationEntity>,
+                as List<ApplicationEntity>,
       ),
     );
   }
@@ -634,7 +640,7 @@ class __$$PlanApplicationsLoadedImplCopyWithImpl<$Res>
 
 class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
   const _$PlanApplicationsLoadedImpl(final List<ApplicationEntity> applications)
-    : _applications = applications;
+      : _applications = applications;
 
   final List<ApplicationEntity> _applications;
   @override
@@ -662,9 +668,9 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_applications),
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_applications),
+      );
 
   /// Create a copy of MatchingState
   /// with the given fields replaced by the non-null parameter values.
@@ -672,11 +678,11 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
   @override
   @pragma('vm:prefer-inline')
   _$$PlanApplicationsLoadedImplCopyWith<_$PlanApplicationsLoadedImpl>
-  get copyWith =>
-      __$$PlanApplicationsLoadedImplCopyWithImpl<_$PlanApplicationsLoadedImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$PlanApplicationsLoadedImplCopyWithImpl<
+              _$PlanApplicationsLoadedImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -684,11 +690,11 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
   }) {
     return planApplicationsLoaded(applications);
@@ -700,11 +706,11 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
   }) {
     return planApplicationsLoaded?.call(applications);
@@ -716,11 +722,11 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -736,11 +742,11 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
   }) {
     return planApplicationsLoaded(this);
@@ -754,7 +760,7 @@ class _$PlanApplicationsLoadedImpl implements _PlanApplicationsLoaded {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return planApplicationsLoaded?.call(this);
@@ -789,7 +795,7 @@ abstract class _PlanApplicationsLoaded implements MatchingState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlanApplicationsLoadedImplCopyWith<_$PlanApplicationsLoadedImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -821,11 +827,11 @@ class __$$ApplicationActionSuccessImplCopyWithImpl<$Res>
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         null == application
             ? _value.application
             : application // ignore: cast_nullable_to_non_nullable
-                  as ApplicationEntity,
+                as ApplicationEntity,
       ),
     );
   }
@@ -865,10 +871,8 @@ class _$ApplicationActionSuccessImpl implements _ApplicationActionSuccess {
   @override
   @pragma('vm:prefer-inline')
   _$$ApplicationActionSuccessImplCopyWith<_$ApplicationActionSuccessImpl>
-  get copyWith =>
-      __$$ApplicationActionSuccessImplCopyWithImpl<
-        _$ApplicationActionSuccessImpl
-      >(this, _$identity);
+      get copyWith => __$$ApplicationActionSuccessImplCopyWithImpl<
+          _$ApplicationActionSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -876,11 +880,11 @@ class _$ApplicationActionSuccessImpl implements _ApplicationActionSuccess {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
   }) {
     return applicationActionSuccess(message, application);
@@ -892,11 +896,11 @@ class _$ApplicationActionSuccessImpl implements _ApplicationActionSuccess {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
   }) {
     return applicationActionSuccess?.call(message, application);
@@ -908,11 +912,11 @@ class _$ApplicationActionSuccessImpl implements _ApplicationActionSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -928,11 +932,11 @@ class _$ApplicationActionSuccessImpl implements _ApplicationActionSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
   }) {
     return applicationActionSuccess(this);
@@ -946,7 +950,7 @@ class _$ApplicationActionSuccessImpl implements _ApplicationActionSuccess {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return applicationActionSuccess?.call(this);
@@ -983,7 +987,7 @@ abstract class _ApplicationActionSuccess implements MatchingState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApplicationActionSuccessImplCopyWith<_$ApplicationActionSuccessImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1015,7 +1019,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1059,11 +1063,11 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<ApplicationEntity> applications)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(List<ApplicationEntity> applications)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(String message, ApplicationEntity application)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1075,11 +1079,11 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult? Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult? Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1091,11 +1095,11 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<ApplicationEntity> applications)?
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     TResult Function(List<ApplicationEntity> applications)?
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     TResult Function(String message, ApplicationEntity application)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1111,11 +1115,11 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_UserApplicationsLoaded value)
-    userApplicationsLoaded,
+        userApplicationsLoaded,
     required TResult Function(_PlanApplicationsLoaded value)
-    planApplicationsLoaded,
+        planApplicationsLoaded,
     required TResult Function(_ApplicationActionSuccess value)
-    applicationActionSuccess,
+        applicationActionSuccess,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -1129,7 +1133,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_UserApplicationsLoaded value)? userApplicationsLoaded,
     TResult? Function(_PlanApplicationsLoaded value)? planApplicationsLoaded,
     TResult? Function(_ApplicationActionSuccess value)?
-    applicationActionSuccess,
+        applicationActionSuccess,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);

@@ -174,13 +174,13 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
   void _sendMessageWithBloc(String messageText) {
     try {
       context.read<SimpleChatBloc>().add(
-        SendMessage(
-          conversationId: widget.conversationId,
-          content: messageText,
-          senderId: _currentUserId,
-          receiverId: widget.receiverId,
-        ),
-      );
+            SendMessage(
+              conversationId: widget.conversationId,
+              content: messageText,
+              senderId: _currentUserId,
+              receiverId: widget.receiverId,
+            ),
+          );
     } catch (e) {
       // Si falla, intentar con modo fallback
       _sendMessageFallback(messageText);
@@ -194,20 +194,20 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
           .doc(widget.conversationId)
           .collection('messages')
           .add({
-            'content': messageText,
-            'senderId': _currentUserId,
-            'timestamp': FieldValue.serverTimestamp(),
-            'read': false,
-          });
+        'content': messageText,
+        'senderId': _currentUserId,
+        'timestamp': FieldValue.serverTimestamp(),
+        'read': false,
+      });
 
       // Actualizar último mensaje en la conversación
       await _firestore
           .collection('conversations')
           .doc(widget.conversationId)
           .update({
-            'lastMessage': messageText,
-            'lastMessageTimestamp': FieldValue.serverTimestamp(),
-          });
+        'lastMessage': messageText,
+        'lastMessageTimestamp': FieldValue.serverTimestamp(),
+      });
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -278,23 +278,22 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
           CircleAvatar(
             backgroundColor: AppColors.brandYellow,
             radius: 18,
-            backgroundImage:
-                widget.otherUserPhoto != null &&
+            backgroundImage: widget.otherUserPhoto != null &&
                     widget.otherUserPhoto!.isNotEmpty
                 ? NetworkImage(widget.otherUserPhoto!)
                 : null,
             child:
                 widget.otherUserPhoto == null || widget.otherUserPhoto!.isEmpty
-                ? Text(
-                    widget.receiverName.isNotEmpty
-                        ? widget.receiverName[0].toUpperCase()
-                        : '?',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                : null,
+                    ? Text(
+                        widget.receiverName.isNotEmpty
+                            ? widget.receiverName[0].toUpperCase()
+                            : '?',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    : null,
           ),
           const SizedBox(width: spacing.AppSpacing.s),
           // Nombre del receptor
@@ -478,8 +477,7 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
         final message = messages[index];
         final bool isMine = message.senderId == _currentUserId;
 
-        final bool showDateDivider =
-            index == messages.length - 1 ||
+        final bool showDateDivider = index == messages.length - 1 ||
             !_isSameDay(message.timestamp, messages[index + 1].timestamp);
 
         return AnimatedOpacity(
@@ -516,16 +514,14 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
             ? (messageData['timestamp'] as Timestamp).toDate()
             : DateTime.now();
 
-        final bool showDateDivider =
-            index == messages.length - 1 ||
+        final bool showDateDivider = index == messages.length - 1 ||
             !_isSameDay(
               timestamp,
               (messages[index + 1].data() as Map<String, dynamic>)['timestamp']
                       is Timestamp
                   ? ((messages[index + 1].data()
-                                as Map<String, dynamic>)['timestamp']
-                            as Timestamp)
-                        .toDate()
+                          as Map<String, dynamic>)['timestamp'] as Timestamp)
+                      .toDate()
                   : DateTime.now(),
             );
 
@@ -552,9 +548,8 @@ class _ChatScreenResponsiveState extends State<ChatScreenResponsive>
     return Container(
       margin: const EdgeInsets.symmetric(vertical: spacing.AppSpacing.xs),
       child: Row(
-        mainAxisAlignment: isMine
-            ? MainAxisAlignment.end
-            : MainAxisAlignment.start,
+        mainAxisAlignment:
+            isMine ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
           if (!isMine) ...[
             CircleAvatar(

@@ -231,9 +231,8 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
             onPressed: _loadPlans,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode
-                  ? Colors.black
-                  : AppColors.lightTextPrimary,
+              foregroundColor:
+                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
             ),
             child: const Text('Reintentar'),
           ),
@@ -272,9 +271,8 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
             label: const Text('Crear Plan'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.brandYellow,
-              foregroundColor: isDarkMode
-                  ? Colors.black
-                  : AppColors.lightTextPrimary,
+              foregroundColor:
+                  isDarkMode ? Colors.black : AppColors.lightTextPrimary,
               elevation: AppElevation.s,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppRadius.button),
@@ -433,7 +431,7 @@ class _FeedPropuestasState extends State<FeedPropuestas> {
                       child: CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
+                                loadingProgress.expectedTotalBytes!
                             : null,
                         valueColor: AlwaysStoppedAnimation<Color>(
                           AppColors.brandYellow,

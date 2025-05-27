@@ -15,9 +15,9 @@ class FirebaseAuthDataSource implements AuthDataSource {
     FirebaseAuth? auth,
     FirebaseFirestore? firestore,
     Logger? logger,
-  }) : _auth = auth ?? FirebaseAuth.instance,
-       _firestore = firestore ?? FirebaseFirestore.instance,
-       _logger = logger ?? Logger();
+  })  : _auth = auth ?? FirebaseAuth.instance,
+        _firestore = firestore ?? FirebaseFirestore.instance,
+        _logger = logger ?? Logger();
 
   @override
   Future<UserEntity?> getCurrentUser() async {
@@ -25,10 +25,8 @@ class FirebaseAuthDataSource implements AuthDataSource {
     if (firebaseUser == null) return null;
 
     try {
-      final doc = await _firestore
-          .collection('users')
-          .doc(firebaseUser.uid)
-          .get();
+      final doc =
+          await _firestore.collection('users').doc(firebaseUser.uid).get();
       if (!doc.exists) return null;
 
       final userData = doc.data() ?? {};
@@ -36,8 +34,7 @@ class FirebaseAuthDataSource implements AuthDataSource {
         id: firebaseUser.uid,
         email: firebaseUser.email,
         name: userData['name'] as String? ?? firebaseUser.displayName,
-        photoUrl:
-            userData['photoUrls'] != null &&
+        photoUrl: userData['photoUrls'] != null &&
                 (userData['photoUrls'] as List).isNotEmpty
             ? (userData['photoUrls'] as List).first as String?
             : firebaseUser.photoURL,
@@ -60,8 +57,7 @@ class FirebaseAuthDataSource implements AuthDataSource {
         id: userId,
         email: userData['email'] as String?,
         name: userData['name'] as String?,
-        photoUrl:
-            userData['photoUrls'] != null &&
+        photoUrl: userData['photoUrls'] != null &&
                 (userData['photoUrls'] as List).isNotEmpty
             ? (userData['photoUrls'] as List).first as String?
             : null,

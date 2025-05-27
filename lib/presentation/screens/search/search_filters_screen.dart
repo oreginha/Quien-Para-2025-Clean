@@ -156,8 +156,8 @@ class _SearchFiltersView extends StatelessWidget {
       style: AppTypography.bodyMedium(isDarkMode),
       onChanged: (value) {
         context.read<SearchFiltersBloc>().add(
-          SearchFiltersEvent.updateSearchQuery(value),
-        );
+              SearchFiltersEvent.updateSearchQuery(value),
+            );
       },
     );
   }
@@ -192,8 +192,8 @@ class _SearchFiltersView extends StatelessWidget {
                   max: 1000,
                   onChanged: (value) {
                     context.read<SearchFiltersBloc>().add(
-                      SearchFiltersEvent.distanceChanged(value),
-                    );
+                          SearchFiltersEvent.distanceChanged(value),
+                        );
                   },
                 ),
               ),
@@ -243,10 +243,10 @@ class _SearchFiltersView extends StatelessWidget {
               ),
               onSelected: (selected) {
                 context.read<SearchFiltersBloc>().add(
-                  SearchFiltersEvent.updateCategoryFilter(
-                    selected ? category : '',
-                  ),
-                );
+                      SearchFiltersEvent.updateCategoryFilter(
+                        selected ? category : '',
+                      ),
+                    );
               },
             );
           }).toList(),

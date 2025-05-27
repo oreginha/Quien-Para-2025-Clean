@@ -391,8 +391,7 @@ class WebAuthService {
       }
 
       // Llamar a signInWithGoogle en JavaScript
-      final response =
-          await _callAuthMethod('signInWithGoogle') ??
+      final response = await _callAuthMethod('signInWithGoogle') ??
           {'status': 'error', 'error': 'No response'};
 
       // Si es una cancelación, manejarla adecuadamente

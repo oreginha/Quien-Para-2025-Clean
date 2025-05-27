@@ -355,8 +355,8 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
                           });
 
                           try {
-                            final location = await _getCurrentLocationUseCase
-                                .execute();
+                            final location =
+                                await _getCurrentLocationUseCase.execute();
                             if (mounted) {
                               await _selectLocation(
                                 LatLng(location.latitude, location.longitude),

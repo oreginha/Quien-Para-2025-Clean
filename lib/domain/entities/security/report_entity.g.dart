@@ -16,8 +16,7 @@ _$ReportEntityImpl _$$ReportEntityImplFromJson(Map<String, dynamic> json) =>
       reason: $enumDecode(_$ReportReasonEnumMap, json['reason']),
       description: json['description'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
-      status:
-          $enumDecodeNullable(_$ReportStatusEnumMap, json['status']) ??
+      status: $enumDecodeNullable(_$ReportStatusEnumMap, json['status']) ??
           ReportStatus.pending,
       moderatorId: json['moderatorId'] as String?,
       moderatorNotes: json['moderatorNotes'] as String?,

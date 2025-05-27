@@ -62,18 +62,18 @@ class ApplicationEntity extends Equatable {
 
   @override
   List<Object?> get props => <Object?>[
-    id,
-    planId,
-    applicantId,
-    status,
-    appliedAt,
-    message,
-    processedAt,
-    planTitle,
-    planImageUrl,
-    applicantName,
-    applicantPhotoUrl,
-  ];
+        id,
+        planId,
+        applicantId,
+        status,
+        appliedAt,
+        message,
+        processedAt,
+        planTitle,
+        planImageUrl,
+        applicantName,
+        applicantPhotoUrl,
+      ];
 
   // Método para convertir la entidad a un Map para Firestore
   Map<String, dynamic> toMap() {
@@ -115,9 +115,8 @@ class ApplicationEntity extends Equatable {
       status: map['status'] as String,
       appliedAt: parseDate(map['appliedAt']),
       message: map['message'] as String?,
-      processedAt: map['processedAt'] != null
-          ? parseDate(map['processedAt'])
-          : null,
+      processedAt:
+          map['processedAt'] != null ? parseDate(map['processedAt']) : null,
       planTitle: map['planTitle'] as String?,
       planImageUrl: map['planImageUrl'] as String?,
       applicantName: map['applicantName'] as String?,

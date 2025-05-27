@@ -94,29 +94,28 @@ class ApplicationsManagementBloc
   ) async {
     // Si ya estamos en estado cargado, marcamos como refrescando
     state.maybeWhen(
-      loaded:
-          (
-            allApplications,
-            filteredApplications,
-            userProfiles,
-            currentFilter,
-            currentSearch,
-            viewType,
-            isRefreshing,
-            message,
-          ) {
-            emit(
-              ApplicationsManagementState.loaded(
-                allApplications: allApplications,
-                filteredApplications: filteredApplications,
-                userProfiles: userProfiles,
-                currentFilter: currentFilter,
-                currentSearch: currentSearch,
-                viewType: viewType,
-                isRefreshing: true,
-              ),
-            );
-          },
+      loaded: (
+        allApplications,
+        filteredApplications,
+        userProfiles,
+        currentFilter,
+        currentSearch,
+        viewType,
+        isRefreshing,
+        message,
+      ) {
+        emit(
+          ApplicationsManagementState.loaded(
+            allApplications: allApplications,
+            filteredApplications: filteredApplications,
+            userProfiles: userProfiles,
+            currentFilter: currentFilter,
+            currentSearch: currentSearch,
+            viewType: viewType,
+            isRefreshing: true,
+          ),
+        );
+      },
       orElse: () => emit(const ApplicationsManagementState.loading()),
     );
 
@@ -131,40 +130,39 @@ class ApplicationsManagementBloc
 
       // Aplicar filtros actuales si estaban en estado cargado
       state.maybeWhen(
-        loaded:
-            (
-              _,
-              __,
-              userProfiles,
-              currentFilter,
-              currentSearch,
-              viewType,
-              isRefreshing,
-              message,
-            ) {
-              final List<ApplicationEntity> filtered = _applyFiltersAndSearch(
-                applications,
-                currentFilter,
-                currentSearch,
-              );
+        loaded: (
+          _,
+          __,
+          userProfiles,
+          currentFilter,
+          currentSearch,
+          viewType,
+          isRefreshing,
+          message,
+        ) {
+          final List<ApplicationEntity> filtered = _applyFiltersAndSearch(
+            applications,
+            currentFilter,
+            currentSearch,
+          );
 
-              emit(
-                ApplicationsManagementState.loaded(
-                  allApplications: applications,
-                  filteredApplications: filtered,
-                  userProfiles: userProfiles,
-                  currentFilter: currentFilter,
-                  currentSearch: currentSearch,
-                  viewType: viewType,
-                  isRefreshing: false,
-                ),
-              );
+          emit(
+            ApplicationsManagementState.loaded(
+              allApplications: applications,
+              filteredApplications: filtered,
+              userProfiles: userProfiles,
+              currentFilter: currentFilter,
+              currentSearch: currentSearch,
+              viewType: viewType,
+              isRefreshing: false,
+            ),
+          );
 
-              // Actualizar perfiles si hay nuevos aplicantes
-              if (_needToUpdateProfiles(applications, userProfiles)) {
-                add(const ApplicationsManagementEvent.loadUserProfiles());
-              }
-            },
+          // Actualizar perfiles si hay nuevos aplicantes
+          if (_needToUpdateProfiles(applications, userProfiles)) {
+            add(const ApplicationsManagementEvent.loadUserProfiles());
+          }
+        },
         orElse: () {
           // Si no estaba en estado cargado, inicializar todo
           emit(
@@ -194,60 +192,59 @@ class ApplicationsManagementBloc
     Emitter<ApplicationsManagementState> emit,
   ) async {
     return state.maybeWhen(
-      loaded:
-          (
-            allApplications,
-            filteredApplications,
-            userProfiles,
-            currentFilter,
-            currentSearch,
-            viewType,
-            isRefreshing,
-            message,
-          ) async {
-            try {
-              Map<String, dynamic> updatedProfiles = Map.from(userProfiles);
-              bool profilesChanged = false;
+      loaded: (
+        allApplications,
+        filteredApplications,
+        userProfiles,
+        currentFilter,
+        currentSearch,
+        viewType,
+        isRefreshing,
+        message,
+      ) async {
+        try {
+          Map<String, dynamic> updatedProfiles = Map.from(userProfiles);
+          bool profilesChanged = false;
 
-              // Para cada aplicación, cargar el perfil si no existe
-              for (ApplicationEntity app in allApplications) {
-                if (!updatedProfiles.containsKey(app.applicantId)) {
-                  try {
-                    final Either<AppFailure, UserEntity?> profile =
-                        await _userRepository.getUserProfileById(
-                          app.applicantId,
-                        );
-                    updatedProfiles[app.applicantId] = profile;
-                    profilesChanged = true;
-                  } catch (e) {
-                    logger.e(
-                      'Error al cargar perfil de usuario ${app.applicantId}: $e',
-                    );
-                  }
-                }
-              }
-
-              // Solo emitir nuevo estado si hubo cambios en los perfiles
-              if (profilesChanged) {
-                emit(
-                  ApplicationsManagementState.loaded(
-                    allApplications: allApplications,
-                    filteredApplications: filteredApplications,
-                    userProfiles: updatedProfiles,
-                    currentFilter: currentFilter,
-                    currentSearch: currentSearch,
-                    viewType: viewType,
-                    isRefreshing: isRefreshing,
-                    message: 'Perfiles de usuario actualizados',
-                  ),
+          // Para cada aplicación, cargar el perfil si no existe
+          for (ApplicationEntity app in allApplications) {
+            if (!updatedProfiles.containsKey(app.applicantId)) {
+              try {
+                final Either<AppFailure, UserEntity?> profile =
+                    await _userRepository.getUserProfileById(
+                  app.applicantId,
+                );
+                updatedProfiles[app.applicantId] = profile;
+                profilesChanged = true;
+              } catch (e) {
+                logger.e(
+                  'Error al cargar perfil de usuario ${app.applicantId}: $e',
                 );
               }
-            } catch (e) {
-              logger.e('Error al cargar perfiles de usuario: $e');
-              // No emitimos estado de error para no interrumpir la UI
             }
-            return null;
-          },
+          }
+
+          // Solo emitir nuevo estado si hubo cambios en los perfiles
+          if (profilesChanged) {
+            emit(
+              ApplicationsManagementState.loaded(
+                allApplications: allApplications,
+                filteredApplications: filteredApplications,
+                userProfiles: updatedProfiles,
+                currentFilter: currentFilter,
+                currentSearch: currentSearch,
+                viewType: viewType,
+                isRefreshing: isRefreshing,
+                message: 'Perfiles de usuario actualizados',
+              ),
+            );
+          }
+        } catch (e) {
+          logger.e('Error al cargar perfiles de usuario: $e');
+          // No emitimos estado de error para no interrumpir la UI
+        }
+        return null;
+      },
       orElse: () {
         return null;
 
@@ -349,36 +346,35 @@ class ApplicationsManagementBloc
     Emitter<ApplicationsManagementState> emit,
   ) async {
     state.maybeWhen(
-      loaded:
-          (
-            allApplications,
-            filteredApplications,
-            userProfiles,
-            currentFilter,
-            currentSearch,
-            viewType,
-            isRefreshing,
-            message,
-          ) {
-            final List<ApplicationEntity> filtered = _applyFiltersAndSearch(
-              allApplications,
-              filterType,
-              currentSearch,
-            );
+      loaded: (
+        allApplications,
+        filteredApplications,
+        userProfiles,
+        currentFilter,
+        currentSearch,
+        viewType,
+        isRefreshing,
+        message,
+      ) {
+        final List<ApplicationEntity> filtered = _applyFiltersAndSearch(
+          allApplications,
+          filterType,
+          currentSearch,
+        );
 
-            emit(
-              ApplicationsManagementState.loaded(
-                allApplications: allApplications,
-                filteredApplications: filtered,
-                userProfiles: userProfiles,
-                currentFilter: filterType,
-                currentSearch: currentSearch,
-                viewType: viewType,
-                isRefreshing: false,
-                message: 'Mostrando ${filtered.length} aplicaciones',
-              ),
-            );
-          },
+        emit(
+          ApplicationsManagementState.loaded(
+            allApplications: allApplications,
+            filteredApplications: filtered,
+            userProfiles: userProfiles,
+            currentFilter: filterType,
+            currentSearch: currentSearch,
+            viewType: viewType,
+            isRefreshing: false,
+            message: 'Mostrando ${filtered.length} aplicaciones',
+          ),
+        );
+      },
       orElse: () {
         // No hacer nada si no estamos en estado cargado
       },
@@ -391,35 +387,34 @@ class ApplicationsManagementBloc
     Emitter<ApplicationsManagementState> emit,
   ) async {
     state.maybeWhen(
-      loaded:
-          (
-            allApplications,
-            filteredApplications,
-            userProfiles,
-            currentFilter,
-            currentSearch,
-            viewType,
-            isRefreshing,
-            message,
-          ) {
-            final List<ApplicationEntity> filtered = _applyFiltersAndSearch(
-              allApplications,
-              currentFilter,
-              query,
-            );
+      loaded: (
+        allApplications,
+        filteredApplications,
+        userProfiles,
+        currentFilter,
+        currentSearch,
+        viewType,
+        isRefreshing,
+        message,
+      ) {
+        final List<ApplicationEntity> filtered = _applyFiltersAndSearch(
+          allApplications,
+          currentFilter,
+          query,
+        );
 
-            emit(
-              ApplicationsManagementState.loaded(
-                allApplications: allApplications,
-                filteredApplications: filtered,
-                userProfiles: userProfiles,
-                currentFilter: currentFilter,
-                currentSearch: query,
-                viewType: viewType,
-                isRefreshing: false,
-              ),
-            );
-          },
+        emit(
+          ApplicationsManagementState.loaded(
+            allApplications: allApplications,
+            filteredApplications: filtered,
+            userProfiles: userProfiles,
+            currentFilter: currentFilter,
+            currentSearch: query,
+            viewType: viewType,
+            isRefreshing: false,
+          ),
+        );
+      },
       orElse: () {
         // No hacer nada si no estamos en estado cargado
       },
@@ -432,29 +427,28 @@ class ApplicationsManagementBloc
     Emitter<ApplicationsManagementState> emit,
   ) async {
     state.maybeWhen(
-      loaded:
-          (
-            allApplications,
-            filteredApplications,
-            userProfiles,
-            currentFilter,
-            currentSearch,
-            currentViewType,
-            isRefreshing,
-            message,
-          ) {
-            emit(
-              ApplicationsManagementState.loaded(
-                allApplications: allApplications,
-                filteredApplications: filteredApplications,
-                userProfiles: userProfiles,
-                currentFilter: currentFilter,
-                currentSearch: currentSearch,
-                viewType: viewType,
-                isRefreshing: false,
-              ),
-            );
-          },
+      loaded: (
+        allApplications,
+        filteredApplications,
+        userProfiles,
+        currentFilter,
+        currentSearch,
+        currentViewType,
+        isRefreshing,
+        message,
+      ) {
+        emit(
+          ApplicationsManagementState.loaded(
+            allApplications: allApplications,
+            filteredApplications: filteredApplications,
+            userProfiles: userProfiles,
+            currentFilter: currentFilter,
+            currentSearch: currentSearch,
+            viewType: viewType,
+            isRefreshing: false,
+          ),
+        );
+      },
       orElse: () {
         // No hacer nada si no estamos en estado cargado
       },
@@ -471,19 +465,16 @@ class ApplicationsManagementBloc
     List<ApplicationEntity> filtered;
     switch (filter) {
       case 'pending':
-        filtered = applications
-            .where((app) => app.status == 'pending')
-            .toList();
+        filtered =
+            applications.where((app) => app.status == 'pending').toList();
         break;
       case 'accepted':
-        filtered = applications
-            .where((app) => app.status == 'accepted')
-            .toList();
+        filtered =
+            applications.where((app) => app.status == 'accepted').toList();
         break;
       case 'rejected':
-        filtered = applications
-            .where((app) => app.status == 'rejected')
-            .toList();
+        filtered =
+            applications.where((app) => app.status == 'rejected').toList();
         break;
       case 'all':
       default:

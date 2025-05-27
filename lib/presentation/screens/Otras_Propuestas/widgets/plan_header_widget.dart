@@ -123,9 +123,9 @@ class PlanHeaderWidget extends StatelessWidget {
                 child: Text(
                   plan.category,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: AppColors.lightTextPrimary,
-                    fontWeight: FontWeight.bold,
-                  ),
+                        color: AppColors.lightTextPrimary,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
             ),

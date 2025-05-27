@@ -23,14 +23,14 @@ class ReviewEntity with _$ReviewEntity {
       _$ReviewEntityFromJson(json);
 
   factory ReviewEntity.empty() => ReviewEntity(
-    id: '',
-    reviewerId: '',
-    reviewedUserId: '',
-    planId: '',
-    rating: 0.0,
-    comment: '',
-    createdAt: DateTime.now(),
-  );
+        id: '',
+        reviewerId: '',
+        reviewedUserId: '',
+        planId: '',
+        rating: 0.0,
+        comment: '',
+        createdAt: DateTime.now(),
+      );
 }
 
 @freezed
@@ -47,10 +47,10 @@ class UserRatingEntity with _$UserRatingEntity {
       _$UserRatingEntityFromJson(json);
 
   factory UserRatingEntity.empty() => UserRatingEntity(
-    userId: '',
-    averageRating: 0.0,
-    totalReviews: 0,
-    ratingDistribution: const {},
-    lastUpdated: DateTime.fromMillisecondsSinceEpoch(0),
-  );
+        userId: '',
+        averageRating: 0.0,
+        totalReviews: 0,
+        ratingDistribution: const {},
+        lastUpdated: DateTime.fromMillisecondsSinceEpoch(0),
+      );
 }

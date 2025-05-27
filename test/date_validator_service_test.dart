@@ -33,23 +33,23 @@ class DateValidatorService {
   // Horarios por ciudad
   static final Map<String, Map<String, TimeOfDay>> _cityHours =
       <String, Map<String, TimeOfDay>>{
-        'Ciudad Autónoma de Buenos Aires': <String, TimeOfDay>{
-          'start': const TimeOfDay(hour: 8, minute: 0),
-          'end': const TimeOfDay(hour: 23, minute: 0),
-        },
-        'La Plata': <String, TimeOfDay>{
-          'start': const TimeOfDay(hour: 8, minute: 0),
-          'end': const TimeOfDay(hour: 22, minute: 0),
-        },
-        'Rosario': <String, TimeOfDay>{
-          'start': const TimeOfDay(hour: 8, minute: 0),
-          'end': const TimeOfDay(hour: 22, minute: 0),
-        },
-        'Córdoba': <String, TimeOfDay>{
-          'start': const TimeOfDay(hour: 8, minute: 0),
-          'end': const TimeOfDay(hour: 22, minute: 0),
-        },
-      };
+    'Ciudad Autónoma de Buenos Aires': <String, TimeOfDay>{
+      'start': const TimeOfDay(hour: 8, minute: 0),
+      'end': const TimeOfDay(hour: 23, minute: 0),
+    },
+    'La Plata': <String, TimeOfDay>{
+      'start': const TimeOfDay(hour: 8, minute: 0),
+      'end': const TimeOfDay(hour: 22, minute: 0),
+    },
+    'Rosario': <String, TimeOfDay>{
+      'start': const TimeOfDay(hour: 8, minute: 0),
+      'end': const TimeOfDay(hour: 22, minute: 0),
+    },
+    'Córdoba': <String, TimeOfDay>{
+      'start': const TimeOfDay(hour: 8, minute: 0),
+      'end': const TimeOfDay(hour: 22, minute: 0),
+    },
+  };
 
   // Validar si es día laboral
   static bool isWorkday(final DateTime date) {

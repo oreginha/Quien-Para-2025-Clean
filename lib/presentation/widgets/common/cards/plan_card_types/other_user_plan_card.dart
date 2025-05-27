@@ -173,9 +173,8 @@ class OtherUserPlanCard extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.brandYellow,
-                foregroundColor: isDarkMode
-                    ? Colors.black
-                    : AppColors.lightTextPrimary,
+                foregroundColor:
+                    isDarkMode ? Colors.black : AppColors.lightTextPrimary,
                 padding: const EdgeInsets.symmetric(vertical: AppSpacing.m),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppRadius.button),
@@ -202,10 +201,8 @@ class OtherUserPlanCard extends StatelessWidget {
 
     // Si no, los obtenemos de Firestore
     return FutureBuilder<DocumentSnapshot>(
-      future: FirebaseFirestore.instance
-          .collection('users')
-          .doc(creatorId)
-          .get(),
+      future:
+          FirebaseFirestore.instance.collection('users').doc(creatorId).get(),
       builder: (context, userSnapshot) {
         // Obtener datos del usuario
         final Map<String, dynamic>? userData =
@@ -251,13 +248,11 @@ class OtherUserPlanCard extends StatelessWidget {
             child: CircleAvatar(
               radius: 24,
               backgroundColor: AppColors.getSecondaryBackground(isDarkMode),
-              backgroundImage:
-                  userData['photoUrls'] != null &&
+              backgroundImage: userData['photoUrls'] != null &&
                       (userData['photoUrls'] as List).isNotEmpty
                   ? NetworkImage(userData['photoUrls'][0] as String)
                   : null,
-              child:
-                  (userData['photoUrls'] == null ||
+              child: (userData['photoUrls'] == null ||
                       (userData['photoUrls'] as List).isEmpty)
                   ? Icon(
                       Icons.person,

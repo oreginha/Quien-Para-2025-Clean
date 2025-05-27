@@ -94,52 +94,51 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            participants: null == participants
-                ? _value.participants
-                : participants // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            lastMessageTimestamp: freezed == lastMessageTimestamp
-                ? _value.lastMessageTimestamp
-                : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            lastMessage: freezed == lastMessage
-                ? _value.lastMessage
-                : lastMessage // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastMessageSenderId: freezed == lastMessageSenderId
-                ? _value.lastMessageSenderId
-                : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            unreadCount: null == unreadCount
-                ? _value.unreadCount
-                : unreadCount // ignore: cast_nullable_to_non_nullable
-                      as int,
-            isGroupChat: null == isGroupChat
-                ? _value.isGroupChat
-                : isGroupChat // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            name: freezed == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            planId: freezed == planId
-                ? _value.planId
-                : planId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            active: null == active
-                ? _value.active
-                : active // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        participants: null == participants
+            ? _value.participants
+            : participants // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        lastMessageTimestamp: freezed == lastMessageTimestamp
+            ? _value.lastMessageTimestamp
+            : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+        lastMessage: freezed == lastMessage
+            ? _value.lastMessage
+            : lastMessage // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastMessageSenderId: freezed == lastMessageSenderId
+            ? _value.lastMessageSenderId
+            : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        unreadCount: null == unreadCount
+            ? _value.unreadCount
+            : unreadCount // ignore: cast_nullable_to_non_nullable
+                as int,
+        isGroupChat: null == isGroupChat
+            ? _value.isGroupChat
+            : isGroupChat // ignore: cast_nullable_to_non_nullable
+                as bool,
+        name: freezed == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                as String?,
+        planId: freezed == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        active: null == active
+            ? _value.active
+            : active // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ) as $Val,
     );
   }
 }
@@ -199,47 +198,47 @@ class __$$ChatModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         participants: null == participants
             ? _value._participants
             : participants // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         lastMessageTimestamp: freezed == lastMessageTimestamp
             ? _value.lastMessageTimestamp
             : lastMessageTimestamp // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
         lastMessage: freezed == lastMessage
             ? _value.lastMessage
             : lastMessage // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastMessageSenderId: freezed == lastMessageSenderId
             ? _value.lastMessageSenderId
             : lastMessageSenderId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         unreadCount: null == unreadCount
             ? _value.unreadCount
             : unreadCount // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         isGroupChat: null == isGroupChat
             ? _value.isGroupChat
             : isGroupChat // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         name: freezed == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         planId: freezed == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         active: null == active
             ? _value.active
             : active // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
       ),
     );
   }
@@ -260,8 +259,8 @@ class _$ChatModelImpl extends _ChatModel {
     this.name,
     this.planId,
     this.active = true,
-  }) : _participants = participants,
-       super._();
+  })  : _participants = participants,
+        super._();
 
   factory _$ChatModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ChatModelImplFromJson(json);
@@ -336,19 +335,19 @@ class _$ChatModelImpl extends _ChatModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    const DeepCollectionEquality().hash(_participants),
-    createdAt,
-    lastMessageTimestamp,
-    lastMessage,
-    lastMessageSenderId,
-    unreadCount,
-    isGroupChat,
-    name,
-    planId,
-    active,
-  );
+        runtimeType,
+        id,
+        const DeepCollectionEquality().hash(_participants),
+        createdAt,
+        lastMessageTimestamp,
+        lastMessage,
+        lastMessageSenderId,
+        unreadCount,
+        isGroupChat,
+        name,
+        planId,
+        active,
+      );
 
   /// Create a copy of ChatModel
   /// with the given fields replaced by the non-null parameter values.

@@ -30,12 +30,12 @@ mixin _$ApplicationsManagementState {
       String viewType,
       bool isRefreshing,
       String? message,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(String message, ApplicationEntity application)
-    actionSuccess,
+        actionSuccess,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -49,12 +49,12 @@ mixin _$ApplicationsManagementState {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -68,13 +68,13 @@ mixin _$ApplicationsManagementState {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
@@ -82,7 +82,8 @@ mixin _$ApplicationsManagementState {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_ActionSuccess value) actionSuccess,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
@@ -90,7 +91,8 @@ mixin _$ApplicationsManagementState {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_ActionSuccess value)? actionSuccess,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -99,7 +101,8 @@ mixin _$ApplicationsManagementState {
     TResult Function(_ActionSuccess value)? actionSuccess,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -107,18 +110,13 @@ abstract class $ApplicationsManagementStateCopyWith<$Res> {
   factory $ApplicationsManagementStateCopyWith(
     ApplicationsManagementState value,
     $Res Function(ApplicationsManagementState) then,
-  ) =
-      _$ApplicationsManagementStateCopyWithImpl<
-        $Res,
-        ApplicationsManagementState
-      >;
+  ) = _$ApplicationsManagementStateCopyWithImpl<$Res,
+      ApplicationsManagementState>;
 }
 
 /// @nodoc
-class _$ApplicationsManagementStateCopyWithImpl<
-  $Res,
-  $Val extends ApplicationsManagementState
->
+class _$ApplicationsManagementStateCopyWithImpl<$Res,
+        $Val extends ApplicationsManagementState>
     implements $ApplicationsManagementStateCopyWith<$Res> {
   _$ApplicationsManagementStateCopyWithImpl(this._value, this._then);
 
@@ -185,10 +183,9 @@ class _$InitialImpl implements _Initial {
       String viewType,
       bool isRefreshing,
       String? message,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(String message, ApplicationEntity application)
-    actionSuccess,
+        actionSuccess,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -208,10 +205,9 @@ class _$InitialImpl implements _Initial {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -231,10 +227,9 @@ class _$InitialImpl implements _Initial {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -343,10 +338,9 @@ class _$LoadingImpl implements _Loading {
       String viewType,
       bool isRefreshing,
       String? message,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(String message, ApplicationEntity application)
-    actionSuccess,
+        actionSuccess,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -366,10 +360,9 @@ class _$LoadingImpl implements _Loading {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -389,10 +382,9 @@ class _$LoadingImpl implements _Loading {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -494,35 +486,35 @@ class __$$LoadedImplCopyWithImpl<$Res>
         allApplications: null == allApplications
             ? _value._allApplications
             : allApplications // ignore: cast_nullable_to_non_nullable
-                  as List<ApplicationEntity>,
+                as List<ApplicationEntity>,
         filteredApplications: null == filteredApplications
             ? _value._filteredApplications
             : filteredApplications // ignore: cast_nullable_to_non_nullable
-                  as List<ApplicationEntity>,
+                as List<ApplicationEntity>,
         userProfiles: null == userProfiles
             ? _value._userProfiles
             : userProfiles // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
         currentFilter: null == currentFilter
             ? _value.currentFilter
             : currentFilter // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         currentSearch: null == currentSearch
             ? _value.currentSearch
             : currentSearch // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         viewType: null == viewType
             ? _value.viewType
             : viewType // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         isRefreshing: null == isRefreshing
             ? _value.isRefreshing
             : isRefreshing // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         message: freezed == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -540,9 +532,9 @@ class _$LoadedImpl implements _Loaded {
     required this.viewType,
     this.isRefreshing = false,
     this.message,
-  }) : _allApplications = allApplications,
-       _filteredApplications = filteredApplications,
-       _userProfiles = userProfiles;
+  })  : _allApplications = allApplications,
+        _filteredApplications = filteredApplications,
+        _userProfiles = userProfiles;
 
   final List<ApplicationEntity> _allApplications;
   @override
@@ -616,16 +608,16 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_allApplications),
-    const DeepCollectionEquality().hash(_filteredApplications),
-    const DeepCollectionEquality().hash(_userProfiles),
-    currentFilter,
-    currentSearch,
-    viewType,
-    isRefreshing,
-    message,
-  );
+        runtimeType,
+        const DeepCollectionEquality().hash(_allApplications),
+        const DeepCollectionEquality().hash(_filteredApplications),
+        const DeepCollectionEquality().hash(_userProfiles),
+        currentFilter,
+        currentSearch,
+        viewType,
+        isRefreshing,
+        message,
+      );
 
   /// Create a copy of ApplicationsManagementState
   /// with the given fields replaced by the non-null parameter values.
@@ -649,10 +641,9 @@ class _$LoadedImpl implements _Loaded {
       String viewType,
       bool isRefreshing,
       String? message,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(String message, ApplicationEntity application)
-    actionSuccess,
+        actionSuccess,
     required TResult Function(String message) error,
   }) {
     return loaded(
@@ -681,10 +672,9 @@ class _$LoadedImpl implements _Loaded {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(
@@ -713,10 +703,9 @@ class _$LoadedImpl implements _Loaded {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -833,11 +822,11 @@ class __$$ActionSuccessImplCopyWithImpl<$Res>
         message: null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         application: null == application
             ? _value.application
             : application // ignore: cast_nullable_to_non_nullable
-                  as ApplicationEntity,
+                as ApplicationEntity,
       ),
     );
   }
@@ -893,10 +882,9 @@ class _$ActionSuccessImpl implements _ActionSuccess {
       String viewType,
       bool isRefreshing,
       String? message,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(String message, ApplicationEntity application)
-    actionSuccess,
+        actionSuccess,
     required TResult Function(String message) error,
   }) {
     return actionSuccess(message, application);
@@ -916,10 +904,9 @@ class _$ActionSuccessImpl implements _ActionSuccess {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return actionSuccess?.call(message, application);
@@ -939,10 +926,9 @@ class _$ActionSuccessImpl implements _ActionSuccess {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1038,7 +1024,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1090,10 +1076,9 @@ class _$ErrorImpl implements _Error {
       String viewType,
       bool isRefreshing,
       String? message,
-    )
-    loaded,
+    ) loaded,
     required TResult Function(String message, ApplicationEntity application)
-    actionSuccess,
+        actionSuccess,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1113,10 +1098,9 @@ class _$ErrorImpl implements _Error {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult? Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1136,10 +1120,9 @@ class _$ErrorImpl implements _Error {
       String viewType,
       bool isRefreshing,
       String? message,
-    )?
-    loaded,
+    )? loaded,
     TResult Function(String message, ApplicationEntity application)?
-    actionSuccess,
+        actionSuccess,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

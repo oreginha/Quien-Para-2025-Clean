@@ -77,16 +77,15 @@ class RepositoryModule implements DIModule {
 
       final firebase.FirebaseStorage storage =
           sl.isRegistered<firebase.FirebaseStorage>()
-          ? sl<firebase.FirebaseStorage>()
-          : firebase.FirebaseStorage.instance;
+              ? sl<firebase.FirebaseStorage>()
+              : firebase.FirebaseStorage.instance;
 
       // Obtener el mapper
       final UserMapper mapper = sl<UserMapper>();
 
       // Obtener el caché de usuario si está disponible
-      final userCache = sl.isRegistered<UserCache>()
-          ? sl<UserCache>()
-          : UserCache();
+      final userCache =
+          sl.isRegistered<UserCache>() ? sl<UserCache>() : UserCache();
 
       // Obtener el logger si está disponible
       final Logger logger = sl.isRegistered<Logger>() ? sl<Logger>() : Logger();
@@ -123,16 +122,15 @@ class RepositoryModule implements DIModule {
       // Usar Firebase Storage para el repositorio de usuarios
       final firebase.FirebaseStorage storage =
           sl.isRegistered<firebase.FirebaseStorage>()
-          ? sl<firebase.FirebaseStorage>()
-          : firebase.FirebaseStorage.instance;
+              ? sl<firebase.FirebaseStorage>()
+              : firebase.FirebaseStorage.instance;
 
       // Obtener el mapper
       final UserMapper mapper = sl<UserMapper>();
 
       // Obtener el caché de usuario si está disponible
-      final userCache = sl.isRegistered<UserCache>()
-          ? sl<UserCache>()
-          : UserCache();
+      final userCache =
+          sl.isRegistered<UserCache>() ? sl<UserCache>() : UserCache();
 
       return UserRepositoryImpl(
         firestore: firestore,

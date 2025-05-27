@@ -38,9 +38,9 @@ class NotificationService implements NotificationServiceInterface {
     FirebaseMessaging? messaging,
     FirebaseFirestore? firestore,
     FirebaseAuth? auth,
-  }) : _messaging = messaging ?? FirebaseMessaging.instance,
-       _firestore = firestore ?? FirebaseFirestore.instance,
-       _auth = auth ?? FirebaseAuth.instance {
+  })  : _messaging = messaging ?? FirebaseMessaging.instance,
+        _firestore = firestore ?? FirebaseFirestore.instance,
+        _auth = auth ?? FirebaseAuth.instance {
     if (kDebugMode) {
       print('📱 NotificationService: Inicializado con implementación completa');
     }
@@ -113,17 +113,17 @@ class NotificationService implements NotificationServiceInterface {
       // Configuración para iOS
       final DarwinInitializationSettings initializationSettingsIOS =
           DarwinInitializationSettings(
-            requestAlertPermission: true,
-            requestBadgePermission: true,
-            requestSoundPermission: true,
-          );
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      );
 
       // Configuración unificada
       final InitializationSettings initializationSettings =
           InitializationSettings(
-            android: initializationSettingsAndroid,
-            iOS: initializationSettingsIOS,
-          );
+        android: initializationSettingsAndroid,
+        iOS: initializationSettingsIOS,
+      );
 
       // Inicializar el plugin
       await _localNotifications!.initialize(
@@ -174,7 +174,7 @@ class NotificationService implements NotificationServiceInterface {
 
       final bool granted =
           settings.authorizationStatus == AuthorizationStatus.authorized ||
-          settings.authorizationStatus == AuthorizationStatus.provisional;
+              settings.authorizationStatus == AuthorizationStatus.provisional;
 
       if (kDebugMode) {
         print(
@@ -229,8 +229,8 @@ class NotificationService implements NotificationServiceInterface {
       });
 
       // Verificar si la app fue abierta desde una notificación mientras estaba cerrada
-      final RemoteMessage? initialMessage = await _messaging
-          .getInitialMessage();
+      final RemoteMessage? initialMessage =
+          await _messaging.getInitialMessage();
       if (initialMessage != null) {
         if (kDebugMode) {
           print(
@@ -259,13 +259,13 @@ class NotificationService implements NotificationServiceInterface {
     try {
       final AndroidNotificationDetails androidDetails =
           AndroidNotificationDetails(
-            'quien_para_channel',
-            'Notificaciones Quién Para',
-            channelDescription: 'Notificaciones de la app Quién Para',
-            importance: Importance.max,
-            priority: Priority.high,
-            showWhen: true,
-          );
+        'quien_para_channel',
+        'Notificaciones Quién Para',
+        channelDescription: 'Notificaciones de la app Quién Para',
+        importance: Importance.max,
+        priority: Priority.high,
+        showWhen: true,
+      );
 
       final DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
         presentAlert: true,
@@ -374,10 +374,8 @@ class NotificationService implements NotificationServiceInterface {
       });
 
       // Obtener el token FCM del usuario destinatario
-      final userDoc = await _firestore
-          .collection('users')
-          .doc(notification.userId)
-          .get();
+      final userDoc =
+          await _firestore.collection('users').doc(notification.userId).get();
       final String? fcmToken = userDoc.data()?['fcmToken'] as String?;
 
       if (fcmToken != null) {
@@ -464,13 +462,13 @@ class NotificationService implements NotificationServiceInterface {
     try {
       final AndroidNotificationDetails androidDetails =
           AndroidNotificationDetails(
-            'quien_para_channel',
-            'Notificaciones Quién Para',
-            channelDescription: 'Notificaciones de la app Quién Para',
-            importance: Importance.max,
-            priority: Priority.high,
-            showWhen: true,
-          );
+        'quien_para_channel',
+        'Notificaciones Quién Para',
+        channelDescription: 'Notificaciones de la app Quién Para',
+        importance: Importance.max,
+        priority: Priority.high,
+        showWhen: true,
+      );
 
       final DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
         presentAlert: true,
@@ -643,7 +641,7 @@ class NotificationService implements NotificationServiceInterface {
       final settings = await _messaging.getNotificationSettings();
       final bool enabled =
           settings.authorizationStatus == AuthorizationStatus.authorized ||
-          settings.authorizationStatus == AuthorizationStatus.provisional;
+              settings.authorizationStatus == AuthorizationStatus.provisional;
 
       return enabled;
     } catch (e) {

@@ -64,24 +64,23 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   }) {
     return _then(
       _value.copyWith(
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as AuthStatus,
-            user: freezed == user
-                ? _value.user
-                : user // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-            hasUserProfile: null == hasUserProfile
-                ? _value.hasUserProfile
-                : hasUserProfile // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            errorMessage: freezed == errorMessage
-                ? _value.errorMessage
-                : errorMessage // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                as AuthStatus,
+        user: freezed == user
+            ? _value.user
+            : user // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+        hasUserProfile: null == hasUserProfile
+            ? _value.hasUserProfile
+            : hasUserProfile // ignore: cast_nullable_to_non_nullable
+                as bool,
+        errorMessage: freezed == errorMessage
+            ? _value.errorMessage
+            : errorMessage // ignore: cast_nullable_to_non_nullable
+                as String?,
+      ) as $Val,
     );
   }
 }
@@ -127,19 +126,19 @@ class __$$AuthStateImplCopyWithImpl<$Res>
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
-                  as AuthStatus,
+                as AuthStatus,
         user: freezed == user
             ? _value._user
             : user // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
         hasUserProfile: null == hasUserProfile
             ? _value.hasUserProfile
             : hasUserProfile // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         errorMessage: freezed == errorMessage
             ? _value.errorMessage
             : errorMessage // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -194,12 +193,12 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    status,
-    const DeepCollectionEquality().hash(_user),
-    hasUserProfile,
-    errorMessage,
-  );
+        runtimeType,
+        status,
+        const DeepCollectionEquality().hash(_user),
+        hasUserProfile,
+        errorMessage,
+      );
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

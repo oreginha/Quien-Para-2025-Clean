@@ -100,60 +100,59 @@ class _$ReportEntityCopyWithImpl<$Res, $Val extends ReportEntity>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reporterId: null == reporterId
-                ? _value.reporterId
-                : reporterId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reportedUserId: null == reportedUserId
-                ? _value.reportedUserId
-                : reportedUserId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reportedPlanId: freezed == reportedPlanId
-                ? _value.reportedPlanId
-                : reportedPlanId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as ReportType,
-            reason: null == reason
-                ? _value.reason
-                : reason // ignore: cast_nullable_to_non_nullable
-                      as ReportReason,
-            description: null == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as ReportStatus,
-            moderatorId: freezed == moderatorId
-                ? _value.moderatorId
-                : moderatorId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            moderatorNotes: freezed == moderatorNotes
-                ? _value.moderatorNotes
-                : moderatorNotes // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            resolvedAt: freezed == resolvedAt
-                ? _value.resolvedAt
-                : resolvedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            evidence: freezed == evidence
-                ? _value.evidence
-                : evidence // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        reporterId: null == reporterId
+            ? _value.reporterId
+            : reporterId // ignore: cast_nullable_to_non_nullable
+                as String,
+        reportedUserId: null == reportedUserId
+            ? _value.reportedUserId
+            : reportedUserId // ignore: cast_nullable_to_non_nullable
+                as String,
+        reportedPlanId: freezed == reportedPlanId
+            ? _value.reportedPlanId
+            : reportedPlanId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as ReportType,
+        reason: null == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                as ReportReason,
+        description: null == description
+            ? _value.description
+            : description // ignore: cast_nullable_to_non_nullable
+                as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                as ReportStatus,
+        moderatorId: freezed == moderatorId
+            ? _value.moderatorId
+            : moderatorId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        moderatorNotes: freezed == moderatorNotes
+            ? _value.moderatorNotes
+            : moderatorNotes // ignore: cast_nullable_to_non_nullable
+                as String?,
+        resolvedAt: freezed == resolvedAt
+            ? _value.resolvedAt
+            : resolvedAt // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+        evidence: freezed == evidence
+            ? _value.evidence
+            : evidence // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+      ) as $Val,
     );
   }
 }
@@ -217,55 +216,55 @@ class __$$ReportEntityImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reporterId: null == reporterId
             ? _value.reporterId
             : reporterId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reportedUserId: null == reportedUserId
             ? _value.reportedUserId
             : reportedUserId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reportedPlanId: freezed == reportedPlanId
             ? _value.reportedPlanId
             : reportedPlanId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as ReportType,
+                as ReportType,
         reason: null == reason
             ? _value.reason
             : reason // ignore: cast_nullable_to_non_nullable
-                  as ReportReason,
+                as ReportReason,
         description: null == description
             ? _value.description
             : description // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
-                  as ReportStatus,
+                as ReportStatus,
         moderatorId: freezed == moderatorId
             ? _value.moderatorId
             : moderatorId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         moderatorNotes: freezed == moderatorNotes
             ? _value.moderatorNotes
             : moderatorNotes // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         resolvedAt: freezed == resolvedAt
             ? _value.resolvedAt
             : resolvedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
         evidence: freezed == evidence
             ? _value._evidence
             : evidence // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
       ),
     );
   }
@@ -364,21 +363,21 @@ class _$ReportEntityImpl implements _ReportEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    reporterId,
-    reportedUserId,
-    reportedPlanId,
-    type,
-    reason,
-    description,
-    createdAt,
-    status,
-    moderatorId,
-    moderatorNotes,
-    resolvedAt,
-    const DeepCollectionEquality().hash(_evidence),
-  );
+        runtimeType,
+        id,
+        reporterId,
+        reportedUserId,
+        reportedPlanId,
+        type,
+        reason,
+        description,
+        createdAt,
+        status,
+        moderatorId,
+        moderatorNotes,
+        resolvedAt,
+        const DeepCollectionEquality().hash(_evidence),
+      );
 
   /// Create a copy of ReportEntity
   /// with the given fields replaced by the non-null parameter values.

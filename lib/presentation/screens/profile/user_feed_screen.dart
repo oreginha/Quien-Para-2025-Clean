@@ -80,16 +80,16 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
         if (querySnapshot.docs.isNotEmpty) {
           _lastDocument = querySnapshot.docs.last;
           context.read<PlanBloc>().add(
-            PlanEvent.updateField(
-              field: 'loadMorePlans',
-              value: querySnapshot.docs
-                  .map(
-                    (final QueryDocumentSnapshot e) =>
-                        e.data() as Map<String, dynamic>,
-                  )
-                  .toList(),
-            ),
-          );
+                PlanEvent.updateField(
+                  field: 'loadMorePlans',
+                  value: querySnapshot.docs
+                      .map(
+                        (final QueryDocumentSnapshot e) =>
+                            e.data() as Map<String, dynamic>,
+                      )
+                      .toList(),
+                ),
+              );
         }
 
         setState(() {
@@ -143,8 +143,9 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
               color: AppColors.brandYellow,
               onRefresh: () async {
                 context.read<PlanBloc>().add(
-                  PlanEvent.updateField(field: 'loadUserPlans', value: userId),
-                );
+                      PlanEvent.updateField(
+                          field: 'loadUserPlans', value: userId),
+                    );
               },
               child: CustomScrollView(
                 controller: _scrollController,
@@ -449,116 +450,115 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
             .orderBy('createdAt', descending: true)
             .limit(_limit)
             .snapshots(),
-        builder:
-            (
-              final BuildContext context,
-              final AsyncSnapshot<QuerySnapshot<Object?>> snapshot,
-            ) {
-              if (snapshot.hasError) {
-                return Padding(
-                  padding: const EdgeInsets.all(AppSpacing.m),
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.error_outline,
-                        size: 48,
-                        color: AppColors.accentRed,
-                      ),
-                      const SizedBox(height: AppSpacing.m),
-                      Text(
-                        'Error al cargar tus planes',
-                        style: AppTypography.bodyLarge(isDarkMode),
-                      ),
-                      const SizedBox(height: AppSpacing.s),
-                      Text(
-                        'Es posible que necesites crear un índice en Firestore.',
-                        style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                          color: AppColors.getTextSecondary(isDarkMode),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+        builder: (
+          final BuildContext context,
+          final AsyncSnapshot<QuerySnapshot<Object?>> snapshot,
+        ) {
+          if (snapshot.hasError) {
+            return Padding(
+              padding: const EdgeInsets.all(AppSpacing.m),
+              child: Column(
+                children: [
+                  Icon(
+                    Icons.error_outline,
+                    size: 48,
+                    color: AppColors.accentRed,
                   ),
-                );
-              }
-
-              if (!snapshot.hasData) {
-                return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(AppSpacing.xl),
-                    child: CircularProgressIndicator(
-                      color: AppColors.brandYellow,
+                  const SizedBox(height: AppSpacing.m),
+                  Text(
+                    'Error al cargar tus planes',
+                    style: AppTypography.bodyLarge(isDarkMode),
+                  ),
+                  const SizedBox(height: AppSpacing.s),
+                  Text(
+                    'Es posible que necesites crear un índice en Firestore.',
+                    style: AppTypography.bodyMedium(isDarkMode).copyWith(
+                      color: AppColors.getTextSecondary(isDarkMode),
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                );
-              }
+                ],
+              ),
+            );
+          }
 
-              final List<DocumentSnapshot> plans = snapshot.data!.docs;
+          if (!snapshot.hasData) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(AppSpacing.xl),
+                child: CircularProgressIndicator(
+                  color: AppColors.brandYellow,
+                ),
+              ),
+            );
+          }
 
-              if (plans.isEmpty) {
-                return Padding(
-                  padding: const EdgeInsets.all(AppSpacing.l),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.sentiment_neutral,
-                        size: 64,
-                        color: AppColors.getTextSecondary(
-                          isDarkMode,
-                        ).withAlpha((0.3 * 255).round()),
-                      ),
-                      const SizedBox(height: AppSpacing.m),
-                      Text(
-                        'Aún no has creado planes',
-                        style: AppTypography.heading5(isDarkMode),
-                      ),
-                      const SizedBox(height: AppSpacing.s),
-                      Text(
-                        'Comienza creando tu primer plan',
-                        style: AppTypography.bodyMedium(isDarkMode).copyWith(
-                          color: AppColors.getTextSecondary(isDarkMode),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: AppSpacing.m),
-                      ElevatedButton.icon(
-                        onPressed: () => context.push(AppRouter.createProposal),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.brandYellow,
-                          foregroundColor: Colors.black,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: AppSpacing.m,
-                            horizontal: AppSpacing.m,
-                          ),
-                        ),
-                        icon: const Icon(Icons.add),
-                        label: const Text('Crear mi primer plan'),
-                      ),
-                    ],
+          final List<DocumentSnapshot> plans = snapshot.data!.docs;
+
+          if (plans.isEmpty) {
+            return Padding(
+              padding: const EdgeInsets.all(AppSpacing.l),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.sentiment_neutral,
+                    size: 64,
+                    color: AppColors.getTextSecondary(
+                      isDarkMode,
+                    ).withAlpha((0.3 * 255).round()),
                   ),
-                );
-              }
-
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: plans.length,
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.m),
-                itemBuilder: (context, index) {
-                  final Map<String, dynamic> planData =
-                      plans[index].data() as Map<String, dynamic>;
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: AppSpacing.m),
-                    child: PlanCard(
-                      planId: plans[index].id,
-                      planData: planData,
-                      cardType: PlanCardType.myPlan,
+                  const SizedBox(height: AppSpacing.m),
+                  Text(
+                    'Aún no has creado planes',
+                    style: AppTypography.heading5(isDarkMode),
+                  ),
+                  const SizedBox(height: AppSpacing.s),
+                  Text(
+                    'Comienza creando tu primer plan',
+                    style: AppTypography.bodyMedium(isDarkMode).copyWith(
+                      color: AppColors.getTextSecondary(isDarkMode),
                     ),
-                  );
-                },
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: AppSpacing.m),
+                  ElevatedButton.icon(
+                    onPressed: () => context.push(AppRouter.createProposal),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.brandYellow,
+                      foregroundColor: Colors.black,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.m,
+                        horizontal: AppSpacing.m,
+                      ),
+                    ),
+                    icon: const Icon(Icons.add),
+                    label: const Text('Crear mi primer plan'),
+                  ),
+                ],
+              ),
+            );
+          }
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: plans.length,
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.m),
+            itemBuilder: (context, index) {
+              final Map<String, dynamic> planData =
+                  plans[index].data() as Map<String, dynamic>;
+              return Padding(
+                padding: const EdgeInsets.only(bottom: AppSpacing.m),
+                child: PlanCard(
+                  planId: plans[index].id,
+                  planData: planData,
+                  cardType: PlanCardType.myPlan,
+                ),
               );
             },
+          );
+        },
       ),
     );
   }

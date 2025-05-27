@@ -92,52 +92,51 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            age: null == age
-                ? _value.age
-                : age // ignore: cast_nullable_to_non_nullable
-                      as int,
-            email: null == email
-                ? _value.email
-                : email // ignore: cast_nullable_to_non_nullable
-                      as String,
-            photoUrls: null == photoUrls
-                ? _value.photoUrls
-                : photoUrls // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            interests: null == interests
-                ? _value.interests
-                : interests // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            bio: freezed == bio
-                ? _value.bio
-                : bio // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isVisible: null == isVisible
-                ? _value.isVisible
-                : isVisible // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            hasCompletedOnboarding: null == hasCompletedOnboarding
-                ? _value.hasCompletedOnboarding
-                : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            createdAt: freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            lastLogin: freezed == lastLogin
-                ? _value.lastLogin
-                : lastLogin // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                as String,
+        age: null == age
+            ? _value.age
+            : age // ignore: cast_nullable_to_non_nullable
+                as int,
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                as String,
+        photoUrls: null == photoUrls
+            ? _value.photoUrls
+            : photoUrls // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        interests: null == interests
+            ? _value.interests
+            : interests // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        bio: freezed == bio
+            ? _value.bio
+            : bio // ignore: cast_nullable_to_non_nullable
+                as String?,
+        isVisible: null == isVisible
+            ? _value.isVisible
+            : isVisible // ignore: cast_nullable_to_non_nullable
+                as bool,
+        hasCompletedOnboarding: null == hasCompletedOnboarding
+            ? _value.hasCompletedOnboarding
+            : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
+                as bool,
+        createdAt: freezed == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+        lastLogin: freezed == lastLogin
+            ? _value.lastLogin
+            : lastLogin // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+      ) as $Val,
     );
   }
 }
@@ -197,47 +196,47 @@ class __$$UserModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         name: null == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         age: null == age
             ? _value.age
             : age // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         email: null == email
             ? _value.email
             : email // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         photoUrls: null == photoUrls
             ? _value._photoUrls
             : photoUrls // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         interests: null == interests
             ? _value._interests
             : interests // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         bio: freezed == bio
             ? _value.bio
             : bio // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         isVisible: null == isVisible
             ? _value.isVisible
             : isVisible // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         hasCompletedOnboarding: null == hasCompletedOnboarding
             ? _value.hasCompletedOnboarding
             : hasCompletedOnboarding // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
         lastLogin: freezed == lastLogin
             ? _value.lastLogin
             : lastLogin // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
       ),
     );
   }
@@ -258,8 +257,8 @@ class _$UserModelImpl implements _UserModel {
     this.hasCompletedOnboarding = false,
     this.createdAt,
     this.lastLogin,
-  }) : _photoUrls = photoUrls,
-       _interests = interests;
+  })  : _photoUrls = photoUrls,
+        _interests = interests;
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -339,19 +338,19 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    name,
-    age,
-    email,
-    const DeepCollectionEquality().hash(_photoUrls),
-    const DeepCollectionEquality().hash(_interests),
-    bio,
-    isVisible,
-    hasCompletedOnboarding,
-    createdAt,
-    lastLogin,
-  );
+        runtimeType,
+        id,
+        name,
+        age,
+        email,
+        const DeepCollectionEquality().hash(_photoUrls),
+        const DeepCollectionEquality().hash(_interests),
+        bio,
+        isVisible,
+        hasCompletedOnboarding,
+        createdAt,
+        lastLogin,
+      );
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

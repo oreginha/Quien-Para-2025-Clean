@@ -30,11 +30,11 @@ class ChatRepositoryImpl implements ChatRepository {
     required ChatMapper chatMapper,
     required MessageMapper messageMapper,
     Logger? logger,
-  }) : _firestore = firestore,
-       _auth = auth,
-       _chatMapper = chatMapper,
-       _messageMapper = messageMapper,
-       _logger = logger ?? Logger();
+  })  : _firestore = firestore,
+        _auth = auth,
+        _chatMapper = chatMapper,
+        _messageMapper = messageMapper,
+        _logger = logger ?? Logger();
 
   @override
   Future<Either<AppFailure, String>> createConversation({
@@ -192,32 +192,31 @@ class ChatRepositoryImpl implements ChatRepository {
       // Transformar los resultados usando el mapper
       return safeStream
           .map<Either<AppFailure, List<ConversationEntity>>>((snapshot) {
-            try {
-              final conversations = snapshot.docs
-                  .map((doc) => _chatMapper.fromFirestore(doc))
-                  .toList();
-              return Right(conversations);
-            } catch (e) {
-              _logger.e('Error procesando conversaciones: $e');
-              return Left(
-                AppFailure(
-                  code: 'chat-stream-process-error',
-                  message:
-                      'Error al procesar stream de conversaciones: ${e.toString()}',
-                ),
-              );
-            }
-          })
-          .handleError((error) {
-            _logger.e('Error en stream de conversaciones: $error');
-            return Left(
-              AppFailure(
-                code: 'chat-stream-error',
-                message:
-                    'Error en el stream de conversaciones: ${error.toString()}',
-              ),
-            );
-          });
+        try {
+          final conversations = snapshot.docs
+              .map((doc) => _chatMapper.fromFirestore(doc))
+              .toList();
+          return Right(conversations);
+        } catch (e) {
+          _logger.e('Error procesando conversaciones: $e');
+          return Left(
+            AppFailure(
+              code: 'chat-stream-process-error',
+              message:
+                  'Error al procesar stream de conversaciones: ${e.toString()}',
+            ),
+          );
+        }
+      }).handleError((error) {
+        _logger.e('Error en stream de conversaciones: $error');
+        return Left(
+          AppFailure(
+            code: 'chat-stream-error',
+            message:
+                'Error en el stream de conversaciones: ${error.toString()}',
+          ),
+        );
+      });
     } catch (e) {
       _logger.e('Error iniciando stream de conversaciones: $e');
       return Stream.value(
@@ -306,31 +305,29 @@ class ChatRepositoryImpl implements ChatRepository {
       // Transformar los resultados usando el mapper
       return safeStream
           .map<Either<AppFailure, List<MessageEntity>>>((snapshot) {
-            try {
-              final messages = snapshot.docs
-                  .map((doc) => _messageMapper.fromFirestore(doc))
-                  .toList();
-              return Right(messages);
-            } catch (e) {
-              _logger.e('Error procesando mensajes: $e');
-              return Left(
-                AppFailure(
-                  code: 'message-stream-process-error',
-                  message:
-                      'Error al procesar stream de mensajes: ${e.toString()}',
-                ),
-              );
-            }
-          })
-          .handleError((error) {
-            _logger.e('Error en stream de mensajes: $error');
-            return Left(
-              AppFailure(
-                code: 'message-stream-error',
-                message: 'Error en el stream de mensajes: ${error.toString()}',
-              ),
-            );
-          });
+        try {
+          final messages = snapshot.docs
+              .map((doc) => _messageMapper.fromFirestore(doc))
+              .toList();
+          return Right(messages);
+        } catch (e) {
+          _logger.e('Error procesando mensajes: $e');
+          return Left(
+            AppFailure(
+              code: 'message-stream-process-error',
+              message: 'Error al procesar stream de mensajes: ${e.toString()}',
+            ),
+          );
+        }
+      }).handleError((error) {
+        _logger.e('Error en stream de mensajes: $error');
+        return Left(
+          AppFailure(
+            code: 'message-stream-error',
+            message: 'Error en el stream de mensajes: ${error.toString()}',
+          ),
+        );
+      });
     } catch (e) {
       _logger.e('Error iniciando stream de mensajes: $e');
       return Stream.value(
@@ -355,9 +352,8 @@ class ChatRepositoryImpl implements ChatRepository {
 
     try {
       // Obtener referencia a la conversación
-      final conversationRef = _firestore
-          .collection('chats')
-          .doc(conversationId);
+      final conversationRef =
+          _firestore.collection('chats').doc(conversationId);
       final conversationDoc = await conversationRef.get();
 
       if (!conversationDoc.exists) {
@@ -558,9 +554,8 @@ class ChatRepositoryImpl implements ChatRepository {
 
     try {
       // Obtener referencia a la conversación
-      final conversationRef = _firestore
-          .collection('chats')
-          .doc(conversationId);
+      final conversationRef =
+          _firestore.collection('chats').doc(conversationId);
       final conversationDoc = await conversationRef.get();
 
       if (!conversationDoc.exists) {

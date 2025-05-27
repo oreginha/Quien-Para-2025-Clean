@@ -195,9 +195,8 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
           }
         },
         child: Scaffold(
-          backgroundColor: isDarkMode
-              ? AppColors.darkBackground
-              : AppColors.lightBackground,
+          backgroundColor:
+              isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
           body: BlocBuilder<PlanBloc, PlanState>(
             builder: (final BuildContext context, final PlanState state) {
               if (state is PlanInitial) {
@@ -290,8 +289,8 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
                                         backgroundColor: Colors.transparent,
                                         valueColor:
                                             AlwaysStoppedAnimation<Color>(
-                                              AppColors.brandYellow,
-                                            ),
+                                          AppColors.brandYellow,
+                                        ),
                                         minHeight: 8,
                                       ),
                                     ),
@@ -323,11 +322,11 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
                                 : null,
                             onSelect: (final type) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'type',
-                                  value: type,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'type',
+                                      value: type,
+                                    ),
+                                  );
                               _updateStepValidation(0, true);
                               _nextPage();
                             },
@@ -339,19 +338,19 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
                                 : null,
                             onDateSelect: (final date) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'date',
-                                  value: date,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'date',
+                                      value: date,
+                                    ),
+                                  );
                             },
                             onCitySelect: (final city) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'city',
-                                  value: city,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'city',
+                                      value: city,
+                                    ),
+                                  );
                               _updateStepValidation(1, true);
                             },
                             onNext: () {
@@ -379,32 +378,31 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
                             description: state is PlanLoaded
                                 ? state.plan.description
                                 : '',
-                            location: state is PlanLoaded
-                                ? state.plan.location
-                                : '',
+                            location:
+                                state is PlanLoaded ? state.plan.location : '',
                             onTitleChange: (final value) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'title',
-                                  value: value,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'title',
+                                      value: value,
+                                    ),
+                                  );
                             },
                             onDescriptionChange: (final value) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'description',
-                                  value: value,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'description',
+                                      value: value,
+                                    ),
+                                  );
                             },
                             onLocationChange: (final value) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'location',
-                                  value: value,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'location',
+                                      value: value,
+                                    ),
+                                  );
                             },
                             onNext: () {
                               if (state is PlanLoaded &&
@@ -428,26 +426,26 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
                                 : '',
                             onGuestCountSelect: (final count) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'guestCount',
-                                  value: count,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'guestCount',
+                                      value: count,
+                                    ),
+                                  );
                             },
                             onPayConditionSelect: (final condition) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateField(
-                                  field: 'payCondition',
-                                  value: condition,
-                                ),
-                              );
+                                    PlanEvent.updateField(
+                                      field: 'payCondition',
+                                      value: condition,
+                                    ),
+                                  );
                             },
                             onExtraConditionsChange: (final value) {
                               context.read<PlanBloc>().add(
-                                PlanEvent.updateExtraConditions(
-                                  value.toString(),
-                                ),
-                              );
+                                    PlanEvent.updateExtraConditions(
+                                      value.toString(),
+                                    ),
+                                  );
                             },
                             onSubmit: () {
                               if (state is PlanLoaded &&
@@ -455,8 +453,8 @@ class _OnboardingPlanFlowState extends State<OnboardingPlanFlow>
                                   state.plan.payCondition != null) {
                                 _updateStepValidation(4, true);
                                 context.read<PlanBloc>().add(
-                                  const PlanEvent.save(),
-                                );
+                                      const PlanEvent.save(),
+                                    );
                               }
                             },
                           ),

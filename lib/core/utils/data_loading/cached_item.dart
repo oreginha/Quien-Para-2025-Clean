@@ -13,8 +13,8 @@ class CachedItem<T> {
 
   /// Constructor con parámetros opcionales
   CachedItem(this.item, {DateTime? timestamp, Duration? expirationTime})
-    : timestamp = timestamp ?? DateTime.now(),
-      expirationTime = expirationTime ?? const Duration(minutes: 5);
+      : timestamp = timestamp ?? DateTime.now(),
+        expirationTime = expirationTime ?? const Duration(minutes: 5);
 
   /// Constructor para crear un elemento nulo en caché
   factory CachedItem.empty({Duration? expirationTime}) =>

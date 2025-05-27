@@ -63,7 +63,8 @@ class GetNotificationsUseCase
   /// Método de conveniencia para usar el caso de uso como una función.
   Future<Either<AppFailure, List<NotificationEntity>>> call(
     GetNotificationsParams params,
-  ) => execute(params);
+  ) =>
+      execute(params);
 
   /// Método de conveniencia para obtener todas las notificaciones de un usuario
   Future<Either<AppFailure, List<NotificationEntity>>> getAllNotifications(

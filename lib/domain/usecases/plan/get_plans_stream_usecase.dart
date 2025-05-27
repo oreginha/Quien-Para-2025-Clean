@@ -41,10 +41,9 @@ class GetPlansStreamUseCase
       return Stream.value(
         Left(
           ServerFailure(
-                'Stream no disponible',
-                originalError: 'No stream available',
-              )
-              as AppFailure,
+            'Stream no disponible',
+            originalError: 'No stream available',
+          ) as AppFailure,
         ),
       );
     }
@@ -55,7 +54,8 @@ class GetPlansStreamUseCase
   /// Método de conveniencia para usar el caso de uso como una función.
   Stream<Either<AppFailure, List<PlanEntity>>> call(
     GetPlansStreamParams params,
-  ) => execute(params);
+  ) =>
+      execute(params);
 
   /// Método de conveniencia para obtener un stream de todos los planes
   Stream<Either<AppFailure, List<PlanEntity>>> getAllPlansStream() {

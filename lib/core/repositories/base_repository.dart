@@ -17,8 +17,8 @@ abstract class BaseRepository {
 
   /// Constructor que recibe un logger para registro de errores
   BaseRepository({required Logger logger})
-    : _logger = logger,
-      _errorHandler = ErrorHandler(logger: logger);
+      : _logger = logger,
+        _errorHandler = ErrorHandler(logger: logger);
 
   /// Ejecuta una operación con manejo de errores incorporado
   ///

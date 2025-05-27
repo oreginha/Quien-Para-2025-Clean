@@ -12,16 +12,15 @@ class MockAuthRepository extends Mock implements AuthRepositoryInterface {
     String password,
   ) async {
     return super.noSuchMethod(
-          Invocation.method(#signInWithEmailAndPassword, [email, password]),
-          returnValue: Future.value(
-            UserEntity(
-              id: 'user123',
-              name: 'Test User',
-              photoUrl: 'https://example.com/photo.jpg',
-            ),
-          ),
-        )
-        as Future<UserEntity>;
+      Invocation.method(#signInWithEmailAndPassword, [email, password]),
+      returnValue: Future.value(
+        UserEntity(
+          id: 'user123',
+          name: 'Test User',
+          photoUrl: 'https://example.com/photo.jpg',
+        ),
+      ),
+    ) as Future<UserEntity>;
   }
 
   @override
@@ -31,28 +30,26 @@ class MockAuthRepository extends Mock implements AuthRepositoryInterface {
     String name,
   ) async {
     return super.noSuchMethod(
-          Invocation.method(#signUpWithEmailAndPassword, [
-            email,
-            password,
-            name,
-          ]),
-          returnValue: Future.value(
-            UserEntity(
-              id: 'user123',
-              name: name,
-              photoUrl: 'https://example.com/photo.jpg',
-            ),
-          ),
-        )
-        as Future<UserEntity>;
+      Invocation.method(#signUpWithEmailAndPassword, [
+        email,
+        password,
+        name,
+      ]),
+      returnValue: Future.value(
+        UserEntity(
+          id: 'user123',
+          name: name,
+          photoUrl: 'https://example.com/photo.jpg',
+        ),
+      ),
+    ) as Future<UserEntity>;
   }
 
   @override
   Future<void> signOut() async {
     return super.noSuchMethod(
-          Invocation.method(#signOut, []),
-          returnValue: Future<void>.value(),
-        )
-        as Future<void>;
+      Invocation.method(#signOut, []),
+      returnValue: Future<void>.value(),
+    ) as Future<void>;
   }
 }

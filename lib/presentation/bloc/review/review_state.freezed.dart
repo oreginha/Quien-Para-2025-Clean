@@ -172,144 +172,143 @@ class _$ReviewStateCopyWithImpl<$Res, $Val extends ReviewState>
   }) {
     return _then(
       _value.copyWith(
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as ReviewStatus,
-            error: freezed == error
-                ? _value.error
-                : error // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            isLoading: freezed == isLoading
-                ? _value.isLoading
-                : isLoading // ignore: cast_nullable_to_non_nullable
-                      as bool?,
-            userReviews: null == userReviews
-                ? _value.userReviews
-                : userReviews // ignore: cast_nullable_to_non_nullable
-                      as List<ReviewEntity>,
-            planReviews: null == planReviews
-                ? _value.planReviews
-                : planReviews // ignore: cast_nullable_to_non_nullable
-                      as List<ReviewEntity>,
-            reviewsByUser: null == reviewsByUser
-                ? _value.reviewsByUser
-                : reviewsByUser // ignore: cast_nullable_to_non_nullable
-                      as List<ReviewEntity>,
-            pendingReviews: null == pendingReviews
-                ? _value.pendingReviews
-                : pendingReviews // ignore: cast_nullable_to_non_nullable
-                      as List<ReviewEntity>,
-            hasMoreUserReviews: null == hasMoreUserReviews
-                ? _value.hasMoreUserReviews
-                : hasMoreUserReviews // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            hasMorePlanReviews: null == hasMorePlanReviews
-                ? _value.hasMorePlanReviews
-                : hasMorePlanReviews // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            hasMoreReviewsByUser: null == hasMoreReviewsByUser
-                ? _value.hasMoreReviewsByUser
-                : hasMoreReviewsByUser // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            hasMorePendingReviews: null == hasMorePendingReviews
-                ? _value.hasMorePendingReviews
-                : hasMorePendingReviews // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            lastUserReviewDocumentId: freezed == lastUserReviewDocumentId
-                ? _value.lastUserReviewDocumentId
-                : lastUserReviewDocumentId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastPlanReviewDocumentId: freezed == lastPlanReviewDocumentId
-                ? _value.lastPlanReviewDocumentId
-                : lastPlanReviewDocumentId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastReviewsByUserDocumentId: freezed == lastReviewsByUserDocumentId
-                ? _value.lastReviewsByUserDocumentId
-                : lastReviewsByUserDocumentId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastPendingReviewDocumentId: freezed == lastPendingReviewDocumentId
-                ? _value.lastPendingReviewDocumentId
-                : lastPendingReviewDocumentId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            currentUserRating: freezed == currentUserRating
-                ? _value.currentUserRating
-                : currentUserRating // ignore: cast_nullable_to_non_nullable
-                      as UserRatingEntity?,
-            topRatedUsers: null == topRatedUsers
-                ? _value.topRatedUsers
-                : topRatedUsers // ignore: cast_nullable_to_non_nullable
-                      as List<UserRatingEntity>,
-            lastCalculationResult: freezed == lastCalculationResult
-                ? _value.lastCalculationResult
-                : lastCalculationResult // ignore: cast_nullable_to_non_nullable
-                      as UserRatingCalculationResult?,
-            lastUserReviewsResult: freezed == lastUserReviewsResult
-                ? _value.lastUserReviewsResult
-                : lastUserReviewsResult // ignore: cast_nullable_to_non_nullable
-                      as UserReviewsResult?,
-            userRatingComparisons: null == userRatingComparisons
-                ? _value.userRatingComparisons
-                : userRatingComparisons // ignore: cast_nullable_to_non_nullable
-                      as List<UserRatingComparison>,
-            lastCreatedReviewId: freezed == lastCreatedReviewId
-                ? _value.lastCreatedReviewId
-                : lastCreatedReviewId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastUpdatedReviewId: freezed == lastUpdatedReviewId
-                ? _value.lastUpdatedReviewId
-                : lastUpdatedReviewId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastDeletedReviewId: freezed == lastDeletedReviewId
-                ? _value.lastDeletedReviewId
-                : lastDeletedReviewId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            helpfulReviewIds: null == helpfulReviewIds
-                ? _value.helpfulReviewIds
-                : helpfulReviewIds // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            lastApprovedReviewId: freezed == lastApprovedReviewId
-                ? _value.lastApprovedReviewId
-                : lastApprovedReviewId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastRejectedReviewId: freezed == lastRejectedReviewId
-                ? _value.lastRejectedReviewId
-                : lastRejectedReviewId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            lastFlaggedReviewId: freezed == lastFlaggedReviewId
-                ? _value.lastFlaggedReviewId
-                : lastFlaggedReviewId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            reviewMetrics: freezed == reviewMetrics
-                ? _value.reviewMetrics
-                : reviewMetrics // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-            ratingDistribution: freezed == ratingDistribution
-                ? _value.ratingDistribution
-                : ratingDistribution // ignore: cast_nullable_to_non_nullable
-                      as Map<int, int>?,
-            reviewTrends: freezed == reviewTrends
-                ? _value.reviewTrends
-                : reviewTrends // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-            canReviewPermissions: null == canReviewPermissions
-                ? _value.canReviewPermissions
-                : canReviewPermissions // ignore: cast_nullable_to_non_nullable
-                      as Map<String, bool>,
-            lastRefreshTime: freezed == lastRefreshTime
-                ? _value.lastRefreshTime
-                : lastRefreshTime // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            lastDataFetchTimes: null == lastDataFetchTimes
-                ? _value.lastDataFetchTimes
-                : lastDataFetchTimes // ignore: cast_nullable_to_non_nullable
-                      as Map<String, DateTime>,
-            isRefreshing: null == isRefreshing
-                ? _value.isRefreshing
-                : isRefreshing // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                as ReviewStatus,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                as String?,
+        isLoading: freezed == isLoading
+            ? _value.isLoading
+            : isLoading // ignore: cast_nullable_to_non_nullable
+                as bool?,
+        userReviews: null == userReviews
+            ? _value.userReviews
+            : userReviews // ignore: cast_nullable_to_non_nullable
+                as List<ReviewEntity>,
+        planReviews: null == planReviews
+            ? _value.planReviews
+            : planReviews // ignore: cast_nullable_to_non_nullable
+                as List<ReviewEntity>,
+        reviewsByUser: null == reviewsByUser
+            ? _value.reviewsByUser
+            : reviewsByUser // ignore: cast_nullable_to_non_nullable
+                as List<ReviewEntity>,
+        pendingReviews: null == pendingReviews
+            ? _value.pendingReviews
+            : pendingReviews // ignore: cast_nullable_to_non_nullable
+                as List<ReviewEntity>,
+        hasMoreUserReviews: null == hasMoreUserReviews
+            ? _value.hasMoreUserReviews
+            : hasMoreUserReviews // ignore: cast_nullable_to_non_nullable
+                as bool,
+        hasMorePlanReviews: null == hasMorePlanReviews
+            ? _value.hasMorePlanReviews
+            : hasMorePlanReviews // ignore: cast_nullable_to_non_nullable
+                as bool,
+        hasMoreReviewsByUser: null == hasMoreReviewsByUser
+            ? _value.hasMoreReviewsByUser
+            : hasMoreReviewsByUser // ignore: cast_nullable_to_non_nullable
+                as bool,
+        hasMorePendingReviews: null == hasMorePendingReviews
+            ? _value.hasMorePendingReviews
+            : hasMorePendingReviews // ignore: cast_nullable_to_non_nullable
+                as bool,
+        lastUserReviewDocumentId: freezed == lastUserReviewDocumentId
+            ? _value.lastUserReviewDocumentId
+            : lastUserReviewDocumentId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastPlanReviewDocumentId: freezed == lastPlanReviewDocumentId
+            ? _value.lastPlanReviewDocumentId
+            : lastPlanReviewDocumentId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastReviewsByUserDocumentId: freezed == lastReviewsByUserDocumentId
+            ? _value.lastReviewsByUserDocumentId
+            : lastReviewsByUserDocumentId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastPendingReviewDocumentId: freezed == lastPendingReviewDocumentId
+            ? _value.lastPendingReviewDocumentId
+            : lastPendingReviewDocumentId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        currentUserRating: freezed == currentUserRating
+            ? _value.currentUserRating
+            : currentUserRating // ignore: cast_nullable_to_non_nullable
+                as UserRatingEntity?,
+        topRatedUsers: null == topRatedUsers
+            ? _value.topRatedUsers
+            : topRatedUsers // ignore: cast_nullable_to_non_nullable
+                as List<UserRatingEntity>,
+        lastCalculationResult: freezed == lastCalculationResult
+            ? _value.lastCalculationResult
+            : lastCalculationResult // ignore: cast_nullable_to_non_nullable
+                as UserRatingCalculationResult?,
+        lastUserReviewsResult: freezed == lastUserReviewsResult
+            ? _value.lastUserReviewsResult
+            : lastUserReviewsResult // ignore: cast_nullable_to_non_nullable
+                as UserReviewsResult?,
+        userRatingComparisons: null == userRatingComparisons
+            ? _value.userRatingComparisons
+            : userRatingComparisons // ignore: cast_nullable_to_non_nullable
+                as List<UserRatingComparison>,
+        lastCreatedReviewId: freezed == lastCreatedReviewId
+            ? _value.lastCreatedReviewId
+            : lastCreatedReviewId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastUpdatedReviewId: freezed == lastUpdatedReviewId
+            ? _value.lastUpdatedReviewId
+            : lastUpdatedReviewId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastDeletedReviewId: freezed == lastDeletedReviewId
+            ? _value.lastDeletedReviewId
+            : lastDeletedReviewId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        helpfulReviewIds: null == helpfulReviewIds
+            ? _value.helpfulReviewIds
+            : helpfulReviewIds // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        lastApprovedReviewId: freezed == lastApprovedReviewId
+            ? _value.lastApprovedReviewId
+            : lastApprovedReviewId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastRejectedReviewId: freezed == lastRejectedReviewId
+            ? _value.lastRejectedReviewId
+            : lastRejectedReviewId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        lastFlaggedReviewId: freezed == lastFlaggedReviewId
+            ? _value.lastFlaggedReviewId
+            : lastFlaggedReviewId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        reviewMetrics: freezed == reviewMetrics
+            ? _value.reviewMetrics
+            : reviewMetrics // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+        ratingDistribution: freezed == ratingDistribution
+            ? _value.ratingDistribution
+            : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                as Map<int, int>?,
+        reviewTrends: freezed == reviewTrends
+            ? _value.reviewTrends
+            : reviewTrends // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+        canReviewPermissions: null == canReviewPermissions
+            ? _value.canReviewPermissions
+            : canReviewPermissions // ignore: cast_nullable_to_non_nullable
+                as Map<String, bool>,
+        lastRefreshTime: freezed == lastRefreshTime
+            ? _value.lastRefreshTime
+            : lastRefreshTime // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+        lastDataFetchTimes: null == lastDataFetchTimes
+            ? _value.lastDataFetchTimes
+            : lastDataFetchTimes // ignore: cast_nullable_to_non_nullable
+                as Map<String, DateTime>,
+        isRefreshing: null == isRefreshing
+            ? _value.isRefreshing
+            : isRefreshing // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ) as $Val,
     );
   }
 
@@ -432,139 +431,139 @@ class __$$ReviewStateImplCopyWithImpl<$Res>
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
-                  as ReviewStatus,
+                as ReviewStatus,
         error: freezed == error
             ? _value.error
             : error // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         isLoading: freezed == isLoading
             ? _value.isLoading
             : isLoading // ignore: cast_nullable_to_non_nullable
-                  as bool?,
+                as bool?,
         userReviews: null == userReviews
             ? _value._userReviews
             : userReviews // ignore: cast_nullable_to_non_nullable
-                  as List<ReviewEntity>,
+                as List<ReviewEntity>,
         planReviews: null == planReviews
             ? _value._planReviews
             : planReviews // ignore: cast_nullable_to_non_nullable
-                  as List<ReviewEntity>,
+                as List<ReviewEntity>,
         reviewsByUser: null == reviewsByUser
             ? _value._reviewsByUser
             : reviewsByUser // ignore: cast_nullable_to_non_nullable
-                  as List<ReviewEntity>,
+                as List<ReviewEntity>,
         pendingReviews: null == pendingReviews
             ? _value._pendingReviews
             : pendingReviews // ignore: cast_nullable_to_non_nullable
-                  as List<ReviewEntity>,
+                as List<ReviewEntity>,
         hasMoreUserReviews: null == hasMoreUserReviews
             ? _value.hasMoreUserReviews
             : hasMoreUserReviews // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         hasMorePlanReviews: null == hasMorePlanReviews
             ? _value.hasMorePlanReviews
             : hasMorePlanReviews // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         hasMoreReviewsByUser: null == hasMoreReviewsByUser
             ? _value.hasMoreReviewsByUser
             : hasMoreReviewsByUser // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         hasMorePendingReviews: null == hasMorePendingReviews
             ? _value.hasMorePendingReviews
             : hasMorePendingReviews // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         lastUserReviewDocumentId: freezed == lastUserReviewDocumentId
             ? _value.lastUserReviewDocumentId
             : lastUserReviewDocumentId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastPlanReviewDocumentId: freezed == lastPlanReviewDocumentId
             ? _value.lastPlanReviewDocumentId
             : lastPlanReviewDocumentId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastReviewsByUserDocumentId: freezed == lastReviewsByUserDocumentId
             ? _value.lastReviewsByUserDocumentId
             : lastReviewsByUserDocumentId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastPendingReviewDocumentId: freezed == lastPendingReviewDocumentId
             ? _value.lastPendingReviewDocumentId
             : lastPendingReviewDocumentId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         currentUserRating: freezed == currentUserRating
             ? _value.currentUserRating
             : currentUserRating // ignore: cast_nullable_to_non_nullable
-                  as UserRatingEntity?,
+                as UserRatingEntity?,
         topRatedUsers: null == topRatedUsers
             ? _value._topRatedUsers
             : topRatedUsers // ignore: cast_nullable_to_non_nullable
-                  as List<UserRatingEntity>,
+                as List<UserRatingEntity>,
         lastCalculationResult: freezed == lastCalculationResult
             ? _value.lastCalculationResult
             : lastCalculationResult // ignore: cast_nullable_to_non_nullable
-                  as UserRatingCalculationResult?,
+                as UserRatingCalculationResult?,
         lastUserReviewsResult: freezed == lastUserReviewsResult
             ? _value.lastUserReviewsResult
             : lastUserReviewsResult // ignore: cast_nullable_to_non_nullable
-                  as UserReviewsResult?,
+                as UserReviewsResult?,
         userRatingComparisons: null == userRatingComparisons
             ? _value._userRatingComparisons
             : userRatingComparisons // ignore: cast_nullable_to_non_nullable
-                  as List<UserRatingComparison>,
+                as List<UserRatingComparison>,
         lastCreatedReviewId: freezed == lastCreatedReviewId
             ? _value.lastCreatedReviewId
             : lastCreatedReviewId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastUpdatedReviewId: freezed == lastUpdatedReviewId
             ? _value.lastUpdatedReviewId
             : lastUpdatedReviewId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastDeletedReviewId: freezed == lastDeletedReviewId
             ? _value.lastDeletedReviewId
             : lastDeletedReviewId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         helpfulReviewIds: null == helpfulReviewIds
             ? _value._helpfulReviewIds
             : helpfulReviewIds // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         lastApprovedReviewId: freezed == lastApprovedReviewId
             ? _value.lastApprovedReviewId
             : lastApprovedReviewId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastRejectedReviewId: freezed == lastRejectedReviewId
             ? _value.lastRejectedReviewId
             : lastRejectedReviewId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         lastFlaggedReviewId: freezed == lastFlaggedReviewId
             ? _value.lastFlaggedReviewId
             : lastFlaggedReviewId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         reviewMetrics: freezed == reviewMetrics
             ? _value._reviewMetrics
             : reviewMetrics // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
         ratingDistribution: freezed == ratingDistribution
             ? _value._ratingDistribution
             : ratingDistribution // ignore: cast_nullable_to_non_nullable
-                  as Map<int, int>?,
+                as Map<int, int>?,
         reviewTrends: freezed == reviewTrends
             ? _value._reviewTrends
             : reviewTrends // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
         canReviewPermissions: null == canReviewPermissions
             ? _value._canReviewPermissions
             : canReviewPermissions // ignore: cast_nullable_to_non_nullable
-                  as Map<String, bool>,
+                as Map<String, bool>,
         lastRefreshTime: freezed == lastRefreshTime
             ? _value.lastRefreshTime
             : lastRefreshTime // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
         lastDataFetchTimes: null == lastDataFetchTimes
             ? _value._lastDataFetchTimes
             : lastDataFetchTimes // ignore: cast_nullable_to_non_nullable
-                  as Map<String, DateTime>,
+                as Map<String, DateTime>,
         isRefreshing: null == isRefreshing
             ? _value.isRefreshing
             : isRefreshing // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
       ),
     );
   }
@@ -608,18 +607,18 @@ class _$ReviewStateImpl implements _ReviewState {
     this.lastRefreshTime,
     final Map<String, DateTime> lastDataFetchTimes = const {},
     this.isRefreshing = false,
-  }) : _userReviews = userReviews,
-       _planReviews = planReviews,
-       _reviewsByUser = reviewsByUser,
-       _pendingReviews = pendingReviews,
-       _topRatedUsers = topRatedUsers,
-       _userRatingComparisons = userRatingComparisons,
-       _helpfulReviewIds = helpfulReviewIds,
-       _reviewMetrics = reviewMetrics,
-       _ratingDistribution = ratingDistribution,
-       _reviewTrends = reviewTrends,
-       _canReviewPermissions = canReviewPermissions,
-       _lastDataFetchTimes = lastDataFetchTimes;
+  })  : _userReviews = userReviews,
+        _planReviews = planReviews,
+        _reviewsByUser = reviewsByUser,
+        _pendingReviews = pendingReviews,
+        _topRatedUsers = topRatedUsers,
+        _userRatingComparisons = userRatingComparisons,
+        _helpfulReviewIds = helpfulReviewIds,
+        _reviewMetrics = reviewMetrics,
+        _ratingDistribution = ratingDistribution,
+        _reviewTrends = reviewTrends,
+        _canReviewPermissions = canReviewPermissions,
+        _lastDataFetchTimes = lastDataFetchTimes;
 
   // ==================== ESTADO GENERAL ====================
   @override
@@ -919,42 +918,42 @@ class _$ReviewStateImpl implements _ReviewState {
 
   @override
   int get hashCode => Object.hashAll([
-    runtimeType,
-    status,
-    error,
-    isLoading,
-    const DeepCollectionEquality().hash(_userReviews),
-    const DeepCollectionEquality().hash(_planReviews),
-    const DeepCollectionEquality().hash(_reviewsByUser),
-    const DeepCollectionEquality().hash(_pendingReviews),
-    hasMoreUserReviews,
-    hasMorePlanReviews,
-    hasMoreReviewsByUser,
-    hasMorePendingReviews,
-    lastUserReviewDocumentId,
-    lastPlanReviewDocumentId,
-    lastReviewsByUserDocumentId,
-    lastPendingReviewDocumentId,
-    currentUserRating,
-    const DeepCollectionEquality().hash(_topRatedUsers),
-    lastCalculationResult,
-    lastUserReviewsResult,
-    const DeepCollectionEquality().hash(_userRatingComparisons),
-    lastCreatedReviewId,
-    lastUpdatedReviewId,
-    lastDeletedReviewId,
-    const DeepCollectionEquality().hash(_helpfulReviewIds),
-    lastApprovedReviewId,
-    lastRejectedReviewId,
-    lastFlaggedReviewId,
-    const DeepCollectionEquality().hash(_reviewMetrics),
-    const DeepCollectionEquality().hash(_ratingDistribution),
-    const DeepCollectionEquality().hash(_reviewTrends),
-    const DeepCollectionEquality().hash(_canReviewPermissions),
-    lastRefreshTime,
-    const DeepCollectionEquality().hash(_lastDataFetchTimes),
-    isRefreshing,
-  ]);
+        runtimeType,
+        status,
+        error,
+        isLoading,
+        const DeepCollectionEquality().hash(_userReviews),
+        const DeepCollectionEquality().hash(_planReviews),
+        const DeepCollectionEquality().hash(_reviewsByUser),
+        const DeepCollectionEquality().hash(_pendingReviews),
+        hasMoreUserReviews,
+        hasMorePlanReviews,
+        hasMoreReviewsByUser,
+        hasMorePendingReviews,
+        lastUserReviewDocumentId,
+        lastPlanReviewDocumentId,
+        lastReviewsByUserDocumentId,
+        lastPendingReviewDocumentId,
+        currentUserRating,
+        const DeepCollectionEquality().hash(_topRatedUsers),
+        lastCalculationResult,
+        lastUserReviewsResult,
+        const DeepCollectionEquality().hash(_userRatingComparisons),
+        lastCreatedReviewId,
+        lastUpdatedReviewId,
+        lastDeletedReviewId,
+        const DeepCollectionEquality().hash(_helpfulReviewIds),
+        lastApprovedReviewId,
+        lastRejectedReviewId,
+        lastFlaggedReviewId,
+        const DeepCollectionEquality().hash(_reviewMetrics),
+        const DeepCollectionEquality().hash(_ratingDistribution),
+        const DeepCollectionEquality().hash(_reviewTrends),
+        const DeepCollectionEquality().hash(_canReviewPermissions),
+        lastRefreshTime,
+        const DeepCollectionEquality().hash(_lastDataFetchTimes),
+        isRefreshing,
+      ]);
 
   /// Create a copy of ReviewState
   /// with the given fields replaced by the non-null parameter values.
@@ -1017,7 +1016,8 @@ abstract class _ReviewState implements ReviewState {
   @override
   List<ReviewEntity> get reviewsByUser;
   @override
-  List<ReviewEntity> get pendingReviews; // ==================== PAGINACIÓN ====================
+  List<ReviewEntity>
+      get pendingReviews; // ==================== PAGINACIÓN ====================
   @override
   bool get hasMoreUserReviews;
   @override
@@ -1033,7 +1033,8 @@ abstract class _ReviewState implements ReviewState {
   @override
   String? get lastReviewsByUserDocumentId;
   @override
-  String? get lastPendingReviewDocumentId; // ==================== RATING DE USUARIO ====================
+  String?
+      get lastPendingReviewDocumentId; // ==================== RATING DE USUARIO ====================
   @override
   UserRatingEntity? get currentUserRating;
   @override
@@ -1043,7 +1044,8 @@ abstract class _ReviewState implements ReviewState {
   @override
   UserReviewsResult? get lastUserReviewsResult;
   @override
-  List<UserRatingComparison> get userRatingComparisons; // ==================== ACCIONES ====================
+  List<UserRatingComparison>
+      get userRatingComparisons; // ==================== ACCIONES ====================
   @override
   String? get lastCreatedReviewId;
   @override
@@ -1051,19 +1053,22 @@ abstract class _ReviewState implements ReviewState {
   @override
   String? get lastDeletedReviewId;
   @override
-  List<String> get helpfulReviewIds; // ==================== MODERACIÓN ====================
+  List<String>
+      get helpfulReviewIds; // ==================== MODERACIÓN ====================
   @override
   String? get lastApprovedReviewId;
   @override
   String? get lastRejectedReviewId;
   @override
-  String? get lastFlaggedReviewId; // ==================== ANALYTICS ====================
+  String?
+      get lastFlaggedReviewId; // ==================== ANALYTICS ====================
   @override
   Map<String, dynamic>? get reviewMetrics;
   @override
   Map<int, int>? get ratingDistribution;
   @override
-  Map<String, dynamic>? get reviewTrends; // ==================== PERMISOS ====================
+  Map<String, dynamic>?
+      get reviewTrends; // ==================== PERMISOS ====================
   @override
   Map<String, bool> get canReviewPermissions; // planId + targetUserId -> bool
   // ==================== CACHE Y PERFORMANCE ====================

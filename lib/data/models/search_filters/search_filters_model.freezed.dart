@@ -77,28 +77,27 @@ class _$SearchFiltersModelCopyWithImpl<$Res, $Val extends SearchFiltersModel>
   }) {
     return _then(
       _value.copyWith(
-            distanceValue: null == distanceValue
-                ? _value.distanceValue
-                : distanceValue // ignore: cast_nullable_to_non_nullable
-                      as double,
-            minDistance: null == minDistance
-                ? _value.minDistance
-                : minDistance // ignore: cast_nullable_to_non_nullable
-                      as double,
-            maxDistance: null == maxDistance
-                ? _value.maxDistance
-                : maxDistance // ignore: cast_nullable_to_non_nullable
-                      as double,
-            conditions: null == conditions
-                ? _value.conditions
-                : conditions // ignore: cast_nullable_to_non_nullable
-                      as Map<String, bool>,
-            additionalServices: null == additionalServices
-                ? _value.additionalServices
-                : additionalServices // ignore: cast_nullable_to_non_nullable
-                      as Map<String, bool>,
-          )
-          as $Val,
+        distanceValue: null == distanceValue
+            ? _value.distanceValue
+            : distanceValue // ignore: cast_nullable_to_non_nullable
+                as double,
+        minDistance: null == minDistance
+            ? _value.minDistance
+            : minDistance // ignore: cast_nullable_to_non_nullable
+                as double,
+        maxDistance: null == maxDistance
+            ? _value.maxDistance
+            : maxDistance // ignore: cast_nullable_to_non_nullable
+                as double,
+        conditions: null == conditions
+            ? _value.conditions
+            : conditions // ignore: cast_nullable_to_non_nullable
+                as Map<String, bool>,
+        additionalServices: null == additionalServices
+            ? _value.additionalServices
+            : additionalServices // ignore: cast_nullable_to_non_nullable
+                as Map<String, bool>,
+      ) as $Val,
     );
   }
 }
@@ -146,23 +145,23 @@ class __$$SearchFiltersModelImplCopyWithImpl<$Res>
         distanceValue: null == distanceValue
             ? _value.distanceValue
             : distanceValue // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         minDistance: null == minDistance
             ? _value.minDistance
             : minDistance // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         maxDistance: null == maxDistance
             ? _value.maxDistance
             : maxDistance // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         conditions: null == conditions
             ? _value._conditions
             : conditions // ignore: cast_nullable_to_non_nullable
-                  as Map<String, bool>,
+                as Map<String, bool>,
         additionalServices: null == additionalServices
             ? _value._additionalServices
             : additionalServices // ignore: cast_nullable_to_non_nullable
-                  as Map<String, bool>,
+                as Map<String, bool>,
       ),
     );
   }
@@ -177,8 +176,8 @@ class _$SearchFiltersModelImpl implements _SearchFiltersModel {
     required this.maxDistance,
     required final Map<String, bool> conditions,
     required final Map<String, bool> additionalServices,
-  }) : _conditions = conditions,
-       _additionalServices = additionalServices;
+  })  : _conditions = conditions,
+        _additionalServices = additionalServices;
 
   factory _$SearchFiltersModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SearchFiltersModelImplFromJson(json);
@@ -235,13 +234,13 @@ class _$SearchFiltersModelImpl implements _SearchFiltersModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    distanceValue,
-    minDistance,
-    maxDistance,
-    const DeepCollectionEquality().hash(_conditions),
-    const DeepCollectionEquality().hash(_additionalServices),
-  );
+        runtimeType,
+        distanceValue,
+        minDistance,
+        maxDistance,
+        const DeepCollectionEquality().hash(_conditions),
+        const DeepCollectionEquality().hash(_additionalServices),
+      );
 
   /// Create a copy of SearchFiltersModel
   /// with the given fields replaced by the non-null parameter values.

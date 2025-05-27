@@ -302,9 +302,8 @@ class ProfileReviewStep extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: hasError
-                      ? AppColors.brandYellow
-                      : AppColors.brandYellow,
+                  color:
+                      hasError ? AppColors.brandYellow : AppColors.brandYellow,
                 ),
               ),
               const SizedBox(height: 4),

@@ -68,9 +68,8 @@ class _HomeScreenState extends State<HomeScreen>
         // Usar el nuevo componente responsive
         return NewResponsiveScaffold(
           screenName: 'HomeScreen',
-          darkPrimaryBackground: isDarkMode
-              ? AppColors.darkBackground
-              : AppColors.lightBackground,
+          darkPrimaryBackground:
+              isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
           appBar: homeAppBar,
           body: homeContent,
           currentIndex: 2, // Índice por defecto (Home)
@@ -85,9 +84,8 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     return AppBar(
-      backgroundColor: isDarkMode
-          ? AppColors.darkBackground
-          : AppColors.lightBackground,
+      backgroundColor:
+          isDarkMode ? AppColors.darkBackground : AppColors.lightBackground,
       elevation: 0,
       title: Text(
         '¿Quién para?',
@@ -125,12 +123,10 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores según el tema
-    final textPrimary = isDarkMode
-        ? AppColors.darkTextPrimary
-        : AppColors.lightTextPrimary;
-    final textSecondary = isDarkMode
-        ? AppColors.darkTextSecondary
-        : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     // Extraer datos de usuario de manera eficiente
     final Map<String, dynamic> userData = state.user ?? <String, dynamic>{};
@@ -177,12 +173,10 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores según el tema
-    final textPrimary = isDarkMode
-        ? AppColors.darkTextPrimary
-        : AppColors.lightTextPrimary;
-    final textSecondary = isDarkMode
-        ? AppColors.darkTextSecondary
-        : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDarkMode ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -342,9 +336,8 @@ class _HomeScreenState extends State<HomeScreen>
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores según el tema
-    final textPrimary = isDarkMode
-        ? AppColors.darkTextPrimary
-        : AppColors.lightTextPrimary;
+    final textPrimary =
+        isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),

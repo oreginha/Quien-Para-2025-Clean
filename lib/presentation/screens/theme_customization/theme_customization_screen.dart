@@ -200,8 +200,7 @@ class _ThemeCustomizationScreenState extends State<ThemeCustomizationScreen> {
       children: [
         // Opciones de colores predefinidos
         ...AppColors.predefinedColors.map((color) {
-          final isSelected =
-              color.r == selectedColor.r &&
+          final isSelected = color.r == selectedColor.r &&
               color.g == selectedColor.g &&
               color.b == selectedColor.b;
 

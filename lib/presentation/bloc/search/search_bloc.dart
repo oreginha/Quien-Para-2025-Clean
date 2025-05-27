@@ -25,11 +25,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     required FilterPlansByLocationUseCase filterByLocationUseCase,
     required FilterPlansByDateUseCase filterByDateUseCase,
     required FilterPlansByCategoryUseCase filterByCategoryUseCase,
-  }) : _searchPlansUseCase = searchPlansUseCase,
-       _filterByLocationUseCase = filterByLocationUseCase,
-       _filterByDateUseCase = filterByDateUseCase,
-       _filterByCategoryUseCase = filterByCategoryUseCase,
-       super(const SearchState()) {
+  })  : _searchPlansUseCase = searchPlansUseCase,
+        _filterByLocationUseCase = filterByLocationUseCase,
+        _filterByDateUseCase = filterByDateUseCase,
+        _filterByCategoryUseCase = filterByCategoryUseCase,
+        super(const SearchState()) {
     on<InitializeSearch>(_onInitializeSearch);
     on<QueryChanged>(
       _onQueryChanged,

@@ -14,7 +14,7 @@ class BatchLoader {
 
   /// Constructor con parámetros opcionales
   BatchLoader({Duration? batchDelay})
-    : _batchDelay = batchDelay ?? const Duration(milliseconds: 300);
+      : _batchDelay = batchDelay ?? const Duration(milliseconds: 300);
 
   /// Programa un lote para carga después de un retraso
   ///

@@ -113,8 +113,8 @@ class _AgeInputStepState extends State<AgeInputStep> {
                 : null,
             onChanged: (final String value) {
               context.read<UserProfileBloc>().add(
-                UpdateAgeEvent(int.tryParse(value) ?? 0),
-              );
+                    UpdateAgeEvent(int.tryParse(value) ?? 0),
+                  );
               _updateContinueButton(value);
             },
             textInputAction: TextInputAction.done,
@@ -254,18 +254,16 @@ class _AgeInputStepState extends State<AgeInputStep> {
               : AppColors.getCardBackground(false),
           borderRadius: BorderRadius.circular(AppRadius.button),
           border: Border.all(
-            color: isSelected
-                ? AppColors.brandYellow
-                : AppColors.getBorder(false),
+            color:
+                isSelected ? AppColors.brandYellow : AppColors.getBorder(false),
             width: isSelected ? 1.5 : 1,
           ),
         ),
         child: Text(
           label,
           style: TextStyle(
-            color: isSelected
-                ? AppColors.brandYellow
-                : AppColors.lightTextPrimary,
+            color:
+                isSelected ? AppColors.brandYellow : AppColors.lightTextPrimary,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             fontSize: 14,
           ),

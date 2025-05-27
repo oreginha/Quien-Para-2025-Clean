@@ -21,50 +21,50 @@ class ServerFailure extends Failure {
 
 class NetworkFailure extends Failure {
   NetworkFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'NETWORK_FAILURE');
+      : super(code: code ?? 'NETWORK_FAILURE');
 }
 
 class CacheFailure extends Failure {
   CacheFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'CACHE_FAILURE');
+      : super(code: code ?? 'CACHE_FAILURE');
 }
 
 class ValidationFailure extends Failure {
   ValidationFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'VALIDATION_FAILURE');
+      : super(code: code ?? 'VALIDATION_FAILURE');
 }
 
 class AuthFailure extends Failure {
   AuthFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'AUTH_FAILURE');
+      : super(code: code ?? 'AUTH_FAILURE');
 }
 
 class NotFoundFailure extends Failure {
   NotFoundFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'NOT_FOUND_FAILURE');
+      : super(code: code ?? 'NOT_FOUND_FAILURE');
 }
 
 class ConflictFailure extends Failure {
   ConflictFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'CONFLICT_FAILURE');
+      : super(code: code ?? 'CONFLICT_FAILURE');
 }
 
 class UnexpectedFailure extends Failure {
   UnexpectedFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'UNEXPECTED_FAILURE');
+      : super(code: code ?? 'UNEXPECTED_FAILURE');
 }
 
 class RateLimitFailure extends Failure {
   RateLimitFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'RATE_LIMIT_FAILURE');
+      : super(code: code ?? 'RATE_LIMIT_FAILURE');
 }
 
 class RequestCancelledFailure extends Failure {
   RequestCancelledFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'REQUEST_CANCELLED');
+      : super(code: code ?? 'REQUEST_CANCELLED');
 }
 
 class DataFailure extends Failure {
   DataFailure(super.message, {final String? code, super.data})
-    : super(code: code ?? 'DATA_FAILURE');
+      : super(code: code ?? 'DATA_FAILURE');
 }

@@ -50,9 +50,8 @@ class CreateConversationUseCase
 
     final either = await _chatRepository.createConversation(
       participants: params.participantIds,
-      initialMessage: params.initialMessage.isNotEmpty
-          ? params.initialMessage
-          : null,
+      initialMessage:
+          params.initialMessage.isNotEmpty ? params.initialMessage : null,
     );
     return either.fold(
       (failure) => throw Exception(failure.message),

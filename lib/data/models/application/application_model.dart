@@ -24,7 +24,7 @@ class ApplicationModel with _$ApplicationModel {
     String? applicantName, // Para mostrar info adicional en la UI
     String? applicantPhotoUrl, // Para mostrar info adicional en la UI
     String?
-    responsibleMessage, // Mensaje del creador del plan al aceptar/rechazar
+        responsibleMessage, // Mensaje del creador del plan al aceptar/rechazar
   }) = _ApplicationModel;
 
   factory ApplicationModel.fromJson(Map<String, dynamic> json) =>
@@ -36,16 +36,14 @@ class ApplicationModel with _$ApplicationModel {
 
     // Convertir Timestamp a String ISO8601 para appliedAt
     if (json['appliedAt'] is Timestamp) {
-      result['appliedAt'] = (json['appliedAt'] as Timestamp)
-          .toDate()
-          .toIso8601String();
+      result['appliedAt'] =
+          (json['appliedAt'] as Timestamp).toDate().toIso8601String();
     }
 
     // Convertir Timestamp a String ISO8601 para processedAt
     if (json['processedAt'] is Timestamp) {
-      result['processedAt'] = (json['processedAt'] as Timestamp)
-          .toDate()
-          .toIso8601String();
+      result['processedAt'] =
+          (json['processedAt'] as Timestamp).toDate().toIso8601String();
     }
 
     return result;

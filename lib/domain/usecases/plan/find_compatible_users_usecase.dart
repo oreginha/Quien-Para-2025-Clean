@@ -34,10 +34,8 @@ class FindCompatibleUsersUseCase {
   }) async {
     try {
       // Obtener el plan para excluir al creador
-      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
-          .collection('plans')
-          .doc(planId)
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc =
+          await _firestore.collection('plans').doc(planId).get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');
@@ -48,9 +46,8 @@ class FindCompatibleUsersUseCase {
       final String creatorId = planData['creatorId'] as String;
 
       // Obtener todos los usuarios
-      final QuerySnapshot<Map<String, dynamic>> usersQuery = await _firestore
-          .collection('users')
-          .get();
+      final QuerySnapshot<Map<String, dynamic>> usersQuery =
+          await _firestore.collection('users').get();
 
       // Lista para almacenar usuarios compatibles
       final List<Map<String, dynamic>> compatibleUsers =
@@ -86,8 +83,7 @@ class FindCompatibleUsersUseCase {
           compatibleUsers.add(<String, dynamic>{
             'userId': userId,
             'name': userData['name'] as String? ?? 'Usuario',
-            'photoUrl':
-                userData['photoUrls'] != null &&
+            'photoUrl': userData['photoUrls'] != null &&
                     (userData['photoUrls'] as List<dynamic>).isNotEmpty
                 ? (userData['photoUrls'] as List<dynamic>)[0]
                 : null,

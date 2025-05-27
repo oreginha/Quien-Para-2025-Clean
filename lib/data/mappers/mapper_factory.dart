@@ -77,12 +77,8 @@ class MapperFactory {
   ///
   /// Método de conveniencia para obtener el mapper de notificaciones sin necesidad de usar genéricos.
   NotificationMapper getNotificationMapper() {
-    return getMapper<
-      NotificationMapper,
-      NotificationEntity,
-      NotificationModel,
-      Map<String, dynamic>
-    >();
+    return getMapper<NotificationMapper, NotificationEntity, NotificationModel,
+        Map<String, dynamic>>();
   }
 
   /// Obtiene específicamente un mapper de usuarios

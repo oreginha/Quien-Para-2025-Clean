@@ -69,8 +69,8 @@ class UserFriendlyErrorHandler {
     final errorMessage = error is Exception
         ? getMessageForException(error)
         : error is Failure
-        ? getMessageForFailure(error)
-        : error.toString();
+            ? getMessageForFailure(error)
+            : error.toString();
 
     return AnimatedOpacity(
       opacity: 1.0,
@@ -116,8 +116,8 @@ class UserFriendlyErrorHandler {
     final errorMessage = error is Exception
         ? getMessageForException(error)
         : error is Failure
-        ? getMessageForFailure(error)
-        : error.toString();
+            ? getMessageForFailure(error)
+            : error.toString();
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

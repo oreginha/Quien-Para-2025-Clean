@@ -83,11 +83,11 @@ class ApplicantsListScreen extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(16),
                   leading: CircleAvatar(
                     radius: 30,
-                    backgroundColor:
-                        Theme.of(context).brightness == Brightness.dark
+                    backgroundColor: Theme.of(context).brightness ==
+                            Brightness.dark
                         ? AppColors.darkSecondaryBackground
                         : AppColors
-                              .lightSecondaryBackground, // Reemplazado color directo por color del tema
+                            .lightSecondaryBackground, // Reemplazado color directo por color del tema
                     backgroundImage: NetworkImage(
                       applicant['avatarUrl'] as String,
                     ),

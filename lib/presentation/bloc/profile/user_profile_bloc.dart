@@ -18,8 +18,8 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   final Logger logger = Logger();
 
   UserProfileBloc({required final IUserRepository userRepository})
-    : _userRepository = userRepository,
-      super(const UserProfileState()) {
+      : _userRepository = userRepository,
+        super(const UserProfileState()) {
     on<UpdateNameEvent>(_onUpdateName);
     on<UpdateAgeEvent>(_onUpdateAge);
     on<UpdateGenderEvent>(_onUpdateGender);

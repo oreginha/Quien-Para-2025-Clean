@@ -100,11 +100,9 @@ void main() {
       verifyNever(mockDocRef.collection('messages'));
 
       // Verify the data structure matches expected format
-      final verificationResult =
-          verify(
-                mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
-              ).captured.single
-              as Map<String, dynamic>;
+      final verificationResult = verify(
+        mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+      ).captured.single as Map<String, dynamic>;
       expect(verificationResult, {
         'participants': participants,
         'lastMessage': 'Hello',
@@ -151,11 +149,9 @@ void main() {
       verifyNever(mockDocRef.collection('messages'));
 
       // Verify the data structure matches expected format
-      final verificationResult =
-          verify(
-                mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
-              ).captured.single
-              as Map<String, dynamic>;
+      final verificationResult = verify(
+        mockDocRef.set(mockCollectionRef as Map<String, dynamic>),
+      ).captured.single as Map<String, dynamic>;
       expect(verificationResult, {
         'participants': participants,
         'lastMessage': 'Test message',

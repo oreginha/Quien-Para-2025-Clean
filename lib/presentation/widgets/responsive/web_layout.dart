@@ -37,9 +37,8 @@ class _WebLayoutState extends State<WebLayout> {
     final isDarkMode = themeProvider.isDarkMode;
 
     // Colores basados en el tema activo
-    final Color backgroundColor = isDarkMode
-        ? AppColors.darkBackground
-        : AppColors.lightBackground;
+    final Color backgroundColor =
+        isDarkMode ? AppColors.darkBackground : AppColors.lightBackground;
 
     Widget scaffold = Scaffold(
       backgroundColor: backgroundColor,

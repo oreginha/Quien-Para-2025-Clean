@@ -129,11 +129,8 @@ class _EditProfileScreenResponsiveState
       if (userId == null) throw Exception('No user authenticated');
 
       final String fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final Reference ref = _storage
-          .ref()
-          .child('user_photos')
-          .child(userId)
-          .child(fileName);
+      final Reference ref =
+          _storage.ref().child('user_photos').child(userId).child(fileName);
 
       final SettableMetadata metadata = SettableMetadata(
         contentType: 'image/jpeg',
@@ -284,9 +281,9 @@ class _EditProfileScreenResponsiveState
                         backgroundImage: profileImage != null
                             ? FileImage(profileImage!)
                             : (currentPhotoUrl != null
-                                  ? NetworkImage(currentPhotoUrl!)
-                                        as ImageProvider
-                                  : null),
+                                ? NetworkImage(currentPhotoUrl!)
+                                    as ImageProvider
+                                : null),
                         child: (profileImage == null && currentPhotoUrl == null)
                             ? Icon(
                                 Icons.person,
@@ -402,9 +399,8 @@ class _EditProfileScreenResponsiveState
                       color: isSelected
                           ? AppColors.lightTextPrimary
                           : AppColors.lightTextPrimary,
-                      fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.xs,
@@ -527,9 +523,8 @@ class _EditProfileScreenResponsiveState
             style: AppTypography.heading1(false),
             decoration: InputDecoration(
               hintText: hint,
-              prefixIcon: icon != null
-                  ? Icon(icon, color: AppColors.darkBorder)
-                  : null,
+              prefixIcon:
+                  icon != null ? Icon(icon, color: AppColors.darkBorder) : null,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 borderSide: BorderSide(color: AppColors.darkBorder, width: 2.0),

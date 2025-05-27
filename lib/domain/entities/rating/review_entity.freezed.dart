@@ -94,52 +94,51 @@ class _$ReviewEntityCopyWithImpl<$Res, $Val extends ReviewEntity>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reviewerId: null == reviewerId
-                ? _value.reviewerId
-                : reviewerId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            reviewedUserId: null == reviewedUserId
-                ? _value.reviewedUserId
-                : reviewedUserId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            planId: null == planId
-                ? _value.planId
-                : planId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            rating: null == rating
-                ? _value.rating
-                : rating // ignore: cast_nullable_to_non_nullable
-                      as double,
-            comment: null == comment
-                ? _value.comment
-                : comment // ignore: cast_nullable_to_non_nullable
-                      as String,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            isAnonymous: null == isAnonymous
-                ? _value.isAnonymous
-                : isAnonymous // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            helpfulVotes: null == helpfulVotes
-                ? _value.helpfulVotes
-                : helpfulVotes // ignore: cast_nullable_to_non_nullable
-                      as List<String>,
-            reviewerName: freezed == reviewerName
-                ? _value.reviewerName
-                : reviewerName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            reviewerProfileImage: freezed == reviewerProfileImage
-                ? _value.reviewerProfileImage
-                : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        reviewerId: null == reviewerId
+            ? _value.reviewerId
+            : reviewerId // ignore: cast_nullable_to_non_nullable
+                as String,
+        reviewedUserId: null == reviewedUserId
+            ? _value.reviewedUserId
+            : reviewedUserId // ignore: cast_nullable_to_non_nullable
+                as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                as String,
+        rating: null == rating
+            ? _value.rating
+            : rating // ignore: cast_nullable_to_non_nullable
+                as double,
+        comment: null == comment
+            ? _value.comment
+            : comment // ignore: cast_nullable_to_non_nullable
+                as String,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        isAnonymous: null == isAnonymous
+            ? _value.isAnonymous
+            : isAnonymous // ignore: cast_nullable_to_non_nullable
+                as bool,
+        helpfulVotes: null == helpfulVotes
+            ? _value.helpfulVotes
+            : helpfulVotes // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+        reviewerName: freezed == reviewerName
+            ? _value.reviewerName
+            : reviewerName // ignore: cast_nullable_to_non_nullable
+                as String?,
+        reviewerProfileImage: freezed == reviewerProfileImage
+            ? _value.reviewerProfileImage
+            : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
+                as String?,
+      ) as $Val,
     );
   }
 }
@@ -199,47 +198,47 @@ class __$$ReviewEntityImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reviewerId: null == reviewerId
             ? _value.reviewerId
             : reviewerId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         reviewedUserId: null == reviewedUserId
             ? _value.reviewedUserId
             : reviewedUserId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         planId: null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         rating: null == rating
             ? _value.rating
             : rating // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         comment: null == comment
             ? _value.comment
             : comment // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         isAnonymous: null == isAnonymous
             ? _value.isAnonymous
             : isAnonymous // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         helpfulVotes: null == helpfulVotes
             ? _value._helpfulVotes
             : helpfulVotes // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
+                as List<String>,
         reviewerName: freezed == reviewerName
             ? _value.reviewerName
             : reviewerName // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         reviewerProfileImage: freezed == reviewerProfileImage
             ? _value.reviewerProfileImage
             : reviewerProfileImage // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -332,19 +331,19 @@ class _$ReviewEntityImpl implements _ReviewEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    reviewerId,
-    reviewedUserId,
-    planId,
-    rating,
-    comment,
-    createdAt,
-    isAnonymous,
-    const DeepCollectionEquality().hash(_helpfulVotes),
-    reviewerName,
-    reviewerProfileImage,
-  );
+        runtimeType,
+        id,
+        reviewerId,
+        reviewedUserId,
+        planId,
+        rating,
+        comment,
+        createdAt,
+        isAnonymous,
+        const DeepCollectionEquality().hash(_helpfulVotes),
+        reviewerName,
+        reviewerProfileImage,
+      );
 
   /// Create a copy of ReviewEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -471,28 +470,27 @@ class _$UserRatingEntityCopyWithImpl<$Res, $Val extends UserRatingEntity>
   }) {
     return _then(
       _value.copyWith(
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            averageRating: null == averageRating
-                ? _value.averageRating
-                : averageRating // ignore: cast_nullable_to_non_nullable
-                      as double,
-            totalReviews: null == totalReviews
-                ? _value.totalReviews
-                : totalReviews // ignore: cast_nullable_to_non_nullable
-                      as int,
-            ratingDistribution: null == ratingDistribution
-                ? _value.ratingDistribution
-                : ratingDistribution // ignore: cast_nullable_to_non_nullable
-                      as Map<int, int>,
-            lastUpdated: null == lastUpdated
-                ? _value.lastUpdated
-                : lastUpdated // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                as String,
+        averageRating: null == averageRating
+            ? _value.averageRating
+            : averageRating // ignore: cast_nullable_to_non_nullable
+                as double,
+        totalReviews: null == totalReviews
+            ? _value.totalReviews
+            : totalReviews // ignore: cast_nullable_to_non_nullable
+                as int,
+        ratingDistribution: null == ratingDistribution
+            ? _value.ratingDistribution
+            : ratingDistribution // ignore: cast_nullable_to_non_nullable
+                as Map<int, int>,
+        lastUpdated: null == lastUpdated
+            ? _value.lastUpdated
+            : lastUpdated // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+      ) as $Val,
     );
   }
 }
@@ -540,23 +538,23 @@ class __$$UserRatingEntityImplCopyWithImpl<$Res>
         userId: null == userId
             ? _value.userId
             : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         averageRating: null == averageRating
             ? _value.averageRating
             : averageRating // ignore: cast_nullable_to_non_nullable
-                  as double,
+                as double,
         totalReviews: null == totalReviews
             ? _value.totalReviews
             : totalReviews // ignore: cast_nullable_to_non_nullable
-                  as int,
+                as int,
         ratingDistribution: null == ratingDistribution
             ? _value._ratingDistribution
             : ratingDistribution // ignore: cast_nullable_to_non_nullable
-                  as Map<int, int>,
+                as Map<int, int>,
         lastUpdated: null == lastUpdated
             ? _value.lastUpdated
             : lastUpdated // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
       ),
     );
   }
@@ -621,13 +619,13 @@ class _$UserRatingEntityImpl implements _UserRatingEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    userId,
-    averageRating,
-    totalReviews,
-    const DeepCollectionEquality().hash(_ratingDistribution),
-    lastUpdated,
-  );
+        runtimeType,
+        userId,
+        averageRating,
+        totalReviews,
+        const DeepCollectionEquality().hash(_ratingDistribution),
+        lastUpdated,
+      );
 
   /// Create a copy of UserRatingEntity
   /// with the given fields replaced by the non-null parameter values.

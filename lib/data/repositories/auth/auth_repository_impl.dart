@@ -24,10 +24,10 @@ class AuthRepositoryImpl implements AuthRepository {
     GoogleSignIn? googleSignIn,
     FirebaseFirestore? firestore,
     Logger? logger,
-  }) : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
-       _googleSignIn = googleSignIn ?? GoogleSignIn(),
-       _firestore = firestore ?? FirebaseFirestore.instance,
-       _logger = logger ?? Logger() {
+  })  : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
+        _googleSignIn = googleSignIn ?? GoogleSignIn(),
+        _firestore = firestore ?? FirebaseFirestore.instance,
+        _logger = logger ?? Logger() {
     // Suscribirse a los cambios de estado de autenticación
     _firebaseAuth.authStateChanges().listen((firebase_auth.User? user) {
       _authStateController.add(user != null);

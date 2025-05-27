@@ -20,10 +20,10 @@ class DataCacheManager<T> {
     Duration? defaultExpirationTime,
     int maxCacheSize = 0,
     CacheEvictionPolicy evictionPolicy = CacheEvictionPolicy.leastRecentlyUsed,
-  }) : _defaultExpirationTime =
-           defaultExpirationTime ?? const Duration(minutes: 5),
-       _maxCacheSize = maxCacheSize,
-       _evictionPolicy = evictionPolicy;
+  })  : _defaultExpirationTime =
+            defaultExpirationTime ?? const Duration(minutes: 5),
+        _maxCacheSize = maxCacheSize,
+        _evictionPolicy = evictionPolicy;
 
   /// Agrega o actualiza un elemento en el caché
   void put(String key, T? item) {
@@ -129,10 +129,8 @@ class DataCacheManager<T> {
       ..sort((a, b) => a.value.timestamp.compareTo(b.value.timestamp));
 
     // Tomar las primeras 'count' entradas
-    final keysToRemove = sortedEntries
-        .take(count)
-        .map((entry) => entry.key)
-        .toList();
+    final keysToRemove =
+        sortedEntries.take(count).map((entry) => entry.key).toList();
 
     // Eliminar del caché
     for (final key in keysToRemove) {

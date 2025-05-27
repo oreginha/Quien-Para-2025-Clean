@@ -23,13 +23,13 @@ class SecurityBloc extends Bloc<SecurityEvent, SecurityState> {
     required GetReportsByUserUseCase getReportsByUserUseCase,
     required UpdateReportStatusUseCase updateReportStatusUseCase,
     FirebaseAuth? auth,
-  }) : _createReportUseCase = createReportUseCase,
-       _blockUserUseCase = blockUserUseCase,
-       _getPendingReportsUseCase = getPendingReportsUseCase,
-       _getReportsByUserUseCase = getReportsByUserUseCase,
-       _updateReportStatusUseCase = updateReportStatusUseCase,
-       _auth = auth ?? FirebaseAuth.instance,
-       super(const SecurityState.initial()) {
+  })  : _createReportUseCase = createReportUseCase,
+        _blockUserUseCase = blockUserUseCase,
+        _getPendingReportsUseCase = getPendingReportsUseCase,
+        _getReportsByUserUseCase = getReportsByUserUseCase,
+        _updateReportStatusUseCase = updateReportStatusUseCase,
+        _auth = auth ?? FirebaseAuth.instance,
+        super(const SecurityState.initial()) {
     on<CreateReportEvent>(_onCreateReport);
     on<BlockUserEvent>(_onBlockUser);
     on<LoadPendingReportsEvent>(_onLoadPendingReports);

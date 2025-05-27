@@ -11,7 +11,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
   final FirebaseFirestore firestore;
 
   ReviewRepositoryImpl({FirebaseFirestore? firestore})
-    : firestore = firestore ?? FirebaseFirestore.instance;
+      : firestore = firestore ?? FirebaseFirestore.instance;
 
   static const String reviewsCollection = 'reviews';
   static const String userRatingsCollection = 'user_ratings';
@@ -191,10 +191,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
   Future<Either<Failure, void>> deleteReview(String reviewId) async {
     try {
       // Obtener la reseña antes de eliminarla para actualizar estadísticas
-      final reviewDoc = await firestore
-          .collection(reviewsCollection)
-          .doc(reviewId)
-          .get();
+      final reviewDoc =
+          await firestore.collection(reviewsCollection).doc(reviewId).get();
 
       if (!reviewDoc.exists) {
         return Left(NotFoundFailure('Reseña no encontrada'));
@@ -286,10 +284,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
   @override
   Future<Either<Failure, UserRatingEntity>> getUserRating(String userId) async {
     try {
-      final doc = await firestore
-          .collection(userRatingsCollection)
-          .doc(userId)
-          .get();
+      final doc =
+          await firestore.collection(userRatingsCollection).doc(userId).get();
 
       if (!doc.exists) {
         // Crear rating inicial si no existe
@@ -329,10 +325,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
       // Esta es una implementación simplificada
       // En producción, usarías Cloud Functions para cálculos más complejos
 
-      final doc = await firestore
-          .collection(userRatingsCollection)
-          .doc(userId)
-          .get();
+      final doc =
+          await firestore.collection(userRatingsCollection).doc(userId).get();
 
       UserRatingEntity currentRating;
 
@@ -354,7 +348,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
       // Calcular nuevo promedio
       final totalRating =
           (currentRating.averageRating * currentRating.totalReviews) +
-          newRating;
+              newRating;
       final newTotalReviews = currentRating.totalReviews + 1;
       final newAverageRating = totalRating / newTotalReviews;
 
@@ -438,8 +432,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
       }
 
       // Calcular reliability score basado en variaciones de rating
-      final variance =
-          reviews.fold<double>(
+      final variance = reviews.fold<double>(
             0,
             (sum, review) =>
                 sum +
@@ -474,10 +467,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
     String userId,
   ) async {
     try {
-      final doc = await firestore
-          .collection(reviewStatsCollection)
-          .doc(userId)
-          .get();
+      final doc =
+          await firestore.collection(reviewStatsCollection).doc(userId).get();
 
       if (!doc.exists) {
         return Right(<String, dynamic>{});
@@ -613,10 +604,8 @@ class ReviewRepositoryImpl implements IReviewRepository {
   @override
   Future<Either<Failure, Map<String, dynamic>>> getReviewMetrics() async {
     try {
-      final metricsDoc = await firestore
-          .collection('analytics')
-          .doc('review_metrics')
-          .get();
+      final metricsDoc =
+          await firestore.collection('analytics').doc('review_metrics').get();
 
       if (!metricsDoc.exists) {
         return Right(<String, dynamic>{});
@@ -679,7 +668,7 @@ class ReviewRepositoryImpl implements IReviewRepository {
       final averageRating = reviews.isEmpty
           ? 0.0
           : reviews.fold<double>(0, (sum, r) => sum + r.rating) /
-                reviews.length;
+              reviews.length;
 
       final dailyReviews = <String, int>{};
       final dailyAverages = <String, double>{};
@@ -720,10 +709,10 @@ class ReviewRepositoryImpl implements IReviewRepository {
           .collection(reviewStatsCollection)
           .doc(review.reviewedUserId)
           .set({
-            'totalReviews': FieldValue.increment(1),
-            'lastReviewDate': review.createdAt.toIso8601String(),
-            'ratingSum': FieldValue.increment(review.rating),
-          }, SetOptions(merge: true));
+        'totalReviews': FieldValue.increment(1),
+        'lastReviewDate': review.createdAt.toIso8601String(),
+        'ratingSum': FieldValue.increment(review.rating),
+      }, SetOptions(merge: true));
 
       // Actualizar métricas globales
       await firestore.collection('analytics').doc('review_metrics').set({
@@ -751,9 +740,9 @@ class ReviewRepositoryImpl implements IReviewRepository {
           .collection(reviewStatsCollection)
           .doc(review.reviewedUserId)
           .update({
-            'totalReviews': FieldValue.increment(-1),
-            'ratingSum': FieldValue.increment(-review.rating),
-          });
+        'totalReviews': FieldValue.increment(-1),
+        'ratingSum': FieldValue.increment(-review.rating),
+      });
 
       // Restar de métricas globales
       await firestore.collection('analytics').doc('review_metrics').update({

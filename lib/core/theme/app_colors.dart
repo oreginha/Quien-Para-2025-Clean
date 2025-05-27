@@ -127,13 +127,13 @@ class AppColors {
 
   // Lista de colores predefinidos para selección
   static List<Color> get predefinedColors => [
-    brandYellow, // Amarillo de marca
-    accentRed, // Rojo de alerta/acento
-    const Color(0xFF3182CE), // Azul
-    const Color(0xFF38A169), // Verde
-    const Color(0xFF805AD5), // Púrpura
-    const Color(0xFFDD6B20), // Naranja
-    const Color(0xFFD53F8C), // Rosa
-    const Color(0xFF718096), // Gris
-  ];
+        brandYellow, // Amarillo de marca
+        accentRed, // Rojo de alerta/acento
+        const Color(0xFF3182CE), // Azul
+        const Color(0xFF38A169), // Verde
+        const Color(0xFF805AD5), // Púrpura
+        const Color(0xFFDD6B20), // Naranja
+        const Color(0xFFD53F8C), // Rosa
+        const Color(0xFF718096), // Gris
+      ];
 }

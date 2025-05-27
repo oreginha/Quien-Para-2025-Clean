@@ -80,8 +80,7 @@ class ImageHelper {
         icon,
         color: iconColor ?? Colors.white54,
         size: (width != null && height != null)
-            ? (width + height) /
-                  4 // Tamaño proporcional al contenedor
+            ? (width + height) / 4 // Tamaño proporcional al contenedor
             : 24,
       ),
     );

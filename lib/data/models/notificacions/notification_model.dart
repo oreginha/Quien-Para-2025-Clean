@@ -33,9 +33,8 @@ class NotificationModel with _$NotificationModel {
 
     // Convertir Timestamp a String ISO8601 para createdAt
     if (json['createdAt'] is Timestamp) {
-      result['createdAt'] = (json['createdAt'] as Timestamp)
-          .toDate()
-          .toIso8601String();
+      result['createdAt'] =
+          (json['createdAt'] as Timestamp).toDate().toIso8601String();
     }
 
     return result;

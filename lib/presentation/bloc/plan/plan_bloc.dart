@@ -31,12 +31,12 @@ class PlanBloc extends CleanableBloc<PlanEvent, PlanState> {
     required SavePlanUseCase savePlanUseCase,
     //required GetOtherUserPlansUseCase otherUsersPlansUseCase,
     required PlanRepository planRepository,
-  }) : _getPlanByIdUseCase = getPlanByIdUseCase,
-       _createPlanUseCase = createPlanUseCase,
-       _updatePlanUseCase = updatePlanUseCase,
-       _savePlanUseCase = savePlanUseCase,
-       //_otherUsersPlansUseCase = otherUsersPlansUseCase,
-       super(const PlanState.initial()) {
+  })  : _getPlanByIdUseCase = getPlanByIdUseCase,
+        _createPlanUseCase = createPlanUseCase,
+        _updatePlanUseCase = updatePlanUseCase,
+        _savePlanUseCase = savePlanUseCase,
+        //_otherUsersPlansUseCase = otherUsersPlansUseCase,
+        super(const PlanState.initial()) {
     on<PlanEvent>((event, emit) {
       event.when(
         create: (creatorId, planData) =>

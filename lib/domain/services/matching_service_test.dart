@@ -329,13 +329,13 @@ class MatchingServiceTest {
     ];
 
     // Caso 1: Usuario interesado en deporte en Madrid
-    final List<Map<String, dynamic>> result1 = _matchingService
-        .filterCompatiblePlans(
-          plans: testPlans,
-          userInterests: <String>['deporte', 'fútbol', 'ejercicio'],
-          userLocation: 'Madrid',
-          minimumScore: 0.4,
-        );
+    final List<Map<String, dynamic>> result1 =
+        _matchingService.filterCompatiblePlans(
+      plans: testPlans,
+      userInterests: <String>['deporte', 'fútbol', 'ejercicio'],
+      userLocation: 'Madrid',
+      minimumScore: 0.4,
+    );
 
     if (kDebugMode) {
       print(
@@ -354,13 +354,13 @@ class MatchingServiceTest {
     );
 
     // Caso 2: Usuario interesado en cultura en Madrid
-    final List<Map<String, dynamic>> result2 = _matchingService
-        .filterCompatiblePlans(
-          plans: testPlans,
-          userInterests: <String>['arte', 'museos', 'exposiciones'],
-          userLocation: 'Madrid',
-          minimumScore: 0.4,
-        );
+    final List<Map<String, dynamic>> result2 =
+        _matchingService.filterCompatiblePlans(
+      plans: testPlans,
+      userInterests: <String>['arte', 'museos', 'exposiciones'],
+      userLocation: 'Madrid',
+      minimumScore: 0.4,
+    );
 
     if (kDebugMode) {
       print(
@@ -375,13 +375,13 @@ class MatchingServiceTest {
     assert(result2.isNotEmpty, 'Debería haber al menos un plan compatible');
 
     // Caso 3: Usuario sin intereses específicos
-    final List<Map<String, dynamic>> result3 = _matchingService
-        .filterCompatiblePlans(
-          plans: testPlans,
-          userInterests: <String>[],
-          userLocation: 'Madrid',
-          minimumScore: 0.3, // Umbral más bajo para usuarios sin intereses
-        );
+    final List<Map<String, dynamic>> result3 =
+        _matchingService.filterCompatiblePlans(
+      plans: testPlans,
+      userInterests: <String>[],
+      userLocation: 'Madrid',
+      minimumScore: 0.3, // Umbral más bajo para usuarios sin intereses
+    );
 
     if (kDebugMode) {
       print(

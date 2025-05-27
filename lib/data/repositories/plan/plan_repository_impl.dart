@@ -27,7 +27,7 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
   final UserCache _cache;
   final UserMapper _mapper;
   final Map<String, StreamController<Either<AppFailure, List<PlanEntity>>>>
-  _plansStreamControllers = {};
+      _plansStreamControllers = {};
 
   PlanRepositoryImpl(
     PlanApiService apiService, {
@@ -37,9 +37,9 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
     required UserCache cache,
     required super.logger,
     required UserMapper mapper,
-  }) : _firestore = firestore,
-       _cache = cache,
-       _mapper = mapper;
+  })  : _firestore = firestore,
+        _cache = cache,
+        _mapper = mapper;
 
   /// Verifica si el caché está disponible para usar
   bool get _isCacheAvailable => true;
@@ -207,10 +207,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
         Query<Map<String, dynamic>> query = _firestore.collection('planes');
 
         if (lastDocumentId != null) {
-          final lastDoc = await _firestore
-              .collection('planes')
-              .doc(lastDocumentId)
-              .get();
+          final lastDoc =
+              await _firestore.collection('planes').doc(lastDocumentId).get();
           query = query.startAfterDocument(lastDoc);
         }
 
@@ -225,9 +223,9 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
         }
 
         final plans = await query.get().then(
-          (value) =>
-              value.docs.map((e) => PlanEntity.fromJson(e.data())).toList(),
-        );
+              (value) =>
+                  value.docs.map((e) => PlanEntity.fromJson(e.data())).toList(),
+            );
 
         if (_isCacheAvailable) {
           await _cache.cacheList(plans, 'all_plans');
@@ -319,8 +317,7 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
     final double dLat = _toRadians(lat2 - lat1);
     final double dLon = _toRadians(lon2 - lon1);
 
-    final double a =
-        sin(dLat / 2) * sin(dLat / 2) +
+    final double a = sin(dLat / 2) * sin(dLat / 2) +
         cos(_toRadians(lat1)) *
             cos(_toRadians(lat2)) *
             sin(dLon / 2) *
@@ -345,21 +342,21 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
         .limit(limit)
         .snapshots()
         .map((snapshot) {
-          try {
-            final plans = snapshot.docs
-                .map((doc) => PlanEntity.fromJson(doc.data()))
-                .toList();
-            return Right(plans);
-          } catch (e) {
-            return Left(
-              AppFailure(
-                code: 'other-plans-stream-error',
-                message:
-                    'Error al obtener planes de otros usuarios: ${e.toString()}',
-              ),
-            );
-          }
-        });
+      try {
+        final plans = snapshot.docs
+            .map((doc) => PlanEntity.fromJson(doc.data()))
+            .toList();
+        return Right(plans);
+      } catch (e) {
+        return Left(
+          AppFailure(
+            code: 'other-plans-stream-error',
+            message:
+                'Error al obtener planes de otros usuarios: ${e.toString()}',
+          ),
+        );
+      }
+    });
   }
 
   @override
@@ -454,10 +451,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
             .orderBy('rating', descending: true);
 
         if (lastDocumentId != null) {
-          final lastDoc = await _firestore
-              .collection('planes')
-              .doc(lastDocumentId)
-              .get();
+          final lastDoc =
+              await _firestore.collection('planes').doc(lastDocumentId).get();
           if (lastDoc.exists) {
             query = query.startAfterDocument(lastDoc);
           }
@@ -681,9 +676,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
           String cacheKey = 'all_plans';
           if (filters != null && filters.isNotEmpty) {
             // Crear una clave basada en los filtros
-            final filterParts = filters.entries
-                .map((e) => '${e.key}=${e.value}')
-                .join('_');
+            final filterParts =
+                filters.entries.map((e) => '${e.key}=${e.value}').join('_');
             cacheKey = 'plans_$filterParts';
           }
 
@@ -711,9 +705,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
       // Intentar obtener resultados desde caché si está disponible
       if (_isCacheAvailable) {
         // Crear clave para esta búsqueda
-        final criteriaParts = criteria.entries
-            .map((e) => '${e.key}=${e.value}')
-            .join('_');
+        final criteriaParts =
+            criteria.entries.map((e) => '${e.key}=${e.value}').join('_');
         final cacheKey = 'search_$criteriaParts';
 
         // Verificar si hay resultados en caché
@@ -766,10 +759,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
       // Aplicar paginación si se proporciona un ID de documento
       if (lastDocumentId != null) {
-        final lastDoc = await _firestore
-            .collection('planes')
-            .doc(lastDocumentId)
-            .get();
+        final lastDoc =
+            await _firestore.collection('planes').doc(lastDocumentId).get();
         if (lastDoc.exists) {
           query = query.startAfterDocument(lastDoc);
         }
@@ -784,9 +775,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
       snapshot = await query.get();
 
       // Convertir a entidades
-      List<PlanEntity> results = snapshot.docs
-          .map((doc) => PlanEntity.fromJson(doc.data()))
-          .toList();
+      List<PlanEntity> results =
+          snapshot.docs.map((doc) => PlanEntity.fromJson(doc.data())).toList();
 
       // Filtrar por texto si es necesario (filtrado en cliente)
       if (textSearch != null && textSearch.isNotEmpty) {
@@ -803,9 +793,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
       // Guardar resultados en caché si está disponible
       if (_isCacheAvailable) {
-        final criteriaParts = criteria.entries
-            .map((e) => '${e.key}=${e.value}')
-            .join('_');
+        final criteriaParts =
+            criteria.entries.map((e) => '${e.key}=${e.value}').join('_');
         final cacheKey = 'search_$criteriaParts';
 
         await _cache.cacheList(results, cacheKey);
@@ -825,10 +814,7 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
       'buscar planes por texto',
       () async {
         final textLower = text.toLowerCase();
-        final plans = await _firestore
-            .collection('planes')
-            .get()
-            .then(
+        final plans = await _firestore.collection('planes').get().then(
               (value) => value.docs
                   .map((e) => PlanEntity.fromJson(e.data()))
                   .where(
@@ -916,14 +902,12 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
   @override
   Stream<Either<AppFailure, List<PlanWithCreatorEntity>>>
-  getPlansWithCreators() {
+      getPlansWithCreators() {
     logger.d('Iniciando stream de planes con creadores');
 
     // Crear un nuevo controller
-    final controller =
-        StreamController<
-          Either<AppFailure, List<PlanWithCreatorEntity>>
-        >.broadcast();
+    final controller = StreamController<
+        Either<AppFailure, List<PlanWithCreatorEntity>>>.broadcast();
 
     // Crear consulta Firestore para obtener planes
     final plansQuery = _firestore
@@ -1049,10 +1033,10 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
             .where('userId', isEqualTo: userId)
             .get()
             .then((snapshot) {
-              for (final doc in snapshot.docs) {
-                doc.reference.delete();
-              }
-            });
+          for (final doc in snapshot.docs) {
+            doc.reference.delete();
+          }
+        });
 
         // También limpiar del caché local si está disponible
         if (_isCacheAvailable) {
@@ -1086,10 +1070,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
         // Aplicar paginación
         if (lastDocumentId != null) {
-          final lastDoc = await _firestore
-              .collection('planes')
-              .doc(lastDocumentId)
-              .get();
+          final lastDoc =
+              await _firestore.collection('planes').doc(lastDocumentId).get();
           if (lastDoc.exists) {
             query = query.startAfterDocument(lastDoc);
           }
@@ -1136,10 +1118,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
         // Aplicar paginación
         if (lastDocumentId != null) {
-          final lastDoc = await _firestore
-              .collection('planes')
-              .doc(lastDocumentId)
-              .get();
+          final lastDoc =
+              await _firestore.collection('planes').doc(lastDocumentId).get();
           if (lastDoc.exists) {
             query = query.startAfterDocument(lastDoc);
           }
@@ -1206,7 +1186,7 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
   @override
   Future<Either<Failure, List<PlanWithCreatorEntity>>>
-  filterPlansByMultipleCategories({
+      filterPlansByMultipleCategories({
     required List<String> categories,
     int limit = 20,
     String? lastDocumentId,
@@ -1222,10 +1202,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
         // Aplicar paginación
         if (lastDocumentId != null) {
-          final lastDoc = await _firestore
-              .collection('planes')
-              .doc(lastDocumentId)
-              .get();
+          final lastDoc =
+              await _firestore.collection('planes').doc(lastDocumentId).get();
           if (lastDoc.exists) {
             query = query.startAfterDocument(lastDoc);
           }
@@ -1287,7 +1265,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
   @override
   Future<Either<Failure, List<PlanWithCreatorEntity>>>
-  getPopularPlansByCategory({required String category, int limit = 10}) async {
+      getPopularPlansByCategory(
+          {required String category, int limit = 10}) async {
     return executeWithTryCatchFailure<List<PlanWithCreatorEntity>>(
       'obtener planes populares por categoría',
       () async {
@@ -1341,9 +1320,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
             .limit(limit)
             .get();
 
-        final searchHistory = snapshot.docs
-            .map((doc) => doc.data()['query'] as String)
-            .toList();
+        final searchHistory =
+            snapshot.docs.map((doc) => doc.data()['query'] as String).toList();
 
         // Guardar en caché local
         if (_isCacheAvailable) {
@@ -1380,8 +1358,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
           final data = doc.data();
           final title = (data['title'] as String? ?? '').toLowerCase();
           final category = (data['category'] as String? ?? '').toLowerCase();
-          final description = (data['description'] as String? ?? '')
-              .toLowerCase();
+          final description =
+              (data['description'] as String? ?? '').toLowerCase();
 
           // Buscar coincidencias en título
           if (title.contains(queryLower)) {
@@ -1580,10 +1558,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
         // Aplicar paginación si se proporciona
         if (lastDocumentId != null) {
-          final lastDoc = await _firestore
-              .collection('planes')
-              .doc(lastDocumentId)
-              .get();
+          final lastDoc =
+              await _firestore.collection('planes').doc(lastDocumentId).get();
           if (lastDoc.exists) {
             firestoreQuery = firestoreQuery.startAfterDocument(lastDoc);
           }
@@ -1608,9 +1584,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
             .toList();
 
         // Obtener información de los creadores
-        final Set<String> userIds = filteredPlans
-            .map((plan) => plan.creatorId)
-            .toSet();
+        final Set<String> userIds =
+            filteredPlans.map((plan) => plan.creatorId).toSet();
         final Map<String, UserEntity> usersMap = {};
 
         // Consultar usuarios en lotes
@@ -1656,9 +1631,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
     int limit = 20,
     String? lastDocumentId,
   }) async {
-    return executeWithTryCatchFailure<
-      List<PlanWithCreatorEntity>
-    >('búsqueda avanzada de planes', () async {
+    return executeWithTryCatchFailure<List<PlanWithCreatorEntity>>(
+        'búsqueda avanzada de planes', () async {
       // Construir consulta base
       Query<Map<String, dynamic>> firestoreQuery = _firestore.collection(
         'planes',
@@ -1687,10 +1661,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
       // Aplicar paginación si se proporciona
       if (lastDocumentId != null) {
-        final lastDoc = await _firestore
-            .collection('planes')
-            .doc(lastDocumentId)
-            .get();
+        final lastDoc =
+            await _firestore.collection('planes').doc(lastDocumentId).get();
         if (lastDoc.exists) {
           firestoreQuery = firestoreQuery.startAfterDocument(lastDoc);
         }
@@ -1703,9 +1675,8 @@ class PlanRepositoryImpl extends BaseRepository implements PlanRepository {
 
       // Ejecutar consulta
       final snapshot = await firestoreQuery.get();
-      List<PlanEntity> plans = snapshot.docs
-          .map((doc) => PlanEntity.fromJson(doc.data()))
-          .toList();
+      List<PlanEntity> plans =
+          snapshot.docs.map((doc) => PlanEntity.fromJson(doc.data())).toList();
 
       // Filtrar por texto si se proporciona (filtrado en cliente)
       if (query != null && query.isNotEmpty) {

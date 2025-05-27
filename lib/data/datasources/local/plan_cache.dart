@@ -105,9 +105,8 @@ class PlanCache implements Cache<PlanEntity> {
 
       // Usar el mapper para convertir las entidades a JSON
       final List<Map<String, dynamic>> itemsJson = _mapper.toJsonList(items);
-      final List<String> serializedItems = itemsJson
-          .map((json) => jsonEncode(json))
-          .toList();
+      final List<String> serializedItems =
+          itemsJson.map((json) => jsonEncode(json)).toList();
 
       await box.put(cacheKey, serializedItems);
       await box.put(timeKey, DateTime.now().millisecondsSinceEpoch);

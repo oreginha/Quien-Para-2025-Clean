@@ -88,9 +88,8 @@ class ChatModel with _$ChatModel {
 
     for (final field in timestampFields) {
       if (newJson[field] is Timestamp) {
-        newJson[field] = (newJson[field] as Timestamp)
-            .toDate()
-            .toIso8601String();
+        newJson[field] =
+            (newJson[field] as Timestamp).toDate().toIso8601String();
       } else if (newJson[field] == null) {
         newJson[field] = DateTime.now().toIso8601String();
       }

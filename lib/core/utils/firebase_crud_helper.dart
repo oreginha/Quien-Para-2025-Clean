@@ -22,10 +22,8 @@ class FirebaseCrudHelper {
 
       while (retryCount < maxRetries) {
         try {
-          final docSnapshot = await firestore
-              .collection(collection)
-              .doc(documentId)
-              .get();
+          final docSnapshot =
+              await firestore.collection(collection).doc(documentId).get();
           return docSnapshot;
         } catch (e) {
           retryCount++;
@@ -54,13 +52,12 @@ class FirebaseCrudHelper {
 
   /// Obtiene una colección de documentos de manera segura
   static Future<List<DocumentSnapshot<Map<String, dynamic>>>>
-  getCollectionSafely(
+      getCollectionSafely(
     FirebaseFirestore firestore,
     String collection, {
     Query<Map<String, dynamic>> Function(
       CollectionReference<Map<String, dynamic>>,
-    )?
-    queryBuilder,
+    )? queryBuilder,
     int batchSize = 10,
   }) async {
     try {
@@ -111,8 +108,7 @@ class FirebaseCrudHelper {
     String collection, {
     Query<Map<String, dynamic>> Function(
       CollectionReference<Map<String, dynamic>>,
-    )?
-    queryBuilder,
+    )? queryBuilder,
   }) {
     try {
       // Aplicar el modificador a la consulta si se proporciona
@@ -142,17 +138,15 @@ class FirebaseCrudHelper {
 
   /// Crea un stream de documento que es seguro para web
   static Stream<DocumentSnapshot<Map<String, dynamic>>>
-  createSafeDocumentStream(
+      createSafeDocumentStream(
     FirebaseFirestore firestore,
     String collection,
     String documentId,
   ) {
     try {
       // Crear el stream del documento
-      final documentStream = firestore
-          .collection(collection)
-          .doc(documentId)
-          .snapshots();
+      final documentStream =
+          firestore.collection(collection).doc(documentId).snapshots();
 
       // Aplicar el fix para web si estamos en entorno web
       if (kIsWeb) {

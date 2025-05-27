@@ -92,48 +92,47 @@ class _$NotificationModelCopyWithImpl<$Res, $Val extends NotificationModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            planId: freezed == planId
-                ? _value.planId
-                : planId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            applicationId: freezed == applicationId
-                ? _value.applicationId
-                : applicationId // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            title: null == title
-                ? _value.title
-                : title // ignore: cast_nullable_to_non_nullable
-                      as String,
-            message: null == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                      as String,
-            read: null == read
-                ? _value.read
-                : read // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as String,
-            data: freezed == data
-                ? _value.data
-                : data // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                as String,
+        planId: freezed == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        applicationId: freezed == applicationId
+            ? _value.applicationId
+            : applicationId // ignore: cast_nullable_to_non_nullable
+                as String?,
+        title: null == title
+            ? _value.title
+            : title // ignore: cast_nullable_to_non_nullable
+                as String,
+        message: null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                as String,
+        read: null == read
+            ? _value.read
+            : read // ignore: cast_nullable_to_non_nullable
+                as bool,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as String,
+        data: freezed == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>?,
+      ) as $Val,
     );
   }
 }
@@ -191,43 +190,43 @@ class __$$NotificationModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         userId: null == userId
             ? _value.userId
             : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         planId: freezed == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         applicationId: freezed == applicationId
             ? _value.applicationId
             : applicationId // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         title: null == title
             ? _value.title
             : title // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         message: null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         read: null == read
             ? _value.read
             : read // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         data: freezed == data
             ? _value._data
             : data // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                as Map<String, dynamic>?,
       ),
     );
   }
@@ -247,8 +246,8 @@ class _$NotificationModelImpl extends _NotificationModel {
     required this.createdAt,
     this.type = 'info',
     final Map<String, dynamic>? data,
-  }) : _data = data,
-       super._();
+  })  : _data = data,
+        super._();
 
   factory _$NotificationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationModelImplFromJson(json);
@@ -312,18 +311,18 @@ class _$NotificationModelImpl extends _NotificationModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    planId,
-    applicationId,
-    title,
-    message,
-    read,
-    createdAt,
-    type,
-    const DeepCollectionEquality().hash(_data),
-  );
+        runtimeType,
+        id,
+        userId,
+        planId,
+        applicationId,
+        title,
+        message,
+        read,
+        createdAt,
+        type,
+        const DeepCollectionEquality().hash(_data),
+      );
 
   /// Create a copy of NotificationModel
   /// with the given fields replaced by the non-null parameter values.

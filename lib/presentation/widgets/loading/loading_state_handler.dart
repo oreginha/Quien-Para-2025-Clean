@@ -38,11 +38,11 @@ class LoadingStateHandler<T> extends StatelessWidget {
     Widget? emptyWidget,
     this.fullscreenLoading = false,
     this.isOverlay = false,
-  }) : loadingWidget =
-           loadingWidget ?? const Center(child: CircularProgressIndicator()),
-       errorWidget = errorWidget ?? _defaultErrorWidget,
-       emptyWidget =
-           emptyWidget ?? const Center(child: Text('No hay datos disponibles'));
+  })  : loadingWidget =
+            loadingWidget ?? const Center(child: CircularProgressIndicator()),
+        errorWidget = errorWidget ?? _defaultErrorWidget,
+        emptyWidget = emptyWidget ??
+            const Center(child: Text('No hay datos disponibles'));
 
   static Widget _defaultErrorWidget(String message) =>
       Center(child: Text("Error: $message"));

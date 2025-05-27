@@ -19,9 +19,8 @@ class AppTypography {
       fontSize: 32.0,
       height: 1.25, // 40/32 = 1.25
       fontWeight: FontWeight.bold,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -32,9 +31,8 @@ class AppTypography {
       fontSize: 28.0,
       height: 1.25,
       fontWeight: FontWeight.bold,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -45,9 +43,8 @@ class AppTypography {
       fontSize: 24.0,
       height: 1.25,
       fontWeight: FontWeight.bold,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -58,9 +55,8 @@ class AppTypography {
       fontSize: 20.0,
       height: 1.3,
       fontWeight: FontWeight.bold,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -71,9 +67,8 @@ class AppTypography {
       fontSize: 18.0,
       height: 1.3,
       fontWeight: FontWeight.w600,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -84,9 +79,8 @@ class AppTypography {
       fontSize: 16.0,
       height: 1.3,
       fontWeight: FontWeight.w600,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -99,9 +93,8 @@ class AppTypography {
       fontSize: 16.0,
       height: 1.5, // 24/16 = 1.5
       fontWeight: FontWeight.normal,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -112,9 +105,8 @@ class AppTypography {
       fontSize: 14.0,
       height: 1.5,
       fontWeight: FontWeight.normal,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -194,9 +186,8 @@ class AppTypography {
       fontSize: 16.0,
       height: 1.2,
       fontWeight: FontWeight.w600,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -207,9 +198,8 @@ class AppTypography {
       fontSize: 14.0,
       height: 1.2,
       fontWeight: FontWeight.w600,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -220,9 +210,8 @@ class AppTypography {
       fontSize: 12.0,
       height: 1.2,
       fontWeight: FontWeight.w600,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 
@@ -247,9 +236,8 @@ class AppTypography {
       fontSize: 16.0,
       height: 1.4,
       fontWeight: FontWeight.w500,
-      color: isDarkMode
-          ? AppColors.darkTextPrimary
-          : AppColors.lightTextPrimary,
+      color:
+          isDarkMode ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
     );
   }
 

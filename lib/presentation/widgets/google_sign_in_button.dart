@@ -50,9 +50,8 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   @override
   Widget build(final BuildContext context) {
     return ElevatedButton(
-      onPressed: _isLoading
-          ? null
-          : _handleSignIn, // Deshabilitar durante la carga
+      onPressed:
+          _isLoading ? null : _handleSignIn, // Deshabilitar durante la carga
       child: _isLoading
           ? const SizedBox(
               width: 20,

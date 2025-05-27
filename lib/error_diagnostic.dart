@@ -39,8 +39,7 @@ class ErrorDiagnostic {
         print('🔍 Verificando registro de caso de uso: $name');
       }
 
-      final bool isRegistered =
-          sl.isRegistered<Object>(instanceName: name) ||
+      final bool isRegistered = sl.isRegistered<Object>(instanceName: name) ||
           sl.isRegistered<Type>();
 
       if (kDebugMode) {

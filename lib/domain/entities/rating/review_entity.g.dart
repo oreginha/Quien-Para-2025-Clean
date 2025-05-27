@@ -16,8 +16,7 @@ _$ReviewEntityImpl _$$ReviewEntityImplFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       isAnonymous: json['isAnonymous'] as bool? ?? false,
-      helpfulVotes:
-          (json['helpfulVotes'] as List<dynamic>?)
+      helpfulVotes: (json['helpfulVotes'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
@@ -42,24 +41,27 @@ Map<String, dynamic> _$$ReviewEntityImplToJson(_$ReviewEntityImpl instance) =>
 
 _$UserRatingEntityImpl _$$UserRatingEntityImplFromJson(
   Map<String, dynamic> json,
-) => _$UserRatingEntityImpl(
-  userId: json['userId'] as String,
-  averageRating: (json['averageRating'] as num).toDouble(),
-  totalReviews: (json['totalReviews'] as num).toInt(),
-  ratingDistribution: (json['ratingDistribution'] as Map<String, dynamic>).map(
-    (k, e) => MapEntry(int.parse(k), (e as num).toInt()),
-  ),
-  lastUpdated: DateTime.parse(json['lastUpdated'] as String),
-);
+) =>
+    _$UserRatingEntityImpl(
+      userId: json['userId'] as String,
+      averageRating: (json['averageRating'] as num).toDouble(),
+      totalReviews: (json['totalReviews'] as num).toInt(),
+      ratingDistribution:
+          (json['ratingDistribution'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(int.parse(k), (e as num).toInt()),
+      ),
+      lastUpdated: DateTime.parse(json['lastUpdated'] as String),
+    );
 
 Map<String, dynamic> _$$UserRatingEntityImplToJson(
   _$UserRatingEntityImpl instance,
-) => <String, dynamic>{
-  'userId': instance.userId,
-  'averageRating': instance.averageRating,
-  'totalReviews': instance.totalReviews,
-  'ratingDistribution': instance.ratingDistribution.map(
-    (k, e) => MapEntry(k.toString(), e),
-  ),
-  'lastUpdated': instance.lastUpdated.toIso8601String(),
-};
+) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'averageRating': instance.averageRating,
+      'totalReviews': instance.totalReviews,
+      'ratingDistribution': instance.ratingDistribution.map(
+        (k, e) => MapEntry(k.toString(), e),
+      ),
+      'lastUpdated': instance.lastUpdated.toIso8601String(),
+    };

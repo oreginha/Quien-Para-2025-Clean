@@ -18,17 +18,17 @@ class InvitationConditionsStep extends StatefulWidget {
 
   static const Map<String, List<String>> conditionOptions =
       <String, List<String>>{
-        'Número de invitados': <String>['∞', '1', '2', '3', '4'],
-        'Condiciones de pago': <String>[
-          'Cada uno lo suyo',
-          '50/50',
-          'Yo invito',
-        ],
-        'Nivel de actividad': <String>['Tranquilo', 'Moderado', 'Intenso'],
-        'Edad recomendada': <String>['Todas las edades', '18+', '21+'],
-        'Transporte': <String>['No necesario', 'Compartido', 'Individual'],
-        'Equipamiento': <String>['No necesario', 'Básico', 'Especializado'],
-      };
+    'Número de invitados': <String>['∞', '1', '2', '3', '4'],
+    'Condiciones de pago': <String>[
+      'Cada uno lo suyo',
+      '50/50',
+      'Yo invito',
+    ],
+    'Nivel de actividad': <String>['Tranquilo', 'Moderado', 'Intenso'],
+    'Edad recomendada': <String>['Todas las edades', '18+', '21+'],
+    'Transporte': <String>['No necesario', 'Compartido', 'Individual'],
+    'Equipamiento': <String>['No necesario', 'Básico', 'Especializado'],
+  };
 
   const InvitationConditionsStep({
     super.key,
@@ -166,7 +166,8 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
                   ...InvitationConditionsStep.conditionOptions.entries.map(
                     (
                       final MapEntry<String, List<String>> entry,
-                    ) => _buildSection(
+                    ) =>
+                        _buildSection(
                       title: entry.key,
                       child: _buildOptionGrid(
                         context: context,
@@ -185,8 +186,8 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
                           }
 
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateSelectedOptions(newOptions),
-                          );
+                                PlanEvent.updateSelectedOptions(newOptions),
+                              );
                         },
                       ),
                     ),
@@ -228,8 +229,8 @@ class _InvitationConditionsStepState extends State<InvitationConditionsStep> {
                           }
 
                           context.read<PlanBloc>().add(
-                            PlanEvent.updateExtraConditions(value),
-                          );
+                                PlanEvent.updateExtraConditions(value),
+                              );
                         },
                       ),
                     ),

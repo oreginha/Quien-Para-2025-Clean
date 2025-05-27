@@ -176,9 +176,8 @@ class FeedbackMessage {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: isDangerous
-                  ? Colors.red
-                  : AppColors.lightTextPrimary,
+              backgroundColor:
+                  isDangerous ? Colors.red : AppColors.lightTextPrimary,
               foregroundColor: Colors.white,
             ),
             child: Text(confirmLabel),

@@ -27,7 +27,8 @@ mixin _$ApplicationsManagementEvent {
     required TResult Function(String filterType) filterApplications,
     required TResult Function(String query) searchApplications,
     required TResult Function(String viewType) changeView,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String planId)? initialize,
@@ -38,7 +39,8 @@ mixin _$ApplicationsManagementEvent {
     TResult? Function(String filterType)? filterApplications,
     TResult? Function(String query)? searchApplications,
     TResult? Function(String viewType)? changeView,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String planId)? initialize,
@@ -50,7 +52,8 @@ mixin _$ApplicationsManagementEvent {
     TResult Function(String query)? searchApplications,
     TResult Function(String viewType)? changeView,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialize value) initialize,
@@ -61,7 +64,8 @@ mixin _$ApplicationsManagementEvent {
     required TResult Function(_FilterApplications value) filterApplications,
     required TResult Function(_SearchApplications value) searchApplications,
     required TResult Function(_ChangeView value) changeView,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
@@ -72,7 +76,8 @@ mixin _$ApplicationsManagementEvent {
     TResult? Function(_FilterApplications value)? filterApplications,
     TResult? Function(_SearchApplications value)? searchApplications,
     TResult? Function(_ChangeView value)? changeView,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
@@ -84,7 +89,8 @@ mixin _$ApplicationsManagementEvent {
     TResult Function(_SearchApplications value)? searchApplications,
     TResult Function(_ChangeView value)? changeView,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -92,18 +98,13 @@ abstract class $ApplicationsManagementEventCopyWith<$Res> {
   factory $ApplicationsManagementEventCopyWith(
     ApplicationsManagementEvent value,
     $Res Function(ApplicationsManagementEvent) then,
-  ) =
-      _$ApplicationsManagementEventCopyWithImpl<
-        $Res,
-        ApplicationsManagementEvent
-      >;
+  ) = _$ApplicationsManagementEventCopyWithImpl<$Res,
+      ApplicationsManagementEvent>;
 }
 
 /// @nodoc
-class _$ApplicationsManagementEventCopyWithImpl<
-  $Res,
-  $Val extends ApplicationsManagementEvent
->
+class _$ApplicationsManagementEventCopyWithImpl<$Res,
+        $Val extends ApplicationsManagementEvent>
     implements $ApplicationsManagementEventCopyWith<$Res> {
   _$ApplicationsManagementEventCopyWithImpl(this._value, this._then);
 
@@ -145,7 +146,7 @@ class __$$InitializeImplCopyWithImpl<$Res>
         null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -306,8 +307,8 @@ abstract class _$$LoadApplicationsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadApplicationsImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationsManagementEventCopyWithImpl<$Res, _$LoadApplicationsImpl>
+    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
+        _$LoadApplicationsImpl>
     implements _$$LoadApplicationsImplCopyWith<$Res> {
   __$$LoadApplicationsImplCopyWithImpl(
     _$LoadApplicationsImpl _value,
@@ -324,7 +325,7 @@ class __$$LoadApplicationsImplCopyWithImpl<$Res>
         null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -486,8 +487,8 @@ abstract class _$$LoadUserProfilesImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadUserProfilesImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationsManagementEventCopyWithImpl<$Res, _$LoadUserProfilesImpl>
+    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
+        _$LoadUserProfilesImpl>
     implements _$$LoadUserProfilesImplCopyWith<$Res> {
   __$$LoadUserProfilesImplCopyWithImpl(
     _$LoadUserProfilesImpl _value,
@@ -632,8 +633,8 @@ abstract class _$$AcceptApplicationImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$AcceptApplicationImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationsManagementEventCopyWithImpl<$Res, _$AcceptApplicationImpl>
+    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
+        _$AcceptApplicationImpl>
     implements _$$AcceptApplicationImplCopyWith<$Res> {
   __$$AcceptApplicationImplCopyWithImpl(
     _$AcceptApplicationImpl _value,
@@ -650,7 +651,7 @@ class __$$AcceptApplicationImplCopyWithImpl<$Res>
         null == applicationId
             ? _value.applicationId
             : applicationId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -816,8 +817,8 @@ abstract class _$$RejectApplicationImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RejectApplicationImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationsManagementEventCopyWithImpl<$Res, _$RejectApplicationImpl>
+    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
+        _$RejectApplicationImpl>
     implements _$$RejectApplicationImplCopyWith<$Res> {
   __$$RejectApplicationImplCopyWithImpl(
     _$RejectApplicationImpl _value,
@@ -834,7 +835,7 @@ class __$$RejectApplicationImplCopyWithImpl<$Res>
         null == applicationId
             ? _value.applicationId
             : applicationId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1000,11 +1001,8 @@ abstract class _$$FilterApplicationsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FilterApplicationsImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationsManagementEventCopyWithImpl<
-          $Res,
-          _$FilterApplicationsImpl
-        >
+    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
+        _$FilterApplicationsImpl>
     implements _$$FilterApplicationsImplCopyWith<$Res> {
   __$$FilterApplicationsImplCopyWithImpl(
     _$FilterApplicationsImpl _value,
@@ -1021,7 +1019,7 @@ class __$$FilterApplicationsImplCopyWithImpl<$Res>
         null == filterType
             ? _value.filterType
             : filterType // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1187,11 +1185,8 @@ abstract class _$$SearchApplicationsImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SearchApplicationsImplCopyWithImpl<$Res>
-    extends
-        _$ApplicationsManagementEventCopyWithImpl<
-          $Res,
-          _$SearchApplicationsImpl
-        >
+    extends _$ApplicationsManagementEventCopyWithImpl<$Res,
+        _$SearchApplicationsImpl>
     implements _$$SearchApplicationsImplCopyWith<$Res> {
   __$$SearchApplicationsImplCopyWithImpl(
     _$SearchApplicationsImpl _value,
@@ -1208,7 +1203,7 @@ class __$$SearchApplicationsImplCopyWithImpl<$Res>
         null == query
             ? _value.query
             : query // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -1390,7 +1385,7 @@ class __$$ChangeViewImplCopyWithImpl<$Res>
         null == viewType
             ? _value.viewType
             : viewType // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }

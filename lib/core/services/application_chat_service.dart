@@ -12,7 +12,7 @@ class ApplicationChatService {
 
   /// Constructor por defecto que utiliza la instancia de Firestore
   ApplicationChatService({FirebaseFirestore? firestore})
-    : _firestore = firestore ?? FirebaseFirestore.instance;
+      : _firestore = firestore ?? FirebaseFirestore.instance;
 
   /// Crea un chat para una aplicación que ha sido aceptada
   ///

@@ -19,9 +19,9 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
   StreamSubscription? _conversationsSubscription;
 
   SimpleChatBloc({FirebaseFirestore? firestore, FirebaseAuth? auth})
-    : _firestore = firestore ?? FirebaseFirestore.instance,
-      _auth = auth ?? FirebaseAuth.instance,
-      super(const SimpleChatState.initial()) {
+      : _firestore = firestore ?? FirebaseFirestore.instance,
+        _auth = auth ?? FirebaseAuth.instance,
+        super(const SimpleChatState.initial()) {
     on<LoadConversations>(_onLoadConversations);
     on<LoadMessages>(_onLoadMessages);
     on<SendMessage>(_onSendMessage);
@@ -52,60 +52,60 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
           .where('participants', arrayContains: _currentUserId)
           .snapshots()
           .listen(
-            (snapshot) {
-              if (snapshot.docs.isEmpty) {
-                // Si no hay conversaciones, emitir lista vacía
-                add(const ConversationsUpdated([]));
-                return;
-              }
+        (snapshot) {
+          if (snapshot.docs.isEmpty) {
+            // Si no hay conversaciones, emitir lista vacía
+            add(const ConversationsUpdated([]));
+            return;
+          }
 
-              final conversations = snapshot.docs.map((doc) {
-                final data = doc.data();
-                final participants = List<String>.from(
-                  data['participants'] ?? [],
-                );
-                final otherParticipantId = participants.firstWhere(
-                  (id) => id != _currentUserId,
-                  orElse: () => 'unknown',
-                );
+          final conversations = snapshot.docs.map((doc) {
+            final data = doc.data();
+            final participants = List<String>.from(
+              data['participants'] ?? [],
+            );
+            final otherParticipantId = participants.firstWhere(
+              (id) => id != _currentUserId,
+              orElse: () => 'unknown',
+            );
 
-                return {
-                  'id': doc.id,
-                  'participants': participants,
-                  'otherParticipantId': otherParticipantId,
-                  'otherParticipantName': _getParticipantName(
-                    data,
-                    otherParticipantId,
-                  ),
-                  'otherParticipantPhoto': _getParticipantPhoto(
-                    data,
-                    otherParticipantId,
-                  ),
-                  'lastMessage': data['lastMessage'] ?? '',
-                  'lastMessageTimestamp':
-                      data['lastMessageTimestamp'] ?? Timestamp.now(),
-                  'unreadCount': _getUnreadCount(data, _currentUserId),
-                };
-              }).toList();
+            return {
+              'id': doc.id,
+              'participants': participants,
+              'otherParticipantId': otherParticipantId,
+              'otherParticipantName': _getParticipantName(
+                data,
+                otherParticipantId,
+              ),
+              'otherParticipantPhoto': _getParticipantPhoto(
+                data,
+                otherParticipantId,
+              ),
+              'lastMessage': data['lastMessage'] ?? '',
+              'lastMessageTimestamp':
+                  data['lastMessageTimestamp'] ?? Timestamp.now(),
+              'unreadCount': _getUnreadCount(data, _currentUserId),
+            };
+          }).toList();
 
-              // Ordenar por fecha en el cliente
-              conversations.sort((a, b) {
-                final timestampA = a['lastMessageTimestamp'] as Timestamp;
-                final timestampB = b['lastMessageTimestamp'] as Timestamp;
-                return timestampB.compareTo(timestampA);
-              });
+          // Ordenar por fecha en el cliente
+          conversations.sort((a, b) {
+            final timestampA = a['lastMessageTimestamp'] as Timestamp;
+            final timestampB = b['lastMessageTimestamp'] as Timestamp;
+            return timestampB.compareTo(timestampA);
+          });
 
-              add(ConversationsUpdated(conversations));
-            },
-            onError: (error) {
-              if (kDebugMode) {
-                print('Error en conversaciones: $error');
-              }
-              emit(
-                SimpleChatState.error('Error al cargar conversaciones: $error'),
-              );
-            },
+          add(ConversationsUpdated(conversations));
+        },
+        onError: (error) {
+          if (kDebugMode) {
+            print('Error en conversaciones: $error');
+          }
+          emit(
+            SimpleChatState.error('Error al cargar conversaciones: $error'),
           );
+        },
+      );
     } catch (e) {
       if (kDebugMode) {
         print('Error general en conversaciones: $e');
@@ -131,24 +131,24 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
           .limit(100)
           .snapshots()
           .listen(
-            (snapshot) {
-              final messages = snapshot.docs.map((doc) {
-                final data = doc.data();
-                return {
-                  'id': doc.id,
-                  'content': data['content'] ?? '',
-                  'senderId': data['senderId'] ?? '',
-                  'timestamp': data['timestamp'] ?? Timestamp.now(),
-                  'read': data['read'] ?? false,
-                };
-              }).toList();
+        (snapshot) {
+          final messages = snapshot.docs.map((doc) {
+            final data = doc.data();
+            return {
+              'id': doc.id,
+              'content': data['content'] ?? '',
+              'senderId': data['senderId'] ?? '',
+              'timestamp': data['timestamp'] ?? Timestamp.now(),
+              'read': data['read'] ?? false,
+            };
+          }).toList();
 
-              add(MessagesUpdated(messages, event.conversationId));
-            },
-            onError: (error) {
-              emit(SimpleChatState.error('Error al cargar mensajes: $error'));
-            },
-          );
+          add(MessagesUpdated(messages, event.conversationId));
+        },
+        onError: (error) {
+          emit(SimpleChatState.error('Error al cargar mensajes: $error'));
+        },
+      );
 
       // Marcar mensajes como leídos si se solicita
       if (event.markAsRead) {
@@ -170,21 +170,21 @@ class SimpleChatBloc extends Bloc<SimpleChatEvent, SimpleChatState> {
           .doc(event.conversationId)
           .collection('messages')
           .add({
-            'content': event.content,
-            'senderId': event.senderId,
-            'timestamp': FieldValue.serverTimestamp(),
-            'read': false,
-          });
+        'content': event.content,
+        'senderId': event.senderId,
+        'timestamp': FieldValue.serverTimestamp(),
+        'read': false,
+      });
 
       // Actualizar información de la conversación
       await _firestore
           .collection('conversations')
           .doc(event.conversationId)
           .update({
-            'lastMessage': event.content,
-            'lastMessageTimestamp': FieldValue.serverTimestamp(),
-            'unreadCounts.${event.receiverId}': FieldValue.increment(1),
-          });
+        'lastMessage': event.content,
+        'lastMessageTimestamp': FieldValue.serverTimestamp(),
+        'unreadCounts.${event.receiverId}': FieldValue.increment(1),
+      });
     } catch (e) {
       emit(SimpleChatState.error('Error al enviar mensaje: $e'));
     }

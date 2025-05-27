@@ -51,8 +51,8 @@ class PlanDescriptionWidget extends StatelessWidget {
                 ? description
                 : 'No hay descripción disponible para este plan.',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: isDarkMode ? Colors.white : Colors.black,
-            ),
+                  color: isDarkMode ? Colors.white : Colors.black,
+                ),
           ),
         ),
       ],

@@ -18,7 +18,7 @@ abstract class PlanRepository extends RepositoryBase<PlanEntity> {
   ///
   /// Retorna un Stream que emite Either<AppFailure, List<PlanWithCreatorEntity>>
   Stream<Either<AppFailure, List<PlanWithCreatorEntity>>>
-  getPlansWithCreators();
+      getPlansWithCreators();
 
   /// Indica interés en un plan (like/match)
   Future<Either<AppFailure, Unit>> matchPlan(String planId);
@@ -157,7 +157,7 @@ abstract class PlanRepository extends RepositoryBase<PlanEntity> {
   /// [limit] - Límite de resultados
   /// [lastDocumentId] - Para paginación
   Future<Either<Failure, List<PlanWithCreatorEntity>>>
-  filterPlansByMultipleCategories({
+      filterPlansByMultipleCategories({
     required List<String> categories,
     int limit = 20,
     String? lastDocumentId,
@@ -168,7 +168,7 @@ abstract class PlanRepository extends RepositoryBase<PlanEntity> {
   /// [category] - Categoría específica
   /// [limit] - Límite de resultados
   Future<Either<Failure, List<PlanWithCreatorEntity>>>
-  getPopularPlansByCategory({required String category, int limit = 10});
+      getPopularPlansByCategory({required String category, int limit = 10});
 
   /// Obtiene categorías sugeridas para un usuario
   ///

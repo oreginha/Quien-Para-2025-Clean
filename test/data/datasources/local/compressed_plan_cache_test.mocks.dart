@@ -38,12 +38,10 @@ class MockBox<E> extends _i1.Mock implements _i2.Box<E> {
           as Iterable<E>);
 
   @override
-  String get name =>
-      (super.noSuchMethod(
-            Invocation.getter(#name),
-            returnValue: _i3.dummyValue<String>(this, Invocation.getter(#name)),
-          )
-          as String);
+  String get name => (super.noSuchMethod(
+        Invocation.getter(#name),
+        returnValue: _i3.dummyValue<String>(this, Invocation.getter(#name)),
+      ) as String);
 
   @override
   bool get isOpen =>
@@ -77,159 +75,126 @@ class MockBox<E> extends _i1.Mock implements _i2.Box<E> {
   @override
   Iterable<E> valuesBetween({dynamic startKey, dynamic endKey}) =>
       (super.noSuchMethod(
-            Invocation.method(#valuesBetween, [], {
-              #startKey: startKey,
-              #endKey: endKey,
-            }),
-            returnValue: <E>[],
-          )
-          as Iterable<E>);
+        Invocation.method(#valuesBetween, [], {
+          #startKey: startKey,
+          #endKey: endKey,
+        }),
+        returnValue: <E>[],
+      ) as Iterable<E>);
 
   @override
   E? getAt(int? index) =>
       (super.noSuchMethod(Invocation.method(#getAt, [index])) as E?);
 
   @override
-  Map<dynamic, E> toMap() =>
-      (super.noSuchMethod(
-            Invocation.method(#toMap, []),
-            returnValue: <dynamic, E>{},
-          )
-          as Map<dynamic, E>);
+  Map<dynamic, E> toMap() => (super.noSuchMethod(
+        Invocation.method(#toMap, []),
+        returnValue: <dynamic, E>{},
+      ) as Map<dynamic, E>);
 
   @override
   dynamic keyAt(int? index) =>
       super.noSuchMethod(Invocation.method(#keyAt, [index]));
 
   @override
-  _i4.Stream<_i2.BoxEvent> watch({dynamic key}) =>
-      (super.noSuchMethod(
-            Invocation.method(#watch, [], {#key: key}),
-            returnValue: _i4.Stream<_i2.BoxEvent>.empty(),
-          )
-          as _i4.Stream<_i2.BoxEvent>);
+  _i4.Stream<_i2.BoxEvent> watch({dynamic key}) => (super.noSuchMethod(
+        Invocation.method(#watch, [], {#key: key}),
+        returnValue: _i4.Stream<_i2.BoxEvent>.empty(),
+      ) as _i4.Stream<_i2.BoxEvent>);
 
   @override
-  bool containsKey(dynamic key) =>
-      (super.noSuchMethod(
-            Invocation.method(#containsKey, [key]),
-            returnValue: false,
-          )
-          as bool);
+  bool containsKey(dynamic key) => (super.noSuchMethod(
+        Invocation.method(#containsKey, [key]),
+        returnValue: false,
+      ) as bool);
 
   @override
-  _i4.Future<void> put(dynamic key, E? value) =>
-      (super.noSuchMethod(
-            Invocation.method(#put, [key, value]),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> put(dynamic key, E? value) => (super.noSuchMethod(
+        Invocation.method(#put, [key, value]),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> putAt(int? index, E? value) =>
-      (super.noSuchMethod(
-            Invocation.method(#putAt, [index, value]),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> putAt(int? index, E? value) => (super.noSuchMethod(
+        Invocation.method(#putAt, [index, value]),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> putAll(Map<dynamic, E>? entries) =>
-      (super.noSuchMethod(
-            Invocation.method(#putAll, [entries]),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> putAll(Map<dynamic, E>? entries) => (super.noSuchMethod(
+        Invocation.method(#putAll, [entries]),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<int> add(E? value) =>
-      (super.noSuchMethod(
-            Invocation.method(#add, [value]),
-            returnValue: _i4.Future<int>.value(0),
-          )
-          as _i4.Future<int>);
+  _i4.Future<int> add(E? value) => (super.noSuchMethod(
+        Invocation.method(#add, [value]),
+        returnValue: _i4.Future<int>.value(0),
+      ) as _i4.Future<int>);
 
   @override
-  _i4.Future<Iterable<int>> addAll(Iterable<E>? values) =>
-      (super.noSuchMethod(
-            Invocation.method(#addAll, [values]),
-            returnValue: _i4.Future<Iterable<int>>.value(<int>[]),
-          )
-          as _i4.Future<Iterable<int>>);
+  _i4.Future<Iterable<int>> addAll(Iterable<E>? values) => (super.noSuchMethod(
+        Invocation.method(#addAll, [values]),
+        returnValue: _i4.Future<Iterable<int>>.value(<int>[]),
+      ) as _i4.Future<Iterable<int>>);
 
   @override
-  _i4.Future<void> delete(dynamic key) =>
-      (super.noSuchMethod(
-            Invocation.method(#delete, [key]),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> delete(dynamic key) => (super.noSuchMethod(
+        Invocation.method(#delete, [key]),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> deleteAt(int? index) =>
-      (super.noSuchMethod(
-            Invocation.method(#deleteAt, [index]),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> deleteAt(int? index) => (super.noSuchMethod(
+        Invocation.method(#deleteAt, [index]),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> deleteAll(Iterable<dynamic>? keys) =>
-      (super.noSuchMethod(
-            Invocation.method(#deleteAll, [keys]),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> deleteAll(Iterable<dynamic>? keys) => (super.noSuchMethod(
+        Invocation.method(#deleteAll, [keys]),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> compact() =>
-      (super.noSuchMethod(
-            Invocation.method(#compact, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> compact() => (super.noSuchMethod(
+        Invocation.method(#compact, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<int> clear() =>
-      (super.noSuchMethod(
-            Invocation.method(#clear, []),
-            returnValue: _i4.Future<int>.value(0),
-          )
-          as _i4.Future<int>);
+  _i4.Future<int> clear() => (super.noSuchMethod(
+        Invocation.method(#clear, []),
+        returnValue: _i4.Future<int>.value(0),
+      ) as _i4.Future<int>);
 
   @override
-  _i4.Future<void> close() =>
-      (super.noSuchMethod(
-            Invocation.method(#close, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> close() => (super.noSuchMethod(
+        Invocation.method(#close, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> deleteFromDisk() =>
-      (super.noSuchMethod(
-            Invocation.method(#deleteFromDisk, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> deleteFromDisk() => (super.noSuchMethod(
+        Invocation.method(#deleteFromDisk, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
-  _i4.Future<void> flush() =>
-      (super.noSuchMethod(
-            Invocation.method(#flush, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> flush() => (super.noSuchMethod(
+        Invocation.method(#flush, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }
 
 /// A class which mocks [PerformanceMetrics].
@@ -242,25 +207,23 @@ class MockPerformanceMetrics extends _i1.Mock
   }
 
   @override
-  _i4.Future<void> init() =>
-      (super.noSuchMethod(
-            Invocation.method(#init, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+  _i4.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(#init, []),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 
   @override
   void startTimer(String? operationName) => super.noSuchMethod(
-    Invocation.method(#startTimer, [operationName]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#startTimer, [operationName]),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void stopTimer(String? operationName) => super.noSuchMethod(
-    Invocation.method(#stopTimer, [operationName]),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#stopTimer, [operationName]),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void recordMetric(String? category, String? name, dynamic value) =>
@@ -270,12 +233,10 @@ class MockPerformanceMetrics extends _i1.Mock
       );
 
   @override
-  Map<String, Map<String, dynamic>> getAllMetrics() =>
-      (super.noSuchMethod(
-            Invocation.method(#getAllMetrics, []),
-            returnValue: <String, Map<String, dynamic>>{},
-          )
-          as Map<String, Map<String, dynamic>>);
+  Map<String, Map<String, dynamic>> getAllMetrics() => (super.noSuchMethod(
+        Invocation.method(#getAllMetrics, []),
+        returnValue: <String, Map<String, dynamic>>{},
+      ) as Map<String, Map<String, dynamic>>);
 
   @override
   Map<String, dynamic>? getMetricsForCategory(String? category) =>
@@ -284,15 +245,15 @@ class MockPerformanceMetrics extends _i1.Mock
 
   @override
   void resetMetrics() => super.noSuchMethod(
-    Invocation.method(#resetMetrics, []),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#resetMetrics, []),
+        returnValueForMissingStub: null,
+      );
 
   @override
   void saveCurrentMetricsAsHistorical() => super.noSuchMethod(
-    Invocation.method(#saveCurrentMetricsAsHistorical, []),
-    returnValueForMissingStub: null,
-  );
+        Invocation.method(#saveCurrentMetricsAsHistorical, []),
+        returnValueForMissingStub: null,
+      );
 
   @override
   Map<String, dynamic> getComparison(
@@ -301,20 +262,17 @@ class MockPerformanceMetrics extends _i1.Mock
     int? afterCount = 5,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #getComparison,
-              [category],
-              {#beforeCount: beforeCount, #afterCount: afterCount},
-            ),
-            returnValue: <String, dynamic>{},
-          )
-          as Map<String, dynamic>);
+        Invocation.method(
+          #getComparison,
+          [category],
+          {#beforeCount: beforeCount, #afterCount: afterCount},
+        ),
+        returnValue: <String, dynamic>{},
+      ) as Map<String, dynamic>);
 
   @override
-  _i4.Future<String?> exportMetricsToFile() =>
-      (super.noSuchMethod(
-            Invocation.method(#exportMetricsToFile, []),
-            returnValue: _i4.Future<String?>.value(),
-          )
-          as _i4.Future<String?>);
+  _i4.Future<String?> exportMetricsToFile() => (super.noSuchMethod(
+        Invocation.method(#exportMetricsToFile, []),
+        returnValue: _i4.Future<String?>.value(),
+      ) as _i4.Future<String?>);
 }

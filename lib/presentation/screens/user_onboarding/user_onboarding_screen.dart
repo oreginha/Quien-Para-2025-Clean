@@ -278,17 +278,17 @@ class _UserOnboardingScreenState extends State<UserOnboardingScreen>
                         child: _buildHeader(_currentPage),
                         transitionBuilder:
                             (Widget child, Animation<double> animation) {
-                              return FadeTransition(
-                                opacity: animation,
-                                child: SlideTransition(
-                                  position: Tween<Offset>(
-                                    begin: const Offset(0.0, 0.2),
-                                    end: Offset.zero,
-                                  ).animate(animation),
-                                  child: child,
-                                ),
-                              );
-                            },
+                          return FadeTransition(
+                            opacity: animation,
+                            child: SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(0.0, 0.2),
+                                end: Offset.zero,
+                              ).animate(animation),
+                              child: child,
+                            ),
+                          );
+                        },
                       ),
 
                       // Page content

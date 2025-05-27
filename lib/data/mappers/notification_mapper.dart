@@ -12,11 +12,8 @@ import 'package:quien_para/domain/entities/notification/notification_entity.dart
 /// en las capas de datos.
 class NotificationMapper
     implements
-        EntityMapper<
-          NotificationEntity,
-          NotificationModel,
-          Map<String, dynamic>
-        > {
+        EntityMapper<NotificationEntity, NotificationModel,
+            Map<String, dynamic>> {
   const NotificationMapper();
 
   @override

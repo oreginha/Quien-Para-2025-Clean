@@ -85,14 +85,14 @@ class LocationEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    latitude,
-    longitude,
-    name,
-    address,
-    postalCode,
-    city,
-    country,
-  ];
+        latitude,
+        longitude,
+        name,
+        address,
+        postalCode,
+        city,
+        country,
+      ];
 
   @override
   String toString() =>

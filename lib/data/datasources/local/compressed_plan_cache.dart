@@ -195,9 +195,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_plansCacheBox);
 
       // Convertir a JSON para almacenamiento
-      final List<String> plansJson = plans
-          .map((PlanEntity plan) => jsonEncode(plan.toJson()))
-          .toList();
+      final List<String> plansJson =
+          plans.map((PlanEntity plan) => jsonEncode(plan.toJson())).toList();
 
       // Medir tamaño original
       final String originalData = jsonEncode(plansJson);
@@ -212,9 +211,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       _compressionSavingsBytes += (savedBytes > 0) ? savedBytes : 0;
 
       // Clave basada en prioridad
-      final String key = isPriority
-          ? '${_priorityPlansCachePrefix}all_plans'
-          : 'all_plans';
+      final String key =
+          isPriority ? '${_priorityPlansCachePrefix}all_plans' : 'all_plans';
 
       // Guardar datos comprimidos
       await box.put(key, compressedData);
@@ -275,9 +273,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       }
 
       // Convertir a JSON para almacenamiento
-      final List<String> plansJson = plans
-          .map((PlanEntity plan) => jsonEncode(plan.toJson()))
-          .toList();
+      final List<String> plansJson =
+          plans.map((PlanEntity plan) => jsonEncode(plan.toJson())).toList();
 
       // Medir tamaño original
       final String originalData = jsonEncode(plansJson);
@@ -357,9 +354,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       // Verificar si el caché expiró
       final int timestamp = box.get(timeKey);
       final int now = DateTime.now().millisecondsSinceEpoch;
-      final Duration cacheDuration = isPriority
-          ? _priorityCacheDuration
-          : _regularCacheDuration;
+      final Duration cacheDuration =
+          isPriority ? _priorityCacheDuration : _regularCacheDuration;
 
       if (now - timestamp > cacheDuration.inMilliseconds) {
         _cacheMisses++;
@@ -421,9 +417,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_plansCacheBox);
 
       // Clave basada en prioridad
-      final String key = isPriority
-          ? '${_priorityPlansCachePrefix}all_plans'
-          : 'all_plans';
+      final String key =
+          isPriority ? '${_priorityPlansCachePrefix}all_plans' : 'all_plans';
       final String timeKey = '${key}_timestamp';
 
       // Verificar si hay datos en caché
@@ -436,9 +431,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       // Verificar si el caché expiró
       final int timestamp = box.get(timeKey);
       final int now = DateTime.now().millisecondsSinceEpoch;
-      final Duration cacheDuration = isPriority
-          ? _priorityCacheDuration
-          : _regularCacheDuration;
+      final Duration cacheDuration =
+          isPriority ? _priorityCacheDuration : _regularCacheDuration;
 
       if (now - timestamp > cacheDuration.inMilliseconds) {
         _cacheMisses++;
@@ -503,9 +497,8 @@ class CompressedPlanCache implements PlanCacheInterface {
       final Box<dynamic> box = Hive.box(_plansCacheBox);
 
       // Convertir a JSON para almacenamiento
-      final List<String> plansJson = plans
-          .map((PlanEntity plan) => jsonEncode(plan.toJson()))
-          .toList();
+      final List<String> plansJson =
+          plans.map((PlanEntity plan) => jsonEncode(plan.toJson())).toList();
 
       // Medir tamaño original
       final String originalData = jsonEncode(plansJson);
@@ -808,12 +801,10 @@ class CompressedPlanCache implements PlanCacheInterface {
 
 /// Función para no esperar a que se complete una operación asíncrona
 void unawaited(Future<void> future) {
-  future
-      .then((_) {
-        // Operación completada correctamente
-      })
-      .catchError((error) {
-        // Capturar errores para evitar excepciones no manejadas
-        debugPrint('Unhandled async error: $error');
-      });
+  future.then((_) {
+    // Operación completada correctamente
+  }).catchError((error) {
+    // Capturar errores para evitar excepciones no manejadas
+    debugPrint('Unhandled async error: $error');
+  });
 }

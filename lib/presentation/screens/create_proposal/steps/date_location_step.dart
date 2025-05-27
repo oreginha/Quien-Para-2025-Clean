@@ -189,18 +189,19 @@ class _DateLocationStepState extends State<DateLocationStep> {
                 itemCount: _filteredCities.length,
                 itemBuilder: (final BuildContext context, final int index) {
                   final String city = _filteredCities[index];
-                  final bool isEnabled = DateLocationStep.enabledCities
-                      .contains(city);
+                  final bool isEnabled =
+                      DateLocationStep.enabledCities.contains(city);
                   return ListTile(
                     title: Text(
                       city,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface
-                            .withValues(alpha: isEnabled ? 0.9 : 0.5),
-                        fontWeight: isEnabled
-                            ? FontWeight.bold
-                            : FontWeight.normal,
-                      ),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withValues(alpha: isEnabled ? 0.9 : 0.5),
+                            fontWeight:
+                                isEnabled ? FontWeight.bold : FontWeight.normal,
+                          ),
                     ),
                     trailing: isEnabled
                         ? null
@@ -215,8 +216,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
                         }
 
                         context.read<PlanBloc>().add(
-                          PlanEvent.updateField(field: 'location', value: city),
-                        );
+                              PlanEvent.updateField(
+                                  field: 'location', value: city),
+                            );
                         _hideSuggestions();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -262,8 +264,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
               // Si cambiamos a "any", limpiamos la fecha
               if (value == 'any') {
                 context.read<PlanBloc>().add(
-                  const PlanEvent.updateField(field: 'date', value: null),
-                );
+                      const PlanEvent.updateField(field: 'date', value: null),
+                    );
               }
 
               // Log para debug
@@ -273,8 +275,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
               }
 
               context.read<PlanBloc>().add(
-                PlanEvent.updateSelectedOptions(updatedConditions),
-              );
+                    PlanEvent.updateSelectedOptions(updatedConditions),
+                  );
             }
           });
         },
@@ -346,8 +348,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
           // Actualizar fecha en el BLoC
           if (mounted) {
             context.read<PlanBloc>().add(
-              PlanEvent.updateField(field: 'date', value: pickedDate),
-            );
+                  PlanEvent.updateField(field: 'date', value: pickedDate),
+                );
           }
         }
       },
@@ -420,8 +422,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
               if (mounted) {
                 // Primero actualizar el campo principal de fecha
                 context.read<PlanBloc>().add(
-                  PlanEvent.updateField(field: 'date', value: pickedDate),
-                );
+                      PlanEvent.updateField(field: 'date', value: pickedDate),
+                    );
 
                 // Luego actualizar las condiciones con el tipo y la fecha de inicio
                 final PlanState state = context.read<PlanBloc>().state;
@@ -437,8 +439,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
                   }
 
                   context.read<PlanBloc>().add(
-                    PlanEvent.updateSelectedOptions(updatedConditions),
-                  );
+                        PlanEvent.updateSelectedOptions(updatedConditions),
+                      );
                 }
               }
             }
@@ -530,8 +532,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
                   }
 
                   context.read<PlanBloc>().add(
-                    PlanEvent.updateSelectedOptions(updatedConditions),
-                  );
+                        PlanEvent.updateSelectedOptions(updatedConditions),
+                      );
                 }
               }
             }
@@ -671,7 +673,8 @@ class _DateLocationStepState extends State<DateLocationStep> {
               ),
             ),
             child: LayoutBuilder(
-              builder: (final BuildContext context, final BoxConstraints constraints) {
+              builder: (final BuildContext context,
+                  final BoxConstraints constraints) {
                 return SingleChildScrollView(
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
@@ -687,7 +690,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
                             // Selector de Tipo de Fecha
                             Text(
                               'Tipo de Fecha',
-                              style: Theme.of(context).textTheme.titleMedium
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: Theme.of(context)
@@ -731,7 +736,9 @@ class _DateLocationStepState extends State<DateLocationStep> {
                             const SizedBox(height: 24),
                             Text(
                               'Ciudad',
-                              style: Theme.of(context).textTheme.titleMedium
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: Theme.of(context)
@@ -781,11 +788,11 @@ class _DateLocationStepState extends State<DateLocationStep> {
                                   onChanged: (final String value) {
                                     // Actualizar el valor en el BLoC con cada cambio
                                     context.read<PlanBloc>().add(
-                                      PlanEvent.updateField(
-                                        field: 'location',
-                                        value: value,
-                                      ),
-                                    );
+                                          PlanEvent.updateField(
+                                            field: 'location',
+                                            value: value,
+                                          ),
+                                        );
                                   },
                                 ),
                               ),

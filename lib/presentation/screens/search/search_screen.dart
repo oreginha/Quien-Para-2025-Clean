@@ -310,8 +310,8 @@ class _SearchScreenState extends State<SearchScreen> {
       onRefresh: () async {
         if (_searchController.text.isNotEmpty) {
           context.read<SearchBloc>().add(
-            SubmitSearch(query: _searchController.text),
-          );
+                SubmitSearch(query: _searchController.text),
+              );
         }
       },
       child: ListView.builder(
@@ -405,8 +405,8 @@ class _SearchScreenState extends State<SearchScreen> {
             onPressed: () {
               if (_searchController.text.isNotEmpty) {
                 context.read<SearchBloc>().add(
-                  SubmitSearch(query: _searchController.text),
-                );
+                      SubmitSearch(query: _searchController.text),
+                    );
               } else {
                 context.read<SearchBloc>().add(const InitializeSearch());
               }

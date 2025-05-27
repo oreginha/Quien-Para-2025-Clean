@@ -25,13 +25,12 @@ class PlanApiService {
       planData['createdAt'] = FieldValue.serverTimestamp();
 
       // Crear documento en Firestore
-      final DocumentReference<Map<String, dynamic>> docRef = await _firestore
-          .collection('plans')
-          .add(planData);
+      final DocumentReference<Map<String, dynamic>> docRef =
+          await _firestore.collection('plans').add(planData);
 
       // Obtener el documento creado
-      final DocumentSnapshot<Map<String, dynamic>> docSnapshot = await docRef
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> docSnapshot =
+          await docRef.get();
       final PlanEntity createdPlan = PlanEntity.fromJson(<String, dynamic>{
         ...docSnapshot.data() as Map<String, dynamic>,
         'id': docRef.id,
@@ -99,10 +98,8 @@ class PlanApiService {
       if (userId == null) throw Exception('Usuario no autenticado');
 
       // Obtener el documento del plan
-      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
-          .collection('plans')
-          .doc(planId)
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc =
+          await _firestore.collection('plans').doc(planId).get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');
@@ -128,10 +125,8 @@ class PlanApiService {
       if (userId == null) throw Exception('Usuario no autenticado');
 
       // Obtener el documento del plan
-      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
-          .collection('plans')
-          .doc(planId)
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc =
+          await _firestore.collection('plans').doc(planId).get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');
@@ -157,10 +152,8 @@ class PlanApiService {
       if (userId == null) throw Exception('Usuario no autenticado');
 
       // Verificar que el usuario es el creador (opcional pero recomendado)
-      final DocumentSnapshot<Map<String, dynamic>> planDoc = await _firestore
-          .collection('plans')
-          .doc(planId)
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> planDoc =
+          await _firestore.collection('plans').doc(planId).get();
 
       if (!planDoc.exists) {
         throw Exception('El plan no existe');

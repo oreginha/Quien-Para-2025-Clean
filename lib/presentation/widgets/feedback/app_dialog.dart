@@ -60,15 +60,13 @@ class AppDialog extends StatelessWidget {
             // Contenido
             if (content != null)
               Padding(
-                padding:
-                    contentPadding ??
+                padding: contentPadding ??
                     const EdgeInsets.symmetric(vertical: AppSpacing.s),
                 child: content!,
               )
             else if (message.isNotEmpty)
               Padding(
-                padding:
-                    contentPadding ??
+                padding: contentPadding ??
                     const EdgeInsets.symmetric(vertical: AppSpacing.s),
                 child: Text(message, style: AppTypography.bodyMedium(false)),
               ),
@@ -109,14 +107,13 @@ class AppDialog extends StatelessWidget {
             onPressed: () => context.closeScreen(false),
             child: Text(
               cancelText,
-              style:
-                  AppTypography.buttonMedium(
-                    Theme.of(context).brightness == Brightness.dark,
-                  ).copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.darkTextSecondary
-                        : AppColors.lightTextSecondary,
-                  ),
+              style: AppTypography.buttonMedium(
+                Theme.of(context).brightness == Brightness.dark,
+              ).copyWith(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.darkTextSecondary
+                    : AppColors.lightTextSecondary,
+              ),
             ),
           ),
           TextButton(
@@ -134,14 +131,13 @@ class AppDialog extends StatelessWidget {
             ),
             child: Text(
               confirmText,
-              style:
-                  AppTypography.buttonMedium(
-                    Theme.of(context).brightness == Brightness.dark,
-                  ).copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.darkTextSecondary
-                        : AppColors.lightTextSecondary,
-                  ),
+              style: AppTypography.buttonMedium(
+                Theme.of(context).brightness == Brightness.dark,
+              ).copyWith(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.darkTextSecondary
+                    : AppColors.lightTextSecondary,
+              ),
             ),
           ),
         ],

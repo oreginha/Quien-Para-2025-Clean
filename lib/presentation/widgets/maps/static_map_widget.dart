@@ -183,7 +183,6 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-
                       if (widget.location.address != null)
                         Text(
                           widget.location.address!,
@@ -191,7 +190,6 @@ class _StaticMapWidgetState extends State<StaticMapWidget> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-
                       if (widget.location.city != null ||
                           widget.location.country != null)
                         Text(

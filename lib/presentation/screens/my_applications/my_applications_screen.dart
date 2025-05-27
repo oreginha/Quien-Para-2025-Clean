@@ -126,76 +126,75 @@ class _MyApplicationsScreenContentState
     // Definir el contenido principal
     final content =
         BlocBuilder<MyApplicationsCubit, LoadingState<MyApplicationsData>>(
-          builder: (context, state) {
-            // Estado de carga
-            if (state.isLoading) {
-              return Center(
-                child: CircularProgressIndicator(color: AppColors.brandYellow),
-              );
-            }
+      builder: (context, state) {
+        // Estado de carga
+        if (state.isLoading) {
+          return Center(
+            child: CircularProgressIndicator(color: AppColors.brandYellow),
+          );
+        }
 
-            // Estado de error
-            if (state.isError) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.error_outline,
-                      color: AppColors.accentRed,
-                      size: 48,
-                    ),
-                    const SizedBox(height: AppSpacing.m),
-                    Text(
-                      state.errorMessage ?? 'Error al cargar postulaciones',
-                      style: AppTypography.bodyLarge(isDarkMode),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: AppSpacing.l),
-                    ElevatedButton(
-                      onPressed: () => _cubit.loadApplications(),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.brandYellow,
-                        foregroundColor: isDarkMode
-                            ? Colors.black
-                            : AppColors.lightTextPrimary,
-                      ),
-                      child: const Text('Reintentar'),
-                    ),
-                  ],
+        // Estado de error
+        if (state.isError) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: AppColors.accentRed,
+                  size: 48,
                 ),
-              );
-            }
-
-            // Estado vacío
-            if (state.isEmpty ||
-                (state.isLoaded && state.data!.applications.isEmpty)) {
-              return Center(
-                child: Text(
-                  'No tienes postulaciones activas',
-                  style: AppTypography.bodyLarge(
-                    isDarkMode,
-                  ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
+                const SizedBox(height: AppSpacing.m),
+                Text(
+                  state.errorMessage ?? 'Error al cargar postulaciones',
+                  style: AppTypography.bodyLarge(isDarkMode),
+                  textAlign: TextAlign.center,
                 ),
-              );
-            }
+                const SizedBox(height: AppSpacing.l),
+                ElevatedButton(
+                  onPressed: () => _cubit.loadApplications(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.brandYellow,
+                    foregroundColor:
+                        isDarkMode ? Colors.black : AppColors.lightTextPrimary,
+                  ),
+                  child: const Text('Reintentar'),
+                ),
+              ],
+            ),
+          );
+        }
 
-            // Estado cargado con datos
-            if (state.isLoaded) {
-              return _buildApplicationsList(state.data!, isDarkMode);
-            }
+        // Estado vacío
+        if (state.isEmpty ||
+            (state.isLoaded && state.data!.applications.isEmpty)) {
+          return Center(
+            child: Text(
+              'No tienes postulaciones activas',
+              style: AppTypography.bodyLarge(
+                isDarkMode,
+              ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
+            ),
+          );
+        }
 
-            // Estado por defecto (no debería ocurrir)
-            return Center(
-              child: Text(
-                'Estado no reconocido',
-                style: AppTypography.bodyMedium(
-                  isDarkMode,
-                ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
-              ),
-            );
-          },
+        // Estado cargado con datos
+        if (state.isLoaded) {
+          return _buildApplicationsList(state.data!, isDarkMode);
+        }
+
+        // Estado por defecto (no debería ocurrir)
+        return Center(
+          child: Text(
+            'Estado no reconocido',
+            style: AppTypography.bodyMedium(
+              isDarkMode,
+            ).copyWith(color: AppColors.getTextSecondary(isDarkMode)),
+          ),
         );
+      },
+    );
 
     // Usar NewResponsiveScaffold para tener un diseño consistente
     return NewResponsiveScaffold(
@@ -278,12 +277,12 @@ class _MyApplicationsScreenContentState
                           ),
                           child: Text(
                             plan.category,
-                            style: AppTypography.labelSmall(isDarkMode)
-                                .copyWith(
-                                  color: isDarkMode
-                                      ? Colors.black
-                                      : AppColors.lightTextPrimary,
-                                ),
+                            style:
+                                AppTypography.labelSmall(isDarkMode).copyWith(
+                              color: isDarkMode
+                                  ? Colors.black
+                                  : AppColors.lightTextPrimary,
+                            ),
                           ),
                         ),
                       ],

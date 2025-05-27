@@ -20,29 +20,29 @@ class FirebaseTestUtils {
     );
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(channel, (MethodCall methodCall) async {
-          methodCalls.add(methodCall);
-          switch (methodCall.method) {
-            case 'Firebase#initializeApp':
-              return {
-                'name': '[DEFAULT]',
-                'options': {
-                  'apiKey': 'test-api-key',
-                  'appId': 'test-app-id',
-                  'messagingSenderId': 'test-messaging-sender-id',
-                  'projectId': 'test-project-id',
-                },
-              };
-            case 'Firebase#options':
-              return {
-                'apiKey': 'test-api-key',
-                'appId': 'test-app-id',
-                'messagingSenderId': 'test-messaging-sender-id',
-                'projectId': 'test-project-id',
-              };
-            default:
-              return null;
-          }
-        });
+      methodCalls.add(methodCall);
+      switch (methodCall.method) {
+        case 'Firebase#initializeApp':
+          return {
+            'name': '[DEFAULT]',
+            'options': {
+              'apiKey': 'test-api-key',
+              'appId': 'test-app-id',
+              'messagingSenderId': 'test-messaging-sender-id',
+              'projectId': 'test-project-id',
+            },
+          };
+        case 'Firebase#options':
+          return {
+            'apiKey': 'test-api-key',
+            'appId': 'test-app-id',
+            'messagingSenderId': 'test-messaging-sender-id',
+            'projectId': 'test-project-id',
+          };
+        default:
+          return null;
+      }
+    });
 
     // Configurar la implementación de la plataforma Firebase
     TestFirebaseCoreHostApi.setup();

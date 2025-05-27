@@ -157,8 +157,8 @@ class _ImagePreviewWidgetState extends State<ImagePreviewWidget> {
                   : maxDialogHeight * 0.45;
               final double maxControlsHeight = widget.showEditControls
                   ? (isSmallScreen
-                        ? maxDialogHeight * 0.45
-                        : maxDialogHeight * 0.35)
+                      ? maxDialogHeight * 0.45
+                      : maxDialogHeight * 0.35)
                   : 0;
 
               return Container(

@@ -59,24 +59,26 @@ extension RouterExtension on BuildContext {
     Map<String, String>? params,
     Map<String, dynamic>? queryParams,
     Object? extra,
-  }) => GoRouter.of(this).pushNamed(
-    name,
-    pathParameters: params ?? {},
-    queryParameters: queryParams ?? {},
-    extra: extra,
-  );
+  }) =>
+      GoRouter.of(this).pushNamed(
+        name,
+        pathParameters: params ?? {},
+        queryParameters: queryParams ?? {},
+        extra: extra,
+      );
 
   void appGoNamed(
     String name, {
     Map<String, String>? params,
     Map<String, dynamic>? queryParams,
     Object? extra,
-  }) => GoRouter.of(this).goNamed(
-    name,
-    pathParameters: params ?? {},
-    queryParameters: queryParams ?? {},
-    extra: extra,
-  );
+  }) =>
+      GoRouter.of(this).goNamed(
+        name,
+        pathParameters: params ?? {},
+        queryParameters: queryParams ?? {},
+        extra: extra,
+      );
 
   // Método para extraer extra params de manera segura
   T? getExtraAs<T>() {

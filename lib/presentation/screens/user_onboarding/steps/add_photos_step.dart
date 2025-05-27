@@ -129,14 +129,14 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
 
       final XFile? image = await _picker
           .pickImage(
-            source: source,
-            maxWidth: 1200,
-            maxHeight: 1200,
-            imageQuality: 85,
-          )
+        source: source,
+        maxWidth: 1200,
+        maxHeight: 1200,
+        imageQuality: 85,
+      )
           .catchError((error) {
-            throw Exception('Error al capturar la imagen: $error');
-          });
+        throw Exception('Error al capturar la imagen: $error');
+      });
 
       if (image == null) {
         throw Exception('No se seleccionó ninguna imagen');
@@ -362,9 +362,8 @@ class _AddPhotosStepState extends State<AddPhotosStep> {
                       PhotoSlot(
                         photo: hasPhoto ? state.photos[index] : null,
                         hasPhoto: hasPhoto,
-                        onTap: _isLoading
-                            ? () {}
-                            : () => _handlePhotoTap(index),
+                        onTap:
+                            _isLoading ? () {} : () => _handlePhotoTap(index),
                         isMain: isMainPhoto,
                       ),
                       if (_isLoading)

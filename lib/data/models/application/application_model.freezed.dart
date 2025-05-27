@@ -102,56 +102,55 @@ class _$ApplicationModelCopyWithImpl<$Res, $Val extends ApplicationModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            planId: null == planId
-                ? _value.planId
-                : planId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            applicantId: null == applicantId
-                ? _value.applicantId
-                : applicantId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as String,
-            appliedAt: null == appliedAt
-                ? _value.appliedAt
-                : appliedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            message: freezed == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            processedAt: freezed == processedAt
-                ? _value.processedAt
-                : processedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
-            planTitle: freezed == planTitle
-                ? _value.planTitle
-                : planTitle // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            planImageUrl: freezed == planImageUrl
-                ? _value.planImageUrl
-                : planImageUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            applicantName: freezed == applicantName
-                ? _value.applicantName
-                : applicantName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            applicantPhotoUrl: freezed == applicantPhotoUrl
-                ? _value.applicantPhotoUrl
-                : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            responsibleMessage: freezed == responsibleMessage
-                ? _value.responsibleMessage
-                : responsibleMessage // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        planId: null == planId
+            ? _value.planId
+            : planId // ignore: cast_nullable_to_non_nullable
+                as String,
+        applicantId: null == applicantId
+            ? _value.applicantId
+            : applicantId // ignore: cast_nullable_to_non_nullable
+                as String,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                as String,
+        appliedAt: null == appliedAt
+            ? _value.appliedAt
+            : appliedAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        message: freezed == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                as String?,
+        processedAt: freezed == processedAt
+            ? _value.processedAt
+            : processedAt // ignore: cast_nullable_to_non_nullable
+                as DateTime?,
+        planTitle: freezed == planTitle
+            ? _value.planTitle
+            : planTitle // ignore: cast_nullable_to_non_nullable
+                as String?,
+        planImageUrl: freezed == planImageUrl
+            ? _value.planImageUrl
+            : planImageUrl // ignore: cast_nullable_to_non_nullable
+                as String?,
+        applicantName: freezed == applicantName
+            ? _value.applicantName
+            : applicantName // ignore: cast_nullable_to_non_nullable
+                as String?,
+        applicantPhotoUrl: freezed == applicantPhotoUrl
+            ? _value.applicantPhotoUrl
+            : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
+                as String?,
+        responsibleMessage: freezed == responsibleMessage
+            ? _value.responsibleMessage
+            : responsibleMessage // ignore: cast_nullable_to_non_nullable
+                as String?,
+      ) as $Val,
     );
   }
 }
@@ -213,51 +212,51 @@ class __$$ApplicationModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         planId: null == planId
             ? _value.planId
             : planId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         applicantId: null == applicantId
             ? _value.applicantId
             : applicantId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         status: null == status
             ? _value.status
             : status // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         appliedAt: null == appliedAt
             ? _value.appliedAt
             : appliedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         message: freezed == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         processedAt: freezed == processedAt
             ? _value.processedAt
             : processedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+                as DateTime?,
         planTitle: freezed == planTitle
             ? _value.planTitle
             : planTitle // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         planImageUrl: freezed == planImageUrl
             ? _value.planImageUrl
             : planImageUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         applicantName: freezed == applicantName
             ? _value.applicantName
             : applicantName // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         applicantPhotoUrl: freezed == applicantPhotoUrl
             ? _value.applicantPhotoUrl
             : applicantPhotoUrl // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
         responsibleMessage: freezed == responsibleMessage
             ? _value.responsibleMessage
             : responsibleMessage // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                as String?,
       ),
     );
   }
@@ -349,20 +348,20 @@ class _$ApplicationModelImpl extends _ApplicationModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    planId,
-    applicantId,
-    status,
-    appliedAt,
-    message,
-    processedAt,
-    planTitle,
-    planImageUrl,
-    applicantName,
-    applicantPhotoUrl,
-    responsibleMessage,
-  );
+        runtimeType,
+        id,
+        planId,
+        applicantId,
+        status,
+        appliedAt,
+        message,
+        processedAt,
+        planTitle,
+        planImageUrl,
+        applicantName,
+        applicantPhotoUrl,
+        responsibleMessage,
+      );
 
   /// Create a copy of ApplicationModel
   /// with the given fields replaced by the non-null parameter values.

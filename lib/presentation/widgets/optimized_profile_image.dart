@@ -112,14 +112,14 @@ class _OptimizedProfileImageState extends State<OptimizedProfileImage>
     PerformanceLogger.logAsyncOperation('ProfileImage-Load', () async {
       try {
         // Obtener el proveedor de imágenes optimizado
-        final ImageProvider<Object> imageProvider = OptimizedImageProvider()
-            .getOptimizedNetworkImage(
-              widget.imageUrl!,
-              width: _thumbnailSize,
-              height: _thumbnailSize,
-              cacheToFile: true,
-              cacheToMemory: true,
-            );
+        final ImageProvider<Object> imageProvider =
+            OptimizedImageProvider().getOptimizedNetworkImage(
+          widget.imageUrl!,
+          width: _thumbnailSize,
+          height: _thumbnailSize,
+          cacheToFile: true,
+          cacheToMemory: true,
+        );
 
         // Precargar en caché
         final ImageConfiguration config = ImageConfiguration();

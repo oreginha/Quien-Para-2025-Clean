@@ -61,9 +61,8 @@ class ReportRepositoryImpl implements ReportRepository {
           .where('createdAt', isGreaterThan: Timestamp.fromDate(cutoffTime))
           .get();
 
-      final reports = querySnapshot.docs
-          .map((doc) => _mapDocumentToReport(doc))
-          .toList();
+      final reports =
+          querySnapshot.docs.map((doc) => _mapDocumentToReport(doc)).toList();
 
       return Right(reports);
     } catch (e) {
@@ -81,9 +80,8 @@ class ReportRepositoryImpl implements ReportRepository {
           .limit(50)
           .get();
 
-      final reports = querySnapshot.docs
-          .map((doc) => _mapDocumentToReport(doc))
-          .toList();
+      final reports =
+          querySnapshot.docs.map((doc) => _mapDocumentToReport(doc)).toList();
 
       return Right(reports);
     } catch (e) {
@@ -128,9 +126,8 @@ class ReportRepositoryImpl implements ReportRepository {
           .orderBy('createdAt', descending: true)
           .get();
 
-      final reports = querySnapshot.docs
-          .map((doc) => _mapDocumentToReport(doc))
-          .toList();
+      final reports =
+          querySnapshot.docs.map((doc) => _mapDocumentToReport(doc)).toList();
 
       return Right(reports);
     } catch (e) {

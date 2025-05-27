@@ -47,8 +47,7 @@ class MatchingService {
       );
 
       // Combinación ponderada de las puntuaciones
-      final double finalScore =
-          (interestsScore * 0.4) +
+      final double finalScore = (interestsScore * 0.4) +
           (locationScore * 0.4) +
           (availabilityScore * 0.2);
 
