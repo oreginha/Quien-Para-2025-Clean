@@ -58,7 +58,7 @@ jobs:
         channel: 'stable' 
         cache: true 
     - run: flutter pub get 
-    - run: flutter build web --release --web-renderer html 
+    - run: flutter build web --release
     - name: List build output
       run: |
         echo "=== Build output structure ==="
