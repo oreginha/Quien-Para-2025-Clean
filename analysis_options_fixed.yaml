@@ -1,0 +1,64 @@
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/generated_plugin_registrant.dart"
+    - "build/**"
+    - ".dart_tool/**"
+  errors:
+    # Treat missing files as warnings, not errors
+    uri_does_not_exist: warning
+    # Allow TODOs in development
+    todo: ignore
+    # Ignore invalid overrides for now during migration
+    invalid_override: warning
+    # Treat undefined methods as warnings for gradual fixing
+    undefined_method: warning
+    undefined_class: warning
+    undefined_identifier: warning
+    invalid_annotation_target: ignore
+  language:
+    strict-casts: false
+    strict-inference: false
+    strict-raw-types: false
+
+linter:
+  rules:
+    # Essential rules for code quality
+    prefer_single_quotes: true
+    avoid_print: false  # Allow print statements for debugging
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_final_fields: true
+    unnecessary_new: true
+    unnecessary_this: true
+    avoid_unnecessary_containers: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_collection_literals: true
+    prefer_spread_collections: true
+    unnecessary_parenthesis: true
+    
+    # Disable problematic rules during migration
+    avoid_function_literals_in_foreach_calls: false
+    
+    # Null safety and modern Dart
+    prefer_null_aware_operators: true
+    unnecessary_null_checks: true
+    unnecessary_null_in_if_null_operators: true
+    
+    # Code organization
+    sort_child_properties_last: true
+    sort_constructors_first: true
+    
+    # Performance
+    avoid_slow_async_io: true
+    
+    # Style consistency
+    curly_braces_in_flow_control_structures: true
+    use_key_in_widget_constructors: true

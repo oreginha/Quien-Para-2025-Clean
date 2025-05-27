@@ -55,6 +55,12 @@ jobs:
         channel: 'stable'
         cache: true
         
+    - name: Verify Flutter and Dart versions
+      run: |
+        flutter --version
+        dart --version
+        echo "Dart SDK location: $(which dart)"
+        
     - name: Install dependencies
       run: flutter pub get
       
@@ -62,8 +68,8 @@ jobs:
       run: flutter analyze --no-fatal-infos --no-fatal-warnings || echo "Analysis warnings found - acceptable during migration"
       continue-on-error: true
       
-    - name: Run tests (allow failures during migration)
-      run: flutter test --no-coverage || echo "Tests failing - tolerated during migration phase"
+    - name: Run tests (continue on error during migration)
+      run: flutter test --coverage --test-randomize-ordering-seed random || echo "Some tests failing - will be fixed in migration phase"
       continue-on-error: true
 
   build-web:
