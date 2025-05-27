@@ -59,6 +59,13 @@ jobs:
         cache: true 
     - run: flutter pub get 
     - run: flutter build web --release --web-renderer html 
+    - name: List build output
+      run: |
+        echo "=== Build output structure ==="
+        ls -la build/
+        ls -la build/web/
+        echo "=== Index.html content preview ==="
+        head -20 build/web/index.html || echo "No index.html found"
     - name: Upload Web Build Artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -96,17 +103,52 @@ jobs:
       with:
         name: web-build
         path: build/web/
+    - name: Verify build files
+      run: |
+        echo "=== Verifying downloaded artifacts ==="
+        ls -la build/web/
+        echo "=== Firebase.json config ==="
+        cat firebase.json
+        echo "=== Checking for index.html ==="
+        if [ -f "build/web/index.html" ]; then
+          echo "✅ index.html found"
+          head -10 build/web/index.html
+        else
+          echo "❌ index.html NOT found"
+          exit 1
+        fi
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
+    - name: Verify Firebase Token
+      run: |
+        if [ -z "${{ secrets.FIREBASE_TOKEN }}" ]; then
+          echo "❌ FIREBASE_TOKEN secret not configured"
+          echo "Please add FIREBASE_TOKEN to GitHub repository secrets"
+          exit 1
+        else
+          echo "✅ FIREBASE_TOKEN is configured"
+        fi
+    - name: Test Firebase Auth
+      run: |
+        firebase projects:list --token ${{ secrets.FIREBASE_TOKEN }} || {
+          echo "❌ Firebase authentication failed"
+          echo "Please check FIREBASE_TOKEN permissions"
+          exit 1
+        }
     - name: Deploy to Firebase Hosting
       run: |
-        firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }} --project planing-931b8
+        echo "🚀 Starting Firebase deployment..."
+        firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }} --project planing-931b8 --debug
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - name: Verify Deployment
+      run: |
+        echo "✅ Firebase deployment completed"
+        echo "🌐 App should be available at: https://planing-931b8.web.app"
  
   final-status: 
     name: Pipeline Status 
@@ -114,4 +156,15 @@ jobs:
     needs: [format, test, build-web, build-android, deploy-hosting] 
     if: always() 
     steps: 
-    - run: echo "🎯 All jobs completed - Web app deployed to Firebase Hosting" 
+    - run: |
+        echo "🎯 Pipeline Status Summary:"
+        echo "Format: ${{ needs.format.result }}"
+        echo "Test: ${{ needs.test.result }}"
+        echo "Build Web: ${{ needs.build-web.result }}"
+        echo "Build Android: ${{ needs.build-android.result }}"
+        echo "Deploy Hosting: ${{ needs.deploy-hosting.result }}"
+        if [ "${{ needs.deploy-hosting.result }}" == "success" ]; then
+          echo "🎉 Deployment successful! App available at: https://planing-931b8.web.app"
+        else
+          echo "⚠️ Deployment failed or skipped. Check logs above."
+        fi
