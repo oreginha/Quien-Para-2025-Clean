@@ -1,0 +1,34 @@
+# Deploy Firestore Rules Fix
+name: Deploy Fixed Firestore Rules
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'firestore.rules'
+
+jobs:
+  deploy-rules:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+      
+    - name: Deploy Firestore Rules
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      run: |
+        firebase use planing-931b8
+        firebase deploy --only firestore:rules --token "$FIREBASE_TOKEN"
+        
+    - name: Verify deployment
+      run: echo "✅ Firestore rules deployed successfully"
