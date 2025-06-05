@@ -41,13 +41,13 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCA9CQ_w9JkSfkeKw-cyJir2Ck9wqRCbHgy',
+    apiKey: 'AIzaSyCA9CQ_w9JkSfkeKw-cyJir2Ck9wqRCbHg',
     appId: '1:308528139700:web:2231ff2600f285ae3076e1',
     messagingSenderId: '308528139700',
     projectId: 'planing-931b8',
     authDomain: 'planing-931b8.firebaseapp.com',
-    storageBucket: 'planing-931b8.appspot.com',
-    measurementId: 'G-MEASUREMENT_ID',
+    storageBucket: 'planing-931b8.firebasestorage.app',
+    measurementId: 'G-WTRN7PH6MR',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
