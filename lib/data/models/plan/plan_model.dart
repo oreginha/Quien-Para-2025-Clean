@@ -23,7 +23,7 @@ class PlanModel with _$PlanModel {
     @Default('') String location,
     @Default({}) Map<String, String> conditions,
     @Default([]) List<String> selectedThemes,
-    String? createdAt,
+    DateTime? createdAt,
     @Default(true) bool esVisible,
   }) = _PlanModel;
 

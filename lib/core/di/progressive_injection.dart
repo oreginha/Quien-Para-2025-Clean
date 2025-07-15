@@ -43,6 +43,10 @@ import '../../domain/usecases/review/get_user_reviews_usecase.dart';
 import '../../domain/usecases/review/calculate_user_rating_usecase.dart';
 import '../../domain/repositories/review/review_repository.dart';
 import '../../data/repositories/review/review_repository_impl.dart';
+// Favorites system imports
+import '../../domain/usecases/favorites/toggle_favorite_usecase.dart';
+import '../../domain/usecases/favorites/get_user_favorites_usecase.dart';
+import '../../domain/usecases/favorites/check_if_favorite_usecase.dart';
 import '../services/notification_service.dart';
 import '../services/planes_api_service.dart';
 import '../../presentation/bloc/chat/simple_chat_bloc.dart';
@@ -298,6 +302,17 @@ class ProgressiveInjection {
           break;
         case 'CalculateUserRatingUseCase':
           success = _initializeCalculateUserRatingUseCase();
+          break;
+
+        // Favorites Use Cases
+        case 'ToggleFavoriteUseCase':
+          success = _initializeToggleFavoriteUseCase();
+          break;
+        case 'GetUserFavoritesUseCase':
+          success = _initializeGetUserFavoritesUseCase();
+          break;
+        case 'CheckIfFavoriteUseCase':
+          success = _initializeCheckIfFavoriteUseCase();
           break;
 
         default:
@@ -700,6 +715,50 @@ class ProgressiveInjection {
       _safeRegister<CalculateUserRatingUseCase>(
         CalculateUserRatingUseCase(repo),
         'CalculateUserRatingUseCase',
+      );
+      return true;
+    } catch (e) {
+      _log('Error: $e');
+      return false;
+    }
+  }
+
+  // ---- CASOS DE USO DE FAVORITOS ----
+
+  static bool _initializeToggleFavoriteUseCase() {
+    try {
+      final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
+      _safeRegister<ToggleFavoriteUseCase>(
+        ToggleFavoriteUseCase(repo),
+        'ToggleFavoriteUseCase',
+      );
+      return true;
+    } catch (e) {
+      _log('Error: $e');
+      return false;
+    }
+  }
+
+  static bool _initializeGetUserFavoritesUseCase() {
+    try {
+      final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
+      _safeRegister<GetUserFavoritesUseCase>(
+        GetUserFavoritesUseCase(repo),
+        'GetUserFavoritesUseCase',
+      );
+      return true;
+    } catch (e) {
+      _log('Error: $e');
+      return false;
+    }
+  }
+
+  static bool _initializeCheckIfFavoriteUseCase() {
+    try {
+      final repo = sl.get<PlanRepository>(instanceName: 'PlanRepository');
+      _safeRegister<CheckIfFavoriteUseCase>(
+        CheckIfFavoriteUseCase(repo),
+        'CheckIfFavoriteUseCase',
       );
       return true;
     } catch (e) {

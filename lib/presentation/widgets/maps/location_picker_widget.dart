@@ -1,36 +1,20 @@
-// lib/presentation/widgets/maps/location_picker_widget.dart
-
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:quien_para/core/theme/app_colors.dart';
-import 'package:quien_para/core/theme/app_typography.dart';
-import 'package:quien_para/core/theme/theme_constants.dart';
-import 'package:quien_para/core/theme/provider/theme_provider.dart';
-import 'package:quien_para/domain/entities/location_entity.dart';
-import 'package:quien_para/domain/usecases/maps/get_current_location_usecase.dart';
-import 'package:quien_para/domain/usecases/maps/reverse_geocode_usecase.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/services/location/location_service.dart';
+import 'package:geolocator/geolocator.dart';
 
-/// Widget selector de ubicación con mapa interactivo
 class LocationPickerWidget extends StatefulWidget {
-  /// Callback cuando se selecciona una ubicación
-  final Function(LocationEntity) onLocationSelected;
+  final Function(LocationData) onLocationSelected;
+  final LocationData? initialLocation;
+  final String? placeholder;
+  final bool enabled;
 
-  /// Ubicación inicial (opcional)
-  final LocationEntity? initialLocation;
-
-  /// Altura del widget
-  final double height;
-
-  /// Constructor
   const LocationPickerWidget({
     super.key,
     required this.onLocationSelected,
     this.initialLocation,
-    this.height = 300.0,
+    this.placeholder,
+    this.enabled = true,
   });
 
   @override
@@ -38,71 +22,56 @@ class LocationPickerWidget extends StatefulWidget {
 }
 
 class _LocationPickerWidgetState extends State<LocationPickerWidget> {
-  /// Controlador del mapa
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
-  /// Caso de uso para obtener la ubicación actual
-  late final GetCurrentLocationUseCase _getCurrentLocationUseCase;
-
-  /// Caso de uso para geocodificación inversa
-  late final ReverseGeocodeUseCase _reverseGeocodeUseCase;
-
-  /// Ubicación seleccionada actualmente
-  LocationEntity? _selectedLocation;
-
-  /// Marcadores del mapa
-  Set<Marker> _markers = {};
-
-  /// Estado de carga
-  bool _isLoading = true;
-
-  /// Cámara inicial del mapa
-  final CameraPosition _initialCameraPosition = const CameraPosition(
-    target: LatLng(40.4168, -3.7038), // Madrid como posición predeterminada
-    zoom: 14.0,
-  );
+  final TextEditingController _controller = TextEditingController();
+  bool _isLoading = false;
+  LocationData? _selectedLocation;
 
   @override
   void initState() {
     super.initState();
-
-    // Inicializar casos de uso
-    _getCurrentLocationUseCase = GetIt.I<GetCurrentLocationUseCase>();
-    _reverseGeocodeUseCase = GetIt.I<ReverseGeocodeUseCase>();
-
-    // Establecer ubicación inicial o cargar la ubicación actual
-    _loadInitialLocation();
+    if (widget.initialLocation != null) {
+      _selectedLocation = widget.initialLocation;
+      _controller.text = widget.initialLocation!.address ?? 
+          '${widget.initialLocation!.latitude.toStringAsFixed(4)}, ${widget.initialLocation!.longitude.toStringAsFixed(4)}';
+    }
   }
 
-  /// Carga la ubicación inicial o la ubicación del usuario
-  Future<void> _loadInitialLocation() async {
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  Future<void> _getCurrentLocation() async {
+    if (!widget.enabled) return;
+
+    setState(() {
+      _isLoading = true;
+    });
+
     try {
-      // Si hay una ubicación inicial, usarla
-      if (widget.initialLocation != null) {
-        await _selectLocation(
-          LatLng(
-            widget.initialLocation!.latitude,
-            widget.initialLocation!.longitude,
-          ),
-        );
-      } else {
-        // Si no hay ubicación inicial, intentar obtener la ubicación actual
-        final currentLocation = await _getCurrentLocationUseCase.execute();
-        await _selectLocation(
-          LatLng(currentLocation.latitude, currentLocation.longitude),
-        );
-      }
-    } catch (e) {
-      // En caso de error, usar la ubicación predeterminada
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('No se pudo obtener tu ubicación actual'),
-            duration: Duration(seconds: 2),
-          ),
-        );
-      }
+      final result = await LocationService.instance.getCurrentLocation();
+      
+      result.fold(
+        (failure) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(failure.message),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
+        (position) {
+          final locationData = LocationData.fromPosition(position);
+          setState(() {
+            _selectedLocation = locationData;
+            _controller.text = '${position.latitude.toStringAsFixed(4)}, ${position.longitude.toStringAsFixed(4)}';
+          });
+          widget.onLocationSelected(locationData);
+        },
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -112,367 +81,253 @@ class _LocationPickerWidgetState extends State<LocationPickerWidget> {
     }
   }
 
-  /// Selecciona una ubicación en el mapa
-  Future<void> _selectLocation(LatLng latLng) async {
-    try {
-      // Obtener información de la ubicación mediante geocodificación inversa
-      final locationInfo = await _reverseGeocodeUseCase.execute(
-        latLng.latitude,
-        latLng.longitude,
-      );
+  void _showLocationPicker() {
+    if (!widget.enabled) return;
 
-      if (locationInfo != null) {
-        _selectedLocation = locationInfo;
-      } else {
-        _selectedLocation = LocationEntity(
-          latitude: latLng.latitude,
-          longitude: latLng.longitude,
-          name: 'Ubicación seleccionada',
-        );
-      }
-
-      // Actualizar marcador en el mapa
-      setState(() {
-        _markers = {
-          Marker(
-            markerId: const MarkerId('selected_location'),
-            position: latLng,
-            infoWindow: InfoWindow(
-              title: _selectedLocation?.name ?? 'Ubicación seleccionada',
-              snippet: _selectedLocation?.address,
-            ),
-          ),
-        };
-      });
-
-      // Animar cámara a la nueva ubicación
-      final GoogleMapController controller = await _controller.future;
-      controller.animateCamera(CameraUpdate.newLatLng(latLng));
-
-      // Notificar la selección
-      widget.onLocationSelected(_selectedLocation!);
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error al seleccionar ubicación: $e'),
-            duration: const Duration(seconds: 2),
-          ),
-        );
-      }
-    }
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => LocationPickerBottomSheet(
+        onLocationSelected: (location) {
+          setState(() {
+            _selectedLocation = location;
+            _controller.text = location.address ?? 
+                '${location.latitude.toStringAsFixed(4)}, ${location.longitude.toStringAsFixed(4)}';
+          });
+          widget.onLocationSelected(location);
+          Navigator.of(context).pop();
+        },
+        initialLocation: _selectedLocation,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    final isDarkMode = themeProvider.isDarkMode;
-
+    final theme = Theme.of(context);
+    
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Título
-        Text(
-          'Selecciona una ubicación',
-          style: AppTypography.heading6(isDarkMode),
-        ),
-        const SizedBox(height: AppSpacing.s),
-
-        // Mapa
-        SizedBox(
-          height: widget.height,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(AppRadius.m),
-            child: Stack(
-              children: [
-                // Mapa de Google
-                GoogleMap(
-                  initialCameraPosition: _initialCameraPosition,
-                  markers: _markers,
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: false,
-                  zoomControlsEnabled: false,
-                  mapToolbarEnabled: false,
-                  compassEnabled: false,
-                  onMapCreated: (GoogleMapController controller) {
-                    _controller.complete(controller);
-                  },
-                  style: isDarkMode
-                      ? '''[{
-                      "elementType": "geometry",
-                      "stylers": [{
-                        "color": "#242f3e"
-                      }]
-                    },
-                    {
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#746855"
-                      }]
-                    },
-                    {
-                      "elementType": "labels.text.stroke",
-                      "stylers": [{
-                        "color": "#242f3e"
-                      }]
-                    },
-                    {
-                      "featureType": "administrative.locality",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#d59563"
-                      }]
-                    },
-                    {
-                      "featureType": "poi",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#d59563"
-                      }]
-                    },
-                    {
-                      "featureType": "poi.park",
-                      "elementType": "geometry",
-                      "stylers": [{
-                        "color": "#263c3f"
-                      }]
-                    },
-                    {
-                      "featureType": "poi.park",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#6b9a76"
-                      }]
-                    },
-                    {
-                      "featureType": "road",
-                      "elementType": "geometry",
-                      "stylers": [{
-                        "color": "#38414e"
-                      }]
-                    },
-                    {
-                      "featureType": "road",
-                      "elementType": "geometry.stroke",
-                      "stylers": [{
-                        "color": "#212a37"
-                      }]
-                    },
-                    {
-                      "featureType": "road",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#9ca5b3"
-                      }]
-                    },
-                    {
-                      "featureType": "road.highway",
-                      "elementType": "geometry",
-                      "stylers": [{
-                        "color": "#746855"
-                      }]
-                    },
-                    {
-                      "featureType": "road.highway",
-                      "elementType": "geometry.stroke",
-                      "stylers": [{
-                        "color": "#1f2835"
-                      }]
-                    },
-                    {
-                      "featureType": "road.highway",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#f3d19c"
-                      }]
-                    },
-                    {
-                      "featureType": "transit",
-                      "elementType": "geometry",
-                      "stylers": [{
-                        "color": "#2f3948"
-                      }]
-                    },
-                    {
-                      "featureType": "transit.station",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#d59563"
-                      }]
-                    },
-                    {
-                      "featureType": "water",
-                      "elementType": "geometry",
-                      "stylers": [{
-                        "color": "#17263c"
-                      }]
-                    },
-                    {
-                      "featureType": "water",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                        "color": "#515c6d"
-                      }]
-                    },
-                    {
-                      "featureType": "water",
-                      "elementType": "labels.text.stroke",
-                      "stylers": [{
-                        "color": "#17263c"
-                      }]
-                    }]'''
-                      : null,
-                  onTap: _selectLocation,
-                  mapType: MapType.normal,
-                  padding: const EdgeInsets.all(AppSpacing.m),
-                ),
-
-                // Indicador de carga
-                if (_isLoading)
-                  Container(
-                    color: AppColors.withAlpha(Colors.black, 0.3),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          AppColors.brandYellow,
-                        ),
-                      ),
+        TextFormField(
+          controller: _controller,
+          enabled: widget.enabled,
+          readOnly: true,
+          decoration: InputDecoration(
+            labelText: 'Ubicación',
+            hintText: widget.placeholder ?? 'Seleccionar ubicación',
+            suffixIcon: _isLoading 
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: CircularProgressIndicator(strokeWidth: 2),
                     ),
-                  ),
-
-                // Botones de control
-                Positioned(
-                  right: AppSpacing.s,
-                  top: AppSpacing.s,
-                  child: Column(
+                  )
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Botón de ubicación actual
-                      FloatingActionButton.small(
-                        heroTag: 'btn_current_location',
-                        onPressed: () async {
-                          setState(() {
-                            _isLoading = true;
-                          });
-
-                          try {
-                            final location =
-                                await _getCurrentLocationUseCase.execute();
-                            if (mounted) {
-                              await _selectLocation(
-                                LatLng(location.latitude, location.longitude),
-                              );
-                            }
-                          } catch (e) {
-                            // Verificamos si el widget está montado antes de usar el BuildContext
-                            if (mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Error al obtener ubicación: $e',
-                                  ),
-                                ),
-                              );
-                            }
-                          } finally {
-                            if (mounted) {
-                              setState(() {
-                                _isLoading = false;
-                              });
-                            }
-                          }
-                        },
-                        backgroundColor: AppColors.brandYellow,
-                        child: const Icon(
-                          Icons.my_location,
-                          color: Colors.black,
-                        ),
+                      IconButton(
+                        icon: const Icon(Icons.my_location),
+                        onPressed: _getCurrentLocation,
+                        tooltip: 'Usar ubicación actual',
                       ),
-                      const SizedBox(height: AppSpacing.s),
-                      // Botón de zoom in
-                      FloatingActionButton.small(
-                        heroTag: 'btn_zoom_in',
-                        onPressed: () async {
-                          final controller = await _controller.future;
-                          if (mounted) {
-                            controller.animateCamera(CameraUpdate.zoomIn());
-                          }
-                        },
-                        backgroundColor: AppColors.getCardBackground(
-                          isDarkMode,
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          color: AppColors.getTextPrimary(isDarkMode),
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.xs),
-                      // Botón de zoom out
-                      FloatingActionButton.small(
-                        heroTag: 'btn_zoom_out',
-                        onPressed: () async {
-                          final controller = await _controller.future;
-                          if (mounted) {
-                            controller.animateCamera(CameraUpdate.zoomOut());
-                          }
-                        },
-                        backgroundColor: AppColors.getCardBackground(
-                          isDarkMode,
-                        ),
-                        child: Icon(
-                          Icons.remove,
-                          color: AppColors.getTextPrimary(isDarkMode),
-                        ),
+                      IconButton(
+                        icon: const Icon(Icons.place),
+                        onPressed: _showLocationPicker,
+                        tooltip: 'Seleccionar en mapa',
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
+            border: const OutlineInputBorder(),
           ),
+          onTap: widget.enabled ? _showLocationPicker : null,
         ),
-
-        // Información de la ubicación seleccionada
         if (_selectedLocation != null) ...[
-          const SizedBox(height: AppSpacing.s),
-          Container(
-            padding: const EdgeInsets.all(AppSpacing.s),
-            decoration: BoxDecoration(
-              color: AppColors.getCardBackground(isDarkMode),
-              borderRadius: BorderRadius.circular(AppRadius.s),
-              border: Border.all(color: AppColors.getBorder(isDarkMode)),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _selectedLocation?.name ?? 'Ubicación seleccionada',
-                  style: AppTypography.labelLarge(
-                    isDarkMode,
-                  ).copyWith(fontWeight: FontWeight.bold),
-                ),
-                if (_selectedLocation?.address != null) ...[
-                  const SizedBox(height: AppSpacing.xs),
-                  Text(
-                    _selectedLocation!.address!,
-                    style: AppTypography.bodyMedium(isDarkMode),
-                  ),
-                ],
-                if (_selectedLocation?.city != null ||
-                    _selectedLocation?.country != null) ...[
-                  const SizedBox(height: AppSpacing.xs),
-                  Text(
-                    [
-                      _selectedLocation?.city,
-                      _selectedLocation?.country,
-                    ].where((e) => e != null).join(', '),
-                    style: AppTypography.bodyMedium(isDarkMode),
-                  ),
-                ],
-              ],
-            ),
+          const SizedBox(height: 8),
+          Text(
+            'Lat: ${_selectedLocation!.latitude.toStringAsFixed(6)}, '
+            'Lng: ${_selectedLocation!.longitude.toStringAsFixed(6)}',
+            style: theme.textTheme.bodySmall,
           ),
         ],
       ],
     );
   }
+}
+
+class LocationPickerBottomSheet extends StatefulWidget {
+  final Function(LocationData) onLocationSelected;
+  final LocationData? initialLocation;
+
+  const LocationPickerBottomSheet({
+    super.key,
+    required this.onLocationSelected,
+    this.initialLocation,
+  });
+
+  @override
+  State<LocationPickerBottomSheet> createState() => _LocationPickerBottomSheetState();
+}
+
+class _LocationPickerBottomSheetState extends State<LocationPickerBottomSheet> {
+  final TextEditingController _searchController = TextEditingController();
+  bool _isSearching = false;
+  List<LocationSearchResult> _searchResults = [];
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _searchLocation(String query) async {
+    if (query.trim().isEmpty) {
+      setState(() {
+        _searchResults = [];
+      });
+      return;
+    }
+
+    setState(() {
+      _isSearching = true;
+    });
+
+    try {
+      // TODO: Implementar búsqueda de ubicaciones con geocoding
+      // Por ahora, simulamos algunos resultados
+      await Future.delayed(const Duration(milliseconds: 500));
+      
+      setState(() {
+        _searchResults = [
+          LocationSearchResult(
+            name: '$query - Centro',
+            address: '$query, Centro',
+            latitude: -34.6037,
+            longitude: -58.3816,
+          ),
+          LocationSearchResult(
+            name: '$query - Norte',
+            address: '$query, Zona Norte',
+            latitude: -34.5937,
+            longitude: -58.3716,
+          ),
+        ];
+      });
+    } finally {
+      setState(() {
+        _isSearching = false;
+      });
+    }
+  }
+
+  Future<void> _useCurrentLocation() async {
+    final result = await LocationService.instance.getCurrentLocation();
+    
+    result.fold(
+      (failure) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(failure.message),
+            backgroundColor: Colors.red,
+          ),
+        );
+      },
+      (position) {
+        final locationData = LocationData.fromPosition(position);
+        widget.onLocationSelected(locationData);
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.7,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Seleccionar Ubicación',
+            style: theme.textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 16),
+          
+          // Campo de búsqueda
+          TextField(
+            controller: _searchController,
+            decoration: InputDecoration(
+              hintText: 'Buscar ciudad o dirección',
+              prefixIcon: const Icon(Icons.search),
+              suffixIcon: _isSearching 
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    )
+                  : null,
+              border: const OutlineInputBorder(),
+            ),
+            onChanged: _searchLocation,
+          ),
+          
+          const SizedBox(height: 16),
+          
+          // Botón de ubicación actual
+          ListTile(
+            leading: const Icon(Icons.my_location),
+            title: const Text('Usar ubicación actual'),
+            onTap: _useCurrentLocation,
+          ),
+          
+          const Divider(),
+          
+          // Resultados de búsqueda
+          Expanded(
+            child: ListView.builder(
+              itemCount: _searchResults.length,
+              itemBuilder: (context, index) {
+                final result = _searchResults[index];
+                return ListTile(
+                  leading: const Icon(Icons.place),
+                  title: Text(result.name),
+                  subtitle: Text(result.address),
+                  onTap: () {
+                    final locationData = LocationData(
+                      latitude: result.latitude,
+                      longitude: result.longitude,
+                      timestamp: DateTime.now(),
+                      address: result.address,
+                    );
+                    widget.onLocationSelected(locationData);
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LocationSearchResult {
+  final String name;
+  final String address;
+  final double latitude;
+  final double longitude;
+
+  LocationSearchResult({
+    required this.name,
+    required this.address,
+    required this.latitude,
+    required this.longitude,
+  });
 }

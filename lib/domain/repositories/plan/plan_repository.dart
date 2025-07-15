@@ -224,4 +224,58 @@ abstract class PlanRepository extends RepositoryBase<PlanEntity> {
   ///
   /// [userId] - ID del usuario
   Future<Either<Failure, Unit>> clearSearchHistory({required String userId});
+
+  // ========== MÉTODOS DE FAVORITOS ==========
+
+  /// Añade un plan a favoritos del usuario
+  ///
+  /// [userId] - ID del usuario
+  /// [planId] - ID del plan a añadir
+  Future<Either<Failure, Unit>> addFavorite({
+    required String userId,
+    required String planId,
+  });
+
+  /// Remueve un plan de favoritos del usuario
+  ///
+  /// [userId] - ID del usuario
+  /// [planId] - ID del plan a remover
+  Future<Either<Failure, Unit>> removeFavorite({
+    required String userId,
+    required String planId,
+  });
+
+  /// Verifica si un plan está en favoritos del usuario
+  ///
+  /// [userId] - ID del usuario
+  /// [planId] - ID del plan a verificar
+  Future<Either<Failure, bool>> isFavorite({
+    required String userId,
+    required String planId,
+  });
+
+  /// Obtiene la lista de planes favoritos del usuario
+  ///
+  /// [userId] - ID del usuario
+  /// [limit] - Límite de resultados
+  /// [lastDocumentId] - Para paginación
+  Future<Either<Failure, List<PlanWithCreatorEntity>>> getUserFavorites({
+    required String userId,
+    int limit = 20,
+    String? lastDocumentId,
+  });
+
+  /// Obtiene el conteo de favoritos de un plan
+  ///
+  /// [planId] - ID del plan
+  Future<Either<Failure, int>> getFavoriteCount({required String planId});
+
+  /// Obtiene los planes más favoriteados
+  ///
+  /// [limit] - Límite de resultados
+  /// [lastDocumentId] - Para paginación
+  Future<Either<Failure, List<PlanWithCreatorEntity>>> getMostFavoritedPlans({
+    int limit = 20,
+    String? lastDocumentId,
+  });
 }
